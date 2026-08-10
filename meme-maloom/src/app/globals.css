@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  /* Saffron — primary brand color, energetic and warm */
+  --color-saffron-50: #fff6e9;
+  --color-saffron-100: #ffe9c7;
+  --color-saffron-200: #ffd08a;
+  --color-saffron-300: #ffb757;
+  --color-saffron-400: #ff9e2e;
+  --color-saffron-500: #ff8a00;
+  --color-saffron-600: #f06a00;
+  --color-saffron-700: #c65209;
+  --color-saffron-800: #9c420f;
+  --color-saffron-900: #7a3610;
+
+  /* Deep navy — grounding, trustworthy */
+  --color-navy-50: #eef1f8;
+  --color-navy-100: #d6deee;
+  --color-navy-200: #adbdde;
+  --color-navy-300: #7f97c2;
+  --color-navy-400: #55719d;
+  --color-navy-500: #37507b;
+  --color-navy-600: #263a5e;
+  --color-navy-700: #1a2947;
+  --color-navy-800: #101b32;
+  --color-navy-900: #0a1224;
+  --color-navy-950: #060a18;
+
+  /* Rani pink — playful secondary accent */
+  --color-pink-50: #fdeff3;
+  --color-pink-400: #ef6a9a;
+  --color-pink-500: #e8447e;
+  --color-pink-600: #cc2c65;
+
+  /* Mint — growth, success, "explained" signals */
+  --color-mint-50: #e9fbf4;
+  --color-mint-400: #35cf9f;
+  --color-mint-500: #14b98c;
+  --color-mint-600: #0e9672;
+
+  /* Warm cream surface, avoids stark government-white */
+  --color-cream: #fffaf1;
+  --color-cream-100: #fdf3e2;
+
+  --background: var(--color-cream);
+  --foreground: var(--color-navy-900);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-saffron-50: var(--color-saffron-50);
+  --color-saffron-100: var(--color-saffron-100);
+  --color-saffron-200: var(--color-saffron-200);
+  --color-saffron-300: var(--color-saffron-300);
+  --color-saffron-400: var(--color-saffron-400);
+  --color-saffron-500: var(--color-saffron-500);
+  --color-saffron-600: var(--color-saffron-600);
+  --color-saffron-700: var(--color-saffron-700);
+  --color-saffron-800: var(--color-saffron-800);
+  --color-saffron-900: var(--color-saffron-900);
+
+  --color-navy-50: var(--color-navy-50);
+  --color-navy-100: var(--color-navy-100);
+  --color-navy-200: var(--color-navy-200);
+  --color-navy-300: var(--color-navy-300);
+  --color-navy-400: var(--color-navy-400);
+  --color-navy-500: var(--color-navy-500);
+  --color-navy-600: var(--color-navy-600);
+  --color-navy-700: var(--color-navy-700);
+  --color-navy-800: var(--color-navy-800);
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-950: var(--color-navy-950);
+
+  --color-pink-50: var(--color-pink-50);
+  --color-pink-400: var(--color-pink-400);
+  --color-pink-500: var(--color-pink-500);
+  --color-pink-600: var(--color-pink-600);
+
+  --color-mint-50: var(--color-mint-50);
+  --color-mint-400: var(--color-mint-400);
+  --color-mint-500: var(--color-mint-500);
+  --color-mint-600: var(--color-mint-600);
+
+  --color-cream: var(--color-cream);
+  --color-cream-100: var(--color-cream-100);
+
+  --font-display: var(--font-baloo), "Noto Sans Devanagari", sans-serif;
+  --font-sans: var(--font-noto-sans), "Noto Sans Devanagari", sans-serif;
+
+  --shadow-sticker: 0 2px 0 0 rgba(10, 18, 36, 0.9);
+  --shadow-card: 0 1px 2px rgba(10, 18, 36, 0.06), 0 8px 24px -8px rgba(10, 18, 36, 0.15);
+  --shadow-card-hover: 0 4px 8px rgba(10, 18, 36, 0.08), 0 16px 32px -12px rgba(10, 18, 36, 0.22);
+}
+
+* {
+  scrollbar-color: var(--color-saffron-400) transparent;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-saffron-200);
+  color: var(--color-navy-900);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-pink-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.bg-dot-grid {
+  background-image: radial-gradient(circle, rgba(10, 18, 36, 0.14) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+.hover-wiggle:hover {
+  animation: wiggle 0.4s ease-in-out;
+}

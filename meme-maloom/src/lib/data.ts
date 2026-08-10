@@ -1,0 +1,772 @@
+import type {
+  CategoryInfo,
+  LanguageInfo,
+  Meme,
+  RegionInfo,
+} from "./types";
+
+/**
+ * Sample data only. Meme Maloom does not scrape or mirror third-party media —
+ * every entry stores a source link + attribution instead of an image, and
+ * images shown in the UI are labelled placeholders. This file stands in for
+ * a future CMS/database + ingestion pipeline.
+ */
+
+export const memes: Meme[] = [
+  {
+    id: "m01",
+    title: "Mogambo Khush Hua",
+    slug: "mogambo-khush-hua",
+    description:
+      "The iconic villain catchphrase from Mr. India, reused whenever anyone feels smug satisfaction — heroic or petty.",
+    explanation:
+      "\"Mogambo khush hua\" (\"Mogambo is pleased\") is dropped online whenever something works out a little too perfectly — landing a parking spot, a group project finally coming together, or an ex's flight getting delayed. The line borrows the villain's exaggerated menace and repurposes it as ironic self-congratulation.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Mr. India (1987) — villain lair still",
+    placeholderTone: "navy",
+    sourceUrl: "https://en.wikipedia.org/wiki/Mr._India",
+    sourcePlatform: "Film dialogue",
+    creator: "Javed Akhtar (dialogue), performed by Amrish Puri",
+    language: "Hindi/Hinglish",
+    region: "Pan-India",
+    category: "Bollywood",
+    contentType: "Dialogue/quote",
+    tags: ["bollywood", "villain", "satisfaction", "classic", "amrish-puri"],
+    originDate: "1987-05-29",
+    originStory:
+      "First said by Mogambo, the antagonist of the 1987 film Mr. India, in a scene where he celebrates a scheme going his way. The theatrical delivery made it endlessly quotable.",
+    culturalContext:
+      "Amrish Puri's villains defined a generation of Hindi cinema, and this line survived because of its rhythm as much as its meaning — three words that scan perfectly for captions and reaction posts, decades before the internet existed to spread them.",
+    translation: "Mogambo is pleased.",
+    transliteration: "Mogambo khush hua",
+    variations: [
+      "Mogambo khush hua, par thoda aur khush ho sakta tha (\"...but could've been happier\")",
+      "Used as a standalone reaction GIF caption on cricket and Bollywood fan pages",
+      "Corporate meme variant: \"Manager khush hua\" for approved leave requests",
+    ],
+    relatedSlugs: ["kitne-aadmi-the", "bhai-wah"],
+    popularityScore: 88,
+    growth24h: 4.2,
+    shareCount: 18400,
+    explainViewCount: 52100,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m02",
+    title: "Kitne Aadmi The",
+    slug: "kitne-aadmi-the",
+    description:
+      "Gabbar Singh's interrogation line from Sholay, used sarcastically to question exaggerated stories or excuses.",
+    explanation:
+      "Literally \"How many men were there?\", the line is used today to call out someone's dramatic retelling of an ordinary event — a group chat member exaggerating a fight, a friend's fish-that-got-away story. It works as a meme because it deflates hype with deadpan interrogation energy.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Sholay (1975) — dacoit interrogation scene",
+    placeholderTone: "navy",
+    sourceUrl: "https://en.wikipedia.org/wiki/Sholay",
+    sourcePlatform: "Film dialogue",
+    creator: "Salim–Javed (writers), performed by Amjad Khan",
+    language: "Hindi/Hinglish",
+    region: "Pan-India",
+    category: "Bollywood",
+    contentType: "Dialogue/quote",
+    tags: ["bollywood", "sholay", "classic", "sarcasm"],
+    originDate: "1975-08-15",
+    originStory:
+      "From the 1975 film Sholay, spoken by the dacoit Gabbar Singh while interrogating his men about a failed ambush. Widely considered one of Hindi cinema's most quoted scenes.",
+    culturalContext:
+      "Sholay dialogues form a shared cultural vocabulary across generations in India; quoting them signals in-group familiarity with classic cinema regardless of when the quoter was born.",
+    translation: "How many men were there?",
+    transliteration: "Kitne aadmi the",
+    variations: [
+      "\"Sardar, humne unko bahut samjhaya\" as the standard sarcastic reply format",
+      "Used in cricket fan edits after a batting collapse",
+    ],
+    relatedSlugs: ["mogambo-khush-hua", "neta-ji-ka-bhashan"],
+    popularityScore: 81,
+    growth24h: 1.6,
+    shareCount: 12300,
+    explainViewCount: 39800,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m03",
+    title: "Yeh Cricket Hai Bhai",
+    slug: "yeh-cricket-hai-bhai",
+    description:
+      "A commentary-style reaction format for wild swings in a cricket match — from certain defeat to a last-over win.",
+    explanation:
+      "\"Yeh cricket hai bhai, kuch bhi ho sakta hai\" (\"This is cricket, brother, anything can happen\") is the go-to caption whenever a match flips unexpectedly. It started as commentator shorthand and became the internet's default reaction to any sudden reversal — in sport, exams, or relationships.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Stadium floodlights, last-over finish",
+    placeholderTone: "saffron",
+    sourceUrl: "https://en.wikipedia.org/wiki/Cricket_in_India",
+    sourcePlatform: "TV commentary / X (Twitter)",
+    creator: "Commentary box tradition, popularised by fan edits",
+    language: "Hindi/Hinglish",
+    region: "Pan-India",
+    category: "Cricket",
+    contentType: "Video clip",
+    tags: ["cricket", "reaction", "commentary", "sports"],
+    originDate: "2011-04-02",
+    originStory:
+      "Commentators have used variations of this line for decades, but it went viral as a meme format after the 2011 World Cup final chase, when fan-made recap videos used it as a recurring caption over momentum swings.",
+    culturalContext:
+      "Cricket is arguably India's biggest shared cultural event, and its commentary phrases leak into everyday language faster than almost any other domain — this line now shows up in memes about stock markets, exam results, and elections.",
+    translation: "This is cricket, brother, anything can happen.",
+    transliteration: "Yeh cricket hai bhai, kuch bhi ho sakta hai",
+    variations: [
+      "\"Yeh {exam/traffic/relationship} hai bhai\" template swaps",
+      "Used with a helicopter-shot GIF for any last-minute reversal",
+    ],
+    relatedSlugs: ["thaggede-le", "bhai-wah"],
+    popularityScore: 92,
+    growth24h: 9.7,
+    shareCount: 27600,
+    explainViewCount: 61200,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m04",
+    title: "Monday 10 AM Standup Face",
+    slug: "monday-10am-standup-face",
+    description:
+      "The universal deadpan reaction to being asked for a status update on a Monday morning daily standup.",
+    explanation:
+      "This template pairs a flat, exhausted expression with captions about vague standup updates like \"no blockers, just existential ones.\" It's the office-life equivalent of the Monday blues meme, localized to Indian IT and startup work culture where daily standups are near-universal.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Open-plan office, coffee mug, laptop glow",
+    placeholderTone: "navy",
+    sourceUrl: "https://www.reddit.com/r/developersIndia/",
+    sourcePlatform: "Reddit / LinkedIn",
+    creator: "Anonymous, IT-worker meme pages",
+    language: "Hindi/Hinglish",
+    region: "Pan-India",
+    category: "Office Life",
+    contentType: "Image macro",
+    tags: ["office", "corporate", "wfh", "standup", "monday"],
+    originDate: "2020-06-10",
+    originStory:
+      "Gained momentum during the work-from-home boom of 2020–21 as India's IT workforce moved to remote daily standups, turning a mundane process into a recurring source of relatable content.",
+    culturalContext:
+      "India's large IT and services workforce has built an entire meme micro-economy around office culture — appraisal season, standups, \"urgent\" client calls at 11 PM — and this format is one of its most recognisable entry points.",
+    variations: [
+      "\"No blockers, just vibes\" caption variant",
+      "Manager vs. developer split-panel version",
+    ],
+    relatedSlugs: ["yeh-cricket-hai-bhai", "bhai-wah"],
+    popularityScore: 74,
+    growth24h: 2.1,
+    shareCount: 9100,
+    explainViewCount: 21700,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m05",
+    title: "Vaathi Coming",
+    slug: "vaathi-coming",
+    description:
+      "A dramatic teacher-entrance reaction format from Tamil cinema, used whenever an authority figure walks in unannounced.",
+    explanation:
+      "\"Vaathi\" means teacher in Tamil. The format captures the split-second panic of a classroom (or office, or group project) when someone with authority suddenly appears — books slam shut, phones vanish, posture straightens. It's used far beyond classrooms now, for any \"boss is watching\" moment.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Classroom doorway, dramatic backlight",
+    placeholderTone: "pink",
+    sourceUrl: "https://en.wikipedia.org/wiki/Vaathi_Coming",
+    sourcePlatform: "Film song/scene",
+    creator: "From the film Master (2021), music by Anirudh Ravichander",
+    language: "Tamil",
+    region: "South India",
+    category: "College Life",
+    contentType: "Video clip",
+    tags: ["tamil", "cinema", "college", "authority", "reaction"],
+    originDate: "2021-01-13",
+    originStory:
+      "Popularised by the song and scene \"Vaathi Coming\" from the Tamil film Master, where the protagonist (a college lecturer) makes a stylised entrance. Clip edits set to the track spread rapidly on Instagram Reels.",
+    culturalContext:
+      "Tamil cinema has a long tradition of hero-introduction scenes, and this format took that energy and applied it to a relatable, universal moment — the dread and swagger of an authority figure entering a room — making it accessible even to non-Tamil speakers via captions.",
+    translation: "Teacher is coming.",
+    transliteration: "Vaathi coming",
+    variations: [
+      "Office-boss entrance edits using the same beat drop",
+      "Parent-walks-into-room version for younger audiences",
+    ],
+    relatedSlugs: ["monday-10am-standup-face", "solid-kanri"],
+    popularityScore: 85,
+    growth24h: 3.4,
+    shareCount: 15200,
+    explainViewCount: 33900,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m06",
+    title: "Thaggede Le",
+    slug: "thaggede-le",
+    description:
+      "A Telugu swagger phrase meaning \"I won't back down,\" now used as a general flex caption across languages.",
+    explanation:
+      "Originally a mass-hero flex line, \"thaggede le\" is now slapped onto anything from a gym selfie to a spicy street-food order as a way of saying \"no regrets, no backing down.\" Its punchy sound made it travel well outside Telugu-speaking audiences, often used phonetically without translation.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Silhouette, dramatic red-and-black poster style",
+    placeholderTone: "saffron",
+    sourceUrl: "https://en.wikipedia.org/wiki/Pushpa:_The_Rise",
+    sourcePlatform: "Film dialogue",
+    creator: "From the film Pushpa: The Rise (2021)",
+    language: "Telugu",
+    region: "South India",
+    category: "Internet Slang",
+    contentType: "Dialogue/quote",
+    tags: ["telugu", "swagger", "flex", "cinema", "pan-india"],
+    originDate: "2021-12-17",
+    originStory:
+      "Delivered by the lead character in Pushpa: The Rise as a statement of defiance. Reels creators paired the line with everyday \"flex\" moments, detaching it from its original dramatic context entirely.",
+    culturalContext:
+      "Telugu cinema's pan-India crossover moment in the early 2020s pushed several regional phrases into national slang overnight — this is one of the clearest examples of a line's tone (defiant pride) surviving translation even when literal meaning gets flattened.",
+    translation: "Won't back down / won't lower (myself).",
+    transliteration: "Thaggede le",
+    variations: [
+      "Used as a caption on unrelated \"confidence\" posts",
+      "Remixed with regional slang in Tamil and Kannada reels",
+    ],
+    relatedSlugs: ["yeh-cricket-hai-bhai", "bhai-wah"],
+    popularityScore: 90,
+    growth24h: 6.8,
+    shareCount: 22100,
+    explainViewCount: 48700,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m07",
+    title: "Onam Sadya Overload",
+    slug: "onam-sadya-overload",
+    description:
+      "The post-feast food-coma reaction meme tied to Onam's elaborate banana-leaf sadya spread.",
+    explanation:
+      "This format captures the specific, glorious regret of eating a 20-dish Onam sadya on a banana leaf — the second-helping payasam that you didn't need but absolutely took. It's shared every Onam season as families post their spreads and friends respond with this reaction.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Banana leaf spread, illustrative sticker style",
+    placeholderTone: "mint",
+    sourceUrl: "https://en.wikipedia.org/wiki/Onam",
+    sourcePlatform: "Instagram / WhatsApp forwards",
+    creator: "Community-originated, Malayali food pages",
+    language: "Malayalam",
+    region: "South India",
+    category: "Food",
+    contentType: "Image macro",
+    tags: ["malayalam", "onam", "food", "festival", "kerala"],
+    originDate: "2016-09-01",
+    originStory:
+      "Emerged from Kerala food and lifestyle pages posting reaction images during Onam season, when sadya (a traditional multi-course vegetarian feast) is served on banana leaves.",
+    culturalContext:
+      "Onam is Kerala's biggest harvest festival, and food is central to how it's celebrated and shared online; this meme format turned a very specific regional food ritual into an annually recurring, widely understood joke — even for people who've never eaten a sadya.",
+    variations: [
+      "\"Payasam round 2\" caption variant",
+      "Cross-posted during Vishu and other Kerala festivals with new food spreads",
+    ],
+    relatedSlugs: ["aha-ki-anondo", "vaathi-coming"],
+    popularityScore: 69,
+    growth24h: 12.4,
+    shareCount: 8300,
+    explainViewCount: 17600,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m08",
+    title: "Aha Ki Anondo",
+    slug: "aha-ki-anondo",
+    description:
+      "A sarcastic-joy Bengali expression used ironically when something is very much not a source of joy.",
+    explanation:
+      "\"Aha ki anondo\" (\"ah, what joy\") is deployed with deliberate deadpan irony — for a delayed train, a group project falling apart, or a relative's unsolicited advice. The gap between the phrase's literal warmth and the situation it's applied to is the entire joke.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Durga Puja pandal lights, illustrative style",
+    placeholderTone: "pink",
+    sourceUrl: "https://en.wikipedia.org/wiki/Bengali_language",
+    sourcePlatform: "Facebook / Bengali meme pages",
+    creator: "Community-originated, Bengali internet culture",
+    language: "Bengali",
+    region: "East India",
+    category: "Festivals",
+    contentType: "Dialogue/quote",
+    tags: ["bengali", "sarcasm", "irony", "durga-puja"],
+    originDate: "2014-03-01",
+    originStory:
+      "A long-standing colloquial expression that found new life as caption text on Bengali meme pages, especially around Durga Puja season when the phrase's festive undertone contrasts with everyday puja-crowd chaos.",
+    culturalContext:
+      "Bengali internet humour leans heavily on literary irony and wordplay, drawing from a strong tradition of satire in Bengali literature and theatre; this phrase is a compact example of that sensibility surviving into meme format.",
+    translation: "Ah, what joy.",
+    transliteration: "Aha ki anondo",
+    variations: [
+      "Paired with pandal-hopping traffic-jam images during Durga Puja",
+      "Used sarcastically in exam-result and monsoon-flooding posts",
+    ],
+    relatedSlugs: ["onam-sadya-overload", "aavje-boss"],
+    popularityScore: 63,
+    growth24h: 1.1,
+    shareCount: 5400,
+    explainViewCount: 12900,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m09",
+    title: "Bhai Wah",
+    slug: "bhai-wah",
+    description:
+      "A short Hindi internet-slang exclamation of impressed sarcasm, somewhere between a compliment and a roast.",
+    explanation:
+      "\"Bhai wah\" (\"wow, brother\") is the internet-slang Swiss army knife of Hindi meme culture — it can express genuine admiration, gentle mockery, or flat disbelief depending entirely on context and punctuation. Its ambiguity is exactly why it spread so fast in comment sections.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Comment-section sticker, thumbs-up doodle",
+    placeholderTone: "saffron",
+    sourceUrl: "https://en.wikipedia.org/wiki/Hinglish",
+    sourcePlatform: "YouTube comments / Instagram",
+    creator: "Community-originated, Hinglish internet slang",
+    language: "Hindi/Hinglish",
+    region: "Pan-India",
+    category: "Internet Slang",
+    contentType: "Format/template",
+    tags: ["hinglish", "slang", "sarcasm", "comments"],
+    originDate: "2018-01-01",
+    originStory:
+      "Rose from YouTube and Instagram comment sections as a catch-all reaction to anything unexpected — a plot twist, a bold take, or an obvious flex — before spreading into standalone image and sticker formats.",
+    culturalContext:
+      "Hinglish (mixed Hindi-English) dominates casual Indian internet speech, and short ambiguous phrases like this one thrive because they let commenters express a reaction without committing to a clear stance.",
+    translation: "Wow, brother.",
+    transliteration: "Bhai wah",
+    variations: [
+      "\"Bhai wah, kya baat hai\" extended version",
+      "Used sarcastically with a slow clap GIF",
+    ],
+    relatedSlugs: ["thaggede-le", "mogambo-khush-hua"],
+    popularityScore: 79,
+    growth24h: 5.5,
+    shareCount: 14700,
+    explainViewCount: 29300,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m10",
+    title: "Solid Kanri",
+    slug: "solid-kanri",
+    description:
+      "A Kannada gamer-slang phrase of approval, shouted during clutch plays in local gaming livestreams.",
+    explanation:
+      "\"Solid kanri\" roughly means \"that's solid, watch out\" and became a stock reaction in Kannada gaming and streaming circles for a clutch kill or a lucky escape. It's since spread as a caption for any impressive, slightly reckless move — in games or real life.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Stream overlay mock-up, controller icon",
+    placeholderTone: "mint",
+    sourceUrl: "https://en.wikipedia.org/wiki/Kannada",
+    sourcePlatform: "YouTube Gaming / Twitch clips",
+    creator: "Community-originated, Kannada gaming streamers",
+    language: "Kannada",
+    region: "South India",
+    category: "Gaming",
+    contentType: "Video clip",
+    tags: ["kannada", "gaming", "streaming", "clutch"],
+    originDate: "2019-07-01",
+    originStory:
+      "Emerged organically in Kannada-language gaming livestream chats as commentary slang, then got clipped and reposted as a standalone reaction format by fan pages.",
+    culturalContext:
+      "India's regional-language gaming and streaming scene has grown rapidly, and Kannada streamers built a distinct slang vocabulary that meme pages now mine for reaction formats — proof that meme culture isn't only downstream of cinema.",
+    translation: "That's solid, watch it.",
+    transliteration: "Solid kanri",
+    variations: [
+      "Used as an audio sting over clutch-moment clips",
+      "Adapted into Tamil and Telugu streaming chats with local slang swaps",
+    ],
+    relatedSlugs: ["vaathi-coming", "yeh-cricket-hai-bhai"],
+    popularityScore: 58,
+    growth24h: 15.9,
+    shareCount: 4100,
+    explainViewCount: 9800,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m11",
+    title: "Zhala Ka?",
+    slug: "zhala-ka",
+    description:
+      "A Marathi catchphrase asking \"did it happen yet?\", used to impatiently check on a friend's romantic or career news.",
+    explanation:
+      "\"Zhala ka?\" (\"is it done?\") captures the specific impatience of a friend group waiting for someone to confess a crush, get a job offer, or finally send that text. It's a lightweight, endlessly reusable caption for any will-they-won't-they moment.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Two chat bubbles, illustrative doodle",
+    placeholderTone: "pink",
+    sourceUrl: "https://en.wikipedia.org/wiki/Marathi_language",
+    sourcePlatform: "Instagram Reels",
+    creator: "Community-originated, Marathi meme pages",
+    language: "Marathi",
+    region: "West India",
+    category: "Relationships",
+    contentType: "Format/template",
+    tags: ["marathi", "relationships", "friends", "impatience"],
+    originDate: "2017-05-01",
+    originStory:
+      "Popularised through Marathi comedy sketch pages on Facebook and later Instagram Reels, usually shown as a group-chat screenshot format with an exasperated friend asking for updates.",
+    culturalContext:
+      "Marathi meme pages have a strong tradition of sketch-style, dialogue-driven humour rooted in everyday middle-class family and friend dynamics, and this phrase is a compact example of that observational style.",
+    translation: "Did it happen (yet)?",
+    transliteration: "Zhala ka?",
+    variations: [
+      "Used as a recurring caption on \"proposal update\" joke threads",
+      "Adapted for exam-result and job-offer waiting jokes",
+    ],
+    relatedSlugs: ["balle-balle-shaadi", "bhai-wah"],
+    popularityScore: 61,
+    growth24h: 3.9,
+    shareCount: 6200,
+    explainViewCount: 14100,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m12",
+    title: "Aavje Bossss",
+    slug: "aavje-boss",
+    description:
+      "A cheerful Gujarati Navratri sign-off meaning \"see you, boss,\" used as a warm, garba-season goodbye caption.",
+    explanation:
+      "\"Aavje\" is a casual Gujarati goodbye, and adding \"bossss\" (stretched for emphasis) turns it into an upbeat, sing-song sign-off popularised during Navratri garba season. It's now used year-round as a cheerful way to end a post or video, regardless of festival timing.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Dandiya sticks, festive doodle border",
+    placeholderTone: "saffron",
+    sourceUrl: "https://en.wikipedia.org/wiki/Navratri",
+    sourcePlatform: "Instagram Reels",
+    creator: "Community-originated, Gujarati Navratri content creators",
+    language: "Gujarati",
+    region: "West India",
+    category: "Festivals",
+    contentType: "Video clip",
+    tags: ["gujarati", "navratri", "garba", "festival", "greeting"],
+    originDate: "2019-10-01",
+    originStory:
+      "Became a recurring sign-off phrase in Navratri garba event videos and vlogs, said with an exaggerated sing-song lilt at the end of clips before spreading as a general-purpose upbeat goodbye.",
+    culturalContext:
+      "Navratri and garba are central to Gujarati cultural identity and generate an enormous wave of short-form video content every year; sign-off phrases like this one are how that seasonal energy becomes a reusable meme outside the festival window.",
+    translation: "See you, boss.",
+    transliteration: "Aavje bossss",
+    variations: [
+      "Used as an outro line in unrelated vlogs for a cheerful tone",
+      "Remixed with dandiya-beat audio as a trending sound",
+    ],
+    relatedSlugs: ["aha-ki-anondo", "onam-sadya-overload"],
+    popularityScore: 55,
+    growth24h: 2.7,
+    shareCount: 3600,
+    explainViewCount: 8100,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m13",
+    title: "Balle Balle Shaadi Mode",
+    slug: "balle-balle-shaadi",
+    description:
+      "A Punjabi wedding-hype exclamation used as a reaction to any big celebratory announcement.",
+    explanation:
+      "\"Balle balle\" is a joyful Punjabi exclamation associated with bhangra and wedding celebrations. Online, it's the go-to reaction for engagement announcements, promotions, or even a friend finally paying back a loan — any moment worth a little imagined dhol beat.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Dhol drum, confetti doodle",
+    placeholderTone: "pink",
+    sourceUrl: "https://en.wikipedia.org/wiki/Bhangra_(dance)",
+    sourcePlatform: "Instagram / WhatsApp status",
+    creator: "Community-originated, Punjabi wedding culture",
+    language: "Punjabi",
+    region: "North India",
+    category: "Relationships",
+    contentType: "GIF",
+    tags: ["punjabi", "wedding", "bhangra", "celebration"],
+    originDate: "2015-11-01",
+    originStory:
+      "Rooted in bhangra folk tradition and wedding sangeet culture, the phrase crossed into meme format as a captioned GIF reaction on Punjabi social pages celebrating any good news, big or small.",
+    culturalContext:
+      "Punjabi wedding culture — the music, the dhol, the exuberance — is one of the most widely recognised regional aesthetics across India thanks to Bollywood, which helped this phrase travel well beyond Punjabi-speaking audiences.",
+    translation: "An exclamation of joy, roughly \"hooray!\"",
+    transliteration: "Balle balle",
+    variations: [
+      "Used with a bhangra GIF for engagement/promotion announcements",
+      "\"Balle balle\" text overlay on baraat and sangeet reels",
+    ],
+    relatedSlugs: ["zhala-ka", "aavje-boss"],
+    popularityScore: 72,
+    growth24h: 0.8,
+    shareCount: 7800,
+    explainViewCount: 16400,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
+  {
+    id: "m14",
+    title: "Neta Ji Ka Bhashan",
+    slug: "neta-ji-ka-bhashan",
+    description:
+      "A generic 'politician's speech' reaction format mocking vague, promise-heavy campaign rhetoric — not tied to any real individual.",
+    explanation:
+      "This format pairs a podium-and-microphone visual with subtitle-style captions full of vague promises and zero specifics, used every election season to poke fun at campaign rhetoric in general. It intentionally avoids referencing any real politician, focusing instead on the recognisable pattern of the speech itself.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Podium and microphone silhouette, generic",
+    placeholderTone: "navy",
+    sourceUrl: "https://en.wikipedia.org/wiki/Elections_in_India",
+    sourcePlatform: "X (Twitter) / satire pages",
+    creator: "Community-originated, election-season satire pages",
+    language: "Hindi/Hinglish",
+    region: "Pan-India",
+    category: "Politics",
+    contentType: "Format/template",
+    tags: ["politics", "satire", "elections", "generic"],
+    originDate: "2014-04-01",
+    originStory:
+      "A recurring satirical format that resurfaces every election cycle, riffing on the general cadence of campaign speeches rather than any single event or person.",
+    culturalContext:
+      "Political satire has a long history in Indian print cartooning, and this format continues that tradition online — it works by exaggerating a familiar pattern of speech rather than targeting individuals, which is part of why it stays evergreen across election cycles.",
+    variations: [
+      "\"Vote {generic promise}\" subtitle template",
+      "Split-screen 'before election / after election' version",
+    ],
+    relatedSlugs: ["kitne-aadmi-the", "yeh-cricket-hai-bhai"],
+    popularityScore: 66,
+    growth24h: 0.3,
+    shareCount: 5900,
+    explainViewCount: 15300,
+    status: "published",
+    copyrightStatus: "under_review",
+  },
+];
+
+export const languageInfo: LanguageInfo[] = [
+  {
+    language: "Hindi/Hinglish",
+    nativeName: "हिन्दी",
+    description:
+      "The largest single-language cluster on the platform, spanning classic Bollywood dialogue, Hinglish internet slang and office-culture humour.",
+    popularTopics: ["Bollywood dialogue", "Internet slang", "Office life"],
+    examplePhrase: {
+      script: "भाई वाह",
+      transliteration: "Bhai wah",
+      meaning: "\"Wow, brother\" — ambiguous praise or gentle mockery.",
+    },
+  },
+  {
+    language: "Tamil",
+    nativeName: "தமிழ்",
+    description:
+      "Driven by Tamil cinema's mass-entrance scenes and college-life humour, with a fast-growing Reels-native meme scene.",
+    popularTopics: ["Cinema entrances", "College life", "Fan edits"],
+    examplePhrase: {
+      script: "வாத்தி கமிங்",
+      transliteration: "Vaathi coming",
+      meaning: "\"Teacher is coming\" — panic at an authority figure's entrance.",
+    },
+  },
+  {
+    language: "Telugu",
+    nativeName: "తెలుగు",
+    description:
+      "Home to the pan-India \"mass\" hero-dialogue wave, with phrases that travel across languages purely on tone and delivery.",
+    popularTopics: ["Mass dialogue", "Flex culture", "Film swagger"],
+    examplePhrase: {
+      script: "తగ్గేదే లే",
+      transliteration: "Thaggede le",
+      meaning: "\"Won't back down\" — a defiant flex line.",
+    },
+  },
+  {
+    language: "Malayalam",
+    nativeName: "മലയാളം",
+    description:
+      "Known for dry, understated humour and food-and-festival memes tied closely to Kerala's cultural calendar.",
+    popularTopics: ["Onam & food culture", "Cinema wit", "Monsoon humour"],
+    examplePhrase: {
+      script: "ആഹാ കിടിലൻ",
+      transliteration: "Aha kidilan",
+      meaning: "\"Wow, awesome\" — an enthusiastic Malayalam exclamation.",
+    },
+  },
+  {
+    language: "Kannada",
+    nativeName: "ಕನ್ನಡ",
+    description:
+      "A fast-growing scene anchored by Bengaluru's gaming and tech-worker culture alongside Kannada cinema fandom.",
+    popularTopics: ["Gaming slang", "Bengaluru tech life", "Cinema fandom"],
+    examplePhrase: {
+      script: "ಸಾಲಿಡ್ ಕಣ್ರೀ",
+      transliteration: "Solid kanri",
+      meaning: "\"That's solid\" — approval for a clutch or bold move.",
+    },
+  },
+  {
+    language: "Bengali",
+    nativeName: "বাংলা",
+    description:
+      "Rooted in a strong literary and theatrical tradition of irony, with Durga Puja season generating an annual meme surge.",
+    popularTopics: ["Durga Puja", "Literary irony", "Adda culture"],
+    examplePhrase: {
+      script: "আহা কি আনন্দ",
+      transliteration: "Aha ki anondo",
+      meaning: "\"Ah, what joy\" — said with heavy sarcasm.",
+    },
+  },
+  {
+    language: "Marathi",
+    nativeName: "मराठी",
+    description:
+      "Known for sketch-style, dialogue-driven humour about everyday family and friend-group dynamics.",
+    popularTopics: ["Friend-group banter", "Family sketches", "Relationships"],
+    examplePhrase: {
+      script: "झालं का?",
+      transliteration: "Zhala ka?",
+      meaning: "\"Is it done yet?\" — impatiently checking for news.",
+    },
+  },
+  {
+    language: "Gujarati",
+    nativeName: "ગુજરાતી",
+    description:
+      "Anchored by Navratri and garba season content, plus a strong entrepreneurial/business-humour thread.",
+    popularTopics: ["Navratri & garba", "Business humour", "Greetings"],
+    examplePhrase: {
+      script: "આવજે બોસ",
+      transliteration: "Aavje boss",
+      meaning: "\"See you, boss\" — a cheerful sign-off.",
+    },
+  },
+  {
+    language: "Punjabi",
+    nativeName: "ਪੰਜਾਬੀ",
+    description:
+      "Built on bhangra energy and wedding-season exuberance, widely recognised across India thanks to Bollywood crossover.",
+    popularTopics: ["Weddings", "Bhangra", "Celebration reactions"],
+    examplePhrase: {
+      script: "ਬੱਲੇ ਬੱਲੇ",
+      transliteration: "Balle balle",
+      meaning: "An exclamation of joy, roughly \"hooray!\"",
+    },
+  },
+  {
+    language: "Other",
+    nativeName: "+ more",
+    description:
+      "Odia, Assamese, Urdu, Konkani, Bhojpuri and other Indian-language communities we're actively expanding coverage for.",
+    popularTopics: ["Regional cinema", "Local slang", "Festival humour"],
+    examplePhrase: {
+      script: "—",
+      transliteration: "More languages coming",
+      meaning: "Tell us what you'd like explained via Submit Meme.",
+    },
+  },
+];
+
+export const regionInfo: RegionInfo[] = [
+  {
+    region: "North India",
+    states: ["Punjab", "Haryana", "Delhi-NCR", "Rajasthan", "Uttar Pradesh"],
+    description:
+      "Wedding culture, bhangra energy and Hindi-belt political satire define the region's meme output.",
+  },
+  {
+    region: "South India",
+    states: ["Tamil Nadu", "Telangana", "Andhra Pradesh", "Karnataka", "Kerala"],
+    description:
+      "Four major film industries and a booming Reels-native scene make this the most linguistically diverse region on the platform.",
+  },
+  {
+    region: "East India",
+    states: ["West Bengal", "Odisha", "Bihar", "Jharkhand"],
+    description:
+      "Strong literary and festival-driven humour, anchored by Durga Puja season and adda (chat) culture.",
+  },
+  {
+    region: "West India",
+    states: ["Maharashtra", "Gujarat", "Goa"],
+    description:
+      "Home to Bollywood's production base, Marathi sketch humour and Gujarati festival content.",
+  },
+  {
+    region: "Northeast India",
+    states: ["Assam", "Meghalaya", "Manipur", "Nagaland", "Tripura"],
+    description:
+      "An emerging, distinct meme scene we're actively growing coverage for — submissions especially welcome.",
+  },
+  {
+    region: "Pan-India",
+    states: ["Cuts across states and languages"],
+    description:
+      "Formats that travel nationally regardless of origin language — usually via cricket, Bollywood or cross-platform internet slang.",
+  },
+];
+
+export const categoryInfo: CategoryInfo[] = [
+  { category: "Bollywood", emoji: "🎬", description: "Dialogue, scenes and star moments from Hindi cinema." },
+  { category: "Cricket", emoji: "🏏", description: "Match reactions, commentary lines and fan-edit formats." },
+  { category: "Politics", emoji: "🗳️", description: "Election-season satire and generic political-rhetoric formats." },
+  { category: "College Life", emoji: "🎓", description: "Classroom, hostel and exam-season humour." },
+  { category: "Office Life", emoji: "💼", description: "Standups, appraisals and work-from-home culture." },
+  { category: "Relationships", emoji: "💌", description: "Friendship, dating and family-dynamic reaction formats." },
+  { category: "Food", emoji: "🍛", description: "Festival feasts, street food and regional food-coma humour." },
+  { category: "Festivals", emoji: "🎉", description: "Navratri, Durga Puja, Onam and other festival-season content." },
+  { category: "Gaming", emoji: "🎮", description: "Streaming slang, clutch plays and gaming-community formats." },
+  { category: "Internet Slang", emoji: "💬", description: "Short, ambiguous, endlessly reusable phrases from comment sections." },
+];
+
+export const sourcePlatformDistribution = [
+  { platform: "Instagram Reels", share: 34 },
+  { platform: "X (Twitter)", share: 22 },
+  { platform: "YouTube", share: 18 },
+  { platform: "WhatsApp forwards", share: 14 },
+  { platform: "Reddit", share: 7 },
+  { platform: "Facebook", share: 5 },
+];
+
+export function getMemeBySlug(slug: string): Meme | undefined {
+  return memes.find((m) => m.slug === slug);
+}
+
+export function getRelatedMemes(meme: Meme): Meme[] {
+  return meme.relatedSlugs
+    .map((slug) => getMemeBySlug(slug))
+    .filter((m): m is Meme => Boolean(m));
+}
+
+export function getTrendingMemes(limit?: number): Meme[] {
+  const sorted = [...memes].sort((a, b) => b.growth24h - a.growth24h);
+  return typeof limit === "number" ? sorted.slice(0, limit) : sorted;
+}
+
+export function getFeaturedMemes(limit = 4): Meme[] {
+  return [...memes]
+    .sort((a, b) => b.popularityScore - a.popularityScore)
+    .slice(0, limit);
+}
+
+export function getMemeCountByLanguage(language: string): number {
+  return memes.filter((m) => m.language === language).length;
+}
+
+export function getMemeCountByRegion(region: string): number {
+  return memes.filter((m) => m.region === region).length;
+}
+
+export function getMemeCountByCategory(category: string): number {
+  return memes.filter((m) => m.category === category).length;
+}
+
+/** Demo composite score blending popularity, shares and explain-views. */
+export function getEngagementScore(meme: Meme): number {
+  return Math.round(
+    meme.popularityScore * 0.5 + meme.shareCount / 400 + meme.explainViewCount / 800
+  );
+}
+
+export function getEngagementLeaderboard(limit?: number): Meme[] {
+  const sorted = [...memes].sort((a, b) => getEngagementScore(b) - getEngagementScore(a));
+  return typeof limit === "number" ? sorted.slice(0, limit) : sorted;
+}
