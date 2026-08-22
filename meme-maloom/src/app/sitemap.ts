@@ -3,6 +3,8 @@ import { memes } from "@/lib/data";
 
 const siteUrl = "https://www.mememaloom.in";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
