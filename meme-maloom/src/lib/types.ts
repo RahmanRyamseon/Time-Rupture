@@ -40,6 +40,33 @@ export const CATEGORIES = [
 ] as const;
 export type Category = (typeof CATEGORIES)[number];
 
+export const ILLUSTRATION_ICONS = [
+  "crown",
+  "mask",
+  "cricketBat",
+  "laptop",
+  "chalkboard",
+  "mic",
+  "podium",
+  "thali",
+  "fireworks",
+  "thumbsChat",
+  "gameController",
+  "chatBubbles",
+  "danceFigure",
+  "dhol",
+  "cookingPot",
+  "shockedFace",
+  "trophy",
+  "sword",
+  "tvFrame",
+  "trainHeart",
+  "chartTicker",
+  "pickaxe",
+  "magnifier",
+] as const;
+export type IllustrationIcon = (typeof ILLUSTRATION_ICONS)[number];
+
 export const CONTENT_TYPES = [
   "Image macro",
   "Dialogue/quote",
@@ -75,6 +102,8 @@ export interface Meme {
   imageUrl: null;
   imagePlaceholderLabel: string;
   placeholderTone: "saffron" | "navy" | "pink" | "mint";
+  /** Original illustration icon shown on the placeholder card — never a reproduction of the real meme image. Falls back to a category default when unset. */
+  illustrationIcon?: IllustrationIcon;
   sourceUrl: string;
   sourcePlatform: string;
   creator?: string;

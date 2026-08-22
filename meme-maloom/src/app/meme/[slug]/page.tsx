@@ -78,11 +78,13 @@ export default async function MemeDetailPage({
               label={meme.imagePlaceholderLabel}
               tone={meme.placeholderTone}
               contentType={meme.contentType}
+              icon={meme.illustrationIcon}
+              category={meme.category}
               className="aspect-[16/9]"
             />
             <p className="mt-2 text-xs text-navy-500">
-              We don&apos;t mirror third-party media by default — this is a
-              labelled placeholder. See the original on{" "}
+              This is an original illustration, not the real meme image — we
+              don&apos;t mirror third-party media. See the actual meme on{" "}
               <a
                 href={meme.sourceUrl}
                 target="_blank"
