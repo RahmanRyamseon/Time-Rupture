@@ -82,7 +82,7 @@ src/app/                 route segments (App Router)
 src/components/          shared, reusable UI (cards, forms, states, nav)
 src/lib/
   types.ts                the Meme data model + controlled vocabularies
-  data.ts                 sample dataset (14 memes) + query helpers
+  data.ts                 sample dataset (growing; see below) + query helpers
   utils.ts                formatting/utility helpers
 ```
 

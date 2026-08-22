@@ -53,6 +53,27 @@ Open [http://localhost:3000](http://localhost:3000).
   pipeline — can replace the static data file without any page or
   component changes.
 
+### How new entries get added
+
+New dataset entries are added deliberately, in small researched batches —
+not scraped or auto-published in bulk. For each entry:
+
+1. Facts (origin date, creator, first-known-usage) are checked against
+   at least one independent, citable source (Wikipedia, established news
+   coverage) before writing the entry — an entry doesn't get added if it
+   can't be verified this way.
+2. Only the *explanation and cultural commentary* is original writing.
+   No image, video, or audio is downloaded — `sourceUrl` always points
+   to where the meme can actually be found, same as the placeholder +
+   source-link pattern described above.
+3. Entries that can't be corroborated (wrong claimed origin, unclear
+   attribution) are left out rather than published with a guess.
+
+This keeps growth rate-limited by actual research, on purpose — each
+entry in `src/lib/data.ts` carries its own `sourceUrl` and `creator`
+field, so the citation for any given meme is always right next to the
+claim it supports.
+
 ## Tech
 
 - [Next.js](https://nextjs.org) App Router, TypeScript, Tailwind CSS v4
