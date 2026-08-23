@@ -2,13 +2,16 @@ import Link from "next/link";
 import type { Meme } from "@/lib/types";
 import PlaceholderMedia from "./PlaceholderMedia";
 import Badge from "./Badge";
-import { formatCompactNumber } from "@/lib/utils";
+import { formatCompactNumber, tiltFromId } from "@/lib/utils";
 
 export default function MemeCard({ meme }: { meme: Meme }) {
+  const tilt = tiltFromId(meme.id);
+
   return (
     <Link
       href={`/meme/${meme.slug}`}
-      className="group flex flex-col overflow-hidden rounded-3xl border-2 border-navy-900/10 bg-white shadow-card transition hover:-translate-y-1 hover:border-navy-900/20 hover:shadow-card-hover"
+      style={{ "--tilt": `${tilt}deg` } as React.CSSProperties}
+      className="group flex rotate-[var(--tilt)] flex-col overflow-hidden rounded-3xl border-2 border-navy-900/10 bg-white shadow-card transition duration-300 hover:-translate-y-1.5 hover:rotate-0 hover:scale-[1.02] hover:border-navy-900/20 hover:shadow-card-hover"
     >
       <PlaceholderMedia
         label={meme.imagePlaceholderLabel}

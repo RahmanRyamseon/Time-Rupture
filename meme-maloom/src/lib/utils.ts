@@ -36,6 +36,17 @@ export function distribution<T>(
     .sort((a, b) => b.count - a.count);
 }
 
+/** Deterministic small tilt angle (degrees) derived from a string, for a scrapbook/sticker feel. */
+export function tiltFromId(id: string, maxDegrees = 1.6): number {
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    hash = (hash << 5) - hash + id.charCodeAt(i);
+    hash |= 0;
+  }
+  const normalized = (hash % 1000) / 1000; // -1..1 roughly
+  return normalized * maxDegrees;
+}
+
 export function slugify(input: string): string {
   return input
     .toLowerCase()

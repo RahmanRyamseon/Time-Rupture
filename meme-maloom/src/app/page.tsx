@@ -6,6 +6,10 @@ import RegionCard from "@/components/RegionCard";
 import CategoryCard from "@/components/CategoryCard";
 import Newsletter from "@/components/Newsletter";
 import Badge from "@/components/Badge";
+import Reveal from "@/components/Reveal";
+import HeroFloaters from "@/components/HeroFloaters";
+import ScriptMarquee from "@/components/ScriptMarquee";
+import WaveDivider from "@/components/WaveDivider";
 import {
   getFeaturedMemes,
   getTrendingMemes,
@@ -28,13 +32,30 @@ export default function Home() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-saffron-50 via-cream to-cream"
         />
+        <HeroFloaters />
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8">
           <Badge tone="pink" className="text-sm">
             🇮🇳 Pan-India meme discovery, explained
           </Badge>
           <h1 className="font-display max-w-3xl text-4xl leading-tight font-extrabold text-navy-900 sm:text-5xl lg:text-6xl">
             Understand the meme.{" "}
-            <span className="text-saffron-600">Discover the story.</span>
+            <span className="relative inline-block text-saffron-600">
+              Discover the story.
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 300 16"
+                className="absolute -bottom-1 left-0 h-3 w-full text-pink-400 sm:-bottom-2 sm:h-4"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M2 10c40-9 220-9 296 2"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </h1>
           <p className="max-w-xl text-base text-navy-600 sm:text-lg">
             Meme Maloom explains the origin, language and cultural context
@@ -50,7 +71,7 @@ export default function Home() {
               <Link
                 key={t}
                 href={`/explore?q=${encodeURIComponent(t)}`}
-                className="rounded-full bg-white px-3 py-1.5 shadow-sm transition hover:bg-saffron-100 hover:text-saffron-700"
+                className="rounded-full bg-white px-3 py-1.5 shadow-sm transition hover:-translate-y-0.5 hover:bg-saffron-100 hover:text-saffron-700"
               >
                 {t}
               </Link>
@@ -78,6 +99,8 @@ export default function Home() {
         </div>
       </section>
 
+      <ScriptMarquee />
+
       {/* Featured memes */}
       <SectionShell
         eyebrow="Handpicked"
@@ -86,28 +109,42 @@ export default function Home() {
         action={{ href: "/explore", label: "See all memes" }}
       >
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {featured.map((meme) => (
-            <MemeCard key={meme.id} meme={meme} />
+          {featured.map((meme, i) => (
+            <Reveal key={meme.id} delay={i * 60}>
+              <MemeCard meme={meme} />
+            </Reveal>
           ))}
         </div>
       </SectionShell>
 
+      <WaveDivider />
+
       {/* Trending today */}
       <SectionShell
         tone="navy"
-        eyebrow="Right now"
+        eyebrow={
+          <span className="inline-flex items-center gap-1.5">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-mint-500" />
+            </span>
+            Right now
+          </span>
+        }
         title="Trending today"
         description="Demo growth data — the fastest-climbing entries over the last 24 hours."
         action={{ href: "/trending", label: "Open trending dashboard" }}
       >
         <div className="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 lg:grid-cols-3">
-          {trending.map((meme) => (
-            <div key={meme.id} className="w-[80vw] shrink-0 snap-start sm:w-auto">
+          {trending.map((meme, i) => (
+            <Reveal key={meme.id} delay={i * 60} className="w-[80vw] shrink-0 snap-start sm:w-auto">
               <MemeCard meme={meme} />
-            </div>
+            </Reveal>
           ))}
         </div>
       </SectionShell>
+
+      <WaveDivider flip />
 
       {/* Explore by language */}
       <SectionShell
@@ -117,11 +154,15 @@ export default function Home() {
         action={{ href: "/languages", label: "See all languages" }}
       >
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {languageInfo.slice(0, 6).map((info) => (
-            <LanguageCard key={info.language} info={info} />
+          {languageInfo.slice(0, 6).map((info, i) => (
+            <Reveal key={info.language} delay={i * 60}>
+              <LanguageCard info={info} />
+            </Reveal>
           ))}
         </div>
       </SectionShell>
+
+      <WaveDivider />
 
       {/* Explore by region */}
       <SectionShell
@@ -132,11 +173,15 @@ export default function Home() {
         action={{ href: "/regions", label: "See all regions" }}
       >
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {regionInfo.map((info) => (
-            <RegionCard key={info.region} info={info} />
+          {regionInfo.map((info, i) => (
+            <Reveal key={info.region} delay={i * 60}>
+              <RegionCard info={info} />
+            </Reveal>
           ))}
         </div>
       </SectionShell>
+
+      <WaveDivider flip />
 
       {/* Popular categories */}
       <SectionShell
@@ -146,15 +191,19 @@ export default function Home() {
         action={{ href: "/categories", label: "See all categories" }}
       >
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {categoryInfo.map((info) => (
-            <CategoryCard key={info.category} info={info} />
+          {categoryInfo.map((info, i) => (
+            <Reveal key={info.category} delay={i * 40}>
+              <CategoryCard info={info} />
+            </Reveal>
           ))}
         </div>
       </SectionShell>
 
       {/* Newsletter */}
       <section className="mx-auto w-full max-w-5xl px-4 pb-20 sm:px-6 lg:px-8">
-        <Newsletter />
+        <Reveal>
+          <Newsletter />
+        </Reveal>
       </section>
 
       {/* Stat strip */}
@@ -176,7 +225,7 @@ function SectionShell({
   tone = "cream",
   children,
 }: {
-  eyebrow: string;
+  eyebrow: React.ReactNode;
   title: string;
   description: string;
   action: { href: string; label: string };

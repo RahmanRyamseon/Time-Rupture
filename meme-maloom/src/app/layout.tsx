@@ -77,6 +77,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <noscript>
+          <style>{".reveal { opacity: 1 !important; }"}</style>
+        </noscript>
         <Header />
         <main id="main-content" className="flex flex-1 flex-col">
           {children}
