@@ -74,6 +74,40 @@ entry in `src/lib/data.ts` carries its own `sourceUrl` and `creator`
 field, so the citation for any given meme is always right next to the
 claim it supports.
 
+### Official embeds (opt-in, per entry)
+
+A small number of entries additionally render a **live official embed**
+(YouTube, Tenor — X/Instagram support exists in code but isn't in active
+use yet) instead of the illustration, when both `embedType` and
+`embedAllowed` are set on that entry in `src/lib/data.ts`.
+
+- **What this is:** an iframe or platform widget pointed at the
+  platform's own canonical embed endpoint (`youtube-nocookie.com/embed/…`,
+  `tenor.com/embed/…`, or X/Instagram's documented `blockquote` + script
+  widgets). Nothing is downloaded, cached, proxied, or transformed —
+  Meme Maloom never touches the media bytes.
+- **How the URL is trusted:** `src/lib/embeds.ts` only recognises a
+  canonical platform post/video URL on that platform's real domain
+  (extracting the video/post ID and rebuilding the embed URL itself); a
+  sourceUrl merely mentioning a platform, or an article that links to one,
+  does not qualify. Anything that doesn't parse falls back to the
+  illustration automatically.
+- **Fallback is automatic and total:** if `embedAllowed` isn't explicitly
+  true, the platform/ID can't be parsed, or (at runtime, outside this
+  code's control) the underlying post is deleted/private/blocked, nothing
+  special has to happen — the page simply shows the illustration + source
+  link, which is always present regardless of embed status.
+- **Per-entry disable:** flip `embedAllowed: false` on any entry to pull
+  its embed immediately without touching anything else. The report form
+  on every meme page also includes "Remove the embedded media" as a
+  reason, for the same effect via the moderation flow.
+- **Not a legal clearance:** using a platform's own embed widget avoids
+  copying media and is standard, permitted practice — but it does not
+  mean embedding can never raise copyright, privacy, trademark, or
+  platform-terms issues in every circumstance. Embeds remain subject to
+  the originating platform's own terms of service and availability at all
+  times, and can be pulled per-entry as above if a concern is raised.
+
 ## Tech
 
 - [Next.js](https://nextjs.org) App Router, TypeScript, Tailwind CSS v4

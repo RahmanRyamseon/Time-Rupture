@@ -2,11 +2,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import PlaceholderMedia from "@/components/PlaceholderMedia";
+import MemeEmbed from "@/components/MemeEmbed";
 import Badge from "@/components/Badge";
 import MemeCard from "@/components/MemeCard";
 import ShareButtons from "@/components/ShareButtons";
 import ReportButton from "@/components/ReportButton";
 import { getMemeBySlug, getRelatedMemes, memes } from "@/lib/data";
+import { parseEmbed } from "@/lib/embeds";
 import { formatCompactNumber, formatDate } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -49,6 +51,8 @@ export default async function MemeDetailPage({
   if (!meme) notFound();
 
   const related = getRelatedMemes(meme);
+  const canEmbed =
+    meme.embedAllowed && meme.embedType && Boolean(parseEmbed(meme.embedType, meme.sourceUrl));
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
@@ -74,27 +78,55 @@ export default async function MemeDetailPage({
           <p className="mt-2 text-lg text-navy-600">{meme.description}</p>
 
           <div className="mt-6">
-            <PlaceholderMedia
-              label={meme.imagePlaceholderLabel}
-              tone={meme.placeholderTone}
-              contentType={meme.contentType}
-              icon={meme.illustrationIcon}
-              category={meme.category}
-              className="aspect-[16/9]"
-            />
-            <p className="mt-2 text-xs text-navy-500">
-              This is an original illustration, not the real meme image — we
-              don&apos;t mirror third-party media. See the actual meme on{" "}
-              <a
-                href={meme.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-saffron-600 underline"
-              >
-                {meme.sourcePlatform}
-              </a>
-              .
-            </p>
+            {canEmbed ? (
+              <>
+                <MemeEmbed
+                  embedType={meme.embedType}
+                  embedAllowed={meme.embedAllowed}
+                  sourceUrl={meme.sourceUrl}
+                  title={meme.title}
+                  className="aspect-[16/9]"
+                />
+                <p className="mt-2 text-xs text-navy-500">
+                  Live embed served directly from {meme.sourcePlatform} — nothing
+                  is downloaded or hosted by Meme Maloom. Subject to that
+                  platform&apos;s availability; if it stops loading, the entry
+                  falls back to an illustration.{" "}
+                  <a
+                    href={meme.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-saffron-600 underline"
+                  >
+                    Open the original ↗
+                  </a>
+                </p>
+              </>
+            ) : (
+              <>
+                <PlaceholderMedia
+                  label={meme.imagePlaceholderLabel}
+                  tone={meme.placeholderTone}
+                  contentType={meme.contentType}
+                  icon={meme.illustrationIcon}
+                  category={meme.category}
+                  className="aspect-[16/9]"
+                />
+                <p className="mt-2 text-xs text-navy-500">
+                  This is an original illustration, not the real meme image — we
+                  don&apos;t mirror third-party media. See the actual meme on{" "}
+                  <a
+                    href={meme.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-saffron-600 underline"
+                  >
+                    {meme.sourcePlatform}
+                  </a>
+                  .
+                </p>
+              </>
+            )}
           </div>
 
           <Section title="Explanation">

@@ -4,6 +4,7 @@ import { useId, useState } from "react";
 
 const REASONS = [
   "I own the copyright to this content",
+  "Remove the embedded media (keep the illustration only)",
   "Incorrect cultural context or translation",
   "Offensive or inappropriate content",
   "Duplicate entry",

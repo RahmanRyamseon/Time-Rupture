@@ -79,6 +79,15 @@ export type ContentType = (typeof CONTENT_TYPES)[number];
 
 export type MemeStatus = "published" | "pending_review" | "removed";
 
+/**
+ * Official, platform-approved embed formats only. An embed never downloads,
+ * caches, proxies or transforms the underlying media — it's always a live
+ * frame/widget served directly from the originating platform, subject to
+ * that platform's own terms and availability.
+ */
+export const EMBED_TYPES = ["youtube", "twitter", "instagram", "tenor"] as const;
+export type EmbedType = (typeof EMBED_TYPES)[number];
+
 export type CopyrightStatus =
   | "attributed_fair_use"
   | "creator_verified"
@@ -106,6 +115,15 @@ export interface Meme {
   illustrationIcon?: IllustrationIcon;
   sourceUrl: string;
   sourcePlatform: string;
+  /**
+   * Opt-in official embed. Set BOTH fields to enable — embedType alone does
+   * nothing. Only a canonical platform URL (verified by parseEmbed in
+   * lib/embeds.ts) will actually render; anything else silently falls back
+   * to the illustration + source link. Flip embedAllowed to false to pull
+   * an embed for a disputed entry without touching anything else.
+   */
+  embedType?: EmbedType;
+  embedAllowed?: boolean;
   creator?: string;
   language: Language;
   region: Region;
