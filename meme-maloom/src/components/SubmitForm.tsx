@@ -5,7 +5,7 @@ import Link from "next/link";
 import { LANGUAGES, REGIONS, CATEGORIES } from "@/lib/types";
 
 const inputClass =
-  "w-full rounded-xl border-2 border-navy-900/15 bg-white px-4 py-2.5 text-sm text-navy-900 outline-none placeholder:text-navy-400 focus:border-saffron-500 focus:ring-4 focus:ring-saffron-500/10";
+  "w-full rounded-2xl border-2 border-navy-900/12 bg-white px-4 py-2.5 text-sm text-navy-900 outline-none placeholder:text-navy-400 transition focus:border-violet-500 focus:ring-4 focus:ring-violet-500/15";
 
 function Field({
   label,
@@ -54,32 +54,36 @@ export default function SubmitForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-3xl border-2 border-mint-400/40 bg-mint-50 px-6 py-14 text-center">
-        <div className="text-5xl" aria-hidden="true">
+      <div className="relative flex flex-col items-center gap-3 overflow-hidden rounded-[28px] border-2 border-mint-400/40 bg-mint-50 px-6 py-14 text-center">
+        <div
+          aria-hidden="true"
+          className="animate-blob absolute -top-16 -right-16 h-48 w-48 bg-gradient-to-br from-mint-400/30 to-violet-400/30 blur-3xl"
+        />
+        <div className="relative text-5xl" aria-hidden="true">
           🎉
         </div>
-        <h2 className="font-display text-xl font-bold text-navy-900">
+        <h2 className="font-display relative text-xl font-bold text-navy-900">
           Thanks — your submission is in the queue!
         </h2>
-        <p className="max-w-md text-sm text-navy-600">
+        <p className="relative max-w-md text-sm text-navy-600">
           Our editors review every submission for cultural accuracy,
           copyright and community guidelines before it goes live. You&apos;ll
           typically hear back within 3–5 days.
         </p>
-        <div className="mt-2 flex gap-3">
+        <div className="relative mt-2 flex gap-3">
           <button
             type="button"
             onClick={() => {
               setSubmitted(false);
               setFileName(null);
             }}
-            className="rounded-full bg-saffron-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-saffron-600"
+            className="rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-5 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5"
           >
             Submit another meme
           </button>
           <Link
             href="/explore"
-            className="rounded-full border-2 border-navy-900/15 px-5 py-2.5 text-sm font-bold text-navy-800 transition hover:border-saffron-500"
+            className="rounded-full border-2 border-navy-900/15 px-5 py-2.5 text-sm font-bold text-navy-800 transition hover:border-violet-400"
           >
             Browse memes
           </Link>
@@ -184,7 +188,7 @@ export default function SubmitForm() {
       >
         <label
           htmlFor={ids.upload}
-          className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-navy-900/20 bg-navy-900/[0.02] px-4 py-8 text-center transition hover:border-saffron-400"
+          className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-navy-900/20 bg-gradient-to-br from-violet-50 to-pink-50 px-4 py-8 text-center transition hover:border-violet-400"
         >
           <span className="text-3xl" aria-hidden="true">📎</span>
           <span className="text-sm font-semibold text-navy-700">
@@ -205,7 +209,7 @@ export default function SubmitForm() {
         <p className="font-bold text-navy-800">Before you submit</p>
         <p className="mt-1">
           By submitting, you confirm your entry follows our{" "}
-          <Link href="/community-guidelines" className="font-semibold text-saffron-600 underline">
+          <Link href="/community-guidelines" className="font-semibold text-violet-700 underline">
             Community Guidelines
           </Link>{" "}
           — no hate speech, harassment, misinformation or content that
@@ -219,7 +223,7 @@ export default function SubmitForm() {
           id={ids.copyright}
           type="checkbox"
           required
-          className="mt-0.5 h-5 w-5 shrink-0 rounded border-2 border-navy-900/30 text-saffron-500 focus:ring-saffron-500"
+          className="mt-0.5 h-5 w-5 shrink-0 rounded border-2 border-navy-900/30 text-violet-500 focus:ring-violet-500"
         />
         <span>
           I confirm I have the right to share this content, and that Meme
@@ -230,7 +234,7 @@ export default function SubmitForm() {
 
       <button
         type="submit"
-        className="self-start rounded-full bg-saffron-500 px-8 py-3 text-sm font-bold text-white shadow-sticker transition hover:bg-saffron-600 active:translate-y-0.5 active:shadow-none"
+        className="self-start rounded-full bg-gradient-to-r from-violet-500 via-pink-500 to-saffron-500 px-8 py-3 text-sm font-bold text-white shadow-[var(--shadow-glow-violet)] transition hover:-translate-y-0.5 active:translate-y-0"
       >
         Submit for review
       </button>

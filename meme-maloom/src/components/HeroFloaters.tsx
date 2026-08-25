@@ -2,10 +2,12 @@ import { ICONS } from "./illustrations";
 import type { IllustrationIcon } from "@/lib/types";
 
 const toneBg: Record<string, string> = {
-  saffron: "bg-saffron-500",
-  navy: "bg-navy-700",
-  pink: "bg-pink-500",
-  mint: "bg-mint-500",
+  saffron: "bg-gradient-to-br from-saffron-400 to-pink-600",
+  navy: "bg-gradient-to-br from-navy-700 to-navy-950",
+  pink: "bg-gradient-to-br from-pink-400 to-violet-600",
+  mint: "bg-gradient-to-br from-mint-400 to-violet-500",
+  violet: "bg-gradient-to-br from-violet-500 to-pink-600",
+  lime: "bg-gradient-to-br from-lime-400 to-mint-500",
 };
 
 const floaters: {
@@ -19,8 +21,8 @@ const floaters: {
 }[] = [
   { icon: "mic", tone: "pink", className: "left-[4%] top-[18%]", size: "h-14 w-14", rotate: "-8deg", duration: "7s", delay: "0s" },
   { icon: "crown", tone: "saffron", className: "right-[6%] top-[12%]", size: "h-16 w-16", rotate: "10deg", duration: "8s", delay: "0.4s" },
-  { icon: "fireworks", tone: "mint", className: "left-[10%] top-[62%]", size: "h-12 w-12", rotate: "6deg", duration: "6.5s", delay: "1s" },
-  { icon: "dhol", tone: "navy", className: "right-[10%] top-[60%]", size: "h-14 w-14", rotate: "-6deg", duration: "7.5s", delay: "0.6s" },
+  { icon: "fireworks", tone: "lime", className: "left-[10%] top-[62%]", size: "h-12 w-12", rotate: "6deg", duration: "6.5s", delay: "1s" },
+  { icon: "dhol", tone: "violet", className: "right-[10%] top-[60%]", size: "h-14 w-14", rotate: "-6deg", duration: "7.5s", delay: "0.6s" },
   { icon: "chatBubbles", tone: "pink", className: "left-[22%] top-[8%]", size: "h-10 w-10", rotate: "-4deg", duration: "5.5s", delay: "1.4s" },
   { icon: "gameController", tone: "mint", className: "right-[22%] top-[74%]", size: "h-11 w-11", rotate: "5deg", duration: "6.8s", delay: "0.2s" },
 ];
@@ -33,7 +35,7 @@ export default function HeroFloaters() {
         return (
           <div
             key={i}
-            className={`animate-float absolute ${f.className} ${f.size} ${toneBg[f.tone]} flex items-center justify-center rounded-2xl shadow-lg ring-4 ring-white/40 opacity-90`}
+            className={`animate-float absolute ${f.className} ${f.size} ${toneBg[f.tone]} flex items-center justify-center rounded-2xl shadow-[var(--shadow-glow-violet)] ring-4 ring-white/50 opacity-90`}
             style={
               {
                 "--float-rot": f.rotate,

@@ -37,7 +37,7 @@ export default function CopyrightPage() {
         <li>Use the &ldquo;Report or request removal&rdquo; button on the relevant meme&apos;s detail page, or</li>
         <li>
           Contact us directly via the{" "}
-          <Link href="/contact" className="font-semibold text-saffron-600 underline">
+          <Link href="/contact" className="font-semibold text-violet-700 underline">
             Contact page
           </Link>{" "}
           with a link to the entry and a description of your request.

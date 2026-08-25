@@ -15,7 +15,7 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0a1224 0%, #1a2947 55%, #7a3610 100%)",
+          background: "linear-gradient(135deg, #0a0814 0%, #341463 45%, #ff2a9d 78%, #ff6b00 100%)",
           color: "white",
           fontFamily: "sans-serif",
         }}
@@ -34,14 +34,14 @@ export default function Image() {
               width: 96,
               height: 72,
               borderRadius: 28,
-              background: "#ff8a00",
+              background: "linear-gradient(135deg, #7c3aed 0%, #ff2a9d 55%, #ff6b00 100%)",
             }}
           />
           <div style={{ display: "flex", fontSize: 84, fontWeight: 800 }}>
-            Meme <span style={{ color: "#ff8a00", marginLeft: 16 }}>Maloom</span>
+            Meme <span style={{ color: "#d4fa3e", marginLeft: 16 }}>Maloom</span>
           </div>
         </div>
-        <div style={{ display: "flex", fontSize: 36, color: "#ffe9c7" }}>
+        <div style={{ display: "flex", fontSize: 36, color: "#e1defc" }}>
           Indian memes, explained.
         </div>
       </div>

@@ -47,7 +47,7 @@ export default function CommunityGuidelinesPage() {
       <p>
         Every meme detail page has a &ldquo;Report or request removal&rdquo;
         option. For copyright-specific requests, see our{" "}
-        <a href="/copyright" className="font-semibold text-saffron-600 underline">
+        <a href="/copyright" className="font-semibold text-violet-700 underline">
           Copyright &amp; Takedown
         </a>{" "}
         page.

@@ -32,8 +32,9 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="border-t-2 border-navy-900/10 bg-navy-950 text-navy-200">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-navy-950 text-navy-200">
+      <div aria-hidden="true" className="bg-mesh pointer-events-none absolute inset-0 opacity-40" />
+      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           <div className="col-span-2">
             <Logo withTagline variant="dark" />
@@ -56,7 +57,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-navy-300 transition hover:text-saffron-400"
+                      className="text-sm text-navy-300 transition hover:text-lime-400"
                     >
                       {link.label}
                     </Link>
@@ -67,13 +68,13 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-navy-800 pt-6 text-xs text-navy-400 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-navy-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Meme Maloom. All meme rights belong to their original creators.</p>
           <div className="flex flex-wrap gap-x-4 gap-y-1">
-            <Link href="/privacy" className="hover:text-saffron-400">Privacy Policy</Link>
-            <Link href="/copyright" className="hover:text-saffron-400">Copyright/Takedown</Link>
-            <Link href="/community-guidelines" className="hover:text-saffron-400">Guidelines</Link>
-            <Link href="/contact" className="hover:text-saffron-400">Contact</Link>
+            <Link href="/privacy" className="hover:text-lime-400">Privacy Policy</Link>
+            <Link href="/copyright" className="hover:text-lime-400">Copyright/Takedown</Link>
+            <Link href="/community-guidelines" className="hover:text-lime-400">Guidelines</Link>
+            <Link href="/contact" className="hover:text-lime-400">Contact</Link>
           </div>
         </div>
       </div>

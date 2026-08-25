@@ -1,8 +1,9 @@
 const toneClasses = {
-  saffron: "bg-saffron-500",
-  navy: "bg-navy-600",
-  pink: "bg-pink-500",
-  mint: "bg-mint-500",
+  saffron: "from-saffron-400 to-pink-500",
+  navy: "from-navy-600 to-violet-600",
+  pink: "from-pink-400 to-violet-500",
+  mint: "from-mint-400 to-mint-600",
+  violet: "from-violet-400 to-pink-500",
 } as const;
 
 export default function StatBar({
@@ -24,7 +25,7 @@ export default function StatBar({
       </span>
       <div className="h-3 flex-1 overflow-hidden rounded-full bg-navy-900/8">
         <div
-          className={`h-full rounded-full ${toneClasses[tone]}`}
+          className={`h-full rounded-full bg-gradient-to-r transition-[width] duration-700 ease-out ${toneClasses[tone]}`}
           style={{ width: `${pct}%` }}
         />
       </div>

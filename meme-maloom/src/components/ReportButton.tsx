@@ -35,7 +35,7 @@ export default function ReportButton({ memeTitle }: { memeTitle: string }) {
   }
 
   return (
-    <div className="w-full max-w-lg rounded-2xl border-2 border-navy-900/10 bg-white p-5">
+    <div className="w-full max-w-lg rounded-[28px] border border-navy-900/8 bg-white p-5 shadow-card">
       {submitted ? (
         <p role="status" className="text-sm font-semibold text-mint-600">
           Thanks — your report for &ldquo;{memeTitle}&rdquo; has been queued for our moderation
@@ -49,7 +49,7 @@ export default function ReportButton({ memeTitle }: { memeTitle: string }) {
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close report form"
-              className="text-navy-400 hover:text-navy-700"
+              className="text-navy-400 hover:text-pink-600"
             >
               ✕
             </button>
@@ -60,7 +60,7 @@ export default function ReportButton({ memeTitle }: { memeTitle: string }) {
           <select
             id={reasonId}
             required
-            className="rounded-xl border-2 border-navy-900/15 bg-white px-3 py-2 text-sm outline-none focus:border-saffron-500"
+            className="rounded-xl border-2 border-navy-900/12 bg-white px-3 py-2 text-sm outline-none focus:border-violet-500"
           >
             {REASONS.map((r) => (
               <option key={r}>{r}</option>
@@ -72,12 +72,12 @@ export default function ReportButton({ memeTitle }: { memeTitle: string }) {
           <textarea
             id={detailsId}
             rows={3}
-            className="rounded-xl border-2 border-navy-900/15 bg-white px-3 py-2 text-sm outline-none focus:border-saffron-500"
+            className="rounded-xl border-2 border-navy-900/12 bg-white px-3 py-2 text-sm outline-none focus:border-violet-500"
             placeholder="Tell us more so our moderators can review faster..."
           />
           <button
             type="submit"
-            className="mt-1 self-start rounded-full bg-pink-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-pink-600"
+            className="mt-1 self-start rounded-full bg-gradient-to-r from-pink-500 to-violet-500 px-5 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5"
           >
             Submit report
           </button>

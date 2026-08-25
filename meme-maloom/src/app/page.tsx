@@ -25,32 +25,45 @@ export default function Home() {
   const trending = getTrendingMemes(6);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-clip">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-dot-grid">
+      <section className="relative overflow-hidden">
+        <div aria-hidden="true" className="bg-mesh-light pointer-events-none absolute inset-0" />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-saffron-50 via-cream to-cream"
+          className="animate-blob pointer-events-none absolute top-[-10%] left-[-10%] h-80 w-80 bg-gradient-to-br from-violet-300/50 to-pink-300/40 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="animate-blob pointer-events-none absolute right-[-8%] bottom-[-15%] h-96 w-96 bg-gradient-to-br from-saffron-300/40 to-mint-300/30 blur-3xl"
+          style={{ animationDelay: "4s" }}
         />
         <HeroFloaters />
-        <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8">
-          <Badge tone="pink" className="text-sm">
+        <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-20 text-center sm:px-6 sm:py-28 lg:px-8">
+          <Badge tone="lime" className="animate-glow-pulse text-sm shadow-[var(--shadow-glow-lime)]">
             🇮🇳 Pan-India meme discovery, explained
           </Badge>
-          <h1 className="font-display max-w-3xl text-4xl leading-tight font-extrabold text-navy-900 sm:text-5xl lg:text-6xl">
+          <h1 className="font-display max-w-4xl text-5xl leading-[0.98] font-bold text-navy-900 sm:text-6xl lg:text-7xl">
             Understand the meme.{" "}
-            <span className="relative inline-block text-saffron-600">
+            <span className="relative inline-block text-gradient">
               Discover the story.
               <svg
                 aria-hidden="true"
                 viewBox="0 0 300 16"
-                className="absolute -bottom-1 left-0 h-3 w-full text-pink-400 sm:-bottom-2 sm:h-4"
+                className="absolute -bottom-2 left-0 h-3 w-full sm:-bottom-3 sm:h-4"
                 preserveAspectRatio="none"
               >
+                <defs>
+                  <linearGradient id="hero-underline" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="var(--color-violet-500)" />
+                    <stop offset="50%" stopColor="var(--color-pink-500)" />
+                    <stop offset="100%" stopColor="var(--color-saffron-500)" />
+                  </linearGradient>
+                </defs>
                 <path
                   d="M2 10c40-9 220-9 296 2"
                   fill="none"
-                  stroke="currentColor"
+                  stroke="url(#hero-underline)"
                   strokeWidth="5"
                   strokeLinecap="round"
                 />
@@ -60,18 +73,18 @@ export default function Home() {
           <p className="max-w-xl text-base text-navy-600 sm:text-lg">
             Meme Maloom explains the origin, language and cultural context
             behind Indian memes — from Bollywood dialogue to Tamil Reels
-            edits. <span className="font-semibold text-navy-800">Meme ka matlab maloom?</span>
+            edits. <span className="font-bold text-navy-900">Meme ka matlab maloom?</span>
           </p>
           <div className="w-full max-w-xl">
             <SearchBar size="lg" autoFocus={false} />
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-navy-500">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-bold text-navy-500">
             <span>Try:</span>
             {["Bhai wah", "Vaathi Coming", "Thaggede Le", "Balle Balle"].map((t) => (
               <Link
                 key={t}
                 href={`/explore?q=${encodeURIComponent(t)}`}
-                className="rounded-full bg-white px-3 py-1.5 shadow-sm transition hover:-translate-y-0.5 hover:bg-saffron-100 hover:text-saffron-700"
+                className="glass rounded-full px-3 py-1.5 transition hover:-translate-y-0.5 hover:text-violet-700"
               >
                 {t}
               </Link>
@@ -80,20 +93,20 @@ export default function Home() {
           <dl className="mt-4 grid grid-cols-3 gap-6 sm:gap-12">
             <div>
               <dt className="sr-only">Memes explained</dt>
-              <dd className="font-display text-2xl font-extrabold text-navy-900 sm:text-3xl">
+              <dd className="font-display text-gradient text-2xl font-bold sm:text-3xl">
                 {memes.length}+
               </dd>
-              <dd className="text-xs font-semibold text-navy-500">memes explained</dd>
+              <dd className="text-xs font-bold text-navy-500">memes explained</dd>
             </div>
             <div>
               <dt className="sr-only">Languages covered</dt>
-              <dd className="font-display text-2xl font-extrabold text-navy-900 sm:text-3xl">10</dd>
-              <dd className="text-xs font-semibold text-navy-500">languages covered</dd>
+              <dd className="font-display text-gradient text-2xl font-bold sm:text-3xl">10</dd>
+              <dd className="text-xs font-bold text-navy-500">languages covered</dd>
             </div>
             <div>
               <dt className="sr-only">Regions covered</dt>
-              <dd className="font-display text-2xl font-extrabold text-navy-900 sm:text-3xl">6</dd>
-              <dd className="text-xs font-semibold text-navy-500">regions covered</dd>
+              <dd className="font-display text-gradient text-2xl font-bold sm:text-3xl">6</dd>
+              <dd className="text-xs font-bold text-navy-500">regions covered</dd>
             </div>
           </dl>
         </div>
@@ -125,8 +138,8 @@ export default function Home() {
         eyebrow={
           <span className="inline-flex items-center gap-1.5">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-mint-500" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-lime-400" />
             </span>
             Right now
           </span>
@@ -207,7 +220,7 @@ export default function Home() {
       </section>
 
       {/* Stat strip */}
-      <div className="mx-auto w-full max-w-5xl px-4 pb-6 text-center text-xs text-navy-400 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-5xl px-4 pb-6 text-center text-xs font-semibold text-navy-400 sm:px-6 lg:px-8">
         {formatCompactNumber(
           memes.reduce((sum, m) => sum + m.explainViewCount, 0)
         )}{" "}
@@ -232,22 +245,40 @@ function SectionShell({
   tone?: "cream" | "navy";
   children: React.ReactNode;
 }) {
+  const dark = tone === "navy";
   return (
-    <section className={tone === "navy" ? "bg-navy-950/[0.03]" : undefined}>
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <section className={dark ? "relative overflow-hidden bg-navy-950" : "relative"}>
+      {dark ? (
+        <div aria-hidden="true" className="bg-mesh pointer-events-none absolute inset-0 opacity-50" />
+      ) : null}
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="mb-8 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end">
           <div>
-            <p className="text-xs font-bold tracking-widest text-saffron-600 uppercase">
+            <p
+              className={`text-xs font-bold tracking-widest uppercase ${
+                dark ? "text-lime-400" : "text-gradient"
+              }`}
+            >
               {eyebrow}
             </p>
-            <h2 className="font-display mt-1 text-2xl font-extrabold text-navy-900 sm:text-3xl">
+            <h2
+              className={`font-display mt-1 text-2xl font-bold sm:text-3xl ${
+                dark ? "text-white" : "text-navy-900"
+              }`}
+            >
               {title}
             </h2>
-            <p className="mt-2 max-w-xl text-sm text-navy-600 sm:text-base">{description}</p>
+            <p className={`mt-2 max-w-xl text-sm sm:text-base ${dark ? "text-navy-300" : "text-navy-600"}`}>
+              {description}
+            </p>
           </div>
           <Link
             href={action.href}
-            className="shrink-0 rounded-full border-2 border-navy-900/15 px-4 py-2 text-sm font-bold text-navy-800 transition hover:border-saffron-500 hover:text-saffron-600"
+            className={
+              dark
+                ? "glass-dark shrink-0 rounded-full px-4 py-2 text-sm font-bold text-white transition hover:-translate-y-0.5"
+                : "shrink-0 rounded-full border-2 border-navy-900/12 px-4 py-2 text-sm font-bold text-navy-800 transition hover:-translate-y-0.5 hover:border-violet-400 hover:text-violet-700"
+            }
           >
             {action.label} →
           </Link>

@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Baloo_2, Noto_Sans, Noto_Sans_Devanagari } from "next/font/google";
+import { Space_Grotesk, Plus_Jakarta_Sans, Noto_Sans_Devanagari } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
-const baloo = Baloo_2({
-  variable: "--font-baloo",
-  subsets: ["latin", "devanagari"],
-  weight: ["500", "600", "700", "800"],
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
-const notoSans = Noto_Sans({
-  variable: "--font-noto-sans",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const notoDevanagari = Noto_Sans_Devanagari({
@@ -68,12 +68,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${baloo.variable} ${notoSans.variable} ${notoDevanagari.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${jakarta.variable} ${notoDevanagari.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-cream text-navy-900">
+      <body className="flex min-h-full flex-col bg-cream text-navy-900 selection:bg-lime-400 selection:text-navy-950">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:rounded-full focus:bg-saffron-500 focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:rounded-full focus:bg-gradient-to-r focus:from-violet-500 focus:to-pink-500 focus:px-4 focus:py-2 focus:font-bold focus:text-white"
         >
           Skip to content
         </a>

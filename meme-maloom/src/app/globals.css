@@ -1,46 +1,68 @@
 @import "tailwindcss";
 
 :root {
-  /* Saffron — primary brand color, energetic and warm */
-  --color-saffron-50: #fff6e9;
-  --color-saffron-100: #ffe9c7;
-  --color-saffron-200: #ffd08a;
-  --color-saffron-300: #ffb757;
-  --color-saffron-400: #ff9e2e;
-  --color-saffron-500: #ff8a00;
-  --color-saffron-600: #f06a00;
-  --color-saffron-700: #c65209;
-  --color-saffron-800: #9c420f;
-  --color-saffron-900: #7a3610;
+  /* Saffron — now an electric amber/orange. Warm heritage nod, used for
+     primary CTAs and high-energy accents. */
+  --color-saffron-50: #fff4e5;
+  --color-saffron-100: #ffe4bf;
+  --color-saffron-200: #ffc773;
+  --color-saffron-300: #ffa53d;
+  --color-saffron-400: #ff8a1e;
+  --color-saffron-500: #ff6b00;
+  --color-saffron-600: #e85400;
+  --color-saffron-700: #c24300;
+  --color-saffron-800: #973500;
+  --color-saffron-900: #6b2600;
 
-  /* Deep navy — grounding, trustworthy */
-  --color-navy-50: #eef1f8;
-  --color-navy-100: #d6deee;
-  --color-navy-200: #adbdde;
-  --color-navy-300: #7f97c2;
-  --color-navy-400: #55719d;
-  --color-navy-500: #37507b;
-  --color-navy-600: #263a5e;
-  --color-navy-700: #1a2947;
-  --color-navy-800: #101b32;
-  --color-navy-900: #0a1224;
-  --color-navy-950: #060a18;
+  /* Navy — deep violet-black ink. Premium dark surface + primary text color. */
+  --color-navy-50: #f1f0f6;
+  --color-navy-100: #e1defc;
+  --color-navy-200: #c3c0da;
+  --color-navy-300: #9c97be;
+  --color-navy-400: #756e9c;
+  --color-navy-500: #564f7d;
+  --color-navy-600: #423c63;
+  --color-navy-700: #322d4c;
+  --color-navy-800: #201c35;
+  --color-navy-900: #131020;
+  --color-navy-950: #0a0814;
 
-  /* Rani pink — playful secondary accent */
-  --color-pink-50: #fdeff3;
-  --color-pink-400: #ef6a9a;
-  --color-pink-500: #e8447e;
-  --color-pink-600: #cc2c65;
+  /* Violet — new electric primary brand color. */
+  --color-violet-50: #f5f2ff;
+  --color-violet-100: #e9e0ff;
+  --color-violet-200: #d1bfff;
+  --color-violet-300: #b195ff;
+  --color-violet-400: #9166ff;
+  --color-violet-500: #7c3aed;
+  --color-violet-600: #6d28d9;
+  --color-violet-700: #5b21b6;
+  --color-violet-800: #4c1d95;
+  --color-violet-900: #341463;
 
-  /* Mint — growth, success, "explained" signals */
-  --color-mint-50: #e9fbf4;
-  --color-mint-400: #35cf9f;
-  --color-mint-500: #14b98c;
-  --color-mint-600: #0e9672;
+  /* Pink — hot magenta, playful secondary accent. */
+  --color-pink-50: #ffe9f6;
+  --color-pink-100: #ffd0ec;
+  --color-pink-400: #ff5cb3;
+  --color-pink-500: #ff2a9d;
+  --color-pink-600: #e00a80;
+  --color-pink-700: #b8036a;
 
-  /* Warm cream surface, avoids stark government-white */
-  --color-cream: #fffaf1;
-  --color-cream-100: #fdf3e2;
+  /* Mint — electric teal-green, growth / "explained" signal. */
+  --color-mint-50: #e3fff5;
+  --color-mint-100: #c3ffe8;
+  --color-mint-400: #22e0a8;
+  --color-mint-500: #0bc48c;
+  --color-mint-600: #059669;
+
+  /* Lime — neon highlight, used sparingly for glow accents and badges. */
+  --color-lime-300: #e3ff8a;
+  --color-lime-400: #d4fa3e;
+  --color-lime-500: #c2f022;
+  --color-lime-600: #9fd400;
+
+  /* Paper — cool, very light base surface (replaces flat white/cream). */
+  --color-cream: #faf9fd;
+  --color-cream-100: #f1eefb;
 
   --background: var(--color-cream);
   --foreground: var(--color-navy-900);
@@ -73,29 +95,51 @@
   --color-navy-900: var(--color-navy-900);
   --color-navy-950: var(--color-navy-950);
 
+  --color-violet-50: var(--color-violet-50);
+  --color-violet-100: var(--color-violet-100);
+  --color-violet-200: var(--color-violet-200);
+  --color-violet-300: var(--color-violet-300);
+  --color-violet-400: var(--color-violet-400);
+  --color-violet-500: var(--color-violet-500);
+  --color-violet-600: var(--color-violet-600);
+  --color-violet-700: var(--color-violet-700);
+  --color-violet-800: var(--color-violet-800);
+  --color-violet-900: var(--color-violet-900);
+
   --color-pink-50: var(--color-pink-50);
+  --color-pink-100: var(--color-pink-100);
   --color-pink-400: var(--color-pink-400);
   --color-pink-500: var(--color-pink-500);
   --color-pink-600: var(--color-pink-600);
+  --color-pink-700: var(--color-pink-700);
 
   --color-mint-50: var(--color-mint-50);
+  --color-mint-100: var(--color-mint-100);
   --color-mint-400: var(--color-mint-400);
   --color-mint-500: var(--color-mint-500);
   --color-mint-600: var(--color-mint-600);
 
+  --color-lime-300: var(--color-lime-300);
+  --color-lime-400: var(--color-lime-400);
+  --color-lime-500: var(--color-lime-500);
+  --color-lime-600: var(--color-lime-600);
+
   --color-cream: var(--color-cream);
   --color-cream-100: var(--color-cream-100);
 
-  --font-display: var(--font-baloo), "Noto Sans Devanagari", sans-serif;
-  --font-sans: var(--font-noto-sans), "Noto Sans Devanagari", sans-serif;
+  --font-display: var(--font-space-grotesk), "Noto Sans Devanagari", sans-serif;
+  --font-sans: var(--font-jakarta), "Noto Sans Devanagari", sans-serif;
 
-  --shadow-sticker: 0 2px 0 0 rgba(10, 18, 36, 0.9);
-  --shadow-card: 0 1px 2px rgba(10, 18, 36, 0.06), 0 8px 24px -8px rgba(10, 18, 36, 0.15);
-  --shadow-card-hover: 0 4px 8px rgba(10, 18, 36, 0.08), 0 16px 32px -12px rgba(10, 18, 36, 0.22);
+  --shadow-sticker: 0 2px 0 0 rgba(10, 8, 20, 0.9);
+  --shadow-card: 0 1px 2px rgba(19, 16, 32, 0.06), 0 8px 24px -8px rgba(19, 16, 32, 0.14);
+  --shadow-card-hover: 0 4px 12px rgba(19, 16, 32, 0.08), 0 24px 48px -16px rgba(124, 58, 237, 0.28);
+  --shadow-glow-violet: 0 0 0 1px rgba(124, 58, 237, 0.25), 0 16px 40px -12px rgba(124, 58, 237, 0.45);
+  --shadow-glow-pink: 0 0 0 1px rgba(255, 42, 157, 0.25), 0 16px 40px -12px rgba(255, 42, 157, 0.45);
+  --shadow-glow-lime: 0 0 24px 2px rgba(194, 240, 34, 0.55);
 }
 
 * {
-  scrollbar-color: var(--color-saffron-400) transparent;
+  scrollbar-color: var(--color-violet-400) transparent;
 }
 
 body {
@@ -106,27 +150,84 @@ body {
 
 h1, h2, h3, h4, .font-display {
   font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }
 
 ::selection {
-  background: var(--color-saffron-200);
-  color: var(--color-navy-900);
+  background: var(--color-lime-400);
+  color: var(--color-navy-950);
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-pink-500);
+  outline: 3px solid var(--color-violet-500);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
+/* ---------- Backgrounds & texture ---------- */
+
 .bg-dot-grid {
-  background-image: radial-gradient(circle, rgba(10, 18, 36, 0.14) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, rgba(19, 16, 32, 0.14) 1.5px, transparent 1.5px);
   background-size: 22px 22px;
 }
 
+.bg-dot-grid-dark {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+/* Soft, blurred mesh of brand-colored blobs — the hero/dark-section backdrop. */
+.bg-mesh {
+  background-image:
+    radial-gradient(38% 45% at 12% 8%, color-mix(in oklab, var(--color-violet-500) 55%, transparent) 0%, transparent 100%),
+    radial-gradient(32% 40% at 88% 15%, color-mix(in oklab, var(--color-pink-500) 45%, transparent) 0%, transparent 100%),
+    radial-gradient(45% 50% at 50% 100%, color-mix(in oklab, var(--color-saffron-500) 35%, transparent) 0%, transparent 100%);
+}
+
+.bg-mesh-light {
+  background-image:
+    radial-gradient(35% 40% at 15% 10%, color-mix(in oklab, var(--color-violet-300) 55%, transparent) 0%, transparent 100%),
+    radial-gradient(30% 38% at 85% 20%, color-mix(in oklab, var(--color-pink-400) 40%, transparent) 0%, transparent 100%),
+    radial-gradient(40% 45% at 50% 100%, color-mix(in oklab, var(--color-saffron-300) 45%, transparent) 0%, transparent 100%);
+}
+
+/* ---------- Glassmorphism ---------- */
+
+.glass {
+  background: color-mix(in oklab, white 68%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid color-mix(in oklab, white 55%, transparent);
+}
+
+.glass-dark {
+  background: color-mix(in oklab, white 8%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid color-mix(in oklab, white 14%, transparent);
+}
+
+/* ---------- Gradient text ---------- */
+
+.text-gradient {
+  background-image: linear-gradient(100deg, var(--color-violet-500) 0%, var(--color-pink-500) 55%, var(--color-saffron-500) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-cool {
+  background-image: linear-gradient(100deg, var(--color-mint-500) 0%, var(--color-violet-400) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Motion ---------- */
+
 @keyframes wiggle {
-  0%, 100% { transform: rotate(-2deg); }
-  50% { transform: rotate(2deg); }
+  0%, 100% { transform: rotate(-3deg) scale(1); }
+  50% { transform: rotate(3deg) scale(1.05); }
 }
 
 .hover-wiggle:hover {
@@ -135,12 +236,30 @@ h1, h2, h3, h4, .font-display {
 
 @keyframes float-y {
   0%, 100% { transform: translateY(0) rotate(var(--float-rot, 0deg)); }
-  50% { transform: translateY(-14px) rotate(var(--float-rot, 0deg)); }
+  50% { transform: translateY(-16px) rotate(var(--float-rot, 0deg)); }
 }
 
 .animate-float {
   animation: float-y var(--float-duration, 6s) ease-in-out infinite;
   animation-delay: var(--float-delay, 0s);
+}
+
+@keyframes blob-morph {
+  0%, 100% { border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%; }
+  33% { border-radius: 62% 38% 40% 60% / 55% 65% 35% 45%; }
+  66% { border-radius: 38% 62% 55% 45% / 35% 45% 55% 65%; }
+}
+
+.animate-blob {
+  animation: blob-morph 12s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
 }
 
 @keyframes marquee-scroll {
@@ -157,8 +276,8 @@ h1, h2, h3, h4, .font-display {
 }
 
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(28px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .reveal {
@@ -166,12 +285,41 @@ h1, h2, h3, h4, .font-display {
 }
 
 .reveal.is-visible {
-  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes shimmer {
+  from { background-position: 150% 0; }
+  to { background-position: -50% 0; }
+}
+
+.animate-shimmer {
+  background-image: linear-gradient(
+    100deg,
+    color-mix(in oklab, var(--color-navy-900) 6%, transparent) 30%,
+    color-mix(in oklab, var(--color-violet-300) 25%, transparent) 50%,
+    color-mix(in oklab, var(--color-navy-900) 6%, transparent) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2.4s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-marquee,
+  .animate-blob,
+  .animate-spin-slow,
+  .animate-shimmer,
+  .animate-glow-pulse,
   .hover-wiggle:hover {
     animation: none !important;
   }

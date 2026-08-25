@@ -30,7 +30,7 @@ export default function SearchBar({
       role="search"
       onSubmit={handleSubmit}
       className={cn(
-        "flex items-center gap-2 rounded-full border-2 border-navy-900/15 bg-white pl-4 pr-1.5 shadow-sm transition focus-within:border-saffron-500 focus-within:ring-4 focus-within:ring-saffron-500/15",
+        "glass flex items-center gap-2 rounded-full pr-1.5 pl-4 shadow-sm transition focus-within:border-violet-400 focus-within:shadow-[var(--shadow-glow-violet)]",
         size === "lg" ? "py-1.5" : "py-1",
         className
       )}
@@ -63,7 +63,7 @@ export default function SearchBar({
       />
       <button
         type="submit"
-        className="shrink-0 rounded-full bg-saffron-500 px-4 py-2 text-sm font-bold text-white transition hover:bg-saffron-600 active:scale-95"
+        className="shrink-0 rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-4 py-2 text-sm font-bold text-white transition hover:from-violet-600 hover:to-pink-600 active:scale-95"
       >
         Search
       </button>

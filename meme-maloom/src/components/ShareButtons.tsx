@@ -32,17 +32,17 @@ export default function ShareButtons({ title }: { title: string }) {
     {
       label: "WhatsApp",
       href: `https://wa.me/?text=${shareText}%20${encodedUrl}`,
-      color: "bg-mint-500 hover:bg-mint-600",
+      color: "bg-gradient-to-r from-mint-500 to-mint-600 hover:brightness-110",
     },
     {
       label: "X",
       href: `https://twitter.com/intent/tweet?text=${shareText}&url=${encodedUrl}`,
-      color: "bg-navy-900 hover:bg-navy-800",
+      color: "bg-navy-950 hover:bg-navy-800",
     },
     {
       label: "Facebook",
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      color: "bg-navy-600 hover:bg-navy-700",
+      color: "bg-gradient-to-r from-violet-600 to-navy-700 hover:brightness-110",
     },
   ];
 
@@ -54,7 +54,7 @@ export default function ShareButtons({ title }: { title: string }) {
           href={t.href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`rounded-full px-4 py-2 text-sm font-bold text-white transition ${t.color}`}
+          className={`rounded-full px-4 py-2 text-sm font-bold text-white transition hover:-translate-y-0.5 ${t.color}`}
         >
           Share on {t.label}
         </a>
@@ -62,7 +62,7 @@ export default function ShareButtons({ title }: { title: string }) {
       <button
         type="button"
         onClick={handleCopy}
-        className="rounded-full border-2 border-navy-900/15 px-4 py-2 text-sm font-bold text-navy-800 transition hover:bg-navy-900/5"
+        className="rounded-full border-2 border-navy-900/15 px-4 py-2 text-sm font-bold text-navy-800 transition hover:border-violet-400 hover:text-violet-700"
       >
         {copied ? "Link copied!" : "Copy link"}
       </button>

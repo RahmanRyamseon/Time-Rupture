@@ -136,8 +136,8 @@ export default function ExploreClient() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-4 rounded-3xl border-2 border-navy-900/10 bg-white p-4 sm:p-5">
-        <div className="flex items-center gap-2 rounded-full border-2 border-navy-900/15 bg-white py-1 pr-1.5 pl-4 transition focus-within:border-saffron-500 focus-within:ring-4 focus-within:ring-saffron-500/15">
+      <div className="flex flex-col gap-4 rounded-[28px] border border-navy-900/8 bg-white p-4 shadow-card sm:p-5">
+        <div className="flex items-center gap-2 rounded-full border-2 border-navy-900/12 bg-white py-1 pr-1.5 pl-4 transition focus-within:border-violet-500 focus-within:ring-4 focus-within:ring-violet-500/15">
           <svg
             aria-hidden="true"
             viewBox="0 0 24 24"
@@ -212,7 +212,7 @@ export default function ExploreClient() {
             options={POPULARITY_BUCKETS}
           />
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-navy-900/10 pt-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-navy-900/8 pt-3">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold tracking-wide text-navy-500 uppercase">
               Sort by
@@ -226,7 +226,7 @@ export default function ExploreClient() {
                   aria-pressed={sort === s}
                   className={`rounded-full px-3 py-1.5 text-xs font-bold transition ${
                     sort === s
-                      ? "bg-navy-900 text-white"
+                      ? "bg-gradient-to-r from-violet-500 to-pink-500 text-white shadow-[var(--shadow-glow-violet)]"
                       : "bg-navy-900/5 text-navy-700 hover:bg-navy-900/10"
                   }`}
                 >
@@ -245,7 +245,7 @@ export default function ExploreClient() {
         </div>
       </div>
 
-      <p className="text-sm font-semibold text-navy-500" aria-live="polite">
+      <p className="text-sm font-bold text-navy-500" aria-live="polite">
         {loading ? "Searching…" : `${results.length} ${results.length === 1 ? "result" : "results"}`}
       </p>
 
