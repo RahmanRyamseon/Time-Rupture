@@ -3592,6 +3592,43 @@ export const memes: Meme[] = [
     status: "published",
     copyrightStatus: "attributed_fair_use",
   },
+  {
+    id: "m99",
+    title: "Behen Dar Gayi, Behen Dar Gayi",
+    slug: "behen-dar-gayi-behen-dar-gayi",
+    description:
+      "Akshay Kumar's frantic cover-up act in Bhagam Bhag (2006), staged with the sung line 'Behen dar gayi, behen dar gayi', is one of Bollywood's most-downloaded video meme templates.",
+    explanation:
+      "Caught grabbing a stranger in a bathroom, Bunty (Akshay Kumar) instantly spins it into a fake bravery test, chanting 'Behen dar gayi, behen dar gayi' ('sister got scared, sister got scared') while dancing to sell the lie. The manic, over-the-top save has become a stock video/audio template for any clip of someone frantically improvising an excuse after getting caught.",
+    imageUrl: null,
+    imagePlaceholderLabel: "Bathroom-door sticker, jazz-hands panic motif",
+    placeholderTone: "pink",
+    illustrationIcon: "shockedFace",
+    sourceUrl: "https://indianmemetemplates.com/behen-dar-gayi-behen-dar-gayi/",
+    sourcePlatform: "Film dialogue / meme-template sites",
+    creator: "Dir. Priyadarshan; performed by Akshay Kumar (Bhagam Bhag, 2006)",
+    language: "Hindi/Hinglish",
+    region: "Pan-India",
+    category: "Bollywood",
+    contentType: "Video clip",
+    tags: ["behen-dar-gayi", "bhagam-bhag", "akshay-kumar", "video-template"],
+    originDate: "2006-04-14",
+    originStory:
+      "The scene is from Bhagam Bhag (2006, dir. Priyadarshan), where Bunty is caught grabbing Anjali (Lara Dutta) in a bathroom and improvises a cover story on the spot. The clip has circulated as a downloadable video/audio meme template for years, catalogued on meme-template sites including Indian Meme Templates and Humornama, and reused across Instagram Reels, YouTube Shorts and TikTok edits.",
+    culturalContext:
+      "Part of the same wave of early-2000s Bollywood comedy scenes — alongside Hera Pheri's Baburao — that supply a disproportionate share of India's reaction-video meme templates, valued for scenes with a clean comic beat that drops neatly into unrelated 'caught in the act' clips.",
+    variations: [
+      "Used as a stock video/audio dub over unrelated 'caught red-handed' clips",
+      "Remixed as a standalone audio template on Reels and TikTok",
+    ],
+    relatedSlugs: ["baburao-ka-style-hai", "mogambo-khush-hua"],
+    popularityScore: 67,
+    growth24h: 0.9,
+    shareCount: 13400,
+    explainViewCount: 24700,
+    status: "published",
+    copyrightStatus: "attributed_fair_use",
+  },
 ];
 
 export const languageInfo: LanguageInfo[] = [
