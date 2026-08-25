@@ -118,10 +118,11 @@ export default async function MemeDetailPage({
                     icon={meme.illustrationIcon}
                     category={meme.category}
                     className="aspect-[16/9] shadow-card"
+                    linkHref={meme.sourceUrl}
                   />
                   <p className="mt-2 text-xs text-navy-500">
-                    This is an original illustration, not the real meme image — we
-                    don&apos;t mirror third-party media. See the actual meme on{" "}
+                    This is an original illustration, not the real meme image — click
+                    it (or the link below) to see the actual meme on{" "}
                     <a
                       href={meme.sourceUrl}
                       target="_blank"

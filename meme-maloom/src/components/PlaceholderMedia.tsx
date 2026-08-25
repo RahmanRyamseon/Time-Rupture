@@ -19,6 +19,11 @@ export default function PlaceholderMedia({
   icon,
   category,
   className,
+  /** When set, the whole media area becomes a link straight to the real
+   * photo/video on the original platform — opens in a new tab, never
+   * downloads or embeds it here. Only pass this where PlaceholderMedia
+   * isn't already nested inside another link (e.g. not inside MemeCard). */
+  linkHref,
 }: {
   label: string;
   tone?: Tone;
@@ -27,12 +32,19 @@ export default function PlaceholderMedia({
   icon?: IllustrationIcon;
   category?: Category;
   className?: string;
+  linkHref?: string;
 }) {
   const iconKey = resolveIllustrationIcon(icon, category ?? "Internet Slang");
   const Icon = ICONS[iconKey];
 
+  const Wrapper = linkHref ? "a" : "div";
+  const linkProps = linkHref
+    ? { href: linkHref, target: "_blank", rel: "noopener noreferrer" as const }
+    : {};
+
   return (
-    <div
+    <Wrapper
+      {...linkProps}
       className={cn(
         "group/media relative isolate flex flex-col items-center justify-center gap-3 overflow-hidden rounded-[28px] bg-gradient-to-br p-4 text-center",
         toneGradients[tone],
@@ -57,6 +69,11 @@ export default function PlaceholderMedia({
           <Icon />
         </div>
         <p className="max-w-[85%] text-xs font-semibold text-white/95 sm:text-sm">{label}</p>
+        {linkHref ? (
+          <span className="glass-dark inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-white opacity-0 transition-opacity duration-300 group-hover/media:opacity-100">
+            View the real photo/video ↗
+          </span>
+        ) : null}
       </div>
       <span className="glass-dark absolute top-2 left-2 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide text-white uppercase">
         Original illustration
@@ -66,6 +83,11 @@ export default function PlaceholderMedia({
           {contentType}
         </span>
       ) : null}
-    </div>
+      {linkHref ? (
+        <span className="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-white/25 text-white backdrop-blur-sm sm:hidden" aria-hidden="true">
+          ↗
+        </span>
+      ) : null}
+    </Wrapper>
   );
 }
