@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import PlaceholderMedia from "@/components/PlaceholderMedia";
 import MemeEmbed from "@/components/MemeEmbed";
+import UploadedMedia from "@/components/UploadedMedia";
 import Badge from "@/components/Badge";
 import MemeCard from "@/components/MemeCard";
 import ShareButtons from "@/components/ShareButtons";
@@ -53,6 +54,7 @@ export default async function MemeDetailPage({
   const related = getRelatedMemes(meme);
   const canEmbed =
     meme.embedAllowed && meme.embedType && Boolean(parseEmbed(meme.embedType, meme.sourceUrl));
+  const hasUploadedMedia = Boolean(meme.imageUrl && meme.uploadedMediaKind);
 
   return (
     <div className="relative">
@@ -107,6 +109,29 @@ export default async function MemeDetailPage({
                     >
                       Open the original ↗
                     </a>
+                  </p>
+                </>
+              ) : hasUploadedMedia ? (
+                <>
+                  <UploadedMedia
+                    src={meme.imageUrl as string}
+                    kind={meme.uploadedMediaKind as "image" | "video"}
+                    title={meme.title}
+                    sourceUrl={meme.sourceUrl}
+                    sourcePlatform={meme.sourcePlatform}
+                    className="aspect-[16/9] shadow-card"
+                  />
+                  <p className="mt-2 text-xs text-navy-500">
+                    Uploaded original, hosted on Meme Maloom. Originally from{" "}
+                    <a
+                      href={meme.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold text-violet-700 underline"
+                    >
+                      {meme.sourcePlatform}
+                    </a>
+                    .
                   </p>
                 </>
               ) : (

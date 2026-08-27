@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Meme } from "@/lib/types";
 import PlaceholderMedia from "./PlaceholderMedia";
 import MemeEmbed from "./MemeEmbed";
+import UploadedMedia from "./UploadedMedia";
 import Badge from "./Badge";
 import { parseEmbed } from "@/lib/embeds";
 import { formatCompactNumber, tiltFromId } from "@/lib/utils";
@@ -16,6 +17,7 @@ export default function MemeCard({ meme }: { meme: Meme }) {
     (meme.embedType === "youtube" || meme.embedType === "tenor") &&
     meme.embedAllowed &&
     Boolean(parseEmbed(meme.embedType, meme.sourceUrl));
+  const hasUploadedMedia = Boolean(meme.imageUrl && meme.uploadedMediaKind);
 
   // The media area always carries its own real, visible link to the source
   // (an official embed's own on-platform link, or — for illustrations — a
@@ -38,6 +40,15 @@ export default function MemeCard({ meme }: { meme: Meme }) {
               className="aspect-video"
             />
           </div>
+        ) : hasUploadedMedia ? (
+          <UploadedMedia
+            src={meme.imageUrl as string}
+            kind={meme.uploadedMediaKind as "image" | "video"}
+            title={meme.title}
+            sourceUrl={meme.sourceUrl}
+            sourcePlatform={meme.sourcePlatform}
+            className="aspect-video"
+          />
         ) : (
           <PlaceholderMedia
             label={meme.imagePlaceholderLabel}

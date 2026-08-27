@@ -107,8 +107,14 @@ export interface Meme {
   description: string;
   /** Longer plain-English explanation of what the meme means and why it's funny */
   explanation: string;
-  /** Third-party media is never mirrored — this is a labelled placeholder only */
-  imageUrl: null;
+  /**
+   * A real, admin-uploaded media file hosted on this site (served from
+   * /public/uploads), or null to fall back to the illustration placeholder.
+   * Uploaded only through the password-gated /admin tool — never scraped
+   * or auto-fetched. Pair with `uploadedMediaKind` to know how to render it.
+   */
+  imageUrl: string | null;
+  uploadedMediaKind?: "image" | "video";
   imagePlaceholderLabel: string;
   placeholderTone: "saffron" | "navy" | "pink" | "mint";
   /** Original illustration icon shown on the placeholder card — never a reproduction of the real meme image. Falls back to a category default when unset. */
