@@ -17,15 +17,19 @@ export default function MemeCard({ meme }: { meme: Meme }) {
     meme.embedAllowed &&
     Boolean(parseEmbed(meme.embedType, meme.sourceUrl));
 
+  // The media area always carries its own real, visible link to the source
+  // (an official embed's own on-platform link, or — for illustrations — a
+  // direct linkHref to sourceUrl) so a card is never shown with unattributed
+  // media. That means the media area can't be nested inside the card's own
+  // Link to the detail page (no nested <a>), so it sits alongside it instead.
   return (
-    <Link
-      href={`/meme/${meme.slug}`}
+    <div
       style={{ "--tilt": `${tilt}deg` } as React.CSSProperties}
       className="group flex rotate-[var(--tilt)] flex-col gap-3 rounded-[28px] border border-navy-900/8 bg-white p-2.5 shadow-card transition duration-300 hover:-translate-y-2 hover:rotate-0 hover:shadow-card-hover"
     >
       <div className="relative">
         {canEmbedInCard ? (
-          <div className="pointer-events-none overflow-hidden rounded-[28px]">
+          <div className="overflow-hidden rounded-[28px]">
             <MemeEmbed
               embedType={meme.embedType}
               embedAllowed={meme.embedAllowed}
@@ -41,15 +45,26 @@ export default function MemeCard({ meme }: { meme: Meme }) {
             contentType={meme.contentType}
             icon={meme.illustrationIcon}
             category={meme.category}
+            linkHref={meme.sourceUrl}
           />
         )}
         {canEmbedInCard ? (
-          <span className="glass-dark absolute top-2 left-2 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide text-white uppercase">
+          <span className="glass-dark pointer-events-none absolute top-2 left-2 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide text-white uppercase">
             Real {meme.embedType === "youtube" ? "video" : "GIF"} · {meme.sourcePlatform}
           </span>
         ) : null}
+        {canEmbedInCard ? (
+          <a
+            href={meme.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass-dark absolute right-2 bottom-2 rounded-full px-2.5 py-1 text-[10px] font-bold text-white transition-transform hover:scale-105"
+          >
+            Open on {meme.sourcePlatform} ↗
+          </a>
+        ) : null}
       </div>
-      <div className="flex flex-1 flex-col gap-3 px-2 pb-2">
+      <Link href={`/meme/${meme.slug}`} className="flex flex-1 flex-col gap-3 px-2 pb-2">
         <div className="flex flex-wrap gap-1.5">
           <Badge tone="saffron">{meme.language}</Badge>
           <Badge tone="violet">{meme.category}</Badge>
@@ -64,7 +79,7 @@ export default function MemeCard({ meme }: { meme: Meme }) {
             ▲ {meme.growth24h}% · {formatCompactNumber(meme.explainViewCount)}
           </span>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

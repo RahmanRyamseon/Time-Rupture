@@ -70,7 +70,7 @@ export default function PlaceholderMedia({
         </div>
         <p className="max-w-[85%] text-xs font-semibold text-white/95 sm:text-sm">{label}</p>
         {linkHref ? (
-          <span className="glass-dark inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-white opacity-0 transition-opacity duration-300 group-hover/media:opacity-100">
+          <span className="glass-dark inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-white transition-transform duration-300 group-hover/media:scale-105">
             View the real photo/video ↗
           </span>
         ) : null}
