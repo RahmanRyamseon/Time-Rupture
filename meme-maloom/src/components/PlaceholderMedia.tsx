@@ -64,16 +64,11 @@ export default function PlaceholderMedia({
         aria-hidden="true"
         className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-white/15 blur-2xl transition-transform duration-500 group-hover/media:scale-125"
       />
-      <div className="relative flex flex-col items-center gap-3">
-        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/15 ring-2 ring-white/30 backdrop-blur-sm transition-transform duration-300 group-hover/media:scale-110 group-hover/media:rotate-3">
+      <div className={cn("relative flex min-h-0 flex-1 flex-col items-center justify-center gap-2", linkHref && "pb-7")}>
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white/15 ring-2 ring-white/30 backdrop-blur-sm transition-transform duration-300 group-hover/media:scale-110 group-hover/media:rotate-3 sm:h-20 sm:w-20">
           <Icon />
         </div>
         <p className="max-w-[85%] text-xs font-semibold text-white/95 sm:text-sm">{label}</p>
-        {linkHref ? (
-          <span className="glass-dark inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-white transition-transform duration-300 group-hover/media:scale-105">
-            View the real photo/video ↗
-          </span>
-        ) : null}
       </div>
       <span className="glass-dark absolute top-2 left-2 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide text-white uppercase">
         Original illustration
@@ -84,8 +79,11 @@ export default function PlaceholderMedia({
         </span>
       ) : null}
       {linkHref ? (
-        <span className="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-white/25 text-white backdrop-blur-sm sm:hidden" aria-hidden="true">
-          ↗
+        // Pinned to the box's own bottom edge (not part of the centered
+        // content stack above) so it always renders fully, even in a short
+        // card-grid tile — never gets squeezed out or clipped.
+        <span className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-1.5 bg-navy-950/70 py-2 text-xs font-bold text-white backdrop-blur-sm transition-colors duration-300 group-hover/media:bg-navy-950/85">
+          View the real photo/video ↗
         </span>
       ) : null}
     </Wrapper>
