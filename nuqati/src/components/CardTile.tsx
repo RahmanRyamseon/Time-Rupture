@@ -46,6 +46,9 @@ export function CardTile({
         {card.isIslamic && (
           <span className="rounded-full bg-accent-soft px-2 py-0.5 font-medium text-accent">Sharia-compliant</span>
         )}
+        {!card.isActive && (
+          <span className="rounded-full bg-danger-soft px-2 py-0.5 font-medium text-danger">Discontinued</span>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-2 text-sm">

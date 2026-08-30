@@ -38,7 +38,11 @@ export function cashValuePerUnitFils(card: Card): number {
   const program = programById(card.loyaltyProgramId);
   if (!program) return 0;
   const cashOption = program.redemptionOptions.find((o) => o.type === "cashback");
-  return cashOption?.valuePerPointFils ?? 0;
+  if (cashOption) return cashOption.valuePerPointFils;
+  // No cashback option published (e.g. a pure airline-miles program) — fall back to
+  // the lowest available redemption value so the estimate stays conservative but non-zero.
+  const nonZero = program.redemptionOptions.map((o) => o.valuePerPointFils).filter((v) => v > 0);
+  return nonZero.length ? Math.min(...nonZero) : 0;
 }
 
 /**

@@ -14,16 +14,18 @@ export default function WalletPage() {
   const [bankFilter, setBankFilter] = useState<string>("all");
   const [islamicOnly, setIslamicOnly] = useState(false);
   const [showOnlyWallet, setShowOnlyWallet] = useState(false);
+  const [showLegacy, setShowLegacy] = useState(false);
 
   const filtered = useMemo(() => {
     return BAHRAIN_CARDS.filter((c) => {
+      if (!showLegacy && !c.isActive && !cardIds.includes(c.id)) return false;
       if (showOnlyWallet && !cardIds.includes(c.id)) return false;
       if (bankFilter !== "all" && c.bank !== bankFilter) return false;
       if (islamicOnly && !c.isIslamic) return false;
       if (query && !`${c.bank} ${c.cardName}`.toLowerCase().includes(query.toLowerCase())) return false;
       return true;
     });
-  }, [cardIds, bankFilter, islamicOnly, query, showOnlyWallet]);
+  }, [cardIds, bankFilter, islamicOnly, query, showOnlyWallet, showLegacy]);
 
   const walletCards = useMemo(() => cardIds.map(cardById).filter((c): c is NonNullable<typeof c> => !!c), [cardIds]);
   const totalMonthlyValue = walletCards.reduce((sum, c) => sum + estimateMonthlyValueFils(c, true), 0);
@@ -70,6 +72,10 @@ export default function WalletPage() {
         <label className="flex items-center gap-2 whitespace-nowrap text-sm">
           <input type="checkbox" checked={showOnlyWallet} onChange={(e) => setShowOnlyWallet(e.target.checked)} />
           My wallet only
+        </label>
+        <label className="flex items-center gap-2 whitespace-nowrap text-sm">
+          <input type="checkbox" checked={showLegacy} onChange={(e) => setShowLegacy(e.target.checked)} />
+          Show discontinued/legacy cards
         </label>
       </div>
 

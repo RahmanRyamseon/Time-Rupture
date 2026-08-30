@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo } from "react";
-import { cardById, BAHRAIN_CARDS, BANKS } from "@/data/cards";
+import { cardById, BANKS, activeCards } from "@/data/cards";
 import { useAppState } from "@/lib/store";
 import { estimateMonthlyValueFils } from "@/lib/rewards";
 import { fmtFils } from "@/lib/format";
@@ -57,7 +57,7 @@ export default function Home() {
           <strong>Nuqati</strong> (نقاطي — &ldquo;my points&rdquo;) is a GCC credit card rewards optimizer.
           Manually add the cards you already carry and get real-time, merchant-category recommendations,
           honest points valuations, and the transfer map no bank or comparison site publishes — starting
-          with all {BAHRAIN_CARDS.length} major cards across {BANKS.length} Bahrain banks.
+          with {activeCards().length} major cards across {BANKS.length} Bahrain issuing entities.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link

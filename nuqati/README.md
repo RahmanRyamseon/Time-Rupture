@@ -10,11 +10,13 @@ database, with your wallet, spend logs, and points balances kept in `localStorag
 
 ## Features (Phase 1 MVP)
 
-- **My Wallet** (`/wallet`) — browse and add cards from a curated database of 26
-  cards across Bahrain's 11 major issuing banks (NBB, BisB, KFH Bahrain/AUB, BBK,
-  Ithmaar, NBK Bahrain, HSBC, Standard Chartered, Citibank, Al Salam Bank, Khaleeji
-  Bank), with earn rates by merchant category, annual fees, Islamic/conventional
-  flags, and an estimated monthly value.
+- **My Wallet** (`/wallet`) — browse and add cards from a curated database of 30
+  active cards (plus 2 legacy/discontinued, shown behind a toggle) across 11 Bahrain
+  issuing entities: NBB, BisB, BBK, CrediMax (BBK's card-issuing arm), KFH Bahrain
+  (formerly Ahli United Bank), NBK Bahrain, HSBC, Standard Chartered, Al Salam Bank,
+  and Khaleeji Bank. Ithmaar Bank's cards are marked legacy — its retail portfolio
+  was migrated into Al Salam Bank in 2022. Each card shows earn rates by merchant
+  category, annual fees, Islamic/conventional flags, and an estimated monthly value.
 - **Smart Swipe Advisor** (`/swipe`) — pick a merchant category and spend amount to
   instantly rank your wallet's cards by real reward value.
 - **Points Valuation Engine** (`/points`) — enter your balance for each loyalty
@@ -33,10 +35,29 @@ just a new cycle key.
 
 ## Data
 
-Card data in `src/data/` is a manually curated, illustrative dataset (not a live
-bank feed) — see the in-app disclaimer and each card's `lastVerified` date. This
-mirrors the spec's own MVP approach: no proprietary bank data or scraping, just
-curated public terms, expanded and corrected over time.
+Card data in `src/data/` is a manually curated dataset (not a live bank feed) — see
+the in-app disclaimer and each card's `lastVerified` date. This mirrors the spec's
+own MVP approach: no proprietary bank data or scraping, just curated public terms,
+expanded and corrected over time.
+
+A research pass over published bank pages and T&Cs (BisB Rewards, CrediMax's
+Thameen Loyalty program, NBK Rewards, Standard Chartered, BBK, Al Salam Bank,
+Khaleeji Bank, and the Points by NBB app) grounds a meaningful share of the
+dataset — those fields are tagged "(sourced)" in a card's `keyBenefits`, e.g.:
+
+- BisB's actual per-category point rates and its tiered cashback conversion
+  (8/9/10 fils/point depending on redemption size)
+- The real BisB → Saudia AlFursan ratio (1,000 BisB Points = 650 AlFursan Miles)
+- CrediMax's Thameen Loyalty tiers and its real per-card monthly cashback caps
+  (e.g. the talabat Credit Card's 30%-capped-at-BHD-20/month dining cashback,
+  used as the primary example for the cap-restart mechanic below)
+- NBK's and NBB's flat (non-category-boosted) earning structures
+- That Ithmaar Bank's card portfolio was migrated into Al Salam Bank in 2022
+
+Everything else — most annual fees, minimum salaries, and MCC-level bonus rates
+not tagged "(sourced)" — is estimated, since most Bahrain issuers don't publish
+category-level rates. Citibank Bahrain was removed from the dataset: it does not
+appear in this research pass as an active Bahrain card issuer.
 
 ## Not yet built (later phases, per spec)
 
