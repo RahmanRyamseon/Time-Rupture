@@ -1,0 +1,155 @@
+import type { LoyaltyProgram } from "@/lib/types";
+
+// Valuation benchmarks per spec section 8.2 (estimated, fils per point/mile)
+export const LOYALTY_PROGRAMS: LoyaltyProgram[] = [
+  {
+    id: "gulf-air-falconflyer",
+    name: "Gulf Air Falconflyer",
+    nameAr: "فالكون فلاير",
+    currencyName: "Falconflyer Miles",
+    operator: "Gulf Air",
+    expiryPolicy: "Miles expire after 36 months of account inactivity",
+    minRedemption: "~6,000 miles for a BAH–LHR/BKK economy award",
+    redemptionOptions: [
+      { type: "flight", label: "Economy flight redemption", valuePerPointFils: 15, conditions: "Regional/short-haul economy awards" },
+      { type: "flight", label: "Business class redemption", valuePerPointFils: 25, conditions: "Long-haul business class — best value" },
+    ],
+  },
+  {
+    id: "saudia-alfursan",
+    name: "Saudia AlFursan",
+    nameAr: "الفرسان",
+    currencyName: "AlFursan Miles",
+    operator: "Saudia",
+    expiryPolicy: "Miles expire after 3 years of inactivity",
+    redemptionOptions: [
+      { type: "flight", label: "Domestic Saudi flight", valuePerPointFils: 19, conditions: "1 SAR ≈ 10 fils; domestic redemptions" },
+      { type: "flight", label: "Regional/international flight", valuePerPointFils: 30 },
+    ],
+  },
+  {
+    id: "landmark-shukran",
+    name: "Landmark Shukran",
+    nameAr: "شكراً",
+    currencyName: "Shukran Points",
+    operator: "Landmark Group",
+    expiryPolicy: "Points expire 12 months from date earned if account inactive",
+    redemptionOptions: [
+      { type: "merchandise", label: "In-store redemption (Centrepoint, Splash, Home Centre)", valuePerPointFils: 5 },
+    ],
+  },
+  {
+    id: "bisb-rewards",
+    name: "BisB Rewards",
+    nameAr: "مكافآت البحرين الإسلامي",
+    currencyName: "BisB Points",
+    operator: "Bahrain Islamic Bank",
+    expiryPolicy: "Points expire 24 months after being earned",
+    minRedemption: "1,000 points",
+    redemptionOptions: [
+      { type: "cashback", label: "Cashback", valuePerPointFils: 1 },
+      { type: "transfer", label: "Transfer to Falconflyer", valuePerPointFils: 1.67, conditions: "Variable tier-based ratio; best value redeemed on flights" },
+      { type: "transfer", label: "Transfer to AlFursan", valuePerPointFils: 1.4 },
+      { type: "transfer", label: "Transfer to Shukran", valuePerPointFils: 1.1 },
+    ],
+  },
+  {
+    id: "nbb-points",
+    name: "NBB Points",
+    nameAr: "نقاط البنك الأهلي المتحد",
+    currencyName: "NBB Points",
+    operator: "National Bank of Bahrain",
+    expiryPolicy: "Points do not expire while the card remains active",
+    minRedemption: "100 points = BHD 1",
+    redemptionOptions: [{ type: "cashback", label: "Cashback (only option)", valuePerPointFils: 10 }],
+  },
+  {
+    id: "bbk-rewardz",
+    name: "BBK Rewardz",
+    currencyName: "Rewardz Points",
+    operator: "Bank of Bahrain and Kuwait",
+    expiryPolicy: "Points expire 36 months after being earned",
+    redemptionOptions: [
+      { type: "cashback", label: "Cashback / statement credit", valuePerPointFils: 2 },
+      { type: "merchandise", label: "Catalogue merchandise", valuePerPointFils: 2.2 },
+    ],
+  },
+  {
+    id: "kfh-bahrain-rewards",
+    name: "KFH Bahrain Rewards",
+    currencyName: "Reward Points",
+    operator: "KFH Bahrain (formerly Ahli United Bank)",
+    expiryPolicy: "Points expire 24 months after being earned",
+    redemptionOptions: [
+      { type: "cashback", label: "Cashback", valuePerPointFils: 1.5 },
+      { type: "transfer", label: "Transfer to Falconflyer", valuePerPointFils: 2.1 },
+    ],
+  },
+  {
+    id: "ithmaar-rewards",
+    name: "Ithmaar Bank Rewards",
+    currencyName: "Ithmaar Points",
+    operator: "Ithmaar Bank",
+    expiryPolicy: "Points expire 24 months after being earned",
+    redemptionOptions: [{ type: "cashback", label: "Cashback", valuePerPointFils: 1 }],
+  },
+  {
+    id: "hsbc-rewards-bh",
+    name: "HSBC Rewards Bahrain",
+    currencyName: "HSBC Reward Points",
+    operator: "HSBC Bahrain",
+    expiryPolicy: "Points do not expire while the card remains active",
+    redemptionOptions: [
+      { type: "cashback", label: "Cashback / statement credit", valuePerPointFils: 1.5 },
+      { type: "transfer", label: "Transfer to Falconflyer / AlFursan", valuePerPointFils: 2.3, conditions: "Variable by card tier" },
+    ],
+  },
+  {
+    id: "sc-360-rewards",
+    name: "Standard Chartered 360° Rewards",
+    currencyName: "360° Reward Points",
+    operator: "Standard Chartered Bahrain",
+    expiryPolicy: "Points expire 36 months after being earned",
+    redemptionOptions: [
+      { type: "cashback", label: "Cashback / statement credit", valuePerPointFils: 2 },
+      { type: "transfer", label: "Transfer to Falconflyer", valuePerPointFils: 2.8 },
+    ],
+  },
+  {
+    id: "alsalam-cashback",
+    name: "Al Salam Bank Cashback",
+    currencyName: "Direct Cashback",
+    operator: "Al Salam Bank",
+    expiryPolicy: "N/A — direct cashback, credited monthly",
+    redemptionOptions: [{ type: "cashback", label: "Cashback (automatic)", valuePerPointFils: 1000 }],
+  },
+  {
+    id: "khaleeji-rewards",
+    name: "Khaleeji Bank Rewards",
+    currencyName: "Khaleeji Points",
+    operator: "Khaleeji Bank",
+    expiryPolicy: "Points expire 24 months after being earned",
+    redemptionOptions: [{ type: "cashback", label: "Cashback", valuePerPointFils: 1 }],
+  },
+  {
+    id: "nbk-bahrain-rewards",
+    name: "NBK Bahrain Rewards",
+    currencyName: "NBK Points",
+    operator: "National Bank of Kuwait — Bahrain",
+    expiryPolicy: "Points expire 36 months after being earned",
+    redemptionOptions: [{ type: "cashback", label: "Cashback / statement credit", valuePerPointFils: 1.5 }],
+  },
+  {
+    id: "citi-bahrain-rewards",
+    name: "Citi Bahrain Rewards",
+    currencyName: "Citi Points",
+    operator: "Citibank Bahrain",
+    expiryPolicy: "Points do not expire while the card remains active",
+    redemptionOptions: [
+      { type: "cashback", label: "Cashback / statement credit", valuePerPointFils: 1.5 },
+      { type: "transfer", label: "Transfer to Falconflyer", valuePerPointFils: 2, conditions: "Variable by promotion" },
+    ],
+  },
+];
+
+export const programById = (id: string) => LOYALTY_PROGRAMS.find((p) => p.id === id);
