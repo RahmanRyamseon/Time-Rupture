@@ -10,6 +10,12 @@ import { DataDisclaimer } from "@/components/DataDisclaimer";
 
 const FEATURES = [
   {
+    href: "/explore",
+    title: "Explore Benefits",
+    blurb: "Filter by country, bank, and card type to see every benefit and exactly how points can be used.",
+    icon: "🔍",
+  },
+  {
     href: "/wallet",
     title: "My Wallet",
     blurb: "Add your Bahrain cards from a curated database — no bank login, ever.",
@@ -55,22 +61,23 @@ export default function Home() {
         </h1>
         <p className="max-w-xl text-foreground/70">
           <strong>Nuqati</strong> (نقاطي — &ldquo;my points&rdquo;) is a GCC credit card rewards optimizer.
-          Manually add the cards you already carry and get real-time, merchant-category recommendations,
-          honest points valuations, and the transfer map no bank or comparison site publishes — starting
-          with {activeCards().length} major cards across {BANKS.length} Bahrain issuing entities.
+          Look up what any bank, in any country, actually offers — by card type, with exactly how the
+          points can be used — then add the cards you carry for real-time recommendations and honest
+          valuations. Starting with {activeCards().length} major cards across {BANKS.length} Bahrain
+          issuing entities.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link
-            href="/wallet"
+            href="/explore"
             className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-strong"
           >
-            {hydrated && walletCards.length > 0 ? "Manage my wallet" : "Add your first card"}
+            Explore benefits
           </Link>
           <Link
-            href="/swipe"
+            href="/wallet"
             className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold hover:bg-surface-muted"
           >
-            Try Smart Swipe
+            {hydrated && walletCards.length > 0 ? "Manage my wallet" : "Add your first card"}
           </Link>
         </div>
       </section>
@@ -84,7 +91,7 @@ export default function Home() {
       )}
 
       <section>
-        <h2 className="mb-4 text-lg font-semibold">Everything you need to optimize your wallet</h2>
+        <h2 className="mb-4 text-lg font-semibold">Everything you need to understand and optimize your cards</h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {FEATURES.map((f) => (
             <Link
