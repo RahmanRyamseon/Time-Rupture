@@ -3,8 +3,23 @@
 import { useMemo, useState } from "react";
 import { BAHRAIN_CARDS } from "@/data/cards";
 import { COUNTRIES } from "@/data/countries";
+import { BENEFIT_TAGS, matchesAllBenefitTags } from "@/data/benefitTags";
+import { LOYALTY_PROGRAMS } from "@/data/loyaltyPrograms";
+import { resolvedRedemptionReach } from "@/lib/benefits";
 import { BenefitDetailCard } from "@/components/BenefitDetailCard";
 import { DataDisclaimer } from "@/components/DataDisclaimer";
+import type { RedemptionType } from "@/lib/types";
+
+const REDEMPTION_USE_CHIPS: { type: RedemptionType; label: string; icon: string }[] = [
+  { type: "cashback", label: "Cashback", icon: "💵" },
+  { type: "flight", label: "Flights", icon: "✈️" },
+  { type: "hotel", label: "Hotels", icon: "🏨" },
+  { type: "merchandise", label: "Merchandise / vouchers", icon: "🎁" },
+];
+
+// Programs with no cashback option of their own are the "destination" side of a
+// transfer — airlines, hotels, retail — as opposed to a bank's own card program.
+const DESTINATION_PROGRAMS = LOYALTY_PROGRAMS.filter((p) => !p.redemptionOptions.some((o) => o.type === "cashback"));
 
 export default function ExplorePage() {
   const [countryId, setCountryId] = useState("bahrain");
@@ -13,6 +28,9 @@ export default function ExplorePage() {
   const [islamicOnly, setIslamicOnly] = useState(false);
   const [showLegacy, setShowLegacy] = useState(false);
   const [query, setQuery] = useState("");
+  const [benefitTagIds, setBenefitTagIds] = useState<string[]>([]);
+  const [redemptionUses, setRedemptionUses] = useState<RedemptionType[]>([]);
+  const [redeemableVia, setRedeemableVia] = useState("all");
 
   const cardsInCountry = useMemo(() => (countryId === "bahrain" ? BAHRAIN_CARDS : []), [countryId]);
 
@@ -37,17 +55,31 @@ export default function ExplorePage() {
       if (tierFilter !== "all" && c.tier !== tierFilter) return false;
       if (islamicOnly && !c.isIslamic) return false;
       if (query && !`${c.bank} ${c.cardName}`.toLowerCase().includes(query.toLowerCase())) return false;
+      if (!matchesAllBenefitTags(c, benefitTagIds)) return false;
+      if (redemptionUses.length > 0 || redeemableVia !== "all") {
+        const reach = resolvedRedemptionReach(c);
+        if (redemptionUses.length > 0 && !redemptionUses.every((t) => reach.types.has(t))) return false;
+        if (redeemableVia !== "all" && !reach.programIds.has(redeemableVia)) return false;
+      }
       return true;
     });
-  }, [bankScoped, tierFilter, islamicOnly, query, showLegacy]);
+  }, [bankScoped, tierFilter, islamicOnly, query, showLegacy, benefitTagIds, redemptionUses, redeemableVia]);
+
+  function toggleBenefitTag(id: string) {
+    setBenefitTagIds((prev) => (prev.includes(id) ? prev.filter((t) => t !== id) : [...prev, id]));
+  }
+
+  function toggleRedemptionUse(type: RedemptionType) {
+    setRedemptionUses((prev) => (prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]));
+  }
 
   return (
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="text-2xl font-bold tracking-tight">Explore Benefits</h1>
         <p className="mt-1 text-sm text-foreground/60">
-          What does this bank actually offer? Pick a country, bank, and card type to see full benefits,
-          earn rates, and exactly how the points can be used — no wallet needed.
+          What does this bank actually offer? Filter by country, bank, card type, specific benefits, or
+          exactly what the points can be redeemed for — no wallet needed.
         </p>
       </div>
 
@@ -121,6 +153,63 @@ export default function ExplorePage() {
           <label className="flex items-center gap-2 whitespace-nowrap text-sm">
             <input type="checkbox" checked={showLegacy} onChange={(e) => setShowLegacy(e.target.checked)} />
             Show discontinued/legacy cards
+          </label>
+        </div>
+
+        <div>
+          <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-foreground/50">Benefits include</p>
+          <div className="flex flex-wrap gap-1.5">
+            {BENEFIT_TAGS.map((tag) => (
+              <button
+                key={tag.id}
+                onClick={() => toggleBenefitTag(tag.id)}
+                className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+                  benefitTagIds.includes(tag.id)
+                    ? "border-brand bg-brand-soft text-brand-strong"
+                    : "border-border bg-background text-foreground/70 hover:border-brand/50"
+                }`}
+              >
+                {tag.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-end gap-4">
+          <div>
+            <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-foreground/50">
+              Points can be used for
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {REDEMPTION_USE_CHIPS.map((chip) => (
+                <button
+                  key={chip.type}
+                  onClick={() => toggleRedemptionUse(chip.type)}
+                  className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+                    redemptionUses.includes(chip.type)
+                      ? "border-brand bg-brand-soft text-brand-strong"
+                      : "border-border bg-background text-foreground/70 hover:border-brand/50"
+                  }`}
+                >
+                  {chip.icon} {chip.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <label className="flex items-center gap-2 text-sm">
+            <span className="text-xs font-medium uppercase tracking-wide text-foreground/50">Redeemable via</span>
+            <select
+              value={redeemableVia}
+              onChange={(e) => setRedeemableVia(e.target.value)}
+              className="rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-brand"
+            >
+              <option value="all">Any partner</option>
+              {DESTINATION_PROGRAMS.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
           </label>
         </div>
       </div>
