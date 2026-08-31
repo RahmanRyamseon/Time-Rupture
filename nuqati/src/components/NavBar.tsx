@@ -8,6 +8,9 @@ const LINKS = [
   { href: "/explore", label: "Explore Benefits" },
   { href: "/wallet", label: "My Wallet" },
   { href: "/swipe", label: "Smart Swipe" },
+  { href: "/statement", label: "Statement Import" },
+  { href: "/cheatsheet", label: "Cheat Sheet" },
+  { href: "/fee-roi", label: "Fee ROI" },
   { href: "/points", label: "Points Value" },
   { href: "/transfers", label: "Transfers" },
 ];

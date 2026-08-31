@@ -54,6 +54,8 @@ export interface Card {
   keyBenefits: string[];
   lastVerified: string; // ISO date
   isActive: boolean;
+  /** Foreign-currency transaction fee, as a fraction of spend (0.0275 = 2.75%). Applied to spend flagged as foreign-currency in statement analysis. */
+  fxFeePct?: number;
 }
 
 export type RedemptionType = "cashback" | "flight" | "hotel" | "merchandise" | "transfer";
@@ -75,6 +77,8 @@ export interface LoyaltyProgram {
   expiryPolicy: string;
   minRedemption?: string;
   redemptionOptions: RedemptionOption[];
+  /** Structured cap on cashback/points redemption per month, when the bank publishes one (e.g. BisB: 100,000 pts/month). */
+  redemptionCapUnitsPerMonth?: number;
 }
 
 export interface TransferPartner {

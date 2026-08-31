@@ -28,9 +28,27 @@ const FEATURES = [
     icon: "⚡",
   },
   {
+    href: "/statement",
+    title: "Statement Import",
+    blurb: "Import real transactions and see, purchase by purchase, what you actually earned vs. your best card — caps and all.",
+    icon: "📄",
+  },
+  {
+    href: "/cheatsheet",
+    title: "Monthly Cheat Sheet",
+    blurb: "A category-by-category best-card grid for this cycle, plus alerts when a bonus cap is nearly used up.",
+    icon: "🗒️",
+  },
+  {
+    href: "/fee-roi",
+    title: "Fee-ROI Report",
+    blurb: "Real rewards earned, annualized, weighed against each card's annual fee — keep, downgrade, or cancel.",
+    icon: "⚖️",
+  },
+  {
     href: "/points",
     title: "Points Valuation Engine",
-    blurb: "See what your points are really worth: cashback vs. airline/hotel transfer.",
+    blurb: "See what your points are really worth: cashback vs. airline/hotel transfer, with a clear recommended path.",
     icon: "💎",
   },
   {
@@ -122,12 +140,13 @@ export default function Home() {
       </section>
 
       <section className="text-sm text-foreground/60">
-        <h2 className="mb-2 text-lg font-semibold text-foreground">Roadmap beyond Phase 1</h2>
+        <h2 className="mb-2 text-lg font-semibold text-foreground">What&apos;s not here yet — and why</h2>
         <p>
-          This MVP covers Wallet, Smart Swipe, Points Valuation and Transfer Navigator — the core Phase 1
-          feature set. Spend tracking against welcome bonuses, an annual fee vs. rewards analyzer, points
-          expiry alerts, and an AI points concierge are planned for later phases as the app expands beyond
-          Bahrain to the rest of the GCC.
+          Two things from the wider GCC roadmap are deliberately not shipped: card data for UAE, Saudi,
+          Qatar, Kuwait, and Oman (no verified source for those markets yet — see Explore Benefits), and
+          true push/SMS alerts (Nuqati has no backend to send them from; the Monthly Cheat Sheet&apos;s
+          in-app cap warnings are the client-side equivalent). Points expiry alerts and an AI points
+          concierge remain later-phase ideas.
         </p>
       </section>
 

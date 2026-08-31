@@ -6,7 +6,7 @@ import { cardById } from "@/data/cards";
 import { MERCHANT_CATEGORIES, categoryById } from "@/data/merchantCategories";
 import { useAppState } from "@/lib/store";
 import { rankCardsForPurchase, type EarnBreakdown } from "@/lib/rewards";
-import { fmtBhd, fmtDate, fmtFils, fmtPoints } from "@/lib/format";
+import { cardDisplayName, fmtBhd, fmtDate, fmtFils, fmtPoints } from "@/lib/format";
 import type { MerchantCategoryId } from "@/lib/types";
 
 export default function SwipePage() {
@@ -88,7 +88,7 @@ export default function SwipePage() {
             <div className="rounded-2xl border border-brand bg-brand-soft p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-brand-strong">Recommended</p>
               <p className="mt-1 text-lg font-bold">
-                Use your {best.card.bankShort} {best.card.cardName} for {categoryById(category).nameEn.toLowerCase()}
+                Use your {cardDisplayName(best.card)} for {categoryById(category).nameEn.toLowerCase()}
               </p>
               <p className="mt-1 text-sm text-foreground/70">
                 {best.effectiveRatePct >= 0.005
@@ -98,8 +98,8 @@ export default function SwipePage() {
                 {ranked.length > 1 && savingsVsWorst > 0 && (
                   <>
                     {" "}
-                    That&apos;s {fmtFils(savingsVsWorst)} more than your worst card ({worst.card.bankShort}{" "}
-                    {worst.card.cardName}) for this purchase.
+                    That&apos;s {fmtFils(savingsVsWorst)} more than your worst card ({cardDisplayName(worst.card)}) for
+                    this purchase.
                   </>
                 )}
               </p>
