@@ -1,4 +1,4 @@
-import type { Card, RedemptionOption, TransferPartner } from "@/lib/types";
+import type { Card, RedemptionOption, RedemptionType, TransferPartner } from "@/lib/types";
 import { programById } from "@/data/loyaltyPrograms";
 import { transfersFrom } from "@/data/transferPartners";
 
@@ -37,4 +37,38 @@ export function pointsUsageFor(card: Card): PointsUsage | undefined {
     redemptionOptions: program.redemptionOptions,
     transferPartners,
   };
+}
+
+export interface RedemptionReach {
+  /** Every end-use a card's currency can reach — directly, or one transfer hop away. */
+  types: Set<RedemptionType>;
+  /** Every program id reachable — the card's own program plus any active transfer target. */
+  programIds: Set<string>;
+}
+
+/**
+ * Resolves everywhere a card's points/miles/cashback can end up — its own program's
+ * redemption options, plus (one hop through active transfer partners) the redemption
+ * options of every program it can transfer into. Used to filter "points can be used
+ * for X" without requiring the card to be in a wallet.
+ */
+export function resolvedRedemptionReach(card: Card): RedemptionReach {
+  const types = new Set<RedemptionType>();
+  const programIds = new Set<string>();
+  const program = programById(card.loyaltyProgramId);
+  if (!program) return { types, programIds };
+
+  programIds.add(program.id);
+  program.redemptionOptions.forEach((o) => types.add(o.type));
+
+  transfersFrom(program.id)
+    .filter((t) => t.isActive)
+    .forEach((t) => {
+      const target = programById(t.toProgramId);
+      if (!target) return;
+      programIds.add(target.id);
+      target.redemptionOptions.forEach((o) => types.add(o.type));
+    });
+
+  return { types, programIds };
 }
