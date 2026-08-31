@@ -23,3 +23,10 @@ export function nextCycleStart(date: Date = new Date()): Date {
 export function fmtDate(date: Date): string {
   return date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 }
+
+/** Most card names already start with the bank's short name (e.g. "BisB Visa Gold") — avoid "BisB BisB Visa Gold". */
+export function cardDisplayName(card: { bankShort: string; cardName: string }): string {
+  return card.cardName.toLowerCase().startsWith(card.bankShort.toLowerCase())
+    ? card.cardName
+    : `${card.bankShort} ${card.cardName}`;
+}

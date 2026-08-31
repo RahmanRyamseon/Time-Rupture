@@ -23,6 +23,30 @@ database, with your wallet, spend logs, and points balances kept in `localStorag
   program in your wallet to see its value as cashback vs. every transfer option.
 - **Transfer Partner Navigator** (`/transfers`) — the bank-points → airline/hotel
   transfer map (Falconflyer, AlFursan, Shukran), plus a transfer simulator.
+- **Explore Benefits** (`/explore`) — browse full benefits by country → bank → card
+  type without adding anything to a wallet; country is a first-class filter (all 6
+  GCC markets), with Bahrain live and the rest marked "coming soon".
+- **Statement Import** (`/statement`) — upload a bank-statement CSV (or paste one)
+  and get transaction-level analysis: each purchase is auto-categorized, then run
+  chronologically through the same cap-aware engine as Smart Swipe to show what the
+  assigned card actually earned versus what the best card in your wallet would have
+  earned at that exact point in the cycle — true marginal optimization, not an
+  average-spend estimate.
+- **Monthly Cheat Sheet** (`/cheatsheet`) — a category → best-card grid for the
+  current cycle (printable), plus a "cap nearly exhausted" section for any wallet
+  card approaching its monthly bonus cap.
+- **Fee-ROI Report** (`/fee-roi`) — annualizes the rewards actually earned from
+  imported statements per card and weighs them against that card's annual fee, with
+  a Keep / Consider downgrading / Consider cancelling verdict.
+
+### Multi-country and multi-currency
+
+`Card.fxFeePct` models a card's foreign-transaction fee (sourced for BBK's 2.75%;
+statement analysis falls back to an estimated 2.5% GCC-typical fee for cards that
+don't publish one) and is netted out of a transaction's earned value when a
+statement row is flagged foreign-currency. Full multi-country support (KSA, UAE,
+Qatar, Kuwait, Oman card data) is intentionally not populated — see "Not yet built"
+below for why.
 
 ### Reward caps & the "restart" mechanic
 
@@ -59,11 +83,27 @@ not tagged "(sourced)" — is estimated, since most Bahrain issuers don't publis
 category-level rates. Citibank Bahrain was removed from the dataset: it does not
 appear in this research pass as an active Bahrain card issuer.
 
-## Not yet built (later phases, per spec)
+## Not yet built — and why
 
-Spend tracking against welcome-bonus thresholds, an annual-fee-vs-rewards analyzer,
-points expiry push alerts, a card recommendation engine, and an AI points concierge
-are Phase 2/3 features from the spec and are out of scope for this MVP.
+Two things are structurally blocked in this environment rather than merely
+unscheduled:
+
+- **Card data for UAE, Saudi Arabia, Qatar, Kuwait, and Oman.** Populating these
+  responsibly requires the same research pass Bahrain got (see Data, above) —
+  official sources, bank pages, and aggregators like YallaCompare, SAMA's card list,
+  Amwal, Bonokey, Giraffy, Buzdy, Mustafeed, and Kwakeb. This session's network
+  egress is policy-blocked to those domains, so rather than fabricate rates for five
+  more markets, `/explore` marks them "coming soon" and the dataset stays
+  Bahrain-only until that data can be sourced (uploaded documents work fine, as the
+  Bahrain research pass itself was).
+- **Real-time push/SMS cap alerts.** Nuqati is a static client-side app with no
+  backend, cron, or notification service — there's nothing to send a push from. The
+  Monthly Cheat Sheet's in-app "cap nearly exhausted" banner is the closest
+  equivalent available without adding server infrastructure.
+
+Spend tracking against welcome-bonus thresholds, points expiry push alerts, a card
+recommendation engine, and an AI points concierge remain unscheduled Phase 2/3 ideas
+from the original spec.
 
 ## Development
 

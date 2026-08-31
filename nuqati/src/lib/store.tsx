@@ -7,8 +7,20 @@ import type { MerchantCategoryId } from "@/lib/types";
 const WALLET_KEY = "nuqati.wallet.v1";
 const USAGE_KEY = "nuqati.usage.v1";
 const BALANCES_KEY = "nuqati.balances.v1";
+const STATEMENTS_KEY = "nuqati.statements.v1";
 
 type UsageLog = Record<string, Record<string, number>>; // cycleKey -> "cardId::category" -> spentBhd
+
+export interface StatementSummaryRecord {
+  id: string;
+  cardId: string;
+  periodStart: string; // ISO date
+  periodEnd: string; // ISO date
+  totalSpendBhd: number;
+  totalEarnedValueFils: number;
+  txnCount: number;
+  importedAt: string; // ISO date
+}
 
 /** Hydration-safe binding to a JSON value in localStorage, backed by useSyncExternalStore. */
 function createLocalStorageStore<T>(key: string, fallback: T) {
@@ -48,6 +60,7 @@ function createLocalStorageStore<T>(key: string, fallback: T) {
 const walletStore = createLocalStorageStore<string[]>(WALLET_KEY, []);
 const usageStore = createLocalStorageStore<UsageLog>(USAGE_KEY, {});
 const balancesStore = createLocalStorageStore<Record<string, number>>(BALANCES_KEY, {});
+const statementsStore = createLocalStorageStore<StatementSummaryRecord[]>(STATEMENTS_KEY, []);
 
 const emptySubscribe = () => () => {};
 /** True once mounted on the client — lets pages avoid flashing empty-state UI during SSR. */
@@ -69,6 +82,10 @@ interface AppState {
   /** User-entered points/miles balance per loyalty program, for the valuation engine. */
   balanceFor: (programId: string) => number;
   setBalance: (programId: string, balance: number) => void;
+  /** Saved statement-import summaries, for the Fee-ROI report. */
+  statementSummaries: StatementSummaryRecord[];
+  addStatementSummary: (summary: Omit<StatementSummaryRecord, "id" | "importedAt">) => void;
+  removeStatementSummary: (id: string) => void;
 }
 
 const AppStateContext = createContext<AppState | null>(null);
@@ -80,6 +97,11 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     balancesStore.subscribe,
     balancesStore.getSnapshot,
     balancesStore.getServerSnapshot,
+  );
+  const statementSummaries = useSyncExternalStore(
+    statementsStore.subscribe,
+    statementsStore.getSnapshot,
+    statementsStore.getServerSnapshot,
   );
   const hydrated = useHydrated();
   const cycleKey = currentCycleKey();
@@ -116,6 +138,19 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     balancesStore.set({ ...balancesStore.getSnapshot(), [programId]: Math.max(0, balance) });
   }, []);
 
+  const addStatementSummary = useCallback((summary: Omit<StatementSummaryRecord, "id" | "importedAt">) => {
+    const record: StatementSummaryRecord = {
+      ...summary,
+      id: `stmt-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      importedAt: new Date().toISOString(),
+    };
+    statementsStore.set([...statementsStore.getSnapshot(), record]);
+  }, []);
+
+  const removeStatementSummary = useCallback((id: string) => {
+    statementsStore.set(statementsStore.getSnapshot().filter((s) => s.id !== id));
+  }, []);
+
   const value = useMemo<AppState>(
     () => ({
       cardIds,
@@ -128,8 +163,25 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       hydrated,
       balanceFor,
       setBalance,
+      statementSummaries,
+      addStatementSummary,
+      removeStatementSummary,
     }),
-    [cardIds, addCard, removeCard, hasCard, usageForCard, logSwipe, cycleKey, hydrated, balanceFor, setBalance],
+    [
+      cardIds,
+      addCard,
+      removeCard,
+      hasCard,
+      usageForCard,
+      logSwipe,
+      cycleKey,
+      hydrated,
+      balanceFor,
+      setBalance,
+      statementSummaries,
+      addStatementSummary,
+      removeStatementSummary,
+    ],
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

@@ -115,6 +115,7 @@ export const LOYALTY_PROGRAMS: LoyaltyProgram[] = [
     operator: "Bahrain Islamic Bank",
     expiryPolicy: "Points do not expire while the card remains active",
     minRedemption: "5,000 points minimum; statement cashback capped at 100,000 points/month (sourced: bisb.com/en/products/bisb-rewards)",
+    redemptionCapUnitsPerMonth: 100000,
     redemptionOptions: [
       { type: "cashback", label: "Cashback: 5,000–10,000 pts", valuePerPointFils: 8, conditions: "Sourced — 8 fils/point in this redemption band" },
       { type: "cashback", label: "Cashback: 10,001–20,000 pts", valuePerPointFils: 9, conditions: "Sourced — 9 fils/point in this redemption band" },

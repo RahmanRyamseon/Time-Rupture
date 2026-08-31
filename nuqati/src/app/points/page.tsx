@@ -72,7 +72,14 @@ export default function PointsPage() {
                       }`}
                     >
                       <div>
-                        <p className="font-medium">{opt.label}</p>
+                        <p className="font-medium">
+                          {opt.label}
+                          {opt === best && (
+                            <span className="ml-2 rounded-full bg-brand px-2 py-0.5 text-[10px] font-semibold uppercase text-white">
+                              Recommended
+                            </span>
+                          )}
+                        </p>
                         {opt.conditions && <p className="text-xs text-foreground/50">{opt.conditions}</p>}
                       </div>
                       <div className="text-right">
@@ -85,9 +92,20 @@ export default function PointsPage() {
 
                 {multiplier > 1.01 && cashback && (
                   <p className="mt-3 text-sm text-brand-strong">
-                    {best.label} is {multiplier.toFixed(1)}x more valuable than cashback for your {fmtPoints(balance)}{" "}
-                    {program.currencyName} — that&apos;s {fmtFils(balance * (best.valuePerPointFils - cashback.valuePerPointFils))} left
-                    on the table if you just take cashback.
+                    Recommended path: {best.label} is {multiplier.toFixed(1)}x more valuable than cashback for your{" "}
+                    {fmtPoints(balance)} {program.currencyName} — that&apos;s{" "}
+                    {fmtFils(balance * (best.valuePerPointFils - cashback.valuePerPointFils))} left on the table if you just
+                    take cashback.
+                  </p>
+                )}
+
+                {program.redemptionCapUnitsPerMonth && balance > program.redemptionCapUnitsPerMonth && (
+                  <p className="mt-3 rounded-lg bg-danger-soft px-3 py-2 text-sm text-danger">
+                    Your balance exceeds {program.name}
+                    {program.name.endsWith("s") ? "'" : "'s"} cashback redemption cap of{" "}
+                    {fmtPoints(program.redemptionCapUnitsPerMonth)} {program.currencyName}/month — redeeming the full
+                    amount as cashback would take {Math.ceil(balance / program.redemptionCapUnitsPerMonth)} months. A
+                    transfer redemption isn&apos;t subject to this cap.
                   </p>
                 )}
 
