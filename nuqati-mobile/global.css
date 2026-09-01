@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 246 245 241;
+  --foreground: 20 35 31;
+  --surface: 255 255 255;
+  --surface-muted: 238 240 234;
+  --border: 220 222 212;
+  --brand: 15 92 76;
+  --brand-strong: 10 66 56;
+  --brand-soft: 228 239 233;
+  --accent: 184 134 59;
+  --accent-soft: 246 236 217;
+  --danger: 179 64 45;
+  --danger-soft: 248 230 225;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 11 21 18;
+    --foreground: 238 242 238;
+    --surface: 18 33 29;
+    --surface-muted: 22 38 31;
+    --border: 36 53 46;
+    --brand: 47 169 135;
+    --brand-strong: 110 205 176;
+    --brand-soft: 23 51 42;
+    --accent: 217 172 95;
+    --accent-soft: 42 35 24;
+    --danger: 226 135 115;
+    --danger-soft: 51 32 27;
+  }
+}
