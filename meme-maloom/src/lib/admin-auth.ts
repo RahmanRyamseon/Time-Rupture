@@ -4,8 +4,10 @@
  * same code works from middleware and from route handlers.
  *
  * Required env vars (set in Vercel project settings, never committed):
- *   ADMIN_UPLOAD_PASSWORD — the password that unlocks /admin
- *   ADMIN_SESSION_SECRET  — any long random string, used to sign the cookie
+ *   ADMIN_UPLOAD_PASSWORD_HASH — hex SHA-256 of the admin password, e.g.
+ *                                `printf '%s' 'the-password' | shasum -a 256`
+ *                                (never store the raw password itself)
+ *   ADMIN_SESSION_SECRET       — any long random string, used to sign the cookie
  */
 
 export const ADMIN_SESSION_COOKIE = "mm_admin_session";
@@ -77,14 +79,67 @@ export async function verifySessionToken(token: string | undefined | null): Prom
   }
 }
 
-/** Constant-time-ish comparison for the password check (best-effort in Edge). */
-export function passwordMatches(candidate: string): boolean {
-  const expected = process.env.ADMIN_UPLOAD_PASSWORD;
-  if (!expected || !candidate) return false;
-  if (candidate.length !== expected.length) return false;
+function toHex(bytes: ArrayBuffer): string {
+  return Array.from(new Uint8Array(bytes))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+async function sha256Hex(input: string): Promise<string> {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(input));
+  return toHex(digest);
+}
+
+/** Constant-time comparison of two equal-length hex digests. */
+function hexEquals(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
   let diff = 0;
-  for (let i = 0; i < expected.length; i++) {
-    diff |= candidate.charCodeAt(i) ^ expected.charCodeAt(i);
-  }
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
   return diff === 0;
+}
+
+/**
+ * Verifies a candidate password against the stored SHA-256 hash. The raw
+ * password is never persisted anywhere — only its hash lives in env config.
+ */
+export async function passwordMatches(candidate: string): Promise<boolean> {
+  const expectedHash = process.env.ADMIN_UPLOAD_PASSWORD_HASH;
+  if (!expectedHash || !candidate) return false;
+  const candidateHash = await sha256Hex(candidate);
+  return hexEquals(candidateHash, expectedHash.toLowerCase());
+}
+
+const LOGIN_ATTEMPT_LIMIT = 5;
+const LOGIN_ATTEMPT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+
+// Best-effort in-memory rate limiting: resets on cold start / new instance,
+// so it's not a hard guarantee on serverless, but it stops the common case
+// of a script hammering the same warm instance with password guesses.
+const loginAttempts = new Map<string, { count: number; resetAt: number }>();
+
+/** Returns true if this key (e.g. client IP) is currently rate-limited. */
+export function isLoginRateLimited(key: string): boolean {
+  const entry = loginAttempts.get(key);
+  if (!entry) return false;
+  if (Date.now() > entry.resetAt) {
+    loginAttempts.delete(key);
+    return false;
+  }
+  return entry.count >= LOGIN_ATTEMPT_LIMIT;
+}
+
+/** Records a failed login attempt for this key. */
+export function recordLoginFailure(key: string): void {
+  const entry = loginAttempts.get(key);
+  const now = Date.now();
+  if (!entry || now > entry.resetAt) {
+    loginAttempts.set(key, { count: 1, resetAt: now + LOGIN_ATTEMPT_WINDOW_MS });
+    return;
+  }
+  entry.count += 1;
+}
+
+/** Clears rate-limit state for this key on a successful login. */
+export function recordLoginSuccess(key: string): void {
+  loginAttempts.delete(key);
 }
