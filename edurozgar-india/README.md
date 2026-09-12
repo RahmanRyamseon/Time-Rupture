@@ -23,8 +23,15 @@ npm run lint
   Eligibility Disclaimer, About, Privacy).
 - **Structured data model** (`src/lib/types.ts`) matching the requested field list
   (`opportunity_type`, `muslim_eligibility` with exact source wording, dates, documents,
-  official URLs, verification metadata, etc.), with ~17 sample listings in
-  `src/lib/data/opportunities.ts`.
+  official URLs, verification metadata, etc.).
+- **Real, researched data** in `src/lib/data/opportunities.ts` — 14 listings (4 Ministry of
+  Minority Affairs / minority scholarships, 1 skill-development scheme, 5 government job
+  recruitments, 3 university admissions), each checked against an official notification,
+  scheme-guideline PDF, or institutional prospectus on 12 September 2026 (linked as
+  `official_notification_url` on every record). Where a fact could only be corroborated
+  from secondary sources rather than a primary document, that is stated explicitly in the
+  record's `editor_notes` field, along with what should be re-verified and where. This is a
+  snapshot, not a live feed — see "Keeping this current" below.
 - **Search & filtering**: keyword, state, education level, application status, minority/
   Muslim eligibility, women-only, disability, no-fee, rural/EWS, first-generation learner —
   see `src/components/OpportunityListing.tsx` and `src/lib/helpers.ts`.
@@ -49,6 +56,28 @@ npm run lint
   submissions (approve/reject), see an audit log, see official-link click counts, and
   export listings to CSV.
 
+## Keeping this current
+
+The 14 listings are real, but a government-scheme aggregator is only as good as its last
+check. Before treating any listing as current:
+
+- Read its `editor_notes` field — every record says which facts came from a primary
+  document (an official PDF/notice, quoted in `source_excerpt`) versus which were only
+  corroborated from secondary education-news sites, and exactly what to re-verify.
+- Click through to `official_notification_url` yourself. Application windows, vacancy
+  counts and exam dates on real portals change (some already did mid-research —
+  SSC CGL's window was reopened once via its own corrigendum).
+- Two categories have no listings yet: `fellowship` (the one obvious central candidate,
+  the Maulana Azad National Fellowship, was confirmed discontinued in 2023 during
+  research — it's deliberately left out rather than listed as if still open) and most
+  state-level opportunities beyond West Bengal's Aikyashree scheme.
+- `scholarships.gov.in/All-Scholarships` categorises the Ministry of Minority Affairs
+  pre-matric/post-matric schemes under a tab this research pass couldn't isolate
+  (it renders "Central Sector Schemes" by default); their closing dates here are inferred
+  from the identical pattern shown by every other pre/post-matric welfare scheme on that
+  page for AY2026-27, not read off a Minority Affairs-specific row — flagged in their
+  `editor_notes`.
+
 ## What's intentionally stubbed (needs real infra before launch)
 
 This build has **no backend** — nothing here should be treated as production-ready without
@@ -57,7 +86,8 @@ the following:
 1. **Database.** All opportunity/article data is static TypeScript in `src/lib/data/`.
    A real deployment needs a database (e.g. via the Supabase MCP connector already
    available in this environment) with the schema in `src/lib/types.ts` as a starting
-   point, plus real editorial workflow instead of hard-coded sample records.
+   point, plus a real editorial workflow — including a scheduled recheck against
+   `next_verification_date` — instead of a static file that goes stale silently.
 2. **Authentication.** The Admin panel has no login — anyone with the URL can use it. It
    currently persists changes only in that browser's `localStorage` as a UI demo. Add
    real auth (roles: editor/admin) and server-side authorization before deploying.
@@ -67,10 +97,7 @@ the following:
 4. **Submission moderation queue.** "Suggest an opportunity" / "Report outdated info" write
    to `localStorage` so the admin demo has something to approve/reject; a production
    version needs a server endpoint and persistent storage instead.
-5. **Data accuracy.** Every sample listing is marked `editor_notes: "SAMPLE DATA..."` and
-   must be verified against its official source before being shown as real to users. Do
-   not deploy this sample dataset as-is.
-6. **Verification workflow (screenshots/archival).** The schema has fields for this
+5. **Verification workflow (screenshots/archival).** The schema has fields for this
    (`source_excerpt`, `last_verified_date`, etc.) but there's no archival/screenshot
    pipeline — that needs server-side storage.
 
