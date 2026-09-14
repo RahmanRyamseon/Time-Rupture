@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
 import { formatDate, TYPE_LABEL } from "@/lib/helpers";
 import StatusBadge from "@/components/StatusBadge";
 
@@ -10,7 +10,8 @@ export const metadata: Metadata = {
     "Scholarships, fellowships, admissions and welfare schemes where the official notification identifies Muslims or other notified minority communities as eligible beneficiaries, with the exact eligibility wording from the source.",
 };
 
-export default function MinorityOpportunitiesPage() {
+export default async function MinorityOpportunitiesPage() {
+  const opportunities = await getAllOpportunities();
   const listings = opportunities.filter(
     (o) => o.muslim_eligibility.flag === "explicitly_eligible" || o.minority_eligibility.flag === "explicitly_eligible"
   );

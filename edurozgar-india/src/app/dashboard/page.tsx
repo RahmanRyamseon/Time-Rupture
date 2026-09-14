@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
+import { Opportunity } from "@/lib/types";
 import { getSavedIds, toggleSaved } from "@/lib/savedOpportunities";
 import { daysUntil, formatDate } from "@/lib/helpers";
 import OpportunityCard from "@/components/OpportunityCard";
@@ -53,6 +54,7 @@ export default function DashboardPage() {
   const [savedIds, setSavedIds] = useState<string[]>([]);
   const [prefs, setPrefs] = useState<Prefs>(DEFAULT_PREFS);
   const [statusMap, setStatusMap] = useState<Record<string, AppStatus>>({});
+  const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -66,6 +68,7 @@ export default function DashboardPage() {
     } catch {
       // ignore
     }
+    getAllOpportunities().then(setOpportunities);
     setHydrated(true);
   }, []);
 

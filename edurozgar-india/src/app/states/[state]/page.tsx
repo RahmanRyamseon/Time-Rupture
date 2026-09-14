@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { INDIAN_STATES, slugToStateName } from "@/lib/data/states";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
 import OpportunityListing from "@/components/OpportunityListing";
 
 export function generateStaticParams() {
   return INDIAN_STATES.map((s) => ({ state: s.slug }));
 }
+
+// Re-fetch from Supabase at most once an hour rather than only at build time,
+// so the daily source-check job's downstream edits (once approved) show up
+// without a full redeploy.
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: PageProps<"/states/[state]">): Promise<Metadata> {
   const { state } = await params;
@@ -23,6 +28,7 @@ export default async function StateDetailPage({ params }: PageProps<"/states/[st
   const info = INDIAN_STATES.find((s) => s.slug === state);
   if (!info) notFound();
 
+  const opportunities = await getAllOpportunities();
   const listings = opportunities.filter((o) => o.state === info.name || o.state === "All India");
 
   return (

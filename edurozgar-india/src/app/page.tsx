@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
 import { stateNameToSlug } from "@/lib/data/states";
 import { daysUntil, liveStatus, TYPE_LABEL } from "@/lib/helpers";
 import { Opportunity } from "@/lib/types";
@@ -7,7 +7,9 @@ import OpportunityCard from "@/components/OpportunityCard";
 import HomeSearchBar from "@/components/HomeSearchBar";
 import HeroCopy, { HeroCtas } from "@/components/HeroCopy";
 
-export default function Home() {
+export default async function Home() {
+  const opportunities = await getAllOpportunities();
+
   const closingSoon = opportunities
     .filter((o) => liveStatus(o) === "closing_soon")
     .sort((a, b) => daysUntil(a.closing_date) - daysUntil(b.closing_date))

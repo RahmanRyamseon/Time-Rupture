@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
 import { buildCalendarEvents } from "@/lib/calendarEvents";
 import MonthlyCalendar from "@/components/MonthlyCalendar";
 
@@ -9,7 +9,8 @@ export const metadata: Metadata = {
     "Monthly calendar of scholarship, government job and admission opening dates, last dates, correction windows, exam dates, admit-card releases and results in India.",
 };
 
-export default function CalendarPage() {
+export default async function CalendarPage() {
+  const opportunities = await getAllOpportunities();
   const events = buildCalendarEvents(opportunities);
 
   return (

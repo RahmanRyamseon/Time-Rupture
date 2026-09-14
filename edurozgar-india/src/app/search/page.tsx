@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
 import OpportunityListing from "@/components/OpportunityListing";
 
 export const metadata: Metadata = {
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 export default async function SearchPage({ searchParams }: PageProps<"/search">) {
   const sp = await searchParams;
   const q = typeof sp.q === "string" ? sp.q : "";
+  const opportunities = await getAllOpportunities();
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">

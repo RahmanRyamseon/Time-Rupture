@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
+import { Opportunity } from "@/lib/types";
 import { daysSince, formatDate, liveStatus, STATUS_LABEL, TYPE_LABEL } from "@/lib/helpers";
 import {
   AuditLogEntry,
@@ -16,6 +17,7 @@ import {
   toggleArchived,
   updateSubmissionStatus,
 } from "@/lib/adminStore";
+import ReviewQueueTab from "@/components/ReviewQueueTab";
 
 function exportToCsv(rows: Record<string, string | number>[]) {
   if (rows.length === 0) return;
@@ -39,8 +41,9 @@ export default function AdminPage() {
   const [clicks, setClicks] = useState<Record<string, number>>({});
   const [submissions, setSubmissions] = useState<SubmissionRecord[]>([]);
   const [audit, setAudit] = useState<AuditLogEntry[]>([]);
-  const [tab, setTab] = useState<"listings" | "submissions" | "broken" | "audit">("listings");
+  const [tab, setTab] = useState<"listings" | "submissions" | "broken" | "queue" | "audit">("listings");
   const [hydrated, setHydrated] = useState(false);
+  const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
 
   function refresh() {
     setArchived(getArchivedIds());
@@ -54,6 +57,7 @@ export default function AdminPage() {
     // Hydration from browser-only storage: must run after mount since it's unavailable during SSR.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     refresh();
+    getAllOpportunities().then(setOpportunities);
     setHydrated(true);
   }, []);
 
@@ -79,6 +83,7 @@ export default function AdminPage() {
       <div className="mb-6 flex flex-wrap gap-2 border-b border-[var(--color-border)]">
         {[
           { id: "listings", label: `Listings (${opportunities.length})` },
+          { id: "queue", label: "Verification queue" },
           { id: "submissions", label: `Submissions (${submissions.filter((s) => s.status === "pending").length} pending)` },
           { id: "broken", label: `Broken / stale (${brokenOrStale.length})` },
           { id: "audit", label: "Audit log" },
@@ -176,6 +181,17 @@ export default function AdminPage() {
               </tbody>
             </table>
           </div>
+        </section>
+      )}
+
+      {tab === "queue" && (
+        <section>
+          <p className="mb-3 text-sm text-slate-600 dark:text-slate-300">
+            Fed by the daily source-check job: official pages that changed, links that broke, and listings whose
+            next_verification_date arrived. Nothing here has been auto-applied to the public listings — review each
+            item against the real source before treating a change as confirmed.
+          </p>
+          <ReviewQueueTab />
         </section>
       )}
 

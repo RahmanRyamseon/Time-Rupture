@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
 import OpportunityListing from "@/components/OpportunityListing";
 
 export const metadata: Metadata = {
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default async function AdmissionsPage({ searchParams }: PageProps<"/admissions">) {
   const sp = await searchParams;
   const q = typeof sp.q === "string" ? sp.q : "";
+  const opportunities = await getAllOpportunities();
   const base = opportunities.filter((o) => o.opportunity_type === "admission");
 
   return (

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { opportunities, getOpportunityById } from "@/lib/data/opportunities";
+import { getAllOpportunities, getOpportunityById } from "@/lib/opportunities-data";
 import { formatDate, TYPE_LABEL, liveStatus, STATUS_LABEL } from "@/lib/helpers";
 import StatusBadge from "@/components/StatusBadge";
 import EligibilityBadges from "@/components/EligibilityBadges";
@@ -8,13 +8,18 @@ import ExternalLinkButton from "@/components/ExternalLinkButton";
 import SaveOpportunityButton from "@/components/SaveOpportunityButton";
 import FeedbackDialog from "@/components/FeedbackDialog";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const opportunities = await getAllOpportunities();
   return opportunities.map((o) => ({ id: o.id }));
 }
 
+// New opportunities added to Supabase after build still render (dynamicParams
+// defaults to true); this just keeps already-built pages from going stale.
+export const revalidate = 3600;
+
 export async function generateMetadata({ params }: PageProps<"/opportunity/[id]">): Promise<Metadata> {
   const { id } = await params;
-  const o = getOpportunityById(id);
+  const o = await getOpportunityById(id);
   if (!o) return {};
   return {
     title: o.title,
@@ -37,7 +42,7 @@ function Field({ label, value }: { label: string; value?: string | number | null
 
 export default async function OpportunityDetailPage({ params }: PageProps<"/opportunity/[id]">) {
   const { id } = await params;
-  const o = getOpportunityById(id);
+  const o = await getOpportunityById(id);
   if (!o) notFound();
 
   const checklist = [

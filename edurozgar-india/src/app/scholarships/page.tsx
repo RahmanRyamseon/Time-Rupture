@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
 import { OpportunityType } from "@/lib/types";
 import OpportunityListing from "@/components/OpportunityListing";
 
@@ -21,6 +21,7 @@ export default async function ScholarshipsPage({
   const disability = sp.disability === "1";
   const ews = sp.ews === "1";
 
+  const opportunities = await getAllOpportunities();
   const base = opportunities.filter((o) => SCHOLARSHIP_TYPES.includes(o.opportunity_type));
 
   return (

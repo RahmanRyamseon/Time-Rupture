@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
 import { articles } from "@/lib/data/articles";
 import { INDIAN_STATES } from "@/lib/data/states";
 
 const BASE_URL = "https://edurozgar.example.in";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const opportunities = await getAllOpportunities();
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
     "/scholarships",

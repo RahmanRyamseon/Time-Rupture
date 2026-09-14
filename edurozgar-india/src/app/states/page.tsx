@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { INDIAN_STATES } from "@/lib/data/states";
-import { opportunities } from "@/lib/data/opportunities";
+import { getAllOpportunities } from "@/lib/opportunities-data";
 
 export const metadata: Metadata = {
   title: "State-wise Scholarships, Jobs and Admissions in India",
@@ -9,7 +9,8 @@ export const metadata: Metadata = {
     "Browse government jobs, scholarships, minority welfare schemes and admissions by Indian state and Union Territory, with links to each official state portal.",
 };
 
-export default function StatesIndexPage() {
+export default async function StatesIndexPage() {
+  const opportunities = await getAllOpportunities();
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <header className="mb-6">
