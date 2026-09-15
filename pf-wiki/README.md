@@ -13,9 +13,12 @@ EPFO office.
 
 ## What's here
 
-- **15 problem entries** across 9 categories (UAN activation & login, KYC &
+- **17 problem entries** across 9 categories (UAN activation & login, KYC &
   corrections, claims & withdrawal, PF transfer, employer non-compliance, EPS
-  pension, nomination & death claims, tax/TDS, passbook & interest).
+  pension, nomination & death claims, tax/TDS, passbook & interest) — including
+  two entries grounded in very current 2026 events: claims stuck since the
+  July 2026 "EPFO 3.0" system migration, and "Delinking" requests (removing a
+  wrong employer from your service history) that never clear.
 - Each entry (`src/data/problems.ts`) has: how the problem shows up, likely causes,
   numbered fix steps, community-sourced "how people actually solved it" tips, an
   official escalation path (EPFiGMS grievance portal, regional office, etc.), and a
@@ -33,10 +36,21 @@ EPFO office.
 Content in `src/data/problems.ts` was built from a research pass over EPFO's own
 published rules plus personal-finance publishers, forums, and social-media reports
 of what worked — see each entry's `sources` field. Each entry also cites specific
-Reddit threads (mostly r/epfoindia, a subreddit dedicated to EPFO issues) where a
-member's real, dated experience matched or added to the official guidance — those
-sources are labeled `(r/<subreddit>)` in the title. This is a curated dataset, not a
-live feed from EPFO's systems: rules, forms, and processing timelines do change.
+Reddit threads — mostly r/epfoindia, a subreddit dedicated to EPFO issues that has
+since been redirected by its own moderators to r/EPFO (r/epfoindia no longer
+accepts new posts/comments; r/EPFO is the live community) — where a member's real,
+dated experience matched or added to the official guidance. Those sources are
+labeled `(r/<subreddit>)` in the title. This is a curated dataset, not a live feed
+from EPFO's systems: rules, forms, and processing timelines do change.
+
+`data/reddit-archive/` holds the raw post/comment JSON these entries were built
+from, fetched via the [Arctic Shift download tool](https://arctic-shift.photon-reddit.com/download-tool)
+(a third-party Reddit archive/API, used here through Firecrawl since this session's
+own network policy blocks reddit.com and arctic-shift.photon-reddit.com directly).
+Each file's `_source`, `_retrieved_via`, and `_retrieved_at` fields document exactly
+how and when it was pulled; some carry a `_key_finding` field summarizing the
+specific, non-obvious fix that made a thread worth archiving (e.g. the delinking
+entry's "ask EPFO to reject, not approve, a stuck request" finding).
 `lastVerified` marks when each entry's research pass happened; treat anything older
 than a few months as worth re-checking against the official portal, especially
 pension and tax-threshold figures.

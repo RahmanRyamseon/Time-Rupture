@@ -7,12 +7,12 @@ import { PROBLEMS } from "@/data/problems";
 import { OFFICIAL_LINKS } from "@/data/officialLinks";
 
 const FEATURED_SLUGS = [
+  "epfo-3-0-migration-claims-stuck",
   "uan-not-activating",
   "claim-rejected-generic",
   "employer-not-depositing-pf",
   "tds-on-withdrawal",
-  "name-dob-mismatch",
-  "withdrawal-after-resignation",
+  "delinking-request-stuck-pending",
 ];
 
 export default function Home() {

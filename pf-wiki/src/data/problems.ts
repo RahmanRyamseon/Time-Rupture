@@ -2,9 +2,13 @@ import type { ProblemEntry } from "@/lib/types";
 
 /**
  * Every entry is a distillation of published EPFO guidance plus the fixes
- * people report actually working on forums (including r/epfoindia and
- * related subreddits), Quora, and personal-finance sites. See each entry's
- * `sources` for where it was sourced from, and `lastVerified` for when.
+ * people report actually working on forums (including r/epfoindia and its
+ * live successor r/EPFO — r/epfoindia's mods redirected the community there
+ * and it no longer accepts new posts/comments), Quora, and personal-finance
+ * sites. See each entry's `sources` for where it was sourced from, and
+ * `lastVerified` for when. A curated raw archive of the Reddit posts and
+ * comments these entries draw on lives in `data/reddit-archive/` (fetched
+ * via the Arctic Shift download tool, https://arctic-shift.photon-reddit.com/).
  * This is not official EPFO guidance — see the disclaimer on every page and
  * always cross-check on epfindia.gov.in.
  */
@@ -166,6 +170,7 @@ export const PROBLEMS: ProblemEntry[] = [
       "Uploading a marksheet or birth certificate alongside Aadhaar (not Aadhaar alone) sped up approval for DOB corrections larger than a year or two in multiple reported cases.",
       "On r/epfoindia, someone stuck for six months traced the actual blocker to their employer's own e-sign/DSC failing every time they tried to approve the Joint Declaration — not the correction itself — so if approval keeps silently failing, ask HR to confirm their DSC is working, not just whether they've \"approved\" it.",
       "A separate r/epfoindia case noted EPFO doesn't auto-sync a later Aadhaar correction — if you fixed your DOB in Aadhaar after your UAN was created, EPFO still shows the old value until you file the Joint Declaration yourself.",
+      "For a stuck Joint Declaration specifically, one r/EPFO commenter's advice: find your regional PF office and email the Regional Officer (RO) directly and politely — \"the file must be stuck under him and if he wants he can clear it in one hour.\"",
     ],
     officialEscalation: [
       "Track the Joint Declaration status under Manage → Joint Declaration on the member portal.",
@@ -198,6 +203,7 @@ export const PROBLEMS: ProblemEntry[] = [
       "Incorrect or unverified bank account details on file",
       "Mismatch between the employment period in your claim and what the employer's records show",
       "Outstanding dues or an unresolved break in service records",
+      "EPS (pension) dates are incorrectly present on your record even though you were never an EPS member for that period — this specifically blocks Form 19 final-settlement claims and needs a Joint Declaration to set them to NULL before the claim can succeed",
     ],
     fixSteps: [
       "Go to Track Claim Status on the member portal and open the specific claim — the \"remarks\" column names the actual rejection reason.",
@@ -210,9 +216,11 @@ export const PROBLEMS: ProblemEntry[] = [
       "Several members found their real issue was a stale bank IFSC after switching branches — re-verifying bank KYC from scratch (not just checking the account number) fixed it.",
       "A widely-shared r/epfoindia breakdown lists the 7 most common actual rejection reasons (UAN not activated, KYC not approved/Error 404, bank IFSC changed, Date of Exit not updated, name/DOB mismatch, among others) — worth a skim before assuming your case is unusual.",
       "Another r/epfoindia poster's tip: \"Find the actual rejection reason: Login → Track Claim Status → check the Remarks column. Most people miss this and keep reapplying blindly.\"",
+      "A detailed r/EPFO account of an 8-month rejection cycle traced it to EPS dates showing on the record despite never being an EPS member — the fix was filing a Joint Declaration specifically to set those EPS dates to NULL, which the employer had to help push through physically at the EPFO office before the claim would go through.",
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in with the claim ID and rejection remark if the reason listed doesn't match your actual situation.",
+      "A parallel grievance at dpg.gov.in (Directorate of Public Grievances) is worth trying if EPFiGMS stalls — several claimants report it moving faster, especially during the EPFO 3.0 migration backlog (see that entry).",
     ],
     sources: [
       { title: "EPF Claim Rejection Reasons: How to Reapply After a Rejected PF Claim — ClearTax", url: "https://cleartax.in/s/epf-claim-rejected-reasons-and-how-to-apply-again" },
@@ -369,9 +377,11 @@ export const PROBLEMS: ProblemEntry[] = [
       "Several members who assumed they still needed old-employer sign-off found the claim went through immediately once Aadhaar-linking and KYC were completed — the employer-approval step is often not actually required anymore.",
       "A r/epfoindia poster who kept getting \"Rejected by field office\" traced it to their previous employer never updating exit details — the working fix reported was using the portal's own \"mark exit\" option to set the exit date yourself, matching your relieving letter, instead of waiting on the employer.",
       "For a transfer stuck on a Date of Joining mismatch, the reported fix on r/epfoindia was: Member Portal → Manage → Joint Declaration → submit a correction for Date of Joining, then ask the ex-employer's HR to approve it on their portal.",
+      "A r/EPFO poster whose transfer from a named employer kept failing even after the employer confirmed the funds had already been sent found the passbook portal's claims section simply said \"module not available\" — giving no rejection reason at all. If your rejected transfer shows no remark whatsoever, that's a known EPFO 3.0-era gap, not something wrong on your end; escalate by grievance rather than repeatedly resubmitting.",
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in with the transfer claim ID if it's rejected despite complete KYC and Aadhaar linking.",
+      "If the passbook portal shows no rejection reason at all (e.g. \"module not available\"), file a grievance describing that exactly — this is a reported gap in the post-migration system, not a data problem you can self-diagnose.",
     ],
     sources: [
       { title: "EPF Transfer Claim Rejected? How to Fix PF Transfer When Changing Jobs — CitizenNest", url: "https://www.citizennest.com/guide/epf-transfer-claim-rejected-fix" },
@@ -380,6 +390,7 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "EPFO Transfer claim with \"Rejected by field office\" status (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1nrui34/epfo_transfer_claim_with_rejected_by_field_office/" },
       { title: "Claim rejected? Transfer stuck? UAN mismatch? KYC issue? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ud7knp/claim_rejected_transfer_stuck_uan_mismatch_kyc/" },
       { title: "EPFO Account Transfer – How I Solved Repeated Rejections (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1pblmqx/epfo_account_transfer_how_i_solved_repeated/" },
+      { title: "Claim keeps getting rejected (r/EPFO)", url: "https://www.reddit.com/r/EPFO/comments/1wcbbpg/" },
     ],
     lastVerified: "2026-09-15",
     tags: ["transfer", "rejected", "otcp", "aadhaar", "kyc"],
@@ -637,6 +648,89 @@ export const PROBLEMS: ProblemEntry[] = [
     ],
     lastVerified: "2026-09-15",
     tags: ["passbook", "interest", "delay", "grievance"],
+  },
+  {
+    slug: "epfo-3-0-migration-claims-stuck",
+    category: "claims",
+    title: "Claim stuck at \"Claim Submitted at Portal\" since the EPFO 3.0 migration",
+    short:
+      "EPFO's July 2026 system migration ('EPFO 3.0') left a large backlog of claims frozen at the very first status stage for weeks — this is a known, widespread event, not something wrong with your account specifically.",
+    symptoms: [
+      "Claim status has shown \"Claim Submitted at Portal\" for over a week with zero movement, even though it was filed around early July 2026",
+      "Status flips backward — from \"processing\" or \"under process\" back to \"Claim Submitted at Portal\" — instead of moving forward",
+      "A grievance about the delay gets a templated reply blaming \"migration\" or a bank's \"technical issue\" rather than a real update",
+      "Two people who filed on the same day see wildly different outcomes — one gets paid in a day, another waits a month, with no visible pattern",
+    ],
+    likelyCauses: [
+      "EPFO ran a large-scale system migration (\"EPFO 3.0\") starting around early July 2026, which is officially confirmed as having caused a period of \"Scheduled System Migration and Temporary Service Unavailability\"",
+      "Post-migration processing appears to run in batches that are not strictly first-come-first-served, so filing date alone doesn't predict when a claim moves",
+      "Some rejections during this period trace to new-system quirks specific to the migration — e.g. a \"PAN not verified\" flag appearing on claims where PAN was actually verified before the migration",
+    ],
+    fixSteps: [
+      "Don't panic or resubmit repeatedly if your claim has only been stuck a few days — during and shortly after the migration window, multi-week stalls at this exact stage were common and usually resolved without any action.",
+      "Check Track Claim Status for a specific rejection remark first — if one exists, treat it like any other rejection (see the claim-rejected entry) rather than assuming it's purely a migration backlog.",
+      "If it's been stuck for multiple weeks with no remark at all, file a grievance via EPFiGMS citing the exact claim ID and filing date, and separately via the DPG portal (dpg.gov.in) — several people report DPG grievances moving faster than EPFiGMS ones during this backlog.",
+      "As a last resort if grievances go nowhere, some claimants report success publicly tagging @socialepfo, your regional EPFO handle, and the Ministry of Labour on X/Twitter with the claim ID and UAN (no other personal documents) — treat this as a genuine but unofficial escalation channel, not a first step.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia thread with 74 comments (\"EPFO 3.0 WITHDRAWL (Amount Received)\") captured the general mood well: multiple commenters independently described the post-migration processing as \"lottery\"/\"random batch\" rather than ordered by filing date — don't read your neighbor's faster approval as a sign something is specifically wrong with your claim.",
+      "One reply in that thread gave the most concrete, checkable advice for why a claim might specifically be stuck rather than just \"in the batch\": \"Check the KYC, min service 12 months, service history clean then raise grievance.\"",
+      "A detailed r/EPFO post titled \"My PF Withdrawal (Form 19) got finally settled AFTER I did these 2 things\" describes an 8-month ordeal where the claim was rejected repeatedly, in that case because EPS dates were incorrectly present despite never being an EPS member. The two things that reportedly unstuck it: (1) filing a grievance on the DPG portal (dpg.gov.in), which the poster called more effective than EPFiGMS and (2) publicly tagging official EPFO and Ministry of Labour handles on X with the claim ID and UAN.",
+      "An official-looking EPFO News post on r/EPFO titled simply \"Temporary\" (57 upvotes) is the closest thing to an acknowledgment in the wild: \"Important Notice: Scheduled System Migration and Temporary Service Unavailability, EPFO services will be made available after restoration.\" — confirms this was a known, systemic event, not an isolated fault.",
+    ],
+    officialEscalation: [
+      "File a grievance at epfigms.gov.in with your claim ID, UAN, and filing date.",
+      "File a parallel grievance at the Directorate of Public Grievances portal, dpg.gov.in — multiple claimants report faster movement there during this backlog than through EPFiGMS alone.",
+      "As a last resort, publicly tag @socialepfo and your regional EPFO office's handle on X/Twitter with your claim ID and UAN (never post other personal documents publicly).",
+    ],
+    sources: [
+      { title: "EPFO 3.0 WITHDRAWL (Amount Received) (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1uw9fxi/" },
+      { title: "System Upgrade or System Downgrade?? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1uwci2j/" },
+      { title: "My PF Withdrawal (Form 19) got finally settled AFTER I did these 2 things (r/EPFO)", url: "https://www.reddit.com/r/EPFO/comments/1we4r05/" },
+      { title: "Whoever made EPFO 3.0 compliance & Governance, kindly resign immediately (r/EPFO)", url: "https://www.reddit.com/r/EPFO/comments/1wdovk0/" },
+      { title: "Temporary [EPFO migration notice] (r/EPFO)", url: "https://www.reddit.com/r/EPFO/comments/1wdvfh1/" },
+    ],
+    lastVerified: "2026-09-15",
+    tags: ["epfo 3.0", "migration", "claim stuck", "submitted at portal", "dpg", "2026"],
+  },
+  {
+    slug: "delinking-request-stuck-pending",
+    category: "claims",
+    title: "A \"Delinking\" request to remove a wrong employer from your service history never clears",
+    short:
+      "Delinking removes an incorrect or unwanted past-employer entry from your EPFO service history — and while it's stuck pending, it can block every withdrawal, sometimes for months.",
+    symptoms: [
+      "Every claim gets blocked with an error tied to service history or a pending delinking request, even though the claim itself looks otherwise eligible",
+      "The delinking request status has shown \"pending\" for weeks or months with no movement",
+      "A short, unwanted stint at a past employer (sometimes just days) is still showing in your EPFO service history and won't go away",
+    ],
+    likelyCauses: [
+      "A delinking request was filed to remove that old employer's entry, and it is stuck in EPFO's internal approval queue — especially likely during or after the EPFO 3.0 migration window, which several people report broke visibility into pending manual requests entirely",
+      "The PF from that short-term employer was already transferred or merged into a later employer's account — per an EPFO circular cited by multiple commenters, a delinking request can never actually be approved once that transfer has happened, so it sits pending indefinitely instead of being resolved either way",
+    ],
+    fixSteps: [
+      "Check whether the PF from the employer you're trying to delink was ever transferred/merged into a later account. If it was, an approval is not coming — the request needs to be rejected, not approved, to clear the block.",
+      "File a grievance that explicitly asks EPFO to reject the pending delinking request (citing its request ID) rather than a generic \"please process my delinking\" grievance — this is the specific ask that reportedly gets it resolved.",
+      "If the online grievance goes nowhere, try emailing your regional PF office (Regional Officer) directly with the request ID, and as a parallel channel, a grievance on the DPG portal (dpg.gov.in).",
+      "If a claim was already rejected specifically because of the pending delinking request, you can typically resubmit it once the delinking request itself is cleared (approved or rejected) — don't keep resubmitting the claim while delinking is still pending, it will keep failing the same way.",
+    ],
+    communitySolutions: [
+      "The single most specific, confirmed-working tip from r/EPFO: \"Copy this request id and raise a grievance asking them to reject the request from your pending applications... There was a rule that if we transfer pf from that short term employer then it can never be delinked.\" One poster reported their delink request was rejected within two weeks of that specific grievance — and once rejected (not approved), they were able to raise claims again.",
+      "A second commenter confirmed the same rule independently: \"If pf is already transferred for that short term employer then it can never be delinked to maintain epfo records... Just got the application rejected this week and able to raise claims now.\"",
+      "Several people report the EPFO 3.0 migration itself made this worse — one reply put it bluntly: \"the 'upgrade' broke a lot of things. They can't see the request to manually delink, even if they want to,\" with a physical, in-person claim at the regional office suggested as the fallback when the online system can't see the request at all.",
+      "One poster's advice on getting a stuck file actually looked at: find your regional PF office and email the Regional Officer (RO) directly and politely with the specifics — \"the file must be stuck under him and if he wants he can clear it in one hour.\"",
+    ],
+    officialEscalation: [
+      "File a grievance at epfigms.gov.in that specifically asks for the pending delinking request (cite its request ID) to be rejected, if the underlying PF was already transferred elsewhere.",
+      "File a parallel grievance at dpg.gov.in (Directorate of Public Grievances) if EPFiGMS stalls.",
+      "Email your regional PF office's Regional Officer directly, and as a last resort, submit a physical claim in person at the regional EPFO office.",
+    ],
+    sources: [
+      { title: "Whoever made EPFO 3.0 compliance & Governance, kindly resign immediately (r/EPFO)", url: "https://www.reddit.com/r/EPFO/comments/1wdovk0/" },
+      { title: "Unexpected EPFO employment entry from insurance advisor role — trying to understand how this could happen (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1uwbb0p/" },
+    ],
+    lastVerified: "2026-09-15",
+    tags: ["delinking", "service history", "claim blocked", "grievance", "epfo 3.0"],
   },
 ];
 

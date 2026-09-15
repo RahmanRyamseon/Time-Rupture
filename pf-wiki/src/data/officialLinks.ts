@@ -26,6 +26,11 @@ export const OFFICIAL_LINKS: OfficialLink[] = [
     description: "File a formal grievance against EPFO or an employer. Free, and the standard escalation path when self-service steps don't work.",
   },
   {
+    title: "DPG — Directorate of Public Grievances",
+    url: "https://dpg.gov.in/",
+    description: "A separate central-government grievance portal, worth trying in parallel with EPFiGMS — several claimants report it moving stuck EPFO cases faster during the 2026 EPFO 3.0 migration backlog.",
+  },
+  {
     title: "UMANG App",
     url: "https://web.umang.gov.in/",
     description: "Government app with EPFO services, including UAN activation via face authentication when SMS OTP isn't working.",
