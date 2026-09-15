@@ -32,7 +32,10 @@ EPFO office.
 
 Content in `src/data/problems.ts` was built from a research pass over EPFO's own
 published rules plus personal-finance publishers, forums, and social-media reports
-of what worked — see each entry's `sources` field. This is a curated dataset, not a
+of what worked — see each entry's `sources` field. Each entry also cites specific
+Reddit threads (mostly r/epfoindia, a subreddit dedicated to EPFO issues) where a
+member's real, dated experience matched or added to the official guidance — those
+sources are labeled `(r/<subreddit>)` in the title. This is a curated dataset, not a
 live feed from EPFO's systems: rules, forms, and processing timelines do change.
 `lastVerified` marks when each entry's research pass happened; treat anything older
 than a few months as worth re-checking against the official portal, especially

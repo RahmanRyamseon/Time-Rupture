@@ -2,10 +2,11 @@ import type { ProblemEntry } from "@/lib/types";
 
 /**
  * Every entry is a distillation of published EPFO guidance plus the fixes
- * people report actually working on forums, Quora, and personal-finance
- * sites. See each entry's `sources` for where it was sourced from, and
- * `lastVerified` for when. This is not official EPFO guidance — see the
- * disclaimer on every page and always cross-check on epfindia.gov.in.
+ * people report actually working on forums (including r/epfoindia and
+ * related subreddits), Quora, and personal-finance sites. See each entry's
+ * `sources` for where it was sourced from, and `lastVerified` for when.
+ * This is not official EPFO guidance — see the disclaimer on every page and
+ * always cross-check on epfindia.gov.in.
  */
 export const PROBLEMS: ProblemEntry[] = [
   {
@@ -36,6 +37,8 @@ export const PROBLEMS: ProblemEntry[] = [
       "Several members report the UMANG app's face-authentication route working immediately after weeks of failed SMS-OTP attempts — worth trying before anything else if you have a smartphone.",
       "People who kept getting silent failures found the actual blocker was a spelling mismatch between their EPFO name and Aadhaar name (e.g. a missing surname) — fixing that in Aadhaar first, then retrying, worked.",
       "When HR is slow to confirm the registered number, asking payroll directly for a screenshot of the UAN record (rather than just asking \"what number did you register\") got faster answers.",
+      "On r/epfoindia, members with a UMANG face-auth failure traced it to the same name-mismatch cause — the fix that worked was correcting the mismatch before retrying, not retrying repeatedly.",
+      "For UMANG OTPs specifically, several r/epfoindia posters report the failure is a sync error between EPFO and UIDAI servers, not a wrong number — clearing the app cache and reinstalling UMANG fixed it for them.",
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in with your UAN, Member ID, and employer details if nothing above works.",
@@ -45,8 +48,11 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "UAN Not Activated? How to Fix EPF UAN Activation Problem Online — CitizenNest", url: "https://www.citizennest.com/guide/epf-uan-not-activated-fix" },
       { title: "UAN Activation and Login Problems: How to Fix Every Issue on EPFO Portal — Orbit Careers", url: "https://orbitcareers.com/uan-activation-problems-2026/" },
       { title: "UAN Activation Errors & Fixes (OTP, Name, DOB & Mobile) — Kustodian.life", url: "https://kustodian.life/resources/uan-activation-errors-fixes-otp-name-dob-mobile-2026-guide" },
+      { title: "Not receiving SMS from EPFO site to activate UAN — any solutions? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1mq0mq5/not_receiving_sms_from_epfo_site_to_activate_uan/" },
+      { title: "Umang issue: unable to activate uan (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1mj373r/umang_issue_unable_to_activate_uan/" },
+      { title: "UMANG app not sending OTP (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1n9cm3c/umang_app_not_sending_otp/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["uan", "otp", "activation", "umang", "login", "aadhaar"],
   },
   {
@@ -74,6 +80,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "People who tried to fix this by contacting the old employer first often wasted time — going straight to Aadhar-seeding both UANs and filing the transfer request was faster in most reported cases.",
       "A few members report the uanepf@epfindia.gov.in email route working within a couple of weeks when the automatic online merge silently failed.",
+      "On r/epfoindia, the exact click-path people report working is: log in to the new (active) UAN → Online Services → \"One Member, One EPF Account (Transfer Request)\" → enter the old UAN → verify and submit.",
+      "One r/epfoindia poster whose employer never actioned a merge request found raising an EPFiGMS grievance specifically titled \"Duplicate UAN / Transfer of Service\", asking for the old UAN to be deactivated, got it handled directly rather than through the employer.",
     ],
     officialEscalation: [
       "Email uanepf@epfindia.gov.in with both UANs if the online transfer-triggered merge doesn't go through.",
@@ -83,8 +91,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Merge Two UAN EPF Accounts — Complete Procedure — BankBazaar", url: "https://www.bankbazaar.com/saving-schemes/how-to-merge-two-uan-epf-accounts.html" },
       { title: "How to Merge Two UAN Numbers of EPF Account Online? — Angel One", url: "https://www.angelone.in/knowledge-center/savings-schemes/how-to-merge-two-uan-numbers" },
       { title: "Do you have more than two UAN numbers for EPF? Here's how to merge them — Zee Business", url: "https://www.zeebiz.com/personal-finance/epfo/news-easy-steps-to-merge-or-deactivate-multiple-uans-linked-to-epfo-account-employees-provident-fund-stst-240370" },
+      { title: "Merging of UAN numbers (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1o790mb/merging_of_uan_numbers/" },
+      { title: "Duplicate UAN Created (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1uduugm/duplicate_uan_created/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["uan", "duplicate", "merge", "transfer"],
   },
   {
@@ -112,6 +122,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "Multiple people report that switching from PAN-KYC to Aadhaar-KYC (when the Aadhaar details match exactly) skipped the employer-approval wait entirely.",
       "For closed companies, visiting the regional office in person with original Aadhaar/PAN and a printed grievance reference number got resolutions faster than waiting online.",
+      "A r/epfoindia thread from someone whose bank KYC sat pending for weeks was told directly: employer approval is no longer required for bank KYC at all — it's verified only by the bank/NPCI now, so a pending status there means the delay is on the bank's side, not HR's.",
+      "One employer-side reply on r/epfoindia named a specific, less obvious blocker: EPFO had been rejecting that employer's Digital Signature Certificate (DSC) for weeks, silently stalling KYC approval for 25+ employees at once — worth asking HR explicitly whether their DSC is the holdup.",
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in citing your UAN and that the employer is unresponsive or closed.",
@@ -121,8 +133,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "If the employer has not approved the KYC details... — Quora", url: "https://www.quora.com/If-the-employer-has-not-approved-the-KYC-details-and-the-company-has-stopped-3-years-ago-and-the-local-EPFO-office-has-stopped-processing-offline-KYC-what-should-I-do-now" },
       { title: "EPFO KYC Stuck? Update Bank, PAN, Aadhaar Without Employer Approval 2026 — PlanivestFin", url: "https://www.planivestfin.com/blog/epfo-kyc-update-without-employer-2026" },
       { title: "EPF KYC Not Verified: Common Errors & Quick Fixes — Kustodian.life", url: "https://kustodian.life/resources/epf-kyc-bank-verification-fix-guide" },
+      { title: "EPFO Bank KYC approval time after resignation — how long does it take? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1q2ofkp/epfo_bank_kyc_approval_time_after_resignation_how/" },
+      { title: "Employer not approving pan KYC (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1i6ej3o/employer_not_approving_pan_kyc/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["kyc", "employer approval", "aadhaar", "bank seeding"],
   },
   {
@@ -150,6 +164,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "People with a former employer no longer around used their next/current employer to co-sign the Joint Declaration where the older employer's approval was strictly required to be re-verified against records already on file — check with your regional office whether this applies to your case.",
       "Uploading a marksheet or birth certificate alongside Aadhaar (not Aadhaar alone) sped up approval for DOB corrections larger than a year or two in multiple reported cases.",
+      "On r/epfoindia, someone stuck for six months traced the actual blocker to their employer's own e-sign/DSC failing every time they tried to approve the Joint Declaration — not the correction itself — so if approval keeps silently failing, ask HR to confirm their DSC is working, not just whether they've \"approved\" it.",
+      "A separate r/epfoindia case noted EPFO doesn't auto-sync a later Aadhaar correction — if you fixed your DOB in Aadhaar after your UAN was created, EPFO still shows the old value until you file the Joint Declaration yourself.",
     ],
     officialEscalation: [
       "Track the Joint Declaration status under Manage → Joint Declaration on the member portal.",
@@ -160,8 +176,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "PF Joint Declaration Form: When and How to Use It in EPFO — Bajaj Finserv", url: "https://www.bajajfinserv.in/investments/joint-declaration-form-epf" },
       { title: "EPFO Name Correction: Fix Name, DOB & Gender Mismatch — Pension Bazaar", url: "https://www.pensionbazaar.com/epf/epfo-details-correction-process/" },
       { title: "UAN Name, DOB or Joining-Date Mismatch Blocking PF? Fix Matrix", url: "https://righttoinformation.wiki/practical-guides/epfo-uan-name-dob-joining-date-mismatch-pf-withdrawal" },
+      { title: "Stuck with EPFO Name Correction for 6+ Months (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1n96oc3/stuck_with_epfo_name_correction_for_6_months_will/" },
+      { title: "DOB mismatch between Aadhaar and EPF record (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1tow94x/dob_mismatch_between_aadhaar_and_epf_record/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["kyc", "aadhaar", "name mismatch", "joint declaration", "dob"],
   },
   {
@@ -190,6 +208,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "People who kept getting rejected without checking remarks first wasted multiple 7–10 day processing cycles — reading the remarks field before resubmitting is the single biggest time-saver reported.",
       "Several members found their real issue was a stale bank IFSC after switching branches — re-verifying bank KYC from scratch (not just checking the account number) fixed it.",
+      "A widely-shared r/epfoindia breakdown lists the 7 most common actual rejection reasons (UAN not activated, KYC not approved/Error 404, bank IFSC changed, Date of Exit not updated, name/DOB mismatch, among others) — worth a skim before assuming your case is unusual.",
+      "Another r/epfoindia poster's tip: \"Find the actual rejection reason: Login → Track Claim Status → check the Remarks column. Most people miss this and keep reapplying blindly.\"",
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in with the claim ID and rejection remark if the reason listed doesn't match your actual situation.",
@@ -198,8 +218,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "EPF Claim Rejection Reasons: How to Reapply After a Rejected PF Claim — ClearTax", url: "https://cleartax.in/s/epf-claim-rejected-reasons-and-how-to-apply-again" },
       { title: "PF Withdrawal Claim Rejected? Common Reasons & How to Fix Them — Ujjivan SFB", url: "https://www.ujjivansfb.bank.in/banking-blogs/personal-finance/pf-withdrawal-claim-rejected-reasons" },
       { title: "Reasons for EPF Claim Rejection & How to Reapply — Kotak Life", url: "https://www.kotaklife.com/insurance-guide/retirement/epfo-claim-rejected-reason" },
+      { title: "EPF Claim Getting Rejected? These are the 7 actual reasons + fixes (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1s3qxvf/epf_claim_getting_rejected_these_are_the_7_actual/" },
+      { title: "EPF claim rejected 2026 guide: error codes, EPS mismatch fix, and grievance method that works (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1sjih9g/epf_claim_rejected_2026_guide_error_codes_eps/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["claim", "rejected", "reapply", "remarks"],
   },
   {
@@ -225,6 +247,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "People who filed the 75% partial claim immediately, then the remaining 25% after two full months, generally reported smoother processing than trying to wait for one full 100% claim.",
       "Several reported the fix for a stuck Date of Exit was a direct message to the ex-employer's payroll contact rather than the EPFO portal — the update has to come from the employer side.",
+      "A recurring tip across r/epfoindia threads: you can mark your own exit date yourself (via the portal's \"mark exit\" option) once a month has passed, rather than waiting on the employer to do it — then apply for the full Form 19 after the full two months.",
+      "One poster's exact sequence, confirmed by several replies: \"first mark your exit date of service ... apply for form 19 after 2 months of unemployment for full [withdrawal]\", with Form 10C for the pension portion claimable the next day.",
     ],
     officialEscalation: [
       "File a grievance on epfigms.gov.in if your former employer won't update the Date of Exit despite repeated requests.",
@@ -234,8 +258,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Form 19: EPF Withdrawal Process & Eligibility Guide — Qandle", url: "https://www.qandle.com/glossary-form-19" },
       { title: "PF Form 19: What is it, Benefits & How to Fill EPF Form 19 — Bajaj Finserv", url: "https://www.bajajfinserv.in/investments/pf-form-19" },
       { title: "Complete Guide to Withdrawing PF and EPF After Leaving a Job — Canara HSBC Life", url: "https://www.canarahsbclife.com/blog/retirement-plan/how-to-withdraw-pf-and-epf-after-leaving-a-job" },
+      { title: "PF Full withdrawal - Form-19 with 15g after 2 months of unemployment (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1pc5ab9/pf_full_withdrawal_form19_with_15g_after_2_months/" },
+      { title: "PF Withdrawal (Unemployed for more than 2 months) (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1hboge0/pf_withdrawal_unemployed_for_more_than_2_months/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["form 19", "withdrawal", "resignation", "unemployment", "date of exit"],
   },
   {
@@ -262,6 +288,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "Members report medical-purpose claims processing fastest when the hospital bill/estimate was uploaded at time of filing rather than promised as a follow-up document.",
       "For housing advances, several people found the 5-year service-length rule is checked automatically and silently fails the claim with no clear message — verify your continuous service length first if you're anywhere near the boundary.",
+      "A r/epfoindia poster whose Form 31 was rejected for \"insufficient service\" despite the portal showing 5+ years traced it to a mismatch in their employer's wage records — the fix was getting the employer to file a revised Form 3A rather than resubmitting the same claim.",
+      "For marriage claims specifically, a r/epfoindia commenter's exact path: \"log in to the UAN portal, go to Online Services, select Claim Form-31, choose 'Marriage' as the purpose, and upload your wedding [proof]\" — picking the wrong purpose code is a repeat cause of rejection.",
     ],
     officialEscalation: [
       "File a grievance on epfigms.gov.in with the claim ID if a purpose-eligible claim is rejected without a clear stated reason.",
@@ -271,8 +299,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "EPF Advance Withdrawal: Rules, Limits & Form 31 Explained — m.Stock", url: "https://www.mstock.com/articles/how-to-withdraw-epf-in-advance" },
       { title: "EPF Form 31 – Partial Withdrawal — Paisabazaar", url: "https://www.paisabazaar.com/saving-schemes/epf-form-31/" },
       { title: "What Is EPF Form 31?: Eligibility, Withdrawal Rules & Claim Process — Bajaj Finserv", url: "https://www.bajajfinserv.in/investments/epf-form-31" },
+      { title: "EPFO rejected my Form-31 saying \"insufficient service\" while their own portal showed 5+ years (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1uswb2c/epfo_rejected_my_form31_saying_insufficient/" },
+      { title: "PF withdrawal for marriage, only 5 years experience (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1u1f08r/pf_withdrawal_for_marriage_only_5_years_experience/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["form 31", "advance", "medical", "marriage", "housing"],
   },
   {
@@ -299,6 +329,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "Multiple users on social media resolved a persistent no-OTP issue by tweeting the specifics (UAN, described issue, no personal documents) at the official @socialepfo handle, which several report gets a faster human response than the grievance portal.",
       "Turning off DND fixed it outright for a large share of people who tried it before escalating further.",
+      "A specific fix posted on r/EPFO for the \"One Member One EPF Account\" flow: if OTP fails when you select \"Old PF Account Number\" in step 1, restart the transfer and choose the UAN option instead — several people confirmed this resolved a persistent \"Failed to get OTP\" error.",
+      "For claims stuck for months on \"OTP retrieval failed\", a r/epfoindia poster's experience was that this traces to an Aadhaar service outage on EPFO/UIDAI's side, not anything wrong with your account — a grievance citing the exact error text got it escalated.",
     ],
     officialEscalation: [
       "Tweet the issue (without personal documents) to @socialepfo for a faster first response.",
@@ -308,8 +340,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Unable to Process OTP Request in EPF: What to Do? — HR Cabin", url: "https://www.hrcabin.com/unable-to-process-otp-request-epf/" },
       { title: "OTP is Not Coming From EPFO Portal, Say Several Users on Social Media Platforms — DQ India", url: "https://www.dqindia.com/otp-not-coming-epfo-portal-say-several-users-social-media-platforms/" },
       { title: "Now EPFO members can change personal details, transfer EPF online without employer's intervention — Tribune India", url: "https://www.tribuneindia.com/news/now-epfo-members-can-change-personal-details-transfer-epf-online-without-employers-intervention" },
+      { title: "[FIX] One Member One EPF Account Transfer \"Failed to get OTP\" error (r/EPFO)", url: "https://www.reddit.com/r/EPFO/comments/1v4386t/fix_one_member_one_epf_account_transfer_failed_to/" },
+      { title: "EPF claim stuck for 4+ months due to OTP error - grievance closed (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1qi0qdt/epf_claim_stuck_for_4_months_due_to_otp_error/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["transfer", "otp", "dnd", "aadhaar"],
   },
   {
@@ -333,6 +367,8 @@ export const PROBLEMS: ProblemEntry[] = [
     ],
     communitySolutions: [
       "Several members who assumed they still needed old-employer sign-off found the claim went through immediately once Aadhaar-linking and KYC were completed — the employer-approval step is often not actually required anymore.",
+      "A r/epfoindia poster who kept getting \"Rejected by field office\" traced it to their previous employer never updating exit details — the working fix reported was using the portal's own \"mark exit\" option to set the exit date yourself, matching your relieving letter, instead of waiting on the employer.",
+      "For a transfer stuck on a Date of Joining mismatch, the reported fix on r/epfoindia was: Member Portal → Manage → Joint Declaration → submit a correction for Date of Joining, then ask the ex-employer's HR to approve it on their portal.",
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in with the transfer claim ID if it's rejected despite complete KYC and Aadhaar linking.",
@@ -341,8 +377,11 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "EPF Transfer Claim Rejected? How to Fix PF Transfer When Changing Jobs — CitizenNest", url: "https://www.citizennest.com/guide/epf-transfer-claim-rejected-fix" },
       { title: "EPFO Guidelines – PF Transfer Delayed? Know What to do Next — Times Bull", url: "https://www.timesbull.com/epfo-guidelines-pf-transfer-delayed-know-what-to-do-next" },
       { title: "Now EPFO members can change personal details, transfer EPF online without employer's intervention — Tribune India", url: "https://www.tribuneindia.com/news/now-epfo-members-can-change-personal-details-transfer-epf-online-without-employers-intervention" },
+      { title: "EPFO Transfer claim with \"Rejected by field office\" status (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1nrui34/epfo_transfer_claim_with_rejected_by_field_office/" },
+      { title: "Claim rejected? Transfer stuck? UAN mismatch? KYC issue? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ud7knp/claim_rejected_transfer_stuck_uan_mismatch_kyc/" },
+      { title: "EPFO Account Transfer – How I Solved Repeated Rejections (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1pblmqx/epfo_account_transfer_how_i_solved_repeated/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["transfer", "rejected", "otcp", "aadhaar", "kyc"],
   },
   {
@@ -369,6 +408,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "People who documented exact missing months (not just \"my PF isn't showing\") in the grievance got clearer, faster responses than vague complaints.",
       "In cases of prolonged non-payment, some employees report that a police complaint under IPC Sections 406/409 (criminal breach of trust) added pressure that got the employer to pay up faster — this is a serious step, best combined with the EPFO grievance rather than instead of it.",
+      "A detailed r/LegalAdviceIndia walkthrough for filing on EPFiGMS: \"Go to the EPFIGMS portal at epfigms.gov.in → Click on the Register Grievance tab → Enter your UAN, security code, and click Get Details → Enter [grievance details]\" — several people found following these exact steps (rather than the general EPFO help pages) avoided a rejected/incomplete grievance.",
+      "On r/mumbai, someone whose employer hadn't deposited PF for over a year outlined an escalation ladder: file the EPFO grievance first, then an RTI to EPFO if it stalls, with a police complaint under IPC 406/409 or a Labour Commissioner complaint as the next steps if that also goes nowhere.",
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in with UAN, employer details, and the missing contribution period.",
@@ -379,8 +420,11 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "EPFO Guide: What happens if an employer doesn't deposit Provident Fund deductions into PF account? — Zee Business", url: "https://www.zeebiz.com/personal-finance/epfo/news-epfo-guide-consequences-for-employers-not-depositing-provident-fund-deductions-stst-242065" },
       { title: "Missing PF Contributions? Step-by-Step Guide To Check Your EPF Passbook and File a Grievance — LatestLY", url: "https://www.latestly.com/business/missing-pf-contributions-step-by-step-guide-to-check-your-epf-passbook-and-file-a-grievance-7604111.html" },
       { title: "PF Not Deposited by Employer: EPFO Complaint and Legal Notice — JuriGram", url: "https://jurigram.com/blog/labour-law/pf-not-deposited-by-employer-epfo-complaint-and-legal-notice" },
+      { title: "PF deducted but not credited (r/LegalAdviceIndia)", url: "https://www.reddit.com/r/LegalAdviceIndia/comments/1ibxyoc/pf_deducted_but_not_credited/" },
+      { title: "My company hasn't deposited my PF for over a year (r/mumbai)", url: "https://www.reddit.com/r/mumbai/comments/1m5hwe1/my_company_hasnt_deposited_my_pf_for_over_a_year/" },
+      { title: "Employer not crediting PF (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1lfwpie/employer_not_crediting_pf/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["employer", "non-compliance", "ecr", "grievance", "missing contributions"],
   },
   {
@@ -407,6 +451,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "Members in badly backlogged regions (several zones report over 1,000 pending cases each) found direct follow-up with their regional office, not just the online grievance, got faster movement.",
       "Confirming with your employer that wage records were actually uploaded — not just assuming they were — surfaced the real blocker in several reported cases.",
+      "A r/epfoindia thread tracking the government's own numbers reports 98.5% of higher-pension applications processed, with roughly 22,000 still pending and no published timeline — useful context if your own case feels unusually slow.",
+      "One applicant on r/epfoindia reported that messaging their regional field office directly on WhatsApp, rather than only checking the portal, got a specific status reply (\"pending at DA accounts\") the portal itself never showed.",
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in with your higher-pension application reference number.",
@@ -416,8 +462,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Higher EPS 95 Pension: EPFO received 15.24 lakh applications where cases are still pending — Business Today", url: "https://www.businesstoday.in/personal-finance/news/story/higher-eps-95-pension-epfo-received-15-24-lakh-applications-where-cases-are-still-pending-548620-2026-08-12" },
       { title: "Waiting for higher EPFO pension? Govt announces 4 steps to speed up claims — Business Standard", url: "https://www.business-standard.com/amp/finance/personal-finance/waiting-for-higher-epfo-pension-govt-announces-4-steps-to-speed-up-claims-126081400983_1.html" },
       { title: "Higher Pension option under EPFO — Government clarification on pending claims", url: "https://www.govtstaff.com/2026/08/higher-pension-option-under-epfo-government-clarification-on-pending-claims.html" },
+      { title: "EPFO Rejects Over 11 Lakh Higher-Pension Claims—Only ~22k pending (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1mcz5m5/epfo_rejects_over_11_lakh_higherpension/" },
+      { title: "Ask Me Anything About EPF, EPS, PF Transfers, Withdrawals & Rejected Claims (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1u9x35o/ama_ask_me_anything_about_epf_eps_pf_transfers/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["eps", "pension", "higher pension", "supreme court"],
   },
   {
@@ -445,6 +493,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "The profile-photo requirement is easy to miss entirely since the form doesn't always flag it clearly — multiple people who were stuck for weeks found this was the actual blocker.",
       "Clearing cache/cookies and switching browsers resolved recurring \"mismatch\" errors for several users when the data itself looked correct.",
+      "A specific browser tip repeated across r/epfoindia: when e-signing throws \"An Unexpected error has occurred\" in Chrome, switching to Firefox let the same e-nomination go through without changing anything else.",
+      "One r/epfoindia poster's profile-photo upload kept silently failing to save — their exact wording was that the nominee \"will get blocked after 5 [login] attempts\", so if a photo upload isn't sticking, stop retrying blindly and check the photo file itself (size/format) before you hit that limit.",
     ],
     officialEscalation: [
       "File a grievance on epfigms.gov.in describing the exact error message if the steps above don't resolve it.",
@@ -453,8 +503,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Are you unable to complete your EPF e-nomination? This profile photo issue could be the reason — Upstox", url: "https://upstox.com/news/personal-finance/latest-updates/are-you-unable-to-complete-your-epf-e-nomination-this-profile-photo-issue-could-be-the-reason/article-196997/" },
       { title: "Users facing difficulties updating nominee details on EPF portal — HR Katha", url: "https://www.hrkatha.com/news/users-facing-difficulties-updating-nominee-details-on-epf-portal/" },
       { title: "Glitches mar EPFO portal's working, members struggle to file nomination — Tribune India", url: "https://www.tribuneindia.com/news/nation/glitches-mar-epfo-portals-working-members-struggle-to-file-nomination-364170" },
+      { title: "Anyone facing issues with e-signing the e-Nomination on EPFO portal? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1jnd7tf/anyone_facing_issues_with_esigning_the/" },
+      { title: "Trying to update my profile picture to file e-nomination, nothing happens (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1um6nxe/trying_to_update_my_profile_picture_to_file/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["nomination", "e-nomination", "profile photo", "eps"],
   },
   {
@@ -483,6 +535,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "Families who got a succession certificate from a local court in parallel with filing Form 51F (rather than waiting for EPFO to ask for it) avoided a second round-trip on the claim.",
       "Re-verifying every name spelling against Aadhaar before submission, rather than after a rejection, saved weeks for several families in reported cases.",
+      "A r/personalfinanceindia thread warns against a specific mistake: adding an e-nomination after the member has already died — EPFO discards it as invalid since the member was deceased at the time it was filed, so don't waste time trying to backfill a nomination and go straight to the legal-heir route.",
+      "Several r/epfoindia replies converge on the same core document list for a no-nominee claim: Form 20, Aadhaar of both the deceased and the claimant, PAN of both, a cancelled cheque, a photograph of the claimant, plus the succession or family-member certificate.",
     ],
     officialEscalation: [
       "File a grievance on epfigms.gov.in citing the deceased member's UAN if the claim stalls or is rejected without a clear reason.",
@@ -493,8 +547,11 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Check EPF Claim After the Death of a Subscriber and its Process — BankBazaar", url: "https://www.bankbazaar.com/saving-schemes/know-about-epf-claim-after-the-death-of-a-subscriber.html" },
       { title: "EPF Death Claim Process in India: Step-by-Step Guide for Legal Heirs — Kustodian.life", url: "https://kustodian.life/resources/epf-death-claim-process-india" },
       { title: "Form 51F EPF: How Legal Heirs Can Claim PF Without Nomination — Kustodian.life", url: "https://www.kustodian.life/resources/form-51f-epf-how-legal-heirs-can-claim-pf-without-nomination" },
+      { title: "Death PF Claim with No Nominee (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1shp6n2/death_pf_claim_with_no_nominee/" },
+      { title: "EPFO CLAIM AFTER DEATH || No E-Nomination (r/personalfinanceindia)", url: "https://www.reddit.com/r/personalfinanceindia/comments/1s33txa/epfo_claim_after_death_no_enomination/" },
+      { title: "PF Withdrawl querry when employee is dead with no nominee (r/personalfinanceindia)", url: "https://www.reddit.com/r/personalfinanceindia/comments/1g1u21q/pf_withdrawl_querry_when_employee_is_dead_with_no/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["death claim", "nomination", "legal heir", "succession certificate"],
   },
   {
@@ -521,6 +578,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "People who withdrew close to 5 years' service but were surprised by TDS often found their \"continuous service\" clock had actually reset due to a transfer gap or duplicate UAN — worth double-checking your actual continuous-service date before assuming an error.",
       "Filing the income tax return and claiming the TDS credit (rather than trying to get EPFO to \"undo\" it) is the practical path once tax has already been deducted.",
+      "A r/epfoindia poster who withdrew after 3.5 years and lost ₹30k to TDS made the point plainly: EPFO doesn't warn you before deducting it, and the withdrawal amount alone (not your final tax liability) decides whether TDS applies at all — plan for it before you submit the claim, not after.",
+      "Multiple r/IndiaTax and r/epfoindia threads confirm the same practical outcome: TDS deducted under Section 192A is not the same as final tax owed, and if your total income is below the taxable threshold, filing an ITR gets the full amount refunded — one poster titled their thread exactly that: \"Successfully got the refund for the TDS deducted on PF withdrawal.\"",
     ],
     officialEscalation: [
       "TDS already deducted is not reversible by EPFO directly — recover it, if applicable, through your income tax return using the Form 26AS credit.",
@@ -530,8 +589,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Income Tax on EPF Withdrawal | PF Withdrawal Taxability — ClearTax", url: "https://cleartax.in/s/pf-balance-withdrawal-incometax" },
       { title: "EPFO rules on TDS for EPF withdrawal: When your PF money is taxed — Upstox", url: "https://upstox.com/news/personal-finance/investing/epfo-rules-on-tds-for-epf-withdrawal-when-your-pf-money-is-taxed/article-193478/" },
       { title: "TDS on PF Withdrawal: Rules, Rates, & How to Minimise Tax — Bajaj Finserv", url: "https://www.bajajfinserv.in/investments/tds-on-pf-withdrawal" },
+      { title: "\"Withdrew my PF after 3.5 years, got ₹30k cut as TDS. EPFO didn't warn...\" (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1s2j6sp/withdrew_my_pf_after_35_years_got_30k_cut_as_tds/" },
+      { title: "Successfully got the refund for the TDS deducted on PF withdrawal (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1u9xs94/successfully_got_the_refund_for_the_tds_deducted/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["tax", "tds", "form 15g", "form 15h", "5 year rule"],
   },
   {
@@ -561,6 +622,8 @@ export const PROBLEMS: ProblemEntry[] = [
     communitySolutions: [
       "Many \"missing interest\" grievances turn out to be pure timing — several members report the entry appearing on its own within the April–September window without any action needed.",
       "When a specific month was genuinely missing, treating it as an employer non-deposit issue (not a passbook bug) and escalating to the employer directly got it resolved faster than repeatedly refreshing the passbook.",
+      "A less obvious cause reported on r/epfoindia: EPFO can stop crediting interest on an account that has had no contributions for 2–3 years — if that's your situation, the fix isn't a grievance at all, it's merging that dormant account into your active UAN (see the duplicate-UAN entry).",
+      "One r/epfoindia poster noted that even once the passbook service comes back up, a newly-appeared interest figure may be \"provisional\" and actually reflect last year's number rather than the current year's — worth checking the dates on the entry itself before assuming it's wrong or final.",
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in with UAN, PF number, and a passbook screenshot if interest or contributions remain missing well past the normal window.",
@@ -569,8 +632,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "EPF Interest for FY 2025-26 Not Credited? Reasons & Solutions — Square Insurance", url: "https://www.squareinsurance.in/blog/general-awareness/epf-interest-not-credited" },
       { title: "EPF Interest Not Credited? Reasons, Timeline & Solutions — Pension Bazaar", url: "https://www.pensionbazaar.com/epf/epf-interest-not-credited/" },
       { title: "EPF Passbook Errors: Common Issues & Solutions Guide — Pension Bazaar", url: "https://www.pensionbazaar.com/epf/epf-passbook-errors/" },
+      { title: "Interest not credited for 2+ years (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1mv9ksr/interest_not_credited_for_2_years/" },
+      { title: "PF Interest Not Credited Yet for FY 2025–26. Anyone Else Facing This? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1trpw2i/pf_interest_not_credited_yet_for_fy_202526_anyone/" },
     ],
-    lastVerified: "2026-09-14",
+    lastVerified: "2026-09-15",
     tags: ["passbook", "interest", "delay", "grievance"],
   },
 ];
