@@ -14,12 +14,16 @@ export function SearchBox({ autoFocus = false }: { autoFocus?: boolean }) {
   const showDropdown = focused && query.trim().length > 0;
 
   return (
-    <div className="relative w-full max-w-xl">
+    <div role="search" className="relative w-full max-w-xl">
       <div className="relative">
-        <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-foreground/40">
+        <span aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-foreground/40">
           🔍
         </span>
+        <label htmlFor="pf-search-input" className="sr-only">
+          Search PF Wiki
+        </label>
         <input
+          id="pf-search-input"
           type="search"
           value={query}
           autoFocus={autoFocus}
@@ -48,7 +52,11 @@ export function SearchBox({ autoFocus = false }: { autoFocus?: boolean }) {
                     >
                       <span className="text-sm font-medium">{r.title}</span>
                       <span className="text-xs text-foreground/50">
-                        {category ? `${category.icon} ${category.name}` : null}
+                        {category ? (
+                          <>
+                            <span aria-hidden="true">{category.icon}</span> {category.name}
+                          </>
+                        ) : null}
                       </span>
                     </Link>
                   </li>

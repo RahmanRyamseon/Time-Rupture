@@ -6,6 +6,7 @@ import { categoryBySlug } from "@/data/categories";
 import { SourceList } from "@/components/SourceList";
 import { DataDisclaimer } from "@/components/DataDisclaimer";
 import { ProblemCard } from "@/components/ProblemCard";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
 
 export function generateStaticParams() {
   return PROBLEMS.map((p) => ({ slug: p.slug }));
@@ -18,10 +19,25 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const entry = problemBySlug(slug);
-  if (!entry) return { title: "Not found — PF Wiki" };
+  if (!entry) return { title: "Not found" };
+  const url = `/problem/${entry.slug}/`;
   return {
-    title: `${entry.title} — PF Wiki`,
+    title: entry.title,
     description: entry.short,
+    keywords: entry.tags,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: entry.title,
+      description: entry.short,
+      modifiedTime: entry.lastVerified,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: entry.title,
+      description: entry.short,
+    },
   };
 }
 
@@ -32,11 +48,69 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
 
   const category = categoryBySlug(entry.category);
   const related = relatedProblems(entry);
+  const pageUrl = `${SITE_URL}/problem/${entry.slug}/`;
+
+  const breadcrumbItems = [
+    { name: "Home", url: `${SITE_URL}/` },
+    ...(category ? [{ name: category.name, url: `${SITE_URL}/category/${category.slug}/` }] : []),
+    { name: entry.title, url: pageUrl },
+  ];
+  const breadcrumbListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbItems.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: entry.title,
+    description: entry.short,
+    url: pageUrl,
+    dateModified: entry.lastVerified,
+    inLanguage: "en",
+    isAccessibleForFree: true,
+    keywords: entry.tags.join(", "),
+    about: category ? category.name : undefined,
+    author: { "@type": "Organization", name: SITE_NAME },
+    publisher: { "@type": "Organization", name: SITE_NAME },
+    citation: entry.sources.map((s) => s.url),
+  };
+
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to fix: ${entry.title}`,
+    description: entry.short,
+    step: entry.fixSteps.map((step, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      text: step,
+    })),
+  };
 
   return (
     <div className="flex flex-col gap-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
+
       <div className="flex flex-col gap-3">
-        <nav className="text-sm text-foreground/50">
+        <nav aria-label="Breadcrumb" className="text-sm text-foreground/50">
           <Link href="/" className="hover:underline">
             Home
           </Link>{" "}
@@ -49,16 +123,20 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
               /{" "}
             </>
           )}
-          <span className="text-foreground/70">{entry.title}</span>
+          <span aria-current="page" className="text-foreground/70">
+            {entry.title}
+          </span>
         </nav>
         {category && (
           <span className="w-fit rounded-full bg-brand-soft px-2.5 py-0.5 text-xs font-medium text-brand-strong">
-            {category.icon} {category.name}
+            <span aria-hidden="true">{category.icon}</span> {category.name}
           </span>
         )}
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">{entry.title}</h1>
         <p className="text-foreground/70">{entry.short}</p>
-        <p className="text-xs text-foreground/45">Last verified {entry.lastVerified}</p>
+        <p className="text-xs text-foreground/45">
+          Last verified <time dateTime={entry.lastVerified}>{entry.lastVerified}</time>
+        </p>
       </div>
 
       <Section title="How this usually shows up">
@@ -73,7 +151,10 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
         <ol className="flex flex-col gap-3">
           {entry.fixSteps.map((step, i) => (
             <li key={i} className="flex gap-3">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand text-xs font-bold text-white">
+              <span
+                aria-hidden="true"
+                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand text-xs font-bold text-white"
+              >
                 {i + 1}
               </span>
               <span className="text-sm leading-relaxed text-foreground/80">{step}</span>
@@ -103,8 +184,10 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
       </Section>
 
       {related.length > 0 && (
-        <section>
-          <h2 className="mb-4 text-lg font-semibold">Related problems</h2>
+        <section aria-labelledby="related-heading">
+          <h2 id="related-heading" className="mb-4 text-lg font-semibold">
+            Related problems
+          </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {related.map((r) => (
               <ProblemCard key={r.slug} entry={r} />
@@ -142,7 +225,9 @@ function BulletList({ items }: { items: string[] }) {
     <ul className="flex flex-col gap-2">
       {items.map((item, i) => (
         <li key={i} className="flex gap-2 text-sm leading-relaxed text-foreground/80">
-          <span className="text-brand-strong">•</span>
+          <span aria-hidden="true" className="text-brand-strong">
+            •
+          </span>
           <span>{item}</span>
         </li>
       ))}

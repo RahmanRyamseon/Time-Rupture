@@ -2,9 +2,15 @@ import type { Metadata } from "next";
 import { OFFICIAL_LINKS } from "@/data/officialLinks";
 import { DataDisclaimer } from "@/components/DataDisclaimer";
 
+const title = "Official EPFO Links";
+const description = "Direct links to the real, official EPFO portals, grievance system, and apps.";
+
 export const metadata: Metadata = {
-  title: "Official EPFO Links — PF Wiki",
-  description: "Direct links to the real, official EPFO portals, grievance system, and apps.",
+  title,
+  description,
+  alternates: { canonical: "/official-links/" },
+  openGraph: { type: "website", url: "/official-links/", title, description },
+  twitter: { card: "summary", title, description },
 };
 
 export default function OfficialLinksPage() {
@@ -26,7 +32,10 @@ export default function OfficialLinksPage() {
             rel="noopener noreferrer"
             className="card-surface flex flex-col gap-2 rounded-2xl p-5 transition-shadow hover:shadow-md"
           >
-            <h2 className="font-semibold text-brand-strong">{link.title}</h2>
+            <h2 className="font-semibold text-brand-strong">
+              {link.title}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </h2>
             <p className="text-sm text-foreground/60">{link.description}</p>
           </a>
         ))}

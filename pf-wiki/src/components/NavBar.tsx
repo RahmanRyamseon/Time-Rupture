@@ -23,13 +23,14 @@ export function NavBar() {
             PF Wiki <span className="font-normal text-foreground/50">| Provident Fund Help</span>
           </span>
         </Link>
-        <nav className="flex flex-1 items-center justify-end gap-1 overflow-x-auto text-sm">
+        <nav aria-label="Primary" className="flex flex-1 items-center justify-end gap-1 overflow-x-auto text-sm">
           {LINKS.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={active ? "page" : undefined}
                 className={`whitespace-nowrap rounded-full px-3 py-1.5 transition-colors ${
                   active
                     ? "bg-brand text-white"

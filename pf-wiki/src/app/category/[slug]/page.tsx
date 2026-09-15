@@ -5,6 +5,7 @@ import { CATEGORIES, categoryBySlug } from "@/data/categories";
 import { problemsByCategory } from "@/data/problems";
 import { ProblemCard } from "@/components/ProblemCard";
 import { DataDisclaimer } from "@/components/DataDisclaimer";
+import { SITE_URL } from "@/lib/site";
 
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ slug: c.slug }));
@@ -17,10 +18,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const category = categoryBySlug(slug);
-  if (!category) return { title: "Not found — PF Wiki" };
+  if (!category) return { title: "Not found" };
+  const url = `/category/${category.slug}/`;
   return {
-    title: `${category.name} — PF Wiki`,
+    title: category.name,
     description: category.description,
+    alternates: { canonical: url },
+    openGraph: { type: "website", url, title: category.name, description: category.description },
+    twitter: { card: "summary", title: category.name, description: category.description },
   };
 }
 
@@ -30,17 +35,50 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   if (!category) notFound();
 
   const entries = problemsByCategory(category.slug);
+  const pageUrl = `${SITE_URL}/category/${category.slug}/`;
+
+  const breadcrumbListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: category.name, item: pageUrl },
+    ],
+  };
+
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: category.name,
+    url: pageUrl,
+    itemListElement: entries.map((entry, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${SITE_URL}/problem/${entry.slug}/`,
+      name: entry.title,
+    })),
+  };
 
   return (
     <div className="flex flex-col gap-8">
-      <nav className="text-sm text-foreground/50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <nav aria-label="Breadcrumb" className="text-sm text-foreground/50">
         <Link href="/" className="hover:underline">
           Home
         </Link>{" "}
-        / <span className="text-foreground/70">{category.name}</span>
+        / <span aria-current="page" className="text-foreground/70">{category.name}</span>
       </nav>
       <div className="flex items-start gap-3">
-        <span className="text-3xl">{category.icon}</span>
+        <span aria-hidden="true" className="text-3xl">
+          {category.icon}
+        </span>
         <div>
           <h1 className="text-2xl font-bold tracking-tight">{category.name}</h1>
           <p className="mt-1 text-foreground/60">{category.description}</p>

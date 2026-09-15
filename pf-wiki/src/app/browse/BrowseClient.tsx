@@ -18,16 +18,22 @@ export function BrowseClient() {
 
   return (
     <div className="flex flex-col gap-6">
+      <label htmlFor="pf-browse-search" className="sr-only">
+        Search all problems
+      </label>
       <input
+        id="pf-browse-search"
         type="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search all problems…"
         className="w-full max-w-xl rounded-full border border-border bg-surface px-5 py-3 text-sm shadow-sm outline-none focus:border-brand"
       />
-      <div className="flex flex-wrap gap-2">
+      <div role="group" aria-label="Filter by category" className="flex flex-wrap gap-2">
         <button
+          type="button"
           onClick={() => setActiveCategory(null)}
+          aria-pressed={activeCategory === null}
           className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
             activeCategory === null
               ? "bg-brand text-white"
@@ -39,18 +45,20 @@ export function BrowseClient() {
         {CATEGORIES.map((c) => (
           <button
             key={c.slug}
+            type="button"
             onClick={() => setActiveCategory(c.slug)}
+            aria-pressed={activeCategory === c.slug}
             className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
               activeCategory === c.slug
                 ? "bg-brand text-white"
                 : "bg-surface-muted text-foreground/70 hover:text-foreground"
             }`}
           >
-            {c.icon} {c.name}
+            <span aria-hidden="true">{c.icon}</span> {c.name}
           </button>
         ))}
       </div>
-      <p className="text-sm text-foreground/50">
+      <p aria-live="polite" className="text-sm text-foreground/50">
         {filtered.length} of {PROBLEMS.length} problems
       </p>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

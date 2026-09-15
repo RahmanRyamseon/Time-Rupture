@@ -11,7 +11,7 @@ export function ProblemCard({ entry }: { entry: ProblemEntry }) {
     >
       {category && (
         <span className="w-fit rounded-full bg-brand-soft px-2.5 py-0.5 text-xs font-medium text-brand-strong">
-          {category.icon} {category.name}
+          <span aria-hidden="true">{category.icon}</span> {category.name}
         </span>
       )}
       <h3 className="font-semibold leading-snug">{entry.title}</h3>

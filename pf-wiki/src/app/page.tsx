@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SearchBox } from "@/components/SearchBox";
 import { ProblemCard } from "@/components/ProblemCard";
@@ -5,6 +6,10 @@ import { DataDisclaimer } from "@/components/DataDisclaimer";
 import { CATEGORIES } from "@/data/categories";
 import { PROBLEMS } from "@/data/problems";
 import { OFFICIAL_LINKS } from "@/data/officialLinks";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const FEATURED_SLUGS = [
   "epfo-3-0-migration-claims-stuck",
@@ -47,7 +52,9 @@ export default function Home() {
               href={`/category/${c.slug}`}
               className="card-surface flex flex-col gap-2 rounded-2xl p-5 transition-shadow hover:shadow-md"
             >
-              <span className="text-2xl">{c.icon}</span>
+              <span aria-hidden="true" className="text-2xl">
+                {c.icon}
+              </span>
               <h3 className="font-semibold">{c.name}</h3>
               <p className="text-sm text-foreground/60">{c.description}</p>
             </Link>

@@ -59,14 +59,55 @@ There is intentionally no user-submission backend yet (no accounts, no database)
 adding new problems or updated fixes means editing `src/data/problems.ts` directly
 and citing a source, the same way the existing entries are structured.
 
+## SEO & accessibility
+
+- **Per-page metadata** — every problem, category, browse, and official-links page
+  sets its own `<title>` (via the root layout's `%s — PF Wiki` template), meta
+  description, keywords, canonical URL, and Open Graph/Twitter Card tags
+  (`generateMetadata` in `src/app/problem/[slug]/page.tsx` and
+  `src/app/category/[slug]/page.tsx`).
+- **Structured data (JSON-LD)** — `TechArticle` + `HowTo` + `BreadcrumbList` on every
+  problem page (the `HowTo` schema is built straight from `fixSteps`, so Google can
+  render the numbered fix as a rich "how-to" result), `ItemList` + `BreadcrumbList`
+  on category pages, and a site-wide `WebSite` + `SearchAction` schema in the root
+  layout.
+- **`sitemap.xml`** (`src/app/sitemap.ts`) and **`robots.txt`** (`src/app/robots.ts`)
+  are generated at build time from `PROBLEMS`/`CATEGORIES` — every problem's
+  `lastModified` comes from its `lastVerified` date, so the sitemap is never
+  hand-maintained.
+- **Open Graph image** — `public/og-image.png` (1200×630) is a real, pre-rendered
+  PNG with a proper file extension. It's *not* a dynamic `opengraph-image.tsx`
+  route on purpose: Next's dynamic OG-image routes get exported as an
+  extension-less file, and plain static hosts (S3, GitHub Pages) often serve that
+  with the wrong `Content-Type`, silently breaking link previews on
+  Twitter/X/Slack/WhatsApp. A static file sidesteps that entirely.
+- **Accessibility** — a "skip to main content" link, landmark roles (`nav`,
+  `main`, `footer`) and `aria-label`s, `aria-current="page"` on active nav/breadcrumb
+  items, decorative emoji marked `aria-hidden`, labelled search inputs, and
+  `aria-pressed`/`aria-live` on the interactive category filter and result count in
+  `/browse`.
+- **`site.webmanifest`** + SVG favicon (`public/favicon.svg`) for browser tab/PWA
+  metadata.
+
+**Before deploying**, set `NEXT_PUBLIC_SITE_URL` to your real domain — every
+canonical URL, the sitemap, `robots.txt`, and Open Graph URLs are built from
+`src/lib/site.ts`'s `SITE_URL`, which otherwise falls back to a placeholder
+(`https://pf-wiki.example`) that search engines and social previews will pick up
+verbatim if left unset:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-real-domain.com npm run build
+```
+
 ## Development
 
 ```bash
 npm install
 npm run dev      # http://localhost:3000
 npm run lint
-npm run build
+npm run build     # also produces out/ (static export) since next.config.ts sets output: "export"
 ```
 
 Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4. Fully static
-content — no backend, no database, no user accounts.
+content — no backend, no database, no user accounts. `npm run build` exports plain
+HTML/CSS/JS to `out/`, deployable to any static host.
