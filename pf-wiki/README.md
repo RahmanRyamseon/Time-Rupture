@@ -66,15 +66,35 @@ and citing a source, the same way the existing entries are structured.
   description, keywords, canonical URL, and Open Graph/Twitter Card tags
   (`generateMetadata` in `src/app/problem/[slug]/page.tsx` and
   `src/app/category/[slug]/page.tsx`).
-- **Structured data (JSON-LD)** — `TechArticle` + `HowTo` + `BreadcrumbList` on every
-  problem page (the `HowTo` schema is built straight from `fixSteps`, so Google can
-  render the numbered fix as a rich "how-to" result), `ItemList` + `BreadcrumbList`
-  on category pages, and a site-wide `WebSite` + `SearchAction` schema in the root
-  layout.
-- **`sitemap.xml`** (`src/app/sitemap.ts`) and **`robots.txt`** (`src/app/robots.ts`)
-  are generated at build time from `PROBLEMS`/`CATEGORIES` — every problem's
-  `lastModified` comes from its `lastVerified` date, so the sitemap is never
+- **Structured data (JSON-LD)** — `TechArticle` + `HowTo` + `FAQPage` +
+  `BreadcrumbList` on every problem page (the `HowTo` schema is built straight from
+  `fixSteps`, so Google can render the numbered fix as a rich "how-to" result),
+  `ItemList` + `BreadcrumbList` on category and browse pages, and a site-wide
+  `WebSite` + `SearchAction` schema in the root layout.
+- **`sitemap.xml`** (`src/app/sitemap.ts`), **`robots.txt`** (`src/app/robots.ts`),
+  and an **RSS feed** (`src/app/feed.xml/route.ts`, linked from the footer and
+  declared via `alternates.types` for feed readers to auto-discover) are all
+  generated at build time from `PROBLEMS`/`CATEGORIES` — every problem's
+  `lastModified`/`pubDate` comes from its `lastVerified` date, so none of this is
   hand-maintained.
+- **Real internal links, not plain text** — cross-references between entries (e.g.
+  a claim-rejection cause pointing at the KYC or transfer entry) render as actual
+  `<a>` links via a minimal `[label](/problem/slug/)` syntax
+  (`src/lib/richText.ts` + `src/components/LinkedText.tsx`), instead of unclickable
+  "(see the X entry)" text. This spreads link equity between pages and lets crawlers
+  (and users) actually follow the reference. The same syntax is stripped back to
+  plain text (`stripLinks`) before going into JSON-LD, so structured data never
+  shows raw `[...]( ...)` markup.
+- **A real 404 page** (`src/app/not-found.tsx`) with `robots: { index: false }` and
+  a search box + category links, so broken/renamed URLs don't get indexed and
+  visitors aren't dead-ended.
+- **Every page's Open Graph tags carry the site image, name, and locale** — Next.js
+  does *not* deep-merge a page's `openGraph`/`twitter` metadata with the layout's;
+  redeclaring `openGraph` on a page replaces the whole object. Every
+  `generateMetadata`/`metadata` export that sets `openGraph` therefore repeats
+  `siteName`, `locale`, and `images` explicitly — otherwise per-page link previews
+  (the pages people actually share) would silently lose the image and branding
+  that only the homepage's metadata declared.
 - **Open Graph image** — `public/og-image.png` (1200×630) is a real, pre-rendered
   PNG with a proper file extension. It's *not* a dynamic `opengraph-image.tsx`
   route on purpose: Next's dynamic OG-image routes get exported as an

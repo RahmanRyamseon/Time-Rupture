@@ -41,8 +41,15 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  formatDetection: { telephone: false, email: false, address: false },
   robots: { index: true, follow: true },
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": "/feed.xml" },
+  },
   manifest: "/site.webmanifest",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
@@ -100,8 +107,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <footer className="border-t border-border py-6 text-center text-xs text-foreground/50">
-          PF Wiki — an unofficial, community-sourced gateway to Provident Fund problems. Not affiliated
-          with EPFO or the Government of India.
+          <p>
+            PF Wiki — an unofficial, community-sourced gateway to Provident Fund problems. Not
+            affiliated with EPFO or the Government of India.
+          </p>
+          <p className="mt-2">
+            <a href="/feed.xml" className="underline hover:text-foreground/70">
+              RSS feed
+            </a>{" "}
+            · <a href="/sitemap.xml" className="underline hover:text-foreground/70">
+              Sitemap
+            </a>
+          </p>
         </footer>
         <script
           type="application/ld+json"

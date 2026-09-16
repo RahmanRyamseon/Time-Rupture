@@ -5,7 +5,7 @@ import { CATEGORIES, categoryBySlug } from "@/data/categories";
 import { problemsByCategory } from "@/data/problems";
 import { ProblemCard } from "@/components/ProblemCard";
 import { DataDisclaimer } from "@/components/DataDisclaimer";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
 
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ slug: c.slug }));
@@ -24,8 +24,21 @@ export async function generateMetadata({
     title: category.name,
     description: category.description,
     alternates: { canonical: url },
-    openGraph: { type: "website", url, title: category.name, description: category.description },
-    twitter: { card: "summary", title: category.name, description: category.description },
+    openGraph: {
+      type: "website",
+      url,
+      title: category.name,
+      description: category.description,
+      siteName: SITE_NAME,
+      locale: "en_IN",
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: SITE_NAME }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: category.name,
+      description: category.description,
+      images: ["/og-image.png"],
+    },
   };
 }
 

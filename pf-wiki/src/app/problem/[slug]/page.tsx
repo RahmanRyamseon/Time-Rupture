@@ -6,6 +6,8 @@ import { categoryBySlug } from "@/data/categories";
 import { SourceList } from "@/components/SourceList";
 import { DataDisclaimer } from "@/components/DataDisclaimer";
 import { ProblemCard } from "@/components/ProblemCard";
+import { LinkedText } from "@/components/LinkedText";
+import { stripLinks } from "@/lib/richText";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -32,11 +34,15 @@ export async function generateMetadata({
       title: entry.title,
       description: entry.short,
       modifiedTime: entry.lastVerified,
+      siteName: SITE_NAME,
+      locale: "en_IN",
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: SITE_NAME }],
     },
     twitter: {
       card: "summary_large_image",
       title: entry.title,
       description: entry.short,
+      images: ["/og-image.png"],
     },
   };
 }
@@ -72,14 +78,18 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
     headline: entry.title,
     description: entry.short,
     url: pageUrl,
+    // No separately tracked creation date — lastVerified is the only date this
+    // dataset keeps, so it's reused for both fields rather than fabricating one.
+    datePublished: entry.lastVerified,
     dateModified: entry.lastVerified,
     inLanguage: "en",
     isAccessibleForFree: true,
     keywords: entry.tags.join(", "),
     about: category ? category.name : undefined,
-    author: { "@type": "Organization", name: SITE_NAME },
-    publisher: { "@type": "Organization", name: SITE_NAME },
+    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     citation: entry.sources.map((s) => s.url),
+    mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
   };
 
   const howToJsonLd = {
@@ -90,8 +100,23 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
     step: entry.fixSteps.map((step, i) => ({
       "@type": "HowToStep",
       position: i + 1,
-      text: step,
+      text: stripLinks(step),
     })),
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: entry.title,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: [entry.short, ...entry.fixSteps.slice(0, 2).map(stripLinks)].join(" "),
+        },
+      },
+    ],
   };
 
   return (
@@ -107,6 +132,10 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <div className="flex flex-col gap-3">
@@ -157,7 +186,9 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
               >
                 {i + 1}
               </span>
-              <span className="text-sm leading-relaxed text-foreground/80">{step}</span>
+              <span className="text-sm leading-relaxed text-foreground/80">
+                <LinkedText text={step} />
+              </span>
             </li>
           ))}
         </ol>
@@ -228,7 +259,9 @@ function BulletList({ items }: { items: string[] }) {
           <span aria-hidden="true" className="text-brand-strong">
             •
           </span>
-          <span>{item}</span>
+          <span>
+            <LinkedText text={item} />
+          </span>
         </li>
       ))}
     </ul>

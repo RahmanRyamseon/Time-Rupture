@@ -198,8 +198,8 @@ export const PROBLEMS: ProblemEntry[] = [
       "You've resubmitted the same claim and it was rejected again",
     ],
     likelyCauses: [
-      "A small spelling or DOB mismatch between EPFO records and Aadhaar (see the name/DOB mismatch entry)",
-      "Incomplete or unverified KYC (see the KYC entry)",
+      "A small spelling or DOB mismatch between EPFO records and Aadhaar (see [Name or date of birth doesn't match Aadhaar](/problem/name-dob-mismatch/))",
+      "Incomplete or unverified KYC (see [KYC stuck at \"Pending for Approval\"](/problem/kyc-pending-employer-approval/))",
       "Incorrect or unverified bank account details on file",
       "Mismatch between the employment period in your claim and what the employer's records show",
       "Outstanding dues or an unresolved break in service records",
@@ -220,7 +220,7 @@ export const PROBLEMS: ProblemEntry[] = [
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in with the claim ID and rejection remark if the reason listed doesn't match your actual situation.",
-      "A parallel grievance at dpg.gov.in (Directorate of Public Grievances) is worth trying if EPFiGMS stalls — several claimants report it moving faster, especially during the EPFO 3.0 migration backlog (see that entry).",
+      "A parallel grievance at dpg.gov.in (Directorate of Public Grievances) is worth trying if EPFiGMS stalls — several claimants report it moving faster, especially during the [EPFO 3.0 migration backlog](/problem/epfo-3-0-migration-claims-stuck/).",
     ],
     sources: [
       { title: "EPF Claim Rejection Reasons: How to Reapply After a Rejected PF Claim — ClearTax", url: "https://cleartax.in/s/epf-claim-rejected-reasons-and-how-to-apply-again" },
@@ -366,11 +366,11 @@ export const PROBLEMS: ProblemEntry[] = [
     ],
     likelyCauses: [
       "UAN isn't Aadhaar-linked, or KYC isn't fully complete — both are now prerequisites for the employer-approval-free transfer route",
-      "A duplicate UAN exists from the old job (see the multiple-UAN entry) and needs merging before the transfer can go through cleanly",
+      "A duplicate UAN exists from the old job (see [You ended up with two (or more) UAN numbers](/problem/multiple-uan-duplicate/)) and needs merging before the transfer can go through cleanly",
     ],
     fixSteps: [
       "Confirm your UAN is Aadhaar-linked and KYC (PAN, bank, Aadhaar) is fully verified — employees can now initiate a transfer to their new account without approval from either employer once these are in place.",
-      "If the claim still gets rejected, check whether it's actually a duplicate-UAN situation blocking it, and follow the merge steps in that entry first.",
+      "If the claim still gets rejected, check whether it's actually a [duplicate-UAN situation](/problem/multiple-uan-duplicate/) blocking it, and follow the merge steps there first.",
       "Refile the transfer claim through Online Services → One Member One EPF Account (Transfer Request) once KYC/Aadhaar issues are resolved.",
     ],
     communitySolutions: [
@@ -626,14 +626,14 @@ export const PROBLEMS: ProblemEntry[] = [
     fixSteps: [
       "Check the timing first — if it's before roughly July–September for annual interest, or within a week of an employer deposit for monthly contributions, this is likely still normal processing, not an error.",
       "Log in to the EPFO Member Passbook portal and check month-by-month for any contribution \"break\" — a missing month from the employer will delay that year's interest finalisation.",
-      "If a specific employer month is missing, that's actually an employer non-deposit issue — see that entry for how to escalate it directly.",
+      "If a specific employer month is missing, that's actually an [employer non-deposit issue](/problem/employer-not-depositing-pf/) — follow that entry for how to escalate it directly.",
       "Confirm your UAN, KYC, and bank details are all correct and complete, since processing delays compound when any of these are outstanding.",
       "If interest is still missing well after the typical window, or contributions are missing with no explanation, file a grievance with your UAN, PF number, a description of the issue, and a passbook screenshot.",
     ],
     communitySolutions: [
       "Many \"missing interest\" grievances turn out to be pure timing — several members report the entry appearing on its own within the April–September window without any action needed.",
       "When a specific month was genuinely missing, treating it as an employer non-deposit issue (not a passbook bug) and escalating to the employer directly got it resolved faster than repeatedly refreshing the passbook.",
-      "A less obvious cause reported on r/epfoindia: EPFO can stop crediting interest on an account that has had no contributions for 2–3 years — if that's your situation, the fix isn't a grievance at all, it's merging that dormant account into your active UAN (see the duplicate-UAN entry).",
+      "A less obvious cause reported on r/epfoindia: EPFO can stop crediting interest on an account that has had no contributions for 2–3 years — if that's your situation, the fix isn't a grievance at all, it's [merging that dormant account into your active UAN](/problem/multiple-uan-duplicate/).",
       "One r/epfoindia poster noted that even once the passbook service comes back up, a newly-appeared interest figure may be \"provisional\" and actually reflect last year's number rather than the current year's — worth checking the dates on the entry itself before assuming it's wrong or final.",
     ],
     officialEscalation: [
@@ -668,7 +668,7 @@ export const PROBLEMS: ProblemEntry[] = [
     ],
     fixSteps: [
       "Don't panic or resubmit repeatedly if your claim has only been stuck a few days — during and shortly after the migration window, multi-week stalls at this exact stage were common and usually resolved without any action.",
-      "Check Track Claim Status for a specific rejection remark first — if one exists, treat it like any other rejection (see the claim-rejected entry) rather than assuming it's purely a migration backlog.",
+      "Check Track Claim Status for a specific rejection remark first — if one exists, treat it like [any other rejection](/problem/claim-rejected-generic/) rather than assuming it's purely a migration backlog.",
       "If it's been stuck for multiple weeks with no remark at all, file a grievance via EPFiGMS citing the exact claim ID and filing date, and separately via the DPG portal (dpg.gov.in) — several people report DPG grievances moving faster than EPFiGMS ones during this backlog.",
       "As a last resort if grievances go nowhere, some claimants report success publicly tagging @socialepfo, your regional EPFO handle, and the Ministry of Labour on X/Twitter with the claim ID and UAN (no other personal documents) — treat this as a genuine but unofficial escalation channel, not a first step.",
     ],
