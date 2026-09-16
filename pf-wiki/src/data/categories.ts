@@ -55,6 +55,12 @@ export const CATEGORIES: Category[] = [
     icon: "📒",
     description: "Passbook not updating, annual interest missing or delayed.",
   },
+  {
+    slug: "contributions",
+    name: "Contributions, VPF & Eligibility",
+    icon: "📊",
+    description: "Voluntary Provident Fund, the ₹15,000 wage ceiling, and who's actually eligible for EPF.",
+  },
 ];
 
 export function categoryBySlug(slug: string): Category | undefined {

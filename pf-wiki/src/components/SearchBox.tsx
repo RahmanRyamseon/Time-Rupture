@@ -3,14 +3,16 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { PROBLEMS } from "@/data/problems";
-import { searchProblems } from "@/lib/search";
+import { searchProblemsDetailed } from "@/lib/search";
 import { categoryBySlug } from "@/data/categories";
 
 export function SearchBox({ autoFocus = false }: { autoFocus?: boolean }) {
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
 
-  const results = useMemo(() => searchProblems(PROBLEMS, query).slice(0, 8), [query]);
+  const matches = useMemo(() => searchProblemsDetailed(PROBLEMS, query).slice(0, 8), [query]);
+  const results = matches.map((m) => m.entry);
+  const hasExactMatch = matches.some((m) => m.matchType === "exact");
   const showDropdown = focused && query.trim().length > 0;
 
   return (
@@ -30,7 +32,7 @@ export function SearchBox({ autoFocus = false }: { autoFocus?: boolean }) {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => setTimeout(() => setFocused(false), 150)}
-          placeholder="Search PF problems — e.g. “UAN not activating”, “claim rejected”, “TDS”…"
+          placeholder="Search PF problems — try a typo, e.g. “UAN activasion”, “claim rejceted”…"
           className="w-full rounded-full border border-border bg-surface py-3 pl-11 pr-4 text-sm shadow-sm outline-none focus:border-brand"
         />
       </div>
@@ -41,28 +43,35 @@ export function SearchBox({ autoFocus = false }: { autoFocus?: boolean }) {
               No matches yet. Try a shorter or more general term, or browse by category below.
             </p>
           ) : (
-            <ul className="divide-y divide-border">
-              {results.map((r) => {
-                const category = categoryBySlug(r.category);
-                return (
-                  <li key={r.slug}>
-                    <Link
-                      href={`/problem/${r.slug}`}
-                      className="flex flex-col gap-0.5 px-4 py-3 hover:bg-surface-muted"
-                    >
-                      <span className="text-sm font-medium">{r.title}</span>
-                      <span className="text-xs text-foreground/50">
-                        {category ? (
-                          <>
-                            <span aria-hidden="true">{category.icon}</span> {category.name}
-                          </>
-                        ) : null}
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            <>
+              {!hasExactMatch && (
+                <p className="border-b border-border bg-surface-muted px-4 py-2 text-xs font-medium text-foreground/60">
+                  No exact match — closest problems to “{query.trim()}”:
+                </p>
+              )}
+              <ul className="divide-y divide-border">
+                {results.map((r) => {
+                  const category = categoryBySlug(r.category);
+                  return (
+                    <li key={r.slug}>
+                      <Link
+                        href={`/problem/${r.slug}`}
+                        className="flex flex-col gap-0.5 px-4 py-3 hover:bg-surface-muted"
+                      >
+                        <span className="text-sm font-medium">{r.title}</span>
+                        <span className="text-xs text-foreground/50">
+                          {category ? (
+                            <>
+                              <span aria-hidden="true">{category.icon}</span> {category.name}
+                            </>
+                          ) : null}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
           )}
         </div>
       )}

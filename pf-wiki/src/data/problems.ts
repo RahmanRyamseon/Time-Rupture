@@ -732,6 +732,372 @@ export const PROBLEMS: ProblemEntry[] = [
     lastVerified: "2026-09-15",
     tags: ["delinking", "service history", "claim blocked", "grievance", "epfo 3.0"],
   },
+  {
+    slug: "form-10c-eps-withdrawal",
+    category: "claims",
+    title: "Withdrawing your EPS (pension) contribution with Form 10C",
+    short:
+      "Form 19 only settles your PF; the separate EPS/pension portion needs Form 10C — and once you cross 10 years of service, that money is locked until retirement instead.",
+    symptoms: [
+      "PF (Form 19) claim settles fine, but the pension/EPS share of the account is untouched",
+      "Unsure whether to file Form 10C or wait for a monthly pension later",
+      "Form 10C claim rejected or blocked despite qualifying service length",
+    ],
+    likelyCauses: [
+      "Form 10C and Form 19 are separate claims — settling one doesn't automatically settle the other",
+      "Total pensionable service is under 10 years, which is the cutoff: below it your EPS balance is withdrawable as a lump sum, at or above it you're locked into a monthly pension from age 58 instead (via a Scheme Certificate and, later, Form 10D)",
+      "Pensionable membership under 6 months (180 days) forfeits the EPS contribution entirely under EPFO rules — nothing to withdraw",
+      "The 2-month unemployment wait (same as Form 19) hasn't been completed yet",
+    ],
+    fixSteps: [
+      "Check your total pensionable service in the passbook/member portal first — under 10 years qualifies for lump-sum withdrawal via Form 10C; at or over 10 years, ask for a Scheme Certificate instead and plan on Form 10D at age 58.",
+      "Confirm your EPS membership is over 180 days — under that, EPFO rules forfeit the contribution and there's nothing to claim.",
+      "Wait out the same roughly 2-month unemployment period Form 19 requires before filing Form 10C.",
+      "File via the Unified Member Portal under Online Services → Claim (Form 31, 19 & 10C), selecting Form 10C specifically — it does not get bundled automatically with a Form 19 submission.",
+    ],
+    communitySolutions: [
+      "A recurring, precise answer across r/epfoindia threads: \"Form 10c is for the pension (EPS) withdrawal, if total service is less than 10 years\" — and once you're near that boundary, check your exact pensionable-service figure in the passbook rather than assuming it matches your employment dates.",
+      "One r/epfoindia reply gives the more exact cutoff people report EPFO actually enforcing: \"If you served less than 9.5 yrs or so then Form10C can be filed... Once you cross 9.5 yrs of service and EPS [is locked]\" — worth checking your service length well before assuming you're safely under or over 10 years.",
+      "A separate thread flags a different service-length rule specific to a full pension withdrawal case: \"full pension withdrawal through Form 10C requires 36 months (3 years) of continuous unemployment\" in some circumstances — if a straightforward Form 10C claim is rejected after only 2 months, check whether this longer unemployment threshold applies to your case.",
+    ],
+    officialEscalation: [
+      "File a grievance at epfigms.gov.in with your claim ID if Form 10C is rejected despite qualifying service length and unemployment duration.",
+    ],
+    relatedForms: ["Form 10C", "Form 10D", "Form 19"],
+    sources: [
+      { title: "Form 10C – Eligibility, Benefits, How To Fill, Attestation, Documents — ClearTax", url: "https://cleartax.in/s/form-10c" },
+      { title: "Can We Withdraw Pension Contribution in EPF? — Shriram Life", url: "https://www.shriramlife.com/blog/advice/can-we-withdraw-pension-contribution-in-epf" },
+      { title: "Guide to EPF Form 10C: EPS Withdrawal Procedure — Stable Money", url: "https://stablemoney.in/investments/epf-form-10c-eps-withdrawal-guide" },
+      { title: "Pension withdrawal (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1n9x9u7/pension_withdrawal/" },
+      { title: "How to withdraw this? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1r0z64v/how_to_withdraw_this/" },
+      { title: "Query about form 10c (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1o4tsce/query_about_form_10c/" },
+    ],
+    lastVerified: "2026-09-16",
+    tags: ["form 10c", "eps", "pension withdrawal", "10 years", "form 19"],
+  },
+  {
+    slug: "edli-death-benefit-claim",
+    category: "nomination",
+    title: "Claiming the EDLI insurance payout after a member's death (Form 5IF)",
+    short:
+      "Beyond the PF balance and pension, most salaried EPF members carry a separate life-insurance payout (EDLI) worth up to ₹7 lakh — filed on its own form, and easy for grieving families to miss entirely.",
+    symptoms: [
+      "A death claim was filed for PF (Form 20) and pension (Form 10D/10C) but no one mentioned a separate insurance amount",
+      "Unsure whether the deceased member even had EDLI cover, or how much it's worth",
+      "EDLI claim rejected with a vague or unexplained reason",
+    ],
+    likelyCauses: [
+      "EDLI is a distinct scheme layered on top of every active EPF account — most families and even some employers don't proactively mention it because it requires its own form",
+      "The payout amount depends on the average PF balance over the last 12 months, so a low recent balance can mean a smaller-than-expected payout",
+      "Missing or inconsistent documentation — death certificate, claimant ID proof, relationship proof, employer certification — causes rejection just as with PF death claims",
+    ],
+    fixSteps: [
+      "Confirm the deceased was an active EPF member at time of death — EDLI applies automatically to active members, no separate opt-in needed.",
+      "File Form 5IF alongside (not instead of) Form 20 (PF) and Form 10D or 10C (pension) — these are three separate forms, not one bundled claim.",
+      "Gather: the member's death certificate, the claimant's ID proof (Aadhaar/PAN), a cancelled cheque or bank passbook copy, proof of relationship if claiming as a legal heir rather than a nominee, and an employer certificate confirming EPF membership.",
+      "Submit through the employer where possible; if the employer is unresponsive or the business has closed, EDLI claims can be filed directly with the EPF office.",
+      "Once accepted, EPFO is required to settle the payment within 30 days — treat a longer delay as grounds for a grievance.",
+    ],
+    communitySolutions: [
+      "A concise r/epfoindia answer to \"how do I even start\": \"Fill Form 5 IF with the death cert, bank details, and employer attestation, then submit it online via the EPFO portal or offline at the PF [office].\"",
+      "Multiple threads converge on the same three-form structure for a full death settlement — one r/epfoindia reply lists it plainly: \"Form 10D or Form 10C for EPS, as applicable[,] Form 5IF for EDLI\" alongside Form 20 for the PF balance, so families filing one form don't assume the case is closed.",
+      "A r/LegalAdviceIndia case documents a real rejection reason worth knowing: a DPG grievance reply stated a Form 5IF claim was rejected \"due to member death was away from\" — i.e., a location/jurisdiction mismatch tripped up the claim — a reminder to double-check which regional office has jurisdiction before filing, especially if the member died away from their registered work location.",
+    ],
+    officialEscalation: [
+      "File a grievance at epfigms.gov.in citing the Form 5IF reference number if the claim is rejected or delayed past 30 days.",
+      "A parallel grievance at dpg.gov.in is an option if EPFiGMS stalls.",
+    ],
+    relatedForms: ["Form 5IF", "Form 20", "Form 10D", "Form 10C"],
+    sources: [
+      { title: "EPF Form 5 IF – Claim EDLI After Member's Death — BankBazaar", url: "https://www.bankbazaar.com/saving-schemes/epf-form-5if.html" },
+      { title: "Employees Deposit Linked Insurance Scheme (EDLI): Benefits, Eligibility & Charges — Paisabazaar", url: "https://www.paisabazaar.com/saving-schemes/employees-deposit-linked-insurance-scheme-edli/" },
+      { title: "How to claim EDLI insurance in EPFO? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1mo1s5o/how_to_claim_edli_insurance_in_epfo/" },
+      { title: "What if EPFO Member Passes away! (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1q2wg94/what_if_epfo_member_passes_away/" },
+      { title: "Urgent Legal Help/Advice Needed - EDLI CASE (r/LegalAdviceIndia)", url: "https://www.reddit.com/r/LegalAdviceIndia/comments/1tjh6tu/urgent_legal_helpadvice_needed_edli_case/" },
+    ],
+    lastVerified: "2026-09-16",
+    tags: ["edli", "form 5if", "death claim", "insurance", "nomination"],
+  },
+  {
+    slug: "pf-withdrawal-after-becoming-nri",
+    category: "claims",
+    title: "Withdrawing PF after moving abroad and becoming an NRI",
+    short:
+      "Your PF doesn't get seized when you leave India, but tax treatment and TDS work differently for NRIs — and a residency-status mismatch on the claim form is a common, avoidable rejection.",
+    symptoms: [
+      "Claim rejected or flagged after updating residential status to non-resident",
+      "Confusion about whether Form 15G (which is for residents) still applies",
+      "Higher-than-expected TDS deducted on the withdrawal after moving abroad",
+    ],
+    likelyCauses: [
+      "Form 15G is a resident-taxpayer declaration; submitting it as an NRI, or leaving your EPFO residential status set to \"resident\" when you're not, causes a mismatch that can get the claim rejected",
+      "TDS rules still hinge on the same 5-year continuous service threshold as for residents, but NRIs don't get the standard exemption route via Form 15G/15H — a Form 15CA/15CB (tax remittance certificate) or higher TDS may apply instead",
+      "Name, PAN, Aadhaar, and Indian bank account details drifting out of sync while abroad — a mismatch on any of these blocks the claim like it would for anyone else",
+    ],
+    fixSteps: [
+      "Update your residential status accurately on the EPFO portal — don't leave it as \"resident\" if you've genuinely emigrated, since submitting Form 15G on a non-resident claim is a reported cause of rejection.",
+      "File the withdrawal the same way as a domestic claim (Form 19, once the exit date is updated and the unemployment wait — or permanent-emigration exception — is satisfied) through the Unified Member Portal, which works from abroad as long as UAN, Aadhaar, and an Indian bank account are all linked.",
+      "Confirm your Indian bank account is still active and correctly linked — funds can only be credited to an Indian account, not a foreign one directly.",
+      "If TDS is deducted at a higher NRI-applicable rate, that can still potentially be recovered or adjusted through an Indian income tax return, depending on your tax residency status for that year and any applicable double-taxation treaty — this is genuinely tax-advice territory, so a cross-border tax consultant is worth it for larger balances.",
+    ],
+    communitySolutions: [
+      "A specific, reported failure mode from r/nri: \"If you submit as non resident then PF withdrawal gets rejected as form 15g for tax exemption is for resident Indians. If you update as resident...\" — i.e., people have hit rejections in both directions depending on what status they declared, so this is worth getting right deliberately rather than guessing.",
+      "One r/nri thread on withdrawing after a move underscores the same document-matching issue that trips up domestic claims too: \"Name on PAN, bank account and Aadhaar should match. That's an important step otherwise [the claim fails]\" — don't assume being abroad is the only extra complication.",
+      "A r/epfoindia thread on the tax side flags a real surprise for people who become tax residents of another country before withdrawing: EPF interest that's tax-free in India \"can attract up to 42%(!) tax\" in some destination countries — worth checking your new country's tax treatment of foreign retirement-fund withdrawals before timing your claim.",
+    ],
+    officialEscalation: [
+      "File a grievance at epfigms.gov.in if a claim is rejected specifically over residential-status/Form 15G mismatch after you've corrected your declared status.",
+      "For TDS/double-taxation questions specifically, this is outside EPFO's remit — consult a cross-border tax advisor rather than expecting a grievance to resolve a tax-treaty question.",
+    ],
+    relatedForms: ["Form 19", "Form 15CA", "Form 15CB"],
+    sources: [
+      { title: "Employee Provident Fund [EPF] withdrawal on becoming an NRI (r/nri)", url: "https://www.reddit.com/r/nri/comments/1fxkbve/employee_provident_fund_epf_withdrawal_on/" },
+      { title: "PF withdrawal after moving to US (r/nri)", url: "https://www.reddit.com/r/nri/comments/1qn5qll/pf_withdrawal_after_moving_to_us/" },
+      { title: "Tax treatment of EPF withdrawal after becoming a German tax resident (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1s0nwdz/tax_treatment_of_epf_withdrawal_after_becoming_a/" },
+      { title: "EPF withdrawal process for non-citizens (r/nri)", url: "https://www.reddit.com/r/nri/comments/1rxmvfx/epf_withdrawal_process_for_noncitizens/" },
+    ],
+    lastVerified: "2026-09-16",
+    tags: ["nri", "abroad", "residential status", "tds", "form 15g"],
+  },
+  {
+    slug: "uan-vs-member-id-confusion",
+    category: "uan-login",
+    title: "Why you have one UAN but several different PF Member IDs",
+    short:
+      "Your UAN stays the same for life; every employer issues you a fresh Member ID (PF account number) underneath it — and not knowing this causes real confusion when withdrawing or transferring.",
+    symptoms: [
+      "The claim/withdrawal form shows a dropdown with multiple Member IDs and it's unclear which one to pick",
+      "Balance appears split across what look like separate \"accounts\" even though there's only one UAN",
+      "A new employer issued a second Member ID even though a transfer from the previous one was already completed",
+    ],
+    likelyCauses: [
+      "This is normal EPFO structure, not a bug: UAN is the lifelong umbrella identifier, while each employer's payroll creates its own Member ID underneath it for that specific job's contributions",
+      "An untransferred old Member ID sits dormant under the same UAN until you actively initiate a transfer or merge",
+      "Occasionally an employer's payroll system creates a second, new Member ID mid-tenure (e.g. after an internal system migration) even though the employment is continuous — splitting what should be one job's contribution history into two records",
+    ],
+    fixSteps: [
+      "Don't assume a second Member ID means something is wrong — check the member portal's service history to see which Member ID is currently active for your present employer, and use that one for new claims.",
+      "For a genuinely old, no-longer-active Member ID from a past employer, use the transfer flow (Online Services → One Member, One EPF Account) to move that balance into your current active Member ID rather than trying to withdraw from it separately.",
+      "If a single continuous job unexpectedly shows two Member IDs (not from a job change), raise it with current payroll first — this is usually a payroll-system artifact they can explain or correct, not something EPFO can fix from the member side alone.",
+      "When a claim form's Member ID dropdown doesn't show the balance you expect, check whether an earlier transfer actually completed — a stuck or rejected transfer is a common reason a balance still shows against the old Member ID.",
+    ],
+    communitySolutions: [
+      "A clear explainer from r/epfoindia on the exact relationship: \"Having multiple PF Member IDs under the same UAN is common when you change jobs. Each Member ID represents a separate employment, even though [they share one UAN].\"",
+      "One r/bangalore thread states the mental model plainly for anyone confused by the terminology: \"UAN and PF accounts are 2 different things. You will always have a single UAN but multiple PF accounts (one for each employer)[.]\"",
+      "A specific real-world case on r/epfoindia — \"Deloitte created two PF member IDs under the same UAN\" for one continuous job — got diagnosed by a commenter as most likely an old Member ID capturing contributions up to a cutoff month and a new one starting the next month, both under the same employer, due to an internal payroll change; worth checking your own passbook for a similar split before assuming data is missing.",
+    ],
+    officialEscalation: [
+      "File a grievance at epfigms.gov.in if a transfer between your own Member IDs is stuck, citing both Member IDs and your UAN.",
+    ],
+    sources: [
+      { title: "Is PF Number and UAN Number the Same? UAN vs PF Explained — Scripbox", url: "https://scripbox.com/saving-schemes/difference-between-uan-and-pf-number/" },
+      { title: "What Is Member ID in PF? Meaning, Format & How to Find It — Bajaj Finserv", url: "https://www.bajajfinserv.in/investments/what-is-member-id-in-pf" },
+      { title: "EPFO 3.0: Can I withdraw employer PF share if I have multiple Member IDs? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ut9sdz/epfo_30_can_i_withdraw_employer_pf_share_if_i/" },
+      { title: "Gentle reminder to merge multiple PF accounts (r/bangalore)", url: "https://www.reddit.com/r/bangalore/comments/1m4njeg/to_all_the_working_folks_of_india_gentle_reminder/" },
+      { title: "Deloitte created two PF member IDs under the same UAN (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ri76ya/deloitte_created_two_pf_member_ids_under_the_same/" },
+    ],
+    lastVerified: "2026-09-16",
+    tags: ["uan", "member id", "pf number", "terminology", "transfer"],
+  },
+  {
+    slug: "aadhaar-uidai-linking-failure",
+    category: "kyc",
+    title: "\"Aadhaar not linked with UAN\" even though Aadhaar itself is fine",
+    short:
+      "This specific error is a UIDAI-side data mismatch, not an EPFO KYC-approval issue — the fix lives in your Aadhaar record, not the EPFO portal.",
+    symptoms: [
+      "Portal error reads something like \"Your UAN is not linked with Aadhaar\" or \"Aadhaar details do not match\"",
+      "OTP for Aadhaar-based verification never arrives despite the Aadhaar being active and valid",
+      "The issue persists even after confirming Aadhaar KYC was already submitted on the EPFO side",
+    ],
+    likelyCauses: [
+      "The mobile number linked to Aadhaar at UIDAI is different from (or no longer active for) the number you're using — EPFO's Aadhaar verification checks against UIDAI's live record, not just whatever was on file historically",
+      "Name, DOB, or gender differs between Aadhaar and UAN records — the same underlying issue as the broader name/DOB mismatch problem, but surfacing specifically as an Aadhaar-linking failure rather than a claim rejection",
+      "The Aadhaar itself is temporarily locked, suspended, or otherwise flagged at the UIDAI level, independent of anything EPFO controls",
+    ],
+    fixSteps: [
+      "Verify directly on the UIDAI site or app which mobile number is currently linked to your Aadhaar — don't assume it's whatever number you're currently using.",
+      "If that number is outdated, update it directly with UIDAI (via an Aadhaar Seva Kendra, or online where eligible) before retrying EPFO verification — EPFO can't fix a UIDAI-side mobile mismatch from its own portal.",
+      "Cross-check name, date of birth, and gender exactly between Aadhaar and your UAN/EPFO profile — if they differ, this needs the Joint Declaration correction process, not just retrying Aadhaar verification.",
+      "If Aadhaar itself seems locked or suspended, resolve that directly with UIDAI (1947 helpline or a Seva Kendra) before anything EPFO-side will work.",
+    ],
+    communitySolutions: [
+      "A frequently repeated fix on r/epfoindia for the generic linking error: \"Make sure name in aadhar and UAN are same. If not, ask employer to update it as per aadhar, also make sure aadhar linking phone number is still [active/correct].\"",
+      "For UAN activation specifically stuck on Aadhaar face verification, one r/epfoindia thread's troubleshooting step was to delete and reinstall the Aadhaar-linked verification app before retrying — a rough but reportedly effective workaround when the standard OTP route keeps failing.",
+      "A more recent r/epfoindia post notes UIDAI has made the underlying fix easier than it used to be: updating your Aadhaar-linked mobile number can now be done \"from the [UIDAI] app, pay ₹75, and skip the service centre circus\" — worth trying before assuming an in-person Aadhaar Seva Kendra visit is required.",
+    ],
+    officialEscalation: [
+      "Contact UIDAI directly (helpline 1947, or an Aadhaar Seva Kendra) for anything that's actually a UIDAI-side data or mobile-linkage problem — EPFO's own grievance system can't fix that end.",
+      "File a grievance at epfigms.gov.in only once the UIDAI-side Aadhaar data is confirmed correct and the EPFO linking still fails.",
+    ],
+    sources: [
+      { title: "UAN Aadhaar Link Issue: How to Fix Aadhaar Not Linked with UAN — Pension Bazaar", url: "https://www.pensionbazaar.com/epf/uan-aadhaar-link-issue/" },
+      { title: "[help] Aadhaar Error (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1rknmqg/help_aadhaar_error/" },
+      { title: "UAN not linked to Aadhar (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1sposys/uan_not_linked_to_aadhar/" },
+      { title: "UAN activation stuck on aadhar face verification (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1pxmwvz/uan_activation_stuck_on_aadhar_face_verification/" },
+      { title: "Is my aadhar linked to uan? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1puja32/is_my_aadhar_linked_to_uan/" },
+    ],
+    lastVerified: "2026-09-16",
+    tags: ["aadhaar", "uidai", "kyc", "otp", "linking"],
+  },
+  {
+    slug: "employer-not-registered-under-epf",
+    category: "employer",
+    title: "Employer says PF isn't applicable, or was never registered at all",
+    short:
+      "Below 20 employees, EPF registration is optional for the employer — but once you're eligible and registered, or once your employer crosses that threshold, deduction becomes mandatory whether or not they've formally registered.",
+    symptoms: [
+      "Employer says the company is \"too small\" for PF and none is being deducted",
+      "No PF deduction shows on payslips at all, at a company that seems large enough to require it",
+      "Confusion over whether joining without a PF account at a new employer means opting out permanently",
+    ],
+    likelyCauses: [
+      "Establishments with fewer than 20 employees are genuinely not required to register for EPF at all — this can be a legitimate reason, not a violation",
+      "An employee earning above the ₹15,000/month wage ceiling at the time of joining, with no existing EPF account from a previous job, is legally exempt from mandatory enrollment at the new employer",
+      "An employer that is required to register (20+ employees, or employees below the wage ceiling) but hasn't — this is non-compliance, and the employer's own registration status doesn't change their legal obligation to eligible employees",
+    ],
+    fixSteps: [
+      "Check your employer's actual headcount if you're unsure — under 20 employees, no EPF registration is legally required at all, and this may fully explain the absence of any deduction.",
+      "Check your salary at date of joining against the ₹15,000/month ceiling — if you were above it and had no existing EPF account, non-enrollment at this employer is legally correct, not a compliance failure.",
+      "If neither exemption applies (employer is large enough and you're below the ceiling, or you already had an EPF account before joining), request in writing that HR register and start deducting PF — an employer can't simply decline for an employee who's actually eligible.",
+      "If the employer still refuses despite eligibility, this becomes an EPFO compliance matter — file a grievance or complaint with evidence of your salary and joining date.",
+    ],
+    communitySolutions: [
+      "A precise, frequently-cited legal threshold from r/LegalAdviceIndia: \"If the organisation is below 20 full time employees, they are not obligated to deduct and deposit PF. If they have more than 20 full time [employees, they are].\"",
+      "A companion clarification from a separate r/LegalAdviceIndia thread on the wage-ceiling exemption specifically: \"If you make more than 15K in a month AND you do not have an existing EPF account you are not required by law to have your employer deduct [PF]\" — i.e., both conditions (above the ceiling, and no prior EPF account) need to be true for the exemption to apply.",
+      "On the flip side, a r/personalfinanceindia thread pushes back on employers who try to offer cash instead of PF for employees who are actually eligible: \"the employer has to make an equal contribution to epf, upto 12% of basic pay\" once eligibility is established — it isn't optional or substitutable at the employer's discretion.",
+    ],
+    officialEscalation: [
+      "File a grievance or written complaint to the regional EPF office with proof of salary, joining date, and headcount if an employer refuses to register/deduct PF despite genuine eligibility.",
+    ],
+    sources: [
+      { title: "EPF Registration: A Complete Guide for Employers — TaxBuddy", url: "https://www.taxbuddy.com/blog/epf-registration" },
+      { title: "PF Registration Eligibility: Minimum Employees, Salary Criteria & 2026 Rules — Prashasthi Corporate", url: "https://prashasthicorporate.com/advisory/pf-registration-eligibility/" },
+      { title: "Company says I'm not eligible for PF because I don't have an existing... (r/LegalAdviceIndia)", url: "https://www.reddit.com/r/LegalAdviceIndia/comments/1gq9rw7/company_says_im_not_eligible_for_pf_because_i/" },
+      { title: "My new employer says PF is compulsory (r/LegalAdviceIndia)", url: "https://www.reddit.com/r/LegalAdviceIndia/comments/1aqlzhd/my_new_employer_says_pf_is_compulsory/" },
+      { title: "If I opt out of PF, why can't my employer just pay me the... (r/personalfinanceindia)", url: "https://www.reddit.com/r/personalfinanceindia/comments/1rucwun/if_i_opt_out_of_pf_why_cant_my_employer_just_pay/" },
+    ],
+    lastVerified: "2026-09-16",
+    tags: ["employer registration", "eligibility", "wage ceiling", "20 employees", "non-compliance"],
+  },
+  {
+    slug: "eps-wrongly-enrolled-above-ceiling",
+    category: "pension",
+    title: "EPS (pension) contribution deducted even though you were never eligible",
+    short:
+      "If you joined a new employer above the ₹15,000 EPS wage ceiling with no prior EPS history, you shouldn't be enrolled in EPS at all — but payroll mistakes routinely enroll people anyway, and reversing it takes an employer-filed correction, not a member-side fix.",
+    symptoms: [
+      "Passbook shows a monthly EPS deduction (commonly capped around ₹1,250) despite never having been an EPS member before",
+      "A PF transfer gets rejected specifically citing an EPS contribution discrepancy",
+      "A later Form 19 final-settlement claim gets rejected over EPS dates that shouldn't exist",
+    ],
+    likelyCauses: [
+      "New employees joining above the wage ceiling with no existing EPF/EPS account are not supposed to be enrolled in EPS at all — but payroll systems commonly default new joiners into EPS regardless, especially during onboarding automation",
+      "This mistake typically isn't caught until a transfer or final-settlement claim cross-checks EPS eligibility and flags the discrepancy",
+    ],
+    fixSteps: [
+      "Confirm the actual problem: check your passbook for a monthly EPS/pension-share entry (often ₹1,250, sometimes more) that shouldn't exist given your eligibility at joining.",
+      "Raise it with current payroll/HR directly and ask them to correct the EPS enrollment status — this specifically requires the employer to file a correction confirming you were never EPS-eligible, not something you can self-correct as a member.",
+      "Expect this to take time — it commonly isn't resolved until the next annual EPFO audit cycle, since it's a records correction on the employer's side, not an instant portal fix.",
+      "If a transfer or Form 19 claim gets rejected over this in the meantime, treat the underlying EPS-eligibility correction as the real fix rather than repeatedly resubmitting the same claim.",
+    ],
+    communitySolutions: [
+      "A direct, practical answer from r/IndiaTax on how this actually gets fixed: \"Talk to your company's payroll, ask them to stop EPS and by next annual audit they can transfer the EPS to EPF. I've gotten it done for 3 of my [colleagues in the same situation].\"",
+      "A r/epfoindia thread on the same root cause names the exact form-side mechanism: \"Each employer has to file this form to confirm you are not eligible for eps and [the] contribution was a mistake. This can be a very long drawn [process]\" — set expectations accordingly rather than expecting a quick fix.",
+      "One poster's exact framing of the discovery moment, worth recognizing in your own passbook: \"₹1250 disappearing into EPS without eligibility\" — if that number looks familiar and you joined above the wage ceiling with no prior PF history, this is very likely the same issue.",
+    ],
+    officialEscalation: [
+      "File a grievance at epfigms.gov.in if the employer is slow to file the EPS-ineligibility correction, citing the specific months affected.",
+    ],
+    sources: [
+      { title: "PF Blunder? ₹1250 disappearing into EPS without eligibility! (r/IndiaTax)", url: "https://www.reddit.com/r/IndiaTax/comments/1mbg70f/pf_blunder_1250_disappearing_into_eps_without/" },
+      { title: "Employer started EPS contribution even though previous... (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1thvpq0/employer_started_eps_contribution_even_though/" },
+      { title: "PF Transfer Rejection Due to EPS Contribution (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1fwi7tp/pf_transfer_rejection_due_to_eps_contribution/" },
+    ],
+    lastVerified: "2026-09-16",
+    tags: ["eps", "wage ceiling", "wrongly enrolled", "payroll error", "transfer rejected"],
+  },
+  {
+    slug: "higher-pension-arrears-tds-and-funding",
+    category: "pension",
+    title: "Higher pension arrears: where the money actually comes from, and why TDS gets deducted",
+    short:
+      "Opting for higher EPS pension means EPFO recomputes years of past contributions — and members are routinely surprised both by TDS on the arrears payout and by confusion over whose money funds the shortfall.",
+    symptoms: [
+      "A lump-sum \"arrears\" credit shows up alongside a revised, higher monthly pension, with tax already deducted from it",
+      "Uncertainty over whether the extra 1.16% contribution required for higher pension comes out of your own PF balance",
+      "EPS balance doesn't show up combined with the regular PF balance on the portal, causing confusion during a transfer or final settlement",
+    ],
+    likelyCauses: [
+      "Opting for higher pension means EPFO recalculates 8.33% (the EPS-designated share) on your actual historical higher wages — potentially back to November 1995 — plus a 1.16% additional contribution on wages above the old ₹15,000 ceiling; the resulting arrears are paid as a taxable lump sum, and TDS applies to it like other income",
+      "There was genuine, well-founded confusion (including litigation) over whether that 1.16% — and the arrears shortfall generally — would be deducted from a member's own existing PF corpus; government clarification later confirmed the 1.16% is funded from the employer's overall contribution pool, not carved out of the employee's personal PF balance",
+      "EPS is administered as a separate pooled scheme from EPF, so it never shows as part of your combined PF balance on the portal the way regular contributions do — this is normal, not a sign of missing money",
+    ],
+    fixSteps: [
+      "If TDS was deducted from an arrears payout, treat it the same as TDS on any other PF-related payment — it can potentially be reconciled or claimed back through your income tax return depending on your total tax liability for that year.",
+      "If you're worried the 1.16% additional contribution for higher pension will be deducted from your own PF savings, note that government clarification put this on the employer's contribution pool, not the employee's personal corpus — but confirm your own case's specifics if the numbers on your notice don't match this.",
+      "Don't expect the EPS component to appear merged with your regular EPF balance on the portal — check EPS status and transfers separately from PF balance when reconciling anything after a job change or higher-pension opt-in.",
+      "For a specific dispute over how much was deducted or how arrears were calculated, request a written calculation breakdown from the regional EPFO office rather than trying to reconstruct it from the portal alone.",
+    ],
+    communitySolutions: [
+      "A r/IndiaTax thread describes the arrears-plus-TDS experience directly: \"EPFO credited a lump sum amount as pension arrears for the previous year along with the revised monthly pension. TDS was deducted by EPFO[.]\" — a useful data point that this is a normal, reported part of the process, not a one-off error.",
+      "A r/IndiaTax explainer clarifies why EPS seems to vanish from the visible PF total: \"The pension share (EPS) does not reflect in the total EPF balance on the EPFO portal because EPS... is managed [separately]\" — worth knowing before assuming a transfer or withdrawal is missing money.",
+      "A r/epfoindia thread on EPS not transferring alongside PF during a job-change transfer (\"My EPF balance got transferred, but the EPS amount is not showing as transferred\") is a common enough pattern that it's worth checking both halves of a transfer separately rather than assuming one covers the other.",
+    ],
+    officialEscalation: [
+      "Request a written arrears-calculation breakdown from your regional EPFO office if the deducted or credited amounts don't reconcile.",
+      "File a grievance at epfigms.gov.in for a stuck or unexplained EPS transfer specifically, separate from any PF transfer grievance.",
+    ],
+    sources: [
+      { title: "Higher Pension Scheme in EPFO: Guidelines, Form, Calculation, Formula, Eligibility, Benefits — ClearTax", url: "https://cleartax.in/s/higher-pension-scheme-epfo" },
+      { title: "Additional contribution of 1.16 per cent for higher pension to be drawn from employers' payout — Tribune India", url: "https://www.tribuneindia.com/news/nation/additional-contribution-of-1-16-per-cent-for-higher-pension-to-be-drawn-from-employers-payout-504700" },
+      { title: "EPFO Higher Pension Arrears (r/IndiaTax)", url: "https://www.reddit.com/r/IndiaTax/comments/1v3nol4/epfo_higher_pension_arrears/" },
+      { title: "Can someone explain why pension share not reflecting on total amount... (r/IndiaTax)", url: "https://www.reddit.com/r/IndiaTax/comments/1h77nhx/can_someone_explain_why_pension_share_not/" },
+      { title: "Pension (EPS) amount not transferred — why? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1s1bq0m/pension_eps_amount_not_transferred_why/" },
+    ],
+    lastVerified: "2026-09-16",
+    tags: ["higher pension", "eps", "arrears", "tds", "1.16 percent"],
+  },
+  {
+    slug: "vpf-increase-or-stop-contribution",
+    category: "contributions",
+    title: "Increasing (or stopping) your Voluntary Provident Fund contribution",
+    short:
+      "VPF lets you save far beyond the mandatory 12% at the same tax-free interest rate — but it's opt-in through your employer, has a real tax catch above ₹2.5 lakh/year, and isn't always easy to reduce once started.",
+    symptoms: [
+      "Unsure how to actually start or increase VPF beyond the standard EPF deduction",
+      "Surprised by a lower take-home pay after increasing VPF, or by a tax bill on VPF interest",
+      "Difficulty reducing or stopping a VPF contribution once it's been set up",
+    ],
+    likelyCauses: [
+      "VPF is not automatic — it requires a written request to your employer's HR/payroll specifying the additional contribution percentage, on top of the mandatory 12% EPF",
+      "Combined employee EPF + VPF contributions above ₹2.5 lakh in a financial year make the *interest* on the excess portion taxable — a rule many people aren't aware of until it shows up at tax-filing time",
+      "Employer match is capped at 12% of the ₹15,000 wage ceiling regardless of how much you contribute via VPF — the employer does not match your voluntary portion",
+      "Some employers only process VPF percentage changes once or twice a year (e.g. at the start of a financial year), making reductions slower than members expect",
+    ],
+    fixSteps: [
+      "Submit a written request to HR/payroll specifying your desired VPF contribution percentage — up to 100% of Basic + Dearness Allowance is allowed.",
+      "Before increasing VPF significantly, calculate whether your combined EPF + VPF contribution will cross ₹2.5 lakh for the year — if it will, the interest on the excess is taxable, which changes the real return math.",
+      "Don't expect employer matching on the voluntary portion — only the standard 12%-of-₹15,000 employer contribution applies regardless of your own VPF percentage.",
+      "To reduce or stop VPF, submit a similar written request to payroll — but check your employer's specific cycle for processing contribution-percentage changes, since some only apply them from the next financial year rather than the next pay cycle.",
+    ],
+    communitySolutions: [
+      "A widely-cited r/IndiaInvestments summary of why VPF appeals to people at all: \"It's currently yielding 8.5% pa, with a lock-in period of 5 years and interest being tax-free. You can contribute up to 100% of your basic [salary].\"",
+      "On the ₹2.5 lakh tax catch specifically, a r/personalfinanceindia comment does the math for a common target: \"19k in VPF + 1.8K in EPF per month will be roughly 2.5 lakhs annually\" — a useful anchor figure for planning how much VPF to add without crossing into taxable-interest territory.",
+      "A r/IndiaInvestments thread on someone who increased VPF and regretted the liquidity trade-off is a useful gut-check before committing to a large VPF percentage: unlike many other investments, VPF (like EPF) isn't easily accessible before retirement or the specific advance-withdrawal reasons that apply to EPF generally.",
+    ],
+    officialEscalation: [
+      "VPF is administered entirely through your employer's payroll, not directly through EPFO's grievance system — escalate contribution-processing delays with HR/payroll first, and only involve EPFO if the amounts aren't reflecting correctly in your passbook once actually deducted.",
+    ],
+    sources: [
+      { title: "Voluntary Provident Fund (VPF): Interest Rate, Benefits, Tax Exemption, Limit, Withdrawal Rules — ClearTax", url: "https://cleartax.in/s/voluntary-provident-fund" },
+      { title: "Is Voluntary Provident Fund (VPF) one of the last few sensible (quasi...) (r/IndiaInvestments)", url: "https://www.reddit.com/r/IndiaInvestments/comments/kfcroy/is_voluntary_provident_fund_vpf_one_of_the_last/" },
+      { title: "Wish to make voluntary contributions to PF (r/personalfinanceindia)", url: "https://www.reddit.com/r/personalfinanceindia/comments/1jnyzmo/wish_to_make_voluntary_contributions_to_pf/" },
+      { title: "Did I commit a mistake by increasing VPF amount instead of... (r/IndiaInvestments)", url: "https://www.reddit.com/r/IndiaInvestments/comments/1b5meo7/did_i_committed_a_mistake_by_increasing_vpf/" },
+    ],
+    lastVerified: "2026-09-16",
+    tags: ["vpf", "voluntary contribution", "wage ceiling", "tax", "2.5 lakh"],
+  },
 ];
 
 export function problemBySlug(slug: string): ProblemEntry | undefined {

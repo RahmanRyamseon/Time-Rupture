@@ -13,19 +13,28 @@ EPFO office.
 
 ## What's here
 
-- **17 problem entries** across 9 categories (UAN activation & login, KYC &
+- **26 problem entries** across 10 categories (UAN activation & login, KYC &
   corrections, claims & withdrawal, PF transfer, employer non-compliance, EPS
-  pension, nomination & death claims, tax/TDS, passbook & interest) — including
-  two entries grounded in very current 2026 events: claims stuck since the
-  July 2026 "EPFO 3.0" system migration, and "Delinking" requests (removing a
-  wrong employer from your service history) that never clear.
+  pension, nomination & death claims, tax/TDS, passbook & interest,
+  contributions/VPF/eligibility) — including two entries grounded in very current
+  2026 events (claims stuck since the July 2026 "EPFO 3.0" system migration, and
+  "Delinking" requests that never clear) and coverage of less obvious topics:
+  Form 10C EPS withdrawal, the EDLI death-benefit payout, PF after becoming an
+  NRI, UAN-vs-Member-ID confusion, UIDAI-side Aadhaar linking failures, employer
+  EPF-registration eligibility, being wrongly enrolled in EPS, higher-pension
+  arrears/TDS, and VPF.
 - Each entry (`src/data/problems.ts`) has: how the problem shows up, likely causes,
   numbered fix steps, community-sourced "how people actually solved it" tips, an
   official escalation path (EPFiGMS grievance portal, regional office, etc.), and a
   `sources` list of where it was researched from, with a `lastVerified` date.
-- **Search** (`/`, `/browse`) — a simple client-side term-match search over titles,
-  tags, symptoms, and causes; no backend, so this is fast and free but not
-  typo-tolerant.
+- **Search** (`/`, `/browse`) — client-side, weighted, and typo-tolerant
+  (`src/lib/search.ts`). Title/tag hits outrank a match buried in causes text;
+  a small synonym table expands common abbreviations (`pf` ↔ `epf`, `eps` ↔
+  `pension`, …); and a Levenshtein-distance fallback means a misspelled query
+  like "UAN activasion" or "claim rejceted" still surfaces the right entry
+  instead of a blank results screen. When nothing matches exactly, the UI
+  labels the results "No exact match — closest problems to…" rather than
+  silently showing fuzzy guesses as if they were confident hits.
 - **Browse by category** (`/category/[slug]`) and a full **directory** (`/browse`)
   with category filter chips.
 - **Official links** (`/official-links`) — the real EPFO portals, grievance system,
