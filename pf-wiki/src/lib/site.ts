@@ -3,8 +3,19 @@
  * NEXT_PUBLIC_SITE_URL env var to your real deployed domain before
  * building for production, since sitemap.xml, robots.txt, canonical URLs,
  * and Open Graph tags all depend on it being correct.
+ *
+ * Normalized defensively: a value with no scheme (e.g. a host pasted
+ * straight from a hosting dashboard, like "providentfund.vercel.app")
+ * would otherwise throw at build time wherever it's passed to `new URL()`
+ * (e.g. `metadataBase` in the root layout) and take the whole production
+ * build down with it.
  */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://pf-wiki.example").replace(/\/$/, "");
+function normalizeSiteUrl(raw: string): string {
+  const withScheme = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+  return withScheme.replace(/\/$/, "");
+}
+
+export const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL || "https://pf-wiki.example");
 
 export const SITE_NAME = "PF Wiki";
 
