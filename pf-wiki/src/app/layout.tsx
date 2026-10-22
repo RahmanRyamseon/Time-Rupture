@@ -46,6 +46,9 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   formatDetection: { telephone: false, email: false, address: false },
   robots: { index: true, follow: true },
+  verification: {
+    google: "hbvtIX1d-d3sWwRLBGHVrom4fjJA7rO9yqMXYufITFs",
+  },
   alternates: {
     canonical: "/",
     types: { "application/rss+xml": "/feed.xml" },
