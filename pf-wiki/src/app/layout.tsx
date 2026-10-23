@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
+import { CookieConsent } from "@/components/CookieConsent";
+import { CookieSettingsButton } from "@/components/CookieSettingsButton";
+import { Analytics } from "@/components/Analytics";
+import { AdSenseScript } from "@/components/AdSenseScript";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -114,6 +118,25 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             PF Wiki — an unofficial, community-sourced gateway to Provident Fund problems. Not
             affiliated with EPFO or the Government of India.
           </p>
+          <nav aria-label="Legal" className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+            <a href="/privacy/" className="underline hover:text-foreground/70">
+              Privacy Policy
+            </a>
+            <span aria-hidden="true">·</span>
+            <a href="/cookies/" className="underline hover:text-foreground/70">
+              Cookie Policy
+            </a>
+            <span aria-hidden="true">·</span>
+            <a href="/terms/" className="underline hover:text-foreground/70">
+              Terms of Use
+            </a>
+            <span aria-hidden="true">·</span>
+            <a href="/security/" className="underline hover:text-foreground/70">
+              Security
+            </a>
+            <span aria-hidden="true">·</span>
+            <CookieSettingsButton className="underline hover:text-foreground/70" />
+          </nav>
           <p className="mt-2">
             <a href="/feed.xml" className="underline hover:text-foreground/70">
               RSS feed
@@ -123,6 +146,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </a>
           </p>
         </footer>
+        <CookieConsent />
+        <Analytics />
+        <AdSenseScript />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
