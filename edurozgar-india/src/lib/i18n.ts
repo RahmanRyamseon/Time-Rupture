@@ -1,0 +1,115 @@
+export type Locale = "en" | "hi" | "ur";
+
+export const LOCALES: { code: Locale; label: string; dir: "ltr" | "rtl" }[] = [
+  { code: "en", label: "English", dir: "ltr" },
+  { code: "hi", label: "हिन्दी", dir: "ltr" },
+  { code: "ur", label: "اردو", dir: "rtl" },
+];
+
+export type DictKey = keyof typeof dictionaries["en"];
+
+export const dictionaries = {
+  en: {
+    siteName: "EduRozgar India",
+    tagline: "Your trusted guide to scholarships, government jobs and education opportunities in India.",
+    heroHeading: "Find Scholarships, Government Jobs and Education Opportunities in India",
+    heroSub: "Verified opportunities with deadlines, eligibility details and official application links.",
+    searchPlaceholder: "Search by job, scholarship, course, state or category",
+    navHome: "Home",
+    navScholarships: "Scholarships",
+    navJobs: "Government Jobs",
+    navAdmissions: "Admissions",
+    navMinority: "Muslim & Minority Opportunities",
+    navStates: "State-wise",
+    navCalendar: "Calendar",
+    navArticles: "Articles & Guidance",
+    navDashboard: "My Dashboard",
+    navAdmin: "Admin",
+    ctaSearch: "Search Opportunities",
+    ctaScholarships: "Browse Scholarships",
+    ctaJobs: "Find Government Jobs",
+    ctaMinority: "View Minority Opportunities",
+    ctaClosing: "Check Closing Dates",
+    disclaimerShort:
+      "EduRozgar India is an information and discovery platform, not a government website. Always verify every opportunity on its official application portal.",
+    lastVerified: "Last verified",
+    applyOfficial: "Apply on Official Website",
+    viewNotification: "View Official Notification",
+    redirectWarning:
+      "You are being redirected to an external website. Verify the URL and application details before submitting personal information or paying any fee.",
+    reportOutdated: "Report outdated information",
+    suggestOpportunity: "Suggest an opportunity",
+    minorityEligibilityLabel: "Muslim/minority eligibility or preference where officially applicable",
+    footerRights: "All information is for reference only. Confirm every detail on the official source before applying.",
+  },
+  hi: {
+    siteName: "एडुरोज़गार इंडिया",
+    tagline: "भारत में छात्रवृत्ति, सरकारी नौकरियों और शिक्षा अवसरों के लिए आपका भरोसेमंद मार्गदर्शक।",
+    heroHeading: "भारत में छात्रवृत्ति, सरकारी नौकरियां और शिक्षा अवसर खोजें",
+    heroSub: "समय सीमा, पात्रता विवरण और आधिकारिक आवेदन लिंक के साथ सत्यापित अवसर।",
+    searchPlaceholder: "नौकरी, छात्रवृत्ति, कोर्स, राज्य या श्रेणी से खोजें",
+    navHome: "होम",
+    navScholarships: "छात्रवृत्ति",
+    navJobs: "सरकारी नौकरियां",
+    navAdmissions: "प्रवेश",
+    navMinority: "मुस्लिम और अल्पसंख्यक अवसर",
+    navStates: "राज्य-वार",
+    navCalendar: "कैलेंडर",
+    navArticles: "लेख और मार्गदर्शन",
+    navDashboard: "मेरा डैशबोर्ड",
+    navAdmin: "एडमिन",
+    ctaSearch: "अवसर खोजें",
+    ctaScholarships: "छात्रवृत्ति ब्राउज़ करें",
+    ctaJobs: "सरकारी नौकरियां खोजें",
+    ctaMinority: "अल्पसंख्यक अवसर देखें",
+    ctaClosing: "अंतिम तिथियां देखें",
+    disclaimerShort:
+      "एडुरोज़गार इंडिया एक सूचना और खोज मंच है, सरकारी वेबसाइट नहीं। कृपया हर अवसर को उसके आधिकारिक आवेदन पोर्टल पर सत्यापित करें।",
+    lastVerified: "अंतिम बार सत्यापित",
+    applyOfficial: "आधिकारिक वेबसाइट पर आवेदन करें",
+    viewNotification: "आधिकारिक अधिसूचना देखें",
+    redirectWarning:
+      "आपको एक बाहरी वेबसाइट पर भेजा जा रहा है। व्यक्तिगत जानकारी देने या कोई शुल्क देने से पहले URL और आवेदन विवरण की जांच करें।",
+    reportOutdated: "पुरानी जानकारी की रिपोर्ट करें",
+    suggestOpportunity: "एक अवसर सुझाएं",
+    minorityEligibilityLabel: "जहां आधिकारिक रूप से लागू हो वहां मुस्लिम/अल्पसंख्यक पात्रता या वरीयता",
+    footerRights: "सारी जानकारी केवल संदर्भ के लिए है। आवेदन करने से पहले हर विवरण को आधिकारिक स्रोत पर सत्यापित करें।",
+  },
+  ur: {
+    siteName: "ایجوروزگار انڈیا",
+    tagline: "بھارت میں اسکالرشپس، سرکاری ملازمتوں اور تعلیمی مواقع کے لیے آپ کا قابلِ اعتماد رہنما۔",
+    heroHeading: "بھارت میں اسکالرشپس، سرکاری ملازمتیں اور تعلیمی مواقع تلاش کریں",
+    heroSub: "آخری تاریخوں، اہلیت کی تفصیلات اور سرکاری درخواست کے لنکس کے ساتھ تصدیق شدہ مواقع۔",
+    searchPlaceholder: "ملازمت، اسکالرشپ، کورس، ریاست یا زمرہ سے تلاش کریں",
+    navHome: "ہوم",
+    navScholarships: "اسکالرشپس",
+    navJobs: "سرکاری ملازمتیں",
+    navAdmissions: "داخلے",
+    navMinority: "مسلم اور اقلیتی مواقع",
+    navStates: "ریاست کے مطابق",
+    navCalendar: "کیلنڈر",
+    navArticles: "مضامین اور رہنمائی",
+    navDashboard: "میرا ڈیش بورڈ",
+    navAdmin: "ایڈمن",
+    ctaSearch: "مواقع تلاش کریں",
+    ctaScholarships: "اسکالرشپس دیکھیں",
+    ctaJobs: "سرکاری ملازمتیں تلاش کریں",
+    ctaMinority: "اقلیتی مواقع دیکھیں",
+    ctaClosing: "آخری تاریخیں دیکھیں",
+    disclaimerShort:
+      "ایجوروزگار انڈیا ایک معلوماتی اور دریافت کا پلیٹ فارم ہے، سرکاری ویب سائٹ نہیں۔ براہ کرم ہر موقع کی تصدیق اس کے سرکاری درخواست پورٹل پر کریں۔",
+    lastVerified: "آخری تصدیق",
+    applyOfficial: "سرکاری ویب سائٹ پر درخواست دیں",
+    viewNotification: "سرکاری نوٹیفکیشن دیکھیں",
+    redirectWarning:
+      "آپ کو ایک بیرونی ویب سائٹ پر بھیجا جا رہا ہے۔ ذاتی معلومات دینے یا کوئی فیس ادا کرنے سے پہلے URL اور درخواست کی تفصیلات کی تصدیق کریں۔",
+    reportOutdated: "پرانی معلومات کی اطلاع دیں",
+    suggestOpportunity: "ایک موقع تجویز کریں",
+    minorityEligibilityLabel: "جہاں سرکاری طور پر لاگو ہو وہاں مسلم/اقلیتی اہلیت یا ترجیح",
+    footerRights: "تمام معلومات صرف حوالہ کے لیے ہیں۔ درخواست دینے سے پہلے ہر تفصیل کی سرکاری ذریعہ پر تصدیق کریں۔",
+  },
+} as const;
+
+export function t(locale: Locale, key: DictKey): string {
+  return dictionaries[locale][key] ?? dictionaries.en[key];
+}
