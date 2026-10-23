@@ -5,7 +5,7 @@
  */
 export const OPERATOR_NAME = "PF Wiki";
 export const OPERATOR_TYPE = "an independently run, individual reference project";
-export const CONTACT_EMAIL = "mohd.rahman3012@gmail.com";
+export const CONTACT_EMAIL = "ryamseon67@gmail.com";
 export const PRIVACY_LAST_UPDATED = "23 October 2026";
 export const COOKIE_LAST_UPDATED = "23 October 2026";
 export const SECURITY_LAST_UPDATED = "23 October 2026";
