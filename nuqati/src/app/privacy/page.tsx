@@ -56,13 +56,14 @@ export default function PrivacyPolicyPage() {
             to.
           </li>
           <li>
-            <strong>Device and usage data, IP address:</strong> we do not run analytics or
-            tracking of any kind (see the{" "}
-            <Link href="/cookies">Cookie Policy</Link>). The only device/IP information involved
-            is what our hosting provider, Vercel, necessarily logs at the infrastructure level to
-            serve pages and keep the site secure — standard web server access logs (IP address,
-            user agent, requested URL, timestamp). We do not separately collect, store, or analyze
-            this ourselves.
+            <strong>Device and usage data, IP address:</strong> the site has an optional, opt-in
+            Google Analytics integration wired in (see the{" "}
+            <Link href="/cookies">Cookie Policy</Link>), but no GA4 property is configured yet, so
+            it currently collects nothing regardless of your consent choice. The only device/IP
+            information involved today is what our hosting provider, Vercel, necessarily logs at
+            the infrastructure level to serve pages and keep the site secure — standard web server
+            access logs (IP address, user agent, requested URL, timestamp). We do not separately
+            collect, store, or analyze this ourselves.
           </li>
           <li>
             <strong>Location data:</strong> none collected. {SITE_NAME} does not use geolocation
@@ -116,11 +117,17 @@ export default function PrivacyPolicyPage() {
             for how they handle infrastructure-level data.
           </li>
           <li>
-            <strong>Everyone else:</strong> no payment processors, analytics providers,
-            advertising partners, email providers, or customer-support tools are integrated today.
-            If that changes, this policy and the{" "}
-            <Link href="/cookies">Cookie Policy</Link> will be updated first, and consent obtained
-            where required.
+            <strong>Google (Analytics / AdSense):</strong> the site has opt-in integrations for
+            both wired into the code, gated behind environment variables that are currently
+            unset — neither is live today, and nothing is sent to Google regardless of your
+            cookie preference until one is configured. When either is turned on, it will only run
+            for visitors who&apos;ve consented (see the <Link href="/cookies">Cookie Policy</Link>
+            ), and this policy will be updated with specifics — including what Google does with
+            that data under its own privacy policy — before that happens.
+          </li>
+          <li>
+            <strong>Everyone else:</strong> no payment processors, advertising partners beyond the
+            above, email providers, or customer-support tools are integrated today.
           </li>
         </ul>
       </Section>

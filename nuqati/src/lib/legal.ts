@@ -3,6 +3,10 @@
 export const SITE_NAME = "Nuqati";
 export const SITE_URL = "https://gulfcards.vercel.app";
 export const REPO_URL = "https://github.com/RahmanRyamseon/Time-Rupture";
+export const SITE_DESCRIPTION =
+  "Which card should you swipe? What are your points actually worth? Nuqati is a free GCC credit " +
+  "card rewards optimizer covering Bahrain's bank cards, with real reward-rate comparisons, a points " +
+  "valuation engine, and a transfer-partner map — no bank login required.";
 
 export const LEGAL_LAST_UPDATED = "26 October 2026";
 
