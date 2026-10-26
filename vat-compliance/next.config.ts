@@ -1,14 +1,23 @@
 import type { NextConfig } from "next";
 
+// Only loaded/rendered when NEXT_PUBLIC_ADSENSE_CLIENT_ID is set (see
+// src/components/AdSlot.tsx) — these origins sit inert in the CSP otherwise.
+const ADSENSE_ORIGINS = [
+  "https://pagead2.googlesyndication.com",
+  "https://tpc.googlesyndication.com",
+  "https://googleads.g.doubleclick.net",
+].join(" ");
+
 const csp = [
   "default-src 'self'",
   // next/font self-hosts IBM Plex Sans/Mono at build time, so no external
   // font origin needs to be allowlisted here.
-  "script-src 'self' 'unsafe-inline'",
+  `script-src 'self' 'unsafe-inline' ${ADSENSE_ORIGINS}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data:",
+  `img-src 'self' data: ${ADSENSE_ORIGINS}`,
   "font-src 'self'",
-  "connect-src 'self' https://*.supabase.co",
+  `connect-src 'self' https://*.supabase.co ${ADSENSE_ORIGINS}`,
+  `frame-src ${ADSENSE_ORIGINS}`,
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",

@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useWorkpaper } from "@/lib/workpaper/context";
+import AdSlot from "@/components/AdSlot";
 
 const NAV_ITEMS = [
   { href: "/upload", label: "Data Sources" },
@@ -136,6 +137,9 @@ export default function Shell({ email, isAdmin, children }: { email: string | nu
             );
           })}
           <div style={{ flex: 1 }} />
+          <div style={{ padding: "0 18px 12px" }}>
+            <AdSlot slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR ?? ""} />
+          </div>
           <div style={{ padding: "12px 18px", borderTop: "1px solid #2e343b", marginTop: 8 }}>
             <div style={{ fontSize: 9.5, letterSpacing: 1.2, color: "#6d757e", fontWeight: 600, marginBottom: 7 }}>AUTHORITATIVE SOURCES</div>
             <div style={{ fontSize: 10.5, color: "#8a929c", lineHeight: 1.7, fontFamily: "var(--font-mono)" }}>
