@@ -9,6 +9,9 @@ const USAGE_KEY = "nuqati.usage.v1";
 const BALANCES_KEY = "nuqati.balances.v1";
 const STATEMENTS_KEY = "nuqati.statements.v1";
 
+/** Every localStorage key Nuqati writes to — the full set of data that lives on this device. */
+export const ALL_STORAGE_KEYS = [WALLET_KEY, USAGE_KEY, BALANCES_KEY, STATEMENTS_KEY] as const;
+
 type UsageLog = Record<string, Record<string, number>>; // cycleKey -> "cardId::category" -> spentBhd
 
 export interface StatementSummaryRecord {
@@ -86,6 +89,10 @@ interface AppState {
   statementSummaries: StatementSummaryRecord[];
   addStatementSummary: (summary: Omit<StatementSummaryRecord, "id" | "importedAt">) => void;
   removeStatementSummary: (id: string) => void;
+  /** Every byte Nuqati has stored on this device, as a plain JSON-serializable object — for self-serve data export. */
+  exportAllData: () => Record<string, unknown>;
+  /** Wipes every Nuqati localStorage key on this device. Irreversible on this device. */
+  clearAllData: () => void;
 }
 
 const AppStateContext = createContext<AppState | null>(null);
@@ -151,6 +158,27 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     statementsStore.set(statementsStore.getSnapshot().filter((s) => s.id !== id));
   }, []);
 
+  const exportAllData = useCallback(
+    () => ({
+      exportedAt: new Date().toISOString(),
+      wallet: walletStore.getSnapshot(),
+      usage: usageStore.getSnapshot(),
+      pointsBalances: balancesStore.getSnapshot(),
+      statementSummaries: statementsStore.getSnapshot(),
+    }),
+    [],
+  );
+
+  const clearAllData = useCallback(() => {
+    for (const key of ALL_STORAGE_KEYS) {
+      if (typeof window !== "undefined") window.localStorage.removeItem(key);
+    }
+    walletStore.set([]);
+    usageStore.set({});
+    balancesStore.set({});
+    statementsStore.set([]);
+  }, []);
+
   const value = useMemo<AppState>(
     () => ({
       cardIds,
@@ -166,6 +194,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       statementSummaries,
       addStatementSummary,
       removeStatementSummary,
+      exportAllData,
+      clearAllData,
     }),
     [
       cardIds,
@@ -181,6 +211,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       statementSummaries,
       addStatementSummary,
       removeStatementSummary,
+      exportAllData,
+      clearAllData,
     ],
   );
 
