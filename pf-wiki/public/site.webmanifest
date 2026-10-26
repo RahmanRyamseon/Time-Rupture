@@ -1,0 +1,17 @@
+{
+  "name": "PF Wiki — Provident Fund Problems & Fixes",
+  "short_name": "PF Wiki",
+  "description": "A free, unofficial reference for Provident Fund (EPF/EPFO) problems and sourced fixes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f6f2",
+  "theme_color": "#1d4f3f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
