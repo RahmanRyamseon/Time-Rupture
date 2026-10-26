@@ -10,7 +10,7 @@ database, with your wallet, spend logs, and points balances kept in `localStorag
 
 ## Features (Phase 1 MVP)
 
-- **My Wallet** (`/wallet`) — browse and add cards from a curated database of 30
+- **My Wallet** (`/wallet`) — browse and add cards from a curated database of 31
   active cards (plus 2 legacy/discontinued, shown behind a toggle) across 11 Bahrain
   issuing entities: NBB, BisB, BBK, CrediMax (BBK's card-issuing arm), KFH Bahrain
   (formerly Ahli United Bank), NBK Bahrain, HSBC, Standard Chartered, Al Salam Bank,
@@ -83,6 +83,32 @@ not tagged "(sourced)" — is estimated, since most Bahrain issuers don't publis
 category-level rates. Citibank Bahrain was removed from the dataset: it does not
 appear in this research pass as an active Bahrain card issuer.
 
+A follow-up re-verification pass (October 2026, via live web search rather than the
+page-fetch tooling used for the original pass) corrected two issuers that had drifted:
+
+- **KFH Bahrain**'s loyalty currency is actually called "Pearl Points," not a generic
+  name — and transfers to four confirmed partners (Gulf Air Falconflyer, Emirates
+  Skywards, Etihad Guest, Qatar Airways Privilege Club via Avios, Landmark Shukran),
+  not just the one previously modeled. Per-category earn rates for KFH's three cards
+  remain estimated — not published at that level.
+- **HSBC Bahrain**'s real lineup (per bahrain.hsbc.com) is Premier / Cashback / Visa
+  Platinum (a fourth, Advance, isn't modeled — no rate data found). The Cashback
+  card's categories were wrong (modeled online/dining; it's actually fuel/groceries
+  at up to 2%, 1% elsewhere) and have been corrected; the Premier card's branding and
+  no-annual-fee status were corrected, and its real BHD 35,000/USD 100,000
+  relationship-based eligibility is noted (the dataset still models it via
+  `minSalaryBhd` as a rough stand-in, since the data model has no relationship-tier
+  field); a Visa Platinum card (flat 5 Air Miles/BHD) was added, with its fee/salary
+  marked estimated since neither is published.
+
+Only cards/programs with a specific, citable live-source finding were touched —
+everything else (BisB, BBK, Al Salam Bank, Khaleeji Bank, NBK, Standard Chartered,
+CrediMax, NBB) was checked but either confirmed unchanged or left as-is where
+WebSearch couldn't surface a reliable current figure (full page fetches are blocked
+in this environment, so verification is bounded by what search result snippets
+reveal — see each card's `lastVerified` date for what was actually re-checked this
+pass versus what still reflects the original August 2026 research).
+
 ## Not yet built — and why
 
 Two things are structurally blocked in this environment rather than merely
@@ -104,6 +130,34 @@ unscheduled:
 Spend tracking against welcome-bonus thresholds, points expiry push alerts, a card
 recommendation engine, and an AI points concierge remain unscheduled Phase 2/3 ideas
 from the original spec.
+
+## Public availability, search indexing, and ads
+
+The site is public at [gulfcards.vercel.app](https://gulfcards.vercel.app) — Vercel's
+Standard Protection (SSO wall) was disabled on the `gulfcards` project so visitors
+don't need a Vercel login. `src/app/robots.ts` and `src/app/sitemap.ts` generate
+`/robots.txt` and `/sitemap.xml`, listing every route for crawlers; the layout's
+`metadata` export sets title/description/Open Graph/Twitter tags and
+`robots: { index: true, follow: true }`. That's what actually gets a public site
+indexed — search engines crawl it via the sitemap once they discover the domain.
+
+Two things need the account-holder's own action, not code:
+
+- **Google Search Console verification** (optional, speeds up/confirms indexing —
+  not required for crawling to happen). Add a `verification.google` entry to
+  `layout.tsx`'s `metadata` with the code Search Console gives you, or verify by DNS
+  instead, which needs no code change.
+- **Monetization.** Sign up for Google AdSense (requires the account holder's own
+  Google account and site review/approval — not something this session can do) and/or
+  create a GA4 property. Once you have IDs, set `NEXT_PUBLIC_GA_MEASUREMENT_ID` and/or
+  `NEXT_PUBLIC_ADSENSE_CLIENT_ID` as Vercel project environment variables and redeploy.
+  The infrastructure for both already exists and is wired into every page
+  (`src/components/Analytics.tsx`, `AdSenseScript.tsx`, a real accept/reject/customize
+  consent banner in `CookieConsent.tsx` that's GPC-aware) — both stay fully inert,
+  loading nothing, until their env var is set, and then only for visitors who've
+  consented. Once AdSense is approved, add a `public/ads.txt` naming your publisher
+  account (Google gives you the exact line) — it isn't included here since there's no
+  real account ID to put in it yet.
 
 ## Development
 

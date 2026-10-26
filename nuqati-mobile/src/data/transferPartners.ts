@@ -60,14 +60,41 @@ export const TRANSFER_PARTNERS: TransferPartner[] = [
     sweetSpot: "Choose this scheme at account setup instead of the 5% automated cashback scheme",
   },
 
-  // ---------------- KFH Bahrain, HSBC, Standard Chartered, BBK — estimated, not covered by sourced research ----------------
+  // ---------------- KFH Bahrain Pearl Points — confirmed multi-partner network (sourced Oct 2026) ----------------
   {
     fromProgramId: "kfh-bahrain-rewards",
     toProgramId: "gulf-air-falconflyer",
-    ratioLabel: "Estimated ≈1.4 pts : 1 mile — not independently verified",
+    ratioLabel: "Sourced as a real Pearl Points transfer partner (bh.kfh.com); exact ratio not published — estimated ≈1.4 pts : 1 mile",
     ratioFromPerTo: 1.4,
     isActive: true,
+    sweetSpot: "One of 5 confirmed Pearl Points airline partners: Falconflyer, Emirates Skywards, Etihad Guest, Qatar Airways Privilege Club (Avios), Shukran",
   },
+  {
+    fromProgramId: "kfh-bahrain-rewards",
+    toProgramId: "emirates-skywards",
+    ratioLabel: "Sourced as a real Pearl Points transfer partner (bh.kfh.com/personal/credit-cards/platinum-credit-card) — ratio not publicly disclosed",
+    isActive: true,
+  },
+  {
+    fromProgramId: "kfh-bahrain-rewards",
+    toProgramId: "etihad-guest",
+    ratioLabel: "Sourced as a real Pearl Points transfer partner (bh.kfh.com) — ratio not publicly disclosed",
+    isActive: true,
+  },
+  {
+    fromProgramId: "kfh-bahrain-rewards",
+    toProgramId: "avios",
+    ratioLabel: "Sourced as a real Pearl Points transfer partner via Qatar Airways Privilege Club (bh.kfh.com) — ratio not publicly disclosed",
+    isActive: true,
+  },
+  {
+    fromProgramId: "kfh-bahrain-rewards",
+    toProgramId: "landmark-shukran",
+    ratioLabel: "Sourced as a real Pearl Points transfer partner (bh.kfh.com) — ratio not publicly disclosed",
+    isActive: true,
+  },
+
+  // ---------------- HSBC, Standard Chartered, BBK — estimated, not covered by sourced research ----------------
   {
     fromProgramId: "hsbc-air-miles",
     toProgramId: "gulf-air-falconflyer",

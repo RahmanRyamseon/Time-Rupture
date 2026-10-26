@@ -15,7 +15,7 @@ Identical scope to the web app, wired onto native navigation:
 
 - **Home** — feature grid entry point.
 - **My Wallet** (Wallet tab) — browse and add cards from the same curated
-  30-active/2-legacy Bahrain card database; add/remove, filter by bank, tier,
+  31-active/2-legacy Bahrain card database; add/remove, filter by bank, tier,
   Sharia-compliance, and legacy status.
 - **Explore Benefits** (Explore tab) — country → bank → card-type filters, plus
   benefit-tag and "points can be used for" (cashback/flights/hotels/merchandise)
