@@ -46,6 +46,17 @@ export const LOYALTY_PROGRAMS: LoyaltyProgram[] = [
     ],
   },
   {
+    id: "emirates-skywards",
+    name: "Emirates Skywards",
+    currencyName: "Skywards Miles",
+    operator: "Emirates",
+    expiryPolicy: "Miles expire after 36 months of account inactivity",
+    redemptionOptions: [
+      { type: "flight", label: "Economy flight redemption", valuePerPointFils: 15, conditions: "Estimated" },
+      { type: "flight", label: "Business class redemption", valuePerPointFils: 26, conditions: "Estimated" },
+    ],
+  },
+  {
     id: "avios",
     name: "Avios",
     currencyName: "Avios",
@@ -153,13 +164,15 @@ export const LOYALTY_PROGRAMS: LoyaltyProgram[] = [
   },
   {
     id: "kfh-bahrain-rewards",
-    name: "KFH Bahrain Rewards",
-    currencyName: "Reward Points",
+    name: "KFH Pearl Points",
+    currencyName: "Pearl Points",
     operator: "KFH Bahrain (formerly Ahli United Bank)",
     expiryPolicy: "Points expire 24 months after being earned",
+    minRedemption:
+      "Sourced: re-verified Oct 2026 — the program's real currency is named \"Pearl Points\" (bh.kfh.com/personal/credit-cards/platinum-credit-card; KFH Qatar Airways T&C, Aug 2026), not a generic name. Per-point cash value and redemption minimums are not published.",
     redemptionOptions: [
       { type: "cashback", label: "Cashback", valuePerPointFils: 1.5, conditions: "Estimated — not covered by current research pass" },
-      { type: "transfer", label: "Transfer to Falconflyer", valuePerPointFils: 2.1, conditions: "Estimated" },
+      { type: "transfer", label: "Transfer to an airline partner", valuePerPointFils: 2.1, conditions: "Sourced that transfer partners exist (see Transfer Partner Navigator); per-point value estimated" },
     ],
   },
   {

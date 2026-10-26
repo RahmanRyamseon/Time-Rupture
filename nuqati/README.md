@@ -10,7 +10,7 @@ database, with your wallet, spend logs, and points balances kept in `localStorag
 
 ## Features (Phase 1 MVP)
 
-- **My Wallet** (`/wallet`) — browse and add cards from a curated database of 30
+- **My Wallet** (`/wallet`) — browse and add cards from a curated database of 31
   active cards (plus 2 legacy/discontinued, shown behind a toggle) across 11 Bahrain
   issuing entities: NBB, BisB, BBK, CrediMax (BBK's card-issuing arm), KFH Bahrain
   (formerly Ahli United Bank), NBK Bahrain, HSBC, Standard Chartered, Al Salam Bank,
@@ -82,6 +82,32 @@ Everything else — most annual fees, minimum salaries, and MCC-level bonus rate
 not tagged "(sourced)" — is estimated, since most Bahrain issuers don't publish
 category-level rates. Citibank Bahrain was removed from the dataset: it does not
 appear in this research pass as an active Bahrain card issuer.
+
+A follow-up re-verification pass (October 2026, via live web search rather than the
+page-fetch tooling used for the original pass) corrected two issuers that had drifted:
+
+- **KFH Bahrain**'s loyalty currency is actually called "Pearl Points," not a generic
+  name — and transfers to four confirmed partners (Gulf Air Falconflyer, Emirates
+  Skywards, Etihad Guest, Qatar Airways Privilege Club via Avios, Landmark Shukran),
+  not just the one previously modeled. Per-category earn rates for KFH's three cards
+  remain estimated — not published at that level.
+- **HSBC Bahrain**'s real lineup (per bahrain.hsbc.com) is Premier / Cashback / Visa
+  Platinum (a fourth, Advance, isn't modeled — no rate data found). The Cashback
+  card's categories were wrong (modeled online/dining; it's actually fuel/groceries
+  at up to 2%, 1% elsewhere) and have been corrected; the Premier card's branding and
+  no-annual-fee status were corrected, and its real BHD 35,000/USD 100,000
+  relationship-based eligibility is noted (the dataset still models it via
+  `minSalaryBhd` as a rough stand-in, since the data model has no relationship-tier
+  field); a Visa Platinum card (flat 5 Air Miles/BHD) was added, with its fee/salary
+  marked estimated since neither is published.
+
+Only cards/programs with a specific, citable live-source finding were touched —
+everything else (BisB, BBK, Al Salam Bank, Khaleeji Bank, NBK, Standard Chartered,
+CrediMax, NBB) was checked but either confirmed unchanged or left as-is where
+WebSearch couldn't surface a reliable current figure (full page fetches are blocked
+in this environment, so verification is bounded by what search result snippets
+reveal — see each card's `lastVerified` date for what was actually re-checked this
+pass versus what still reflects the original August 2026 research).
 
 ## Not yet built — and why
 

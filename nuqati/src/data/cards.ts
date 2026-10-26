@@ -365,7 +365,7 @@ export const BAHRAIN_CARDS: Card[] = [
       "Up to 1% cashback on general retail, capped at BHD 10/month (sourced) — not separately modeled here",
       "Free delivery on eligible talabat vendor orders; no annual fee while active (sourced)",
     ],
-    lastVerified: "2026-08-01",
+    lastVerified: "2026-10-26",
     isActive: true,
   },
   {
@@ -420,7 +420,7 @@ export const BAHRAIN_CARDS: Card[] = [
     isActive: true,
   },
 
-  // ---------------- KFH Bahrain (formerly Ahli United Bank / AUB) — estimated, not covered by current research pass ----------------
+  // ---------------- KFH Bahrain (formerly Ahli United Bank / AUB) — loyalty program re-verified Oct 2026; per-category rates still estimated ----------------
   {
     id: "kfh-reward-titanium",
     bank: "KFH Bahrain (formerly Ahli United Bank)",
@@ -438,8 +438,11 @@ export const BAHRAIN_CARDS: Card[] = [
       { category: "fuel", rate: 3, currency: "points", capPerMonthBhd: 80 },
       { category: "groceries", rate: 2, currency: "points", capPerMonthBhd: 100 },
     ],
-    keyBenefits: ["Estimated rates — not covered by the current sourced research pass"],
-    lastVerified: "2026-08-01",
+    keyBenefits: [
+      "Earns KFH's real loyalty currency, Pearl Points (sourced: bh.kfh.com, re-verified Oct 2026) — transferable to Gulf Air Falconflyer, Emirates Skywards, Etihad Guest, Qatar Airways Privilege Club, and Shukran",
+      "Per-category earn rates and fee/salary figures remain estimated — not published at this level",
+    ],
+    lastVerified: "2026-10-26",
     isActive: true,
   },
   {
@@ -459,8 +462,12 @@ export const BAHRAIN_CARDS: Card[] = [
       { category: "dining", rate: 3, currency: "points", capPerMonthBhd: 150 },
       { category: "travel", rate: 3, currency: "points", capPerMonthBhd: 150 },
     ],
-    keyBenefits: ["Estimated rates — not covered by the current sourced research pass"],
-    lastVerified: "2026-08-01",
+    keyBenefits: [
+      "Earns KFH's real loyalty currency, Pearl Points (sourced: bh.kfh.com/personal/credit-cards/platinum-credit-card, re-verified Oct 2026) — transferable to Gulf Air Falconflyer, Emirates Skywards, Etihad Guest, Qatar Airways Privilege Club, and Shukran",
+      "A dedicated KFH-branded \"Platinum Credit Card\" page now exists on bh.kfh.com — card branding may be transitioning from \"AUB\" to \"KFH\"",
+      "Per-category earn rates and fee/salary figures remain estimated — not published at this level",
+    ],
+    lastVerified: "2026-10-26",
     isActive: true,
   },
   {
@@ -480,8 +487,11 @@ export const BAHRAIN_CARDS: Card[] = [
       { category: "travel", rate: 4, currency: "points", capPerMonthBhd: 250 },
       { category: "dining", rate: 3, currency: "points", capPerMonthBhd: 150 },
     ],
-    keyBenefits: ["Estimated rates — not covered by the current sourced research pass"],
-    lastVerified: "2026-08-01",
+    keyBenefits: [
+      "Earns KFH's real loyalty currency, Pearl Points (sourced: bh.kfh.com, re-verified Oct 2026) — transferable to Gulf Air Falconflyer, Emirates Skywards, Etihad Guest, Qatar Airways Privilege Club, and Shukran",
+      "Per-category earn rates and fee/salary figures remain estimated — not published at this level",
+    ],
+    lastVerified: "2026-10-26",
     isActive: true,
   },
 
@@ -500,8 +510,10 @@ export const BAHRAIN_CARDS: Card[] = [
     loyaltyProgramId: "ithmaar-rewards",
     baseRate: 1,
     earnRules: [{ category: "groceries", rate: 2, currency: "points", capPerMonthBhd: 60 }],
-    keyBenefits: ["No longer issued — existing holders were migrated into the Al Salam Bank Loyalty Rewards Scheme in 2022 (sourced)"],
-    lastVerified: "2026-08-01",
+    keyBenefits: [
+      "No longer issued — Al Salam Bank's acquisition of Ithmaar's consumer banking business completed in 2022, with individual cardholder migration continuing into 2023 (sourced, re-verified Oct 2026)",
+    ],
+    lastVerified: "2026-10-26",
     isActive: false,
   },
   {
@@ -521,8 +533,10 @@ export const BAHRAIN_CARDS: Card[] = [
       { category: "dining", rate: 2, currency: "points", capPerMonthBhd: 80 },
       { category: "education", rate: 2, currency: "points", capPerMonthBhd: 100 },
     ],
-    keyBenefits: ["No longer issued — existing holders were migrated into the Al Salam Bank Loyalty Rewards Scheme in 2022 (sourced)"],
-    lastVerified: "2026-08-01",
+    keyBenefits: [
+      "No longer issued — Al Salam Bank's acquisition of Ithmaar's consumer banking business completed in 2022, with individual cardholder migration continuing into 2023 (sourced, re-verified Oct 2026)",
+    ],
+    lastVerified: "2026-10-26",
     isActive: false,
   },
 
@@ -567,12 +581,12 @@ export const BAHRAIN_CARDS: Card[] = [
     isActive: true,
   },
 
-  // ---------------- HSBC Bahrain — Air Miles branding confirmed; MCC-level rates not published ----------------
+  // ---------------- HSBC Bahrain — lineup re-verified Oct 2026 against bahrain.hsbc.com's own product pages ----------------
   {
     id: "hsbc-cashback-platinum",
     bank: "HSBC Bahrain",
     bankShort: "HSBC",
-    cardName: "HSBC Cashback Visa Platinum",
+    cardName: "HSBC Cashback Credit Card",
     tier: "Platinum",
     network: "Visa",
     isIslamic: false,
@@ -580,24 +594,27 @@ export const BAHRAIN_CARDS: Card[] = [
     minSalaryBhd: 400,
     currency: "cashback",
     loyaltyProgramId: "hsbc-air-miles",
-    baseRate: 0.005,
+    baseRate: 0.01,
     earnRules: [
-      { category: "online", rate: 0.02, currency: "cashback", capPerMonthBhd: 200 },
-      { category: "dining", rate: 0.01, currency: "cashback", capPerMonthBhd: 100 },
+      { category: "fuel", rate: 0.02, currency: "cashback", notes: "Sourced: bahrain.hsbc.com/credit-cards/products/cashback — up to 2% on fuel" },
+      { category: "groceries", rate: 0.02, currency: "cashback", notes: "Sourced — up to 2% on groceries" },
     ],
-    keyBenefits: ["No annual fee", "Estimated category rates — HSBC confirms Air Miles earning but not published MCC-level figures"],
-    lastVerified: "2026-08-01",
+    keyBenefits: [
+      "No annual fee",
+      "Re-verified Oct 2026 against bahrain.hsbc.com's own Cashback product page: up to 2% cashback on fuel and groceries, 1% on all other spend — replaces the previously modeled online/dining categories, which this card does not actually have",
+    ],
+    lastVerified: "2026-10-26",
     isActive: true,
   },
   {
     id: "hsbc-premier-world-elite",
     bank: "HSBC Bahrain",
     bankShort: "HSBC",
-    cardName: "HSBC Premier World Elite Mastercard",
+    cardName: "HSBC Premier Credit Card",
     tier: "Infinite",
     network: "Mastercard",
     isIslamic: false,
-    annualFeeBhd: 80,
+    annualFeeBhd: 0,
     minSalaryBhd: 2000,
     currency: "points",
     loyaltyProgramId: "hsbc-air-miles",
@@ -606,8 +623,36 @@ export const BAHRAIN_CARDS: Card[] = [
       { category: "travel", rate: 4, currency: "points", capPerMonthBhd: 300 },
       { category: "dining", rate: 3, currency: "points", capPerMonthBhd: 150 },
     ],
-    keyBenefits: ["Regional Air Miles loyalty framework (sourced: hsbc.com.bh Air Miles T&Cs)", "Requires HSBC Premier relationship", "Estimated category rates"],
-    lastVerified: "2026-08-01",
+    keyBenefits: [
+      "Regional Air Miles loyalty framework; 1,100+ airport lounges (sourced: bahrain.hsbc.com/credit-cards/products/premier, re-verified Oct 2026)",
+      "No annual fee (sourced)",
+      "Eligibility is actually a banking relationship (BHD 35,000 / USD 100,000 in deposits or investments with HSBC Premier), not a salary threshold — minSalaryBhd here is a rough stand-in, not the real gate",
+      "\"World Elite Mastercard\" branding was not found on HSBC Bahrain's current site; renamed to the confirmed product name",
+      "Per-category earn rates remain estimated",
+    ],
+    lastVerified: "2026-10-26",
+    isActive: true,
+  },
+  {
+    id: "hsbc-visa-platinum",
+    bank: "HSBC Bahrain",
+    bankShort: "HSBC",
+    cardName: "HSBC Visa Platinum",
+    tier: "Platinum",
+    network: "Visa",
+    isIslamic: false,
+    annualFeeBhd: 15,
+    minSalaryBhd: 400,
+    currency: "points",
+    loyaltyProgramId: "hsbc-air-miles",
+    baseRate: 5,
+    earnRules: [],
+    keyBenefits: [
+      "Flat 5 Air Miles per BHD 1, domestic and international spend alike (sourced: bahrain.hsbc.com/credit-cards/products/visa-platinum, found Oct 2026)",
+      "Newly added to this dataset — a real HSBC Bahrain product not previously tracked here",
+      "Annual fee and minimum salary are estimated (not published) — everything else is sourced",
+    ],
+    lastVerified: "2026-10-26",
     isActive: true,
   },
 
@@ -635,7 +680,7 @@ export const BAHRAIN_CARDS: Card[] = [
       "50% off cinema tickets at CineCo/Mukta A2/EPIX/VOX; BOGO small beverages at Costa Coffee (sourced)",
       "Points valid 3 years from transaction date; 'Purchase with Rewards' offsets posted transactions in real time (sourced)",
     ],
-    lastVerified: "2026-08-01",
+    lastVerified: "2026-10-26",
     isActive: true,
   },
   {
@@ -662,7 +707,7 @@ export const BAHRAIN_CARDS: Card[] = [
       "Visa Luxury Hotel Collection: room upgrades, breakfast, late checkout, $25 F&B credit (sourced)",
       "Up to 20% off dining at The Gulf Hotel, Sofitel Zallaq Thalassa, Lanterns Restaurant & Lounge (sourced)",
     ],
-    lastVerified: "2026-08-01",
+    lastVerified: "2026-10-26",
     isActive: true,
   },
 
