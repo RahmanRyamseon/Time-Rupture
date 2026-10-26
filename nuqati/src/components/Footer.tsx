@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 
 const LEGAL_LINKS = [
   { href: "/privacy", label: "Privacy Policy" },
@@ -17,7 +18,13 @@ export function Footer() {
             {link.label}
           </Link>
         ))}
+        <CookieSettingsButton className="underline-offset-2 hover:text-foreground hover:underline" />
       </nav>
+      <p className="mt-2">
+        <a href="/sitemap.xml" className="underline-offset-2 hover:text-foreground hover:underline">
+          Sitemap
+        </a>
+      </p>
     </footer>
   );
 }

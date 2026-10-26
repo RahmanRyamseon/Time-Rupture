@@ -131,6 +131,34 @@ Spend tracking against welcome-bonus thresholds, points expiry push alerts, a ca
 recommendation engine, and an AI points concierge remain unscheduled Phase 2/3 ideas
 from the original spec.
 
+## Public availability, search indexing, and ads
+
+The site is public at [gulfcards.vercel.app](https://gulfcards.vercel.app) — Vercel's
+Standard Protection (SSO wall) was disabled on the `gulfcards` project so visitors
+don't need a Vercel login. `src/app/robots.ts` and `src/app/sitemap.ts` generate
+`/robots.txt` and `/sitemap.xml`, listing every route for crawlers; the layout's
+`metadata` export sets title/description/Open Graph/Twitter tags and
+`robots: { index: true, follow: true }`. That's what actually gets a public site
+indexed — search engines crawl it via the sitemap once they discover the domain.
+
+Two things need the account-holder's own action, not code:
+
+- **Google Search Console verification** (optional, speeds up/confirms indexing —
+  not required for crawling to happen). Add a `verification.google` entry to
+  `layout.tsx`'s `metadata` with the code Search Console gives you, or verify by DNS
+  instead, which needs no code change.
+- **Monetization.** Sign up for Google AdSense (requires the account holder's own
+  Google account and site review/approval — not something this session can do) and/or
+  create a GA4 property. Once you have IDs, set `NEXT_PUBLIC_GA_MEASUREMENT_ID` and/or
+  `NEXT_PUBLIC_ADSENSE_CLIENT_ID` as Vercel project environment variables and redeploy.
+  The infrastructure for both already exists and is wired into every page
+  (`src/components/Analytics.tsx`, `AdSenseScript.tsx`, a real accept/reject/customize
+  consent banner in `CookieConsent.tsx` that's GPC-aware) — both stay fully inert,
+  loading nothing, until their env var is set, and then only for visitors who've
+  consented. Once AdSense is approved, add a `public/ads.txt` naming your publisher
+  account (Google gives you the exact line) — it isn't included here since there's no
+  real account ID to put in it yet.
+
 ## Development
 
 ```bash
