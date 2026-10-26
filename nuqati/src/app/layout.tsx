@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AppStateProvider } from "@/lib/store";
 import { NavBar } from "@/components/NavBar";
+import { Footer } from "@/components/Footer";
+import { CookieNotice } from "@/components/CookieNotice";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,10 +31,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <AppStateProvider>
           <NavBar />
-          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6">{children}</main>
-          <footer className="border-t border-border py-6 text-center text-xs text-foreground/50">
-            Nuqati — a Bahrain-first GCC credit card rewards optimizer. No bank login required.
-          </footer>
+          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 pb-20 sm:px-6">{children}</main>
+          <Footer />
+          <CookieNotice />
         </AppStateProvider>
       </body>
     </html>
