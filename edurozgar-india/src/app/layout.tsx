@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     "Discover verified scholarships, government jobs, college admissions and fellowships across India, with official application links and clear eligibility details. EduRozgar India is an information platform, not a government website.",
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
+  verification: {
+    google: "C_wwv9nI7sf9MAQEp1mDNmlczoTKq0fKTABZ-GrSXAM",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
