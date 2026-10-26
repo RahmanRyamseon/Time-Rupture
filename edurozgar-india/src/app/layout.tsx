@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import DisclaimerBanner from "@/components/DisclaimerBanner";
 import { CookieConsent } from "@/components/CookieConsent";
 import { Analytics } from "@/components/Analytics";
+import { AdSenseScript } from "@/components/AdSenseScript";
 import { SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
@@ -27,6 +28,8 @@ export const metadata: Metadata = {
   },
   description:
     "Discover verified scholarships, government jobs, college admissions and fellowships across India, with official application links and clear eligibility details. EduRozgar India is an information platform, not a government website.",
+  robots: { index: true, follow: true },
+  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -42,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Footer />
           <CookieConsent />
           <Analytics />
+          <AdSenseScript />
         </LanguageProvider>
       </body>
     </html>

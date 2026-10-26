@@ -2,8 +2,9 @@ import type { MetadataRoute } from "next";
 import { getAllOpportunities } from "@/lib/opportunities-data";
 import { articles } from "@/lib/data/articles";
 import { INDIAN_STATES } from "@/lib/data/states";
+import { SITE_URL } from "@/lib/site";
 
-const BASE_URL = "https://edurozgar.example.in";
+const BASE_URL = SITE_URL;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const opportunities = await getAllOpportunities();
@@ -20,6 +21,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/disclaimer",
     "/about",
     "/privacy",
+    "/cookies",
+    "/security",
+    "/terms",
+    "/do-not-sell",
   ].map((path) => ({
     url: `${BASE_URL}${path}`,
     lastModified: new Date(),
