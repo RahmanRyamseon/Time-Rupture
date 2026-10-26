@@ -12,7 +12,7 @@ built from an uploaded UI mockup (`VAT_Compliance_Tool.dc.html`) as the spec.
 
 - Next.js 16 (App Router), TypeScript, Tailwind CSS v4
 - Supabase Auth (email + password) and Postgres with Row Level Security
-- Claude API (`@anthropic-ai/sdk`) for the Rate-vs-Nature semantic classification pass, called server-side only
+- Multi-provider AI classification (`@google/genai`, `openai` pointed at DeepSeek, or `@anthropic-ai/sdk`) for the Rate-vs-Nature pass, called server-side only
 - `xlsx` (SheetJS) for client-side spreadsheet parsing — nothing is uploaded to a server
 
 ## Getting started
@@ -26,7 +26,7 @@ npm run dev
 Required env vars (see `.env.example`):
 
 - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` — from the Supabase project settings. Safe to expose to the browser; access control is enforced by RLS, not by keeping this key secret.
-- `ANTHROPIC_API_KEY` — server-only, used by `src/app/api/classify/route.ts`.
+- One of `GEMINI_API_KEY` (free tier, recommended), `DEEPSEEK_API_KEY` (low cost), or `ANTHROPIC_API_KEY` — used by `src/app/api/classify/route.ts`. The app auto-selects whichever is set, in that preference order (override with `AI_PROVIDER`). GitHub Copilot isn't supported — it has no public API for server-side completions from a third-party app.
 
 ## Database
 
@@ -49,8 +49,9 @@ All Workpapers" page) — everyone else can only ever see their own rows.
 - Every table is protected by Postgres RLS — the app never uses a
   service-role/elevated Supabase client, so a route-handler bug can leak at
   most what Postgres itself would allow.
-- The `ANTHROPIC_API_KEY` never reaches the browser; classification runs
-  through `/api/classify`, which is auth-gated and rate-limited.
+- No AI provider key ever reaches the browser; classification runs through
+  `/api/classify`, which is auth-gated and rate-limited, regardless of which
+  provider is configured.
 - Security headers (CSP, HSTS, X-Frame-Options, etc.) are set in
   `next.config.ts`.
 - VAT return box numbers/labels in `src/lib/vat/returnBoxes.ts` and the

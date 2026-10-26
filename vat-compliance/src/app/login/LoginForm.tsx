@@ -2,7 +2,6 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
 export default function LoginForm() {
@@ -78,10 +77,6 @@ export default function LoginForm() {
       >
         {loading ? "Signing in…" : "Sign in"}
       </button>
-
-      <div style={{ marginTop: 14, fontSize: 11.5, color: "var(--muted)", textAlign: "center" }}>
-        No account? <Link href="/signup">Sign up</Link>
-      </div>
     </form>
   );
 }

@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function AdminPage() {
@@ -6,9 +5,9 @@ export default async function AdminPage() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) redirect("/login");
 
-  const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).single();
+  const profile = user ? (await supabase.from("profiles").select("role").eq("id", user.id).single()).data : null;
+
   if (profile?.role !== "admin") {
     return (
       <section style={{ padding: "40px 24px", textAlign: "center", color: "var(--muted)" }}>

@@ -16,6 +16,8 @@
     "@supabase/ssr": "^0.5.1",
     "xlsx": "^0.18.5",
     "@anthropic-ai/sdk": "^0.124.0",
+    "@google/genai": "^1.0.0",
+    "openai": "^4.77.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

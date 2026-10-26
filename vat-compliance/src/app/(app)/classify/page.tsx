@@ -18,6 +18,7 @@ export default function ClassifyPage() {
   const { apRows, arRows, aiClassifications, aiRunning, setAiClassifications, setAiRunning } = useWorkpaper();
   const [progress, setProgress] = useState({ done: 0, total: 0 });
   const [error, setError] = useState<string | null>(null);
+  const [provider, setProvider] = useState<string | null>(null);
 
   const allLines = useMemo(() => [...apRows, ...arRows], [apRows, arRows]);
 
@@ -38,9 +39,11 @@ export default function ClassifyPage() {
           const body = await res.json().catch(() => ({}));
           throw new Error(body.error || `Request failed (${res.status})`);
         }
-        const { results } = (await res.json()) as {
+        const { results, provider: usedProvider } = (await res.json()) as {
           results: { id: string; classifiedNature: string; confidence: number; reasoning: string }[];
+          provider?: string;
         };
+        if (usedProvider) setProvider(usedProvider);
         const withContext: AiClassification[] = results.map((r) => {
           const line = allLines.find((l) => l.id === r.id);
           const applied = line ? appliedTreatment(line) : "—";
@@ -103,6 +106,7 @@ export default function ClassifyPage() {
             </div>
             <div style={{ fontSize: 10.5, color: "var(--muted)", marginTop: 5, fontFamily: "var(--font-mono)" }}>
               {allLines.length === 0 ? "No lines loaded" : `${progress.done} / ${progress.total} classified`}
+              {provider && ` · via ${provider}`}
             </div>
           </div>
           <div style={{ textAlign: "right", paddingLeft: 8 }}>

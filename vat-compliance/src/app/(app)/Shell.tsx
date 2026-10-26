@@ -16,7 +16,7 @@ const NAV_ITEMS = [
   { href: "/exceptions", label: "Exceptions" },
 ];
 
-export default function Shell({ email, isAdmin, children }: { email: string; isAdmin: boolean; children: ReactNode }) {
+export default function Shell({ email, isAdmin, children }: { email: string | null; isAdmin: boolean; children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const { periodLabel, currency, apRows, arRows } = useWorkpaper();
@@ -87,14 +87,22 @@ export default function Shell({ email, isAdmin, children }: { email: string; isA
             Prepared <b style={{ color: "#dfe3e8", fontWeight: 500 }}>{todayLabel}</b>
           </span>
           <span style={{ width: 1, height: 20, background: "#3a4148" }} />
-          <span title={email}>{email}</span>
-          <button
-            onClick={onSignOut}
-            disabled={signingOut}
-            style={{ background: "none", border: "1px solid #3a4148", color: "#dfe3e8", borderRadius: 4, padding: "4px 9px", fontSize: 10.5, cursor: "pointer" }}
-          >
-            {signingOut ? "Signing out…" : "Sign out"}
-          </button>
+          {email ? (
+            <>
+              <span title={email}>{email}</span>
+              <button
+                onClick={onSignOut}
+                disabled={signingOut}
+                style={{ background: "none", border: "1px solid #3a4148", color: "#dfe3e8", borderRadius: 4, padding: "4px 9px", fontSize: 10.5, cursor: "pointer" }}
+              >
+                {signingOut ? "Signing out…" : "Sign out"}
+              </button>
+            </>
+          ) : (
+            <Link href="/login" style={{ color: "#9aa2ac", fontSize: 10.5 }}>
+              Sign in
+            </Link>
+          )}
         </div>
       </header>
 
