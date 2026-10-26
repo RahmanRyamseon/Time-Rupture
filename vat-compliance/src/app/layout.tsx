@@ -14,9 +14,20 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://bahrainvat.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Bahrain VAT Compliance Verification",
   description: "Internal audit workpaper for Bahrain VAT Decree-Law 48/2018 compliance verification.",
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "Bahrain VAT Compliance Verification",
+    description: "Internal audit workpaper for Bahrain VAT Decree-Law 48/2018 compliance verification.",
+    url: SITE_URL,
+    siteName: "Bahrain VAT Compliance Verification",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
