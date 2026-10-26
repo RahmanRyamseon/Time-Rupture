@@ -5,6 +5,9 @@ import { LanguageProvider } from "@/lib/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DisclaimerBanner from "@/components/DisclaimerBanner";
+import { CookieConsent } from "@/components/CookieConsent";
+import { Analytics } from "@/components/Analytics";
+import { SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://edurozgar.example.in"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "EduRozgar India — Scholarships, Government Jobs & Education Opportunities",
     template: "%s | EduRozgar India",
@@ -37,6 +40,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </main>
           <Footer />
+          <CookieConsent />
+          <Analytics />
         </LanguageProvider>
       </body>
     </html>

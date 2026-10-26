@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { addSubmission } from "@/lib/adminStore";
 
@@ -77,6 +78,14 @@ export default function FeedbackDialog({
             <form onSubmit={handleSubmit}>
               <h2 className="mb-1 text-base font-bold">{title}</h2>
               <p className="mb-4 text-sm text-slate-600 dark:text-slate-300">{description}</p>
+              <p className="mb-4 rounded-md bg-black/5 p-2 text-xs text-slate-600 dark:bg-white/5 dark:text-slate-300">
+                Anything you enter here, including an optional email address, is stored only in this browser — see
+                our{" "}
+                <Link href="/privacy" target="_blank" className="underline hover:text-[var(--color-teal)]">
+                  Privacy Policy
+                </Link>
+                .
+              </p>
               <div className="space-y-3">
                 {fields.map((f) => (
                   <label key={f.name} className="block text-sm">

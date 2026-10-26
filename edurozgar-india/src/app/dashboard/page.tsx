@@ -139,12 +139,24 @@ export default function DashboardPage() {
         <h1 className="text-2xl font-bold sm:text-3xl">My Dashboard</h1>
         <p className="mt-2 max-w-3xl text-sm text-slate-600 dark:text-slate-300">
           Registration is optional. Data on this page is stored only in your browser for this demo build — nothing is
-          sent to a server, and no religion or sensitive personal data is collected or required.
+          sent to a server, and no religion or sensitive personal data is collected or required. See our{" "}
+          <Link href="/privacy" className="underline hover:text-[var(--color-teal)]">
+            Privacy Policy
+          </Link>{" "}
+          for details.
         </p>
       </header>
 
       <section className="mb-8 rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] p-5">
         <h2 className="mb-3 text-lg font-bold">Optional registration & alert preferences</h2>
+        <p className="mb-3 text-xs text-slate-500">
+          The email and mobile number below are saved only in this browser&apos;s local storage, never transmitted
+          to us — see the{" "}
+          <Link href="/privacy" className="underline hover:text-[var(--color-teal)]">
+            Privacy Policy
+          </Link>
+          .
+        </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="text-sm">
             <span className="mb-1 block font-medium">Email (optional)</span>

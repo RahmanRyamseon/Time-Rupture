@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/lib/LanguageContext";
+import { CookieSettingsButton } from "./CookieSettingsButton";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -37,7 +38,12 @@ export default function Footer() {
           <ul className="mt-2 space-y-1 text-sm opacity-90">
             <li><Link href="/disclaimer">Reservation & Eligibility Disclaimer</Link></li>
             <li><Link href="/about">About EduRozgar India</Link></li>
-            <li><Link href="/privacy">Privacy & Data Policy</Link></li>
+            <li><Link href="/privacy">Privacy Policy</Link></li>
+            <li><Link href="/cookies">Cookie Policy</Link></li>
+            <li><Link href="/terms">Terms of Use</Link></li>
+            <li><Link href="/security">Security</Link></li>
+            <li><Link href="/do-not-sell">Do Not Sell or Share My Info</Link></li>
+            <li><CookieSettingsButton className="hover:underline" /></li>
           </ul>
         </div>
       </div>
