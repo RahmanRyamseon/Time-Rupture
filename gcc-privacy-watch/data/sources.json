@@ -1,0 +1,130 @@
+{
+  "lastReviewed": "2026-10-27",
+  "note": "Curated list of primary laws and regulators. Sources disagree on some dates and regulator names, so each entry should be confirmed against the official text before it is relied on.",
+  "countries": [
+    {
+      "code": "BH",
+      "name": "Bahrain",
+      "group": "GCC",
+      "laws": [
+        {
+          "title": "Personal Data Protection Law (Law No. 30 of 2018)",
+          "status": "In force since 1 August 2019; amendments to 1 January 2024 consolidated by MOLA",
+          "url": "https://www.lloc.gov.bh/FullEn/K3018.docx"
+        }
+      ],
+      "regulator": {
+        "name": "Ministry of Justice and Islamic Affairs (designation differs between sources; verify)",
+        "url": "https://www.mola.gov.bh"
+      },
+      "note": "The Arabic Official Gazette text is the authoritative version."
+    },
+    {
+      "code": "SA",
+      "name": "Saudi Arabia",
+      "group": "GCC",
+      "laws": [
+        {
+          "title": "Personal Data Protection Law (Royal Decree M/19 of 2021)",
+          "status": "Enforceable from 14 September 2024 after a transition period",
+          "url": "https://sdaia.gov.sa"
+        },
+        {
+          "title": "Implementing Regulations and Personal Data Transfer Regulations",
+          "status": "Issued by SDAIA in September 2023; supplemented by later SDAIA rules and guidelines",
+          "url": "https://sdaia.gov.sa"
+        }
+      ],
+      "regulator": {
+        "name": "Saudi Data & AI Authority (SDAIA)",
+        "url": "https://sdaia.gov.sa"
+      },
+      "note": "Breaches must be reported to SDAIA within 72 hours, per the implementing regulations as summarised by secondary sources."
+    },
+    {
+      "code": "AE",
+      "name": "UAE",
+      "group": "GCC",
+      "laws": [
+        {
+          "title": "Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data",
+          "status": "Federal law; does not cover free zones with their own regimes (e.g. DIFC, ADGM); enforcement dates differ between sources",
+          "url": "https://uaelegislation.gov.ae"
+        }
+      ],
+      "regulator": {
+        "name": "UAE Data Office (verify its current web address)",
+        "url": "https://u.ae"
+      },
+      "note": "Check the Data Office's status and the Executive Regulations before relying on compliance deadlines."
+    },
+    {
+      "code": "QA",
+      "name": "Qatar",
+      "group": "GCC",
+      "laws": [
+        {
+          "title": "Law No. 13 of 2016 Concerning Privacy and Protection of Personal Data",
+          "status": "In force; publication dates differ between sources (late 2016 to early 2017)",
+          "url": "https://www.almeezan.qa"
+        }
+      ],
+      "regulator": {
+        "name": "National Cyber Governance and Assurance Affairs (NCSA)",
+        "url": "https://ncsa.gov.qa"
+      },
+      "note": "Qatar does not publish official English translations; English texts are unofficial."
+    },
+    {
+      "code": "OM",
+      "name": "Oman",
+      "group": "GCC",
+      "laws": [
+        {
+          "title": "Royal Decree 6/2022 Promulgating the Personal Data Protection Law",
+          "status": "Issued 9 February 2022; enforceable from 2023; full enforcement reported from February 2026",
+          "url": "https://decree.om/?p=8554"
+        }
+      ],
+      "regulator": {
+        "name": "Ministry of Transport, Communications and Information Technology (MTCIT)",
+        "url": "https://www.mtcit.gov.om"
+      },
+      "note": "The law has been amended since 2022; check the consolidated text on decree.om."
+    },
+    {
+      "code": "KW",
+      "name": "Kuwait",
+      "group": "GCC",
+      "laws": [
+        {
+          "title": "CITRA Resolution No. 26 of 2024 (Data Privacy Protection Regulation)",
+          "status": "Published February 2024; replaces Resolution No. 42 of 2021; grace period ended around 2025",
+          "url": "https://www.citra.gov.kw"
+        }
+      ],
+      "regulator": {
+        "name": "Communications and Information Technology Regulatory Authority (CITRA)",
+        "url": "https://www.citra.gov.kw"
+      },
+      "note": "Covers telecom and IT service providers licensed by CITRA, not every business."
+    },
+    {
+      "code": "MZ",
+      "name": "Mozambique",
+      "group": "Outside the GCC (requested)",
+      "laws": [
+        {
+          "title": "Draft Personal Data Protection Law (INTIC public consultation, 2025)",
+          "status": "Draft, not enacted at the last check; reportedly being prepared for Parliament",
+          "url": "https://www.intic.gov.mz"
+        }
+      ],
+      "regulator": {
+        "name": "Proposed National Data Protection Authority (in the draft)",
+        "url": "https://www.intic.gov.mz"
+      },
+      "note": "Mozambique is not a GCC member. Its status should be checked against official Mozambican sources."
+    }
+  ]
+}
