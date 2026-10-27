@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GCC Data Privacy Watch</title>
+  <meta name="description" content="Daily updates on personal data protection and privacy regulation in Bahrain, Saudi Arabia, the UAE, Qatar, Oman and Kuwait, with links to original sources.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Daily digest</p>
+      <h1>GCC Data Privacy Watch</h1>
+      <p class="lede">Latest news and official updates on personal data protection across the Gulf Cooperation Council. Every item links to its original source.</p>
+      <p class="meta" id="updated">Loading…</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="controls" aria-label="Filters">
+      <input id="search" type="search" placeholder="Search headlines and publishers" aria-label="Search updates">
+      <select id="country" aria-label="Filter by country">
+        <option value="">All countries</option>
+      </select>
+      <select id="kind" aria-label="Filter by source type">
+        <option value="">All sources</option>
+        <option value="official">Official / government</option>
+        <option value="news">News</option>
+      </select>
+    </section>
+
+    <p id="count" class="count" aria-live="polite"></p>
+    <ul id="items" class="items"></ul>
+
+    <section>
+      <h2>Laws and regulators</h2>
+      <p class="muted">Start here for the primary texts. Sources disagree on some dates and regulator names, so confirm against the official text before relying on a detail.</p>
+      <div id="laws" class="cards"></div>
+    </section>
+
+    <section>
+      <h2>Search Google for more</h2>
+      <div id="google" class="chips"></div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Automated digest, not legal advice. Headlines come from Google News and government sites. Links open the publisher's article.</p>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
