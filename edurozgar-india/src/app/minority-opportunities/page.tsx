@@ -10,6 +10,11 @@ export const metadata: Metadata = {
     "Scholarships, fellowships, admissions and welfare schemes where the official notification identifies Muslims or other notified minority communities as eligible beneficiaries, with the exact eligibility wording from the source.",
 };
 
+// Opportunity data changes via the daily Supabase source-check + admin
+// review queue, not via a new deployment — revalidate instead of
+// serving a frozen build-time snapshot indefinitely.
+export const revalidate = 86400;
+
 export default async function MinorityOpportunitiesPage() {
   const opportunities = await getAllOpportunities();
   const listings = opportunities.filter(

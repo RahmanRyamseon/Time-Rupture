@@ -9,6 +9,11 @@ export const metadata: Metadata = {
     "Monthly calendar of scholarship, government job and admission opening dates, last dates, correction windows, exam dates, admit-card releases and results in India.",
 };
 
+// Opportunity data changes via the daily Supabase source-check + admin
+// review queue, not via a new deployment — revalidate instead of
+// serving a frozen build-time snapshot indefinitely.
+export const revalidate = 86400;
+
 export default async function CalendarPage() {
   const opportunities = await getAllOpportunities();
   const events = buildCalendarEvents(opportunities);

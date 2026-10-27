@@ -7,6 +7,11 @@ import OpportunityCard from "@/components/OpportunityCard";
 import HomeSearchBar from "@/components/HomeSearchBar";
 import HeroCopy, { HeroCtas } from "@/components/HeroCopy";
 
+// Opportunity data changes via the daily Supabase source-check + admin
+// review queue, not via a new deployment — revalidate instead of
+// serving a frozen build-time snapshot indefinitely.
+export const revalidate = 86400;
+
 export default async function Home() {
   const opportunities = await getAllOpportunities();
 
