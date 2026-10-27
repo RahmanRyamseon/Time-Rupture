@@ -11,8 +11,9 @@ Every item links to the original article, and the page lists the primary laws an
   It has no dependencies and runs on Node 18+.
 - `data/sources.json` is the curated list of laws and regulators. Edit it by hand.
 - `index.html`, `app.js`, `style.css` render both files. There is no build step.
-- `.github/workflows/gcc-privacy-watch.yml` runs the collector every day at 03:17 UTC, commits
-  the new data, and deploys this folder to GitHub Pages.
+- `.github/workflows/gcc-privacy-watch.yml` runs the collector every day at 03:17 UTC and commits
+  the new data. Vercel (project `gcc-privacy-watch`, root directory `gcc-privacy-watch`) rebuilds
+  the site on each push to `master`.
 
 ## Run locally
 
@@ -21,11 +22,10 @@ node gcc-privacy-watch/scripts/update.mjs      # refresh data/updates.json
 npx serve gcc-privacy-watch                    # or any static file server
 ```
 
-## Turning on the daily site
+## Daily refresh
 
-1. Repository **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-2. Merge the branch into the default branch. GitHub runs scheduled workflows only from the default branch.
-3. Optionally run **Actions → GCC privacy watch (daily) → Run workflow** once to check it.
+GitHub runs scheduled workflows only from the default branch (`master`), so the daily job runs
+from there. To check it by hand, run **Actions → GCC privacy watch (daily) → Run workflow**.
 
 ## Limits
 
