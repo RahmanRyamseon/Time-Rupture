@@ -1,14 +1,42 @@
 "use client";
 
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { verifyLine, detectDuplicates, type Side } from "@/lib/vat/rules";
 import { toIsoDate, toNumber, type ParsedRow } from "@/lib/vat/xlsx";
 import type { CapitalAsset, VatLine } from "@/lib/vat/types";
-import { createClient } from "@/lib/supabase/client";
 
 let nextId = 1;
 function freshId(prefix: string) {
   return `${prefix}${nextId++}`;
+}
+
+// Everything in this workpaper is persisted only to this browser's
+// localStorage — nothing is ever sent to a server. (The one exception is
+// the AI classify pass on /classify, which sends just the lines being
+// classified to whichever AI provider is configured, and only when the
+// user explicitly runs it — see src/app/api/classify/route.ts.)
+const STORAGE_KEY = "vat-compliance:workpaper:v1";
+
+interface PersistedWorkpaper {
+  nextId: number;
+  periodLabel: string;
+  apFileName: string;
+  arFileName: string;
+  apRows: VatLine[];
+  arRows: VatLine[];
+  capitalAssets: CapitalAsset[];
+  returnFiled: Record<string, number | null>;
+  aiClassifications: Record<string, AiClassification>;
+}
+
+function loadFromStorage(): PersistedWorkpaper | null {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as PersistedWorkpaper) : null;
+  } catch {
+    // Private browsing / storage blocked / corrupt data — start empty.
+    return null;
+  }
 }
 
 function buildLines(rows: ParsedRow[], side: Side, periodStart?: string, periodEnd?: string): VatLine[] {
@@ -96,93 +124,53 @@ export function WorkpaperProvider({ children }: { children: ReactNode }) {
   const [aiRunning, setAiRunning] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const [saveError, setSaveError] = useState<string | null>(null);
+  const hydrated = useRef(false);
 
-  async function saveWorkpaper() {
+  // Hydrate from this browser's localStorage once, on first mount only.
+  // window.localStorage doesn't exist during SSR, so this can only happen
+  // client-side after mount — an effect is the correct place for it, and
+  // the resulting extra render pass is a one-time, unavoidable cost of
+  // syncing from that external store.
+  /* eslint-disable react-hooks/set-state-in-effect */
+  useEffect(() => {
+    if (hydrated.current) return;
+    hydrated.current = true;
+    const saved = loadFromStorage();
+    if (!saved) return;
+    nextId = saved.nextId;
+    setPeriodLabel(saved.periodLabel);
+    setApFileName(saved.apFileName);
+    setArFileName(saved.arFileName);
+    setApRows(saved.apRows);
+    setArRows(saved.arRows);
+    setCapitalAssets(saved.capitalAssets);
+    setReturnFiled(saved.returnFiled);
+    setAiClassificationsState(saved.aiClassifications);
+  }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
+
+  function saveWorkpaper() {
     setSaveStatus("saving");
     setSaveError(null);
     try {
-      const supabase = createClient();
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (!user) throw new Error("Not signed in.");
-
-      // owner_id is set explicitly to auth.uid() here and RLS's "with check"
-      // on workpapers/insert rejects anything else — a client cannot save a
-      // workpaper under another user's id even if it tried.
-      const { data: workpaper, error: wpError } = await supabase
-        .from("workpapers")
-        .insert({ owner_id: user.id, period_label: periodLabel, currency })
-        .select("id")
-        .single();
-      if (wpError || !workpaper) throw new Error(wpError?.message || "Could not create workpaper.");
-
-      const workpaperId = workpaper.id as string;
-
-      const toInputRow = (l: VatLine) => ({
-        workpaper_id: workpaperId,
-        inv: l.inv,
-        line_date: l.date || null,
-        supplier: l.party,
-        trn: l.trn,
-        description: l.desc,
-        net: l.net,
-        vat: l.vat,
-        gross: l.gross,
-        nature: l.nature,
-        status: l.status,
-        findings: l.findings,
-      });
-      const toOutputRow = (l: VatLine) => ({
-        workpaper_id: workpaperId,
-        inv: l.inv,
-        line_date: l.date || null,
-        customer: l.party,
-        trn: l.trn,
-        description: l.desc,
-        net: l.net,
-        vat: l.vat,
-        gross: l.gross,
-        nature: l.nature,
-        status: l.status,
-        findings: l.findings,
-      });
-
-      if (apRows.length > 0) {
-        const { error } = await supabase.from("input_vat_lines").insert(apRows.map(toInputRow));
-        if (error) throw new Error(error.message);
-      }
-      if (arRows.length > 0) {
-        const { error } = await supabase.from("output_vat_lines").insert(arRows.map(toOutputRow));
-        if (error) throw new Error(error.message);
-      }
-      if (capitalAssets.length > 0) {
-        const { error } = await supabase.from("capital_assets").insert(
-          capitalAssets.map((a) => ({
-            workpaper_id: workpaperId,
-            asset: a.asset,
-            category: a.category,
-            input_vat: a.inputVat,
-            base_pct: a.basePct,
-            cur_pct: a.curPct,
-            first_use_year: a.firstUseYear,
-          }))
-        );
-        if (error) throw new Error(error.message);
-      }
-      const filedEntries = Object.entries(returnFiled).filter(([, v]) => v !== null);
-      if (filedEntries.length > 0) {
-        const { error } = await supabase.from("return_boxes").insert(
-          filedEntries.map(([box, filed_vat]) => ({ workpaper_id: workpaperId, box, filed_vat }))
-        );
-        if (error) throw new Error(error.message);
-      }
-
+      const snapshot: PersistedWorkpaper = {
+        nextId,
+        periodLabel,
+        apFileName,
+        arFileName,
+        apRows,
+        arRows,
+        capitalAssets,
+        returnFiled,
+        aiClassifications,
+      };
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));
       setSaveStatus("saved");
-    } catch (e) {
+    } catch {
       setSaveStatus("error");
-      setSaveError(e instanceof Error ? e.message : "Save failed.");
+      setSaveError("Could not save — this browser's storage may be full or blocked (e.g. private browsing).");
     }
+    return Promise.resolve();
   }
 
   const value = useMemo<WorkpaperContextValue>(
@@ -221,6 +209,11 @@ export function WorkpaperProvider({ children }: { children: ReactNode }) {
         setCapitalAssets([]);
         setReturnFiled({});
         setAiClassificationsState({});
+        try {
+          window.localStorage.removeItem(STORAGE_KEY);
+        } catch {
+          // Storage blocked — nothing to clean up.
+        }
       },
       addCapitalAsset: (asset) => setCapitalAssets((prev) => [...prev, { ...asset, id: freshId("cap") }]),
       updateCapitalAssetPct: (id, curPct) =>

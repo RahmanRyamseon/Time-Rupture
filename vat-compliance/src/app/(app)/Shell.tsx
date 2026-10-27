@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useState, type ReactNode } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { usePathname } from "next/navigation";
+import type { ReactNode } from "react";
 import { useWorkpaper } from "@/lib/workpaper/context";
 import AdSlot from "@/components/AdSlot";
 
@@ -17,22 +16,11 @@ const NAV_ITEMS = [
   { href: "/exceptions", label: "Exceptions" },
 ];
 
-export default function Shell({ email, isAdmin, children }: { email: string | null; isAdmin: boolean; children: ReactNode }) {
+export default function Shell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const router = useRouter();
   const { periodLabel, currency, apRows, arRows } = useWorkpaper();
-  const [signingOut, setSigningOut] = useState(false);
-
-  async function onSignOut() {
-    setSigningOut(true);
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    router.push("/login");
-    router.refresh();
-  }
 
   const todayLabel = new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
-  const items = isAdmin ? [...NAV_ITEMS, { href: "/admin", label: "Admin — All Workpapers" }] : NAV_ITEMS;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100vh", width: "100%", overflow: "hidden", background: "var(--background)" }}>
@@ -88,29 +76,14 @@ export default function Shell({ email, isAdmin, children }: { email: string | nu
             Prepared <b style={{ color: "#dfe3e8", fontWeight: 500 }}>{todayLabel}</b>
           </span>
           <span style={{ width: 1, height: 20, background: "#3a4148" }} />
-          {email ? (
-            <>
-              <span title={email}>{email}</span>
-              <button
-                onClick={onSignOut}
-                disabled={signingOut}
-                style={{ background: "none", border: "1px solid #3a4148", color: "#dfe3e8", borderRadius: 4, padding: "4px 9px", fontSize: 10.5, cursor: "pointer" }}
-              >
-                {signingOut ? "Signing out…" : "Sign out"}
-              </button>
-            </>
-          ) : (
-            <Link href="/login" style={{ color: "#9aa2ac", fontSize: 10.5 }}>
-              Sign in
-            </Link>
-          )}
+          <span title="Nothing you upload leaves this browser — no account, no server storage.">Stored on this device only</span>
         </div>
       </header>
 
       <div style={{ display: "flex", flex: 1, minHeight: 0 }}>
         <nav style={{ flex: "0 0 232px", background: "var(--sidebar)", color: "#c4cad2", overflowY: "auto", padding: "10px 0", display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 9.5, letterSpacing: 1.4, color: "#6d757e", fontWeight: 600, padding: "8px 18px 6px" }}>WORKPAPER SECTIONS</div>
-          {items.map((item) => {
+          {NAV_ITEMS.map((item) => {
             const active = pathname === item.href;
             const count = item.href === "/input" ? apRows.length : item.href === "/output" ? arRows.length : null;
             return (

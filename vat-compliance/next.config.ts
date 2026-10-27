@@ -16,7 +16,7 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   `img-src 'self' data: ${ADSENSE_ORIGINS}`,
   "font-src 'self'",
-  `connect-src 'self' https://*.supabase.co ${ADSENSE_ORIGINS}`,
+  `connect-src 'self' ${ADSENSE_ORIGINS}`,
   `frame-src ${ADSENSE_ORIGINS}`,
   "base-uri 'self'",
   "form-action 'self'",

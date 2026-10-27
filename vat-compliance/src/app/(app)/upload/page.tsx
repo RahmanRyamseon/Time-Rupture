@@ -205,9 +205,9 @@ export default function UploadPage() {
             opacity: saveStatus === "saving" || (apRows.length === 0 && arRows.length === 0) ? 0.6 : 1,
           }}
         >
-          {saveStatus === "saving" ? "Saving…" : "Save workpaper"}
+          {saveStatus === "saving" ? "Saving…" : "Save to this browser"}
         </button>
-        {saveStatus === "saved" && <span style={{ color: "var(--brand)", fontSize: 11.5 }}>Saved ✓</span>}
+        {saveStatus === "saved" && <span style={{ color: "var(--brand)", fontSize: 11.5 }}>Saved to this device ✓</span>}
         {saveStatus === "error" && <span style={{ color: "var(--danger)", fontSize: 11.5 }}>{saveError}</span>}
       </div>
 

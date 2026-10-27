@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { z } from "zod/v4";
-import { createClient } from "@/lib/supabase/server";
 import { isRateLimited } from "@/lib/rateLimit";
 import { classifyLines } from "@/lib/ai/classify";
 
@@ -22,15 +21,10 @@ const RequestSchema = z.object({
 });
 
 export async function POST(request: Request) {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  if (isRateLimited(user.id, RATE_LIMIT, RATE_WINDOW_MS)) {
+  // No account system — this app has no signed-in user to key a rate
+  // limit on, so fall back to the caller's IP (best-effort: see rateLimit.ts).
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+  if (isRateLimited(ip, RATE_LIMIT, RATE_WINDOW_MS)) {
     return NextResponse.json({ error: "Too many classification requests. Try again later." }, { status: 429 });
   }
 
