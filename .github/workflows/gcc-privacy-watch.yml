@@ -7,19 +7,14 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: gcc-privacy-watch
   cancel-in-progress: false
 
 jobs:
-  update-and-publish:
+  update:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -41,12 +36,3 @@ jobs:
             git commit -m "gcc-privacy-watch: daily update $(date -u +%F)"
             git push
           fi
-
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: gcc-privacy-watch
-
-      - id: deployment
-        uses: actions/deploy-pages@v4
