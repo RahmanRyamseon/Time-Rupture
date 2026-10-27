@@ -3,7 +3,7 @@
 # and works inside the privacy-alert/ folder.
 #
 # Required repository secrets (Settings > Secrets and variables > Actions):
-#   GEMINI_API_KEY, TWILIO_SID, TWILIO_TOKEN, TWILIO_WHATSAPP_FROM, MY_WHATSAPP_NUMBER
+#   ANTHROPIC_API_KEY, TWILIO_SID, TWILIO_TOKEN, TWILIO_WHATSAPP_FROM, MY_WHATSAPP_NUMBER
 #   Optional: TWILIO_CONTENT_SID (production template), or for Meta:
 #   META_ACCESS_TOKEN, META_PHONE_NUMBER_ID, META_TEMPLATE_NAME, META_TEMPLATE_LANG
 name: Privacy regulatory alert
@@ -52,7 +52,7 @@ jobs:
 
       - name: Run alert pipeline
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TWILIO_SID: ${{ secrets.TWILIO_SID }}
           TWILIO_TOKEN: ${{ secrets.TWILIO_TOKEN }}
           TWILIO_WHATSAPP_FROM: ${{ secrets.TWILIO_WHATSAPP_FROM }}

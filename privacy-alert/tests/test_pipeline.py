@@ -184,10 +184,64 @@ def test_delivery_failure_keeps_state_unsaved(tmp_paths, monkeypatch):
     monkeypatch.setattr(main, "fetch_feed", lambda src, today: [make_item("Breach notification rule")])
     monkeypatch.setattr(main, "deliver", lambda messages: (_ for _ in ()).throw(RuntimeError("twilio down")))
     monkeypatch.setattr(main, "_require", lambda name: "x")
-    monkeypatch.setattr(main, "summarise", lambda items, key: "*UK*\n- Breach notification rule")
+    monkeypatch.setattr(main, "summarise", lambda items: "*UK*\n- Breach notification rule")
 
     assert main.run(main.parse_args([])) == 1
     saved = json.loads(config.SEEN_FILE.read_text(encoding="utf-8"))
     assert saved["items"] == {}  # nothing marked seen, so the item is retried tomorrow
     with config.LOG_FILE.open(encoding="utf-8") as handle:
         assert list(csv.DictReader(handle))[0]["whatsapp_sent"] == "no"
+
+
+# --- Claude summarisation (SDK client faked, no network) ----------------------
+class _FakeMessages:
+    def __init__(self, response):
+        self.response = response
+        self.kwargs = None
+
+    def create(self, **kwargs):
+        self.kwargs = kwargs
+        return self.response
+
+
+def _fake_client(monkeypatch, response):
+    from types import SimpleNamespace
+
+    messages = _FakeMessages(response)
+    monkeypatch.setattr(main.anthropic, "Anthropic", lambda: SimpleNamespace(messages=messages))
+    return messages
+
+
+def test_summarise_calls_claude_with_adaptive_thinking(monkeypatch):
+    from types import SimpleNamespace
+
+    response = SimpleNamespace(
+        stop_reason="end_turn", stop_details=None,
+        content=[SimpleNamespace(type="thinking", thinking=""),
+                 SimpleNamespace(type="text", text="*UK*\n- Item")],
+    )
+    messages = _fake_client(monkeypatch, response)
+    assert main.summarise([make_item("Consent guidance")]) == "*UK*\n- Item"
+    assert messages.kwargs["model"] == config.AI_MODEL
+    assert messages.kwargs["thinking"] == {"type": "adaptive"}
+    assert messages.kwargs["output_config"] == {"effort": config.AI_EFFORT}
+    assert "Consent guidance" in messages.kwargs["messages"][0]["content"]
+
+
+def test_summarise_raises_on_refusal(monkeypatch):
+    from types import SimpleNamespace
+
+    response = SimpleNamespace(stop_reason="refusal",
+                               stop_details=SimpleNamespace(category="cyber"), content=[])
+    _fake_client(monkeypatch, response)
+    with pytest.raises(RuntimeError, match="declined"):
+        main.summarise([make_item("Consent guidance")])
+
+
+def test_summarise_raises_on_truncation(monkeypatch):
+    from types import SimpleNamespace
+
+    response = SimpleNamespace(stop_reason="max_tokens", stop_details=None, content=[])
+    _fake_client(monkeypatch, response)
+    with pytest.raises(RuntimeError, match="truncated"):
+        main.summarise([make_item("Consent guidance")])

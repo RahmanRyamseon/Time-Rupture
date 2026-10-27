@@ -3,7 +3,7 @@
 
 Stages, each runnable on its own with --stage:
   fetch      collect feed entries and page changes, de-duplicate, keyword-filter
-  summarise  also build the digest with Gemini (or --no-ai for a plain list)
+  summarise  also build the digest with Claude (or --no-ai for a plain list)
   send       also deliver via WhatsApp, persist state and append the audit log
 
 Options: python main.py --help
@@ -26,6 +26,7 @@ from pathlib import Path
 from urllib.parse import urljoin, urlparse
 from zoneinfo import ZoneInfo
 
+import anthropic
 import feedparser
 import requests
 from bs4 import BeautifulSoup
@@ -296,32 +297,26 @@ def build_payload(items: list[Item]) -> str:
     return "\n\n".join(blocks)
 
 
-def call_gemini(prompt: str, api_key: str) -> str:
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{config.GEMINI_MODEL}:generateContent"
-    body = {
-        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.2, "maxOutputTokens": 4096},
-    }
-    for attempt in range(1, 4):
-        resp = requests.post(
-            url, headers={"x-goog-api-key": api_key, "Content-Type": "application/json"},
-            json=body, timeout=180,
-        )
-        if resp.status_code == 200:
-            break
-        if resp.status_code in (429, 500, 502, 503, 504) and attempt < 3:
-            time.sleep(5 * attempt)
-            continue
-        raise RuntimeError(f"Gemini HTTP {resp.status_code}: {resp.text[:300]}")
-    try:
-        return resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
-    except (KeyError, IndexError, ValueError) as exc:
-        raise RuntimeError(f"unexpected Gemini response: {resp.text[:300]}") from exc
-
-
-def summarise(items: list[Item], api_key: str) -> str:
+def summarise(items: list[Item]) -> str:
+    """Return the digest text from Claude. Raises on refusal, truncation or empty output."""
+    client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from the environment
     prompt = DIGEST_PROMPT.replace("{JURISDICTIONS}", ", ".join(config.JURISDICTIONS))
-    return call_gemini(prompt + "\n" + build_payload(items), api_key)
+    response = client.messages.create(
+        model=config.AI_MODEL,
+        max_tokens=16000,
+        thinking={"type": "adaptive"},
+        output_config={"effort": config.AI_EFFORT},
+        messages=[{"role": "user", "content": prompt + "\n" + build_payload(items)}],
+    )
+    if response.stop_reason == "refusal":
+        category = response.stop_details.category if response.stop_details else "unknown"
+        raise RuntimeError(f"Claude declined to summarise (category: {category})")
+    if response.stop_reason == "max_tokens":
+        raise RuntimeError("Claude digest was truncated at max_tokens")
+    text = "".join(block.text for block in response.content if block.type == "text").strip()
+    if not text:
+        raise RuntimeError("Claude returned an empty digest")
+    return text
 
 
 def plain_digest(items: list[Item]) -> str:
@@ -498,7 +493,7 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
                         help="print messages instead of sending; write no state or log")
     parser.add_argument("--source", help="only sources whose name contains this text")
     parser.add_argument("--no-ai", action="store_true",
-                        help="skip Gemini and use the plain list (for testing)")
+                        help="skip Claude and use the plain list (for testing)")
     parser.add_argument("--ping", action="store_true",
                         help="send a single WhatsApp system-check message and exit")
     return parser.parse_args(argv)
@@ -539,8 +534,7 @@ def run(args: argparse.Namespace) -> int:
             digest = plain_digest(relevant)
         else:
             try:
-                api_key = _require("GEMINI_API_KEY")
-                digest = summarise(relevant[: config.MAX_ITEMS_TO_SUMMARISE], api_key)
+                digest = summarise(relevant[: config.MAX_ITEMS_TO_SUMMARISE])
             except Exception as exc:
                 # Never lose alerts because the AI step failed: fall back to the plain list.
                 log.error("Summarisation failed, sending plain list instead: %s", exc)

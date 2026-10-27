@@ -2,11 +2,11 @@
 
 A daily job that watches privacy regulators and legislation for six jurisdictions
 (UK, EU, Canada, Bahrain, Saudi Arabia, Mozambique), filters for personal-data
-keywords, summarises new items with Gemini, and sends a digest to WhatsApp.
+keywords, summarises new items with Claude, and sends a digest to WhatsApp.
 
 ```
 config.py          sources, keywords, jurisdictions, schedule, tuning (edit this)
-main.py            pipeline: fetch -> de-duplicate -> keyword filter -> Gemini -> WhatsApp -> log
+main.py            pipeline: fetch -> de-duplicate -> keyword filter -> Claude -> WhatsApp -> log
 requirements.txt   Python dependencies
 .env.example       environment variables (copy to .env)
 seen.json          created on first run: item and page hashes already processed
@@ -27,7 +27,7 @@ tests/             offline tests (no network, no keys)
 | New relevant item | Grouped digest by jurisdiction, with impact rating, flags, source, date and link |
 | Nothing relevant | Short "No material changes today" message, so you know it ran |
 | One source is down | Logged, listed in the message footer, other sources continue |
-| Gemini fails | Plain list of the relevant items is sent instead, and the footer says so |
+| Claude fails, refuses or truncates | Plain list of the relevant items is sent instead, and the footer says so |
 | WhatsApp send fails | Exit code 1, the audit log records `whatsapp_sent = no`, and the items are **not** marked seen, so they are retried tomorrow |
 | First run for a source | Existing items are recorded silently (baseline). Set `BASELINE_ON_FIRST_RUN = False` to alert on everything the first time |
 | Digest over 1,500 characters | Split into numbered messages `(1/3)`, `(2/3)` and so on |
@@ -38,13 +38,13 @@ tests/             offline tests (no network, no keys)
 
 ### Prerequisites
 - Python 3.11 or newer
-- A Gemini API key (Google AI Studio)
+- An Anthropic API key (console.anthropic.com)
 - A Twilio account (sandbox is free) or a Meta WhatsApp Cloud API app
 - Your WhatsApp number in international format, e.g. `+973XXXXXXXX`
 
-### Step 1: Gemini API key
-1. Open Google AI Studio and create an API key.
-2. Put it in `.env` as `GEMINI_API_KEY`. The model is set by `GEMINI_MODEL` in `config.py` (default `gemini-2.5-flash`).
+### Step 1: Anthropic API key
+1. In the Anthropic Console, create an API key and set a monthly spend limit.
+2. Put it in `.env` as `ANTHROPIC_API_KEY`. The model is set by `AI_MODEL` in `config.py` (default `claude-opus-5-5`, effort `AI_EFFORT = "medium"`). Each daily run sends at most `MAX_ITEMS_TO_SUMMARISE` items, so cost scales with how many new items appear, not with the number of sources.
 
 ### Step 2: Twilio WhatsApp sandbox (testing)
 1. Create a Twilio account and note **Account SID** and **Auth Token** from the console home page.
@@ -121,11 +121,11 @@ Run the stages in order. Each one must pass before you move to the next.
 | 1 | Offline unit tests | `python -m pytest -q` | 16 passed, no network needed |
 | 2 | Collection | `python main.py --stage fetch` | Per-source `OK` lines. Failing sources are named. Nothing written to disk |
 | 3 | Baseline | Run stage 2 once, then `python main.py --stage send --dry-run` | Quiet-day message printed. `seen.json` is not created in dry-run |
-| 4 | Summarisation | `python main.py --stage summarise` | Gemini digest printed, grouped by jurisdiction, with footer. Try `--no-ai` to see the plain list without a key |
+| 4 | Summarisation | `python main.py --stage summarise` | Claude digest printed, grouped by jurisdiction, with footer. Try `--no-ai` to see the plain list without a key |
 | 5 | Delivery test | `python main.py --ping` | A WhatsApp message arrives on your phone |
 | 6 | Real send | `python main.py` | Digest or quiet notice arrives. `seen.json` and `alerts_log.csv` are created. `whatsapp_sent = yes` |
 | 7 | De-duplication | Run `python main.py` again straight away | Quiet-day message. No repeated items |
-| 8 | Failure path | Set `GEMINI_API_KEY=bad` and run with a new item present | Plain-list fallback sent, with footer note |
+| 8 | Failure path | Set `ANTHROPIC_API_KEY=bad` and run with a new item present | Plain-list fallback sent, with footer note |
 | 9 | Failure path | Set `TWILIO_TOKEN=bad` and run with a new item present | Exit code 1. `whatsapp_sent = no`. `seen.json` unchanged, so the item is retried |
 | 10 | Change detection | Edit a tracked page or feed in a test copy, then run | Only the new or changed item is alerted |
 | 11 | Scheduled run | Trigger the GitHub workflow manually (section 5) | Green run. State commit appears on the branch |
@@ -158,7 +158,7 @@ CRON_TZ=Asia/Bahrain
 ### Option B: GitHub Actions (recommended for a managed schedule)
 The workflow is at `.github/workflows/privacy-alert.yml`. GitHub only reads workflows from the repository root, so it sits there and runs the code in `privacy-alert/`.
 
-1. **Add secrets.** Repository **Settings > Secrets and variables > Actions > New repository secret**. Add `GEMINI_API_KEY`, `TWILIO_SID`, `TWILIO_TOKEN`, `TWILIO_WHATSAPP_FROM`, `MY_WHATSAPP_NUMBER`, and where needed `TWILIO_CONTENT_SID` or the Meta variables.
+1. **Add secrets.** Repository **Settings > Secrets and variables > Actions > New repository secret**. Add `ANTHROPIC_API_KEY`, `TWILIO_SID`, `TWILIO_TOKEN`, `TWILIO_WHATSAPP_FROM`, `MY_WHATSAPP_NUMBER`, and where needed `TWILIO_CONTENT_SID` or the Meta variables.
 2. **Enable write access for the workflow.** The workflow commits `seen.json` and `alerts_log.csv` back to the branch. Check **Settings > Actions > General > Workflow permissions**. If the branch is protected, allow the bot to push or the state commit will fail. Without it the state is lost and items re-alert.
 3. **Schedule runs from the default branch only.** GitHub reads `schedule` triggers from the default branch. Merge the workflow there before relying on the cron.
 4. **Test it:** Actions tab > *Privacy regulatory alert* > **Run workflow** (use `stage = fetch` first).
@@ -192,9 +192,9 @@ Dry runs and `--stage fetch` or `summarise` write nothing to the log.
 - **Page-change alerts are unidentified.** A "Page updated" item means a monitored page changed in a keyword line. The digest says it needs review. It does not say what changed.
 - **Keyword noise.** Words such as "regulation" and "consent" match a lot of text, especially EUR-Lex. Tighten `KEYWORDS` if the digest gets noisy.
 - **AI summaries can be wrong.** The prompt forbids inventing facts, but the output is still generated. Check the official text before acting on it.
-- **Portuguese and Arabic.** Gemini can read these sources, but the scraper's keyword matching is only as good as the page text it receives.
+- **Portuguese and Arabic.** Claude can read these sources, but the scraper's keyword matching is only as good as the page text it receives.
 - **Partial delivery.** If a multi-part message fails part way through, the next run re-sends the whole digest, so the first parts can arrive twice.
-- **Data handling.** Only public regulator text is sent to Gemini. Do not add internal sources to `SOURCES`.
+- **Data handling.** Only public regulator text is sent to the Anthropic API. Check that this matches your data-processing terms with Anthropic before relying on it for regulated work. Do not add internal sources to `SOURCES`.
 
 ---
 
@@ -205,7 +205,7 @@ python main.py                      # full run (send)
 python main.py --stage fetch        # collect and filter only
 python main.py --stage summarise    # also build the digest
 python main.py --dry-run            # full run, print messages, no state or log
-python main.py --no-ai              # plain list instead of Gemini
+python main.py --no-ai              # plain list instead of Claude
 python main.py --ping               # WhatsApp system check
 python main.py --source "UK - "     # restrict to sources whose name contains text
 python -m pytest -q                 # offline tests

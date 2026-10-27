@@ -150,7 +150,10 @@ WHATSAPP_PROVIDER = "twilio"          # "twilio" or "meta"
 WHATSAPP_CHUNK_CHARS = 1500           # split free-form digests above this
 TEMPLATE_CHUNK_CHARS = 1000           # Meta template parameters are capped at 1024
 META_GRAPH_VERSION = "v21.0"
-GEMINI_MODEL = "gemini-2.5-flash"
+
+# Claude summarisation. The API key is read from ANTHROPIC_API_KEY (see .env.example).
+AI_MODEL = "claude-opus-5-5"
+AI_EFFORT = "medium"                  # low | medium | high | xhigh | max
 
 # ---------------------------------------------------------------------------
 # TUNING
@@ -161,7 +164,7 @@ HTTP_RETRIES = 3
 USER_AGENT = "PrivacyAlertBot/1.0 (internal GRC monitoring; contact: GRC team)"
 MAX_ENTRIES_PER_SOURCE = 50
 MAX_LINKS_PER_PAGE = 150
-MAX_TEXT_PER_ITEM = 800               # characters of item text sent to Gemini
+MAX_TEXT_PER_ITEM = 800               # characters of item text sent to Claude
 MAX_ITEMS_TO_SUMMARISE = 60
 MAX_SEEN_ITEMS = 5000                 # oldest entries are pruned from seen.json
 SEND_DELAY_SECONDS = 2                # pause between WhatsApp messages
