@@ -1,0 +1,80 @@
+# Daily data-privacy regulatory alert.
+# GitHub only reads workflows from the repository root, so this file lives here
+# and works inside the privacy-alert/ folder.
+#
+# Required repository secrets (Settings > Secrets and variables > Actions):
+#   GEMINI_API_KEY, TWILIO_SID, TWILIO_TOKEN, TWILIO_WHATSAPP_FROM, MY_WHATSAPP_NUMBER
+#   Optional: TWILIO_CONTENT_SID (production template), or for Meta:
+#   META_ACCESS_TOKEN, META_PHONE_NUMBER_ID, META_TEMPLATE_NAME, META_TEMPLATE_LANG
+name: Privacy regulatory alert
+
+on:
+  schedule:
+    # 07:00 Bahrain (UTC+3, no daylight saving) = 04:00 UTC.
+    # GitHub schedules can run late under load; that is acceptable for a daily digest.
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: "Stop after this stage"
+        type: choice
+        options: [send, summarise, fetch]
+        default: send
+
+concurrency:
+  group: privacy-alert
+  cancel-in-progress: false
+
+permissions:
+  contents: write  # needed to commit seen.json and alerts_log.csv back
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: privacy-alert
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: privacy-alert/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+
+      - name: Offline tests
+        run: python -m pytest -q
+
+      - name: Run alert pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TWILIO_SID: ${{ secrets.TWILIO_SID }}
+          TWILIO_TOKEN: ${{ secrets.TWILIO_TOKEN }}
+          TWILIO_WHATSAPP_FROM: ${{ secrets.TWILIO_WHATSAPP_FROM }}
+          TWILIO_CONTENT_SID: ${{ secrets.TWILIO_CONTENT_SID }}
+          MY_WHATSAPP_NUMBER: ${{ secrets.MY_WHATSAPP_NUMBER }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_PHONE_NUMBER_ID: ${{ secrets.META_PHONE_NUMBER_ID }}
+          META_TEMPLATE_NAME: ${{ secrets.META_TEMPLATE_NAME }}
+          META_TEMPLATE_LANG: ${{ secrets.META_TEMPLATE_LANG }}
+        run: python main.py --stage "${{ github.event.inputs.stage || 'send' }}"
+
+      - name: Commit state and audit log
+        if: always()
+        run: |
+          git config user.name "privacy-alert-bot"
+          git config user.email "privacy-alert-bot@users.noreply.github.com"
+          for f in seen.json alerts_log.csv; do
+            [ -f "$f" ] && git add "$f"
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(privacy-alert): update state and audit log [skip ci]"
+            git push
+          else
+            echo "No state changes to commit."
+          fi

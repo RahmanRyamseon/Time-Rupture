@@ -1,0 +1,6 @@
+.env
+__pycache__/
+.pytest_cache/
+*.tmp
+cron.log
+# seen.json and alerts_log.csv are intentionally tracked: GitHub Actions commits them back.
