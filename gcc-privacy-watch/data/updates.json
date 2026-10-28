@@ -1,6 +1,91 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-10-28T09:50:13.368Z",
   "retentionDays": 120,
-  "count": 0,
-  "items": []
+  "count": 6,
+  "items": [
+    {
+      "id": "cae2ef381c82",
+      "title": "Indian Supreme Court Seeks Government Response on Data Protection Exemption for Journalism",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBHelV5dkd5cy1xcTBrWGZpSGJnczBjUUpiTGVVLW1hQ2syN1F2U2FoYmhrWERJalBjRHA5TVA1amtwT3R3S2VHNzZXd0RiNmV5WjNGYWZhWV9JUQ?oc=5",
+      "publisher": "Nepali Patro",
+      "publisherUrl": "https://nepalipatro.com.np",
+      "published": "2026-10-27T10:23:22.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-10-28T09:50:13.366Z"
+    },
+    {
+      "id": "465db9e228b1",
+      "title": "India media groups challenge new data privacy rules in top court",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQQUNJbklWWFNadk5QblA2ZnZHZDhCUTNZdUJweDdBQTNKVXd4eEcyRG9Ga3YxRXpUdE1YUDZFWHF1VDU4TlExU28tSzZ1cHh6ZlNNc0ZxdXVTakp6SmRjZzZGODQ4SkY0cXZWeU5WcHEtWkRHeWJzZXlmM3pVbkdRaDc0NElOOWNqdUR2RTgwZl9xcENybzNOamFYMXhuUHpGSzZyc3RYUUJ5T2dxcHhsYlNsdw?oc=5",
+      "publisher": "The Peninsula Qatar",
+      "publisherUrl": "https://thepeninsulaqatar.com",
+      "published": "2026-10-27T10:21:01.000Z",
+      "description": "",
+      "countries": [
+        "QA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-10-28T09:50:13.366Z"
+    },
+    {
+      "id": "b33806bc4e89",
+      "title": "21 Indian Media Outlets Move Supreme Court Against Controversial Digital Personal Data Protection Law",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNc0JnQzB0ckJhWURid0xPVDlHcjlkQTR6RzRMUk1CZWU1VVpUdkxGelRSRnJJdjZndkNobm5IcF9xb19vaE9XTE10MEN0YTZXNHRDc1o1dGM3Z0dLOFEwYXRlVV9FaVA4dUlpV25ydFZERHhQakNhWE54MmFSMUluTV9UUE5LYzZ6V0t4dmx1QnNiZTEwSF9LZ3dBVTZZVWZmb1lOM3lUQQ?oc=5",
+      "publisher": "UrduPoint",
+      "publisherUrl": "https://www.urdupoint.com",
+      "published": "2026-10-27T10:09:14.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-10-28T09:50:13.366Z"
+    },
+    {
+      "id": "6ed4dd33d68d",
+      "title": "World News: Indian media groups decry Modi’s privacy law in court, say newsrooms face shutdown risk",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQVHY4Y0JIYy1nU1o5Z3Juc0l2YnRwem13c3pRSFNITWxoa1UyeVI3RFpERzl1LUlhY1R0aFJEeDh3QklOd1RVVGlkODNfUVcyNUR1cDZ6RkJ0Y1BnS1YtSU9LbjZYRUZSMF9pZ29xeUpiVFpSYVBiVlBhZmFFUDhvTmNxMWJiSGpIbXN4cV9LbW9CZHplZmR0bWJ0bTYzRmM3dUI3NkYzb0N2azZ5cGVKNmI5OFlzQzliSVpkQ2FFNVgyM09UWDN3M29pdkZMUzVYYkUw?oc=5",
+      "publisher": "Gulf Daily News (Bahrain)",
+      "publisherUrl": "https://www.gdnonline.com",
+      "published": "2026-10-27T09:06:01.000Z",
+      "description": "",
+      "countries": [
+        "BH"
+      ],
+      "category": "news",
+      "firstSeen": "2026-10-28T09:50:13.366Z"
+    },
+    {
+      "id": "8273579b2daa",
+      "title": "SC notice to Centre on news publishers' plea challenging data protection law",
+      "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQSV9WR1VyeXZadURmU3I4UTQ4Yi1MQ0d5TGowcmFGZjFtUVh2XzEwYXNwN0RLbFN4cTVfRk15LU9hYU1PNmdTRlBDeEp0UGJyM1plQ183MGxfT0RTWkdwbGxNdDBxazg1VE15aUdZYlZETEpJQXhXa3VQR0t5c1A5dm1hOUlEaTdzQ0VpT1IwdG9Ia3ZFR1VGUnp0XzVOc2xMSEg3d1cyUnBTQU9CSmlqSUJ5ZEtvRUVaZjhOSDU5cEtwMHpocnc1UWZQV21Ga25qMXEwb2pZSndtSHNrcWl5ddIB4AFBVV95cUxQSV9WR1VyeXZadURmU3I4UTQ4Yi1MQ0d5TGowcmFGZjFtUVh2XzEwYXNwN0RLbFN4cTVfRk15LU9hYU1PNmdTRlBDeEp0UGJyM1plQ183MGxfT0RTWkdwbGxNdDBxazg1VE15aUdZYlZETEpJQXhXa3VQR0t5c1A5dm1hOUlEaTdzQ0VpT1IwdG9Ia3ZFR1VGUnp0XzVOc2xMSEg3d1cyUnBTQU9CSmlqSUJ5ZEtvRUVaZjhOSDU5cEtwMHpocnc1UWZQV21Ga25qMXEwb2pZSndtSHNrcWl5dQ?oc=5",
+      "publisher": "ETLegalWorld.com",
+      "publisherUrl": "http://legal.economictimes.indiatimes.com",
+      "published": "2026-10-27T07:40:44.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-10-28T09:50:13.366Z"
+    },
+    {
+      "id": "294403b23954",
+      "title": "Ambani, Adani outlets among publishers contest privacy law",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQaWs1OE5vN0xtR3NvZW91Y3pLNjhlMkJNWnZtZlhlUEJkMjMwOFlYTzdEaUN4bzBJcVc0ZndrS01MZ1kzZkZEVG5Bc2J4Sy1YdHMwUEphT1F0alhkWk56ZWZWSTN1Z2R2UXhWRkl4NUNmenAzNnBPamI2TE9JSnAzcmR4aU9uSThlVWxmcTRIVGwzNlpCYmVlR0MwM1hVS0xEektYdFNLeVnSAagBQVVfeXFMUGlrNThObzdMbUdzb2VvdWN6SzY4ZTJCTVp2bWZYZVBCZDIzMDhZWE83RGlDeG8wSXFXNGZ3a0tNTGdZM2ZGRFRuQXNieEstWHRzMFBKYU9RdGpYZFpOemVmVkkzdWdkdlF4VkZJeDVDZnpwMzZwT2piNkxPSUpwM3JkeGlPbkk4ZVVsZnE0SFRsMzZaQmJlZUdDMDNYVUtMRHpLWHRTS3lZ?oc=5",
+      "publisher": "Kuwait Times",
+      "publisherUrl": "https://kuwaittimes.com",
+      "published": "2026-10-26T16:55:00.000Z",
+      "description": "",
+      "countries": [
+        "KW"
+      ],
+      "category": "news",
+      "firstSeen": "2026-10-28T09:50:13.366Z"
+    }
+  ]
 }
