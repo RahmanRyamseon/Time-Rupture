@@ -59,8 +59,25 @@ say "Installing Python dependencies"
 .venv/bin/python -m pip install --quiet -r requirements.txt
 
 say "Installing Piper offline TTS (the keyless narration path)"
-.venv/bin/python -m pip install --quiet piper-tts \
-  || echo "    [skip] piper-tts failed to install; narration would need a cloud key"
+if .venv/bin/python -m pip install --quiet piper-tts; then
+  # piper-tts ships no voice of its own, so offline narration needs one model
+  # fetched from huggingface.co. It is free and needs no key, but a restricted
+  # network can block it, which is why this step only warns on failure.
+  VOICE="${PIPER_VOICE:-en_US-lessac-medium}"
+  VOICE_DIR="${PIPER_VOICE_DIR:-$HOME/.piper/models}"
+  if [ -f "$VOICE_DIR/$VOICE.onnx" ]; then
+    echo "    voice $VOICE already present"
+  elif mkdir -p "$VOICE_DIR" && .venv/bin/python -m piper.download_voices \
+       "$VOICE" --data-dir "$VOICE_DIR" >/dev/null 2>&1; then
+    echo "    voice $VOICE downloaded to $VOICE_DIR"
+  else
+    echo "    [warn] could not download the voice $VOICE; huggingface.co was unreachable."
+    echo "           Offline narration stays unavailable until you run, from $DEST:"
+    echo "             .venv/bin/python -m piper.download_voices $VOICE --data-dir $VOICE_DIR"
+  fi
+else
+  echo "    [skip] piper-tts failed to install; narration would need a cloud key"
+fi
 
 # ---- Node ----
 say "Installing the Remotion composer"

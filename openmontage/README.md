@@ -34,6 +34,13 @@ configuration:
 - **Footage** — open archival sources
 - **Rendering** — Remotion and FFmpeg, both local
 
+Piper ships no voice of its own, so the script downloads one
+(`en_US-lessac-medium`) from huggingface.co into `~/.piper/models`. That is free
+and needs no key, but it is the one step a restricted network can block — the
+script warns and prints the command to rerun rather than failing. Override with
+`PIPER_VOICE` or `PIPER_VOICE_DIR`. Without a voice, narration falls back to a
+cloud provider, which needs a key.
+
 Adding keys to `.env` later unlocks the paid cloud providers (FAL, ElevenLabs,
 Runway, Suno and others). Those bill per call, and a failed generation you retry
 costs money each time.
@@ -49,5 +56,8 @@ clear message if any is missing.
   `npm audit fix` is deliberately not run, since it can break the renderer.
 - OpenMontage is AGPL-3.0, which is more restrictive than this repo. Keeping it
   as an external checkout rather than vendored code keeps the licenses separate.
+- Upstream's own install note for the voice model (`piper --download-dir ...`)
+  is stale for piper-tts 1.8.0. The script uses the current
+  `python -m piper.download_voices` instead.
 - Verified on 2026-10-29 at commit `195eab2` with Python 3.13.17, Node 22.22.0
   and FFmpeg 6.1.1.
