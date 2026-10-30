@@ -1,8 +1,36 @@
 {
-  "generatedAt": "2026-10-29T10:10:42.131Z",
+  "generatedAt": "2026-10-30T10:12:45.198Z",
   "retentionDays": 120,
-  "count": 7,
+  "count": 9,
   "items": [
+    {
+      "id": "e272d8c43850",
+      "title": "Can new data protection law guard against SBI-like data breaches?",
+      "url": "https://news.google.com/rss/articles/CBMiywJBVV95cUxPa0pIVXA2M3pQQi04b0xxcEZnblhsaUd6WTg3eHhQT2I4dFpKVFI3NXdxOG5JaXM5Y2F4S0tuS2F4b1NYR182MVRIem40ZlJiQ3c5OW5aUnFRM0dTck13QnFwMjFxdG9tY2Z1dDQ5ZlZLaUNvcndOeFd3UTJUSXl4Y3FVblc5Nk1wcWtCUm5PQzcwa2lYLUs1MHlOMEd6b0liYjdkX3Z6XzMzaS1FdWdLc2lHMU8xRmZpck52NGFpWHZyb1lPa0FLeHNoRUF0c203cWlTREVxWVVGcU1RVGQ4OGNGTmVnRUQ0SXJmUThVWE1hQ1V5NTAwcXVEc0FGZ2RpR01YcXNBVlBsMUZIREJsLS1WVzRncl92em9kV0tUUW12dEk5bERFZlZyWlpxXzkxNDYwYk1NTC1aaGFwUE9CN1Nld2V5OEpzaWg40gHnAUFVX3lxTE1nWDd6U0M5Y1J0TnFtSnh2d3NXZmo0NXE5SDVsQVhSZTd2a29wTTNxeWFnUWhuQUswS095clowNE5VNUFyTHd2RTdkMUtuMjZzVTNadzVKMjNadzgtbHFkTk5FZDZleVBMNVA1UnJIWHFDXzlpc1g5UjNkRjI4MWhxOXdxMFNVS09nTlFRYVVObUE4Y2RjSER2dW1YSEdzQnpjR2RQVmd6dHpQeGZaQ3ZOZVhNeEdjRGE2Yjc0cUNpbGR4YkxHNmdtMU4xVnFiQkJGclZYTkZJajJhN2NGMlBRMndGRlVPUQ?oc=5",
+      "publisher": "The Economic Times",
+      "publisherUrl": "https://economictimes.indiatimes.com",
+      "published": "2026-10-29T22:30:00.000Z",
+      "description": "",
+      "countries": [
+        "AE"
+      ],
+      "category": "news",
+      "firstSeen": "2026-10-30T10:12:45.196Z"
+    },
+    {
+      "id": "a41027b43c09",
+      "title": "Saudi Arabia Proposes Significant Data Protection Changes: What Global Businesses Should Know",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQWE1sQ24xeEZ4SnZLSXlzbV9yajZfZ2h2dTNoQ2lDRlZ0TG9IYzd2b3JaZkZJRnZpNnBMdjVrYlJ4NFM0T0hkSlU3RXpjdHg4WTRTZ0c0SWZ1Y0llOXAzR2tlS2ZsbUx3d0t0RjJxWHJERXpMQnFmaXlXWEpIbUVjeUpsS1Zqckd1R2c2ZXU2a0ZQY1R0WWIzckVWRm55dHNTTHpyUm9Hd1BBNEF3ZExlNVdlY9IBuAFBVV95cUxOWDA4WmlWaGc5dXVHZlY1VFFMZU5CTm1XdmtCdDhiWTJkRGp0Tm5wZTROeDlkNmpUMW9WbkYtakRpOTR4c0wyRmpRMnBtTDgtYklGazRFTkJNdWFFVFg5ZXYydTFONHVtODE1c19xNHFpTHhpU3R0bW0wRkozWjJSWDVGQWRZa01ycWhCdlEwQkZCZDdocmItbXl2RzIzZEI0UmJFTmlaejZFZkRkZWw4VmF6dldFbXRO?oc=5",
+      "publisher": "The National Law Review",
+      "publisherUrl": "https://natlawreview.com",
+      "published": "2026-10-29T21:06:51.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-10-30T10:12:45.196Z"
+    },
     {
       "id": "cae2ef381c82",
       "title": "Indian Supreme Court Seeks Government Response on Data Protection Exemption for Journalism",
