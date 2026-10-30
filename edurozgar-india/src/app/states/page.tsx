@@ -9,6 +9,11 @@ export const metadata: Metadata = {
     "Browse government jobs, scholarships, minority welfare schemes and admissions by Indian state and Union Territory, with links to each official state portal.",
 };
 
+// Opportunity data changes via the daily Supabase source-check + admin
+// review queue, not via a new deployment — revalidate instead of
+// serving a frozen build-time snapshot indefinitely.
+export const revalidate = 86400;
+
 export default async function StatesIndexPage() {
   const opportunities = await getAllOpportunities();
   return (
