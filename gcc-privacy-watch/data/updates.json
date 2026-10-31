@@ -1,8 +1,22 @@
 {
-  "generatedAt": "2026-10-30T10:12:45.198Z",
+  "generatedAt": "2026-10-31T09:48:24.883Z",
   "retentionDays": 120,
-  "count": 9,
+  "count": 10,
   "items": [
+    {
+      "id": "83ba173753e4",
+      "title": "9 major companies ordered to share how they use personal data to set prices or pay workers",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQT1lPQm5ZdmpGWWJkc1Qzc3pkVlBvbjJ6TC16eFZnYjd1bGZzc0dYR0pORUhYYUhFN2ZpZEI1blAxSnZNMkg5dWN4bUtCdzlJaE1UdFA5N2txZVhIdzZzVDhzY3Z6RUVqMm5JbTRiQkYzc2dCODNJNnJyeXZ6SWxKUmR5Z2JXMHhjdVdsc2hB?oc=5",
+      "publisher": "CBS News",
+      "publisherUrl": "https://www.cbsnews.com",
+      "published": "2026-10-29T22:52:00.000Z",
+      "description": "",
+      "countries": [
+        "QA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-10-31T09:48:24.881Z"
+    },
     {
       "id": "e272d8c43850",
       "title": "Can new data protection law guard against SBI-like data breaches?",
