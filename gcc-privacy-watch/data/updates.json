@@ -1,8 +1,36 @@
 {
-  "generatedAt": "2026-11-02T11:24:56.979Z",
+  "generatedAt": "2026-11-03T11:01:53.617Z",
   "retentionDays": 120,
-  "count": 10,
+  "count": 12,
   "items": [
+    {
+      "id": "797615729c9b",
+      "title": "Sharing Personal Data with AI: How Safe Is Your Privacy? | Aaj Pakistan with Sidra Iqbal",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQOXNQX3kyOFhCeFFkQThycEhNTnh0ckxaaDJUSlMwVFp6aEMwYU82MnNpTDhWRE5WRGNXMGlVeUtFcTR2dGw0STVfdW5CVTRSOUxNbXE0T2JYbkFBQzU1LUNrcXRaUXp1eTJEMlpLaENqM182NkZUYjg2YkdEZEFzVlNPejFuRHJyWGRSdWZpdTR3bGd4V0hMLUZCeVN0U2VuZkU5SDM3VE5PR1hXVnlxZTVTaDdPOVV1eEF0RDVVZw?oc=5",
+      "publisher": "Aaj English TV",
+      "publisherUrl": "https://english.aaj.tv",
+      "published": "2026-11-03T09:05:15.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-03T11:01:53.616Z"
+    },
+    {
+      "id": "d282cf7c9c3a",
+      "title": "South Korea: Presidential office holds emergency meeting over leak of personal data of president, trip entourage",
+      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQSjlOcV84RjZKcG90RDVUVkFFN21yQzgyajYzR3ptemdWZDVNTzdjUllVczFHTEdRRGV6SWs4V0N5QmpKcnpxVkVuMlFXVnFNMEJZV1Z3d2ZubC1nSlM3a1h6YnNfNU9lanNLS3J5MnRDRmFuYVpXOEdia2ZNaTdCNGZtYnA1SUNwS1FodlRlbzZkYllkbjhjYlFGM21wX2JuSm1EbEYtRkcxNGVhRE9MZFcwQ2c1ak12d2FuWE1raVJvTWdHMVFueVkzeElHem16VV9Vbjg0b0dhTmFl?oc=5",
+      "publisher": "The Hawk",
+      "publisherUrl": "https://www.thehawk.in",
+      "published": "2026-11-03T05:00:13.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-03T11:01:53.616Z"
+    },
     {
       "id": "83ba173753e4",
       "title": "9 major companies ordered to share how they use personal data to set prices or pay workers",
