@@ -1,6 +1,6 @@
 // Offline checks for the collector's parsers and merge logic: node cables-market-watch/scripts/test.mjs
 import assert from "node:assert/strict";
-import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS } from "./update.mjs";
+import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS, parseTED, parseCanadaBuys, parseCSV, mergeNews as merge2 } from "./update.mjs";
 
 const table = `<table><thead><tr class="shaded"><th>date</th><th>cash</th><th>3-month</th><th>stock</th></tr></thead><tbody>
 <tr>\n<td>03. November 2026</td>\n<td>3,082.00</td>\n<td>3,042.00</td>\n<td class="last">229,475</td>\n</tr>
@@ -73,4 +73,44 @@ assert.ok(classify("Prysmian wins TenneT cable contract").categories.includes("c
 assert.equal(detectActor("Taihan Cable & Solution secures U.S. ultra-high-voltage power grid project"), "Taihan Cable & Solution");
 assert.equal(detectActor("Xyz Wires bags 400 kV conductor order"), "Xyz Wires");
 assert.equal(detectActor("The ministry signs a deal"), null);
+
+// Europe and Canada: places, languages, operators
+assert.deepEqual(marketsOf(detectRegions("Svenska kraftnät picks Dalekovod for 400 kV line")), ["Europe"]);
+assert.deepEqual(marketsOf(detectRegions("Fingrid awards Toivila–Hikiä line")), ["Europe"]);
+assert.deepEqual(marketsOf(detectRegions("Ontario Energy Board approves Hydro One line near Sudbury")), ["Canada"]);
+assert.deepEqual(marketsOf(detectRegions("AESO approves new 240 kV line")), ["Canada"]);
+const de = classify("Amprion vergibt Auftrag für 380-kV-Freileitung");
+assert.ok(de.categories.includes("projects") && de.companies.includes("TenneT / EU TSOs"));
+const fr = classify("Hydro-Québec lance un appel d’offres pour une ligne de transport à 735 kV");
+assert.ok(fr.categories.includes("projects") && fr.categories.includes("tenders"));
+assert.ok(classify("Dalekovod wins 400 kV transmission line in Sweden").companies.includes("Dalekovod"));
+
+// TED (EU tenders) parser: multilingual fields, award vs contract notice
+const ted = parseTED({ notices: [
+  { "publication-number": "654321-2026", "notice-title": { eng: "Germany – Power cable – 380 kV cable supply", deu: "Kabel" },
+    "buyer-name": { eng: ["Amprion GmbH"] }, "buyer-country": ["DEU"], "publication-date": "2026-11-03+01:00", "notice-type": "cn-standard" },
+  { "publication-number": "654322-2026", "notice-title": { eng: "Finland – Construction work for electricity power lines" },
+    "buyer-name": { fin: ["Fingrid Oyj"] }, "buyer-country": "FIN", "publication-date": "2026-11-02Z", "notice-type": "can-standard" },
+] });
+assert.equal(ted.length, 2);
+assert.equal(ted[0].url, "https://ted.europa.eu/en/notice/-/detail/654321-2026");
+assert.equal(ted[0].published.slice(0, 10), "2026-11-03");
+assert.match(ted[0].description, /Amprion GmbH \(DEU\)/);
+const tedNews = merge2([], ted, Date.parse("2026-11-04"));
+assert.equal(tedNews.length, 2);
+assert.ok(tedNews.every((i) => i.categories.includes("tenders") && i.markets.includes("Europe")));
+assert.equal(tedNews.find((i) => i.title.startsWith("Finland")).stage, "Award");
+assert.equal(tedNews.find((i) => i.title.startsWith("Germany")).stage, "Tender");
+
+// CanadaBuys CSV parser: quoted fields, bilingual headers, keeps only grid-related notices
+assert.deepEqual(parseCSV('a,"b, ""c"""\r\n1,2\n'), [["a", 'b, "c"'], ["1", "2"]]);
+const cb = parseCanadaBuys(
+  'title-titre-eng,referenceNumber-numeroReference,publicationDate-datePublication,noticeURL-URLavis-eng,gsinDescription-nibsDescription-eng,contractingEntityName-nomEntitContractante-eng\n' +
+  '"Supply of 25 kV power cable",PW-26-001,2026-11-03,https://canadabuys.canada.ca/en/tender-opportunities/tender-notice/pw-26-001,"Cable, power",Public Services and Procurement Canada\n' +
+  '"Office furniture",PW-26-002,2026-11-03,https://canadabuys.canada.ca/x,"Furniture",PSPC\n');
+assert.equal(cb.length, 1);
+assert.equal(cb[0].market, "Canada");
+assert.match(cb[0].url, /pw-26-001/);
+assert.throws(() => parseCanadaBuys("foo,bar\n1,2\n"), /no title column/);
+
 console.log("all checks passed");

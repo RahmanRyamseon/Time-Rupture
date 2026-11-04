@@ -2,71 +2,412 @@
   "note": "Competitors found through web searches on 4 Nov 2026 (market reports on overhead conductors, aluminium wire rod and Middle East cables, plus news of contract wins). 'sources' lists where each was named. 'match' is the regular expression used to find the company in news; 'search' is the Google News query used to collect its news. Add or remove entries freely; the collector builds its searches from this file.",
   "asOf": "2026-11-04",
   "competitors": [
-    { "name": "Ducab", "hq": "UAE", "market": "Middle East", "segment": "Rod, conductors, cables", "match": "\\bducab\\b|دوكاب", "search": "\"Ducab\"",
-      "sources": ["https://www.alcircle.com/news/top-five-aluminium-wire-rod-and-cable-companies-in-the-middle-east-35089", "https://www.grandviewresearch.com/industry-analysis/middle-east-copper-wire-market-report", "https://www.researchandmarkets.com/report/middle-east-copper-wire-market"] },
-    { "name": "Riyadh Cables", "hq": "Saudi Arabia", "market": "Middle East", "segment": "Cables", "match": "riyadh cables|كابلات الرياض", "search": "\"Riyadh Cables\"",
-      "sources": ["https://www.grandviewresearch.com/industry-analysis/middle-east-copper-wire-market-report", "https://www.zoracz.com/top-10-copper-cable-manufacturers-recommended-in-the-middle-east-market.html", "https://www.linkedin.com/posts/kompass-ksa_kompass-b2bdirectory-businessdirectory-activity-7457277933385097216-r3dX"] },
-    { "name": "Saudi Cable Company", "hq": "Saudi Arabia", "market": "Middle East", "segment": "Cables", "match": "saudi cable(?:s)? (?:co\\b|company)|الشركة السعودية للكابلات", "search": "\"Saudi Cable Company\"",
-      "sources": ["https://www.globalinsightservices.com/reports/middle-east-cables-market/", "https://www.techsciresearch.com/report/middle-east-wires-cables-market/28275.html", "https://www.skyquestt.com/report/middle-east-cable-market/companies"] },
-    { "name": "Elsewedy Electric", "hq": "Egypt", "market": "Africa", "segment": "Cables, conductors, EPC", "match": "el ?sewedy|السويدي", "search": "(\"Elsewedy Electric\" OR \"Elsewedy Cables\")",
-      "sources": ["https://www.grandviewresearch.com/industry-analysis/middle-east-copper-wire-market-report", "https://www.techsciresearch.com/report/middle-east-wires-cables-market/28275.html", "https://www.arabnews.com/business/egypts-elsewedy-electric-chinas-sinohydro-sign-22bn-saudi-power-plant-contract-3006269"] },
-    { "name": "Oman Cables Industry", "hq": "Oman", "market": "Middle East", "segment": "Cables, conductors", "match": "oman cables?\\b", "search": "\"Oman Cables\"",
-      "sources": ["https://www.globalinsightservices.com/reports/middle-east-cables-market/", "https://www.researchandmarkets.com/report/middle-east-copper-wire-market"] },
-    { "name": "Gulf Cable (Kuwait)", "hq": "Kuwait", "market": "Middle East", "segment": "Cables", "match": "gulf cables? (?:and|&) electrical|gulf cables?\\b", "search": "\"Gulf Cable\" Kuwait",
-      "sources": ["https://www.researchandmarkets.com/report/middle-east-copper-wire-market"] },
-    { "name": "Jeddah Cables", "hq": "Saudi Arabia", "market": "Middle East", "segment": "Cables", "match": "jeddah cables?", "search": "\"Jeddah Cables\"",
-      "sources": ["https://www.linkedin.com/posts/kompass-ksa_kompass-b2bdirectory-businessdirectory-activity-7457277933385097216-r3dX"] },
-    { "name": "Bahra Cables", "hq": "Saudi Arabia", "market": "Middle East", "segment": "Cables", "match": "bahra (?:electric|cables)", "search": "(\"Bahra Cables\" OR \"Bahra Electric\")",
-      "sources": ["https://www.skyquestt.com/report/middle-east-cable-market/companies", "https://www.linkedin.com/posts/kompass-ksa_kompass-b2bdirectory-businessdirectory-activity-7457277933385097216-r3dX"] },
-    { "name": "Federal Cables", "hq": "UAE", "market": "Middle East", "segment": "Cables", "match": "federal cables?", "search": "\"Federal Cables\"",
-      "sources": ["https://www.skyquestt.com/report/middle-east-cable-market/companies"] },
-    { "name": "OAPIL", "hq": "Oman", "market": "Middle East", "segment": "Aluminium rod, conductors", "match": "\\boapil\\b|oman aluminium processing", "search": "(\"Oman Aluminium Processing\" OR OAPIL)",
-      "sources": ["https://www.alcircle.com/news/top-five-aluminium-wire-rod-and-cable-companies-in-the-middle-east-35089"] },
-    { "name": "Trans Gulf Aluminium", "hq": "UAE", "market": "Middle East", "segment": "Aluminium rod", "match": "trans gulf alumin", "search": "\"Trans Gulf Aluminium\"",
-      "sources": ["https://www.alcircle.com/news/top-five-aluminium-wire-rod-and-cable-companies-in-the-middle-east-35089"] },
-    { "name": "Alumtek", "hq": "Iran", "market": "Middle East", "segment": "Conductors (ACSR)", "match": "alumtek", "search": "\"Alumtek\"",
-      "sources": ["https://www.alcircle.com/news/top-five-aluminium-wire-rod-and-cable-companies-in-the-middle-east-35089"] },
-    { "name": "APAR Industries", "hq": "India", "market": "Asia", "segment": "Conductors (incl. ACCC, HTLS), cables", "match": "\\bapar\\b", "search": "\"APAR Industries\" OR \"APAR conductor\"",
-      "sources": ["https://www.strategicmarketresearch.com/market-report/overhead-conductor-market", "https://www.stratviewresearch.com/market-reports/overhead-conductors-market", "https://aparusa.com/en"] },
-    { "name": "KEI Industries", "hq": "India", "market": "Asia", "segment": "Cables, conductors", "match": "\\bkei industries|\\bkei\\b(?= (?:wins|bags|secures|order))", "search": "\"KEI Industries\"",
-      "sources": ["https://www.skyquestt.com/report/overhead-conductor-market/companies"] },
-    { "name": "Gupta Power", "hq": "India", "market": "Asia", "segment": "Wire rod, conductors", "match": "gupta power", "search": "\"Gupta Power\" conductor",
-      "sources": ["https://www.alcircle.com/news/the-top-aluminium-conductor-manufacturers-in-india-28459"] },
-    { "name": "Lumino Industries", "hq": "India", "market": "Asia", "segment": "Conductors (incl. HTLS), cables", "match": "lumino industries", "search": "\"Lumino Industries\"",
-      "sources": ["https://revenuebase.ai/companies/electrical-conductor-manufacturers/india", "https://www.chittorgarh.net/reports/ipo_notes/anand-rathi_lumino-industries_ipo-note.pdf"] },
-    { "name": "ZTT", "hq": "China", "market": "Asia", "segment": "Conductors, cables", "match": "\\bztt\\b|zhongtian", "search": "(ZTT OR \"Zhongtian Technology\") conductor OR cable",
-      "sources": ["https://www.stratviewresearch.com/market-reports/overhead-conductors-market"] },
-    { "name": "Hengtong Group", "hq": "China", "market": "Asia", "segment": "Conductors, cables", "match": "hengtong", "search": "\"Hengtong\" cable OR conductor",
-      "sources": ["https://www.skyquestt.com/report/overhead-conductor-market/companies"] },
-    { "name": "Sumitomo Electric", "hq": "Japan", "market": "Asia", "segment": "Conductors, cables", "match": "sumitomo electric", "search": "\"Sumitomo Electric\" (cable OR conductor)",
-      "sources": ["https://www.stratviewresearch.com/market-reports/overhead-conductors-market", "https://www.skyquestt.com/report/overhead-conductor-market/companies"] },
-    { "name": "Taihan Cable & Solution", "hq": "South Korea", "market": "Asia", "segment": "Cables", "match": "taihan", "search": "\"Taihan\" cable",
-      "sources": ["https://www.chosun.com/english/industry-en/2026/10/15/V4UQLMXZKFHM7G4P2263UOL4RQ/"] },
-    { "name": "Iljin Electric", "hq": "South Korea", "market": "Asia", "segment": "Cables (won EWA Bahrain 400/220 kV cables)", "match": "iljin", "search": "\"Iljin Electric\"",
-      "sources": ["https://www.utilities-me.com/news/bahrains-ewa-awards-five-grid-contracts"] },
-    { "name": "Prysmian (incl. General Cable)", "hq": "Italy", "market": "Europe", "segment": "Conductors, cables", "match": "prysmian|general cable", "search": "Prysmian (order OR contract OR awarded OR plant OR acquisition)",
-      "sources": ["https://www.strategicmarketresearch.com/market-report/overhead-conductor-market", "https://www.researchnester.com/reports/us-overhead-conductor-market/7915"] },
-    { "name": "Nexans", "hq": "France", "market": "Europe", "segment": "Conductors, cables", "match": "nexans", "search": "Nexans (order OR contract OR awarded OR plant)",
-      "sources": ["https://www.strategicmarketresearch.com/market-report/overhead-conductor-market", "https://www.stratviewresearch.com/market-reports/overhead-conductors-market", "https://www.skyquestt.com/report/overhead-conductor-market/companies"] },
-    { "name": "Lamifil", "hq": "Belgium", "market": "Europe", "segment": "Conductors (incl. HTLS)", "match": "lamifil", "search": "\"Lamifil\"",
-      "sources": ["https://www.stratviewresearch.com/market-reports/overhead-conductors-market"] },
-    { "name": "ElvalHalcor", "hq": "Greece", "market": "Europe", "segment": "Aluminium wire rod", "match": "elvalhalcor", "search": "\"ElvalHalcor\"",
-      "sources": ["https://www.strategicmarketresearch.com/market-report/aluminum-wire-rod-market"] },
-    { "name": "Norsk Hydro", "hq": "Norway", "market": "Europe", "segment": "Aluminium EC wire rod", "match": "norsk hydro|\\bhydro\\b(?= (?:alumin|wire rod))", "search": "\"Norsk Hydro\" (wire rod OR aluminium)",
-      "sources": ["https://www.hydro.com/us/global/aluminum/products/casthouse-products/wire-rod-for-cable-and-wire-solutions/", "https://www.strategicmarketresearch.com/market-report/aluminum-wire-rod-market"] },
-    { "name": "Southwire", "hq": "USA", "market": "USA", "segment": "Rod, conductors, cables", "match": "southwire", "search": "\"Southwire\"",
-      "sources": ["https://www.strategicmarketresearch.com/market-report/overhead-conductor-market", "https://www.researchnester.com/reports/us-overhead-conductor-market/7915"] },
-    { "name": "CTC Global", "hq": "USA", "market": "USA", "segment": "ACCC conductors (Midal is a licensee)", "match": "ctc global|\\baccc\\b", "search": "\"CTC Global\" OR \"ACCC conductor\"",
-      "sources": ["https://www.stratviewresearch.com/market-reports/overhead-conductors-market", "https://www.researchnester.com/reports/us-overhead-conductor-market/7915"] },
-    { "name": "TPC Wire & Cable", "hq": "USA", "market": "USA", "segment": "Conductors, cables", "match": "tpc wire", "search": "\"TPC Wire\"",
-      "sources": ["https://www.skyquestt.com/report/overhead-conductor-market/companies"] },
-    { "name": "Vedanta Aluminium", "hq": "India", "market": "Asia", "segment": "Aluminium wire rod", "match": "vedanta", "search": "Vedanta aluminium (wire rod OR expansion OR output)",
-      "sources": ["https://www.strategicmarketresearch.com/market-report/aluminum-wire-rod-market", "https://www.marknteladvisors.com/research-library/india-aluminum-wire-rod-market-report.html"] },
-    { "name": "Hindalco", "hq": "India", "market": "Asia", "segment": "Aluminium wire rod", "match": "hindalco", "search": "Hindalco (wire rod OR aluminium OR expansion)",
-      "sources": ["https://www.marknteladvisors.com/research-library/india-aluminum-wire-rod-market-report.html", "https://www.fortunebusinessinsights.com/aluminum-wire-rob-market-104153"] },
-    { "name": "Rusal", "hq": "Russia", "market": "Europe", "segment": "Aluminium wire rod", "match": "\\brusal\\b", "search": "Rusal aluminium",
-      "sources": ["https://www.strategicmarketresearch.com/market-report/aluminum-wire-rod-market"] },
-    { "name": "NALCO", "hq": "India", "market": "Asia", "segment": "Aluminium wire rod", "match": "\\bnalco\\b|national aluminium company", "search": "NALCO aluminium",
-      "sources": ["https://www.fortunebusinessinsights.com/aluminum-wire-rob-market-104153"] }
+    {
+      "name": "Ducab",
+      "hq": "UAE",
+      "market": "Middle East",
+      "segment": "Rod, conductors, cables",
+      "match": "\\bducab\\b|دوكاب",
+      "search": "\"Ducab\"",
+      "sources": [
+        "https://www.alcircle.com/news/top-five-aluminium-wire-rod-and-cable-companies-in-the-middle-east-35089",
+        "https://www.grandviewresearch.com/industry-analysis/middle-east-copper-wire-market-report",
+        "https://www.researchandmarkets.com/report/middle-east-copper-wire-market"
+      ]
+    },
+    {
+      "name": "Riyadh Cables",
+      "hq": "Saudi Arabia",
+      "market": "Middle East",
+      "segment": "Cables",
+      "match": "riyadh cables|كابلات الرياض",
+      "search": "\"Riyadh Cables\"",
+      "sources": [
+        "https://www.grandviewresearch.com/industry-analysis/middle-east-copper-wire-market-report",
+        "https://www.zoracz.com/top-10-copper-cable-manufacturers-recommended-in-the-middle-east-market.html",
+        "https://www.linkedin.com/posts/kompass-ksa_kompass-b2bdirectory-businessdirectory-activity-7457277933385097216-r3dX"
+      ]
+    },
+    {
+      "name": "Saudi Cable Company",
+      "hq": "Saudi Arabia",
+      "market": "Middle East",
+      "segment": "Cables",
+      "match": "saudi cable(?:s)? (?:co\\b|company)|الشركة السعودية للكابلات",
+      "search": "\"Saudi Cable Company\"",
+      "sources": [
+        "https://www.globalinsightservices.com/reports/middle-east-cables-market/",
+        "https://www.techsciresearch.com/report/middle-east-wires-cables-market/28275.html",
+        "https://www.skyquestt.com/report/middle-east-cable-market/companies"
+      ]
+    },
+    {
+      "name": "Elsewedy Electric",
+      "hq": "Egypt",
+      "market": "Africa",
+      "segment": "Cables, conductors, EPC",
+      "match": "el ?sewedy|السويدي",
+      "search": "(\"Elsewedy Electric\" OR \"Elsewedy Cables\")",
+      "sources": [
+        "https://www.grandviewresearch.com/industry-analysis/middle-east-copper-wire-market-report",
+        "https://www.techsciresearch.com/report/middle-east-wires-cables-market/28275.html",
+        "https://www.arabnews.com/business/egypts-elsewedy-electric-chinas-sinohydro-sign-22bn-saudi-power-plant-contract-3006269"
+      ]
+    },
+    {
+      "name": "Oman Cables Industry",
+      "hq": "Oman",
+      "market": "Middle East",
+      "segment": "Cables, conductors",
+      "match": "oman cables?\\b",
+      "search": "\"Oman Cables\"",
+      "sources": [
+        "https://www.globalinsightservices.com/reports/middle-east-cables-market/",
+        "https://www.researchandmarkets.com/report/middle-east-copper-wire-market"
+      ]
+    },
+    {
+      "name": "Gulf Cable (Kuwait)",
+      "hq": "Kuwait",
+      "market": "Middle East",
+      "segment": "Cables",
+      "match": "gulf cables? (?:and|&) electrical|gulf cables?\\b",
+      "search": "\"Gulf Cable\" Kuwait",
+      "sources": [
+        "https://www.researchandmarkets.com/report/middle-east-copper-wire-market"
+      ]
+    },
+    {
+      "name": "Jeddah Cables",
+      "hq": "Saudi Arabia",
+      "market": "Middle East",
+      "segment": "Cables",
+      "match": "jeddah cables?",
+      "search": "\"Jeddah Cables\"",
+      "sources": [
+        "https://www.linkedin.com/posts/kompass-ksa_kompass-b2bdirectory-businessdirectory-activity-7457277933385097216-r3dX"
+      ]
+    },
+    {
+      "name": "Bahra Cables",
+      "hq": "Saudi Arabia",
+      "market": "Middle East",
+      "segment": "Cables",
+      "match": "bahra (?:electric|cables)",
+      "search": "(\"Bahra Cables\" OR \"Bahra Electric\")",
+      "sources": [
+        "https://www.skyquestt.com/report/middle-east-cable-market/companies",
+        "https://www.linkedin.com/posts/kompass-ksa_kompass-b2bdirectory-businessdirectory-activity-7457277933385097216-r3dX"
+      ]
+    },
+    {
+      "name": "Federal Cables",
+      "hq": "UAE",
+      "market": "Middle East",
+      "segment": "Cables",
+      "match": "federal cables?",
+      "search": "\"Federal Cables\"",
+      "sources": [
+        "https://www.skyquestt.com/report/middle-east-cable-market/companies"
+      ]
+    },
+    {
+      "name": "OAPIL",
+      "hq": "Oman",
+      "market": "Middle East",
+      "segment": "Aluminium rod, conductors",
+      "match": "\\boapil\\b|oman aluminium processing",
+      "search": "(\"Oman Aluminium Processing\" OR OAPIL)",
+      "sources": [
+        "https://www.alcircle.com/news/top-five-aluminium-wire-rod-and-cable-companies-in-the-middle-east-35089"
+      ]
+    },
+    {
+      "name": "Trans Gulf Aluminium",
+      "hq": "UAE",
+      "market": "Middle East",
+      "segment": "Aluminium rod",
+      "match": "trans gulf alumin",
+      "search": "\"Trans Gulf Aluminium\"",
+      "sources": [
+        "https://www.alcircle.com/news/top-five-aluminium-wire-rod-and-cable-companies-in-the-middle-east-35089"
+      ]
+    },
+    {
+      "name": "Alumtek",
+      "hq": "Iran",
+      "market": "Middle East",
+      "segment": "Conductors (ACSR)",
+      "match": "alumtek",
+      "search": "\"Alumtek\"",
+      "sources": [
+        "https://www.alcircle.com/news/top-five-aluminium-wire-rod-and-cable-companies-in-the-middle-east-35089"
+      ]
+    },
+    {
+      "name": "APAR Industries",
+      "hq": "India",
+      "market": "Asia",
+      "segment": "Conductors (incl. ACCC, HTLS), cables",
+      "match": "\\bapar\\b",
+      "search": "\"APAR Industries\" OR \"APAR conductor\"",
+      "sources": [
+        "https://www.strategicmarketresearch.com/market-report/overhead-conductor-market",
+        "https://www.stratviewresearch.com/market-reports/overhead-conductors-market",
+        "https://aparusa.com/en"
+      ]
+    },
+    {
+      "name": "KEI Industries",
+      "hq": "India",
+      "market": "Asia",
+      "segment": "Cables, conductors",
+      "match": "\\bkei industries|\\bkei\\b(?= (?:wins|bags|secures|order))",
+      "search": "\"KEI Industries\"",
+      "sources": [
+        "https://www.skyquestt.com/report/overhead-conductor-market/companies"
+      ]
+    },
+    {
+      "name": "Gupta Power",
+      "hq": "India",
+      "market": "Asia",
+      "segment": "Wire rod, conductors",
+      "match": "gupta power",
+      "search": "\"Gupta Power\" conductor",
+      "sources": [
+        "https://www.alcircle.com/news/the-top-aluminium-conductor-manufacturers-in-india-28459"
+      ]
+    },
+    {
+      "name": "Lumino Industries",
+      "hq": "India",
+      "market": "Asia",
+      "segment": "Conductors (incl. HTLS), cables",
+      "match": "lumino industries",
+      "search": "\"Lumino Industries\"",
+      "sources": [
+        "https://revenuebase.ai/companies/electrical-conductor-manufacturers/india",
+        "https://www.chittorgarh.net/reports/ipo_notes/anand-rathi_lumino-industries_ipo-note.pdf"
+      ]
+    },
+    {
+      "name": "ZTT",
+      "hq": "China",
+      "market": "Asia",
+      "segment": "Conductors, cables",
+      "match": "\\bztt\\b|zhongtian",
+      "search": "(ZTT OR \"Zhongtian Technology\") conductor OR cable",
+      "sources": [
+        "https://www.stratviewresearch.com/market-reports/overhead-conductors-market"
+      ]
+    },
+    {
+      "name": "Hengtong Group",
+      "hq": "China",
+      "market": "Asia",
+      "segment": "Conductors, cables",
+      "match": "hengtong",
+      "search": "\"Hengtong\" cable OR conductor",
+      "sources": [
+        "https://www.skyquestt.com/report/overhead-conductor-market/companies"
+      ]
+    },
+    {
+      "name": "Sumitomo Electric",
+      "hq": "Japan",
+      "market": "Asia",
+      "segment": "Conductors, cables",
+      "match": "sumitomo electric",
+      "search": "\"Sumitomo Electric\" (cable OR conductor)",
+      "sources": [
+        "https://www.stratviewresearch.com/market-reports/overhead-conductors-market",
+        "https://www.skyquestt.com/report/overhead-conductor-market/companies"
+      ]
+    },
+    {
+      "name": "Taihan Cable & Solution",
+      "hq": "South Korea",
+      "market": "Asia",
+      "segment": "Cables",
+      "match": "taihan",
+      "search": "\"Taihan\" cable",
+      "sources": [
+        "https://www.chosun.com/english/industry-en/2026/10/15/V4UQLMXZKFHM7G4P2263UOL4RQ/"
+      ]
+    },
+    {
+      "name": "Iljin Electric",
+      "hq": "South Korea",
+      "market": "Asia",
+      "segment": "Cables (won EWA Bahrain 400/220 kV cables)",
+      "match": "iljin",
+      "search": "\"Iljin Electric\"",
+      "sources": [
+        "https://www.utilities-me.com/news/bahrains-ewa-awards-five-grid-contracts"
+      ]
+    },
+    {
+      "name": "Prysmian (incl. General Cable)",
+      "hq": "Italy",
+      "market": "Europe",
+      "segment": "Conductors, cables",
+      "match": "prysmian|general cable",
+      "search": "Prysmian (order OR contract OR awarded OR plant OR acquisition)",
+      "sources": [
+        "https://www.strategicmarketresearch.com/market-report/overhead-conductor-market",
+        "https://www.researchnester.com/reports/us-overhead-conductor-market/7915"
+      ]
+    },
+    {
+      "name": "Nexans",
+      "hq": "France",
+      "market": "Europe",
+      "segment": "Conductors, cables",
+      "match": "nexans",
+      "search": "Nexans (order OR contract OR awarded OR plant)",
+      "sources": [
+        "https://www.strategicmarketresearch.com/market-report/overhead-conductor-market",
+        "https://www.stratviewresearch.com/market-reports/overhead-conductors-market",
+        "https://www.skyquestt.com/report/overhead-conductor-market/companies"
+      ]
+    },
+    {
+      "name": "Lamifil",
+      "hq": "Belgium",
+      "market": "Europe",
+      "segment": "Conductors (incl. HTLS)",
+      "match": "lamifil",
+      "search": "\"Lamifil\"",
+      "sources": [
+        "https://www.stratviewresearch.com/market-reports/overhead-conductors-market"
+      ]
+    },
+    {
+      "name": "ElvalHalcor",
+      "hq": "Greece",
+      "market": "Europe",
+      "segment": "Aluminium wire rod",
+      "match": "elvalhalcor",
+      "search": "\"ElvalHalcor\"",
+      "sources": [
+        "https://www.strategicmarketresearch.com/market-report/aluminum-wire-rod-market"
+      ]
+    },
+    {
+      "name": "Norsk Hydro",
+      "hq": "Norway",
+      "market": "Europe",
+      "segment": "Aluminium EC wire rod",
+      "match": "norsk hydro|\\bhydro\\b(?= (?:alumin|wire rod))",
+      "search": "\"Norsk Hydro\" (wire rod OR aluminium)",
+      "sources": [
+        "https://www.hydro.com/us/global/aluminum/products/casthouse-products/wire-rod-for-cable-and-wire-solutions/",
+        "https://www.strategicmarketresearch.com/market-report/aluminum-wire-rod-market"
+      ]
+    },
+    {
+      "name": "Southwire",
+      "hq": "USA",
+      "market": "USA",
+      "segment": "Rod, conductors, cables",
+      "match": "southwire",
+      "search": "\"Southwire\"",
+      "sources": [
+        "https://www.strategicmarketresearch.com/market-report/overhead-conductor-market",
+        "https://www.researchnester.com/reports/us-overhead-conductor-market/7915"
+      ]
+    },
+    {
+      "name": "CTC Global",
+      "hq": "USA",
+      "market": "USA",
+      "segment": "ACCC conductors (Midal is a licensee)",
+      "match": "ctc global|\\baccc\\b",
+      "search": "\"CTC Global\" OR \"ACCC conductor\"",
+      "sources": [
+        "https://www.stratviewresearch.com/market-reports/overhead-conductors-market",
+        "https://www.researchnester.com/reports/us-overhead-conductor-market/7915"
+      ]
+    },
+    {
+      "name": "TPC Wire & Cable",
+      "hq": "USA",
+      "market": "USA",
+      "segment": "Conductors, cables",
+      "match": "tpc wire",
+      "search": "\"TPC Wire\"",
+      "sources": [
+        "https://www.skyquestt.com/report/overhead-conductor-market/companies"
+      ]
+    },
+    {
+      "name": "Vedanta Aluminium",
+      "hq": "India",
+      "market": "Asia",
+      "segment": "Aluminium wire rod",
+      "match": "vedanta",
+      "search": "Vedanta aluminium (wire rod OR expansion OR output)",
+      "sources": [
+        "https://www.strategicmarketresearch.com/market-report/aluminum-wire-rod-market",
+        "https://www.marknteladvisors.com/research-library/india-aluminum-wire-rod-market-report.html"
+      ]
+    },
+    {
+      "name": "Hindalco",
+      "hq": "India",
+      "market": "Asia",
+      "segment": "Aluminium wire rod",
+      "match": "hindalco",
+      "search": "Hindalco (wire rod OR aluminium OR expansion)",
+      "sources": [
+        "https://www.marknteladvisors.com/research-library/india-aluminum-wire-rod-market-report.html",
+        "https://www.fortunebusinessinsights.com/aluminum-wire-rob-market-104153"
+      ]
+    },
+    {
+      "name": "Rusal",
+      "hq": "Russia",
+      "market": "Europe",
+      "segment": "Aluminium wire rod",
+      "match": "\\brusal\\b",
+      "search": "Rusal aluminium",
+      "sources": [
+        "https://www.strategicmarketresearch.com/market-report/aluminum-wire-rod-market"
+      ]
+    },
+    {
+      "name": "NALCO",
+      "hq": "India",
+      "market": "Asia",
+      "segment": "Aluminium wire rod",
+      "match": "\\bnalco\\b|national aluminium company",
+      "search": "NALCO aluminium",
+      "sources": [
+        "https://www.fortunebusinessinsights.com/aluminum-wire-rob-market-104153"
+      ]
+    },
+    {
+      "name": "LS Cable & System",
+      "hq": "South Korea",
+      "market": "Asia",
+      "segment": "HV and submarine cables",
+      "match": "\\bls cable|ls c&s",
+      "search": "\"LS Cable\" (order OR contract OR plant)",
+      "sources": [
+        "https://www.offshorewind.biz/feed/"
+      ]
+    },
+    {
+      "name": "Northern Cables",
+      "hq": "Canada",
+      "market": "Canada",
+      "segment": "Cables",
+      "match": "northern cables",
+      "search": "\"Northern Cables\"",
+      "sources": [
+        "https://www.ebmag.com/feed/"
+      ]
+    }
   ]
 }
