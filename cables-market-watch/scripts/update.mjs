@@ -599,7 +599,15 @@ export function parseTED(json) {
       market: "Europe",
       stage: award ? "Award" : "Tender",
     };
-  }).filter((i) => i.title && !i.url.endsWith("/"));
+  }).filter((i) => i.title && !i.url.endsWith("/") && tedRelevant(i.title));
+}
+// TED titles read "Country – main CPV category – buyer's own title". Notices also match on secondary
+// CPV codes (e.g. electric motors with a cable line item), so keep a notice only when its main
+// category is grid-related or its title names a voltage level.
+const TED_GRID = /cable|power line|electricity|transmission|substation|conductor|wire|switchgear|transformer|overhead/i;
+export function tedRelevant(title) {
+  const main = title.split(/\s+[–-]\s+/)[1] ?? "";
+  return TED_GRID.test(main) || /\d\s?kv\b/i.test(title);
 }
 export async function fetchTED() {
   const res = await fetch(TED_URL, {

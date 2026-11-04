@@ -1,6 +1,6 @@
 // Offline checks for the collector's parsers and merge logic: node cables-market-watch/scripts/test.mjs
 import assert from "node:assert/strict";
-import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS, parseTED, parseCanadaBuys, parseCSV, mergeNews as merge2 } from "./update.mjs";
+import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS, parseTED, tedRelevant, parseCanadaBuys, parseCSV, mergeNews as merge2 } from "./update.mjs";
 
 const table = `<table><thead><tr class="shaded"><th>date</th><th>cash</th><th>3-month</th><th>stock</th></tr></thead><tbody>
 <tr>\n<td>03. November 2026</td>\n<td>3,082.00</td>\n<td>3,042.00</td>\n<td class="last">229,475</td>\n</tr>
@@ -101,6 +101,12 @@ assert.equal(tedNews.length, 2);
 assert.ok(tedNews.every((i) => i.categories.includes("tenders") && i.markets.includes("Europe")));
 assert.equal(tedNews.find((i) => i.title.startsWith("Finland")).stage, "Award");
 assert.equal(tedNews.find((i) => i.title.startsWith("Germany")).stage, "Tender");
+
+// TED relevance: main category or voltage decides (real titles from the live endpoint, 4 Nov 2026)
+assert.equal(tedRelevant("Romania – Electric motors – Piese de schimb și consumabile"), false);
+assert.equal(tedRelevant("France – Construction work for electricity power lines – TG4AB ENEDIS PFA LYON"), true);
+assert.equal(tedRelevant("Slovakia – Construction work – Elektrická stanica ESt 110/22 kV Geča"), true);
+assert.equal(tedRelevant("Poland – Construction work – Zaprojektowanie i wykonanie Robót"), false);
 
 // CanadaBuys CSV parser: quoted fields, bilingual headers, keeps only grid-related notices
 assert.deepEqual(parseCSV('a,"b, ""c"""\r\n1,2\n'), [["a", 'b, "c"'], ["1", "2"]]);
