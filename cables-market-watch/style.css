@@ -243,3 +243,9 @@ table.comp td:nth-child(5) a { color: var(--ink); }
 .discovered li { margin: 3px 0; }
 .discovered a { color: var(--ink-2); }
 @media (max-width: 760px) { table.comp td:nth-child(4) { text-align: left; } }
+
+/* ---- live indicator ---- */
+.stamp b { color: var(--ink); font-weight: 600; }
+.live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--up); margin-right: 5px; vertical-align: 1px; box-shadow: 0 0 0 0 var(--up); animation: live-pulse 2s ease-out infinite; }
+@keyframes live-pulse { 0% { box-shadow: 0 0 0 0 rgba(19, 122, 58, .45); } 100% { box-shadow: 0 0 0 7px rgba(19, 122, 58, 0); } }
+@media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }

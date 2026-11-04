@@ -32,6 +32,31 @@ contract wins. Each entry lists the pages that named it. The collector runs one 
 competitor from this file. When a headline names an untracked company as the winner of cable or
 conductor work, it appears under the competitor table so you can decide whether to add it.
 
+## Live updates
+
+The site updates in near real time in two layers:
+
+1. **Live endpoint, every ~10 minutes.** `api/live.mjs` is a Vercel serverless function. On
+   request it fetches about 27 fast sources in parallel: one search per category, the first
+   searches of each market, the five trade feeds, the EU tender database, and today's LME
+   official prices. It merges them with the committed history and returns everything as JSON.
+   Vercel's CDN caches the response for 10 minutes (`s-maxage=600`), so every visitor gets data
+   at most ~10 minutes old, and the sources are hit only a few times an hour however many
+   people are viewing. If every source fails, it serves the stored history and retries after
+   a minute.
+2. **Full crawl, every 3 hours.** The GitHub Action runs all ~120 searches, both tender
+   databases and the feeds, and commits `data/news.json` and `data/prices.json`. That is the
+   history the live endpoint builds on, and it redeploys the site.
+
+The page loads `/api/live` first and falls back to the committed `data/*.json` snapshot if
+the endpoint is unavailable, for example on a plain static server. It re-checks every 10
+minutes, and when you return to the tab, and updates every section in place. The header shows
+**● Live**, the time of the last check, how many sources answered, and how many items arrived
+since you opened the page.
+
+LME prices are the official end-of-day values, published once each trading day. Live intraday
+LME quotes need a paid LME data licence.
+
 ## How the collector works
 
 `scripts/update.mjs` (Node 18+, no dependencies):
@@ -60,8 +85,8 @@ conductor work, it appears under the competitor table so you can decide whether 
 `scripts/test.mjs` checks the parsers, the classifier and the stage and value extraction offline.
 The workflow runs it before every collection.
 
-`.github/workflows/cables-market-watch.yml` runs on weekdays at 17:43 UTC (after the LME closes)
-and every day at 06:13 UTC, and commits the new data.
+`.github/workflows/cables-market-watch.yml` runs every 3 hours, plus weekdays at 17:43 UTC
+(right after the LME publishes official prices), and commits the new data.
 
 ### Tuning
 
