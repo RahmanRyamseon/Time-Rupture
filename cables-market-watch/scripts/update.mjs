@@ -65,7 +65,7 @@ export function mergeSeries(existing = [], fetched = [], now = Date.now()) {
   return [...byDate.values()].filter((r) => r.date >= cutoff).sort((a, b) => a.date.localeCompare(b.date));
 }
 
-const priceUrl = (field, year) =>
+export const priceUrl = (field, year) =>
   `https://www.westmetall.com/en/markdaten.php?action=table&field=${field}${year ? `&year=${year}` : ""}`;
 
 // ================================================================ companies
@@ -557,7 +557,7 @@ const EDITIONS = {
   "fr-FR": "hl=fr&gl=FR&ceid=FR:fr",
   "fr-CA": "hl=fr-CA&gl=CA&ceid=CA:fr",
 };
-const feedUrl = (q, lang, window) => {
+export const feedUrl = (q, lang, window) => {
   const params = EDITIONS[lang] ?? EDITIONS.en;
   return `https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:${window}`)}&${params}`;
 };
@@ -601,7 +601,7 @@ export function parseTED(json) {
     };
   }).filter((i) => i.title && !i.url.endsWith("/"));
 }
-async function fetchTED() {
+export async function fetchTED() {
   const res = await fetch(TED_URL, {
     method: "POST",
     headers: { "content-type": "application/json", accept: "application/json", "user-agent": UA },
@@ -674,13 +674,13 @@ export function parseCanadaBuys(text) {
     .filter((i) => i.title && i.url && GRID_TENDER.test(i._match))
     .map(({ _match, ...i }) => i);
 }
-async function fetchCanadaBuys() {
+export async function fetchCanadaBuys() {
   return parseCanadaBuys(await get(CANADABUYS_URL));
 }
 
 // ================================================================ main
 
-const UA = "cables-market-watch/1.0 (daily digest)";
+export const UA = "cables-market-watch/1.0 (daily digest)";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function get(url) {

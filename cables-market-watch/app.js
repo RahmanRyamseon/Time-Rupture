@@ -27,18 +27,25 @@ const store = {
 };
 
 const load = (f) => fetch(f, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-const [prices, news, projectsData, watch, competitorsData] = await Promise.all([
-  load("data/prices.json"),
-  load("data/news.json"),
+// Live data comes from /api/live (Vercel function, CDN-cached ~10 min). When it is unavailable
+// (e.g. a plain static server), the page falls back to the snapshot the collector commits.
+const LIVE_URL = "api/live";
+const REFRESH_MS = 10 * 60 * 1000;
+const [live0, projectsData, watch, competitorsData] = await Promise.all([
+  load(LIVE_URL),
   load("data/projects.json"),
   load("data/watchlist.json"),
   load("data/competitors.json"),
 ]);
+let liveMeta = live0?.news ? live0.live : null;
+let news = live0?.news ?? (await load("data/news.json"));
+let prices = live0?.prices ?? (await load("data/prices.json"));
+const openedAt = Date.now();
 
 const lastVisit = Number(store.get("cmw:lastVisit")) || 0;
 store.set("cmw:lastVisit", String(Date.now()));
 
-const allItems = news?.items ?? [];
+let allItems = news?.items ?? [];
 const MARKETS = ["Middle East", "Asia", "Africa", "Europe", "Canada", "USA", "Latin America", "Oceania"];
 let market = store.get("cmw:market") || "";
 if (market && !MARKETS.includes(market)) market = "";
@@ -47,8 +54,8 @@ const inMarket = (i) => !market || (i.markets ?? []).includes(market);
 let items = allItems.filter(inMarket);
 const cats = news?.categories ?? {};
 const companyRoles = new Map((news?.companies ?? []).map((c) => [c.name, c.role]));
-const al = prices?.metals?.aluminium?.series ?? [];
-const cu = prices?.metals?.copper?.series ?? [];
+let al = prices?.metals?.aluminium?.series ?? [];
+let cu = prices?.metals?.copper?.series ?? [];
 const back = (s, n) => s[Math.max(0, s.length - 1 - n)];
 const since = (days) => Date.now() - days * DAY;
 const isNew = (i) => lastVisit && Date.parse(i.firstSeen) > lastVisit;
@@ -58,10 +65,20 @@ const DEAL_CATS = ["projects", "tenders", "competitors", "midal"];
 const isDeal = (i) => i.stage && (i.categories.some((c) => DEAL_CATS.includes(c)) || (i.companies ?? []).length > 0);
 const stageBadge = (s) => (s ? `<span class="stage s-${s.toLowerCase()}">${esc(s)}</span>` : "");
 
-$("stamp").textContent = [
-  news?.generatedAt && `News refreshed ${fmtDate(news.generatedAt, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}`,
-  al.length && `LME to ${fmtDate(al.at(-1).date)}`,
-].filter(Boolean).join(" · ");
+const hhmm = (iso) => new Date(iso).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+function setStamp() {
+  const sinceOpen = allItems.filter((i) => Date.parse(i.firstSeen) > openedAt).length;
+  const parts = liveMeta
+    ? [
+        `<span class="live-dot" aria-hidden="true"></span><b>Live</b> · checked ${hhmm(liveMeta.checkedAt)}`,
+        `${liveMeta.ok}/${liveMeta.sources} sources`,
+        sinceOpen ? `<b>${sinceOpen} new since you opened the page</b>` : "",
+      ]
+    : [news?.generatedAt && `Snapshot · news refreshed ${fmtDate(news.generatedAt, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}`];
+  parts.push(al.length ? `LME official to ${fmtDate(al.at(-1).date)}` : "");
+  $("stamp").innerHTML = parts.filter(Boolean).join(" · ");
+}
+setStamp();
 
 // ================================================================ brief
 
@@ -429,3 +446,30 @@ function renderAll() {
 }
 renderAll();
 tiles(); charts(); priceTable(); renderWatch();
+
+// ================================================================ live refresh
+
+// Re-check the live endpoint every 10 minutes (and when the tab becomes visible again after a
+// while) and update every section in place, keeping the reader's filters and scroll position.
+let lastCheck = Date.now();
+async function refresh() {
+  lastCheck = Date.now();
+  const l = await load(`${LIVE_URL}?t=${Math.floor(Date.now() / REFRESH_MS)}`);
+  if (!l?.news) return;
+  liveMeta = l.live;
+  if (l.news.generatedAt !== news?.generatedAt) {
+    news = l.news;
+    prices = l.prices ?? prices;
+    allItems = news.items ?? [];
+    items = allItems.filter(inMarket);
+    al = prices?.metals?.aluminium?.series ?? al;
+    cu = prices?.metals?.copper?.series ?? cu;
+    renderAll();
+    tiles(); charts(); priceTable();
+  }
+  setStamp();
+}
+setInterval(refresh, REFRESH_MS);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && Date.now() - lastCheck > REFRESH_MS / 2) refresh();
+});
