@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cables Market Watch</title>
+  <meta name="description" content="Daily intelligence for Midal Cables: grid projects, tenders and awards, competitor moves, government plans, aluminium market and LME prices across the GCC and export markets." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div>
+        <h1>Cables &amp; Aluminium Market Watch</h1>
+        <p class="sub">Projects, tenders, competitor moves, government plans and metal prices — the daily brief for Midal Cables.</p>
+      </div>
+      <p class="stamp" id="stamp">Loading…</p>
+    </div>
+    <nav class="wrap jump" aria-label="Sections">
+      <a href="#brief-h">Brief</a><a href="#deals-h">Deal flow</a><a href="#projects-h">Projects</a><a href="#competitors-h">Competitors</a><a href="#news-h">News</a><a href="#companies-h">Buyers &amp; utilities</a><a href="#prices-h">LME prices</a><a href="#sources-h">Sources</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="market-bar" role="group" aria-label="Market">
+      <span class="muted">Market</span>
+      <div class="chips" id="markets"></div>
+    </div>
+
+    <section aria-labelledby="brief-h" class="card brief">
+      <h2 id="brief-h">Today's brief</h2>
+      <ul id="brief"></ul>
+    </section>
+
+    <section aria-labelledby="deals-h">
+      <div class="section-head">
+        <div>
+          <h2 id="deals-h">Deal flow</h2>
+          <p class="hint">Tenders, awards, construction and commissioning picked up from the news in the last 60 days, newest first.</p>
+        </div>
+        <div class="chips" id="stages" role="group" aria-label="Deal stage"></div>
+      </div>
+      <div class="card flush"><div class="table-scroll"><table class="deals" id="deals"></table></div></div>
+    </section>
+
+    <section aria-labelledby="projects-h">
+      <div class="section-head">
+        <div>
+          <h2 id="projects-h">Project tracker</h2>
+          <p class="hint" id="projects-hint">Major grid and power projects, curated with sources.</p>
+        </div>
+        <div class="row">
+          <select id="p-country" aria-label="Country"><option value="">All countries</option></select>
+          <select id="p-status" aria-label="Status"><option value="">All stages</option></select>
+        </div>
+      </div>
+      <div class="projects" id="projects"></div>
+    </section>
+
+    <section aria-labelledby="competitors-h">
+      <div class="section-head">
+        <div>
+          <h2 id="competitors-h">Competitors</h2>
+          <p class="hint" id="competitors-hint">Rod, conductor and cable makers found in market research, with their news activity.</p>
+        </div>
+        <label class="check"><input type="checkbox" id="c-active" /> Only with news</label>
+      </div>
+      <div class="card flush"><div class="table-scroll"><table class="deals comp" id="competitors"></table></div></div>
+      <div class="card discovered" id="discovered-wrap" hidden>
+        <h3>Other companies seen winning cable or conductor work</h3>
+        <p class="hint">Named as the winner in a headline but not on the competitor list. Review them, and add real competitors to <code>data/competitors.json</code>.</p>
+        <ul id="discovered"></ul>
+      </div>
+    </section>
+
+    <div class="layout">
+      <section aria-labelledby="news-h" class="news">
+        <div class="section-head">
+          <h2 id="news-h">Industry news</h2>
+          <span class="muted" id="news-count"></span>
+        </div>
+        <div class="filters">
+          <div class="chips" id="cats" role="group" aria-label="Category"></div>
+          <div class="row">
+            <input type="search" id="q" placeholder="Search headlines…" aria-label="Search headlines" />
+            <select id="region" aria-label="Region"><option value="">All regions</option></select>
+            <select id="company" aria-label="Company"><option value="">All companies</option></select>
+            <label class="check"><input type="checkbox" id="only-new" /> New since last visit</label>
+          </div>
+        </div>
+        <ol class="items" id="items"></ol>
+      </section>
+
+      <aside aria-labelledby="companies-h" class="side">
+        <h2 id="companies-h">Buyers &amp; utilities</h2>
+        <p class="hint">Mentions in the last 30 days. Select a name to filter the news.</p>
+        <div class="seg roles" role="group" aria-label="Company type" id="roles">
+          <button data-role="contractor" aria-pressed="true">EPC buyers</button>
+          <button data-role="utility">Utilities</button>
+          <button data-role="smelter">Smelters</button>
+        </div>
+        <ul class="companies" id="companies"></ul>
+      </aside>
+    </div>
+
+    <section aria-labelledby="prices-h">
+      <div class="section-head">
+        <h2 id="prices-h">LME prices</h2>
+        <div class="seg" role="group" aria-label="Chart range" id="ranges">
+          <button data-range="22">1M</button>
+          <button data-range="66" aria-pressed="true">3M</button>
+          <button data-range="130">6M</button>
+          <button data-range="260">1Y</button>
+        </div>
+      </div>
+      <div class="tiles" id="tiles"></div>
+      <div class="charts">
+        <figure class="card chart" id="chart-aluminium"></figure>
+        <figure class="card chart" id="chart-copper"></figure>
+      </div>
+      <details class="card table-view">
+        <summary>Price table (last 15 sessions)</summary>
+        <div class="table-scroll"><table id="price-table"></table></div>
+      </details>
+    </section>
+
+    <section aria-labelledby="sources-h">
+      <h2 id="sources-h">Sources &amp; how to read the signals</h2>
+      <div class="watch" id="watch"></div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <p>News: about 100 Google News searches (one per competitor, project searches for each market, English and Arabic) plus the SaudiGulf Projects, GCC Tender News and Utilities Middle East feeds, refreshed daily and matched by keyword. Deal stage and value are read from the headline, and some items will be off-topic or missed, so always confirm against the source.
+      Projects: curated by hand in <code>data/projects.json</code>. Prices: LME official cash settlement, 3-month and warehouse stock (USD/t) via westmetall.com, each business day.</p>
+  </footer>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

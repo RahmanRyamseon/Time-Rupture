@@ -1,0 +1,53 @@
+{
+  "note": "Edited by hand. Add or remove entries freely; the page renders whatever is here.",
+  "groups": [
+    {
+      "title": "Prices & market data",
+      "items": [
+        { "name": "LME Aluminium", "url": "https://www.lme.com/en/metals/non-ferrous/lme-aluminium", "why": "Official contract page, settlement and stocks" },
+        { "name": "Westmetall LME tables", "url": "https://www.westmetall.com/en/markdaten.php", "why": "Free daily LME cash, 3-month and stock history (this page's price source)" },
+        { "name": "AlCircle", "url": "https://www.alcircle.com/news", "why": "Daily aluminium industry news, incl. GCC smelters" },
+        { "name": "SHFE", "url": "https://www.shfe.com.cn/eng/", "why": "Shanghai aluminium and copper futures" }
+      ]
+    },
+    {
+      "title": "Metal suppliers (GCC smelters)",
+      "items": [
+        { "name": "Alba – Aluminium Bahrain", "url": "https://www.albasmelter.com", "why": "Hot-metal and ingot supply, output and outages" },
+        { "name": "EGA – Emirates Global Aluminium", "url": "https://www.ega.ae", "why": "UAE smelter; regional supply and pricing" },
+        { "name": "Ma'aden", "url": "https://www.maaden.com.sa", "why": "Saudi smelter and rolling; 20.62% shareholder in Alba" }
+      ]
+    },
+    {
+      "title": "Utilities & tender portals",
+      "items": [
+        { "name": "Bahrain Tender Board", "url": "https://www.tenderboard.gov.bh", "why": "EWA and government tenders in Bahrain" },
+        { "name": "EWA Bahrain", "url": "https://www.ewa.bh", "why": "Transmission and distribution projects in Bahrain" },
+        { "name": "Etimad (Saudi tenders)", "url": "https://tenders.etimad.sa", "why": "Saudi government tender portal" },
+        { "name": "Saudi Electricity Company", "url": "https://www.se.com.sa", "why": "Largest GCC grid buyer of conductors and cables" },
+        { "name": "DEWA", "url": "https://www.dewa.gov.ae", "why": "Dubai grid and substation projects" },
+        { "name": "Kahramaa", "url": "https://www.km.qa", "why": "Qatar transmission projects" },
+        { "name": "Kuwait CAPT", "url": "https://capt.gov.kw", "why": "Kuwait central tender agency" },
+        { "name": "GCCIA", "url": "https://www.gccia.com.sa", "why": "GCC grid interconnection projects" }
+      ]
+    },
+    {
+      "title": "Peers & competitors",
+      "items": [
+        { "name": "Riyadh Cables", "url": "https://www.riyadh-cables.com", "why": "Saudi cable maker" },
+        { "name": "Ducab", "url": "https://www.ducab.com", "why": "UAE cable and aluminium rod maker" },
+        { "name": "Elsewedy Electric", "url": "https://www.elsewedyelectric.com", "why": "Egypt-based cables and EPC, active in Saudi" },
+        { "name": "Oman Cables", "url": "https://omancables.com", "why": "Oman cable maker" },
+        { "name": "Prysmian", "url": "https://www.prysmian.com", "why": "Global leader; HV and submarine orders signal demand" },
+        { "name": "Nexans", "url": "https://www.nexans.com", "why": "Global cable maker" },
+        { "name": "APAR Industries", "url": "https://apar.com", "why": "Indian conductor maker, a direct conductor competitor" }
+      ]
+    }
+  ],
+  "indicators": [
+    { "name": "Cash – 3-month spread", "how": "Positive = backwardation (prompt metal tight, spot buying costs more). Negative = contango (ample supply)." },
+    { "name": "LME warehouse stocks", "how": "Falling stocks with rising prices point to real demand; rising stocks to oversupply." },
+    { "name": "Regional premiums", "how": "Japan (MJP), Rotterdam, US Midwest and Middle East duty-paid premiums sit on top of LME. They are paywalled, so they are not charted here; watch the 'Aluminium market' news filter." },
+    { "name": "Copper / aluminium ratio", "how": "A high ratio makes aluminium conductors and cables more attractive against copper." }
+  ]
+}
