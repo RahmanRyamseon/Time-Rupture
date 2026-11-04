@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cables Market Watch</title>
-  <meta name="description" content="Daily LME prices, aluminium market news, grid projects and cable industry orders for an aluminium rod, conductor and cable maker in the GCC." />
+  <meta name="description" content="Daily intelligence for Midal Cables: grid projects, tenders and awards, competitor moves, government plans, aluminium market and LME prices across the GCC and export markets." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,10 +12,13 @@
     <div class="wrap">
       <div>
         <h1>Cables &amp; Aluminium Market Watch</h1>
-        <p class="sub">LME prices, aluminium market, grid projects and cable orders — the daily brief for Midal Cables.</p>
+        <p class="sub">Projects, tenders, competitor moves, government plans and metal prices — the daily brief for Midal Cables.</p>
       </div>
       <p class="stamp" id="stamp">Loading…</p>
     </div>
+    <nav class="wrap jump" aria-label="Sections">
+      <a href="#brief-h">Brief</a><a href="#deals-h">Deal flow</a><a href="#projects-h">Projects</a><a href="#news-h">News</a><a href="#companies-h">Companies</a><a href="#prices-h">LME prices</a><a href="#sources-h">Sources</a>
+    </nav>
   </header>
 
   <main class="wrap">
@@ -23,6 +26,62 @@
       <h2 id="brief-h">Today's brief</h2>
       <ul id="brief"></ul>
     </section>
+
+    <section aria-labelledby="deals-h">
+      <div class="section-head">
+        <div>
+          <h2 id="deals-h">Deal flow</h2>
+          <p class="hint">Tenders, awards, construction and commissioning picked up from the news in the last 60 days, newest first.</p>
+        </div>
+        <div class="chips" id="stages" role="group" aria-label="Deal stage"></div>
+      </div>
+      <div class="card flush"><div class="table-scroll"><table class="deals" id="deals"></table></div></div>
+    </section>
+
+    <section aria-labelledby="projects-h">
+      <div class="section-head">
+        <div>
+          <h2 id="projects-h">Project tracker</h2>
+          <p class="hint" id="projects-hint">Major grid and power projects, curated with sources.</p>
+        </div>
+        <div class="row">
+          <select id="p-country" aria-label="Country"><option value="">All countries</option></select>
+          <select id="p-status" aria-label="Status"><option value="">All stages</option></select>
+        </div>
+      </div>
+      <div class="projects" id="projects"></div>
+    </section>
+
+    <div class="layout">
+      <section aria-labelledby="news-h" class="news">
+        <div class="section-head">
+          <h2 id="news-h">Industry news</h2>
+          <span class="muted" id="news-count"></span>
+        </div>
+        <div class="filters">
+          <div class="chips" id="cats" role="group" aria-label="Category"></div>
+          <div class="row">
+            <input type="search" id="q" placeholder="Search headlines…" aria-label="Search headlines" />
+            <select id="region" aria-label="Region"><option value="">All regions</option></select>
+            <select id="company" aria-label="Company"><option value="">All companies</option></select>
+            <label class="check"><input type="checkbox" id="only-new" /> New since last visit</label>
+          </div>
+        </div>
+        <ol class="items" id="items"></ol>
+      </section>
+
+      <aside aria-labelledby="companies-h" class="side">
+        <h2 id="companies-h">Company tracker</h2>
+        <p class="hint">Mentions in the last 30 days. Select a name to filter the news.</p>
+        <div class="seg roles" role="group" aria-label="Company type" id="roles">
+          <button data-role="competitor" aria-pressed="true">Competitors</button>
+          <button data-role="contractor">EPC buyers</button>
+          <button data-role="utility">Utilities</button>
+          <button data-role="smelter">Smelters</button>
+        </div>
+        <ul class="companies" id="companies"></ul>
+      </aside>
+    </div>
 
     <section aria-labelledby="prices-h">
       <div class="section-head">
@@ -45,33 +104,15 @@
       </details>
     </section>
 
-    <div class="layout">
-      <section aria-labelledby="news-h" class="news">
-        <div class="section-head">
-          <h2 id="news-h">Industry news</h2>
-          <span class="muted" id="news-count"></span>
-        </div>
-        <div class="filters">
-          <div class="chips" id="cats" role="group" aria-label="Category"></div>
-          <div class="row">
-            <input type="search" id="q" placeholder="Search headlines…" aria-label="Search headlines" />
-            <select id="region" aria-label="Region"><option value="">All regions</option></select>
-            <label class="check"><input type="checkbox" id="only-new" /> New since last visit</label>
-          </div>
-        </div>
-        <ol class="items" id="items"></ol>
-      </section>
-
-      <aside aria-labelledby="watch-h" class="watch">
-        <h2 id="watch-h">Watchlist</h2>
-        <div id="watch"></div>
-      </aside>
-    </div>
+    <section aria-labelledby="sources-h">
+      <h2 id="sources-h">Sources &amp; how to read the signals</h2>
+      <div class="watch" id="watch"></div>
+    </section>
   </main>
 
   <footer class="wrap foot">
-    <p>Prices: LME official cash settlement, 3-month and warehouse stock (USD/t), via westmetall.com, updated each business day.
-      News: Google News search results, matched by keyword and refreshed daily — some items may be off-topic or missed. Always confirm against the source.</p>
+    <p>News: about 50 Google News searches in English and Arabic plus the SaudiGulf Projects, GCC Tender News and Utilities Middle East feeds, refreshed daily and matched by keyword. Deal stage and value are read from the headline, and some items will be off-topic or missed, so always confirm against the source.
+      Projects: curated by hand in <code>data/projects.json</code>. Prices: LME official cash settlement, 3-month and warehouse stock (USD/t) via westmetall.com, each business day.</p>
   </footer>
   <script src="app.js" type="module"></script>
 </body>

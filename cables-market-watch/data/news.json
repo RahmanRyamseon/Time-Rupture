@@ -1,16 +1,298 @@
 {
   "generatedAt": "2026-11-04T06:30:00.000Z",
-  "retentionDays": 90,
+  "retentionDays": 120,
+  "companies": [
+    {
+      "name": "Riyadh Cables",
+      "role": "competitor"
+    },
+    {
+      "name": "Saudi Cable Co.",
+      "role": "competitor"
+    },
+    {
+      "name": "Ducab",
+      "role": "competitor"
+    },
+    {
+      "name": "Elsewedy",
+      "role": "competitor"
+    },
+    {
+      "name": "Oman Cables",
+      "role": "competitor"
+    },
+    {
+      "name": "Gulf Cables",
+      "role": "competitor"
+    },
+    {
+      "name": "Bahra Cables",
+      "role": "competitor"
+    },
+    {
+      "name": "Jeddah Cables",
+      "role": "competitor"
+    },
+    {
+      "name": "National Cables (UAE)",
+      "role": "competitor"
+    },
+    {
+      "name": "QICC",
+      "role": "competitor"
+    },
+    {
+      "name": "Energya Cables",
+      "role": "competitor"
+    },
+    {
+      "name": "Prysmian",
+      "role": "competitor"
+    },
+    {
+      "name": "Nexans",
+      "role": "competitor"
+    },
+    {
+      "name": "NKT",
+      "role": "competitor"
+    },
+    {
+      "name": "LS Cable",
+      "role": "competitor"
+    },
+    {
+      "name": "Taihan",
+      "role": "competitor"
+    },
+    {
+      "name": "Iljin Electric",
+      "role": "competitor"
+    },
+    {
+      "name": "Southwire",
+      "role": "competitor"
+    },
+    {
+      "name": "Sumitomo Electric",
+      "role": "competitor"
+    },
+    {
+      "name": "Hengtong / ZTT",
+      "role": "competitor"
+    },
+    {
+      "name": "APAR",
+      "role": "competitor"
+    },
+    {
+      "name": "KEI / Polycab",
+      "role": "competitor"
+    },
+    {
+      "name": "Lamifil",
+      "role": "competitor"
+    },
+    {
+      "name": "L&T",
+      "role": "contractor"
+    },
+    {
+      "name": "KEC International",
+      "role": "contractor"
+    },
+    {
+      "name": "Kalpataru",
+      "role": "contractor"
+    },
+    {
+      "name": "Sterlite Power",
+      "role": "contractor"
+    },
+    {
+      "name": "Alfanar",
+      "role": "contractor"
+    },
+    {
+      "name": "SSEM",
+      "role": "contractor"
+    },
+    {
+      "name": "Linxon",
+      "role": "contractor"
+    },
+    {
+      "name": "Haif",
+      "role": "contractor"
+    },
+    {
+      "name": "Al-Babtain",
+      "role": "contractor"
+    },
+    {
+      "name": "Nesma",
+      "role": "contractor"
+    },
+    {
+      "name": "Hitachi Energy",
+      "role": "contractor"
+    },
+    {
+      "name": "Siemens Energy",
+      "role": "contractor"
+    },
+    {
+      "name": "GE Vernova",
+      "role": "contractor"
+    },
+    {
+      "name": "Algihaz",
+      "role": "contractor"
+    },
+    {
+      "name": "Sinohydro / PowerChina",
+      "role": "contractor"
+    },
+    {
+      "name": "State Grid",
+      "role": "contractor"
+    },
+    {
+      "name": "Al Yamamah Steel",
+      "role": "contractor"
+    },
+    {
+      "name": "Saudi Energy (SEC)",
+      "role": "utility"
+    },
+    {
+      "name": "National Grid SA",
+      "role": "utility"
+    },
+    {
+      "name": "SPPC",
+      "role": "utility"
+    },
+    {
+      "name": "EWA Bahrain",
+      "role": "utility"
+    },
+    {
+      "name": "DEWA",
+      "role": "utility"
+    },
+    {
+      "name": "TAQA / TRANSCO",
+      "role": "utility"
+    },
+    {
+      "name": "EtihadWE",
+      "role": "utility"
+    },
+    {
+      "name": "Kahramaa",
+      "role": "utility"
+    },
+    {
+      "name": "Nama / OETC",
+      "role": "utility"
+    },
+    {
+      "name": "Kuwait MEW",
+      "role": "utility"
+    },
+    {
+      "name": "GCCIA",
+      "role": "utility"
+    },
+    {
+      "name": "Alba",
+      "role": "smelter"
+    },
+    {
+      "name": "EGA",
+      "role": "smelter"
+    },
+    {
+      "name": "Ma'aden",
+      "role": "smelter"
+    },
+    {
+      "name": "Qatalum",
+      "role": "smelter"
+    },
+    {
+      "name": "Sohar Aluminium",
+      "role": "smelter"
+    },
+    {
+      "name": "Hindalco / Vedanta",
+      "role": "smelter"
+    },
+    {
+      "name": "Midal Cables",
+      "role": "self"
+    }
+  ],
   "categories": {
-    "projects": "Projects & tenders",
-    "orders": "Cable orders & industry",
+    "projects": "Grid projects & awards",
+    "tenders": "Tenders & bids",
+    "government": "Government & utility plans",
+    "demand": "Renewables, data centres & demand",
+    "competitors": "Competitor moves",
     "aluminium": "Aluminium market",
-    "copper": "Copper & metals",
+    "metals": "Copper & LME",
     "policy": "Trade & policy",
+    "export": "Export markets",
     "midal": "Midal mentions"
   },
-  "count": 15,
+  "count": 34,
   "items": [
+    {
+      "id": "8830c4c865e1",
+      "title": "Beyon Partners with Almoayyed Solar to Power Third Green Data Centre",
+      "url": "https://www.saudigulfprojects.com/2026/11/beyon-almoayyed-solar-park-phase-5-third-green-data-centre-bahrain/",
+      "publisher": "SaudiGulf Projects",
+      "publisherUrl": "https://www.saudigulfprojects.com",
+      "published": "2026-11-03T17:35:16.000Z",
+      "description": "Bahrain’s Beyon Group will invest about BD544,500 ($1.45 million) in Phase 5 of its Beyon Solar Park programme, developed with Almoayyed Solar. When it is ...",
+      "categories": [
+        "government",
+        "demand"
+      ],
+      "regions": [
+        "Bahrain"
+      ],
+      "companies": [],
+      "stage": null,
+      "value": "BD544,500",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "461029563ed2",
+      "title": "GE Vernova targets year-end opening for UAE grid experience centre",
+      "url": "https://www.utilities-me.com/news/ge-vernova-plans-uae-centre",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-11-03T08:15:00.000Z",
+      "description": "The UAE centre will demonstrate how grid software, digital substations and field devices can improve system visibility and reliability",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "UAE",
+        "Europe"
+      ],
+      "companies": [
+        "GE Vernova"
+      ],
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
     {
       "id": "58bfc16210c3",
       "title": "LME aluminium and SHFE aluminium see slight recovery; demand under pressure amid the tail end of peak season, with mixed bullish and bearish factors",
@@ -20,11 +302,16 @@
       "published": "2026-11-03T08:00:00.000Z",
       "description": "Aluminium prices rebound as bearish momentum eases, but weaker demand and slower destocking keep further gains in check.",
       "categories": [
-        "aluminium"
+        "aluminium",
+        "metals"
       ],
       "regions": [
         "China"
       ],
+      "companies": [],
+      "stage": null,
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -36,11 +323,16 @@
       "published": "2026-11-03T08:00:00.000Z",
       "description": "NALCO's Q2 FY27 net sales rose 26.2% year on year, driven by stronger aluminium sales and higher LME prices, while alumina exports fell.",
       "categories": [
-        "aluminium"
+        "aluminium",
+        "metals"
       ],
       "regions": [
         "India"
       ],
+      "companies": [],
+      "stage": null,
+      "value": "Rs 5,380 crore",
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -52,9 +344,123 @@
       "published": "2026-11-03T08:00:00.000Z",
       "description": "",
       "categories": [
-        "aluminium"
+        "aluminium",
+        "metals"
       ],
       "regions": [],
+      "companies": [],
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "c3d03326c8f5",
+      "title": "Oman-GCC power link reaches 35% completion",
+      "url": "https://www.omanobserver.om/article/1199048/business/economy/oman-gcc-power-link-reaches-35-completion",
+      "publisher": "Oman Observer",
+      "publisherUrl": "https://www.omanobserver.om",
+      "published": "2026-11-03T08:00:00.000Z",
+      "description": "Construction of Oman's direct interconnection with the GCC grid, a 530 km 400 kV link from Ibri to Al Sila worth RO 268.9 million, is about 35% complete and due in service by end-2027.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Oman"
+      ],
+      "companies": [],
+      "stage": "Construction",
+      "value": "RO 268.9 million",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "84fa9744e071",
+      "title": "Ducab reports 10% rise in renewables sales at ADIPEC",
+      "url": "https://www.utilities-me.com/news/ducab-grows-renewables-sales",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-11-03T07:45:00.000Z",
+      "description": "Ducab is showcasing high-voltage cables and UAE manufacturing capabilities, backed by a 96.58% ICV score and 40% local sourcing",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [
+        "UAE"
+      ],
+      "companies": [
+        "Ducab"
+      ],
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "d06617f1d300",
+      "title": "Nama Holding and State Grid Sign Framework Agreement for 1 GW Battery Storage in Duqm and Ibri",
+      "url": "https://www.saudigulfprojects.com/2026/11/nama-holding-state-grid-1gw-battery-energy-storage-duqm-ibri-oman/",
+      "publisher": "SaudiGulf Projects",
+      "publisherUrl": "https://www.saudigulfprojects.com",
+      "published": "2026-11-02T14:26:38.000Z",
+      "description": "Oman’s Nama Holding has signed a framework agreement with State Grid International Development, part of the State Grid Corporation of China, to develop battery energy ...",
+      "categories": [
+        "projects",
+        "government",
+        "demand"
+      ],
+      "regions": [
+        "Oman",
+        "China"
+      ],
+      "companies": [
+        "State Grid",
+        "Nama / OETC"
+      ],
+      "stage": "Plan",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "fcb10cd6bd62",
+      "title": "Oman's MDO Awards $418.7 Million Mazoon Copper Mining Contract to Hongda",
+      "url": "https://www.saudigulfprojects.com/2026/11/mdo-awards-418-million-mazoon-copper-mining-contract-hongda-international/",
+      "publisher": "SaudiGulf Projects",
+      "publisherUrl": "https://www.saudigulfprojects.com",
+      "published": "2026-11-02T14:15:41.000Z",
+      "description": "Minerals Development Oman (MDO) has awarded China’s Hongda International a 10-year integrated mining services contract for the Mazoon Copper Project in the Wilayat of Yanqul. ...",
+      "categories": [
+        "metals"
+      ],
+      "regions": [
+        "Oman",
+        "China"
+      ],
+      "companies": [],
+      "stage": null,
+      "value": "$418.7 Million",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "85813365f7bf",
+      "title": "BUSINESS BRIEF | Matteo Bavaresco, Ducab",
+      "url": "https://www.utilities-me.com/people/ducab-eyes-regional-growth",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-11-02T05:00:00.000Z",
+      "description": "In this Business Brief, Ducab Group CEO Matteo Bavaresco outlines plans to scale its energy and industrial solutions business",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "companies": [
+        "Ducab"
+      ],
+      "stage": "Plan",
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -66,11 +472,37 @@
       "published": "2026-11-01T08:00:00.000Z",
       "description": "LME aluminium averaged about US$3,382/t in H1 2026, up 31.9% year-on-year, according to China Hongqiao.",
       "categories": [
-        "aluminium"
+        "aluminium",
+        "metals"
       ],
       "regions": [
         "China"
       ],
+      "companies": [],
+      "stage": null,
+      "value": "US$3,382",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "64dd11ce1b1e",
+      "title": "UAE, Saudi Arabia plan electricity grid interconnection",
+      "url": "https://tai.news/uae-saudi-arabia-plan-electricity-grid-interconnection/",
+      "publisher": "T&I News",
+      "publisherUrl": "https://tai.news",
+      "published": "2026-11-01T08:00:00.000Z",
+      "description": "UAE and Saudi Arabia are planning an electricity grid interconnection to share power during demand spikes and surplus renewable generation.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Saudi",
+        "UAE"
+      ],
+      "companies": [],
+      "stage": "Plan",
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -85,6 +517,10 @@
         "aluminium"
       ],
       "regions": [],
+      "companies": [],
+      "stage": null,
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -101,6 +537,12 @@
       "regions": [
         "Bahrain"
       ],
+      "companies": [
+        "Alba"
+      ],
+      "stage": null,
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -112,11 +554,80 @@
       "published": "2026-10-30T08:00:00.000Z",
       "description": "Prysmian and Deme have started installing high-voltage cables on the bed of Lake Veere in Zeeland, the Netherlands, for grid operator TenneT.",
       "categories": [
-        "orders"
+        "projects",
+        "competitors",
+        "export"
       ],
       "regions": [
         "Europe"
       ],
+      "companies": [
+        "Prysmian"
+      ],
+      "stage": "Construction",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "0e216ec4b2d4",
+      "title": "Masdar starts construction of 200MW Chereh floating solar plant in Malaysia",
+      "url": "https://www.utilities-me.com/utilities/chereh-solar-construction-starts",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-10-30T06:33:00.000Z",
+      "description": "",
+      "categories": [
+        "demand"
+      ],
+      "regions": [],
+      "companies": [],
+      "stage": "Construction",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "840ca3f3ff31",
+      "title": "ACME Solar signs 400 MW NTPC FDRE power purchase agreement at ₹4.37 per unit (about AED 0.17)",
+      "url": "https://www.utilities-me.com/utilities/ntpc-fdre-acme-400mw-ppa",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-10-29T10:57:18.000Z",
+      "description": "",
+      "categories": [
+        "demand",
+        "export"
+      ],
+      "regions": [
+        "India"
+      ],
+      "companies": [],
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "9ddbf6decf0e",
+      "title": "Egypt wind: Cabinet grants golden licences to two 900MW projects",
+      "url": "https://www.utilities-me.com/utilities/egypt-wind-golden-licences",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-10-29T10:55:21.000Z",
+      "description": "",
+      "categories": [
+        "government",
+        "demand",
+        "export"
+      ],
+      "regions": [
+        "Egypt"
+      ],
+      "companies": [],
+      "stage": null,
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -133,6 +644,93 @@
       "regions": [
         "China"
       ],
+      "companies": [],
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "b97995507817",
+      "title": "GE Vernova to buy grid equipment maker Trench Group from Triton in AED 32.7bn deal",
+      "url": "https://www.utilities-me.com/utilities/trench-group-ge-vernova",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-10-29T04:24:45.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "companies": [
+        "GE Vernova"
+      ],
+      "stage": null,
+      "value": "AED 32.7bn",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "3deebb5cb641",
+      "title": "Infinity Power issues notice to proceed for Egypt’s Nefer Minya solar project",
+      "url": "https://www.utilities-me.com/news/nefer-minya-solar-works-begin",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-10-28T07:30:00.000Z",
+      "description": "The 1.2GWp solar and 600MWh battery storage project in West Minya is targeting commercial operations in September 2027, after securing $566 million in debt financing last month",
+      "categories": [
+        "demand",
+        "export"
+      ],
+      "regions": [
+        "Egypt"
+      ],
+      "companies": [],
+      "stage": null,
+      "value": "$566 million",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "8030cc94e817",
+      "title": "DNV advises on Spain’s largest standalone battery storage financing",
+      "url": "https://www.utilities-me.com/news/spains-biggest-battery-portfolio-financed",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-10-27T09:00:00.000Z",
+      "description": "Return Energy’s three battery storage projects in Spain’s Bizkaia province will provide 55MW of power and 220MWh of storage, backed by €50 million of financing",
+      "categories": [
+        "demand",
+        "export"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "companies": [],
+      "stage": null,
+      "value": "€50 million",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "64db6c2bf5cd",
+      "title": "Mubbadrah leads $3 billion AI data centre consortium in Oman",
+      "url": "https://www.utilities-me.com/news/oman-ai-data-centre-planned",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-10-27T08:30:00.000Z",
+      "description": "The Oman data centre would have a capacity of up to 400MW, powered by a blend of grid supply and 400MW of solar with battery storage",
+      "categories": [
+        "projects",
+        "demand"
+      ],
+      "regions": [
+        "Oman"
+      ],
+      "companies": [],
+      "stage": null,
+      "value": "$3 billion",
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -144,11 +742,18 @@
       "published": "2026-10-21T08:00:00.000Z",
       "description": "Aluminium Bahrain (Alba) strengthened its engagement with the global aluminium and metals industry at LME Week.",
       "categories": [
-        "aluminium"
+        "aluminium",
+        "metals"
       ],
       "regions": [
         "Bahrain"
       ],
+      "companies": [
+        "Alba"
+      ],
+      "stage": null,
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -161,11 +766,19 @@
       "description": "EWA led Bahrain's August Official Gazette awards, headed by Iljin Electric's Sitra feeder cable works and Hitachi Energy's substation transformers.",
       "categories": [
         "projects",
-        "orders"
+        "competitors"
       ],
       "regions": [
         "Bahrain"
       ],
+      "companies": [
+        "Iljin Electric",
+        "Hitachi Energy",
+        "EWA Bahrain"
+      ],
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -177,11 +790,19 @@
       "published": "2026-10-15T08:00:00.000Z",
       "description": "Taihan will supply 120 billion won in cables for a turnkey ultra-high-voltage grid project in the United States.",
       "categories": [
-        "orders"
+        "projects",
+        "competitors",
+        "export"
       ],
       "regions": [
         "North America"
       ],
+      "companies": [
+        "Taihan"
+      ],
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -193,13 +814,21 @@
       "published": "2026-10-14T08:00:00.000Z",
       "description": "A consortium of Egypt's Elsewedy Electric and China's Sinohydro has secured a $2.2 billion contract to expand Saudi Arabia's Rabigh 2 independent power plant.",
       "categories": [
-        "projects"
+        "demand",
+        "competitors"
       ],
       "regions": [
         "Saudi",
-        "China",
-        "Africa"
+        "Egypt",
+        "China"
       ],
+      "companies": [
+        "Elsewedy",
+        "Sinohydro / PowerChina"
+      ],
+      "stage": "Award",
+      "value": "$2.2bn",
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -211,11 +840,60 @@
       "published": "2026-10-14T08:00:00.000Z",
       "description": "Acciona will deliver a significant component of the Clean Energy Link – East transmission project in Western Australia, valued at A$655m.",
       "categories": [
-        "projects"
+        "projects",
+        "export"
       ],
       "regions": [
         "Australia"
       ],
+      "companies": [],
+      "stage": "Award",
+      "value": "$455m",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "1d216f432aff",
+      "title": "Egypt, Saudi Arabia to launch 3,000 MW electricity link within weeks",
+      "url": "https://english.ahram.org.eg/News/578941.aspx",
+      "publisher": "Ahram Online",
+      "publisherUrl": "https://english.ahram.org.eg",
+      "published": "2026-10-14T08:00:00.000Z",
+      "description": "The $1.8 billion 500 kV HVDC interconnection, with about 1,350 km of overhead lines and 22 km of submarine cable, is due to launch after phase-two trials.",
+      "categories": [
+        "projects",
+        "demand"
+      ],
+      "regions": [
+        "Saudi",
+        "Egypt"
+      ],
+      "companies": [],
+      "stage": null,
+      "value": "$1.8 billion",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "b22d4177cda2",
+      "title": "Midal Cables concluded its participation in the “Made in GCC 2026” Forum and Exhibition",
+      "url": "https://www.midalcable.com/midal-cables-concluded-its-participation-in-the-made-in-gcc-2026-forum-and-exhibition",
+      "publisher": "Midal Cables",
+      "publisherUrl": "https://www.midalcable.com",
+      "published": "2026-10-08T08:00:00.000Z",
+      "description": "Midal Cables was a supporting sponsor and exhibitor at Made in GCC 2026 (6–8 October, Exhibition World Bahrain).",
+      "categories": [
+        "midal"
+      ],
+      "regions": [
+        "Bahrain"
+      ],
+      "companies": [
+        "Midal Cables"
+      ],
+      "stage": null,
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -232,6 +910,13 @@
       "regions": [
         "Bahrain"
       ],
+      "companies": [
+        "Alba",
+        "Ma'aden"
+      ],
+      "stage": null,
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
     {
@@ -250,6 +935,62 @@
         "UAE",
         "India"
       ],
+      "companies": [
+        "L&T"
+      ],
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "1a6c7433ac47",
+      "title": "Kahramaa tenders $200m of grid works for Dukhan solar plant",
+      "url": "https://gcctendernews.com/article/kahramaa-tenders-200m-of-grid-works-for-dukhan-solar-plant/",
+      "publisher": "GCC Tender News",
+      "publisherUrl": "https://gcctendernews.com",
+      "published": "2026-08-18T08:00:00.000Z",
+      "description": "Kahramaa opened bidding for a new 400/220/132 kV substation and upgrades to serve the 2,000 MW Dukhan solar plant.",
+      "categories": [
+        "projects",
+        "tenders",
+        "demand"
+      ],
+      "regions": [
+        "Qatar"
+      ],
+      "companies": [
+        "Kahramaa"
+      ],
+      "stage": "Tender",
+      "value": "$200m",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "d9da94f394b6",
+      "title": "Al-Babtain, Alfanar, Haif and TDP awarded Expo 2030 Riyadh substation projects",
+      "url": "https://www.saudigulfprojects.com/2026/08/al-babtain-alfanar-haif-and-tdp-awarded-expo-2030-riyadh-substation-projects/",
+      "publisher": "SaudiGulf Projects",
+      "publisherUrl": "https://www.saudigulfprojects.com",
+      "published": "2026-08-14T08:00:00.000Z",
+      "description": "Saudi Energy signed an agreement with Expo 2030 Riyadh for a bulk supply point and three primary substations of about 400 MW.",
+      "categories": [
+        "projects",
+        "demand"
+      ],
+      "regions": [
+        "Saudi"
+      ],
+      "companies": [
+        "Alfanar",
+        "Haif",
+        "Al-Babtain",
+        "Saudi Energy (SEC)"
+      ],
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     }
   ]

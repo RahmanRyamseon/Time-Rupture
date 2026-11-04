@@ -1,4 +1,5 @@
-// Cables & Aluminium Market Watch — renders data/prices.json, data/news.json and data/watchlist.json.
+// Cables & Aluminium Market Watch — renders data/news.json, data/projects.json, data/prices.json
+// and data/watchlist.json. No build step, no dependencies.
 
 const $ = (id) => document.getElementById(id);
 const esc = (s = "") =>
@@ -7,6 +8,8 @@ const fmt = (n, d = 0) => (n == null ? "–" : n.toLocaleString("en-US", { minim
 const pct = (a, b) => (a == null || !b ? null : ((a - b) / b) * 100);
 const fmtDate = (iso, opts = { day: "numeric", month: "short", year: "numeric" }) =>
   new Date(iso.length === 10 ? `${iso}T12:00:00Z` : iso).toLocaleDateString("en-GB", opts);
+const shortDate = (iso) => fmtDate(iso, { day: "numeric", month: "short" });
+const DAY = 86_400_000;
 
 // Arrow + sign + colour, so direction never relies on colour alone.
 const change = (abs, rel, d = 0) => {
@@ -24,57 +27,215 @@ const store = {
 };
 
 const load = (f) => fetch(f, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-const [prices, news, watch] = await Promise.all([
+const [prices, news, projectsData, watch] = await Promise.all([
   load("data/prices.json"),
   load("data/news.json"),
+  load("data/projects.json"),
   load("data/watchlist.json"),
 ]);
 
 const lastVisit = Number(store.get("cmw:lastVisit")) || 0;
 store.set("cmw:lastVisit", String(Date.now()));
 
-// ---------------------------------------------------------------- header + brief
-
-$("stamp").textContent = [
-  prices?.metals?.aluminium?.series?.length && `LME data to ${fmtDate(prices.metals.aluminium.series.at(-1).date)}`,
-  news?.generatedAt && `news refreshed ${fmtDate(news.generatedAt, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}`,
-].filter(Boolean).join(" · ");
-
+const items = news?.items ?? [];
+const cats = news?.categories ?? {};
+const companyRoles = new Map((news?.companies ?? []).map((c) => [c.name, c.role]));
 const al = prices?.metals?.aluminium?.series ?? [];
 const cu = prices?.metals?.copper?.series ?? [];
 const back = (s, n) => s[Math.max(0, s.length - 1 - n)];
+const since = (days) => Date.now() - days * DAY;
+const isNew = (i) => lastVisit && Date.parse(i.firstSeen) > lastVisit;
+const link = (i) => `<a href="${esc(i.url)}" target="_blank" rel="noopener"${i.lang === "ar" ? ' dir="rtl" lang="ar"' : ""}>${esc(i.title)}</a>`;
+// Deal flow keeps grid, tender, competitor and export news; demand items only when they name a tracked company.
+const DEAL_CATS = ["projects", "tenders", "competitors", "export", "midal"];
+const isDeal = (i) => i.stage && (i.categories.some((c) => DEAL_CATS.includes(c)) || (i.companies ?? []).length > 0);
+const stageBadge = (s) => (s ? `<span class="stage s-${s.toLowerCase()}">${esc(s)}</span>` : "");
+
+$("stamp").textContent = [
+  news?.generatedAt && `News refreshed ${fmtDate(news.generatedAt, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}`,
+  al.length && `LME to ${fmtDate(al.at(-1).date)}`,
+].filter(Boolean).join(" · ");
+
+// ================================================================ brief
 
 function brief() {
   const out = [];
+  const week = items.filter((i) => Date.parse(i.published) >= since(7));
+  const deals = week.filter(isDeal);
+  const count = (s) => deals.filter((i) => i.stage === s).length;
+  if (deals.length) {
+    const top = deals.filter((i) => i.stage === "Award" || i.stage === "Tender").slice(0, 3);
+    out.push(`<strong>Deal flow, last 7 days:</strong> ${count("Award")} award${count("Award") === 1 ? "" : "s"}, ${count("Tender")} tender${count("Tender") === 1 ? "" : "s"}, ${count("Construction")} in construction, ${count("Commissioned")} commissioned, ${count("Plan")} plan${count("Plan") === 1 ? "" : "s"}.` +
+      (top.length ? `<ul>${top.map((i) => `<li>${stageBadge(i.stage)} ${link(i)}${i.value ? ` — <b>${esc(i.value)}</b>` : ""}</li>`).join("")}</ul>` : ""));
+  } else {
+    out.push("<strong>Deal flow:</strong> no tenders or awards picked up in the last 7 days.");
+  }
+
+  const month = items.filter((i) => Date.parse(i.published) >= since(30));
+  const comp = new Map();
+  for (const i of month) for (const c of i.companies ?? []) if (companyRoles.get(c) === "competitor") comp.set(c, (comp.get(c) ?? 0) + 1);
+  const topComp = [...comp].sort((a, b) => b[1] - a[1]).slice(0, 5);
+  if (topComp.length) out.push(`<strong>Most active competitors (30 days):</strong> ${topComp.map(([n, k]) => `${esc(n)} (${k})`).join(", ")}.`);
+
+  const gov = week.filter((i) => i.categories.includes("government"));
+  if (gov.length) out.push(`<strong>Government &amp; utility plans:</strong> ${gov.length} new item${gov.length === 1 ? "" : "s"} this week, latest: ${link(gov[0])}.`);
+
+  const midal = month.filter((i) => i.categories.includes("midal"));
+  out.push(midal.length ? `<strong>Midal mentions (30 days):</strong> ${midal.length}, latest: ${link(midal[0])}.` : "<strong>Midal mentions:</strong> none in the last 30 days.");
+
   if (al.length > 1) {
     const [p, l] = [al.at(-2), al.at(-1)];
-    const m = back(al, 21);
-    out.push(`<strong>Aluminium</strong> settled at <strong>$${fmt(l.cash, 1)}/t</strong> on ${fmtDate(l.date, { day: "numeric", month: "short" })}, ${change(l.cash - p.cash, pct(l.cash, p.cash), 1)} on the day and ${change(l.cash - m.cash, pct(l.cash, m.cash), 1)} over about a month.`);
     const spread = l.cash - l.m3;
-    out.push(`Cash–3M spread is <strong>${spread >= 0 ? "+" : ""}${fmt(spread, 1)}</strong> — ${spread > 0 ? "backwardation: prompt metal is tight, spot buying costs more" : spread < 0 ? "contango: supply is comfortable, no premium for prompt metal" : "flat"}.`);
-    const s5 = back(al, 5);
-    if (l.stock && s5.stock) out.push(`LME aluminium stocks ${l.stock < s5.stock ? "fell" : "rose"} to ${fmt(l.stock)} t (${change(l.stock - s5.stock, pct(l.stock, s5.stock))} over 5 sessions).`);
+    let line = `<strong>Metals:</strong> LME aluminium $${fmt(l.cash, 1)}/t ${change(l.cash - p.cash, pct(l.cash, p.cash), 1)}, ${spread > 0 ? "backwardation" : "contango"} ${spread >= 0 ? "+" : ""}${fmt(spread, 1)}`;
+    if (cu.length) line += `; copper $${fmt(cu.at(-1).cash, 1)}/t, ${(cu.at(-1).cash / l.cash).toFixed(2)}× aluminium`;
+    out.push(`${line}.`);
   }
-  if (cu.length > 1 && al.length) {
-    const l = cu.at(-1), p = cu.at(-2);
-    out.push(`<strong>Copper</strong> at $${fmt(l.cash, 1)}/t (${change(l.cash - p.cash, pct(l.cash, p.cash), 1)}); copper is <strong>${(l.cash / al.at(-1).cash).toFixed(2)}×</strong> aluminium.`);
-  }
-  if (news?.items?.length) {
-    const since = Date.now() - 2 * 86_400_000;
-    const recent = news.items.filter((i) => Date.parse(i.published) >= since);
-    const by = Object.entries(news.categories ?? {})
-      .map(([k, label]) => [label, recent.filter((i) => i.categories.includes(k)).length])
-      .filter(([, n]) => n);
-    out.push(recent.length
-      ? `${recent.length} news item${recent.length === 1 ? "" : "s"} in the last 48 hours: ${by.map(([l, n]) => `${l} ${n}`).join(", ")}.`
-      : "No new news items in the last 48 hours.");
-    const midal = news.items.filter((i) => i.categories.includes("midal"));
-    if (midal.length) out.push(`<strong>${midal.length}</strong> recent item${midal.length === 1 ? "" : "s"} mention Midal — see the “Midal mentions” filter.`);
-  }
-  $("brief").innerHTML = out.map((l) => `<li>${l}</li>`).join("") || "<li>No data yet.</li>";
+  $("brief").innerHTML = out.map((l) => `<li>${l}</li>`).join("");
 }
 
-// ---------------------------------------------------------------- tiles
+// ================================================================ deal flow
+
+const STAGES = ["Tender", "Award", "Construction", "Commissioned", "Plan"];
+let stage = store.get("cmw:stage") || "";
+function renderDeals() {
+  const deals = items.filter((i) => isDeal(i) && Date.parse(i.published) >= since(60));
+  $("stages").innerHTML = [["", "All"], ...STAGES.map((s) => [s, s])]
+    .map(([k, l]) => `<button data-stage="${k}" aria-pressed="${k === stage}">${l}<span class="n">${k ? deals.filter((i) => i.stage === k).length : deals.length}</span></button>`)
+    .join("");
+  const list = deals.filter((i) => !stage || i.stage === stage).slice(0, 60);
+  $("deals").innerHTML = `<thead><tr><th>Date</th><th>Stage</th><th>Deal</th><th>Value</th><th>Where</th><th>Companies</th></tr></thead><tbody>${
+    list.length
+      ? list.map((i) => `<tr>
+          <td data-l="Date">${shortDate(i.published)}</td>
+          <td data-l="Stage">${stageBadge(i.stage)}</td>
+          <td data-l="Deal" class="deal">${link(i)}<span class="pub">${esc(i.publisher)}</span></td>
+          <td data-l="Value" class="val">${esc(i.value ?? "–")}</td>
+          <td data-l="Where">${esc(i.regions.join(", ") || "–")}</td>
+          <td data-l="Companies">${esc((i.companies ?? []).join(", ") || "–")}</td></tr>`).join("")
+      : `<tr><td colspan="6" class="empty">No deals at this stage in the last 60 days.</td></tr>`
+  }</tbody>`;
+}
+$("stages").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  stage = b.dataset.stage;
+  store.set("cmw:stage", stage);
+  renderDeals();
+});
+
+// ================================================================ project tracker
+
+const projects = projectsData?.projects ?? [];
+const P_STAGES = ["Plan", "Tender", "Award", "Construction", "Commissioning", "Operating"];
+$("p-country").insertAdjacentHTML("beforeend", [...new Set(projects.map((p) => p.country))].sort().map((c) => `<option>${esc(c)}</option>`).join(""));
+$("p-status").insertAdjacentHTML("beforeend", P_STAGES.filter((s) => projects.some((p) => p.status === s)).map((s) => `<option>${s}</option>`).join(""));
+if (projectsData?.asOf) $("projects-hint").textContent = `${projects.length} major grid and power projects, curated with sources (reviewed ${fmtDate(projectsData.asOf)}). Edit data/projects.json to add more.`;
+function renderProjects() {
+  const c = $("p-country").value, s = $("p-status").value;
+  const list = projects.filter((p) => (!c || p.country === c) && (!s || p.status === s));
+  $("projects").innerHTML = list.length
+    ? list.map((p) => `<article class="project">
+        <div class="p-top">${stageBadge(p.status)}<span class="muted">${esc(p.country)}</span></div>
+        <h3>${esc(p.name)}</h3>
+        <dl>
+          <dt>Owner</dt><dd>${esc(p.owner)}</dd>
+          <dt>Value</dt><dd>${esc(p.value)}</dd>
+          ${p.parties && p.parties !== "—" ? `<dt>Parties</dt><dd>${esc(p.parties)}</dd>` : ""}
+        </dl>
+        <p>${esc(p.scope)}</p>
+        <p class="why"><b>Why it matters:</b> ${esc(p.relevance)}</p>
+        <p class="src"><a href="${esc(p.source)}" target="_blank" rel="noopener">Source</a> · as of ${fmtDate(p.asOf)}</p>
+      </article>`).join("")
+    : `<p class="empty">No projects match.</p>`;
+}
+["p-country", "p-status"].forEach((id) => $(id).addEventListener("input", renderProjects));
+
+// ================================================================ news
+
+let cat = store.get("cmw:cat") || "";
+if (cat && !cats[cat]) cat = "";
+function renderCats() {
+  const count = (k) => (k ? items.filter((i) => i.categories.includes(k)).length : items.length);
+  $("cats").innerHTML = [["", "All"], ...Object.entries(cats)]
+    .map(([k, l]) => `<button data-cat="${k}" aria-pressed="${k === cat}">${esc(l)}<span class="n">${count(k)}</span></button>`)
+    .join("");
+}
+$("cats").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  cat = b.dataset.cat;
+  store.set("cmw:cat", cat);
+  renderCats(); renderItems();
+});
+
+const regions = [...new Set(items.flatMap((i) => i.regions))].sort();
+$("region").insertAdjacentHTML("beforeend", regions.map((r) => `<option>${esc(r)}</option>`).join(""));
+const named = [...new Set(items.flatMap((i) => i.companies ?? []))].sort();
+$("company").insertAdjacentHTML("beforeend", named.map((r) => `<option>${esc(r)}</option>`).join(""));
+["q", "region", "company", "only-new"].forEach((id) => $(id).addEventListener("input", renderItems));
+
+function renderItems() {
+  const q = $("q").value.trim().toLowerCase();
+  const region = $("region").value, company = $("company").value;
+  const onlyNew = $("only-new").checked;
+  const list = items.filter((i) =>
+    (!cat || i.categories.includes(cat)) &&
+    (!region || i.regions.includes(region)) &&
+    (!company || (i.companies ?? []).includes(company)) &&
+    (!onlyNew || isNew(i)) &&
+    (!q || `${i.title} ${i.description} ${i.publisher}`.toLowerCase().includes(q)));
+  $("news-count").textContent = `${list.length} of ${items.length} items · last ${news?.retentionDays ?? 120} days`;
+  $("items").innerHTML = list.length
+    ? list.slice(0, 200).map((i) => `<li>
+        <div class="meta"><span>${fmtDate(i.published)}</span><span>${esc(i.publisher)}</span>${stageBadge(i.stage)}${i.value ? `<b class="val">${esc(i.value)}</b>` : ""}${i.lang === "ar" ? '<span class="tag">Arabic</span>' : ""}${isNew(i) ? '<span class="badge-new">● New</span>' : ""}</div>
+        <h3>${link(i)}</h3>
+        ${i.description ? `<p${i.lang === "ar" ? ' dir="rtl" lang="ar"' : ""}>${esc(i.description)}</p>` : ""}
+        <div class="tags">${i.categories.map((c) => `<span class="tag">${esc(cats[c] ?? c)}</span>`).join("")}${i.regions.map((r) => `<span class="tag t-region">${esc(r)}</span>`).join("")}${(i.companies ?? []).map((c) => `<button class="tag t-co" data-co="${esc(c)}">${esc(c)}</button>`).join("")}</div>
+      </li>`).join("")
+    : `<li class="empty">No items match these filters.</li>`;
+}
+$("items").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-co]");
+  if (b) pickCompany(b.dataset.co);
+});
+function pickCompany(name) {
+  $("company").value = name;
+  cat = "";
+  renderCats(); renderItems();
+  $("news-h").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ================================================================ company tracker
+
+let role = store.get("cmw:role") || "competitor";
+function renderCompanies() {
+  document.querySelectorAll("#roles button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.role === role)));
+  const month = items.filter((i) => Date.parse(i.published) >= since(30));
+  const rows = [...companyRoles].filter(([, r]) => r === role).map(([name]) => {
+    const hits = items.filter((i) => (i.companies ?? []).includes(name));
+    return { name, n30: month.filter((i) => i.companies?.includes(name)).length, total: hits.length, latest: hits[0] };
+  }).sort((a, b) => b.n30 - a.n30 || b.total - a.total || a.name.localeCompare(b.name));
+  const active = rows.filter((r) => r.total);
+  const quiet = rows.filter((r) => !r.total);
+  $("companies").innerHTML = active.map((r) => `<li>
+      <div class="c-head"><button class="c-name" data-co="${esc(r.name)}">${esc(r.name)}</button><span class="c-n" title="Mentions in the last 30 days">${r.n30}</span></div>
+      <div class="c-latest">${shortDate(r.latest.published)} · ${link(r.latest)}</div>
+    </li>`).join("") +
+    (quiet.length ? `<li class="quiet">No recent news: ${quiet.map((r) => esc(r.name)).join(", ")}</li>` : "");
+}
+$("roles").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  role = b.dataset.role;
+  store.set("cmw:role", role);
+  renderCompanies();
+});
+$("companies").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-co]");
+  if (b) pickCompany(b.dataset.co);
+});
+
+// ================================================================ prices
 
 function tiles() {
   if (!al.length) { $("tiles").innerHTML = ""; return; }
@@ -93,12 +254,8 @@ function tiles() {
   $("tiles").innerHTML = t.map(([k, v, d]) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="d">${d}</div></div>`).join("");
 }
 
-// ---------------------------------------------------------------- charts
-
-const NS = "http://www.w3.org/2000/svg";
 function niceTicks(min, max, count = 4) {
-  const span = max - min || 1;
-  const step0 = span / count;
+  const step0 = (max - min || 1) / count;
   const mag = 10 ** Math.floor(Math.log10(step0));
   const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((s) => s >= step0);
   const ticks = [];
@@ -117,21 +274,18 @@ function lineChart(el, label, series) {
   const ys = (v) => m.t + (1 - (v - lo) / (hi - lo)) * (H - m.t - m.b);
   const pts = series.map((d, i) => `${xs(i).toFixed(1)},${ys(d.cash).toFixed(1)}`);
   const first = series[0], last = series.at(-1);
-  const ticks = niceTicks(lo, hi);
   const xIdx = [0, Math.floor((series.length - 1) / 2), series.length - 1];
-
   el.innerHTML = `
     <figcaption><b>${label} — LME cash, USD/t</b><span class="muted">${change(last.cash - first.cash, pct(last.cash, first.cash), 0)} over range</span></figcaption>
     <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${label} LME cash price from ${first.date} to ${last.date}, ${fmt(first.cash)} to ${fmt(last.cash)} USD per tonne">
-      <g class="axis">${ticks.map((v) => `<line class="gridline" x1="${m.l}" x2="${W - m.r}" y1="${ys(v)}" y2="${ys(v)}"/><text x="${m.l - 8}" y="${ys(v) + 4}" text-anchor="end">${fmt(v)}</text>`).join("")}
-      ${xIdx.map((i, k) => `<text x="${xs(i)}" y="${H - 6}" text-anchor="${["start", "middle", "end"][k]}">${fmtDate(series[i].date, { day: "numeric", month: "short" })}</text>`).join("")}</g>
+      <g class="axis">${niceTicks(lo, hi).map((v) => `<line class="gridline" x1="${m.l}" x2="${W - m.r}" y1="${ys(v)}" y2="${ys(v)}"/><text x="${m.l - 8}" y="${ys(v) + 4}" text-anchor="end">${fmt(v)}</text>`).join("")}
+      ${xIdx.map((i, k) => `<text x="${xs(i)}" y="${H - 6}" text-anchor="${["start", "middle", "end"][k]}">${shortDate(series[i].date)}</text>`).join("")}</g>
       <path class="area" d="M${pts.join("L")}L${xs(series.length - 1)},${H - m.b}L${m.l},${H - m.b}Z"/>
       <polyline class="line" points="${pts.join(" ")}"/>
       <line class="cross" y1="${m.t}" y2="${H - m.b}" visibility="hidden"/>
       <circle class="dot" r="4.5" visibility="hidden"/>
       <rect x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent" style="cursor:crosshair"/>
     </svg>`;
-
   const svg = el.querySelector("svg"), cross = svg.querySelector(".cross"), dot = svg.querySelector(".dot");
   const tip = document.createElement("div");
   tip.className = "tip"; tip.hidden = true; el.append(tip);
@@ -149,8 +303,7 @@ function lineChart(el, label, series) {
     // SVG elements have no offsetLeft/offsetTop, so position relative to the figure's box.
     const fr = el.getBoundingClientRect();
     const px = (xs(i) / W) * r.width + (r.left - fr.left);
-    const left = px > fr.width / 2 ? px - tip.offsetWidth - 12 : px + 12;
-    tip.style.left = `${left}px`;
+    tip.style.left = `${px > fr.width / 2 ? px - tip.offsetWidth - 12 : px + 12}px`;
     tip.style.top = `${r.top - fr.top + 8}px`;
   };
   const hide = () => { tip.hidden = true; cross.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); };
@@ -175,60 +328,12 @@ $("ranges").addEventListener("click", (e) => {
 
 function priceTable() {
   const cuBy = new Map(cu.map((r) => [r.date, r]));
-  const rows = al.slice(-15).reverse();
-  $("price-table").innerHTML = `<thead><tr><th>Date</th><th>Al cash</th><th>Al 3M</th><th>Al stock (t)</th><th>Cu cash</th><th>Cu 3M</th><th>Cu stock (t)</th></tr></thead><tbody>${rows
+  $("price-table").innerHTML = `<thead><tr><th>Date</th><th>Al cash</th><th>Al 3M</th><th>Al stock (t)</th><th>Cu cash</th><th>Cu 3M</th><th>Cu stock (t)</th></tr></thead><tbody>${al.slice(-15).reverse()
     .map((r) => { const c = cuBy.get(r.date) ?? {}; return `<tr><td>${fmtDate(r.date)}</td><td>${fmt(r.cash, 1)}</td><td>${fmt(r.m3, 1)}</td><td>${fmt(r.stock)}</td><td>${fmt(c.cash, 1)}</td><td>${fmt(c.m3, 1)}</td><td>${fmt(c.stock)}</td></tr>`; })
     .join("")}</tbody>`;
 }
 
-// ---------------------------------------------------------------- news
-
-const items = news?.items ?? [];
-const cats = news?.categories ?? {};
-let cat = store.get("cmw:cat") || "";
-if (cat && !cats[cat]) cat = "";
-
-const isNew = (i) => lastVisit && Date.parse(i.firstSeen) > lastVisit;
-
-function renderCats() {
-  const count = (k) => (k ? items.filter((i) => i.categories.includes(k)).length : items.length);
-  $("cats").innerHTML = [["", "All"], ...Object.entries(cats)]
-    .map(([k, l]) => `<button data-cat="${k}" aria-pressed="${k === cat}">${esc(l)}<span class="n">${count(k)}</span></button>`)
-    .join("");
-}
-$("cats").addEventListener("click", (e) => {
-  const b = e.target.closest("button");
-  if (!b) return;
-  cat = b.dataset.cat;
-  store.set("cmw:cat", cat);
-  renderCats(); renderItems();
-});
-
-const regions = [...new Set(items.flatMap((i) => i.regions))].sort();
-$("region").insertAdjacentHTML("beforeend", regions.map((r) => `<option>${esc(r)}</option>`).join(""));
-["q", "region", "only-new"].forEach((id) => $(id).addEventListener("input", renderItems));
-
-function renderItems() {
-  const q = $("q").value.trim().toLowerCase();
-  const region = $("region").value;
-  const onlyNew = $("only-new").checked;
-  const list = items.filter((i) =>
-    (!cat || i.categories.includes(cat)) &&
-    (!region || i.regions.includes(region)) &&
-    (!onlyNew || isNew(i)) &&
-    (!q || `${i.title} ${i.description} ${i.publisher}`.toLowerCase().includes(q)));
-  $("news-count").textContent = `${list.length} of ${items.length} items · last ${news?.retentionDays ?? 90} days`;
-  $("items").innerHTML = list.length
-    ? list.slice(0, 200).map((i) => `<li>
-        <div class="meta"><span>${fmtDate(i.published, { day: "numeric", month: "short", year: "numeric" })}</span><span>${esc(i.publisher)}</span>${isNew(i) ? '<span class="badge-new">● New</span>' : ""}</div>
-        <h3><a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a></h3>
-        ${i.description ? `<p>${esc(i.description)}</p>` : ""}
-        <div>${i.categories.map((c) => `<span class="tag">${esc(cats[c] ?? c)}</span>`).join("")}${i.regions.map((r) => `<span class="tag">${esc(r)}</span>`).join("")}</div>
-      </li>`).join("")
-    : `<li class="empty">No items match these filters.</li>`;
-}
-
-// ---------------------------------------------------------------- watchlist
+// ================================================================ sources
 
 function renderWatch() {
   if (!watch) { $("watch").innerHTML = '<p class="muted">Watchlist not available.</p>'; return; }
@@ -240,4 +345,5 @@ function renderWatch() {
   $("watch").innerHTML = ind + groups.join("");
 }
 
-brief(); tiles(); charts(); priceTable(); renderCats(); renderItems(); renderWatch();
+brief(); renderDeals(); renderProjects(); renderCats(); renderItems(); renderCompanies();
+tiles(); charts(); priceTable(); renderWatch();
