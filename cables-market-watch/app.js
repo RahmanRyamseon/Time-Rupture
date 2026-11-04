@@ -27,17 +27,24 @@ const store = {
 };
 
 const load = (f) => fetch(f, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-const [prices, news, projectsData, watch] = await Promise.all([
+const [prices, news, projectsData, watch, competitorsData] = await Promise.all([
   load("data/prices.json"),
   load("data/news.json"),
   load("data/projects.json"),
   load("data/watchlist.json"),
+  load("data/competitors.json"),
 ]);
 
 const lastVisit = Number(store.get("cmw:lastVisit")) || 0;
 store.set("cmw:lastVisit", String(Date.now()));
 
-const items = news?.items ?? [];
+const allItems = news?.items ?? [];
+const MARKETS = ["Middle East", "Asia", "Africa", "Europe", "Canada", "USA", "Latin America", "Oceania"];
+let market = store.get("cmw:market") || "";
+if (market && !MARKETS.includes(market)) market = "";
+const inMarket = (i) => !market || (i.markets ?? []).includes(market);
+// Every section reads `items`, which follows the selected market.
+let items = allItems.filter(inMarket);
 const cats = news?.categories ?? {};
 const companyRoles = new Map((news?.companies ?? []).map((c) => [c.name, c.role]));
 const al = prices?.metals?.aluminium?.series ?? [];
@@ -46,8 +53,8 @@ const back = (s, n) => s[Math.max(0, s.length - 1 - n)];
 const since = (days) => Date.now() - days * DAY;
 const isNew = (i) => lastVisit && Date.parse(i.firstSeen) > lastVisit;
 const link = (i) => `<a href="${esc(i.url)}" target="_blank" rel="noopener"${i.lang === "ar" ? ' dir="rtl" lang="ar"' : ""}>${esc(i.title)}</a>`;
-// Deal flow keeps grid, tender, competitor and export news; demand items only when they name a tracked company.
-const DEAL_CATS = ["projects", "tenders", "competitors", "export", "midal"];
+// Deal flow keeps grid, tender and competitor news; demand items only when they name a tracked company.
+const DEAL_CATS = ["projects", "tenders", "competitors", "midal"];
 const isDeal = (i) => i.stage && (i.categories.some((c) => DEAL_CATS.includes(c)) || (i.companies ?? []).length > 0);
 const stageBadge = (s) => (s ? `<span class="stage s-${s.toLowerCase()}">${esc(s)}</span>` : "");
 
@@ -129,10 +136,13 @@ const projects = projectsData?.projects ?? [];
 const P_STAGES = ["Plan", "Tender", "Award", "Construction", "Commissioning", "Operating"];
 $("p-country").insertAdjacentHTML("beforeend", [...new Set(projects.map((p) => p.country))].sort().map((c) => `<option>${esc(c)}</option>`).join(""));
 $("p-status").insertAdjacentHTML("beforeend", P_STAGES.filter((s) => projects.some((p) => p.status === s)).map((s) => `<option>${s}</option>`).join(""));
-if (projectsData?.asOf) $("projects-hint").textContent = `${projects.length} major grid and power projects, curated with sources (reviewed ${fmtDate(projectsData.asOf)}). Edit data/projects.json to add more.`;
+const projectsHint = () => {
+  const n = projects.filter((p) => !market || p.market === market).length;
+  $("projects-hint").textContent = `${n} major grid and power project${n === 1 ? "" : "s"}${market ? ` in ${market}` : " across all markets"}, curated with sources (reviewed ${fmtDate(projectsData?.asOf ?? new Date().toISOString())}). Edit data/projects.json to add more.`;
+};
 function renderProjects() {
   const c = $("p-country").value, s = $("p-status").value;
-  const list = projects.filter((p) => (!c || p.country === c) && (!s || p.status === s));
+  const list = projects.filter((p) => (!market || p.market === market) && (!c || p.country === c) && (!s || p.status === s));
   $("projects").innerHTML = list.length
     ? list.map((p) => `<article class="project">
         <div class="p-top">${stageBadge(p.status)}<span class="muted">${esc(p.country)}</span></div>
@@ -168,9 +178,9 @@ $("cats").addEventListener("click", (e) => {
   renderCats(); renderItems();
 });
 
-const regions = [...new Set(items.flatMap((i) => i.regions))].sort();
+const regions = [...new Set(allItems.flatMap((i) => i.regions))].sort();
 $("region").insertAdjacentHTML("beforeend", regions.map((r) => `<option>${esc(r)}</option>`).join(""));
-const named = [...new Set(items.flatMap((i) => i.companies ?? []))].sort();
+const named = [...new Set(allItems.flatMap((i) => i.companies ?? []))].sort();
 $("company").insertAdjacentHTML("beforeend", named.map((r) => `<option>${esc(r)}</option>`).join(""));
 ["q", "region", "company", "only-new"].forEach((id) => $(id).addEventListener("input", renderItems));
 
@@ -207,7 +217,8 @@ function pickCompany(name) {
 
 // ================================================================ company tracker
 
-let role = store.get("cmw:role") || "competitor";
+let role = store.get("cmw:role") || "contractor";
+if (role === "competitor") role = "contractor";
 function renderCompanies() {
   document.querySelectorAll("#roles button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.role === role)));
   const month = items.filter((i) => Date.parse(i.published) >= since(30));
@@ -345,5 +356,76 @@ function renderWatch() {
   $("watch").innerHTML = ind + groups.join("");
 }
 
-brief(); renderDeals(); renderProjects(); renderCats(); renderItems(); renderCompanies();
+// ================================================================ competitors
+
+const competitors = competitorsData?.competitors ?? [];
+// Names already tracked (first part of each, e.g. "Prysmian" from "Prysmian (incl. General Cable)").
+const knownRe = new RegExp(
+  (news?.companies ?? [])
+    .flatMap((c) => c.name.split(/\s*[/(]\s*/))
+    .map((n) => n.replace(/\)$/, "").trim())
+    .filter((n) => n.length > 2)
+    .map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+    .join("|") || "^$",
+  "i",
+);
+function renderCompetitors() {
+  const onlyActive = $("c-active").checked;
+  const month = items.filter((i) => Date.parse(i.published) >= since(30));
+  const rows = competitors.map((c) => {
+    const hits = items.filter((i) => (i.companies ?? []).includes(c.name));
+    return { ...c, n30: month.filter((i) => i.companies?.includes(c.name)).length, total: hits.length, latest: hits[0] };
+  })
+    .filter((r) => !onlyActive || r.total)
+    .sort((a, b) => b.n30 - a.n30 || b.total - a.total || (a.market === market ? -1 : 0) - (b.market === market ? -1 : 0) || a.name.localeCompare(b.name));
+  $("competitors-hint").textContent = `${competitors.length} rod, conductor and cable makers named in market research and contract news (list built ${fmtDate(competitorsData?.asOf ?? new Date().toISOString())}).${market ? ` Activity counts show ${market} news only.` : ""}`;
+  $("competitors").innerHTML = `<thead><tr><th>Competitor</th><th>Base</th><th>Segment</th><th>30 days</th><th>Latest news</th><th>Named in</th></tr></thead><tbody>${rows.map((r) => `<tr>
+      <td data-l="Competitor" class="deal"><button class="c-name" data-co="${esc(r.name)}">${esc(r.name)}</button></td>
+      <td data-l="Base">${esc(r.hq)}</td>
+      <td data-l="Segment">${esc(r.segment)}</td>
+      <td data-l="30 days" class="val">${r.n30}</td>
+      <td data-l="Latest news">${r.latest ? `<span class="muted">${shortDate(r.latest.published)}</span> ${link(r.latest)}` : '<span class="muted">No news yet</span>'}</td>
+      <td data-l="Named in">${r.sources.map((u, k) => `<a href="${esc(u)}" target="_blank" rel="noopener" title="${esc(new URL(u).hostname)}">${k + 1}</a>`).join(" ")}</td>
+    </tr>`).join("")}</tbody>`;
+
+  // Winners named in cable/conductor headlines who are not tracked yet.
+  const seen = new Map();
+  for (const i of items) {
+    if (!i.actor || knownRe.test(i.actor)) continue;
+    if (!/cable|conductor|wire|rod|kv\b|transmission/i.test(`${i.title} ${i.description}`)) continue;
+    const e = seen.get(i.actor) ?? { n: 0, item: i };
+    e.n += 1; seen.set(i.actor, e);
+  }
+  const found = [...seen].sort((a, b) => b[1].n - a[1].n).slice(0, 15);
+  $("discovered-wrap").hidden = !found.length;
+  $("discovered").innerHTML = found.map(([name, e]) => `<li><b>${esc(name)}</b> <span class="muted">(${e.n})</span> — ${link(e.item)}</li>`).join("");
+}
+$("c-active").addEventListener("input", renderCompetitors);
+$("competitors").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-co]");
+  if (b) pickCompany(b.dataset.co);
+});
+
+// ================================================================ market bar
+
+function renderMarkets() {
+  const count = (m) => allItems.filter((i) => (i.markets ?? []).includes(m)).length + projects.filter((p) => p.market === m).length;
+  $("markets").innerHTML = [["", "All markets"], ...MARKETS.map((m) => [m, m])]
+    .map(([k, l]) => `<button data-market="${k}" aria-pressed="${k === market}">${esc(l)}${k ? `<span class="n">${count(k)}</span>` : ""}</button>`)
+    .join("");
+}
+$("markets").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  market = b.dataset.market;
+  store.set("cmw:market", market);
+  items = allItems.filter(inMarket);
+  $("p-country").value = "";
+  renderAll();
+});
+
+function renderAll() {
+  renderMarkets(); brief(); renderDeals(); projectsHint(); renderProjects(); renderCompetitors(); renderCats(); renderItems(); renderCompanies();
+}
+renderAll();
 tiles(); charts(); priceTable(); renderWatch();

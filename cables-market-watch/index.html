@@ -17,11 +17,16 @@
       <p class="stamp" id="stamp">Loading…</p>
     </div>
     <nav class="wrap jump" aria-label="Sections">
-      <a href="#brief-h">Brief</a><a href="#deals-h">Deal flow</a><a href="#projects-h">Projects</a><a href="#news-h">News</a><a href="#companies-h">Companies</a><a href="#prices-h">LME prices</a><a href="#sources-h">Sources</a>
+      <a href="#brief-h">Brief</a><a href="#deals-h">Deal flow</a><a href="#projects-h">Projects</a><a href="#competitors-h">Competitors</a><a href="#news-h">News</a><a href="#companies-h">Buyers &amp; utilities</a><a href="#prices-h">LME prices</a><a href="#sources-h">Sources</a>
     </nav>
   </header>
 
   <main class="wrap">
+    <div class="market-bar" role="group" aria-label="Market">
+      <span class="muted">Market</span>
+      <div class="chips" id="markets"></div>
+    </div>
+
     <section aria-labelledby="brief-h" class="card brief">
       <h2 id="brief-h">Today's brief</h2>
       <ul id="brief"></ul>
@@ -52,6 +57,22 @@
       <div class="projects" id="projects"></div>
     </section>
 
+    <section aria-labelledby="competitors-h">
+      <div class="section-head">
+        <div>
+          <h2 id="competitors-h">Competitors</h2>
+          <p class="hint" id="competitors-hint">Rod, conductor and cable makers found in market research, with their news activity.</p>
+        </div>
+        <label class="check"><input type="checkbox" id="c-active" /> Only with news</label>
+      </div>
+      <div class="card flush"><div class="table-scroll"><table class="deals comp" id="competitors"></table></div></div>
+      <div class="card discovered" id="discovered-wrap" hidden>
+        <h3>Other companies seen winning cable or conductor work</h3>
+        <p class="hint">Named as the winner in a headline but not on the competitor list. Review them, and add real competitors to <code>data/competitors.json</code>.</p>
+        <ul id="discovered"></ul>
+      </div>
+    </section>
+
     <div class="layout">
       <section aria-labelledby="news-h" class="news">
         <div class="section-head">
@@ -71,11 +92,10 @@
       </section>
 
       <aside aria-labelledby="companies-h" class="side">
-        <h2 id="companies-h">Company tracker</h2>
+        <h2 id="companies-h">Buyers &amp; utilities</h2>
         <p class="hint">Mentions in the last 30 days. Select a name to filter the news.</p>
         <div class="seg roles" role="group" aria-label="Company type" id="roles">
-          <button data-role="competitor" aria-pressed="true">Competitors</button>
-          <button data-role="contractor">EPC buyers</button>
+          <button data-role="contractor" aria-pressed="true">EPC buyers</button>
           <button data-role="utility">Utilities</button>
           <button data-role="smelter">Smelters</button>
         </div>
@@ -111,7 +131,7 @@
   </main>
 
   <footer class="wrap foot">
-    <p>News: about 50 Google News searches in English and Arabic plus the SaudiGulf Projects, GCC Tender News and Utilities Middle East feeds, refreshed daily and matched by keyword. Deal stage and value are read from the headline, and some items will be off-topic or missed, so always confirm against the source.
+    <p>News: about 100 Google News searches (one per competitor, project searches for each market, English and Arabic) plus the SaudiGulf Projects, GCC Tender News and Utilities Middle East feeds, refreshed daily and matched by keyword. Deal stage and value are read from the headline, and some items will be off-topic or missed, so always confirm against the source.
       Projects: curated by hand in <code>data/projects.json</code>. Prices: LME official cash settlement, 3-month and warehouse stock (USD/t) via westmetall.com, each business day.</p>
   </footer>
   <script src="app.js" type="module"></script>

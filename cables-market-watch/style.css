@@ -227,3 +227,19 @@ button.tag:hover { text-decoration: underline; }
 code { font-size: 0.85em; }
 @media (max-width: 760px) { .top { position: static; } }
 .layout { margin-bottom: 22px; }
+
+/* ---- market bar ---- */
+.market-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.market-bar .chips { margin: 0; }
+.market-bar > .muted { font-weight: 600; text-transform: uppercase; letter-spacing: .04em; font-size: 0.75rem; }
+
+/* ---- competitors ---- */
+table.comp td:nth-child(4) { text-align: right; }
+table.comp td:last-child a { display: inline-block; min-width: 18px; text-align: center; font-size: 0.78rem; background: var(--chip); border-radius: 4px; text-decoration: none; margin: 1px; }
+table.comp td:nth-child(5) a { color: var(--ink); }
+.discovered { margin-top: 10px; }
+.discovered h3 { font-size: 0.95rem; }
+.discovered ul { margin: 6px 0 0; padding-left: 18px; font-size: 0.88rem; }
+.discovered li { margin: 3px 0; }
+.discovered a { color: var(--ink-2); }
+@media (max-width: 760px) { table.comp td:nth-child(4) { text-align: left; } }

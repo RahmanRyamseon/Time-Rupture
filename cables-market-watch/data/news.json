@@ -3,31 +3,27 @@
   "retentionDays": 120,
   "companies": [
     {
-      "name": "Riyadh Cables",
-      "role": "competitor"
-    },
-    {
-      "name": "Saudi Cable Co.",
-      "role": "competitor"
-    },
-    {
       "name": "Ducab",
       "role": "competitor"
     },
     {
-      "name": "Elsewedy",
+      "name": "Riyadh Cables",
       "role": "competitor"
     },
     {
-      "name": "Oman Cables",
+      "name": "Saudi Cable Company",
       "role": "competitor"
     },
     {
-      "name": "Gulf Cables",
+      "name": "Elsewedy Electric",
       "role": "competitor"
     },
     {
-      "name": "Bahra Cables",
+      "name": "Oman Cables Industry",
+      "role": "competitor"
+    },
+    {
+      "name": "Gulf Cable (Kuwait)",
       "role": "competitor"
     },
     {
@@ -35,43 +31,47 @@
       "role": "competitor"
     },
     {
-      "name": "National Cables (UAE)",
+      "name": "Bahra Cables",
       "role": "competitor"
     },
     {
-      "name": "QICC",
+      "name": "Federal Cables",
       "role": "competitor"
     },
     {
-      "name": "Energya Cables",
+      "name": "OAPIL",
       "role": "competitor"
     },
     {
-      "name": "Prysmian",
+      "name": "Trans Gulf Aluminium",
       "role": "competitor"
     },
     {
-      "name": "Nexans",
+      "name": "Alumtek",
       "role": "competitor"
     },
     {
-      "name": "NKT",
+      "name": "APAR Industries",
       "role": "competitor"
     },
     {
-      "name": "LS Cable",
+      "name": "KEI Industries",
       "role": "competitor"
     },
     {
-      "name": "Taihan",
+      "name": "Gupta Power",
       "role": "competitor"
     },
     {
-      "name": "Iljin Electric",
+      "name": "Lumino Industries",
       "role": "competitor"
     },
     {
-      "name": "Southwire",
+      "name": "ZTT",
+      "role": "competitor"
+    },
+    {
+      "name": "Hengtong Group",
       "role": "competitor"
     },
     {
@@ -79,19 +79,59 @@
       "role": "competitor"
     },
     {
-      "name": "Hengtong / ZTT",
+      "name": "Taihan Cable & Solution",
       "role": "competitor"
     },
     {
-      "name": "APAR",
+      "name": "Iljin Electric",
       "role": "competitor"
     },
     {
-      "name": "KEI / Polycab",
+      "name": "Prysmian (incl. General Cable)",
+      "role": "competitor"
+    },
+    {
+      "name": "Nexans",
       "role": "competitor"
     },
     {
       "name": "Lamifil",
+      "role": "competitor"
+    },
+    {
+      "name": "ElvalHalcor",
+      "role": "competitor"
+    },
+    {
+      "name": "Norsk Hydro",
+      "role": "competitor"
+    },
+    {
+      "name": "Southwire",
+      "role": "competitor"
+    },
+    {
+      "name": "CTC Global",
+      "role": "competitor"
+    },
+    {
+      "name": "TPC Wire & Cable",
+      "role": "competitor"
+    },
+    {
+      "name": "Vedanta Aluminium",
+      "role": "competitor"
+    },
+    {
+      "name": "Hindalco",
+      "role": "competitor"
+    },
+    {
+      "name": "Rusal",
+      "role": "competitor"
+    },
+    {
+      "name": "NALCO",
       "role": "competitor"
     },
     {
@@ -163,6 +203,38 @@
       "role": "contractor"
     },
     {
+      "name": "POWERGRID",
+      "role": "contractor"
+    },
+    {
+      "name": "Adani Energy Solutions",
+      "role": "contractor"
+    },
+    {
+      "name": "Tata Power",
+      "role": "contractor"
+    },
+    {
+      "name": "Acciona",
+      "role": "contractor"
+    },
+    {
+      "name": "Neoenergia / Iberdrola",
+      "role": "contractor"
+    },
+    {
+      "name": "EDP",
+      "role": "contractor"
+    },
+    {
+      "name": "CYMI / Celeo",
+      "role": "contractor"
+    },
+    {
+      "name": "Jacobs / WSP",
+      "role": "contractor"
+    },
+    {
       "name": "Saudi Energy (SEC)",
       "role": "utility"
     },
@@ -207,6 +279,34 @@
       "role": "utility"
     },
     {
+      "name": "Iraq Ministry of Electricity",
+      "role": "utility"
+    },
+    {
+      "name": "Eskom / NTCSA",
+      "role": "utility"
+    },
+    {
+      "name": "National Grid (UK)",
+      "role": "utility"
+    },
+    {
+      "name": "TenneT / EU TSOs",
+      "role": "utility"
+    },
+    {
+      "name": "BC Hydro / Hydro-Québec",
+      "role": "utility"
+    },
+    {
+      "name": "AEP / US grid operators",
+      "role": "utility"
+    },
+    {
+      "name": "ANEEL (Brazil)",
+      "role": "utility"
+    },
+    {
       "name": "Alba",
       "role": "smelter"
     },
@@ -227,10 +327,6 @@
       "role": "smelter"
     },
     {
-      "name": "Hindalco / Vedanta",
-      "role": "smelter"
-    },
-    {
       "name": "Midal Cables",
       "role": "self"
     }
@@ -244,10 +340,9 @@
     "aluminium": "Aluminium market",
     "metals": "Copper & LME",
     "policy": "Trade & policy",
-    "export": "Export markets",
     "midal": "Midal mentions"
   },
-  "count": 34,
+  "count": 41,
   "items": [
     {
       "id": "8830c4c865e1",
@@ -264,7 +359,11 @@
       "regions": [
         "Bahrain"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": "BD544,500",
       "lang": "en",
@@ -282,12 +381,15 @@
         "projects"
       ],
       "regions": [
-        "UAE",
-        "Europe"
+        "UAE"
+      ],
+      "markets": [
+        "Middle East"
       ],
       "companies": [
         "GE Vernova"
       ],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -308,7 +410,11 @@
       "regions": [
         "China"
       ],
+      "markets": [
+        "Asia"
+      ],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -324,12 +430,19 @@
       "description": "NALCO's Q2 FY27 net sales rose 26.2% year on year, driven by stronger aluminium sales and higher LME prices, while alumina exports fell.",
       "categories": [
         "aluminium",
-        "metals"
+        "metals",
+        "competitors"
       ],
       "regions": [
         "India"
       ],
-      "companies": [],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [
+        "NALCO"
+      ],
+      "actor": null,
       "stage": null,
       "value": "Rs 5,380 crore",
       "lang": "en",
@@ -348,7 +461,9 @@
         "metals"
       ],
       "regions": [],
+      "markets": [],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -368,7 +483,11 @@
       "regions": [
         "Oman"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [],
+      "actor": null,
       "stage": "Construction",
       "value": "RO 268.9 million",
       "lang": "en",
@@ -388,9 +507,13 @@
       "regions": [
         "UAE"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [
         "Ducab"
       ],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -413,10 +536,15 @@
         "Oman",
         "China"
       ],
+      "markets": [
+        "Middle East",
+        "Asia"
+      ],
       "companies": [
         "State Grid",
         "Nama / OETC"
       ],
+      "actor": null,
       "stage": "Plan",
       "value": null,
       "lang": "en",
@@ -437,7 +565,12 @@
         "Oman",
         "China"
       ],
+      "markets": [
+        "Middle East",
+        "Asia"
+      ],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": "$418.7 Million",
       "lang": "en",
@@ -455,9 +588,11 @@
         "competitors"
       ],
       "regions": [],
+      "markets": [],
       "companies": [
         "Ducab"
       ],
+      "actor": null,
       "stage": "Plan",
       "value": null,
       "lang": "en",
@@ -478,7 +613,11 @@
       "regions": [
         "China"
       ],
+      "markets": [
+        "Asia"
+      ],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": "US$3,382",
       "lang": "en",
@@ -499,7 +638,11 @@
         "Saudi",
         "UAE"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [],
+      "actor": null,
       "stage": "Plan",
       "value": null,
       "lang": "en",
@@ -517,7 +660,9 @@
         "aluminium"
       ],
       "regions": [],
+      "markets": [],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -537,9 +682,13 @@
       "regions": [
         "Bahrain"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [
         "Alba"
       ],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -555,16 +704,44 @@
       "description": "Prysmian and Deme have started installing high-voltage cables on the bed of Lake Veere in Zeeland, the Netherlands, for grid operator TenneT.",
       "categories": [
         "projects",
-        "competitors",
-        "export"
+        "competitors"
       ],
       "regions": [
+        "Western Europe"
+      ],
+      "markets": [
         "Europe"
       ],
       "companies": [
-        "Prysmian"
+        "Prysmian (incl. General Cable)",
+        "TenneT / EU TSOs"
       ],
+      "actor": null,
       "stage": "Construction",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "d1e0bbb19db8",
+      "title": "Speed to Power through accelerated reconductoring and other key advanced transmission technology",
+      "url": "https://www.energy.gov/oe/speed-power-through-accelerated-reconductoring-and-other-key-advanced-transmission-technology",
+      "publisher": "US Department of Energy",
+      "publisherUrl": "https://www.energy.gov",
+      "published": "2026-10-30T08:00:00.000Z",
+      "description": "Project recipients are expected to reconductor or rebuild more than 1,500 miles of transmission lines in the United States and deploy grid-enhancing technologies.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "USA"
+      ],
+      "markets": [
+        "USA"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
@@ -580,8 +757,14 @@
       "categories": [
         "demand"
       ],
-      "regions": [],
+      "regions": [
+        "Southeast Asia"
+      ],
+      "markets": [
+        "Asia"
+      ],
       "companies": [],
+      "actor": null,
       "stage": "Construction",
       "value": null,
       "lang": "en",
@@ -596,13 +779,16 @@
       "published": "2026-10-29T10:57:18.000Z",
       "description": "",
       "categories": [
-        "demand",
-        "export"
+        "demand"
       ],
       "regions": [
         "India"
       ],
+      "markets": [
+        "Asia"
+      ],
       "companies": [],
+      "actor": null,
       "stage": "Award",
       "value": null,
       "lang": "en",
@@ -618,13 +804,16 @@
       "description": "",
       "categories": [
         "government",
-        "demand",
-        "export"
+        "demand"
       ],
       "regions": [
         "Egypt"
       ],
+      "markets": [
+        "Africa"
+      ],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -644,7 +833,11 @@
       "regions": [
         "China"
       ],
+      "markets": [
+        "Asia"
+      ],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -662,11 +855,41 @@
         "projects"
       ],
       "regions": [],
+      "markets": [],
       "companies": [
         "GE Vernova"
       ],
+      "actor": null,
       "stage": null,
       "value": "AED 32.7bn",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "71c1e46872a3",
+      "title": "AEP taps Jacobs, WSP for $37B power transmission buildout",
+      "url": "https://www.enr.com/articles/64102-aep-taps-jacobs-wsp-for-37b-power-transmission-buildout",
+      "publisher": "ENR",
+      "publisherUrl": "https://www.enr.com",
+      "published": "2026-10-28T08:00:00.000Z",
+      "description": "Includes a ~$5 billion, 765 kV build serving SB Energy's planned 10.4 GW data-centre campus in Piketon, Ohio, with three lines due in service in 2028–2030.",
+      "categories": [
+        "projects",
+        "demand"
+      ],
+      "regions": [
+        "USA"
+      ],
+      "markets": [
+        "USA"
+      ],
+      "companies": [
+        "Jacobs / WSP",
+        "AEP / US grid operators"
+      ],
+      "actor": null,
+      "stage": "Plan",
+      "value": "$5 billion",
       "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
@@ -679,13 +902,16 @@
       "published": "2026-10-28T07:30:00.000Z",
       "description": "The 1.2GWp solar and 600MWh battery storage project in West Minya is targeting commercial operations in September 2027, after securing $566 million in debt financing last month",
       "categories": [
-        "demand",
-        "export"
+        "demand"
       ],
       "regions": [
         "Egypt"
       ],
+      "markets": [
+        "Africa"
+      ],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": "$566 million",
       "lang": "en",
@@ -700,13 +926,16 @@
       "published": "2026-10-27T09:00:00.000Z",
       "description": "Return Energy’s three battery storage projects in Spain’s Bizkaia province will provide 55MW of power and 220MWh of storage, backed by €50 million of financing",
       "categories": [
-        "demand",
-        "export"
+        "demand"
       ],
       "regions": [
+        "Western Europe"
+      ],
+      "markets": [
         "Europe"
       ],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": "€50 million",
       "lang": "en",
@@ -727,9 +956,39 @@
       "regions": [
         "Oman"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": "$3 billion",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "72276c029ebe",
+      "title": "POWERGRID wins Maharashtra transmission project for 765 kV GIS Pune West substation",
+      "url": "https://solarquarter.com/2026/10/24/powergrid-wins-maharashtra-transmission-project-for-765-kv-gis-pune-west-substation/",
+      "publisher": "SolarQuarter",
+      "publisherUrl": "https://solarquarter.com",
+      "published": "2026-10-24T08:00:00.000Z",
+      "description": "Awarded through tariff-based competitive bidding on a BOOT basis; includes 765 kV and 400 kV lines across Maharashtra.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "India"
+      ],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [
+        "POWERGRID"
+      ],
+      "actor": "POWERGRID",
+      "stage": "Award",
+      "value": null,
       "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
     },
@@ -748,9 +1007,13 @@
       "regions": [
         "Bahrain"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [
         "Alba"
       ],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -771,11 +1034,15 @@
       "regions": [
         "Bahrain"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [
         "Iljin Electric",
         "Hitachi Energy",
         "EWA Bahrain"
       ],
+      "actor": null,
       "stage": "Award",
       "value": null,
       "lang": "en",
@@ -791,15 +1058,18 @@
       "description": "Taihan will supply 120 billion won in cables for a turnkey ultra-high-voltage grid project in the United States.",
       "categories": [
         "projects",
-        "competitors",
-        "export"
+        "competitors"
       ],
       "regions": [
-        "North America"
+        "USA"
+      ],
+      "markets": [
+        "USA"
       ],
       "companies": [
-        "Taihan"
+        "Taihan Cable & Solution"
       ],
+      "actor": "Taihan Cable & Solution",
       "stage": "Award",
       "value": null,
       "lang": "en",
@@ -819,13 +1089,19 @@
       ],
       "regions": [
         "Saudi",
-        "Egypt",
-        "China"
+        "China",
+        "Egypt"
+      ],
+      "markets": [
+        "Middle East",
+        "Asia",
+        "Africa"
       ],
       "companies": [
-        "Elsewedy",
+        "Elsewedy Electric",
         "Sinohydro / PowerChina"
       ],
+      "actor": null,
       "stage": "Award",
       "value": "$2.2bn",
       "lang": "en",
@@ -840,13 +1116,18 @@
       "published": "2026-10-14T08:00:00.000Z",
       "description": "Acciona will deliver a significant component of the Clean Energy Link – East transmission project in Western Australia, valued at A$655m.",
       "categories": [
-        "projects",
-        "export"
+        "projects"
       ],
       "regions": [
-        "Australia"
+        "Oceania"
       ],
-      "companies": [],
+      "markets": [
+        "Oceania"
+      ],
+      "companies": [
+        "Acciona"
+      ],
+      "actor": null,
       "stage": "Award",
       "value": "$455m",
       "lang": "en",
@@ -868,7 +1149,12 @@
         "Saudi",
         "Egypt"
       ],
+      "markets": [
+        "Middle East",
+        "Africa"
+      ],
       "companies": [],
+      "actor": null,
       "stage": null,
       "value": "$1.8 billion",
       "lang": "en",
@@ -888,9 +1174,13 @@
       "regions": [
         "Bahrain"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [
         "Midal Cables"
       ],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -910,10 +1200,14 @@
       "regions": [
         "Bahrain"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [
         "Alba",
         "Ma'aden"
       ],
+      "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
@@ -935,10 +1229,118 @@
         "UAE",
         "India"
       ],
+      "markets": [
+        "Middle East",
+        "Asia"
+      ],
       "companies": [
         "L&T"
       ],
+      "actor": "L&T",
       "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "80765cb22a15",
+      "title": "South Africa delays power-grid expansion plan by six months",
+      "url": "https://www.bloomberg.com/news/articles/2026-10-02/south-africa-delays-power-grid-expansion-plan-by-six-months",
+      "publisher": "Bloomberg",
+      "publisherUrl": "https://www.bloomberg.com",
+      "published": "2026-10-02T08:00:00.000Z",
+      "description": "Eskom plans to install 14,000 kilometres of transmission line over the next decade.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "South Africa",
+        "Sub-Saharan Africa"
+      ],
+      "markets": [
+        "Africa"
+      ],
+      "companies": [
+        "Eskom / NTCSA"
+      ],
+      "actor": null,
+      "stage": "Plan",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "4f1a7e8e5dc4",
+      "title": "Cameroon-Chad power interconnection faces delay to at least 2029 under current tender timelines",
+      "url": "https://www.businessincameroon.com/energy/0809-16700-cameroon-chad-power-interconnection-faces-delay-to-at-least-2029-under-current-tender-timelines",
+      "publisher": "Business in Cameroon",
+      "publisherUrl": "https://www.businessincameroon.com",
+      "published": "2026-09-08T08:00:00.000Z",
+      "description": "The interconnection can no longer meet its 31 December 2027 completion target under the timelines set for major contracts.",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Sub-Saharan Africa"
+      ],
+      "markets": [
+        "Africa"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "cc07b7125384",
+      "title": "POWERGRID wins INR 1,152 crore ISTS project to integrate 7.5 GW RE from Lakadia REZ in Gujarat",
+      "url": "https://www.energetica-india.net/news/powergrid-wins-inr-1152-crore-ists-project-to-integrate-7-5-gw-re-from-lakadia-rez-in-gujarat",
+      "publisher": "Energetica India",
+      "publisherUrl": "https://www.energetica-india.net",
+      "published": "2026-09-05T08:00:00.000Z",
+      "description": "New 765/400 kV substation and 765 kV transmission lines in Gujarat.",
+      "categories": [
+        "projects",
+        "demand"
+      ],
+      "regions": [
+        "India"
+      ],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [
+        "POWERGRID"
+      ],
+      "actor": "POWERGRID",
+      "stage": "Award",
+      "value": "INR 1,152 crore",
+      "lang": "en",
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "ea530ccf9801",
+      "title": "Canada breaks ground on North Coast Transmission Line to deliver clean power and reduce emissions",
+      "url": "https://www.canada.ca/en/natural-resources-canada/news/2026/09/canada-breaks-ground-on-north-coast-transmission-line-to-deliver-clean-power-and-reduce-emissions.html",
+      "publisher": "Natural Resources Canada",
+      "publisherUrl": "https://www.canada.ca",
+      "published": "2026-09-03T08:00:00.000Z",
+      "description": "Phase 1 is a 165 km, 500 kV segment from the Williston substation near Prince George to Glenannan, British Columbia.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Canada"
+      ],
+      "markets": [
+        "Canada"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Construction",
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-04T06:30:00.000Z"
@@ -959,9 +1361,13 @@
       "regions": [
         "Qatar"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [
         "Kahramaa"
       ],
+      "actor": null,
       "stage": "Tender",
       "value": "$200m",
       "lang": "en",
@@ -982,12 +1388,16 @@
       "regions": [
         "Saudi"
       ],
+      "markets": [
+        "Middle East"
+      ],
       "companies": [
         "Alfanar",
         "Haif",
         "Al-Babtain",
         "Saudi Energy (SEC)"
       ],
+      "actor": null,
       "stage": "Award",
       "value": null,
       "lang": "en",

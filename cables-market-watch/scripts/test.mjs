@@ -1,6 +1,6 @@
 // Offline checks for the collector's parsers and merge logic: node cables-market-watch/scripts/test.mjs
 import assert from "node:assert/strict";
-import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify } from "./update.mjs";
+import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS } from "./update.mjs";
 
 const table = `<table><thead><tr class="shaded"><th>date</th><th>cash</th><th>3-month</th><th>stock</th></tr></thead><tbody>
 <tr>\n<td>03. November 2026</td>\n<td>3,082.00</td>\n<td>3,042.00</td>\n<td class="last">229,475</td>\n</tr>
@@ -32,7 +32,7 @@ assert.deepEqual(news[0].companies, ["Riyadh Cables", "Saudi Energy (SEC)"].filt
 assert.equal(news[0].stage, "Award");
 
 assert.deepEqual(detectRegions("price averaged US$3,382/t, let us see"), []);
-assert.deepEqual(detectRegions("U.S. grid order"), ["North America"]);
+assert.deepEqual(marketsOf(detectRegions("U.S. grid order")), ["USA"]);
 assert.ok(mergeNews([], [{ title: "Midal Cables expands rod line", url: "u", description: "", published: "2026-11-03T00:00:00Z", category: "competitors" }], Date.parse("2026-11-04"))[0].categories.includes("midal"));
 
 // Deal stage and value
@@ -50,5 +50,27 @@ assert.equal(classify("Dubai Municipality to replace communal bins with two per 
 assert.ok(classify("Ducab reports 10% rise in renewables sales at ADIPEC").categories.includes("competitors"));
 const ar = classify("ترسية مشروع محطة تحويل 380 ك.ف على شركة الفنار في الرياض");
 assert.ok(ar.categories.includes("projects") && ar.companies.includes("Alfanar") && ar.regions.includes("Saudi"));
-assert.ok(classify("Acciona awarded transmission contract in Australia").categories.includes("export"));
+
+// Markets
+assert.deepEqual(marketsOf(detectRegions("BC Hydro breaks ground near Prince George, British Columbia")), ["Canada"]);
+assert.deepEqual(marketsOf(detectRegions("Brazil awards all eight transmission lots")), ["Latin America"]);
+assert.deepEqual(marketsOf(detectRegions("Eskom delays grid expansion plan")), ["Africa"]);
+assert.deepEqual(marketsOf(detectRegions("National Grid consults on Norwich to Tilbury pylons")), ["Europe"]);
+assert.deepEqual(marketsOf(detectRegions("POWERGRID wins 765 kV project in Gujarat")), ["Asia"]);
+assert.deepEqual(marketsOf(detectRegions("EWA awards Bahrain cable works")), ["Middle East"]);
+assert.deepEqual(marketsOf([], "Oceania"), ["Oceania"], "falls back to the market of the search");
+
+// Competitors come from data/competitors.json and every one has a source.
+assert.ok(COMPETITORS.length >= 20);
+for (const c of COMPETITORS) {
+  assert.ok(c.sources?.length, `${c.name} has no source`);
+  assert.doesNotThrow(() => new RegExp(c.match, "i"), `${c.name} match`);
+}
+assert.ok(classify("APAR Industries bags conductor order").companies.includes("APAR Industries"));
+assert.ok(classify("Prysmian wins TenneT cable contract").categories.includes("competitors"));
+
+// Winners named in headlines (to surface untracked competitors)
+assert.equal(detectActor("Taihan Cable & Solution secures U.S. ultra-high-voltage power grid project"), "Taihan Cable & Solution");
+assert.equal(detectActor("Xyz Wires bags 400 kV conductor order"), "Xyz Wires");
+assert.equal(detectActor("The ministry signs a deal"), null);
 console.log("all checks passed");

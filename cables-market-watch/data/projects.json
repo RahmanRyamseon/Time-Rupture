@@ -1,5 +1,5 @@
 {
-  "note": "Curated by hand. Each entry cites its source; update status and asOf when news moves. Status is one of: Plan, Tender, Award, Construction, Commissioning, Operating.",
+  "note": "Curated by hand from web research, grouped by market (Middle East, Asia, Africa, Europe, Canada, USA, Latin America, Oceania). Each entry cites its source; update status and asOf when news moves. Status is one of: Plan, Tender, Award, Construction, Commissioning, Operating.",
   "asOf": "2026-11-04",
   "projects": [
     {
@@ -12,7 +12,8 @@
       "parties": "GCC Interconnection Authority",
       "relevance": "Large 400 kV overhead line: conductor and earth-wire volumes; follow-on GCC grid expansion.",
       "asOf": "2026-11-03",
-      "source": "https://www.omanobserver.om/article/1199048/business/economy/oman-gcc-power-link-reaches-35-completion"
+      "source": "https://www.omanobserver.om/article/1199048/business/economy/oman-gcc-power-link-reaches-35-completion",
+      "market": "Middle East"
     },
     {
       "name": "Saudi–Egypt HVDC interconnection",
@@ -24,7 +25,8 @@
       "parties": "Three-company international consortium",
       "relevance": "Signals further Arab interconnections (common Arab electricity market) that need long overhead lines.",
       "asOf": "2026-10-14",
-      "source": "https://english.ahram.org.eg/News/578941.aspx"
+      "source": "https://english.ahram.org.eg/News/578941.aspx",
+      "market": "Middle East"
     },
     {
       "name": "Saudi Energy 380 kV BSP and OHTL tender programme",
@@ -36,7 +38,8 @@
       "parties": "L&T, SSEM, Alfanar, Linxon, Haif (bidders)",
       "relevance": "Core market: 380 kV OHTL packages are the main buyers of AAAC/ACSR conductors in the Kingdom. Target the winning EPCs.",
       "asOf": "2026-08-04",
-      "source": "https://theworldofengineers.com/saudi-energy-invite-bids-for-380kv-bsps/"
+      "source": "https://theworldofengineers.com/saudi-energy-invite-bids-for-380kv-bsps/",
+      "market": "Middle East"
     },
     {
       "name": "L&T 380 kV transmission and substation EPC orders",
@@ -48,7 +51,8 @@
       "parties": "Larsen & Toubro (PT&D)",
       "relevance": "L&T buys conductors for these lines; Riyadh Cables already reports a supply contract with L&T.",
       "asOf": "2026-10-04",
-      "source": "https://www.saudigulfprojects.com/2026/10/lt-secures-mega-power-transmission-orders-in-saudi-arabia-uae-and-india/"
+      "source": "https://www.saudigulfprojects.com/2026/10/lt-secures-mega-power-transmission-orders-in-saudi-arabia-uae-and-india/",
+      "market": "Middle East"
     },
     {
       "name": "Expo 2030 Riyadh power supply",
@@ -60,7 +64,8 @@
       "parties": "Al-Babtain Contracting, Haif, Alfanar, Trading & Development Partnership (TDP)",
       "relevance": "Fixed-deadline giga-project; cable and conductor packages flow through the named contractors.",
       "asOf": "2026-08-14",
-      "source": "https://www.saudigulfprojects.com/2026/08/al-babtain-alfanar-haif-and-tdp-awarded-expo-2030-riyadh-substation-projects/"
+      "source": "https://www.saudigulfprojects.com/2026/08/al-babtain-alfanar-haif-and-tdp-awarded-expo-2030-riyadh-substation-projects/",
+      "market": "Middle East"
     },
     {
       "name": "Abqaiq and Rafaya 132/33 kV substations",
@@ -72,7 +77,8 @@
       "parties": "Nesma",
       "relevance": "Eastern Province grid reinforcement; associated 132 kV line work.",
       "asOf": "2026-11-04",
-      "source": "https://constructionreviewonline.com/66-6m-saudi-arabias-abqaiq-substation-project-awarded-to-nesma-to-boost-power-grid/"
+      "source": "https://constructionreviewonline.com/66-6m-saudi-arabias-abqaiq-substation-project-awarded-to-nesma-to-boost-power-grid/",
+      "market": "Middle East"
     },
     {
       "name": "Saudi NREP Round 7 (5.3 GW solar and wind)",
@@ -84,7 +90,8 @@
       "parties": "IPP bidders",
       "relevance": "Each plant needs grid connection lines and substations; renewables drive new transmission.",
       "asOf": "2026-11-04",
-      "source": "https://guest.meed.com/saudi-arabia-extends-bid-deadline-for-round-7-solar-projects/"
+      "source": "https://guest.meed.com/saudi-arabia-extends-bid-deadline-for-round-7-solar-projects/",
+      "market": "Middle East"
     },
     {
       "name": "Saudi–UAE grid interconnection MoU",
@@ -96,7 +103,8 @@
       "parties": "—",
       "relevance": "Early signal of a new cross-border line; watch for feasibility and tender.",
       "asOf": "2026-11-01",
-      "source": "https://www.saudigulfprojects.com/2026/10/saudi-arabia-and-uae-sign-mou-to-strengthen-power-grid-electricity-and-rail-connectivity/"
+      "source": "https://www.saudigulfprojects.com/2026/10/saudi-arabia-and-uae-sign-mou-to-strengthen-power-grid-electricity-and-rail-connectivity/",
+      "market": "Middle East"
     },
     {
       "name": "Rabigh 2 IPP expansion",
@@ -108,7 +116,8 @@
       "parties": "Elsewedy Electric, Sinohydro",
       "relevance": "Competitor (Elsewedy) wins EPC scope in Saudi; plant evacuation lines may follow.",
       "asOf": "2026-10-14",
-      "source": "https://www.arabnews.com/business/egypts-elsewedy-electric-chinas-sinohydro-sign-22bn-saudi-power-plant-contract-3006269"
+      "source": "https://www.arabnews.com/business/egypts-elsewedy-electric-chinas-sinohydro-sign-22bn-saudi-power-plant-contract-3006269",
+      "market": "Middle East"
     },
     {
       "name": "Sitra 400/220 kV substations – cables and transformers",
@@ -120,7 +129,8 @@
       "parties": "Iljin Electric, Hitachi Energy",
       "relevance": "Home market: a Korean cable maker won the largest cable package. Check how Midal can compete on the next EWA cable tenders.",
       "asOf": "2026-10-19",
-      "source": "https://www.utilities-me.com/news/bahrains-ewa-awards-five-grid-contracts"
+      "source": "https://www.utilities-me.com/news/bahrains-ewa-awards-five-grid-contracts",
+      "market": "Middle East"
     },
     {
       "name": "Jasra 400/220 kV grid substation",
@@ -132,7 +142,8 @@
       "parties": "—",
       "relevance": "Home market cable and conductor demand; feeder cable award still pending.",
       "asOf": "2026-11-04",
-      "source": "https://www.datamintelligence.com/blogs/gcc-ai-data-centers-grid-infrastructure-demand"
+      "source": "https://www.datamintelligence.com/blogs/gcc-ai-data-centers-grid-infrastructure-demand",
+      "market": "Middle East"
     },
     {
       "name": "Dukhan 2,000 MW solar – grid connection works",
@@ -144,7 +155,8 @@
       "parties": "—",
       "relevance": "400 kV/132 kV lines for evacuation; Qatar targets 4,000 MW renewables by 2030.",
       "asOf": "2026-08-18",
-      "source": "https://gcctendernews.com/article/kahramaa-tenders-200m-of-grid-works-for-dukhan-solar-plant/"
+      "source": "https://gcctendernews.com/article/kahramaa-tenders-200m-of-grid-works-for-dukhan-solar-plant/",
+      "market": "Middle East"
     },
     {
       "name": "Nama–State Grid 1 GW battery storage (Duqm, Ibri)",
@@ -156,7 +168,8 @@
       "parties": "State Grid Corporation of China",
       "relevance": "Storage at Ibri sits next to the GCC interconnection; grid connections to follow.",
       "asOf": "2026-11-02",
-      "source": "https://www.saudigulfprojects.com/2026/11/nama-holding-state-grid-1gw-battery-energy-storage-duqm-ibri-oman/"
+      "source": "https://www.saudigulfprojects.com/2026/11/nama-holding-state-grid-1gw-battery-energy-storage-duqm-ibri-oman/",
+      "market": "Middle East"
     },
     {
       "name": "Clean Energy Link – East (Western Australia)",
@@ -168,7 +181,190 @@
       "parties": "Acciona",
       "relevance": "Export market: Australian transmission build-out.",
       "asOf": "2026-10-14",
-      "source": "https://www.worldconstructionnetwork.com/news/acciona-awarded-clean-energy-link-east/"
+      "source": "https://www.worldconstructionnetwork.com/news/acciona-awarded-clean-energy-link-east/",
+      "market": "Oceania"
+    },
+    {
+      "name": "India ISTS 765 kV renewable-evacuation corridors (Rajasthan, Gujarat, Karnataka)",
+      "market": "Asia",
+      "country": "India",
+      "owner": "CTUIL / Ministry of Power (ISTS)",
+      "status": "Construction",
+      "value": "Multiple TBCB and RTM packages",
+      "scope": "Dozens of 765 kV double-circuit lines under construction to evacuate renewable power from the Rajasthan, Khavda (Gujarat), Koppal, Bidar and Kurnool zones, e.g. Beawar–Dausa (240 km), Fatehgarh-3–Beawar, Bikaner-III–Neemrana-II, Halvad–Vataman. Most are due for commissioning during 2026.",
+      "parties": "POWERGRID, Adani Energy Solutions, Resonia (Sterlite Power), Tata Power",
+      "relevance": "The world's largest pipeline of 765 kV lines; very large conductor demand (AL59, ACSR, HTLS) served mainly by Indian makers such as APAR.",
+      "asOf": "2026-02-28",
+      "source": "https://ctuil.in/uploads/assets/177339001828Status%20of%20Critical%20elements_Feb26.pdf"
+    },
+    {
+      "name": "Lakadia-II 765/400 kV ISTS scheme (Gujarat)",
+      "market": "Asia",
+      "country": "India",
+      "owner": "Ministry of Power (TBCB)",
+      "status": "Award",
+      "value": "INR 1,152 crore",
+      "scope": "New 765/400 kV Lakadia-II substation and 765 kV lines to integrate 7.5 GW of renewables from the Lakadia zone.",
+      "parties": "POWERGRID",
+      "relevance": "New 765 kV line packages; conductor tenders follow the award.",
+      "asOf": "2026-09-05",
+      "source": "https://www.energetica-india.net/news/powergrid-wins-inr-1152-crore-ists-project-to-integrate-7-5-gw-re-from-lakadia-rez-in-gujarat"
+    },
+    {
+      "name": "Pune West 765 kV GIS substation and lines (Maharashtra)",
+      "market": "Asia",
+      "country": "India",
+      "owner": "Ministry of Power (TBCB, BOOT)",
+      "status": "Award",
+      "value": "Not published",
+      "scope": "765 kV GIS substation at Pune West with 765 kV and 400 kV transmission lines and bays.",
+      "parties": "POWERGRID",
+      "relevance": "Further 765/400 kV line volume in western India.",
+      "asOf": "2026-10-24",
+      "source": "https://solarquarter.com/2026/10/24/powergrid-wins-maharashtra-transmission-project-for-765-kv-gis-pune-west-substation/"
+    },
+    {
+      "name": "Saudi–Iraq interconnection (Arar–Yusufiya)",
+      "market": "Middle East",
+      "country": "Iraq",
+      "owner": "Saudi Arabia / Iraq Ministry of Electricity",
+      "status": "Plan",
+      "value": "Not published",
+      "scope": "About 435 km transmission line from Arar in northern Saudi Arabia to Yusufiya near Baghdad, part of Iraq's push to import power from Saudi Arabia and Turkey.",
+      "parties": "—",
+      "relevance": "Long cross-border overhead line next to Midal's Saudi base.",
+      "asOf": "2026-11-04",
+      "source": "https://www.agbi.com/energy/2026/10/iraq-turns-to-turkey-and-saudi-arabia-to-ease-power-shortages/"
+    },
+    {
+      "name": "Iraq–GCC interconnection",
+      "market": "Middle East",
+      "country": "Iraq",
+      "owner": "Iraq Ministry of Electricity / GCCIA",
+      "status": "Commissioning",
+      "value": "Not published",
+      "scope": "Iraq's electricity link to the GCC grid is about 98% complete, according to Iraq's electricity ministry; Iraq is also raising imports from Turkey to 2,000 MW.",
+      "parties": "GCCIA",
+      "relevance": "Completion opens follow-on 400 kV reinforcement inside Iraq.",
+      "asOf": "2026-11-04",
+      "source": "https://www.iraqinews.com/iraq/iraq-to-increase-electricity-imports-from-turkey-to-2000-megawatts/"
+    },
+    {
+      "name": "Eskom / NTCSA transmission expansion and ITP programme",
+      "market": "Africa",
+      "country": "South Africa",
+      "owner": "Eskom / NTCSA; Department of Electricity and Energy",
+      "status": "Tender",
+      "value": "~14,000 km of new lines over a decade",
+      "scope": "Plan to install about 14,000 km of transmission lines over the next decade (only 270.8 km installed in the year to March 2026); the expansion plan was delayed by six months. Independent Transmission Projects (ITP) programme launched to bring in private capital.",
+      "parties": "Private ITP bidders",
+      "relevance": "Large 400/765 kV overhead-line market opening to private developers and imported conductors.",
+      "asOf": "2026-10-02",
+      "source": "https://www.bloomberg.com/news/articles/2026-10-02/south-africa-delays-power-grid-expansion-plan-by-six-months"
+    },
+    {
+      "name": "Cameroon–Chad power interconnection",
+      "market": "Africa",
+      "country": "Cameroon / Chad",
+      "owner": "Governments of Cameroon and Chad",
+      "status": "Tender",
+      "value": "Not published",
+      "scope": "Cross-border interconnection that can no longer meet its 31 Dec 2027 completion target under current tender timelines for major contracts; completion now at least 2029.",
+      "parties": "—",
+      "relevance": "Development-bank-funded line still in procurement.",
+      "asOf": "2026-09-08",
+      "source": "https://www.businessincameroon.com/energy/0809-16700-cameroon-chad-power-interconnection-faces-delay-to-at-least-2029-under-current-tender-timelines"
+    },
+    {
+      "name": "Norwich to Tilbury 400 kV (Great Grid Upgrade)",
+      "market": "Europe",
+      "country": "UK",
+      "owner": "National Grid",
+      "status": "Plan",
+      "value": "Not published",
+      "scope": "About 183 km of new 400 kV transmission (about 159 km overhead line) through Norfolk, Suffolk and Essex. The planning examination is at the recommendation stage, due 10 Nov 2026.",
+      "parties": "—",
+      "relevance": "One of the largest new UK overhead lines; conductor procurement follows consent.",
+      "asOf": "2026-11-04",
+      "source": "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN020027"
+    },
+    {
+      "name": "North Coast Transmission Line (British Columbia)",
+      "market": "Canada",
+      "country": "Canada",
+      "owner": "BC Hydro",
+      "status": "Construction",
+      "value": "C$3.9bn (reported)",
+      "scope": "Phase 1: 165 km, 500 kV line from Williston substation near Prince George to Glenannan; groundbreaking 3 Sep 2026, phased construction through 2030.",
+      "parties": "—",
+      "relevance": "Large 500 kV conductor requirement in North America.",
+      "asOf": "2026-09-03",
+      "source": "https://www.canada.ca/en/natural-resources-canada/news/2026/09/canada-breaks-ground-on-north-coast-transmission-line-to-deliver-clean-power-and-reduce-emissions.html"
+    },
+    {
+      "name": "Churchill Falls expansion and Gull Island with transmission (Québec–Newfoundland and Labrador)",
+      "market": "Canada",
+      "country": "Canada",
+      "owner": "Hydro-Québec / Newfoundland and Labrador Hydro",
+      "status": "Plan",
+      "value": "Up to C$10bn federal financing",
+      "scope": "Agreement to expand Churchill Falls, build Gull Island and related transmission lines, for about 14,000 MW in total.",
+      "parties": "Governments of Canada, Québec, and Newfoundland and Labrador",
+      "relevance": "Multi-year HV transmission build in eastern Canada.",
+      "asOf": "2026-11-04",
+      "source": "https://canada.constructconnect.com/dcn/news/government/2026/08/quebec-and-newfoundland-and-labrador-reach-energy-agreement"
+    },
+    {
+      "name": "AEP 765 kV lines for the Piketon, Ohio data-centre campus",
+      "market": "USA",
+      "country": "USA",
+      "owner": "American Electric Power (AEP)",
+      "status": "Plan",
+      "value": "~$5bn (within a $37bn transmission plan)",
+      "scope": "Three planned 765 kV lines, each adding about 3.2 GW, to serve SB Energy's 10.4 GW data-centre campus; in service end-2028, 2029 and 2030. Jacobs and WSP engaged for AEP's transmission build-out.",
+      "parties": "Jacobs, WSP",
+      "relevance": "Data-centre-driven 765 kV build-out in the US: a large conductor market.",
+      "asOf": "2026-10-28",
+      "source": "https://www.enr.com/articles/64102-aep-taps-jacobs-wsp-for-37b-power-transmission-buildout"
+    },
+    {
+      "name": "DOE 'Speed to Power' accelerated reconductoring awards",
+      "market": "USA",
+      "country": "USA",
+      "owner": "US Department of Energy",
+      "status": "Award",
+      "value": "Not published",
+      "scope": "Funding recipients are expected to reconductor or rebuild more than 1,500 miles of transmission lines and deploy grid-enhancing technologies.",
+      "parties": "US utilities",
+      "relevance": "Direct demand for advanced and HTLS conductors (ACCC, ACSS), which Midal makes.",
+      "asOf": "2026-10-30",
+      "source": "https://www.energy.gov/oe/speed-power-through-accelerated-reconductoring-and-other-key-advanced-transmission-technology"
+    },
+    {
+      "name": "Brazil Transmission Auction No. 4/2026",
+      "market": "Latin America",
+      "country": "Brazil",
+      "owner": "ANEEL",
+      "status": "Award",
+      "value": "R$8.8bn (~US$1.6bn)",
+      "scope": "All eight lots awarded at an average 50.1% discount, including an integration with Bolivia and more capacity in Mato Grosso do Sul.",
+      "parties": "Neoenergia, EDP, CYMI, Celeo Redes, Cox Brasil",
+      "relevance": "Winners now procure conductors and towers; Brazil runs several auctions a year.",
+      "asOf": "2026-11-04",
+      "source": "https://www.energiaestrategica.com/en/notes/brasil-adjudica-los-8-lotes-de-transmision-por-r-8800-millones-y-logra-50-de-descuento"
+    },
+    {
+      "name": "Brazil 2027 transmission auction (3,245 km)",
+      "market": "Latin America",
+      "country": "Brazil",
+      "owner": "ANEEL",
+      "status": "Plan",
+      "value": "Not published",
+      "scope": "Proposed auction of 3,245 km of new transmission lines, including the first battery storage contracted in a transmission auction.",
+      "parties": "—",
+      "relevance": "Next large conductor opportunity in Latin America.",
+      "asOf": "2026-11-04",
+      "source": "https://www.industrialinfo.com/news/article/brazil-proposes-first-bess-project-in-2027-transmission-auction--362693"
     }
   ]
 }

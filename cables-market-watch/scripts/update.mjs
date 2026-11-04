@@ -9,6 +9,7 @@
 // No dependencies: uses Node 18+ built-in fetch.
 
 import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -19,6 +20,10 @@ export const NEWS_FILE = join(here, "..", "data", "news.json");
 export const NEWS_RETENTION_DAYS = 120;
 export const MAX_NEWS = 2000;
 export const PRICE_RETENTION_DAYS = 760; // ~2 years of trading days
+export const COMPETITORS_FILE = join(here, "..", "data", "competitors.json");
+
+// Competitors come from data/competitors.json (built from web searches; edit that file, not this one).
+export const COMPETITORS = JSON.parse(readFileSync(COMPETITORS_FILE, "utf8")).competitors;
 
 // ================================================================ prices
 
@@ -65,34 +70,10 @@ const priceUrl = (field, year) =>
 
 // ================================================================ companies
 
-// role: competitor (cable/conductor makers), contractor (EPC firms that buy conductors and cables),
+// role: competitor (cable, conductor and rod makers, from data/competitors.json), contractor (EPC firms that buy conductors and cables),
 // utility (grid owners and procurers), smelter (aluminium supply).
 export const COMPANIES = [
-  // Competitors — GCC and region
-  ["Riyadh Cables", "competitor", /riyadh cables|كابلات الرياض/i],
-  ["Saudi Cable Co.", "competitor", /saudi cable(?:s)? (?:co|company)|الشركة السعودية للكابلات/i],
-  ["Ducab", "competitor", /\bducab\b|دوكاب/i],
-  ["Elsewedy", "competitor", /el ?sewedy|السويدي/i],
-  ["Oman Cables", "competitor", /oman cables?\b/i],
-  ["Gulf Cables", "competitor", /gulf cables?\b/i],
-  ["Bahra Cables", "competitor", /bahra (?:electric|cables)|بحرة/i],
-  ["Jeddah Cables", "competitor", /jeddah cables?/i],
-  ["National Cables (UAE)", "competitor", /national cables? industry/i],
-  ["QICC", "competitor", /qatar international cable|\bqicc\b/i],
-  ["Energya Cables", "competitor", /energya/i],
-  // Competitors — global
-  ["Prysmian", "competitor", /prysmian/i],
-  ["Nexans", "competitor", /nexans/i],
-  ["NKT", "competitor", /\bnkt\b/i],
-  ["LS Cable", "competitor", /\bls cable|\bls c&s\b/i],
-  ["Taihan", "competitor", /taihan/i],
-  ["Iljin Electric", "competitor", /iljin/i],
-  ["Southwire", "competitor", /southwire/i],
-  ["Sumitomo Electric", "competitor", /sumitomo electric/i],
-  ["Hengtong / ZTT", "competitor", /hengtong|\bztt\b|zhongtian/i],
-  ["APAR", "competitor", /\bapar\b/i],
-  ["KEI / Polycab", "competitor", /\bkei industries|polycab/i],
-  ["Lamifil", "competitor", /lamifil/i],
+  ...COMPETITORS.map((c) => [c.name, "competitor", new RegExp(c.match, "i")]),
   // EPC contractors (prospective conductor and cable buyers)
   ["L&T", "contractor", /larsen|\bl&t\b/i],
   ["KEC International", "contractor", /\bkec\b/i],
@@ -111,6 +92,14 @@ export const COMPANIES = [
   ["Sinohydro / PowerChina", "contractor", /sinohydro|powerchina|power china/i],
   ["State Grid", "contractor", /state grid/i],
   ["Al Yamamah Steel", "contractor", /yamamah/i],
+  ["POWERGRID", "contractor", /powergrid|power grid corporation/i],
+  ["Adani Energy Solutions", "contractor", /adani (?:energy|transmission)/i],
+  ["Tata Power", "contractor", /tata power/i],
+  ["Acciona", "contractor", /acciona/i],
+  ["Neoenergia / Iberdrola", "contractor", /neoenergia|iberdrola/i],
+  ["EDP", "contractor", /\bedp\b/i],
+  ["CYMI / Celeo", "contractor", /\bcymi\b|celeo/i],
+  ["Jacobs / WSP", "contractor", /\bjacobs\b|\bwsp\b/i],
   // Utilities and procurers
   ["Saudi Energy (SEC)", "utility", /saudi energy\b|saudi electricity|\bsec\b(?=.*(?:power|grid|substation|transmission|kv))|الشركة السعودية للكهرباء|السعودية للطاقة/i],
   ["National Grid SA", "utility", /national grid sa\b|national grid saudi/i],
@@ -123,13 +112,19 @@ export const COMPANIES = [
   ["Nama / OETC", "utility", /\bnama\b|\boetc\b|oman electricity transmission/i],
   ["Kuwait MEW", "utility", /kuwait.{0,40}(?:ministry of electricity|\bmew\b)|\bmewre\b/i],
   ["GCCIA", "utility", /gccia|gcc interconnection|هيئة الربط الكهربائي/i],
+  ["Iraq Ministry of Electricity", "utility", /iraq(?:i)? ministry of electricity|وزارة الكهرباء العراقية/i],
+  ["Eskom / NTCSA", "utility", /eskom|\bntcsa\b/i],
+  ["National Grid (UK)", "utility", /national grid(?! sa| saudi)|great grid upgrade/i],
+  ["TenneT / EU TSOs", "utility", /tennet|amprion|50hertz|transnetbw|\brte\b|terna\b|red el[eé]ctrica/i],
+  ["BC Hydro / Hydro-Québec", "utility", /bc hydro|hydro-qu[eé]bec|hydro one|altalink|manitoba hydro/i],
+  ["AEP / US grid operators", "utility", /\baep\b|american electric power|oncor|\bercot\b|\bpjm\b|\bmiso\b/i],
+  ["ANEEL (Brazil)", "utility", /aneel/i],
   // Aluminium producers
   ["Alba", "smelter", /\balba\b|aluminium bahrain|ألبا/i],
   ["EGA", "smelter", /\bega\b|emirates global alumin/i],
   ["Ma'aden", "smelter", /ma['’]?aden|معادن/i],
   ["Qatalum", "smelter", /qatalum/i],
   ["Sohar Aluminium", "smelter", /sohar alumin/i],
-  ["Hindalco / Vedanta", "smelter", /hindalco|vedanta/i],
   ["Midal Cables", "self", /midal|مدال/i],
 ].map(([name, role, re]) => ({ name, role, re }));
 
@@ -198,18 +193,12 @@ export const CATEGORIES = {
   },
   competitors: {
     label: "Competitor moves",
-    // Assigned when a competitor is named; see classify().
+    // Assigned when a competitor is named; see classify(). One search per competitor in data/competitors.json.
     match: null,
     queries: [
-      '"Riyadh Cables"',
-      '"Ducab"',
-      '("Elsewedy Electric" OR "Elsewedy Cables") (cable OR contract OR order)',
-      '("Oman Cables" OR "Gulf Cables" OR "Jeddah Cables" OR "Bahra Cables" OR "Saudi Cable Company")',
-      '("Qatar International Cable" OR "National Cables Industry" OR "Energya Cables")',
-      '(Prysmian OR Nexans OR NKT) (order OR contract OR awarded OR acquisition OR plant)',
-      '("LS Cable" OR Taihan OR Iljin OR "Sumitomo Electric") (cable OR order OR contract)',
-      '("APAR Industries" OR "KEI Industries" OR Polycab OR Hengtong OR ZTT) (conductor OR cable OR order)',
+      ...COMPETITORS.map((c) => c.search),
       '("overhead conductor" OR AAAC OR ACSR OR HTLS OR ACCC OR "aluminium conductor" OR "aluminum conductor") (order OR contract OR supply)',
+      '("wire rod" OR conductor OR cable) (wins OR secures OR bags) order transmission',
       ['("كابلات الرياض" OR "السويدي" OR "دوكاب") (عقد OR توقيع OR ترسية OR أرباح)', "ar"],
     ],
   },
@@ -240,17 +229,6 @@ export const CATEGORIES = {
       '(cable OR cables OR conductor) ("anti-dumping" OR tariff OR "local content" OR IKTVA)',
     ],
   },
-  export: {
-    label: "Export markets",
-    // Projects and demand outside the GCC; see classify().
-    match: null,
-    queries: [
-      '(transmission line OR "HVDC" OR "765 kV" OR "400 kV") (tender OR awarded OR contract) India',
-      '(transmission OR "overhead line" OR interconnector) (Australia OR "New Zealand") (contract OR awarded OR approval)',
-      '(transmission line OR substation OR interconnection) (Egypt OR Iraq OR Jordan OR Africa) (contract OR awarded OR financing)',
-      '(transmission OR "overhead line" OR conductor) (Europe OR UK OR "United States") (contract OR order OR reconductoring)',
-    ],
-  },
   midal: {
     label: "Midal mentions",
     match: /midal|مدال/i,
@@ -266,29 +244,132 @@ export const FEEDS = [
   { name: "Utilities Middle East", url: "https://www.utilities-me.com/feed" },
 ];
 
-export const REGIONS = {
-  Bahrain: /bahrain|manama|البحرين|المنامة/i,
-  Saudi: /saudi|riyadh|jeddah|neom|dammam|\bksa\b|tabuk|medina|السعودية|الرياض|جدة|المملكة/i,
-  UAE: /\buae\b|emirat|dubai|abu dhabi|sharjah|الإمارات|دبي|أبوظبي/i,
-  Qatar: /qatar|doha|kahramaa|قطر|الدوحة/i,
-  Oman: /\boman|muscat|sohar|duqm|ibri|سلطنة عمان|العماني|مسقط/i,
-  Kuwait: /kuwait|الكويت/i,
-  Iraq: /\biraq|العراق/i,
-  Egypt: /egypt|cairo|مصر/i,
-  India: /india|nalco|hindalco|vedanta|\bcrore\b|₹/i,
-  Australia: /australia|new zealand/i,
-  Europe: /europe|\beu\b|german|france|french|ital|spain|\buk\b|britain|british|netherlands|dutch|norway|denmark|tennet/i,
-  // Case-sensitive so the pronoun "us" and the currency "US$" do not count.
-  "North America": /\bU\.S\.(?!\$)|\bUS\b(?!\$)|United States|\bAmerica|Canad|Mexic|Alcoa/,
-  China: /china|chinese|shfe|shanghai|الصين/i,
-  Africa: /africa|nigeria|kenya|morocco|ethiopia|tanzania/i,
+// Markets: each has country/region patterns (for tagging) and project searches (for collecting).
+// The searches run under the "projects" category, and items keep the market of the search that found them.
+export const MARKETS = {
+  "Middle East": {
+    regions: {
+      Bahrain: /bahrain|manama|البحرين|المنامة/i,
+      Saudi: /saudi|riyadh|jeddah|neom|dammam|\bksa\b|tabuk|medina|السعودية|الرياض|جدة|المملكة/i,
+      UAE: /\buae\b|emirat|dubai|abu dhabi|sharjah|الإمارات|دبي|أبوظبي/i,
+      Qatar: /qatar|doha|kahramaa|قطر|الدوحة/i,
+      Oman: /\boman|muscat|sohar|duqm|ibri|سلطنة عمان|العماني|مسقط/i,
+      Kuwait: /kuwait|الكويت/i,
+      Iraq: /\biraq|baghdad|basra|العراق/i,
+      Jordan: /jordan|الأردن/i,
+      "Levant & Iran": /lebanon|syria|\biran\b|turkey|türkiye/i,
+    },
+    queries: [
+      '(Iraq OR Jordan OR Lebanon OR Syria) ("transmission line" OR substation OR interconnection OR "400 kV") (contract OR awarded OR signs)',
+      '("Iraq-GCC" OR "Saudi-Iraq" OR "Jordan-Iraq" OR "Gulf interconnection") electricity Iraq',
+    ],
+  },
+  Asia: {
+    regions: {
+      India: /india|indian\b|\bcrore\b|₹|powergrid|\btbcb\b|\bists\b|gujarat|rajasthan|maharashtra|karnataka/i,
+      China: /china|chinese|shfe|shanghai|الصين/i,
+      "Southeast Asia": /vietnam|philippine|indonesia|malaysia|thailand|cambodia|laos|myanmar|singapore|asean/i,
+      "South & Central Asia": /pakistan|bangladesh|sri lanka|nepal|bhutan|uzbekistan|kazakhstan|kyrgyz|tajikistan|turkmenistan|afghanistan/i,
+      "East Asia": /korea|japan|taiwan/i,
+    },
+    queries: [
+      '(POWERGRID OR "Adani Energy Solutions" OR "Tata Power" OR Resonia OR "Sterlite Power") transmission (wins OR awarded OR TBCB OR project)',
+      '("765 kV" OR "400 kV" OR HVDC) transmission India (tender OR awarded OR order OR commissioned)',
+      '(Vietnam OR Philippines OR Indonesia OR Malaysia OR Thailand) ("500 kV" OR "transmission line" OR substation) (contract OR awarded OR construction)',
+      '(Pakistan OR Bangladesh OR "Sri Lanka" OR Uzbekistan OR Kazakhstan) ("transmission line" OR substation OR grid) (contract OR ADB OR "World Bank" OR awarded)',
+    ],
+  },
+  Africa: {
+    regions: {
+      Egypt: /egypt|cairo|مصر/i,
+      "North Africa": /morocco|algeria|tunisia|libya|المغرب|الجزائر/i,
+      "South Africa": /south africa|eskom|\bntcsa\b/i,
+      "Sub-Saharan Africa": /nigeria|kenya|ethiopia|tanzania|ghana|zambia|uganda|mozambique|angola|senegal|cameroon|\bchad\b|rwanda|ivory coast|côte d'ivoire|\bdrc\b|congo|namibia|botswana|zimbabwe|\bafrica/i,
+    },
+    queries: [
+      '(Eskom OR NTCSA OR "independent transmission") transmission line (contract OR tender OR awarded OR construction)',
+      '(Kenya OR Nigeria OR Ethiopia OR Tanzania OR Ghana OR Zambia OR Uganda OR Cameroon) "transmission line" (contract OR financing OR awarded)',
+      '(Egypt OR Morocco OR Algeria OR Tunisia OR Libya) (transmission OR interconnection OR substation) (contract OR awarded)',
+      'Africa (interconnector OR "power pool" OR "transmission line") (financing OR contract OR AfDB)',
+    ],
+  },
+  Europe: {
+    regions: {
+      "UK & Ireland": /\buk\b|britain|british(?! columbia)|england|scotland|wales|ireland|national grid(?! sa| saudi)|\bssen\b|great grid upgrade/i,
+      "Western Europe": /german|france|french|\bital|spain|spanish|portugal|netherlands|dutch|belgi|austria|switzerland|tennet|amprion|50hertz|\brte\b|terna\b/i,
+      "Nordics & Eastern Europe": /norway|sweden|denmark|finland|poland|romania|bulgaria|greece|hungary|czech|baltic|ukraine|serbia|croatia/i,
+      Europe: /europe|\beu\b|entso/i,
+    },
+    queries: [
+      '("National Grid" OR SSEN OR "Great Grid Upgrade" OR SPEN) ("overhead line" OR pylons OR "400 kV") (contract OR consent OR construction)',
+      '(TenneT OR Amprion OR 50Hertz OR TransnetBW OR RTE OR Terna OR "Red Eléctrica" OR PSE OR Statnett) ("overhead line" OR "transmission line" OR "380 kV") contract',
+      '(Europe OR EU) (reconductoring OR HTLS OR "overhead line" OR "grid expansion") (contract OR order OR investment)',
+    ],
+  },
+  Canada: {
+    regions: {
+      Canada: /canad|qu[eé]bec|ontario|british columbia|\bb\.c\.|alberta|saskatchewan|manitoba|newfoundland|labrador|nova scotia|new brunswick|bc hydro|hydro-qu|hydro one|altalink/i,
+    },
+    queries: [
+      '("Hydro-Québec" OR "BC Hydro" OR "Hydro One" OR AltaLink OR SaskPower OR "Manitoba Hydro" OR "Nova Scotia Power" OR "Newfoundland and Labrador Hydro") transmission line',
+      'Canada "transmission line" (construction OR approval OR contract OR "500 kV" OR "230 kV")',
+    ],
+  },
+  USA: {
+    regions: {
+      // Case-sensitive so the pronoun "us" and the currency "US$" do not count.
+      USA: /\bU\.S\.(?!\$)|\bUS\b(?!\$)|United States|\bAmerica\b|Texas|Ohio|California|ERCOT|PJM|MISO|FERC|\bDOE\b|Alcoa|Oncor|\bAEP\b/,
+    },
+    queries: [
+      '(ERCOT OR PJM OR MISO OR SPP OR CAISO) ("765 kV" OR "500 kV" OR "345 kV") transmission (approved OR construction OR contract)',
+      '(reconductoring OR "advanced conductor" OR HTLS) (utility OR DOE OR FERC) transmission',
+      '"transmission line" ("data center" OR "data centre") ("765 kV" OR "345 kV") utility',
+    ],
+  },
+  "Latin America": {
+    regions: {
+      "Latin America": /brazil|brasil|aneel|chile|peru\b|colombia|mexic|argentin|ecuador|bolivia|uruguay|paraguay|panama|guatemala|costa rica|dominican|latin america/i,
+    },
+    queries: [
+      '(ANEEL OR Brazil) ("transmission auction" OR "leilão de transmissão" OR "transmission lots")',
+      '(Chile OR Peru OR Colombia OR Mexico OR Argentina) ("transmission line" OR "línea de transmisión") (contract OR awarded OR auction OR licitación)',
+    ],
+  },
+  Oceania: {
+    regions: {
+      Oceania: /australia|new zealand|transgrid|powerlink|\baemo\b|western power|transpower|\bnsw\b|queensland/i,
+    },
+    queries: [
+      '(Australia OR "New Zealand") transmission (Transgrid OR AEMO OR Powerlink OR "Western Power" OR Transpower OR AusNet OR ElectraNet) (contract OR awarded OR approval)',
+    ],
+  },
 };
-const GCC = new Set(["Bahrain", "Saudi", "UAE", "Qatar", "Oman", "Kuwait"]);
+
+export const REGIONS = Object.fromEntries(Object.values(MARKETS).flatMap((m) => Object.entries(m.regions)));
+export const REGION_MARKET = Object.fromEntries(
+  Object.entries(MARKETS).flatMap(([market, m]) => Object.keys(m.regions).map((r) => [r, market])),
+);
 
 export const detectRegions = (text) =>
   Object.entries(REGIONS)
     .filter(([, re]) => re.test(text))
     .map(([name]) => name);
+
+export const marketsOf = (regions, hint) => {
+  const m = [...new Set(regions.map((r) => REGION_MARKET[r]))];
+  return m.length ? m : hint ? [hint] : [];
+};
+
+// The company named as winner in headlines such as "Xyz Cables wins 400 kV conductor order".
+// Lets the dashboard surface cable and conductor makers that are not on the competitor list yet.
+const WIN = /^((?:(?:[A-Z0-9][\w&.'’-]*|&)\s){0,4}?[A-Z0-9][\w&.'’-]*?)(?:'s|’s)?\s+(?:wins?|won|secures?|secured|bags?|bagged|lands?|clinches|grabs)\b/;
+export function detectActor(title) {
+  const m = title.match(WIN);
+  if (!m) return null;
+  const name = m[1].trim();
+  if (name.length < 3 || name.length > 45 || /^(?:the|a|an|it|india|saudi|uae|china|us|uk|consortium)$/i.test(name)) return null;
+  return name;
+}
 
 // Deal stage, from the headline first, then the snippet.
 const STAGES = [
@@ -337,9 +418,6 @@ export function classify(text, hint) {
   // A competitor query hit that only names a conductor type still counts as a cable-industry item.
   if (hint === "competitors" && /cable|conductor|aaac|acsr|htls|accc/i.test(text)) cats.add("competitors");
   const regions = detectRegions(text);
-  if ((cats.has("projects") || cats.has("demand") || cats.has("tenders")) && regions.length && !regions.some((r) => GCC.has(r)))
-    cats.add("export");
-  if (hint === "export" && (cats.has("projects") || cats.has("tenders"))) cats.add("export");
   return { categories: [...cats], companies, regions };
 }
 
@@ -398,7 +476,7 @@ export function parseItems(xml, fallbackPublisher = "", fallbackUrl = "") {
 }
 
 export const keyOf = (title) => title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
-const DEAL_CATEGORIES = new Set(["projects", "tenders", "government", "demand", "competitors", "export", "midal"]);
+const DEAL_CATEGORIES = new Set(["projects", "tenders", "government", "demand", "competitors", "midal"]);
 const isArabic = (s) => /[؀-ۿ]/.test(s);
 
 // Merges freshly fetched items into the stored list. Pure, so it can be tested without network.
@@ -421,7 +499,9 @@ export function mergeNews(existing, fetched, now = Date.now()) {
       description: raw.description || prev?.description || "",
       categories: [...new Set([...(prev?.categories ?? []), ...categories])],
       regions,
+      markets: marketsOf(regions, raw.market ?? prev?.markets?.[0]),
       companies,
+      actor: detectActor(raw.title),
       // A deal stage only means something for project, tender and company news.
       stage: categories.some((c) => DEAL_CATEGORIES.has(c)) ? detectStage(raw.title, raw.description) : null,
       value: detectValue(raw.title) ?? detectValue(raw.description),
@@ -508,6 +588,19 @@ async function updateNews() {
       await sleep(1200);
     }
   }
+  for (const [market, { queries }] of Object.entries(MARKETS)) {
+    for (const q of queries) {
+      try {
+        const items = parseItems(await get(feedUrl(q, "en", window))).map((i) => ({ ...i, category: "projects", market }));
+        fetched.push(...items);
+        ok += 1;
+        console.log(`[projects ${market}] ${items.length} results`);
+      } catch (err) {
+        console.warn(`[projects ${market}] failed: ${err.message}`);
+      }
+      await sleep(1200);
+    }
+  }
   for (const feed of FEEDS) {
     try {
       const items = parseItems(await get(feed.url), feed.name, new URL(feed.url).origin);
@@ -524,6 +617,7 @@ async function updateNews() {
       generatedAt: new Date().toISOString(),
       retentionDays: NEWS_RETENTION_DAYS,
       categories: Object.fromEntries(Object.entries(CATEGORIES).map(([k, v]) => [k, v.label])),
+      markets: Object.keys(MARKETS),
       companies: COMPANIES.map(({ name, role }) => ({ name, role })),
       count: items.length,
       items,
