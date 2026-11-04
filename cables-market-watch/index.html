@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cables Market Watch</title>
+  <meta name="description" content="Daily LME prices, aluminium market news, grid projects and cable industry orders for an aluminium rod, conductor and cable maker in the GCC." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div>
+        <h1>Cables &amp; Aluminium Market Watch</h1>
+        <p class="sub">LME prices, aluminium market, grid projects and cable orders — the daily brief for Midal Cables.</p>
+      </div>
+      <p class="stamp" id="stamp">Loading…</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section aria-labelledby="brief-h" class="card brief">
+      <h2 id="brief-h">Today's brief</h2>
+      <ul id="brief"></ul>
+    </section>
+
+    <section aria-labelledby="prices-h">
+      <div class="section-head">
+        <h2 id="prices-h">LME prices</h2>
+        <div class="seg" role="group" aria-label="Chart range" id="ranges">
+          <button data-range="22">1M</button>
+          <button data-range="66" aria-pressed="true">3M</button>
+          <button data-range="130">6M</button>
+          <button data-range="260">1Y</button>
+        </div>
+      </div>
+      <div class="tiles" id="tiles"></div>
+      <div class="charts">
+        <figure class="card chart" id="chart-aluminium"></figure>
+        <figure class="card chart" id="chart-copper"></figure>
+      </div>
+      <details class="card table-view">
+        <summary>Price table (last 15 sessions)</summary>
+        <div class="table-scroll"><table id="price-table"></table></div>
+      </details>
+    </section>
+
+    <div class="layout">
+      <section aria-labelledby="news-h" class="news">
+        <div class="section-head">
+          <h2 id="news-h">Industry news</h2>
+          <span class="muted" id="news-count"></span>
+        </div>
+        <div class="filters">
+          <div class="chips" id="cats" role="group" aria-label="Category"></div>
+          <div class="row">
+            <input type="search" id="q" placeholder="Search headlines…" aria-label="Search headlines" />
+            <select id="region" aria-label="Region"><option value="">All regions</option></select>
+            <label class="check"><input type="checkbox" id="only-new" /> New since last visit</label>
+          </div>
+        </div>
+        <ol class="items" id="items"></ol>
+      </section>
+
+      <aside aria-labelledby="watch-h" class="watch">
+        <h2 id="watch-h">Watchlist</h2>
+        <div id="watch"></div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="wrap foot">
+    <p>Prices: LME official cash settlement, 3-month and warehouse stock (USD/t), via westmetall.com, updated each business day.
+      News: Google News search results, matched by keyword and refreshed daily — some items may be off-topic or missed. Always confirm against the source.</p>
+  </footer>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

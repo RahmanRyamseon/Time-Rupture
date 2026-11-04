@@ -1,0 +1,256 @@
+{
+  "generatedAt": "2026-11-04T06:30:00.000Z",
+  "retentionDays": 90,
+  "categories": {
+    "projects": "Projects & tenders",
+    "orders": "Cable orders & industry",
+    "aluminium": "Aluminium market",
+    "copper": "Copper & metals",
+    "policy": "Trade & policy",
+    "midal": "Midal mentions"
+  },
+  "count": 15,
+  "items": [
+    {
+      "id": "58bfc16210c3",
+      "title": "LME aluminium and SHFE aluminium see slight recovery; demand under pressure amid the tail end of peak season, with mixed bullish and bearish factors",
+      "url": "https://www.alcircle.com/news/press-release/lme-aluminium-and-shfe-aluminium-see-slight-recovery-demand-under-pressure-amid-the-tail-end-of-peak-season-with-mixed-bullish-and-bearish-factors-121807",
+      "publisher": "AlCircle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-11-03T08:00:00.000Z",
+      "description": "Aluminium prices rebound as bearish momentum eases, but weaker demand and slower destocking keep further gains in check.",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "China"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "1d08c1ed54e8",
+      "title": "NALCO Q2 net sales rise 26.2% to Rs 5,380 crore; alumina exports fall 16.4% YoY",
+      "url": "https://news.metal.com/newscontent/104202421-nalco-q2-net-sales-rise-262-to-rs-5380-crore-alumina-exports-fall-164-yoy",
+      "publisher": "SMM",
+      "publisherUrl": "https://news.metal.com",
+      "published": "2026-11-03T08:00:00.000Z",
+      "description": "NALCO's Q2 FY27 net sales rose 26.2% year on year, driven by stronger aluminium sales and higher LME prices, while alumina exports fell.",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "India"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "42430a6f5e1f",
+      "title": "LME Aluminium Slips While Energy Costs and Smelter Margins Remain in Focus",
+      "url": "https://kalkine.ca/news/general-news/lme-aluminium-slips-while-energy-costs-and-smelter-margins-remain-in-focus",
+      "publisher": "Kalkine Media",
+      "publisherUrl": "https://kalkine.ca",
+      "published": "2026-11-03T08:00:00.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "4c7c6bf75641",
+      "title": "Yunnan Aluminium Earnings Jump 164% as Revenue Rises Just 19%",
+      "url": "https://discoveryalert.com/news/yunnan-aluminium-earnings-9m-2026-october-2026/",
+      "publisher": "Discovery Alert",
+      "publisherUrl": "https://discoveryalert.com",
+      "published": "2026-11-01T08:00:00.000Z",
+      "description": "LME aluminium averaged about US$3,382/t in H1 2026, up 31.9% year-on-year, according to China Hongqiao.",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "China"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "3cf43e7bd528",
+      "title": "Renewed rate hike expectations weigh on futures, weakening marginal demand is holding back the recovery in aluminium prices",
+      "url": "https://www.alcircle.com/news/press-release/renewed-rate-hike-expectations-weigh-on-futures-weakening-marginal-demand-is-holding-back-the-recovery-in-aluminium-prices-121761",
+      "publisher": "AlCircle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-10-30T08:00:00.000Z",
+      "description": "Aluminium prices face consolidation as mixed macro signals, slower inventory declines and weak demand limit a recovery.",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "5460d43830a4",
+      "title": "Alba marks a decade of summer safety excellence with zero heat-related injuries and illnesses",
+      "url": "https://www.alcircle.com/news/press-release/alba-marks-a-decade-of-summer-safety-excellence-with-zero-heat-related-injuries-and-illnesses-121746",
+      "publisher": "AlCircle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-10-30T08:00:00.000Z",
+      "description": "Aluminium Bahrain B.S.C. (Alba), one of the world's largest aluminium smelters, completed its 10th consecutive summer safety campaign.",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "Bahrain"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "a2ccfe2501d4",
+      "title": "Cable installation begins in Lake Veere for Dutch offshore wind connections",
+      "url": "https://www.windtech-international.com/projects-and-contracts/cable-installation-begins-in-lake-veere-for-dutch-offshore-wind-connections",
+      "publisher": "Windtech International",
+      "publisherUrl": "https://www.windtech-international.com",
+      "published": "2026-10-30T08:00:00.000Z",
+      "description": "Prysmian and Deme have started installing high-voltage cables on the bed of Lake Veere in Zeeland, the Netherlands, for grid operator TenneT.",
+      "categories": [
+        "orders"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "57aaa1c275f4",
+      "title": "Fed rate hike expectations are easing, as aluminium price technical rebound gains momentum",
+      "url": "https://www.alcircle.com/news/press-release/fed-rate-hike-expectations-are-easing-as-aluminium-price-technical-rebound-gains-momentum-121720",
+      "publisher": "AlCircle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-10-29T08:00:00.000Z",
+      "description": "Aluminium futures rally as easing rate hike fears and falling Chinese inventories support prices despite supply concerns.",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "China"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "1d94f4800457",
+      "title": "Alba at LME Week 2026: CEO Ali Al Baqali strengthens global aluminium industry ties",
+      "url": "https://www.alcircle.com/news/alba-at-lme-week-2026-ceo-ali-al-baqali-strengthens-global-aluminium-industry-ties-121647",
+      "publisher": "AlCircle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-10-21T08:00:00.000Z",
+      "description": "Aluminium Bahrain (Alba) strengthened its engagement with the global aluminium and metals industry at LME Week.",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "Bahrain"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "d54f77f62624",
+      "title": "EWA leads August contract awards in Bahrain",
+      "url": "https://www.utilities-me.com/news/bahrains-ewa-awards-five-grid-contracts",
+      "publisher": "Utilities Middle East",
+      "publisherUrl": "https://www.utilities-me.com",
+      "published": "2026-10-21T08:00:00.000Z",
+      "description": "EWA led Bahrain's August Official Gazette awards, headed by Iljin Electric's Sitra feeder cable works and Hitachi Energy's substation transformers.",
+      "categories": [
+        "projects",
+        "orders"
+      ],
+      "regions": [
+        "Bahrain"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "864bde0449ea",
+      "title": "Taihan Cable & Solution secures U.S. ultra-high-voltage power grid project",
+      "url": "https://www.chosun.com/english/industry-en/2026/10/15/V4UQLMXZKFHM7G4P2263UOL4RQ/",
+      "publisher": "Chosun Ilbo",
+      "publisherUrl": "https://www.chosun.com",
+      "published": "2026-10-15T08:00:00.000Z",
+      "description": "Taihan will supply 120 billion won in cables for a turnkey ultra-high-voltage grid project in the United States.",
+      "categories": [
+        "orders"
+      ],
+      "regions": [
+        "North America"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "45bf93825d2b",
+      "title": "Egypt's Elsewedy Electric, China's Sinohydro sign $2.2bn Saudi power plant contract",
+      "url": "https://www.arabnews.com/business/egypts-elsewedy-electric-chinas-sinohydro-sign-22bn-saudi-power-plant-contract-3006269",
+      "publisher": "Arab News",
+      "publisherUrl": "https://www.arabnews.com",
+      "published": "2026-10-14T08:00:00.000Z",
+      "description": "A consortium of Egypt's Elsewedy Electric and China's Sinohydro has secured a $2.2 billion contract to expand Saudi Arabia's Rabigh 2 independent power plant.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Saudi",
+        "China",
+        "Africa"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "c66d8a3e3a45",
+      "title": "Acciona awarded $455m contract for WA's Clean Energy Link – East project",
+      "url": "https://www.worldconstructionnetwork.com/news/acciona-awarded-clean-energy-link-east/",
+      "publisher": "World Construction Network",
+      "publisherUrl": "https://www.worldconstructionnetwork.com",
+      "published": "2026-10-14T08:00:00.000Z",
+      "description": "Acciona will deliver a significant component of the Clean Energy Link – East transmission project in Western Australia, valued at A$655m.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Australia"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "d1a60dbcdf32",
+      "title": "Alba connects with the global aluminium industry at ALUMINIUM 2026",
+      "url": "https://www.zawya.com/en/press-release/events-conferences/alba-connects-with-the-global-aluminium-industry-at-aluminium-2026-1544128",
+      "publisher": "Zawya",
+      "publisherUrl": "https://www.zawya.com",
+      "published": "2026-10-07T08:00:00.000Z",
+      "description": "Aluminium Bahrain is owned by Bahrain Mumtalakat (69.38%), Ma'aden (20.62%) and the public (10%).",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "Bahrain"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    },
+    {
+      "id": "89d02cd1739e",
+      "title": "L&T secures mega power transmission orders in Saudi Arabia, UAE and India",
+      "url": "https://www.saudigulfprojects.com/2026/10/lt-secures-mega-power-transmission-orders-in-saudi-arabia-uae-and-india/",
+      "publisher": "Saudi Gulf Projects",
+      "publisherUrl": "https://www.saudigulfprojects.com",
+      "published": "2026-10-04T08:00:00.000Z",
+      "description": "L&T secures EPC orders across Saudi Arabia, UAE and India, including 380 kV transmission and substation projects in Saudi Arabia to support grid expansion.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Saudi",
+        "UAE",
+        "India"
+      ],
+      "firstSeen": "2026-11-04T06:30:00.000Z"
+    }
+  ]
+}
