@@ -38,11 +38,20 @@ conductor work, it appears under the competitor table so you can decide whether 
 
 1. **Prices**: reads the LME official cash, 3-month and stock values for aluminium and copper.
    It keeps about 2 years of history.
-2. **News**: runs about 100 Google News searches. These include one per competitor, project
+2. **News**: runs about 120 Google News searches. These include one per competitor, project
    searches for each of the eight markets (`MARKETS`), GCC utility and government searches, and
-   site-specific searches for SaudiGulf Projects, Utilities ME, Zawya, Argaam and GCC Tender News. Eight of the searches are in **Arabic**, because Saudi
-   awards and Tadawul disclosures often appear there first. It also reads the RSS feeds of
-   **SaudiGulf Projects**, **GCC Tender News** and **Utilities Middle East** directly.
+   site-specific searches for SaudiGulf Projects, Utilities ME, Zawya, Argaam, GCC Tender News,
+   Global Transmission Report, reNEWS, Energy Live News and Daily Commercial News. Europe has
+   14 searches (UK, Western, Nordic and Eastern European grid operators, interconnectors,
+   EU grid policy, cable plants), including German and French ones. Canada has 11 searches
+   (provincial utilities, OEB/AESO/IESO approvals, interties, federal funding), including
+   French-Canadian ones.
+   **Tender databases**: the EU's TED API (power cables, cables, power-line construction CPV
+   codes) and CanadaBuys' daily open-data CSV of federal tenders, filtered for grid and cable
+   notices. Their stage (Tender or Award) comes from the notice type. Eight of the searches are in **Arabic**, because Saudi
+   awards and Tadawul disclosures often appear there first. It also reads five RSS feeds directly:
+   **SaudiGulf Projects**, **GCC Tender News**, **Utilities Middle East**, **offshoreWIND.biz**
+   (Europe) and **Electrical Business** (Canada).
 3. **Classification**: each item is matched against category rules, tagged with regions and with
    about 60 companies (`COMPANIES`), and given a deal stage and the first money amount in the
    headline. Off-topic items, such as water, sewerage and pipelines with no grid content, are
@@ -94,7 +103,10 @@ this is merged to `master`. To run it by hand, use **Actions → Cables market w
   Etimad and the other tender portals need a login or an API, so they are linked under Sources.
 - The project tracker is only as current as its last hand edit. Each card shows its `asOf` date.
 - Prices are LME official end-of-day values, not intraday quotes.
+- The TED and CanadaBuys readers follow the publicly documented formats, but they had not been
+  run live when this was written. If a format differs, the run logs the reason (for CanadaBuys,
+  the CSV headers it found) and carries on without that source. Check the first workflow log.
 - Market tags come from place names, so a headline that mentions a contractor's nationality
   (for example "China's Sinohydro") also gets that market.
 - The data in this commit is a seed: LME data from 3 Aug to 3 Nov 2026, 41 verified news items,
-  and 28 tracked projects. The first workflow run looks back 30 days and fills the feeds.
+  and 38 tracked projects (6 in Europe, 7 in Canada). The first workflow run looks back 30 days and fills the feeds.

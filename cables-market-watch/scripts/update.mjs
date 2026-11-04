@@ -100,6 +100,13 @@ export const COMPANIES = [
   ["EDP", "contractor", /\bedp\b/i],
   ["CYMI / Celeo", "contractor", /\bcymi\b|celeo/i],
   ["Jacobs / WSP", "contractor", /\bjacobs\b|\bwsp\b/i],
+  ["Dalekovod", "contractor", /dalekovod/i],
+  ["Eltel", "contractor", /\beltel\b/i],
+  ["Electromontaj", "contractor", /electromontaj/i],
+  ["Aldesa", "contractor", /\baldesa\b/i],
+  ["Caverion", "contractor", /caverion/i],
+  ["Končar", "contractor", /kon[cč]ar/i],
+  ["Valard / Quanta", "contractor", /valard|quanta services/i],
   // Utilities and procurers
   ["Saudi Energy (SEC)", "utility", /saudi energy\b|saudi electricity|\bsec\b(?=.*(?:power|grid|substation|transmission|kv))|الشركة السعودية للكهرباء|السعودية للطاقة/i],
   ["National Grid SA", "utility", /national grid sa\b|national grid saudi/i],
@@ -115,8 +122,10 @@ export const COMPANIES = [
   ["Iraq Ministry of Electricity", "utility", /iraq(?:i)? ministry of electricity|وزارة الكهرباء العراقية/i],
   ["Eskom / NTCSA", "utility", /eskom|\bntcsa\b/i],
   ["National Grid (UK)", "utility", /national grid(?! sa| saudi)|great grid upgrade/i],
-  ["TenneT / EU TSOs", "utility", /tennet|amprion|50hertz|transnetbw|\brte\b|terna\b|red el[eé]ctrica/i],
+  ["TenneT / EU TSOs", "utility", /tennet|amprion|50hertz|transnetbw|\brte\b|terna\b|red el[eé]ctrica|\belia\b|statnett|fingrid|energinet|svenska kraftn[aä]t|eirgrid|\bpse\b|transelectrica|\bems\b(?= serbia|.{0,30}transmission)|\bren\b(?= .{0,20}(?:grid|transmission))|\bapg\b|swissgrid|\bipto\b|\bmavir\b|\bčeps\b|\bceps\b|litgrid|\belering\b|\bast\b(?= latvia)|\bhops\b|\beso\b(?= bulgaria)/i],
+  ["UK grid owners (SSEN / SPEN)", "utility", /\bssen\b|scottish and southern electricity|\bspen\b|scottish ?power energy networks|\bneso\b/i],
   ["BC Hydro / Hydro-Québec", "utility", /bc hydro|hydro-qu[eé]bec|hydro one|altalink|manitoba hydro/i],
+  ["Other Canadian grid operators", "utility", /\baeso\b|\bieso\b|saskpower|nb power|nova scotia power|newfoundland and labrador hydro|nalcor|\batco\b|epcor|fortisbc|fortis alberta|\bfortis\b|ontario energy board|\boeb\b|canada infrastructure bank/i],
   ["AEP / US grid operators", "utility", /\baep\b|american electric power|oncor|\bercot\b|\bpjm\b|\bmiso\b/i],
   ["ANEEL (Brazil)", "utility", /aneel/i],
   // Aluminium producers
@@ -132,14 +141,14 @@ export const detectCompanies = (text) => COMPANIES.filter((c) => c.re.test(text)
 
 // ================================================================ categories
 
-const ENERGY = /power|electric|grid|transmission|substation|cable|conductor|\d\s?kv\b|solar|wind|energy|utilit|interconnect|كهرب|كابل|طاقة|شمسي|رياح/i;
+const ENERGY = /power|electric|grid|transmission|substation|cable|conductor|\d\s?kv\b|solar|wind|energy|utilit|interconnect|kabel|strom|netz|énergie|électri|câble|réseau|كهرب|كابل|طاقة|شمسي|رياح/i;
 
 // match: text must match for the item to carry the category. needs: an extra requirement.
 // queries: Google News searches that feed the category ([query, lang]).
 export const CATEGORIES = {
   projects: {
     label: "Grid projects & awards",
-    match: /transmission|substation|\bgrid\b|interconnect|overhead (?:line|transmission)|power line|\d\s?kv\b|\bhvdc\b|bulk supply|feeder cable|distribution network|electrification|نقل الكهرباء|محطة تحويل|محطات تحويل|الربط الكهربائي|خطوط? نقل|الشبكة/i,
+    match: /transmission|substation|\bgrid\b|interconnect|overhead (?:line|transmission)|power line|\d\s?kv\b|\bhvdc\b|bulk supply|feeder cable|distribution network|electrification|ligne (?:de transport|à haute tension|électrique)|poste (?:de transformation|électrique)|freileitung|übertragungsnetz|umspannwerk|netzausbau|stromtrasse|höchstspannung|نقل الكهرباء|محطة تحويل|محطات تحويل|الربط الكهربائي|خطوط? نقل|الشبكة/i,
     queries: [
       '(transmission line OR substation OR "overhead line" OR "grid project") (Saudi OR UAE OR Bahrain OR Qatar OR Oman OR Kuwait) (contract OR awarded OR wins)',
       '("Saudi Energy" OR "Saudi Electricity" OR "National Grid SA") (transmission OR substation OR "380 kV" OR "132 kV" OR "BSP")',
@@ -157,7 +166,7 @@ export const CATEGORIES = {
   },
   tenders: {
     label: "Tenders & bids",
-    match: /tender|\bbids?\b|bidder|\brfp\b|\brfq\b|prequalif|pre-qualif|expressions? of interest|\beoi\b|invites? (?:bids|offers)|مناقص|ترسية|منافسة/i,
+    match: /tender|\bbids?\b|bidder|\brfp\b|\brfq\b|prequalif|pre-qualif|expressions? of interest|\beoi\b|invites? (?:bids|offers)|appel d['’]offres|ausschreibung|vergabe|مناقص|ترسية|منافسة/i,
     needs: ENERGY,
     queries: [
       '(tender OR bids OR prequalification) (substation OR "transmission line" OR "power cables" OR "overhead line") (Saudi OR UAE OR Bahrain OR Qatar OR Oman OR Kuwait)',
@@ -236,12 +245,15 @@ export const CATEGORIES = {
   },
 };
 
-// Direct RSS feeds from GCC trade sites. Their items cover every sector, so each item must
-// match at least one category to be kept.
+// Direct RSS feeds from trade sites (each confirmed to serve RSS on 4 Nov 2026). Their items cover
+// every sector, so each item must match at least one category to be kept. market: fallback market
+// for items that name no place.
 export const FEEDS = [
-  { name: "SaudiGulf Projects", url: "https://www.saudigulfprojects.com/feed/" },
-  { name: "GCC Tender News", url: "https://gcctendernews.com/feed/" },
-  { name: "Utilities Middle East", url: "https://www.utilities-me.com/feed" },
+  { name: "SaudiGulf Projects", url: "https://www.saudigulfprojects.com/feed/", market: "Middle East" },
+  { name: "GCC Tender News", url: "https://gcctendernews.com/feed/", market: "Middle East" },
+  { name: "Utilities Middle East", url: "https://www.utilities-me.com/feed", market: "Middle East" },
+  { name: "offshoreWIND.biz", url: "https://www.offshorewind.biz/feed/", market: "Europe" },
+  { name: "Electrical Business (Canada)", url: "https://www.ebmag.com/feed/", market: "Canada" },
 ];
 
 // Markets: each has country/region patterns (for tagging) and project searches (for collecting).
@@ -297,22 +309,42 @@ export const MARKETS = {
     regions: {
       "UK & Ireland": /\buk\b|britain|british(?! columbia)|england|scotland|wales|ireland|national grid(?! sa| saudi)|\bssen\b|great grid upgrade/i,
       "Western Europe": /german|france|french|\bital|spain|spanish|portugal|netherlands|dutch|belgi|austria|switzerland|tennet|amprion|50hertz|\brte\b|terna\b/i,
-      "Nordics & Eastern Europe": /norway|sweden|denmark|finland|poland|romania|bulgaria|greece|hungary|czech|baltic|ukraine|serbia|croatia/i,
-      Europe: /europe|\beu\b|entso/i,
+      "Nordics & Eastern Europe": /norway|norwegian|sweden|swedish|denmark|danish|finland|finnish|iceland|poland|polish|romania|bulgaria|greece|greek|hungary|czech|slovak|slovenia|baltic|estonia|latvia|lithuania|ukraine|serbia|croatia|bosnia|montenegro|albania|north macedonia|moldova|statnett|fingrid|energinet|svenska kraftn|transelectrica/i,
+      Europe: /europe|\beu\b|entso|ten-e|\bpci\b|\beib\b/i,
     },
     queries: [
       '("National Grid" OR SSEN OR "Great Grid Upgrade" OR SPEN) ("overhead line" OR pylons OR "400 kV") (contract OR consent OR construction)',
       '(TenneT OR Amprion OR 50Hertz OR TransnetBW OR RTE OR Terna OR "Red Eléctrica" OR PSE OR Statnett) ("overhead line" OR "transmission line" OR "380 kV") contract',
       '(Europe OR EU) (reconductoring OR HTLS OR "overhead line" OR "grid expansion") (contract OR order OR investment)',
+      '(Elia OR Fingrid OR Energinet OR "Svenska kraftnät" OR EirGrid OR REN OR APG OR Swissgrid) ("transmission line" OR "overhead line" OR "400 kV" OR substation) (contract OR tender OR awarded)',
+      '(Transelectrica OR PSE OR MAVIR OR ČEPS OR ELES OR HOPS OR EMS OR IPTO OR Litgrid OR Elering) ("400 kV" OR "transmission line" OR substation) (contract OR awarded OR construction)',
+      '(SSEN OR SPEN OR "National Grid" OR NESO) (ASTI OR "accelerated strategic transmission" OR "Great Grid Upgrade" OR "Eastern Green Link") contract',
+      '(interconnector OR HVDC) (Europe OR UK OR Ireland OR Germany OR Norway OR France) (contract OR awarded OR "final investment decision" OR order)',
+      '("European Grids Package" OR "grid action plan" OR TEN-E OR "projects of common interest" OR "EIB") electricity grid (investment OR financing OR loan)',
+      '("cable factory" OR "cable plant" OR "conductor plant" OR "wire rod") Europe (investment OR expansion OR capacity OR new)',
+      'site:globaltransmission.info (Europe OR "400 kV" OR "overhead line")',
+      'site:renews.biz (grid OR cable OR transmission)',
+      'site:energylivenews.com (grid OR transmission OR cable)',
+      ['(Freileitung OR Höchstspannung OR Netzausbau OR Übertragungsnetz OR Umspannwerk) (Auftrag OR Vergabe OR Ausschreibung OR Baustart)', "de"],
+      ['(RTE OR "ligne à haute tension" OR "ligne 400 kV" OR "poste électrique") (contrat OR "appel d’offres" OR chantier OR attribué)', "fr-FR"],
     ],
   },
   Canada: {
     regions: {
-      Canada: /canad|qu[eé]bec|ontario|british columbia|\bb\.c\.|alberta|saskatchewan|manitoba|newfoundland|labrador|nova scotia|new brunswick|bc hydro|hydro-qu|hydro one|altalink/i,
+      Canada: /canad|qu[eé]bec|ontario|british columbia|\bb\.c\.|alberta|saskatchewan|manitoba|newfoundland|labrador|nova scotia|new brunswick|prince edward island|yukon|northwest territories|nunavut|bc hydro|hydro-qu|hydro one|altalink|\baeso\b|\bieso\b|saskpower|nb power|\boeb\b|ottawa|toronto|montr[eé]al|vancouver|calgary|edmonton|winnipeg|sudbury/i,
     },
     queries: [
       '("Hydro-Québec" OR "BC Hydro" OR "Hydro One" OR AltaLink OR SaskPower OR "Manitoba Hydro" OR "Nova Scotia Power" OR "Newfoundland and Labrador Hydro") transmission line',
       'Canada "transmission line" (construction OR approval OR contract OR "500 kV" OR "230 kV")',
+      '(AESO OR IESO OR "NB Power" OR ATCO OR EPCOR OR FortisBC OR "Yukon Energy" OR "NT Hydro") (transmission OR substation OR "kV") (approval OR contract OR procurement)',
+      '("Ontario Energy Board" OR OEB) ("leave to construct" OR "transmission line") Hydro One',
+      '("Canada Infrastructure Bank" OR "clean electricity investment tax credit" OR "Clean Electricity Regulations") (transmission OR grid OR intertie)',
+      '("Hydro-Québec" OR Québec) ("Action Plan 2035" OR "735 kV" OR "line" OR "tender") transmission',
+      '(intertie OR interconnection) (Canada OR Alberta OR "British Columbia" OR Manitoba OR Saskatchewan OR Atlantic) electricity (approval OR construction OR funding)',
+      '(Canada OR Canadian) (cable OR conductor OR "wire") (plant OR manufacturer OR expansion OR order) ("Northern Cables" OR Nexans OR Prysmian OR Southwire OR "General Cable")',
+      'site:ebmag.com (transmission OR cable OR utility)',
+      'site:dailycommercialnews.com ("transmission line" OR substation OR hydro)',
+      ['("Hydro-Québec" OR Québec) ("ligne de transport" OR "poste" OR "735 kV") (contrat OR "appel d’offres" OR travaux)', "fr-CA"],
     ],
   },
   USA: {
@@ -503,7 +535,8 @@ export function mergeNews(existing, fetched, now = Date.now()) {
       companies,
       actor: detectActor(raw.title),
       // A deal stage only means something for project, tender and company news.
-      stage: categories.some((c) => DEAL_CATEGORIES.has(c)) ? detectStage(raw.title, raw.description) : null,
+      // Official tender notices carry their own stage (from the notice type); news is read from the headline.
+      stage: raw.stage ?? (categories.some((c) => DEAL_CATEGORIES.has(c)) ? detectStage(raw.title, raw.description) : null),
       value: detectValue(raw.title) ?? detectValue(raw.description),
       lang: isArabic(raw.title) ? "ar" : "en",
       firstSeen: prev?.firstSeen ?? new Date(now).toISOString(),
@@ -516,10 +549,134 @@ export function mergeNews(existing, fetched, now = Date.now()) {
     .slice(0, MAX_NEWS);
 }
 
+// Google News editions by query language.
+const EDITIONS = {
+  en: "hl=en-US&gl=US&ceid=US:en",
+  ar: "hl=ar&gl=SA&ceid=SA:ar",
+  de: "hl=de&gl=DE&ceid=DE:de",
+  "fr-FR": "hl=fr&gl=FR&ceid=FR:fr",
+  "fr-CA": "hl=fr-CA&gl=CA&ceid=CA:fr",
+};
 const feedUrl = (q, lang, window) => {
-  const params = lang === "ar" ? "hl=ar&gl=SA&ceid=SA:ar" : "hl=en-US&gl=US&ceid=US:en";
+  const params = EDITIONS[lang] ?? EDITIONS.en;
   return `https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:${window}`)}&${params}`;
 };
+
+// ================================================================ official tender databases
+
+// EU: TED (Tenders Electronic Daily) public search API — no key needed for published notices.
+// CPV codes: 31320000 power distribution cables, 31321000 power cable (incl. HV), 44321000 cable,
+// 45231400 construction work for electricity power lines. Parent codes include their children.
+export const TED_URL = "https://api.ted.europa.eu/v3/notices/search";
+export const TED_CPV = ["31320000", "31321000", "44321000", "45231400"];
+const pickText = (v) => {
+  if (v == null) return "";
+  if (typeof v === "string") return v;
+  if (Array.isArray(v)) return pickText(v[0]);
+  if (typeof v === "object") return pickText(v.eng ?? v.ENG ?? v.en ?? Object.values(v)[0]);
+  return String(v);
+};
+export function tedQuery(sinceDays = 7, now = Date.now()) {
+  const d = new Date(now - sinceDays * 86_400_000).toISOString().slice(0, 10).replace(/-/g, "");
+  return `classification-cpv IN (${TED_CPV.join(" ")}) AND publication-date>=${d} SORT BY publication-date DESC`;
+}
+export function parseTED(json) {
+  return (json?.notices ?? []).map((n) => {
+    const id = pickText(n["publication-number"]);
+    const title = pickText(n["notice-title"]).replace(/\s+/g, " ").trim();
+    const buyer = pickText(n["buyer-name"]);
+    const country = pickText(n["buyer-country"]);
+    const type = pickText(n["notice-type"]);
+    const award = /can|award/i.test(type);
+    return {
+      title,
+      url: `https://ted.europa.eu/en/notice/-/detail/${id}`,
+      publisher: "TED (EU tenders)",
+      publisherUrl: "https://ted.europa.eu",
+      published: new Date(Date.parse(pickText(n["publication-date"]).slice(0, 10)) || Date.now()).toISOString(),
+      description: `${award ? "Contract award notice" : "Contract notice"} on TED, the EU tender database. Buyer: ${buyer || "n/a"}${country ? ` (${country})` : ""}. Category: power cables and power-line construction (EU tender).`,
+      category: "tenders",
+      market: "Europe",
+      stage: award ? "Award" : "Tender",
+    };
+  }).filter((i) => i.title && !i.url.endsWith("/"));
+}
+async function fetchTED() {
+  const res = await fetch(TED_URL, {
+    method: "POST",
+    headers: { "content-type": "application/json", accept: "application/json", "user-agent": UA },
+    body: JSON.stringify({
+      query: tedQuery(),
+      fields: ["publication-number", "notice-title", "buyer-name", "buyer-country", "publication-date", "notice-type"],
+      limit: 100,
+      page: 1,
+    }),
+    signal: AbortSignal.timeout(30_000),
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status} ${(await res.text()).slice(0, 200)}`);
+  return parseTED(await res.json());
+}
+
+// Canada: CanadaBuys open data — federal tender notices published in the last day (CSV, bilingual headers).
+export const CANADABUYS_URL = "https://canadabuys.canada.ca/opendata/pub/newTenderNotice-nouvelAvisAppelOffres.csv";
+const GRID_TENDER = /cable|conductor|transmission line|power line|substation|switchgear|transformer|\bkv\b|high voltage|electrical (?:power|distribution)|câble|ligne de transport|poste électrique/i;
+export function parseCSV(text) {
+  const rows = [];
+  let row = [], field = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
+      else if (c === '"') q = false;
+      else field += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") { row.push(field); field = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      row.push(field); field = "";
+      if (row.length > 1 || row[0]) rows.push(row);
+      row = [];
+    } else field += c;
+  }
+  if (field || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+export function parseCanadaBuys(text) {
+  const [header, ...rows] = parseCSV(text.replace(/^\uFEFF/, ""));
+  if (!header) throw new Error("empty CSV");
+  const col = (...res) => header.findIndex((h) => res.some((re) => re.test(h)));
+  const iTitle = col(/^title.*eng/i, /title/i);
+  const iDate = col(/publicationdate/i, /publication.?date/i, /date.?published/i);
+  const iUrl = col(/noticeurl.*eng/i, /url.*eng/i, /url/i);
+  const iRef = col(/referencenumber/i, /solicitationnumber/i);
+  const iCat = col(/gsindescription.*eng/i, /unspscdescription.*eng/i, /gsin.*eng/i, /unspsc.*eng/i, /category.*eng/i);
+  const iBuyer = col(/contractingentityname.*eng/i, /organization.*eng/i, /entity.*eng/i);
+  if (iTitle < 0) throw new Error(`no title column; headers: ${header.slice(0, 40).join(" | ")}`);
+  return rows
+    .map((r) => {
+      const title = (r[iTitle] ?? "").trim();
+      const cat = iCat >= 0 ? (r[iCat] ?? "").trim() : "";
+      const ref = iRef >= 0 ? (r[iRef] ?? "").trim() : "";
+      const url = (iUrl >= 0 && (r[iUrl] ?? "").trim()) || (ref ? `https://canadabuys.canada.ca/en/tender-opportunities?search_filter=${encodeURIComponent(ref)}` : "");
+      return {
+        title,
+        url,
+        publisher: "CanadaBuys",
+        publisherUrl: "https://canadabuys.canada.ca",
+        published: new Date(Date.parse((iDate >= 0 ? r[iDate] : "") ?? "") || Date.now()).toISOString(),
+        description: `Canadian federal tender notice (CanadaBuys). Buyer: ${(iBuyer >= 0 && r[iBuyer]) || "n/a"}. Category: ${cat || "n/a"}. Canada.`,
+        category: "tenders",
+        market: "Canada",
+        stage: "Tender",
+        _match: `${title} ${cat}`,
+      };
+    })
+    .filter((i) => i.title && i.url && GRID_TENDER.test(i._match))
+    .map(({ _match, ...i }) => i);
+}
+async function fetchCanadaBuys() {
+  return parseCanadaBuys(await get(CANADABUYS_URL));
+}
 
 // ================================================================ main
 
@@ -581,7 +738,7 @@ async function updateNews() {
         const items = parseItems(await get(feedUrl(q, lang, window))).map((i) => ({ ...i, category }));
         fetched.push(...items);
         ok += 1;
-        console.log(`[news ${category}${lang === "ar" ? " ar" : ""}] ${items.length} results`);
+        console.log(`[news ${category}${lang === "en" ? "" : ` ${lang}`}] ${items.length} results`);
       } catch (err) {
         console.warn(`[news ${category}] failed: ${err.message}`);
       }
@@ -589,12 +746,13 @@ async function updateNews() {
     }
   }
   for (const [market, { queries }] of Object.entries(MARKETS)) {
-    for (const q of queries) {
+    for (const entry of queries) {
+      const [q, lang] = Array.isArray(entry) ? entry : [entry, "en"];
       try {
-        const items = parseItems(await get(feedUrl(q, "en", window))).map((i) => ({ ...i, category: "projects", market }));
+        const items = parseItems(await get(feedUrl(q, lang, window))).map((i) => ({ ...i, category: "projects", market }));
         fetched.push(...items);
         ok += 1;
-        console.log(`[projects ${market}] ${items.length} results`);
+        console.log(`[projects ${market}${lang === "en" ? "" : ` ${lang}`}] ${items.length} results`);
       } catch (err) {
         console.warn(`[projects ${market}] failed: ${err.message}`);
       }
@@ -603,12 +761,23 @@ async function updateNews() {
   }
   for (const feed of FEEDS) {
     try {
-      const items = parseItems(await get(feed.url), feed.name, new URL(feed.url).origin);
+      const items = parseItems(await get(feed.url), feed.name, new URL(feed.url).origin).map((i) => ({ ...i, market: feed.market }));
       fetched.push(...items);
       ok += 1;
       console.log(`[feed ${feed.name}] ${items.length} items`);
     } catch (err) {
       console.warn(`[feed ${feed.name}] failed: ${err.message}`);
+    }
+  }
+  // Official tender databases (EU and Canada). Each is optional: a failure is logged and skipped.
+  for (const [name, fn] of [["TED (EU tenders)", fetchTED], ["CanadaBuys", fetchCanadaBuys]]) {
+    try {
+      const items = await fn();
+      fetched.push(...items);
+      ok += 1;
+      console.log(`[tenders ${name}] ${items.length} matching notices`);
+    } catch (err) {
+      console.warn(`[tenders ${name}] failed: ${err.message}`);
     }
   }
   if (ok) {
