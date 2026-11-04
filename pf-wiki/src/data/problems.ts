@@ -1098,6 +1098,589 @@ export const PROBLEMS: ProblemEntry[] = [
     lastVerified: "2026-09-16",
     tags: ["vpf", "voluntary contribution", "wage ceiling", "tax", "2.5 lakh"],
   },
+  {
+    slug: "certificate-of-coverage-international-workers",
+    category: "contributions",
+    title: "Getting a Certificate of Coverage (COC) for working abroad",
+    short:
+      "If you're being posted abroad to a country with a Social Security Agreement with India, a Certificate of Coverage exempts you from that country's social security contributions — but it's issued through your employer, not you directly, and getting one while already stuck abroad is much harder.",
+    symptoms: [
+      "Employer or foreign client is asking for a Certificate of Coverage before an overseas posting",
+      "Confusion about whether PF contributions continue while working in another country",
+      "Locked out of the EPFO International Workers portal while urgently needing a COC for a visa/employment process",
+    ],
+    likelyCauses: [
+      "The COC is only available for countries that have signed a Social Security Agreement (SSA) with India (e.g. Germany, Japan, Belgium, several EU states) — without an SSA, no COC exists and host-country social security is generally payable separately",
+      "The COC must be applied for by the Indian employer through the EPFO International Workers portal, using the same login as the Unified Portal (Employer) — an individual employee cannot apply for it directly",
+      "Applying only after the employee is already posted abroad, rather than before departure, routinely causes delays since the application and supporting documents (deputation letter, passport, visa) are harder to coordinate remotely",
+    ],
+    fixSteps: [
+      "Confirm India has an SSA with the destination country — EPFO's International Workers page lists them; no SSA means no COC applies.",
+      "Have your Indian employer (not you) apply via the EPFO International Workers employer portal, well before departure, attaching the deputation order and passport/visa details.",
+      "Keep PF contributions running in India as normal during the posting — the COC exempts you from the host country's scheme, not from Indian EPF, and International Workers typically cannot withdraw PF until retirement age (58) rather than on leaving India.",
+      "If you're already abroad and locked out, ask your employer's HR/payroll team to raise the EPFO International Workers portal request on your behalf rather than trying to self-serve it as an employee.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia thread on this exact problem confirms the mechanism: \"Is there any way to get a certificate of coverage issued by EPFO or any other entity that is authorised to issue a certificate of coverage?\" — replies point to the employer-side International Workers portal as the only route, not a direct employee application.",
+      "A r/epfoindiahelp post from someone stuck abroad (\"I need to get a Certificate of Coverage (COC) from EPFO urgently — it's required for an employment/visa process abroad\") illustrates why applying before departure, through the employer, avoids the scramble of doing it remotely once already posted overseas.",
+    ],
+    officialEscalation: [
+      "Employer applies and tracks status via the EPFO International Workers portal (international workers login, separate from the regular member/employer unified portal).",
+      "For SSA country list and eligibility rules, refer to EPFO's own International Workers — Social Security Agreements page.",
+    ],
+    sources: [
+      { title: "International Workers - Social Security Agreements — EPFO", url: "https://www.epfo.gov.in/international-workers/" },
+      { title: "Certificate of coverage (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1u68hn1/certificate_of_coverage/" },
+      { title: "Need Certificate of Coverage (COC) urgently, but locked out of EPFO (r/epfoindiahelp)", url: "https://www.reddit.com/r/epfoindiahelp/comments/1vn068p/need_certificate_of_coverage_coc_urgently_but/" },
+      { title: "International Worker Status, CoC Rules, and the EPFO Portal in India — Beacon Filing", url: "https://beaconfiling.com/blog/india-pf-esi-rules-international-workers-detail" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["international workers", "certificate of coverage", "COC", "social security agreement", "overseas posting"],
+  },
+  {
+    slug: "inoperative-dormant-pf-account",
+    category: "passbook",
+    title: "Does an inoperative/dormant PF account stop earning interest?",
+    short:
+      "A widely repeated myth says PF interest stops after 3 years of no contribution. Since 2016, that's false — an inoperative account keeps earning interest until the member turns 58, as long as the money hasn't been withdrawn.",
+    symptoms: [
+      "No contributions for 36+ months after leaving a job, and uncertainty about whether the balance is still growing",
+      "Online calculators or old articles claiming interest stops after 3 years of inactivity",
+      "Passbook not showing recent interest credits, causing worry that the account has stopped earning",
+    ],
+    likelyCauses: [
+      "Pre-2016 EPFO rules did stop interest on inoperative accounts after 3 years — a huge amount of still-circulating content (articles, forum answers, even some EPFO staff) never caught up with the 2016 reversal of that rule",
+      "An account becomes 'inoperative' (no contributions, member not actively employed/retired) after 36 months, but 'inoperative' only means no further contributions — it does not mean interest stops",
+      "Passbook interest credits are posted annually in a batch (not monthly), so a dormant account can look static for most of the year even while interest is accruing correctly",
+    ],
+    fixSteps: [
+      "Don't rely on the 'interest stops after 3 years' claim — it was true only until an EPFO policy change in 2016; since then, inoperative accounts earn interest until the member reaches 58 years of age.",
+      "Check your passbook after the annual interest-crediting cycle (usually with a lag) rather than assuming a quiet few months means no interest.",
+      "If you've become an NRI or simply haven't withdrawn, the balance keeps compounding tax-free interest until 58 — there's no urgency to withdraw purely to 'lock in' interest.",
+      "After age 58, if the account remains unclaimed, it stops earning interest and is eventually eligible to be transferred to EPFO's Senior Citizens' Welfare Fund if left completely unclaimed for years — so withdraw or transfer before that point.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia clarification nails the actual rule: \"Since 2016, inactive PF accounts (no contributions for 3+ years) still earn interest up to age 58, as long as you haven't withdrawn the funds.\"",
+      "A r/nriFIRE thread asking the same question for NRIs gets the same answer, specifically correcting the EPFO website's own confusingly worded language: people report the portal's phrasing still makes it sound like interest stops, when in practice it continues crediting.",
+      "A r/epfoindia breakdown spells out the two different 36-month concepts people conflate: \"You get interest for 36 months (3 years) after that [becoming inoperative due to leaving a job without new contributions]... Once those 3 years are up, the account goes inoperative\" — inoperative is a status change, not an interest cutoff, per the 2016 rule update.",
+    ],
+    officialEscalation: [
+      "If your passbook genuinely isn't reflecting interest credits after the annual cycle, raise a grievance via EPFiGMS with your UAN and the specific missing financial year.",
+    ],
+    sources: [
+      { title: "Help please - clarification needed (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1mi3id5/help_please_clarification_needed/" },
+      { title: "EPF for NRI – Will interest stop after 3 years of no contribution (r/nriFIRE)", url: "https://www.reddit.com/r/nriFIRE/comments/1pxz2ma/epf_for_nri_will_interest_stop_after_3_years_of/" },
+      { title: "When Your EPF Account Become Inoperative and what to do in that case? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1tgv57e/when_your_epf_account_become_in_operative_and/" },
+      { title: "Clearing Misconceptions About EPF Interest After 3 Years of Inactivity — Finright", url: "https://finright.in/blogs/clearing-misconceptions-about-epf-interest-after-3-years-of-inactivity" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["inoperative account", "dormant", "interest", "36 months", "myth"],
+  },
+  {
+    slug: "uan-mobile-number-update",
+    category: "uan-login",
+    title: "Changing the mobile number linked to your UAN",
+    short:
+      "Your UAN login is tied to a specific mobile number — if it's lost, switched off, or simply outdated, you can still regain access by updating it to the number currently linked to your Aadhaar, through the portal's own forgot-password flow.",
+    symptoms: [
+      "No longer have access to the mobile number the UAN/passbook login OTP is sent to",
+      "Switched phone numbers after changing jobs or over the years and never updated EPFO records",
+      "'Forgot Password' flow seems to only send OTP to the old, inaccessible number",
+    ],
+    likelyCauses: [
+      "EPFO treats the mobile number on file as a security credential tied to the UAN, not something freely editable from a settings page — it can only be changed through specific verification flows",
+      "The simplest path is updating the UAN-linked number to match whatever number is currently linked to your Aadhaar, since Aadhaar-based OTP verification is accepted as proof of identity for the change",
+      "People often assume they need their old (lost) number to make the change, when the portal's forgot-password flow has a branch specifically for 'old number inaccessible'",
+    ],
+    fixSteps: [
+      "Go to the EPFO member portal's 'Forgot Password' option (not a generic profile-edit screen).",
+      "When asked whether you can access the previously registered mobile number, select No / old number inactive.",
+      "Choose to verify via Aadhaar OTP instead — this sends an OTP to whatever mobile number is currently linked to your Aadhaar record.",
+      "Once verified, set a new password and your UAN-linked mobile number updates to match the Aadhaar-linked one going forward.",
+      "If your Aadhaar-linked number is also outdated, update it at an Aadhaar enrolment centre first — the EPFO-side fix depends on Aadhaar being correct.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia answer to someone stuck on this exact issue is direct: \"You can update the mobile number linked to your UAN to mobile number linked to aadhar number. Use forgot password in EPFO member portal.\"",
+      "Another r/epfoindia thread from someone who lost access after a number change confirms the same sequence: \"Go to EPF portal → 'Know your UAN' using your PF number. Then use 'Forgot Password' → choose 'No' if old mobile inactive → update via Aadhaar [OTP]\".",
+    ],
+    officialEscalation: [
+      "If Aadhaar-based recovery also fails (e.g. Aadhaar itself has an outdated or unlinked number), raise a grievance on EPFiGMS with your UAN, or visit the nearest EPFO regional office with ID proof for manual assistance.",
+    ],
+    sources: [
+      { title: "Trying to get help regarding updating my mobile number in UAN (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1rn1bdy/trying_to_get_help_regarding_updating_my_mobile/" },
+      { title: "Unable to access my previous PF account since my mobile number changed (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1oepl2s/unable_to_access_my_previous_pf_account_since_my/" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["mobile number", "UAN login", "forgot password", "aadhaar OTP"],
+  },
+  {
+    slug: "bank-ifsc-mismatch-claim-rejected",
+    category: "claims",
+    title: "Withdrawal approved but money never arrived (IFSC/bank mismatch)",
+    short:
+      "Sometimes a PF claim shows as processed or even deducted from your passbook, but the money never lands in your bank account — usually because the bank rejected the transfer over an IFSC or account-name mismatch, and the funds bounce back to EPFO.",
+    symptoms: [
+      "Passbook shows the withdrawal amount deducted, but bank account shows no credit",
+      "Bank KYC/seeding request rejected with a vague 'IFSC mismatch' reason",
+      "Claim status shows 'payment processed' but days have passed with nothing credited",
+    ],
+    likelyCauses: [
+      "The IFSC code on file is for a branch that has since merged or been renamed (common after bank mergers like Dena Bank/Vijaya Bank into Bank of Baroda) — EPFO's system may hold the old, now-invalid code",
+      "Minor mismatches between the name on the bank account and the name on EPFO/Aadhaar records (initials, spacing, maiden name) can cause the bank to reject the credit even though the account number is correct",
+      "When a bank rejects a credit, the amount is usually returned to the member's EPF account automatically, but this return-and-reattempt cycle isn't always communicated clearly to the member, who just sees a confusing gap",
+    ],
+    fixSteps: [
+      "Double-check the current, correct IFSC for your exact branch — search it on your bank's own website rather than trusting what's saved in EPFO's records, especially after a bank merger.",
+      "Verify the name on your bank account matches your Aadhaar/EPFO name exactly (including initials and spacing) — correct via your bank's name-update process if needed before reseeding.",
+      "If a claim shows processed/deducted but not credited, wait a few business days — bank-rejected transfers are typically returned to the EPF account automatically rather than vanishing.",
+      "Once returned, re-verify and re-seed the corrected bank details on the EPFO portal, then re-submit the claim rather than assuming the money is lost.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia thread titled exactly this scenario gets a clear confirmation: \"Yes, if the IFSC is incorrect and the bank rejects the payment, the funds usually bounce back to your EPF account after the bank initiates a return.\"",
+      "Another r/epfoindia post on a rejected bank update specifically flags the bank-merger trap: an old IFSC that no longer resolves correctly after a merger is a common, easy-to-miss cause of 'IFSC mismatch' rejections.",
+      "A separate r/epfoindia report of KYC bank details being rejected despite a correct-looking name points to subtle formatting mismatches (initials order, missing middle name) as the actual cause — worth checking character-by-character against Aadhaar before re-submitting.",
+    ],
+    officialEscalation: [
+      "If funds don't return to the EPF passbook within a reasonable window after a confirmed bank-side rejection, raise a grievance on EPFiGMS quoting the claim ID and transaction reference.",
+    ],
+    sources: [
+      { title: "PF Claim Deducted from Passbook but Not Credited to Bank (IFSC Issue) (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1nnj61z/pf_claim_deducted_from_passbook_but_not_credited/" },
+      { title: "Withdrawal not credited due to mismatch of IFSC code (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ui0o1j/withdrawal_not_credited_due_to_mismatch_of_ifsc/" },
+      { title: "Bank update rejected due to IFSC mismatch (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1luh6dr/bank_update_rejected_due_to_ifsc_mismatch/" },
+      { title: "KYC bank details getting rejected (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ht3w89/kyc_bank_details_getting_rejected/" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["ifsc mismatch", "bank details", "claim processed not credited", "bank seeding"],
+  },
+  {
+    slug: "epfigms-grievance-not-resolved-escalation",
+    category: "claims",
+    title: "EPFiGMS grievance closed without resolving anything — what next",
+    short:
+      "EPFO's own grievance portal (EPFiGMS) sometimes closes a complaint with a generic response instead of actually fixing the problem. There's a real escalation ladder beyond it — most people just don't know it exists.",
+    symptoms: [
+      "Grievance marked 'resolved' or 'closed' on EPFiGMS with no actual change to the claim/account",
+      "Grievance portal itself not loading, or not accepting a valid UAN",
+      "Repeated grievances on the same issue getting the same templated non-answer",
+    ],
+    likelyCauses: [
+      "A large share of grievances are routed back to the same local/regional PF office that caused the original problem, which can result in a closed loop if that office is slow, understaffed, or (in employer-fault cases) waiting on a non-responsive employer",
+      "EPFiGMS closure doesn't always mean genuine resolution — it can mean the assigned officer logged a reply and closed the ticket regardless of whether the member's actual problem was fixed",
+      "Most members don't realize EPFiGMS isn't the only channel — the central government's CPGRAMS portal can also take PF-related grievances and sits above EPFO's own system in the escalation chain",
+    ],
+    fixSteps: [
+      "Re-file on EPFiGMS first with specifics (claim ID, dates, exact rejection reason) rather than a vague description — specific grievances get better responses than generic ones.",
+      "If EPFiGMS closes it without a real fix, escalate the same issue to CPGRAMS (the central government's cross-department grievance portal) — several members report CPGRAMS escalation forces faster EPFO action than repeating EPFiGMS submissions.",
+      "For employer-fault cases (non-traceable or non-cooperative employer), explicitly state in the grievance that the employer cannot be reached or made to sign documents — this reframes the complaint as one EPFO itself needs to resolve administratively.",
+      "Keep a dated record of every grievance ticket number and reply — it becomes necessary evidence if you need to escalate further (RPFC, or eventually a legal route for large/long-pending amounts).",
+    ],
+    communitySolutions: [
+      "A detailed r/epfoindia success story walks through exactly this path: \"I escalated the grievance, explaining clearly that the employer is non-traceable and I physically cannot get the form signed. The Resolution...\" eventually came after framing it as an administrative EPFO problem, not something the member could fix themselves.",
+      "Another r/epfoindia thread on a grievance closed without resolution gets blunt community advice: \"If there is no response on their end you may raise grievance to EPFO regional office through EPFiGMS/CPGRAMS. There's little EPFO can do except...\" — confirming CPGRAMS as a real next step, not just a formality.",
+      "A r/epfoindia post titled 'How I got my money after rejection' describes the same escalation: \"When EPFO didn't respond properly, I escalated the matter to CPGRAMS... CPGRAMS forced EPFO to act quickly.\"",
+    ],
+    officialEscalation: [
+      "EPFiGMS (pfgrievances.epfo.gov.in) — first-line grievance channel, tied to your UAN.",
+      "CPGRAMS (pgportal.gov.in) — the central government's cross-department grievance system; accepts EPFO-related complaints and can prompt faster action when EPFiGMS alone stalls.",
+      "Regional PF Commissioner (RPFC) office — for in-person escalation when both portals fail to produce movement.",
+    ],
+    sources: [
+      { title: "Finally Resolved! How Raising Grievances Fixed My Stuck PF Claim (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1p3m63c/finally_resolved_how_raising_grievances_fixed_my/" },
+      { title: "EPFO closed my grievance without resolution – employer not traceable (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1nsqa4a/epfo_closed_my_grievance_without_resolution/" },
+      { title: "EPF Withdrawal Success – How I Got My Money After Rejection (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1jk8jy6/epf_withdrawal_success_how_i_got_my_money_after/" },
+      { title: "Issues with EPF grievance portal (r/IndiaTax)", url: "https://www.reddit.com/r/IndiaTax/comments/1j29hy6/issues_with_epf_grievance_portal_epf_feels_like/" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["epfigms", "grievance", "cpgrams", "escalation", "rpfc"],
+  },
+  {
+    slug: "pan-not-linked-higher-tds",
+    category: "tax",
+    title: "Why was 20% (not 10%) TDS deducted on my PF withdrawal?",
+    short:
+      "If your PAN isn't verified/linked to your UAN at the time of withdrawal, EPFO is legally required to deduct TDS at a higher rate — and crucially, it won't warn you beforehand.",
+    symptoms: [
+      "TDS deducted on a PF withdrawal (before 5 years of service) was noticeably higher than the expected 10%",
+      "UAN portal shows PAN status as 'Failed' or with a red marker",
+      "No prior warning from EPFO that a higher TDS rate would apply before the claim was processed",
+    ],
+    likelyCauses: [
+      "If PAN is correctly linked and verified: TDS on taxable withdrawals is 10%. If PAN is not linked/verified: TDS jumps to 20% (this was reduced from an even higher 34.608% penalty rate in an earlier rule change)",
+      "PAN status showing 'Failed' usually means the KYC submission wasn't actually verified by the PAN database — a name/DOB mismatch between PAN and EPFO records is the most common reason",
+      "EPFO processes the claim and applies whatever TDS rate the system calculates at that moment — it does not pause to notify the member that a higher rate is about to apply",
+    ],
+    fixSteps: [
+      "Before filing a claim, check your PAN-linking status on the UAN portal's KYC section — a red/failed status means it has not actually been verified, even if you uploaded PAN details.",
+      "If PAN status shows failed, delete the existing PAN KYC entry and re-submit it, making sure the name and date of birth exactly match the PAN database record.",
+      "If your total income is below the taxable threshold, submit Form 15G (or Form 15H if a senior citizen) before withdrawal to avoid TDS altogether, regardless of PAN status — this works even if the service period is under 5 years, as long as total income is within the exemption limit.",
+      "If TDS at 20% has already been deducted due to PAN not being linked in time, it isn't lost — claim it back by filing an income tax return declaring it as TDS paid.",
+    ],
+    communitySolutions: [
+      "A direct r/epfoindia fix for the 'Linked PAN status is FAIL' issue: \"If there's a red line under your PAN status, it means it hasn't been verified yet. To fix this, delete the existing entry and refile the KYC...\"",
+      "A widely shared r/epfoindia post from someone caught by surprise sums up the core lesson bluntly: \"Withdrew my PF after 3.5 years, got ₹30k cut as TDS. EPFO didn't warn [me] — EPFO is NOT required to warn you beforehand. If PAN was linked: 10% TDS. If not: 20%... there's a simple fix — Form 15G.\"",
+      "A long-running r/epfoindia Q&A thread on PF issues confirms the current rate explicitly: \"...not have a PAN linked, EPFO is legally required to deduct 20% TDS. (This was recently capped at 20%, down from the old 34% penalty rate.)\"",
+    ],
+    officialEscalation: [
+      "PAN-UAN linking issues: fix via the UAN portal's own KYC re-submission flow first; if the portal itself rejects a correct PAN repeatedly, raise it via EPFiGMS.",
+      "Recovering over-deducted TDS: handled through income tax return filing (claim TDS credit), not through EPFO.",
+    ],
+    sources: [
+      { title: "Linked PAN status is FAIL (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ht7m88/linked_pan_status_is_fail/" },
+      { title: "\"Withdrew my PF after 3.5 years, got ₹30k cut as TDS. EPFO didn't warn...\" (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1s2j6sp/withdrew_my_pf_after_35_years_got_30k_cut_as_tds/" },
+      { title: "Stuck with EPFO Issues? Ask Me Your Questions About PF Claims (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1utp4vr/stuck_with_epfo_issues_ask_me_your_questions/" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["TDS", "PAN not linked", "20 percent TDS", "form 15g", "kyc fail"],
+  },
+  {
+    slug: "auto-transfer-not-happening-new-job",
+    category: "transfer",
+    title: "Your PF doesn't auto-transfer to your new job by default",
+    short:
+      "A persistent misconception is that switching jobs automatically moves your old PF balance to the new employer's account. In most cases it still doesn't — you need to actively file a transfer claim, even with EPFO's newer auto-transfer features.",
+    symptoms: [
+      "Assumed the old PF balance would 'just follow' into the new employer's account after joining",
+      "Old PF account still shows the balance months after joining a new company, with no sign of merging",
+      "Confusion about whether submitting Form 11 to the new employer is enough on its own",
+    ],
+    likelyCauses: [
+      "EPFO has introduced auto-transfer functionality that works automatically in many cases, but it isn't universal — it depends on UAN, KYC (especially Aadhaar and bank), and employer-side data all being correctly in sync",
+      "Submitting Form 11 at the new employer mainly declares your existing UAN and PF history to them — it is not, by itself, the mechanism that physically moves the old balance",
+      "When auto-transfer doesn't trigger, the member still needs to file an explicit online transfer claim (Form 13) via the EPFO member portal, choosing attestation by either the old or new employer",
+    ],
+    fixSteps: [
+      "After joining a new job, check your EPFO member portal under the transfer-claim section to see if an auto-transfer was already triggered — don't assume it was.",
+      "If not, file an online transfer claim (Form 13) yourself via the member portal rather than waiting indefinitely for an automatic merge.",
+      "Keep KYC (Aadhaar, PAN, bank) fully verified on your UAN before and after the job switch — this is the single biggest factor in whether auto-transfer actually fires.",
+      "Make sure Form 11 is submitted accurately to the new employer with your correct, existing UAN — a wrongly issued new UAN instead of reusing the old one creates a much bigger mess (see 'Multiple UAN' issues) and blocks any clean transfer.",
+    ],
+    communitySolutions: [
+      "A widely upvoted r/epfoindia post states the myth plainly in its own title: \"Your PF is NOT automatically transferred when you join a new company\" — with replies noting that while auto-transfer exists for some members, it's far from guaranteed.",
+      "A follow-up r/epfoindia thread asking specifically about the auto-transfer feature gets mixed real-world reports: it works for some members whose KYC/UAN data lines up cleanly, and silently fails for others with no clear error message.",
+      "A r/epfoindia explainer on what to actually do states the fallback clearly: \"You go to the EPFO member portal, file an online transfer claim (Form 13), choose attestation by either old or new employer, and submit.\"",
+    ],
+    officialEscalation: [
+      "File/track transfer claims directly through the EPFO member portal's 'One Member - One EPF Account (Transfer Request)' section.",
+      "If a filed transfer claim stalls for an extended period, escalate via EPFiGMS with the transfer claim ID.",
+    ],
+    sources: [
+      { title: "Your PF is NOT automatically transferred when you join a new company (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1tn4j24/your_pf_is_not_automatically_transferred_when_you/" },
+      { title: "Auto-Transfer Feature in EPFO Portal — Anyone Tried It? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1llnv2z/autotransfer_feature_in_epfo_portal_anyone_tried/" },
+      { title: "PF transfer after job switch: Do I need to do anything or is it automatic? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1n3v025/pf_transfer_after_job_switch_do_i_need_to_do/" },
+      { title: "Switched jobs? Your EPF may not transfer automatically unless you meet these conditions — Mint", url: "https://www.livemint.com/money/personal-finance/switched-jobs-your-epf-may-not-transfer-automatically-unless-you-meet-these-conditions-11784869472387.html" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["auto transfer", "form 13", "job switch", "form 11", "myth"],
+  },
+  {
+    slug: "eps-scheme-certificate-under-10-years",
+    category: "pension",
+    title: "Form 10C and the Scheme Certificate: EPS before 10 years of service",
+    short:
+      "If you leave the workforce with less than 10 years of pensionable service, you can withdraw your EPS corpus via Form 10C — but once you cross 10 years, EPS withdrawal is no longer available at all, and you get a Scheme Certificate instead, which preserves your service record for a future pension.",
+    symptoms: [
+      "Form 10C submitted expecting a cash withdrawal, but received a Scheme Certificate instead",
+      "Uncertainty about whether EPS can be withdrawn once total service crosses 10 years",
+      "Trying to figure out whether withdrawing EPS early resets anything for future employment",
+    ],
+    likelyCauses: [
+      "EPS withdrawal via Form 10C is only permitted when total pensionable service is under 10 years at the time of the claim — crossing that threshold anywhere in your career (even across different employers, since it's tracked by cumulative service under the UAN) switches you to Scheme Certificate instead",
+      "A Scheme Certificate is EPFO's way of preserving your accumulated pensionable service for later — it isn't a rejection, it's the correct outcome once 10 years is crossed, since the law doesn't allow cashing out EPS past that point",
+      "Withdrawing EPS before 10 years and later rejoining employment resets the pensionable-service clock — the 10-year countdown starts over from the new employment",
+    ],
+    fixSteps: [
+      "Check your total pensionable service (not just at your current employer, but cumulative under your UAN) before assuming Form 10C will result in a cash payout.",
+      "If service is under 10 years, Form 10C can return the EPS corpus as a lump sum.",
+      "If service is 10 years or more, expect a Scheme Certificate instead of cash — this is correct EPFO behavior, not an error, and it preserves your service history toward an eventual monthly pension.",
+      "If you deliberately want to withdraw EPS before hitting 10 years (e.g. permanently leaving the workforce), understand that doing so resets your pensionable service to zero if you rejoin employment later.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia reply to someone confused about this draws the line clearly: \"Early withdrawal of EPS is only allowed if your service is less than 10 years. So with 18+ years of service, you'll need to wait for pension...\"",
+      "A r/epfoindia thread from someone who submitted Form 10C and got a Scheme Certificate confirms the threshold precisely: \"if your service is 9.5 years then you will get the scheme certificate\" is wrong in that specific case (since 9.5 < 10, cash withdrawal should still apply) — the thread highlights how easy it is to miscalculate total service, since EPFO counts cumulative service across jobs, not just the most recent one.",
+      "A r/epfoindia answer to someone asking if EPS can be stopped before 10 years is direct: \"You can withdraw EPS within 10 years of service. If you do so, the clock resets and the 10 year countdown starts again. If you've crossed 10 [years], [withdrawal is no longer available].\"",
+    ],
+    officialEscalation: [
+      "EPS withdrawal/Scheme Certificate status is checked via the EPFO member portal's claim status for Form 10C.",
+      "Disputes over total pensionable service calculation (e.g. missing service from an old, un-transferred PF account) should be raised via EPFiGMS with details of all previous UANs/member IDs.",
+    ],
+    sources: [
+      { title: "Query on pension Withdrawal (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ncisul/query_on_pension_withdrawal/" },
+      { title: "Submitted form 10C for withdrawal last month and received a scheme certificate (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1nd8nkm/submitted_form_10c_for_withdrawal_last_month_and/" },
+      { title: "Can I discontinue EPS by withdrawing it before 10 years of service? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1tc1svt/can_i_discontinue_eps_by_withdrawing_it_before/" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["EPS", "form 10c", "scheme certificate", "10 years service", "pension withdrawal"],
+  },
+  {
+    slug: "jeevan-pramaan-eps-pensioners",
+    category: "pension",
+    title: "EPS pension stopped despite submitting Jeevan Pramaan (life certificate)",
+    short:
+      "EPFO pensioners must submit an annual Digital Life Certificate (Jeevan Pramaan) to keep their monthly pension flowing. Even after a successful submission, pension sometimes still stops due to a processing gap between Jeevan Pramaan's system and EPFO's own disbursement system.",
+    symptoms: [
+      "Pension payment stopped despite Jeevan Pramaan showing a successful submission confirmation",
+      "Uncertainty about how/where to actually submit the life certificate for EPS specifically",
+      "Pension disbursing bank (e.g. SBI) pushing a separate mandatory process on top of Jeevan Pramaan",
+    ],
+    likelyCauses: [
+      "Jeevan Pramaan confirming submission only means the certificate was generated and uploaded to the central Jeevan Pramaan system — it does not guarantee EPFO's own pension disbursement system has pulled and processed it in time for that month's payment cycle",
+      "Multiple agencies can be involved for a single pensioner (EPFO itself, plus the disbursing bank's own life-certificate requirements) — submitting to one does not automatically satisfy the other",
+      "Biometric capture issues (worn fingerprints in elderly pensioners, device mismatches) during the Jeevan Pramaan biometric step can cause a certificate that looks 'submitted' on the generating device to still fail verification on the backend",
+    ],
+    fixSteps: [
+      "Submit the Digital Life Certificate via the Jeevan Pramaan app (biometric-enabled) or through EPFO's own Jeevan Pramaan portal — both route to the same central system, but using EPFO's own portal/kiosk reduces ambiguity about which scheme it's being filed under.",
+      "If a bank (like SBI) is separately asking for its own life-certificate submission, treat it as an additional requirement — don't assume Jeevan Pramaan alone satisfies the bank's own internal process.",
+      "If biometric capture repeatedly fails (common with elderly pensioners' worn fingerprints), use face-authentication-based Jeevan Pramaan (supported via the mobile app) as an alternative to fingerprint scanning.",
+      "If pension still doesn't resume after a confirmed successful submission, don't just resubmit — contact the specific EPFO regional/pension disbursing office directly, since the gap is often on the processing side, not the submission side.",
+    ],
+    communitySolutions: [
+      "A r/EPFO post describes exactly this failure mode: \"I recently submitted the digital life certificate through Jeevan Pramaan and got the confirmation that it was successfully submitted. It has...\" still resulted in a stopped pension, pointing to a backend processing gap rather than a submission mistake.",
+      "A widely discussed r/india thread on SBI's mandatory online Jeevan Pramaan push highlights that pensioners dealing with multiple institutions (EPFO plus their bank) can get conflicting instructions about which life-certificate process actually governs their payment.",
+    ],
+    officialEscalation: [
+      "EPFO's own Jeevan Pramaan portal (jeevanpramaan.gov.in is the central government system; EPFO also surfaces it via its pensioner portal) for submission.",
+      "If pension doesn't resume after confirmed submission, contact the specific Pension Disbursing Office/regional PF office handling your pension, or raise it via EPFiGMS.",
+    ],
+    sources: [
+      { title: "EPFO pension stopped after April even after submitting life certificate (r/EPFO)", url: "https://www.reddit.com/r/EPFO/comments/1ws7pit/epfo_pension_stopped_after_april_even_after/" },
+      { title: "SBI's mandatory online Jeevan Pramaan initiative (r/india)", url: "https://www.reddit.com/r/india/comments/1p5f2um/sbis_mandatory_online_jeevan_pramaan_initiative_a/" },
+      { title: "Jeevan Pramaan Portal — EPFO", url: "https://www.epfo.gov.in/jeevan-pramaan-portal/" },
+      { title: "Jeevan Pramaan — Life Certificate for Pensioners (Government of India)", url: "http://www.jeevanpramaan.gov.in/" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["jeevan pramaan", "life certificate", "pension stopped", "EPS pensioner", "biometric"],
+  },
+  {
+    slug: "legal-heir-certificate-no-nominee-no-family",
+    category: "nomination",
+    title: "Claiming PF after death with no nominee and no e-nomination filed",
+    short:
+      "If a member dies without ever filing a nomination, EPF and EDLI claims can still be settled — but legal heirs need to prove their claim with a family/legal heir or succession certificate instead of a simple nomination-based claim.",
+    symptoms: [
+      "Member passed away with no nomination (Form 2/e-nomination) ever filed",
+      "Family unsure what documents are needed to claim the PF and EDLI amount without a named nominee",
+      "A nomination was updated after the member's death, and the family isn't sure if it's valid",
+    ],
+    likelyCauses: [
+      "EPFO does not require a nomination to exist for a death claim to be processed — in its absence, the claim is settled based on proof of legal heirship instead",
+      "A nomination form filed or 'updated' after the member has already passed away is not valid — EPFO treats the nomination as needing to have been made by the member while alive, so any claim must go through the legal-heir route instead",
+      "Without a nominee, the specific documents required (family member certificate vs. succession certificate) can depend on the regional office and the complexity of the family situation (e.g. disputes among heirs)",
+    ],
+    fixSteps: [
+      "Confirm there is genuinely no valid, pre-death nomination on file — check with the regional PF office directly rather than relying only on the online portal, since very old nominations may not be digitized.",
+      "Gather a legal heir certificate or family member certificate (issued by local revenue/municipal authorities) establishing the claimants' relationship to the deceased.",
+      "For EDLI (death-linked insurance benefit) claims specifically, the same legal heir documentation generally applies alongside the standard death claim forms.",
+      "If there's any dispute among potential heirs, a succession certificate (issued by a civil court) may be required instead of a simple family member certificate — this is a slower, more involved process, so start it early if any disagreement is likely.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia answer to this exact situation is direct: \"For PF claim without nominee you will need legal heir proof like family member certificate or succession certificate depending on case...\"",
+      "A r/personalfinanceindia thread specifically warns against a late nomination attempt: \"The e-nomination after death won't hold up — EPFO will discard it as invalid since the member was already deceased when it was updated.\"",
+      "A r/epfoindia explainer on member death confirms there's no hard requirement for a nomination to exist at all: \"There is no mandatory requirement of a nomination form in death cases. If nomination is not available, the claim can be settled on the basis of...\" legal heirship instead.",
+    ],
+    officialEscalation: [
+      "File the death claim (Form 20 for PF, Form 10D for pension if applicable, EDLI claim forms) at the relevant regional PF office with legal heir/succession documentation.",
+      "For disputes or unusually slow processing, escalate via EPFiGMS quoting the deceased member's UAN and claim reference.",
+    ],
+    sources: [
+      { title: "Death PF Claim with No Nominee (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1shp6n2/death_pf_claim_with_no_nominee/" },
+      { title: "EPFO CLAIM AFTER DEATH || No E-Nomination (r/personalfinanceindia)", url: "https://www.reddit.com/r/personalfinanceindia/comments/1s33txa/epfo_claim_after_death_no_enomination/" },
+      { title: "What if EPFO Member Passes away! (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1q2wg94/what_if_epfo_member_passes_away/" },
+      { title: "EPF Death Claim Process in India (2026) — Kustodian.life", url: "https://kustodian.life/resources/epf-death-claim-process-india" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["death claim", "no nominee", "legal heir certificate", "succession certificate", "EDLI"],
+  },
+  {
+    slug: "umang-app-passbook-login-failure",
+    category: "uan-login",
+    title: "UMANG app / passbook portal not loading — is it you or EPFO's servers",
+    short:
+      "Repeated 'service unavailable' errors on the UMANG app or the separate PF passbook site are very often an EPFO-side outage affecting many members at once, not a problem with your login — the two systems also fail independently of each other.",
+    symptoms: [
+      "UMANG app shows errors or 'service unavailable' after entering OTP, even with correct credentials",
+      "Passbook website won't load or times out repeatedly, across many login attempts",
+      "One login method works (e.g. the Unified Portal member site) while another (UMANG or the separate passbook site) fails at the same time",
+    ],
+    likelyCauses: [
+      "UMANG and the standalone PF passbook website both depend on EPFO's own backend — when EPFO's infrastructure is degraded or down, both can fail simultaneously regardless of which the member tries",
+      "The passbook site, the UMANG app, and the Unified Portal member login are technically separate front-ends — one being broken doesn't mean all are, which is why switching between them is a reasonable troubleshooting step",
+      "EPFO outages of this kind are usually temporary (hours to about a week in worse cases) and affect large numbers of members at once rather than being specific to one account",
+    ],
+    fixSteps: [
+      "If UMANG fails, try the dedicated passbook website directly in a browser (not the general member portal) — they're separate systems and one working doesn't guarantee the other does.",
+      "If that also fails, try the main Unified Member Portal login (unifiedportal-mem) instead — some members retain access there even while the passbook-specific service is down.",
+      "Avoid repeatedly retrying the exact same failing path dozens of times in a short window — multiple community reports describe this doing nothing except wasting OTP attempts during a genuine backend outage.",
+      "Check r/epfoindia or similar communities for the same day — widespread simultaneous reports are a strong signal it's an EPFO-side outage, not an individual account issue, and usually resolves within days without any action needed from you.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia thread from someone who found a workaround notes: \"I'm unable to login to passbook website or Umang app, but I can login to Unifiedportal-mem site\" — confirming the three systems can fail independently of each other.",
+      "A widely-commented r/epfoindia post titled \"EPFO portal has been inaccessible for over a week\" explicitly notes: \"The UMANG app also depends on EPFO's backend, so it may not work while the services are down\" — reassuring affected members it's systemic, not account-specific.",
+      "Another r/epfoindia report of 40-50 failed passbook attempts got a simple community fix: \"Try through the browser on the pf passbook website. It worked for me in the last few days while the Umang app still showed errors\" — switching front-ends rather than retrying the same one.",
+    ],
+    officialEscalation: [
+      "For outages lasting beyond a few days, or if the issue seems account-specific rather than systemic, raise it via EPFiGMS.",
+    ],
+    sources: [
+      { title: "I'm unable to login to passbook website or Umang app, but... (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1nqrobx/im_unable_to_login_to_passbook_website_or_umang/" },
+      { title: "EPFO portal has been inaccessible for over a week (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ul67ts/epfo_portal_has_been_inaccessible_for_over_a_week/" },
+      { title: "Cannot access passbook, tried more than 40-50 times with no luck (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1l42ljb/cannot_access_passbook_tried_more_than_4050_times/" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["umang", "passbook", "service unavailable", "epfo outage", "login failure"],
+  },
+  {
+    slug: "maternity-leave-pf-contribution-continuity",
+    category: "contributions",
+    title: "Does PF contribution continue during maternity leave?",
+    short:
+      "Maternity benefit paid during leave is legally treated as wages for PF purposes in most interpretations, meaning PF contributions should generally continue — but in practice, enforcement varies, and women reporting an abrupt stop in contributions during leave isn't rare.",
+    symptoms: [
+      "PF contributions appear to stop or reduce during a period of maternity leave",
+      "Uncertainty about whether maternity benefit payments count as 'wages' for PF contribution purposes",
+      "Returning from maternity leave to find a gap in the PF contribution history for that period",
+    ],
+    likelyCauses: [
+      "Courts and EPFO guidance have treated maternity benefit as part of wages for PF contribution purposes specifically because it functions as continued salary during a protected leave period, not a gap in employment",
+      "Despite that legal position, some employers' payroll systems aren't configured to continue PF deductions automatically during a leave period, especially if maternity benefit is routed through a separate payroll head",
+      "This is functionally a payroll administration issue at the employer level more often than an EPFO system issue — the legal obligation exists, but enforcement depends on the employer actually applying it correctly",
+    ],
+    fixSteps: [
+      "Check your payslips during maternity leave specifically for a PF deduction line — don't assume it's missing just because take-home pay structure looks different during leave.",
+      "If PF deductions have stopped during leave, raise it directly with HR/payroll first, citing that maternity benefit is treated as wages for PF purposes.",
+      "If the employer disputes this or doesn't correct it, the underlying legal position (maternity benefit = wages for PF) can be cited from EPFO/court guidance when escalating.",
+      "After returning to work, cross-check your PF passbook for the leave period specifically, rather than assuming payroll corrected it after the fact.",
+    ],
+    communitySolutions: [
+      "A LinkedIn explainer summarizing the legal position states it plainly: \"Courts and EPFO have consistently held that maternity benefit is treated as wages/salary because: It is a part of the woman employee's wages... and EPF contributions should apply.\"",
+      "Broader discussion on r/IndianWorkplace about how maternity leave is handled in Indian companies highlights that enforcement of statutory protections, PF continuity included, is inconsistent across employers — making it worth personally verifying rather than assuming compliance.",
+    ],
+    officialEscalation: [
+      "Raise non-compliance with HR/payroll first, citing the wages classification of maternity benefit for PF purposes.",
+      "If unresolved, this falls under the same employer non-compliance grievance route as any other missing-contribution issue — EPFiGMS, with payslips as supporting evidence.",
+    ],
+    sources: [
+      { title: "Should maternity benefits be treated as wages for EPF contributions? — LinkedIn", url: "https://www.linkedin.com/posts/shekhar-ganagaluru-94989633_maternity-benefits-as-wages-and-epf-contributions-activity-7374781685583982592-a4Ib" },
+      { title: "My wife has quit her job to take maternity leave. Can she withdraw her EPF? — Quora", url: "https://www.quora.com/My-wife-has-quit-her-job-to-take-maternity-leave-Can-she-withdraw-her-EPF-amount" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["maternity leave", "PF contribution", "wages", "women employees", "continuity"],
+  },
+  {
+    slug: "exempted-establishment-trust-complaints",
+    category: "employer",
+    title: "My PF is with a private/exempted trust, not EPFO directly — now what",
+    short:
+      "Some large employers run their own government-approved PF trust ('exempted establishment') instead of depositing directly with EPFO. Transfers, passbooks, and complaints work differently here, and the confusion when moving between an exempted and a regular EPFO-covered employer is a recurring problem.",
+    symptoms: [
+      "No passbook visibility on the regular EPFO portal despite being a contributing member",
+      "Transfer from an exempted trust to a new (EPFO-covered) employer shows only 'service transferred', with no actual funds visible moving",
+      "Confusion or unexpectedly high tax on a withdrawal that doesn't match the usual EPFO rules",
+    ],
+    likelyCauses: [
+      "An exempted establishment manages its employees' PF through its own board-run trust rather than through EPFO's central fund — EPFO still has oversight, but day-to-day administration, passbook, and payout happen through the trust",
+      "When transferring from an exempted trust to a regular EPFO-covered employer, only the service record transfers automatically in some cases — the accumulated funds may need a separate, explicit process to actually move, which is a frequent source of confusion ('only service transferred, no funds')",
+      "Some exempted trusts have different internal rules or slower processes for passbook visibility and withdrawal taxation than the standard EPFO system, which members often aren't warned about in advance",
+    ],
+    fixSteps: [
+      "If you can't see a passbook on the standard EPFO portal, first confirm with HR whether your (current or previous) employer runs an exempted PF trust — the regular portal won't show trust-managed funds.",
+      "For trust-to-EPFO transfers, explicitly ask HR/the trust administrator whether the transfer includes both service record and funds, or service only — don't assume funds moved just because the transfer shows as completed.",
+      "Request a statement directly from the trust administrator (not EPFO) for trust-managed PF balances, since EPFO's own systems may have no visibility into funds still sitting in a private trust.",
+      "For claims stuck specifically at a trust level, the correct contact is the employer's trust office, not the general EPFO helpline — raising it as a generic EPFO complaint about a trust-managed account causes needless back-and-forth.",
+    ],
+    communitySolutions: [
+      "A detailed r/epfoindia case captures the core confusion: \"'As the establishment is exempted, only service gets transferred.' This has confused me. My understanding was that the old trust should transfer...\" the funds too, not just the service record.",
+      "A related r/epfoindia post describes a worse version of the same problem: \"Exempted PF trust confusion: no passbook, no transfer, and 30% tax on withdrawal...\" — illustrating how exempted-trust accounts can diverge meaningfully from standard EPFO member experience.",
+      "A professional case study on this exact scenario notes the practical fix: \"For an exempted establishment, the member's claim needs to go to the employer's trust, not through the general EPFO claim process\" when a claim filed the normal way gets stuck.",
+    ],
+    officialEscalation: [
+      "First point of contact for exempted-trust issues: the employer's trust administrator/PF trust office directly, not the general EPFO helpline.",
+      "EPFO retains regulatory oversight of exempted trusts — a complaint can still be escalated to the regional PF office if the trust itself is unresponsive, since exempted status doesn't remove EPFO's supervisory authority.",
+    ],
+    sources: [
+      { title: "Exempted Trust to EPFO – Only Service Transferred, No Funds (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1p4vrkn/exempted_trust_to_epfo_only_service_transferred/" },
+      { title: "Exempted PF trust confusion: no passbook, no transfer, and 30% tax on withdrawal (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1sbfa7j/exempted_pf_trust_confusion_no_passbook_no/" },
+      { title: "PF Claim Stuck at an Exempted Establishment Trust: Case Study — Girish Chaudhary Associates", url: "https://girishchaudharyassociates.com/case-studies/exempted-establishment-trust-claim-stuck" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["exempted establishment", "private trust", "transfer", "service only transfer"],
+  },
+  {
+    slug: "multiple-simultaneous-employments-pf",
+    category: "contributions",
+    title: "Working two full-time jobs: can both pay into PF at once?",
+    short:
+      "EPFO has no rule against a member having two active PF-contributing employments at the same time — each employer registers and contributes independently. The real risk in dual full-time employment is disciplinary/contractual, not a PF-specific block.",
+    symptoms: [
+      "Considering (or already working) two simultaneous full-time jobs, each generating separate PF contributions",
+      "Worried that having two active employers under one UAN will cause EPFO to flag or lock the account",
+      "Unsure whether two active PF accounts under one UAN is even technically allowed",
+    ],
+    likelyCauses: [
+      "EPFO's system is built around tracking a member's service and contribution history via UAN, not around enforcing single-employer exclusivity — technically, two establishments can both contribute for the same UAN concurrently",
+      "The confusion largely comes from conflating EPFO's PF rules (no exclusivity requirement) with employment contract/conduct rules (many Indian employment contracts do prohibit a second full-time job, entirely separately from PF)",
+      "If discovered by an employer, consequences (if any) come from breach of an exclusivity clause in the employment contract — not from EPFO itself, which has no mechanism or stated policy to lock accounts over dual contributions",
+    ],
+    fixSteps: [
+      "Understand this is two separate questions: 'Does EPFO allow it?' (yes, no PF-side rule against it) vs. 'Does my employment contract allow it?' (check your contracts — this is the actual risk, not PF compliance).",
+      "If proceeding with two simultaneous full-time roles, expect two separate PF accounts/member IDs to be generated, potentially under the same UAN if both employers correctly reference your existing UAN during onboarding.",
+      "Don't expect EPFO to merge or net these two active accounts — they remain genuinely separate and contributing concurrently as long as both employments continue.",
+      "If you later leave one of the two jobs, the usual transfer/withdrawal rules apply independently to that specific account — the other, still-active employment's account is unaffected.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia answer to this exact question is unambiguous: \"Yes, you can receive EPF contributions from two companies at the same time. EPFO doesn't have a rule against it, as long as both companies are...\" registered and compliant establishments.",
+      "A related r/epfoindia thread from someone actively weighing two full-time remote jobs frames the real risk correctly in the comments: the PF side is a non-issue; the employment contract's exclusivity clause (if any) is the actual thing to check.",
+      "A moneycontrol explainer confirms the mechanism: \"If you are simultaneously employed by two EPF-covered establishments, both employers can make EPF contributions for you. Each employment is...\" treated and tracked independently.",
+    ],
+    officialEscalation: [
+      "This is not an EPFO grievance scenario under normal circumstances — the relevant risk, if any, sits with employment contract terms, not PF compliance.",
+    ],
+    sources: [
+      { title: "Can I receive EPF contribution from two companies at the same time? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1jqc8w9/can_i_receive_epf_contribution_from_two_companies/" },
+      { title: "I am considering of doing 2 full-time remote jobs. Will there be any issue? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1tnhvrg/i_am_considering_of_doing_2_fulltime_remote_jobs/" },
+      { title: "Working two jobs? Know what happens to your EPF membership — Moneycontrol", url: "https://www.moneycontrol.com/news/business/personal-finance/working-two-jobs-know-what-happens-to-your-epf-membership-14040628.html" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["two jobs", "dual employment", "multiple employers", "simultaneous PF", "eligibility"],
+  },
+  {
+    slug: "minor-nominee-guardian-details",
+    category: "nomination",
+    title: "Adding a minor as a PF nominee — guardian details keep failing",
+    short:
+      "Nominating a child (under 18) on your EPF/EPS e-nomination requires filling in a guardian field correctly — a frequent portal bug or input-format issue around this specific field causes the e-nomination to get stuck without a clear error message.",
+    symptoms: [
+      "e-Nomination won't proceed past the step where a minor nominee's details are entered",
+      "Guardian field or guardian-related photo upload fails silently or throws an unclear error",
+      "Nomination saves successfully for adult nominees but specifically fails when a minor is added",
+    ],
+    likelyCauses: [
+      "A minor nominee legally requires a named guardian to be specified (to receive/manage the funds on the minor's behalf until they turn 18) — this adds an extra mandatory field set that adult nominee entries don't have",
+      "Portal bugs specific to the guardian sub-form (including photo upload for the guardian) have been reported, distinct from the general e-nomination e-signing issues that affect all nominee types",
+      "Using Form 2 (the paper/manual nomination form) correctly requires the same guardian details as the online version — missing or incomplete guardian information causes rejection on either route",
+    ],
+    fixSteps: [
+      "When adding a minor nominee, ensure every guardian field is filled completely (name, relationship, address) before attempting to save — partial guardian details are a common cause of the step silently failing.",
+      "If a guardian-related photo upload specifically fails, try a different file format/size for the photo, or attempt the nomination from a different browser/device — this has been reported as a portal-specific quirk around that one field.",
+      "If the online e-nomination process continues to fail only at the minor/guardian step, fall back to the paper Form 2, submitted physically through your employer, specifying the same guardian details.",
+      "Double check the minor's date of birth is entered correctly — an inconsistency here can cause downstream validation failures that aren't obviously linked to the DOB field itself.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia thread on a photo upload failure during nomination surfaces the guardian-specific angle in the replies: \"Have you tried adding a minor nominee? If yes, it may be a portal bug — the issue appeared in the Guardian field when I tried to upload the...\" photo.",
+      "Broader r/epfoindia threads on e-nomination e-signing issues (not minor-specific) show that nomination problems generally are common on the portal — worth ruling out a general e-sign failure before assuming it's specifically the guardian/minor fields.",
+    ],
+    officialEscalation: [
+      "If the online guardian/minor nomination step repeatedly fails, submit a physical Form 2 through your employer's HR as a reliable fallback.",
+      "Persistent portal bugs around this specific field are worth reporting via EPFiGMS so the issue is logged, even while using the paper-form workaround.",
+    ],
+    sources: [
+      { title: "E nomination/claim under process (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1mo3kw4/e_nomination_claim_under_process/" },
+      { title: "Unable to upload photo in EPFO (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1uubonb/unable_to_upload_photo_in_epfo/" },
+      { title: "Anyone facing issues with e-signing the e-Nomination on EPFO portal? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1jnd7tf/anyone_facing_issues_with_esigning_the/" },
+      { title: "EPF Minor Nomination & Guardian Registration — FOGS Consultants", url: "https://www.fogsconsultants.com/epf/support/minor-nomination/" },
+    ],
+    lastVerified: "2026-11-04",
+    tags: ["minor nominee", "guardian", "e-nomination", "form 2", "nomination bug"],
+  },
 ];
 
 export function problemBySlug(slug: string): ProblemEntry | undefined {
