@@ -71,9 +71,22 @@ LME quotes need a paid LME data licence.
    EU grid policy, cable plants), including German and French ones. Canada has 11 searches
    (provincial utilities, OEB/AESO/IESO approvals, interties, federal funding), including
    French-Canadian ones.
-   **Tender databases**: the EU's TED API (power cables, cables, power-line construction CPV
-   codes) and CanadaBuys' daily open-data CSV of federal tenders, filtered for grid and cable
-   notices. Their stage (Tender or Award) comes from the notice type. Eight of the searches are in **Arabic**, because Saudi
+   **Tender databases** (official notices, collected every run):
+
+   | Source | Coverage | Access |
+   |---|---|---|
+   | TED | EU tenders and awards: power cables, cables, power-line construction CPV codes (3 pages) | Free API, no key |
+   | UK Find a Tender | UK tenders and awards (not on TED since Brexit), kept by CPV code or grid title | Free OCDS API, no key |
+   | World Bank procurement | Goods and works for World Bank-financed grid projects: Asia, Latin America, Africa, Eastern Europe | Free API, no key |
+   | CanadaBuys | Canadian federal tenders, filtered to grid and cable notices | Free open-data CSV |
+   | SAM.gov | US federal tenders, e.g. WAPA, BPA and the Army Corps (NAICS 237130 line construction, 335929 energy wire) | Free key (see below) |
+
+   Their stage (Tender, Award or Plan) comes from the notice type.
+
+   **Searches by language**: besides English, searches run in Arabic, French, German, Spanish,
+   Portuguese, Italian, Polish, Japanese, Korean, Vietnamese and Indonesian, and in the local
+   English editions for the UK, Canada, Australia, Singapore and the Philippines. That way
+   regional press is not crowded out by Indian and US outlets.
    awards and Tadawul disclosures often appear there first. It also reads five RSS feeds directly:
    **SaudiGulf Projects**, **GCC Tender News**, **Utilities Middle East**, **offshoreWIND.biz**
    (Europe) and **Electrical Business** (Canada).
@@ -99,6 +112,33 @@ The workflow runs it before every collection.
 - **Add a trade site**: add its RSS feed to `FEEDS`.
 - **Add a project**: add an entry to `data/projects.json` with a source link and an `asOf` date.
 
+## Enabling US federal tenders (SAM.gov)
+
+1. Sign in at [sam.gov](https://sam.gov) (free), open **Account Details**, and request a
+   **Public API Key**.
+2. In GitHub, go to **Settings → Secrets and variables → Actions → New repository secret**,
+   with name `SAM_API_KEY` and the key as the value.
+
+Until a key is set, the run report lists SAM.gov as "not enabled" and everything else runs normally.
+
+## Reliability
+
+The collector is built to run unattended:
+
+- **Retries:** up to two, with exponential backoff, on timeouts, network errors, 429 and 5xx
+  (honouring `Retry-After`). A block (401/403/405/410/451) or a 404 is not retried.
+- **Pacing:** a random 0.9–1.8 s delay between searches.
+- **Checkpoint:** progress is saved to `data/.checkpoint.json` every 10 sources. Ctrl+C or
+  SIGTERM finishes the current source and saves before exiting. `--resume` continues a run
+  started within the last 6 hours.
+- **Atomic writes:** every data file is written to a temp file and then renamed.
+- **Logs:** each day goes to `logs/collector-YYYY-MM-DD.log`, alongside the console.
+- **Run report:** `data/run-report.json` records every source's status (ok, empty, failed,
+  paused, not enabled), item count, timing, HTTP status and error. The dashboard shows it under
+  **Sources** as source health.
+- **Auto-pause:** a source that blocks us 3 runs in a row is paused and retried once a day. The
+  live layer skips feeds that blocked the last crawl.
+
 ## Run locally
 
 ```bash
@@ -108,6 +148,19 @@ node cables-market-watch/scripts/test.mjs
 ```bash
 node cables-market-watch/scripts/update.mjs
 ```
+
+For a long run on your own machine, start it detached in tmux:
+
+```bash
+tmux new -d -s cables-crawl 'bash cables-market-watch/scripts/collect.sh'
+```
+
+```bash
+tmux capture-pane -t cables-crawl -p | tail -20
+```
+
+To stop cleanly, use `tmux send-keys -t cables-crawl C-c`. To continue later, pass `--resume`
+to `collect.sh`.
 
 ```bash
 npx serve cables-market-watch

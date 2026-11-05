@@ -31,11 +31,12 @@ const load = (f) => fetch(f, { cache: "no-cache" }).then((r) => (r.ok ? r.json()
 // (e.g. a plain static server), the page falls back to the snapshot the collector commits.
 const LIVE_URL = "api/live";
 const REFRESH_MS = 10 * 60 * 1000;
-const [live0, projectsData, watch, competitorsData] = await Promise.all([
+const [live0, projectsData, watch, competitorsData, runReport] = await Promise.all([
   load(LIVE_URL),
   load("data/projects.json"),
   load("data/watchlist.json"),
   load("data/competitors.json"),
+  load("data/run-report.json"),
 ]);
 let liveMeta = live0?.news ? live0.live : null;
 let news = live0?.news ?? (await load("data/news.json"));
@@ -363,6 +364,31 @@ function priceTable() {
 
 // ================================================================ sources
 
+// Source health: the last full crawl's run report (data/run-report.json) plus the live check.
+function renderHealth() {
+  const el = $("health");
+  if (!runReport?.summary) { el.innerHTML = '<p class="muted">The source report appears after the next full crawl.</p>'; return; }
+  const s = runReport.summary;
+  const all = [...(runReport.prices ?? []), ...(runReport.sources ?? [])];
+  const failed = all.filter((r) => r.status === "failed");
+  const paused = all.filter((r) => r.status === "paused");
+  const empty = all.filter((r) => r.status === "empty");
+  const skipped = all.filter((r) => r.status === "skipped");
+  const ago = Math.round((Date.now() - Date.parse(runReport.finishedAt)) / 60000);
+  const when = ago < 90 ? `${ago} min ago` : `${Math.round(ago / 60)} h ago`;
+  const row = (r, why) => `<li><b>${esc(r.label)}</b><span>${esc(why)}</span></li>`;
+  const notes = all.filter((r) => r.kind === "tenders" && r.note && r.status !== "skipped").map((r) => row(r, r.note));
+  el.innerHTML = `
+    <p class="health-sum"><b>Last full crawl ${when}</b> (${fmtDate(runReport.finishedAt, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}, ${Math.round(runReport.durationMs / 1000)} s):
+      <span class="up">${s.ok} with results</span> · ${s.empty} no new results · ${s.failed ? `<span class="down">${s.failed} failed</span>` : "0 failed"} · ${s.paused} paused${s.skipped ? ` · ${s.skipped} not enabled` : ""} · ${fmt(s.items)} items fetched.
+      ${liveMeta ? `Live check: ${liveMeta.ok}/${liveMeta.sources} sources at ${hhmm(liveMeta.checkedAt)}.` : ""}</p>
+    ${notes.length ? `<h3>Tender databases</h3><ul>${notes.join("")}</ul>` : ""}
+    ${failed.length ? `<h3>Failed this run</h3><ul>${failed.map((r) => row(r, `${r.error}${r.consecutiveFailures > 1 ? ` · ${r.consecutiveFailures} runs in a row` : ""}`)).join("")}</ul>` : ""}
+    ${paused.length ? `<h3>Paused (blocking us; retried once a day)</h3><ul>${paused.map((r) => row(r, `HTTP ${r.httpStatus} · ${r.consecutiveFailures} runs in a row`)).join("")}</ul>` : ""}
+    ${skipped.length ? `<h3>Not enabled</h3><ul>${skipped.map((r) => row(r, r.note ?? "")).join("")}</ul>` : ""}
+    ${empty.length ? `<details><summary>${empty.length} searches with no new results this run</summary><ul>${empty.map((r) => row(r, r.consecutiveEmpty > 1 ? `empty ${r.consecutiveEmpty} runs in a row` : "")).join("")}</ul></details>` : ""}`;
+}
+
 function renderWatch() {
   if (!watch) { $("watch").innerHTML = '<p class="muted">Watchlist not available.</p>'; return; }
   const groups = watch.groups.map((g) => `<div class="group"><h3>${esc(g.title)}</h3><ul>${g.items
@@ -445,7 +471,7 @@ function renderAll() {
   renderMarkets(); brief(); renderDeals(); projectsHint(); renderProjects(); renderCompetitors(); renderCats(); renderItems(); renderCompanies();
 }
 renderAll();
-tiles(); charts(); priceTable(); renderWatch();
+tiles(); charts(); priceTable(); renderWatch(); renderHealth();
 
 // ================================================================ live refresh
 
@@ -468,6 +494,7 @@ async function refresh() {
     tiles(); charts(); priceTable();
   }
   setStamp();
+  renderHealth();
 }
 setInterval(refresh, REFRESH_MS);
 document.addEventListener("visibilitychange", () => {

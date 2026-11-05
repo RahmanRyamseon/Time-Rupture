@@ -141,14 +141,14 @@ export const detectCompanies = (text) => COMPANIES.filter((c) => c.re.test(text)
 
 // ================================================================ categories
 
-const ENERGY = /power|electric|grid|transmission|substation|cable|conductor|\d\s?kv\b|solar|wind|energy|utilit|interconnect|kabel|strom|netz|énergie|électri|câble|réseau|كهرب|كابل|طاقة|شمسي|رياح/i;
+const ENERGY = /power|electric|grid|transmission|substation|cable|conductor|\d\s?kv\b|solar|wind|energy|utilit|interconnect|kabel|strom|netz|énergie|électri|câble|réseau|eléctric|elétric|energía|energia|elettric|transmisi|transmissão|subestaci|subestação|elektroenerget|送電|電力|電線|송전|전력|케이블|điện|listrik|كهرب|كابل|طاقة|شمسي|رياح/i;
 
 // match: text must match for the item to carry the category. needs: an extra requirement.
 // queries: Google News searches that feed the category ([query, lang]).
 export const CATEGORIES = {
   projects: {
     label: "Grid projects & awards",
-    match: /transmission|substation|\bgrid\b|interconnect|overhead (?:line|transmission)|power line|\d\s?kv\b|\bhvdc\b|bulk supply|feeder cable|distribution network|electrification|ligne (?:de transport|à haute tension|électrique)|poste (?:de transformation|électrique)|freileitung|übertragungsnetz|umspannwerk|netzausbau|stromtrasse|höchstspannung|نقل الكهرباء|محطة تحويل|محطات تحويل|الربط الكهربائي|خطوط? نقل|الشبكة/i,
+    match: /transmission|substation|\bgrid\b|interconnect|overhead (?:line|transmission)|power line|\d\s?kv\b|\bhvdc\b|bulk supply|feeder cable|distribution network|electrification|ligne (?:de transport|à haute tension|électrique)|poste (?:de transformation|électrique)|freileitung|übertragungsnetz|umspannwerk|netzausbau|stromtrasse|höchstspannung|l[ií]nea de (?:transmisi[oó]n|alta tensi[oó]n)|subestaci[oó]n|linha(?:s)? de transmiss[aã]o|subesta[cç][aã]o|elettrodott|linii? (?:elektroenergetyczn|400|220)|stacj[aie] elektroenergetyczn|送電|変電|송전|변전|đường dây|truyền tải|trạm biến áp|transmisi|gardu induk|sutet|نقل الكهرباء|محطة تحويل|محطات تحويل|الربط الكهربائي|خطوط? نقل|الشبكة/i,
     queries: [
       '(transmission line OR substation OR "overhead line" OR "grid project") (Saudi OR UAE OR Bahrain OR Qatar OR Oman OR Kuwait) (contract OR awarded OR wins)',
       '("Saudi Energy" OR "Saudi Electricity" OR "National Grid SA") (transmission OR substation OR "380 kV" OR "132 kV" OR "BSP")',
@@ -166,7 +166,7 @@ export const CATEGORIES = {
   },
   tenders: {
     label: "Tenders & bids",
-    match: /tender|\bbids?\b|bidder|\brfp\b|\brfq\b|prequalif|pre-qualif|expressions? of interest|\beoi\b|invites? (?:bids|offers)|appel d['’]offres|ausschreibung|vergabe|مناقص|ترسية|منافسة/i,
+    match: /tender|\bbids?\b|bidder|\brfp\b|\brfq\b|prequalif|pre-qualif|expressions? of interest|\beoi\b|invites? (?:bids|offers)|appel d['’]offres|ausschreibung|vergabe|licitaci[oó]n|leil[aã]o|\bgara\b|appalt|przetarg|入札|입찰|đấu thầu|gói thầu|lelang|مناقص|ترسية|منافسة/i,
     needs: ENERGY,
     queries: [
       '(tender OR bids OR prequalification) (substation OR "transmission line" OR "power cables" OR "overhead line") (Saudi OR UAE OR Bahrain OR Qatar OR Oman OR Kuwait)',
@@ -269,7 +269,7 @@ export const MARKETS = {
       Kuwait: /kuwait|الكويت/i,
       Iraq: /\biraq|baghdad|basra|العراق/i,
       Jordan: /jordan|الأردن/i,
-      "Levant & Iran": /lebanon|syria|\biran\b|turkey|türkiye/i,
+      "Levant & Iran": /lebanon|syria|\biran\b|turkey|t[uü]rkiye|yemen|west bank|gaza/i,
     },
     queries: [
       '(Iraq OR Jordan OR Lebanon OR Syria) ("transmission line" OR substation OR interconnection OR "400 kV") (contract OR awarded OR signs)',
@@ -280,15 +280,25 @@ export const MARKETS = {
     regions: {
       India: /india|indian\b|\bcrore\b|₹|powergrid|\btbcb\b|\bists\b|gujarat|rajasthan|maharashtra|karnataka/i,
       China: /china|chinese|shfe|shanghai|الصين/i,
-      "Southeast Asia": /vietnam|philippine|indonesia|malaysia|thailand|cambodia|laos|myanmar|singapore|asean/i,
-      "South & Central Asia": /pakistan|bangladesh|sri lanka|nepal|bhutan|uzbekistan|kazakhstan|kyrgyz|tajikistan|turkmenistan|afghanistan/i,
-      "East Asia": /korea|japan|taiwan/i,
+      "Southeast Asia": /vietnam|viet nam|philippine|indonesia|malaysia|thailand|cambodia|laos|lao pdr|myanmar|singapore|timor|asean|\bngcp\b|\bpln\b|\begat\b|\btnb\b|meralco|việt nam/i,
+      "South & Central Asia": /pakistan|bangladesh|sri lanka|nepal|bhutan|maldives|uzbekistan|kazakhstan|kyrgyz|tajikistan|turkmenistan|afghanistan|mongolia|kegoc|ntdc|pgcb/i,
+      "East Asia": /korea|japan|taiwan|한국|日本|韓国/i,
     },
     queries: [
       '(POWERGRID OR "Adani Energy Solutions" OR "Tata Power" OR Resonia OR "Sterlite Power") transmission (wins OR awarded OR TBCB OR project)',
       '("765 kV" OR "400 kV" OR HVDC) transmission India (tender OR awarded OR order OR commissioned)',
       '(Vietnam OR Philippines OR Indonesia OR Malaysia OR Thailand) ("500 kV" OR "transmission line" OR substation) (contract OR awarded OR construction)',
       '(Pakistan OR Bangladesh OR "Sri Lanka" OR Uzbekistan OR Kazakhstan) ("transmission line" OR substation OR grid) (contract OR ADB OR "World Bank" OR awarded)',
+      ['(Philippines OR NGCP OR Meralco) (transmission OR substation OR "230 kV" OR "500 kV") (contract OR project OR energized OR awarded)', "en-PH"],
+      ['(Singapore OR Malaysia OR TNB OR "ASEAN Power Grid" OR "power import") (transmission OR interconnector OR "submarine cable") (contract OR project OR awarded)', "en-SG"],
+      ['(PLN) (transmisi OR SUTET OR "saluran udara" OR "gardu induk") (proyek OR kontrak OR lelang OR pembangunan)', "id"],
+      ['(EVN OR "đường dây 500kV" OR "truyền tải điện") ("dự án" OR "gói thầu" OR "khởi công" OR "đóng điện")', "vi"],
+      ['(送電線 OR 送電網 OR 系統増強 OR 電線) (受注 OR 着工 OR 契約 OR 入札)', "ja"],
+      ['(송전선로 OR 초고압 OR HVDC OR 전력케이블) (수주 OR 계약 OR 착공 OR 입찰)', "ko"],
+      '(Bangladesh OR PGCB OR Pakistan OR NTDC OR "Sri Lanka" OR Nepal OR Bhutan) ("transmission line" OR "grid substation" OR "132 kV" OR "220 kV" OR "400 kV") (contract OR tender OR awarded)',
+      '(Uzbekistan OR Kazakhstan OR Kyrgyzstan OR Tajikistan OR Mongolia OR KEGOC OR "Central Asia") ("transmission line" OR substation OR "500 kV" OR "220 kV") (contract OR tender OR financing)',
+      '(Thailand OR EGAT OR Cambodia OR Laos OR Myanmar OR "Timor-Leste") ("transmission line" OR "500 kV" OR substation OR "power grid") (contract OR project OR awarded)',
+      '("State Grid" OR "China Southern Power Grid" OR UHV) ("transmission line" OR "UHV" OR conductor) (tender OR bidding OR approved OR contract) China',
     ],
   },
   Africa: {
@@ -296,7 +306,7 @@ export const MARKETS = {
       Egypt: /egypt|cairo|مصر/i,
       "North Africa": /morocco|algeria|tunisia|libya|المغرب|الجزائر/i,
       "South Africa": /south africa|eskom|\bntcsa\b/i,
-      "Sub-Saharan Africa": /nigeria|kenya|ethiopia|tanzania|ghana|zambia|uganda|mozambique|angola|senegal|cameroon|\bchad\b|rwanda|ivory coast|côte d'ivoire|\bdrc\b|congo|namibia|botswana|zimbabwe|\bafrica/i,
+      "Sub-Saharan Africa": /nigeria|kenya|ethiopia|tanzania|ghana|zambia|uganda|mozambique|angola|senegal|cameroon|\bchad\b|rwanda|ivory coast|côte d'ivoire|cote d'ivoire|\bdrc\b|congo|namibia|botswana|zimbabwe|madagascar|malawi|\bmali\b|\bniger\b|burkina|benin|togo|guinea|sierra leone|liberia|gambia|mauritania|somalia|sudan|burundi|djibouti|eswatini|lesotho|comoros|cabo verde|cape verde|gabon|central african|s[aã]o tom[eé]|equatorial guinea|seychelles|mauritius|\bafrica/i,
     },
     queries: [
       '(Eskom OR NTCSA OR "independent transmission") transmission line (contract OR tender OR awarded OR construction)',
@@ -307,9 +317,9 @@ export const MARKETS = {
   },
   Europe: {
     regions: {
-      "UK & Ireland": /\buk\b|britain|british(?! columbia)|england|scotland|wales|ireland|national grid(?! sa| saudi)|\bssen\b|great grid upgrade/i,
+      "UK & Ireland": /\buk\b|united kingdom|britain|british(?! columbia)|england|scotland|wales|ireland|national grid(?! sa| saudi)|\bssen\b|great grid upgrade/i,
       "Western Europe": /german|france|french|\bital|spain|spanish|portugal|netherlands|dutch|belgi|austria|switzerland|tennet|amprion|50hertz|\brte\b|terna\b/i,
-      "Nordics & Eastern Europe": /norway|norwegian|sweden|swedish|denmark|danish|finland|finnish|iceland|poland|polish|romania|bulgaria|greece|greek|hungary|czech|slovak|slovenia|baltic|estonia|latvia|lithuania|ukraine|serbia|croatia|bosnia|montenegro|albania|north macedonia|moldova|statnett|fingrid|energinet|svenska kraftn|transelectrica/i,
+      "Nordics & Eastern Europe": /norway|norwegian|sweden|swedish|denmark|danish|finland|finnish|iceland|poland|polish|polsk|romania|bulgaria|greece|greek|hungary|czech|slovak|slovenia|baltic|estonia|latvia|lithuania|ukraine|serbia|croatia|bosnia|montenegro|albania|north macedonia|moldova|kosovo|armenia|azerbaijan|statnett|fingrid|energinet|svenska kraftn|transelectrica/i,
       Europe: /europe|\beu\b|entso|ten-e|\bpci\b|\beib\b/i,
     },
     queries: [
@@ -327,6 +337,11 @@ export const MARKETS = {
       'site:energylivenews.com (grid OR transmission OR cable)',
       ['(Freileitung OR Höchstspannung OR Netzausbau OR Übertragungsnetz OR Umspannwerk) (Auftrag OR Vergabe OR Ausschreibung OR Baustart)', "de"],
       ['(RTE OR "ligne à haute tension" OR "ligne 400 kV" OR "poste électrique") (contrat OR "appel d’offres" OR chantier OR attribué)', "fr-FR"],
+      ['("National Grid" OR SSEN OR SPEN OR "Great Grid Upgrade" OR NESO) (contract OR awarded OR "supply chain" OR framework) ("overhead line" OR substation OR cable)', "en-GB"],
+      ['("Red Eléctrica" OR "línea de alta tensión" OR "400 kV" OR subestación) (adjudica OR licitación OR contrato OR obras)', "es-ES"],
+      ['(Terna OR elettrodotto OR "alta tensione" OR "stazione elettrica") (gara OR aggiudica OR appalto OR contratto OR cantiere)', "it"],
+      ['(PSE OR "linia 400 kV" OR "linii elektroenergetycznej" OR "stacji elektroenergetycznej") (umowa OR przetarg OR budowa)', "pl"],
+      '(Nexans OR Prysmian OR NKT OR "Hellenic Cables" OR "LS Cable" OR Taihan OR Sumitomo) (contract OR order OR awarded) (TSO OR interconnector OR "grid connection") Europe',
     ],
   },
   Canada: {
@@ -345,6 +360,7 @@ export const MARKETS = {
       'site:ebmag.com (transmission OR cable OR utility)',
       'site:dailycommercialnews.com ("transmission line" OR substation OR hydro)',
       ['("Hydro-Québec" OR Québec) ("ligne de transport" OR "poste" OR "735 kV") (contrat OR "appel d’offres" OR travaux)', "fr-CA"],
+      ['("transmission line" OR substation OR intertie) (Ontario OR Alberta OR "British Columbia" OR Quebec OR Manitoba OR Saskatchewan OR "Nova Scotia") (contract OR awarded OR construction)', "en-CA"],
     ],
   },
   USA: {
@@ -356,15 +372,25 @@ export const MARKETS = {
       '(ERCOT OR PJM OR MISO OR SPP OR CAISO) ("765 kV" OR "500 kV" OR "345 kV") transmission (approved OR construction OR contract)',
       '(reconductoring OR "advanced conductor" OR HTLS) (utility OR DOE OR FERC) transmission',
       '"transmission line" ("data center" OR "data centre") ("765 kV" OR "345 kV") utility',
+      '(Bonneville OR BPA OR WAPA OR "Western Area Power" OR TVA OR "Tennessee Valley Authority") ("transmission line" OR substation OR rebuild) (contract OR construction OR awarded)',
+      '(MISO OR SPP OR PJM OR ERCOT OR NYISO OR "ISO New England" OR CAISO) ("competitive transmission" OR Tranche OR "transmission portfolio" OR "765-kV") (approved OR awarded OR selected)',
+      '("Grain Belt Express" OR SunZia OR Greenlink OR "TransWest Express" OR "Champlain Hudson" OR "SOO Green" OR "North Plains Connector" OR "Southern Spirit") (construction OR contract OR approval)',
+      '(Quanta OR "MYR Group" OR Primoris OR "Pike Electric" OR MasTec OR "Burns & McDonnell") transmission (contract OR award OR backlog)',
+      '(Southwire OR Prysmian OR Nexans OR "LS Cable" OR "Hitachi Energy" OR "CTC Global") ("United States" OR U.S.) (cable plant OR conductor OR factory OR order)',
     ],
   },
   "Latin America": {
     regions: {
-      "Latin America": /brazil|brasil|aneel|chile|peru\b|colombia|mexic|argentin|ecuador|bolivia|uruguay|paraguay|panama|guatemala|costa rica|dominican|latin america/i,
+      "Latin America": /brazil|brasil|aneel|chile|per[uú]\b|colombia|m[eé]xic|argentin|ecuador|bolivia|uruguay|paraguay|panam[aá]|guatemala|costa rica|dominican|honduras|nicaragua|el salvador|belize|caribbean|jamaica|haiti|barbados|guyana|suriname|st\. kitts|saint kitts|st\. lucia|grenada|dominica|trinidad|siepac|\bcfe\b|latin america|latinoam[eé]rica/i,
     },
     queries: [
       '(ANEEL OR Brazil) ("transmission auction" OR "leilão de transmissão" OR "transmission lots")',
       '(Chile OR Peru OR Colombia OR Mexico OR Argentina) ("transmission line" OR "línea de transmisión") (contract OR awarded OR auction OR licitación)',
+      ['(licitación OR adjudica OR adjudicó) ("línea de transmisión" OR subestación OR "500 kV" OR "220 kV") (Chile OR Perú OR Colombia OR México OR Argentina OR Ecuador OR Panamá OR Guatemala)', "es-419"],
+      ['(CFE OR "Comisión Federal de Electricidad" OR CENACE) ("línea de transmisión" OR subestación OR licitación OR "red de transmisión")', "es-419"],
+      ['("Coordinador Eléctrico" OR "obras de transmisión" OR "línea de transmisión") (adjudica OR licitación OR decreto) Chile', "es-CL"],
+      ['(leilão OR ANEEL OR "linhas de transmissão" OR subestação) (transmissão OR lote) (vence OR arremata OR contrato OR obras)', "pt-BR"],
+      '("Inter-American Development Bank" OR IDB OR CAF OR SIEPAC OR Caribbean) (transmission OR "electricity grid" OR interconnection) (loan OR financing OR tender)',
     ],
   },
   Oceania: {
@@ -373,6 +399,7 @@ export const MARKETS = {
     },
     queries: [
       '(Australia OR "New Zealand") transmission (Transgrid OR AEMO OR Powerlink OR "Western Power" OR Transpower OR AusNet OR ElectraNet) (contract OR awarded OR approval)',
+      ['(HumeLink OR "VNI West" OR "Marinus Link" OR CopperString OR "Central-West Orana" OR "Western Renewables Link" OR "Project EnergyConnect") (contract OR construction OR awarded)', "en-AU"],
     ],
   },
 };
@@ -408,9 +435,9 @@ const STAGES = [
   // An MoU or framework agreement is a plan even when the headline says "signs".
   ["Plan", /\bmou\b|memorandum|framework agreement|مذكرة تفاهم/i],
   ["Commissioned", /inaugurat|commissioned|energi[sz]ed|enters? (?:commercial )?(?:operation|service)|goes live|begins operation|يفتتح|تدشين|تشغيل/i],
-  ["Award", /award|\bwins?\b|\bwon\b|\bsecures?\b|\bsecured\b|\bbags?\b|\blands?\b|\bsigns?\b|\bsigned\b|\bselects?\b|\bselected\b|appoint|contract (?:for|to|with)|order (?:for|from)|ترسية|توقيع|يوقع|فوز|عقد/i],
-  ["Tender", /tender|\bbids?\b|bidders?|invites?|\brfp\b|\brfq\b|prequalif|pre-qualif|shortlist|expressions? of interest|مناقص|منافسة|عروض/i],
-  ["Construction", /construction|breaks? ground|groundbreaking|under way|underway|progress|\d+\s?% complet|completes?|installation|إنشاء|تنفيذ|نسبة الإنجاز/i],
+  ["Award", /award|\bwins?\b|\bwon\b|\bsecures?\b|\bsecured\b|\bbags?\b|\blands?\b|\bsigns?\b|\bsigned\b|\bselects?\b|\bselected\b|appoint|contract (?:for|to|with)|order (?:for|from)|adjudic|arremat|\bvence\b|aggiudic|受注|수주|trúng thầu|ترسية|توقيع|يوقع|فوز|عقد/i],
+  ["Tender", /tender|\bbids?\b|bidders?|invites?|\brfp\b|\brfq\b|prequalif|pre-qualif|shortlist|expressions? of interest|licitaci[oó]n|leil[aã]o|\bgara\b|przetarg|入札|입찰|đấu thầu|lelang|مناقص|منافسة|عروض/i],
+  ["Construction", /construction|breaks? ground|groundbreaking|under way|underway|progress|\d+\s?% complet|completes?|installation|construcci[oó]n|constru[cç][aã]o|\bobras\b|budow|着工|착공|khởi công|إنشاء|تنفيذ|نسبة الإنجاز/i],
   ["Plan", /\bmou\b|memorandum|framework agreement|\bplans?\b|planned|proposed|to build|feasibility|study|مذكرة تفاهم|خطة|دراسة/i],
 ];
 export function detectStage(title, description = "") {
@@ -517,7 +544,11 @@ export function mergeNews(existing, fetched, now = Date.now()) {
   for (const raw of fetched) {
     if (!raw.title || !raw.url) continue;
     const text = `${raw.title} ${raw.description}`;
-    const { categories, companies, regions } = classify(text, raw.category);
+    const c = classify(text, raw.category);
+    const { categories, companies } = c;
+    // Official notices state their country in a field (placeText); tag regions from that alone, so
+    // names in a title ("National Grid", "Voice of America") don't add the wrong market.
+    const regions = raw.placeText != null ? detectRegions(raw.placeText) : c.regions;
     if (!categories.length) continue;
     const key = keyOf(raw.title);
     const prev = byKey.get(key);
@@ -556,6 +587,22 @@ const EDITIONS = {
   de: "hl=de&gl=DE&ceid=DE:de",
   "fr-FR": "hl=fr&gl=FR&ceid=FR:fr",
   "fr-CA": "hl=fr-CA&gl=CA&ceid=CA:fr",
+  // Local editions surface regional press that the US edition ranks low.
+  "en-GB": "hl=en-GB&gl=GB&ceid=GB:en",
+  "en-CA": "hl=en-CA&gl=CA&ceid=CA:en",
+  "en-AU": "hl=en-AU&gl=AU&ceid=AU:en",
+  "en-SG": "hl=en-SG&gl=SG&ceid=SG:en",
+  "en-PH": "hl=en-PH&gl=PH&ceid=PH:en",
+  "es-419": "hl=es-419&gl=MX&ceid=MX:es-419",
+  "es-CL": "hl=es-419&gl=CL&ceid=CL:es-419",
+  "es-ES": "hl=es&gl=ES&ceid=ES:es",
+  "pt-BR": "hl=pt-BR&gl=BR&ceid=BR:pt-419",
+  it: "hl=it&gl=IT&ceid=IT:it",
+  pl: "hl=pl&gl=PL&ceid=PL:pl",
+  ja: "hl=ja&gl=JP&ceid=JP:ja",
+  ko: "hl=ko&gl=KR&ceid=KR:ko",
+  vi: "hl=vi&gl=VN&ceid=VN:vi",
+  id: "hl=id&gl=ID&ceid=ID:id",
 };
 export const feedUrl = (q, lang, window) => {
   const params = EDITIONS[lang] ?? EDITIONS.en;
@@ -609,22 +656,30 @@ export function tedRelevant(title) {
   const main = title.split(/\s+[–-]\s+/)[1] ?? "";
   return TED_GRID.test(main) || /\d\s?kv\b/i.test(title);
 }
-export async function fetchTED() {
-  const res = await fetch(TED_URL, {
-    method: "POST",
-    headers: { "content-type": "application/json", accept: "application/json", "user-agent": UA },
-    body: JSON.stringify({
-      query: tedQuery(),
-      fields: ["publication-number", "notice-title", "buyer-name", "buyer-country", "publication-date", "notice-type"],
-      limit: 100,
-      page: 1,
-    }),
-    signal: AbortSignal.timeout(30_000),
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status} ${(await res.text()).slice(0, 200)}`);
-  return parseTED(await res.json());
+export async function fetchTED({ pages = 3 } = {}) {
+  const items = [];
+  let returned = 0;
+  for (let page = 1; page <= pages; page++) {
+    const res = await fetchWithRetry(TED_URL, {
+      method: "POST",
+      headers: { "content-type": "application/json", accept: "application/json" },
+      body: JSON.stringify({
+        query: tedQuery(),
+        fields: ["publication-number", "notice-title", "buyer-name", "buyer-country", "publication-date", "notice-type"],
+        limit: 100,
+        page,
+      }),
+      timeout: 30_000,
+    });
+    const json = await res.json();
+    const n = json?.notices?.length ?? 0;
+    returned += n;
+    items.push(...parseTED(json));
+    if (n < 100) break;
+  }
+  items.note = `${returned} notices returned, ${items.length} grid-related`;
+  return items;
 }
-
 // Canada: CanadaBuys open data — federal tender notices published in the last day (CSV, bilingual headers).
 export const CANADABUYS_URL = "https://canadabuys.canada.ca/opendata/pub/newTenderNotice-nouvelAvisAppelOffres.csv";
 const GRID_TENDER = /cable|conductor|transmission line|power line|substation|switchgear|transformer|\bkv\b|high voltage|electrical (?:power|distribution)|câble|ligne de transport|poste électrique/i;
@@ -683,19 +738,245 @@ export function parseCanadaBuys(text) {
     .map(({ _match, ...i }) => i);
 }
 export async function fetchCanadaBuys() {
-  return parseCanadaBuys(await get(CANADABUYS_URL));
+  const text = await get(CANADABUYS_URL);
+  const items = parseCanadaBuys(text);
+  const rows = Math.max(0, parseCSV(text.replace(/^\uFEFF/, "")).length - 1);
+  items.note = `${rows} new notices in today's file, ${items.length} grid-related`;
+  return items;
 }
 
-// ================================================================ main
+// UK: Find a Tender Service (FTS) — OCDS release packages, no key. Since Brexit, UK notices are
+// not on TED. Pages are followed through `links.next`; grid notices are kept by CPV code or title.
+export const FTS_URL = "https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages";
+// 31320/31321 power cables, 44321 cable, 452314 power-line construction, 31341 cable accessories.
+// (Not the parent 45231, which also covers pipelines and telecoms and pulls in broad frameworks.)
+const FTS_CPV = ["31320", "31321", "44321", "452314", "31341"];
+const GRID_TITLE = /\d\s?kv\b|overhead line|substation|transmission line|power line|power cable|conductor|grid connection|interconnector|switchgear|reconductor/i;
+export function parseFTS(json) {
+  return (json?.releases ?? [])
+    .map((r) => {
+      const t = r.tender ?? {};
+      const cpvs = [t.classification, ...(t.items ?? []).flatMap((i) => [i.classification, ...(i.additionalClassifications ?? [])])]
+        .filter((c) => c && (c.scheme ?? "CPV") === "CPV")
+        .map((c) => ({ id: String(c.id ?? ""), description: c.description ?? "" }));
+      const title = (t.title ?? "").replace(/\s+/g, " ").trim();
+      const relevant = cpvs.some((c) => FTS_CPV.some((p) => c.id.startsWith(p))) || GRID_TITLE.test(title);
+      const tags = r.tag ?? [];
+      const stage = tags.some((x) => /award|contract/i.test(x)) ? "Award" : tags.includes("planning") ? "Plan" : "Tender";
+      const v = t.value ?? {};
+      const amount = v.amount ?? v.amountGross;
+      return {
+        _keep: relevant,
+        title: title ? `UK – ${title}` : "",
+        url: `https://www.find-tender.service.gov.uk/Notice/${r.id}`,
+        publisher: "UK Find a Tender",
+        placeText: "United Kingdom",
+        publisherUrl: "https://www.find-tender.service.gov.uk",
+        published: new Date(Date.parse(r.date) || Date.now()).toISOString(),
+        description: `${stage === "Award" ? "Contract award" : stage === "Plan" ? "Planned procurement" : "Tender"} notice on UK Find a Tender. Buyer: ${r.buyer?.name ?? "n/a"} (United Kingdom).${amount ? ` Value: ${v.currency ?? "GBP"} ${Math.round(amount).toLocaleString("en-GB")}.` : ""} Category: ${cpvs[0]?.description || "n/a"} (UK tender).`,
+        category: "tenders",
+        market: "Europe",
+        stage,
+      };
+    })
+    .filter((i) => i._keep && i.title)
+    .map(({ _keep, ...i }) => i);
+}
+export async function fetchFTS({ days = 3, maxPages = 20, now = Date.now(), pause = true } = {}) {
+  const from = new Date(now - days * 86_400_000).toISOString().slice(0, 19);
+  let url = `${FTS_URL}?updatedFrom=${from}&limit=100`;
+  const items = [];
+  let releases = 0, pages = 0;
+  while (url && pages < maxPages) {
+    const json = await (await fetchWithRetry(url, { headers: { accept: "application/json" }, timeout: 30_000 })).json();
+    releases += json?.releases?.length ?? 0;
+    items.push(...parseFTS(json));
+    url = json?.links?.next ?? null;
+    pages += 1;
+    if (url && pause) await jitter();
+  }
+  items.note = `${releases} UK notices in the last ${days} days (${pages} pages), ${items.length} grid-related`;
+  return items;
+}
+
+// World Bank procurement notices (projects it finances worldwide) — free JSON API, no key.
+// `fl` keeps the response to the fields used here (the free-text notice field can break JSON).
+export const WB_URL = "https://search.worldbank.org/api/v2/procnotices";
+const WB_FIELDS = "id,notice_type,noticedate,project_ctry_name,project_name,bid_description,procurement_group,submission_deadline_date";
+const WB_TERMS = ["transmission", "substation", "cable", "conductor", "kV", "electricity distribution", "power line"];
+const WB_GRID = /transmission|substation|\d\s?kv\b|\bkv\b|cable|conductor|overhead|power line|distribution (?:line|network)|(?:medium|low|high)[ -]voltage|feeder|grid|electrification|switchgear|transformer|interconnect/i;
+const MONTH = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+export function parseWBDate(s) {
+  const m = String(s ?? "").match(/^(\d{1,2})-([A-Za-z]{3})-(\d{4})$/);
+  return m ? new Date(Date.UTC(+m[3], MONTH[m[2].toLowerCase()], +m[1])).toISOString() : null;
+}
+const WB_GROUP = { GO: "Goods", CW: "Works", CS: "Consulting", NC: "Non-consulting services" };
+export function parseWB(json, { maxAgeDays = 45, now = Date.now() } = {}) {
+  const cutoff = now - maxAgeDays * 86_400_000;
+  return (json?.procnotices ?? [])
+    .filter((n) => (n.procurement_group === "GO" || n.procurement_group === "CW") && WB_GRID.test(n.bid_description ?? ""))
+    .map((n) => {
+      const published = parseWBDate(n.noticedate);
+      const type = n.notice_type ?? "";
+      const stage = /award/i.test(type) ? "Award" : /general procurement/i.test(type) ? "Plan" : "Tender";
+      return {
+        title: `${n.project_ctry_name ?? "World Bank"} – ${String(n.bid_description ?? "").replace(/\s+/g, " ").trim()}`,
+        url: `https://projects.worldbank.org/en/projects-operations/procurement-detail/${n.id}`,
+        publisher: "World Bank procurement",
+        publisherUrl: "https://projects.worldbank.org",
+        published: published ?? new Date(now).toISOString(),
+        placeText: n.project_ctry_name ?? "",
+        description: `${type || "Notice"} (${WB_GROUP[n.procurement_group] ?? n.procurement_group}) for the World Bank-financed project "${n.project_name ?? ""}". Country: ${n.project_ctry_name ?? "n/a"}.${n.submission_deadline_date ? ` Bid deadline: ${String(n.submission_deadline_date).slice(0, 10)}.` : ""} Category: electricity transmission and distribution (tender).`,
+        category: "tenders",
+        stage,
+      };
+    })
+    .filter((i) => Date.parse(i.published) >= cutoff);
+}
+export async function fetchWB({ rows = 100, terms = WB_TERMS, pause = true } = {}) {
+  const byUrl = new Map();
+  let returned = 0;
+  for (const term of terms) {
+    const url = `${WB_URL}?format=json&rows=${rows}&os=0&qterm=${encodeURIComponent(term)}&fl=${WB_FIELDS}&srt=noticedate&order=desc`;
+    const json = await (await fetchWithRetry(url, { headers: { accept: "application/json" }, timeout: 30_000 })).json();
+    returned += json?.procnotices?.length ?? 0;
+    for (const i of parseWB(json)) byUrl.set(i.url, i);
+    if (pause) await jitter();
+  }
+  const items = [...byUrl.values()];
+  items.note = `${returned} notices scanned (${terms.length} searches), ${items.length} grid goods/works notices in the last 45 days`;
+  return items;
+}
+
+// USA: SAM.gov federal opportunities (e.g. WAPA, BPA, Army Corps line work and conductor buys).
+// Needs a free api key from a SAM.gov account (Account Details → Public API Key), set as the
+// SAM_API_KEY secret/env var; without it this source is skipped.
+// NAICS 237130 = power and communication line construction; 335929 = energy wire manufacturing.
+export const SAM_URL = "https://api.sam.gov/opportunities/v2/search";
+const SAM_NAICS = ["237130", "335929"];
+const mmddyyyy = (t) => { const d = new Date(t); return `${String(d.getUTCMonth() + 1).padStart(2, "0")}/${String(d.getUTCDate()).padStart(2, "0")}/${d.getUTCFullYear()}`; };
+export function parseSAM(json) {
+  return (json?.opportunitiesData ?? []).map((o) => {
+    const award = /award/i.test(o.type ?? "");
+    const amount = o.award?.amount;
+    return {
+      title: `USA – ${String(o.title ?? "").replace(/\s+/g, " ").trim()}`,
+      url: o.uiLink || `https://sam.gov/opp/${o.noticeId ?? ""}/view`,
+      publisher: "SAM.gov (US federal)",
+      placeText: "United States",
+      publisherUrl: "https://sam.gov",
+      published: new Date(Date.parse(o.postedDate) || Date.now()).toISOString(),
+      description: `${o.type ?? "Notice"} on SAM.gov. Agency: ${o.fullParentPathName ?? o.department ?? "n/a"}. Solicitation ${o.solicitationNumber ?? "n/a"}.${amount ? ` Award: $${Number(amount).toLocaleString("en-US")}.` : ""} United States (US federal tender).`,
+      category: "tenders",
+      market: "USA",
+      stage: award ? "Award" : "Tender",
+    };
+  }).filter((i) => i.title !== "USA – ");
+}
+export async function fetchSAM({ days = 7, now = Date.now(), key = process.env.SAM_API_KEY } = {}) {
+  if (!key) {
+    const items = [];
+    items.note = "skipped: add a free SAM.gov API key as the SAM_API_KEY secret to enable";
+    items.skipped = true;
+    return items;
+  }
+  const items = [];
+  for (const ncode of SAM_NAICS) {
+    const url = `${SAM_URL}?api_key=${encodeURIComponent(key)}&postedFrom=${mmddyyyy(now - days * 86_400_000)}&postedTo=${mmddyyyy(now)}&ncode=${ncode}&limit=200`;
+    items.push(...parseSAM(await (await fetchWithRetry(url, { headers: { accept: "application/json" }, timeout: 30_000 })).json()));
+    await jitter();
+  }
+  items.note = `${items.length} federal notices (NAICS ${SAM_NAICS.join(", ")}) in the last ${days} days`;
+  return items;
+}
+
+// ================================================================ reliable collection
+//
+// Every source (search, feed, tender database, price page) is a named unit with a stable id.
+// The run is built for unattended use:
+//  - retries with exponential backoff on timeouts, network errors, 429 and 5xx (honours Retry-After);
+//    a block (401/403/405/410/451) or a 404 is not retried;
+//  - random delays between searches, so the sources are not hammered;
+//  - a checkpoint (data/.checkpoint.json) saved every few sources, so `--resume` continues an
+//    interrupted run; Ctrl+C or SIGTERM saves it before exiting;
+//  - atomic writes (temp file, then rename) for every data file;
+//  - a log file per day (logs/collector-YYYY-MM-DD.log) next to the console output;
+//  - a run report (data/run-report.json) with each source's status, item count, timing and error.
+//    Sources that keep blocking us are paused and retried once a day instead of on every run.
 
 export const UA = "cables-market-watch/1.0 (daily digest)";
+export const CHECKPOINT_FILE = join(here, "..", "data", ".checkpoint.json");
+export const RUN_REPORT_FILE = join(here, "..", "data", "run-report.json");
+const LOG_DIR = join(here, "..", "logs");
+const CHECKPOINT_MAX_AGE_MS = 6 * 3_600_000;
+export const PAUSE_AFTER = 3; // consecutive blocked runs before a source is paused
+const PAUSE_RETRY_MS = 24 * 3_600_000; // a paused source is tried again after this long
+export const BLOCKED = new Set([401, 403, 405, 410, 451]);
+
+const env = (k, d) => (process.env[k] !== undefined ? Number(process.env[k]) : d);
+const DELAY_MIN = env("COLLECTOR_DELAY_MIN_MS", 900);
+const DELAY_MAX = env("COLLECTOR_DELAY_MAX_MS", 1800);
+const RETRY_BASE = env("COLLECTOR_RETRY_BASE_MS", 2000);
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const jitter = () => sleep(DELAY_MIN + Math.random() * Math.max(0, DELAY_MAX - DELAY_MIN));
+
+// ---------------------------------------------------------------- logging
+
+let logStream = null;
+async function openLog() {
+  const { mkdir } = await import("node:fs/promises");
+  const { createWriteStream } = await import("node:fs");
+  await mkdir(LOG_DIR, { recursive: true });
+  logStream = createWriteStream(join(LOG_DIR, `collector-${new Date().toISOString().slice(0, 10)}.log`), { flags: "a" });
+}
+export function log(level, msg) {
+  const line = `${new Date().toISOString()} [${level}] ${msg}`;
+  (level === "INFO" ? console.log : console.warn)(`[${level}] ${msg}`);
+  logStream?.write(`${line}\n`);
+}
+
+// ---------------------------------------------------------------- fetching with retry
+
+export class HttpError extends Error {
+  constructor(status, message) {
+    super(message);
+    this.status = status;
+  }
+}
+
+export async function fetchWithRetry(url, opts = {}, { retries = 2, base = RETRY_BASE, fetchImpl = fetch, sleepImpl = sleep } = {}) {
+  for (let attempt = 0; ; attempt++) {
+    let res;
+    try {
+      res = await fetchImpl(url, {
+        method: opts.method ?? "GET",
+        headers: { "user-agent": UA, ...opts.headers },
+        body: opts.body,
+        signal: AbortSignal.timeout(opts.timeout ?? 25_000),
+      });
+    } catch (err) {
+      const msg = err?.name === "TimeoutError" ? "timeout" : err?.message ?? String(err);
+      if (attempt >= retries) throw new HttpError(0, msg);
+      await sleepImpl(base * 2 ** attempt);
+      continue;
+    }
+    if (res.ok) return res;
+    const retryable = res.status === 429 || res.status >= 500;
+    if (!retryable || attempt >= retries) {
+      const body = retryable ? "" : await res.text().catch(() => "");
+      throw new HttpError(res.status, `HTTP ${res.status}${body ? `: ${body.replace(/\s+/g, " ").slice(0, 160)}` : ""}`);
+    }
+    const ra = Number(res.headers?.get?.("retry-after"));
+    await sleepImpl(ra > 0 ? Math.min(ra * 1000, 60_000) : base * 2 ** attempt);
+  }
+}
 
 async function get(url) {
-  const res = await fetch(url, { headers: { "user-agent": UA }, signal: AbortSignal.timeout(25_000) });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.text();
+  return (await fetchWithRetry(url)).text();
 }
+
+// ---------------------------------------------------------------- files
 
 async function readJson(file, fallback) {
   try {
@@ -705,92 +986,189 @@ async function readJson(file, fallback) {
   }
 }
 
-async function updatePrices() {
+export async function writeJsonAtomic(file, data, pretty = false) {
+  const { rename } = await import("node:fs/promises");
+  const tmp = `${file}.tmp`;
+  await writeFile(tmp, JSON.stringify(data, null, pretty ? 2 : 0) + "\n");
+  await rename(tmp, file);
+}
+
+async function loadCheckpoint(now = Date.now()) {
+  const c = await readJson(CHECKPOINT_FILE, null);
+  if (!c?.startedAt || now - Date.parse(c.startedAt) > CHECKPOINT_MAX_AGE_MS) return null;
+  return c;
+}
+async function clearCheckpoint() {
+  const { rm } = await import("node:fs/promises");
+  await rm(CHECKPOINT_FILE, { force: true });
+}
+
+// ---------------------------------------------------------------- sources
+
+const hashOf = (s) => createHash("sha1").update(s).digest("hex").slice(0, 8);
+const pairOf = (e) => (Array.isArray(e) ? e : [e, "en"]);
+
+// All sources of a full crawl, in run order. `window` is the Google News look-back.
+export function buildSources(window) {
+  const out = [];
+  for (const [category, c] of Object.entries(CATEGORIES)) {
+    for (const entry of c.queries) {
+      const [q, lang] = pairOf(entry);
+      out.push({
+        id: `search:${category}:${lang}:${hashOf(q)}`, kind: "search", label: `${c.label} — ${q}`, lang,
+        url: feedUrl(q, lang, window),
+        run: async (url) => parseItems(await get(url)).map((i) => ({ ...i, category })),
+      });
+    }
+  }
+  for (const [market, m] of Object.entries(MARKETS)) {
+    for (const entry of m.queries) {
+      const [q, lang] = pairOf(entry);
+      out.push({
+        id: `search:market:${market}:${lang}:${hashOf(q)}`, kind: "search", label: `${market} projects — ${q}`, lang, market,
+        url: feedUrl(q, lang, window),
+        run: async (url) => parseItems(await get(url)).map((i) => ({ ...i, category: "projects", market })),
+      });
+    }
+  }
+  for (const f of FEEDS) {
+    out.push({
+      id: `feed:${f.name}`, kind: "feed", label: f.name, market: f.market, url: f.url,
+      run: async (url) => parseItems(await get(url), f.name, new URL(url).origin).map((i) => ({ ...i, market: f.market })),
+    });
+  }
+  out.push({ id: "tenders:TED", kind: "tenders", label: "TED (EU tenders)", market: "Europe", url: TED_URL, run: () => fetchTED() });
+  out.push({ id: "tenders:CanadaBuys", kind: "tenders", label: "CanadaBuys", market: "Canada", url: CANADABUYS_URL, run: () => fetchCanadaBuys() });
+  out.push({ id: "tenders:UK-FTS", kind: "tenders", label: "UK Find a Tender", market: "Europe", url: FTS_URL, run: () => fetchFTS() });
+  out.push({ id: "tenders:WorldBank", kind: "tenders", label: "World Bank procurement", url: WB_URL, run: () => fetchWB() });
+  out.push({ id: "tenders:SAM", kind: "tenders", label: "SAM.gov (US federal)", market: "USA", url: SAM_URL, run: () => fetchSAM() });
+  return out;
+}
+
+// A source that answered with a block on PAUSE_AFTER runs in a row is skipped, and retried once a day.
+export function isPaused(prev, now = Date.now()) {
+  if (!prev || (prev.consecutiveFailures ?? 0) < PAUSE_AFTER || !BLOCKED.has(prev.httpStatus)) return false;
+  return now - Date.parse(prev.lastAttempt ?? 0) < PAUSE_RETRY_MS;
+}
+
+// Runs one source and returns its report record (and items). Never throws.
+async function runSource(src, prev, now) {
+  const t0 = Date.now();
+  const base = { id: src.id, kind: src.kind, label: src.label, market: src.market ?? null, lang: src.lang ?? null, url: src.url };
+  try {
+    const items = await src.run(src.url);
+    return {
+      items,
+      record: {
+        ...base, status: items.skipped ? "skipped" : items.length ? "ok" : "empty", items: items.length, ms: Date.now() - t0, note: items.note ?? null,
+        httpStatus: 200, error: null, lastAttempt: new Date(now).toISOString(), lastOk: new Date(now).toISOString(),
+        consecutiveFailures: 0, consecutiveEmpty: items.length ? 0 : (prev?.consecutiveEmpty ?? 0) + 1,
+      },
+    };
+  } catch (err) {
+    return {
+      items: [],
+      record: {
+        ...base, status: "failed", items: 0, ms: Date.now() - t0, note: null,
+        httpStatus: err.status ?? null, error: err.message, lastAttempt: new Date(now).toISOString(), lastOk: prev?.lastOk ?? null,
+        consecutiveFailures: (prev?.consecutiveFailures ?? 0) + 1, consecutiveEmpty: prev?.consecutiveEmpty ?? 0,
+      },
+    };
+  }
+}
+
+// ---------------------------------------------------------------- run
+
+let stopping = false;
+function onStop(signal) {
+  if (stopping) process.exit(130);
+  stopping = true;
+  log("WARN", `${signal} received: finishing the current source, then saving the checkpoint (send again to quit at once)`);
+}
+
+async function updatePrices(prevById, records) {
   const stored = await readJson(PRICES_FILE, { metals: {} });
   const out = { generatedAt: new Date().toISOString(), source: "LME official prices via westmetall.com", metals: {} };
   let ok = 0;
   const year = new Date().getUTCFullYear();
   for (const [key, { field, label }] of Object.entries(METALS)) {
     let series = stored.metals?.[key]?.series ?? [];
-    try {
-      const fetched = parsePriceTable(await get(priceUrl(field)));
-      // Backfill the previous year once, so the 1-year view is full.
-      if (series.length < 200) {
-        await sleep(1500);
-        fetched.push(...parsePriceTable(await get(priceUrl(field, year - 1))));
-      }
-      if (!fetched.length) throw new Error("no rows parsed");
-      series = mergeSeries(series, fetched);
+    const src = {
+      id: `price:${key}`, kind: "price", label: `LME ${label} (Westmetall)`, url: priceUrl(field),
+      run: async (url) => {
+        const rows = parsePriceTable(await get(url));
+        // Backfill the previous year once, so the 1-year view is full.
+        if (series.length < 200) {
+          await jitter();
+          rows.push(...parsePriceTable(await get(priceUrl(field, year - 1))));
+        }
+        return rows;
+      },
+    };
+    const { items, record } = await runSource(src, prevById.get(src.id), Date.now());
+    if (items.length) {
+      series = mergeSeries(series, items);
       ok += 1;
-      console.log(`[price ${key}] ${fetched.length} rows, latest ${series.at(-1)?.date}`);
-    } catch (err) {
-      console.warn(`[price ${key}] failed: ${err.message}`);
+      record.note = `latest ${series.at(-1)?.date}`;
     }
+    records.push(record);
+    log(record.status === "failed" ? "WARN" : "INFO", `[price ${key}] ${record.status}${record.error ? `: ${record.error}` : ` · ${items.length} rows, ${record.note ?? ""}`}`);
     out.metals[key] = { label, unit: "USD/t", stockUnit: "t", series };
-    await sleep(1500);
+    await jitter();
   }
-  if (ok) await writeFile(PRICES_FILE, JSON.stringify(out) + "\n");
+  if (ok) await writeJsonAtomic(PRICES_FILE, out);
   return ok;
 }
 
-async function updateNews() {
+async function updateNews(prevById, records, { resume }) {
   const existing = (await readJson(NEWS_FILE, {})).items ?? [];
-  // Look back further on the first runs so the feed starts full.
-  const window = existing.length < 150 ? "30d" : "7d";
+  const now = Date.now();
+  const checkpoint = (resume && (await loadCheckpoint(now))) || { startedAt: new Date(now).toISOString(), window: null, done: {} };
+  // Look back further on the first runs so the feed starts full. A resumed run keeps its window.
+  const window = checkpoint.window ?? (existing.length < 150 ? "30d" : "7d");
+  checkpoint.window = window;
+  const sources = buildSources(window);
+  const resumed = Object.keys(checkpoint.done).length;
+  log("INFO", `News: ${sources.length} sources, window ${window}${resumed ? `, resuming (${resumed} already done)` : ""}`);
+
   const fetched = [];
-  let ok = 0;
-  for (const [category, { queries }] of Object.entries(CATEGORIES)) {
-    for (const entry of queries) {
-      const [q, lang] = Array.isArray(entry) ? entry : [entry, "en"];
-      try {
-        const items = parseItems(await get(feedUrl(q, lang, window))).map((i) => ({ ...i, category }));
-        fetched.push(...items);
-        ok += 1;
-        console.log(`[news ${category}${lang === "en" ? "" : ` ${lang}`}] ${items.length} results`);
-      } catch (err) {
-        console.warn(`[news ${category}] failed: ${err.message}`);
-      }
-      await sleep(1200);
+  let attempted = 0;
+  for (const [i, src] of sources.entries()) {
+    if (stopping) break;
+    const done = checkpoint.done[src.id];
+    if (done) {
+      records.push({ ...done.record, resumed: true });
+      fetched.push(...done.items);
+      continue;
     }
-  }
-  for (const [market, { queries }] of Object.entries(MARKETS)) {
-    for (const entry of queries) {
-      const [q, lang] = Array.isArray(entry) ? entry : [entry, "en"];
-      try {
-        const items = parseItems(await get(feedUrl(q, lang, window))).map((i) => ({ ...i, category: "projects", market }));
-        fetched.push(...items);
-        ok += 1;
-        console.log(`[projects ${market}${lang === "en" ? "" : ` ${lang}`}] ${items.length} results`);
-      } catch (err) {
-        console.warn(`[projects ${market}] failed: ${err.message}`);
-      }
-      await sleep(1200);
+    const prev = prevById.get(src.id);
+    if (isPaused(prev, now)) {
+      records.push({ ...prev, status: "paused", items: 0, ms: 0 });
+      log("INFO", `[${src.id}] paused (blocked ${prev.consecutiveFailures}× with HTTP ${prev.httpStatus}); next try after ${new Date(Date.parse(prev.lastAttempt) + PAUSE_RETRY_MS).toISOString()}`);
+      continue;
     }
+    const { items, record } = await runSource(src, prev, now);
+    attempted += 1;
+    records.push(record);
+    fetched.push(...items);
+    checkpoint.done[src.id] = { record, items };
+    log(
+      record.status === "failed" ? "WARN" : "INFO",
+      `[${i + 1}/${sources.length}] ${src.label.slice(0, 90)} → ${record.status}${record.error ? `: ${record.error}` : ` (${record.items}${record.note ? `; ${record.note}` : ""})`}`,
+    );
+    if (attempted % 10 === 0) await writeJsonAtomic(CHECKPOINT_FILE, checkpoint);
+    if (src.kind === "search") await jitter();
   }
-  for (const feed of FEEDS) {
-    try {
-      const items = parseItems(await get(feed.url), feed.name, new URL(feed.url).origin).map((i) => ({ ...i, market: feed.market }));
-      fetched.push(...items);
-      ok += 1;
-      console.log(`[feed ${feed.name}] ${items.length} items`);
-    } catch (err) {
-      console.warn(`[feed ${feed.name}] failed: ${err.message}`);
-    }
+
+  if (stopping) {
+    await writeJsonAtomic(CHECKPOINT_FILE, checkpoint);
+    log("WARN", `Stopped. Progress saved to ${CHECKPOINT_FILE}; run again with --resume to continue.`);
+    return { ok: 0, stopped: true, window };
   }
-  // Official tender databases (EU and Canada). Each is optional: a failure is logged and skipped.
-  for (const [name, fn] of [["TED (EU tenders)", fetchTED], ["CanadaBuys", fetchCanadaBuys]]) {
-    try {
-      const items = await fn();
-      fetched.push(...items);
-      ok += 1;
-      console.log(`[tenders ${name}] ${items.length} matching notices`);
-    } catch (err) {
-      console.warn(`[tenders ${name}] failed: ${err.message}`);
-    }
-  }
+  const ok = records.filter((r) => r.kind !== "price" && (r.status === "ok" || r.status === "empty")).length;
   if (ok) {
     const items = mergeNews(existing, fetched);
-    const out = {
+    await writeJsonAtomic(NEWS_FILE, {
       generatedAt: new Date().toISOString(),
       retentionDays: NEWS_RETENTION_DAYS,
       categories: Object.fromEntries(Object.entries(CATEGORIES).map(([k, v]) => [k, v.label])),
@@ -798,18 +1176,58 @@ async function updateNews() {
       companies: COMPANIES.map(({ name, role }) => ({ name, role })),
       count: items.length,
       items,
-    };
-    await writeFile(NEWS_FILE, JSON.stringify(out, null, 2) + "\n");
-    console.log(`Wrote ${items.length} news items`);
+    }, true);
+    log("INFO", `Wrote ${items.length} news items`);
   }
-  return ok;
+  await clearCheckpoint();
+  return { ok, stopped: false, window };
+}
+
+export function summarize(records) {
+  const by = (s) => records.filter((r) => r.status === s).length;
+  return {
+    sources: records.length, ok: by("ok"), empty: by("empty"), failed: by("failed"), paused: by("paused"), skipped: by("skipped"),
+    items: records.reduce((n, r) => n + (r.items ?? 0), 0),
+  };
 }
 
 async function main() {
-  const prices = await updatePrices();
-  const news = await updateNews();
-  if (!prices && !news) {
-    console.error("Every source failed; data files left unchanged.");
+  const args = new Set(process.argv.slice(2));
+  const resume = args.has("--resume");
+  await openLog();
+  // If the console is piped (e.g. `| tee`) and the reader dies on Ctrl+C, a write to the broken
+  // pipe must not crash the run before it saves its checkpoint. The log file still gets every line.
+  for (const stream of [process.stdout, process.stderr]) stream.on("error", () => {});
+  process.on("SIGINT", () => onStop("SIGINT"));
+  process.on("SIGTERM", () => onStop("SIGTERM"));
+
+  const startedAt = new Date().toISOString();
+  const prevReport = await readJson(RUN_REPORT_FILE, { sources: [] });
+  const prevById = new Map([...(prevReport.prices ?? []), ...(prevReport.sources ?? [])].map((r) => [r.id, r]));
+  const priceRecords = [];
+  const newsRecords = [];
+
+  const prices = args.has("--news-only") ? 0 : await updatePrices(prevById, priceRecords);
+  const news = args.has("--prices-only") || stopping ? { ok: 0, stopped: stopping } : await updateNews(prevById, newsRecords, { resume });
+  if (news.stopped) process.exit(130);
+
+  const report = {
+    startedAt,
+    finishedAt: new Date().toISOString(),
+    durationMs: Date.now() - Date.parse(startedAt),
+    window: news.window ?? null,
+    summary: summarize([...priceRecords, ...newsRecords]),
+    prices: priceRecords,
+    sources: newsRecords,
+  };
+  if (!args.has("--prices-only") && !args.has("--news-only")) await writeJsonAtomic(RUN_REPORT_FILE, report, true);
+  const s = report.summary;
+  log("INFO", `Done in ${Math.round(report.durationMs / 1000)}s: ${s.ok} ok, ${s.empty} empty, ${s.failed} failed, ${s.paused} paused · ${s.items} items fetched`);
+  for (const r of newsRecords.filter((x) => x.status === "failed")) log("WARN", `failed: ${r.label} — ${r.error} — ${r.url}`);
+
+  logStream?.end();
+  if (!prices && !news.ok) {
+    log("ERROR", "Every source failed; data files left unchanged.");
     process.exit(1);
   }
 }
