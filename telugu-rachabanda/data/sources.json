@@ -1,76 +1,84 @@
 {
   "groups": [
     {
+      "id": "help",
+      "title": "🆘 అత్యవసర హెల్ప్‌లైన్లు (24 గంటలు)",
+      "items": [
+        { "name": "ఏపీఎన్ఆర్టీఎస్ (APNRTS) హెల్ప్‌లైన్", "phone": "+918632340678", "phoneText": "+91 863 2340678", "url": "https://apnrts.ap.gov.in", "note": "ఆంధ్రప్రదేశ్ ప్రవాసులకు. వాట్సాప్: +91 85000 27678" },
+        { "name": "ప్రవాసీ భారతీయ సహాయ కేంద్రం – యూఏఈ", "phone": "80046342", "phoneText": "800 46342 (800 INDIA)", "url": "https://www.cgidubai.gov.in/page/hotlines-24x7/", "note": "యూఏఈలో ఉచిత నంబర్" },
+        { "name": "ప్రవాసీ భారతీయ సహాయ కేంద్రం – సౌదీ", "phone": "8002471234", "phoneText": "800 247 1234", "url": "https://www.mea.gov.in/owrc-and-pbsk", "note": "సౌదీ అరేబియాలో ఉచిత నంబర్" },
+        { "name": "విదేశాంగ శాఖ హెల్ప్‌లైన్ (భారత్ నుంచి)", "phone": "18001133090", "phoneText": "1800 11 3090", "url": "https://www.mea.gov.in/owrc-and-pbsk", "note": "గల్ఫ్ నుంచి: +91 124 2341002" },
+        { "name": "వలస వనరుల కేంద్రం – హైదరాబాద్", "phone": "+914027772557", "phoneText": "040 2777 2557", "url": "https://www.madad.gov.in", "note": "తెలుగులో మాట్లాడవచ్చు" },
+        { "name": "టామ్‌కామ్ (TOMCOM) – తెలంగాణ", "phone": "+919440051452", "phoneText": "94400 51452", "url": "https://tomcom.telangana.gov.in", "note": "విదేశీ ఉద్యోగాల సమాచారం, సురక్షిత నియామకం" }
+      ]
+    },
+    {
+      "id": "missions",
+      "title": "🏛️ భారత రాయబార కార్యాలయాలు",
+      "items": [
+        { "name": "భారత రాయబార కార్యాలయం – అబుదాబి", "url": "https://www.indembassyuae.gov.in" },
+        { "name": "భారత కాన్సులేట్ – దుబాయ్", "url": "https://www.cgidubai.gov.in" },
+        { "name": "భారత రాయబార కార్యాలయం – రియాద్", "url": "https://www.eoiriyadh.gov.in" },
+        { "name": "భారత కాన్సులేట్ – జెద్దా", "url": "https://www.cgijeddah.gov.in" },
+        { "name": "భారత రాయబార కార్యాలయం – దోహా", "url": "https://www.indianembassyqatar.gov.in" },
+        { "name": "భారత రాయబార కార్యాలయం – కువైట్", "url": "https://www.indembkwt.gov.in" },
+        { "name": "భారత రాయబార కార్యాలయం – మస్కట్", "url": "https://www.indemb-oman.gov.in" },
+        { "name": "భారత రాయబార కార్యాలయం – మనామా", "url": "https://www.eoibahrain.gov.in" }
+      ]
+    },
+    {
+      "id": "portals",
+      "title": "📋 ప్రభుత్వ సేవలు",
+      "items": [
+        { "name": "మదద్ (MADAD)", "url": "https://www.madad.gov.in", "note": "రాయబార కార్యాలయానికి ఫిర్యాదు, మృతదేహం తరలింపు, జీతం సమస్యలు" },
+        { "name": "ఈ-మైగ్రేట్ (eMigrate)", "url": "https://emigrate.gov.in", "note": "రిజిస్టర్డ్ ఏజెంట్ల జాబితా, ప్రవాసీ బీమా" },
+        { "name": "ఏపీఎన్ఆర్టీఎస్", "url": "https://apnrts.ap.gov.in", "note": "ఉచిత నమోదు, సాయం, శిక్షణ" },
+        { "name": "ప్రవాసాంధ్ర భరోసా బీమా", "url": "https://apnrts.ap.gov.in/insurance", "note": "ఏపీ ప్రవాసులకు బీమా పథకం" },
+        { "name": "టామ్‌కామ్ తెలంగాణ", "url": "https://tomcom.telangana.gov.in", "note": "ప్రభుత్వ విదేశీ నియామక సంస్థ" }
+      ]
+    },
+    {
+      "id": "sanghalu",
+      "title": "🤝 గల్ఫ్‌లోని తెలుగు సంఘాలు",
+      "items": [
+        { "name": "తెలుగు అసోసియేషన్ – యూఏఈ", "url": "https://www.tauae.org", "country": "uae" },
+        { "name": "తెలుగు అసోసియేషన్ ఆఫ్ అబుదాబి (TAAD)", "country": "uae", "note": "సోషల్ మీడియాలో @telugutaad" },
+        { "name": "సౌదీ అరేబియా తెలుగు అసోసియేషన్ (SATA)", "url": "https://sataksa.com", "country": "saudi" },
+        { "name": "తెలుగు అసోసియేషన్ ఆఫ్ సౌదీ అరేబియా (TASA)", "url": "https://tasaksa.org", "country": "saudi" },
+        { "name": "తెలుగు కళా సమితి – ఖతార్", "country": "qatar", "note": "ఇండియన్ కల్చరల్ సెంటర్ అనుబంధ సంఘం" },
+        { "name": "ఆంధ్ర కళా వేదిక – ఖతార్", "country": "qatar" },
+        { "name": "తెలుగు కళా సమితి – కువైట్", "url": "https://tkskuwait.com", "country": "kuwait" },
+        { "name": "కువైట్ తెలుగు సంఘాల ఐక్య వేదిక", "country": "kuwait" },
+        { "name": "తెలుగు కళా సమితి – మస్కట్", "url": "https://www.instagram.com/telugukalasamithimuscat/", "country": "oman" },
+        { "name": "తెలుగు కళా సమితి – బహ్రెయిన్", "url": "http://tksbahrain.com", "country": "bahrain" }
+      ]
+    },
+    {
+      "id": "gulfpapers",
+      "title": "📰 గల్ఫ్ వార్తా పత్రికలు (ఇంగ్లీష్)",
+      "items": [
+        { "name": "గల్ఫ్ న్యూస్ (యూఏఈ)", "url": "https://gulfnews.com" },
+        { "name": "ఖలీజ్ టైమ్స్ (యూఏఈ)", "url": "https://www.khaleejtimes.com" },
+        { "name": "అరబ్ న్యూస్ (సౌదీ)", "url": "https://www.arabnews.com" },
+        { "name": "సౌదీ గెజెట్", "url": "https://saudigazette.com.sa" },
+        { "name": "గల్ఫ్ టైమ్స్ (ఖతార్)", "url": "https://www.gulf-times.com" },
+        { "name": "ద పెనిన్సులా (ఖతార్)", "url": "https://thepeninsulaqatar.com" },
+        { "name": "అరబ్ టైమ్స్ (కువైట్)", "url": "https://www.arabtimesonline.com" },
+        { "name": "ఇండియన్స్ ఇన్ కువైట్", "url": "https://www.indiansinkuwait.com" },
+        { "name": "టైమ్స్ ఆఫ్ ఒమన్", "url": "https://timesofoman.com" },
+        { "name": "గల్ఫ్ డైలీ న్యూస్ (బహ్రెయిన్)", "url": "https://www.gdnonline.com" }
+      ]
+    },
+    {
       "id": "papers",
-      "title": "దినపత్రికలు",
+      "title": "🏡 ఇంటి వార్తలు – తెలుగు పత్రికలు",
       "items": [
-        { "name": "ఈనాడు", "url": "https://www.eenadu.net", "note": "అత్యధిక పాఠకులున్న తెలుగు దినపత్రిక" },
-        { "name": "సాక్షి", "url": "https://www.sakshi.com", "note": "దినపత్రిక, టీవీ" },
-        { "name": "ఆంధ్రజ్యోతి", "url": "https://www.andhrajyothy.com", "note": "దినపత్రిక, ABN టీవీ" },
-        { "name": "నమస్తే తెలంగాణ", "url": "https://www.ntnews.com", "note": "తెలంగాణ దినపత్రిక" },
-        { "name": "వీ6 వెలుగు", "url": "https://www.v6velugu.com", "note": "దినపత్రిక, V6 న్యూస్" },
-        { "name": "ఆంధ్రప్రభ", "url": "https://www.prabhanews.com", "note": "పురాతన తెలుగు దినపత్రికల్లో ఒకటి" },
-        { "name": "వార్త", "url": "https://www.vaartha.com", "note": "దినపత్రిక" },
-        { "name": "ప్రజాశక్తి", "url": "https://www.prajasakti.com", "note": "దినపత్రిక" },
-        { "name": "విశాలాంధ్ర", "url": "https://www.visalaandhra.com", "note": "దినపత్రిక" },
-        { "name": "మన తెలంగాణ", "url": "https://www.manatelangana.news", "note": "తెలంగాణ దినపత్రిక" },
-        { "name": "నవ తెలంగాణ", "url": "https://www.navatelangana.com", "note": "తెలంగాణ దినపత్రిక" },
-        { "name": "దిశ", "url": "https://www.dishadaily.com", "note": "దినపత్రిక" },
-        { "name": "సూర్య", "url": "https://www.suryaa.com", "note": "దినపత్రిక" }
-      ]
-    },
-    {
-      "id": "tv",
-      "title": "టీవీ వార్తా ఛానళ్లు",
-      "items": [
-        { "name": "టీవీ9 తెలుగు", "url": "https://tv9telugu.com" },
-        { "name": "ఎన్‌టీవీ తెలుగు", "url": "https://ntvtelugu.com" },
-        { "name": "ఈటీవీ భారత్ తెలుగు", "url": "https://www.etvbharat.com/telugu" },
-        { "name": "10టీవీ", "url": "https://10tv.in" },
-        { "name": "టీవీ5 న్యూస్", "url": "https://www.tv5news.in" },
-        { "name": "వీ6 న్యూస్", "url": "https://www.v6velugu.com" },
-        { "name": "సాక్షి టీవీ", "url": "https://www.sakshi.com" }
-      ]
-    },
-    {
-      "id": "digital",
-      "title": "డిజిటల్ వార్తా సైట్లు",
-      "items": [
-        { "name": "బీబీసీ తెలుగు", "url": "https://www.bbc.com/telugu" },
-        { "name": "ఏబీపీ దేశం", "url": "https://telugu.abplive.com" },
-        { "name": "సమయం తెలుగు", "url": "https://telugu.samayam.com" },
-        { "name": "న్యూస్18 తెలుగు", "url": "https://telugu.news18.com" },
-        { "name": "హిందుస్తాన్ టైమ్స్ తెలుగు", "url": "https://telugu.hindustantimes.com" },
-        { "name": "ఏషియానెట్ న్యూస్ తెలుగు", "url": "https://telugu.asianetnews.com" },
-        { "name": "వన్ఇండియా తెలుగు", "url": "https://telugu.oneindia.com" },
-        { "name": "జీ న్యూస్ తెలుగు", "url": "https://zeenews.india.com/telugu" },
-        { "name": "న్యూస్‌బైట్స్ తెలుగు", "url": "https://telugu.newsbytesapp.com" },
-        { "name": "వే2న్యూస్", "url": "https://www.way2news.com" }
-      ]
-    },
-    {
-      "id": "gov",
-      "title": "ప్రభుత్వ & ఉపయోగకర వెబ్‌సైట్లు",
-      "items": [
-        { "name": "ఆంధ్రప్రదేశ్ ప్రభుత్వం", "url": "https://www.ap.gov.in" },
-        { "name": "తెలంగాణ ప్రభుత్వం", "url": "https://www.telangana.gov.in" },
-        { "name": "ఏపీపీఎస్సీ (APPSC)", "url": "https://psc.ap.gov.in", "note": "ఏపీ ఉద్యోగ నోటిఫికేషన్లు" },
-        { "name": "టీజీపీఎస్సీ (TGPSC)", "url": "https://www.tspsc.gov.in", "note": "తెలంగాణ ఉద్యోగ నోటిఫికేషన్లు" },
-        { "name": "తిరుమల తిరుపతి దేవస్థానం", "url": "https://www.tirumala.org", "note": "దర్శనం, సేవల బుకింగ్" },
-        { "name": "భారత వాతావరణ శాఖ – హైదరాబాద్", "url": "https://mausam.imd.gov.in/hyderabad", "note": "వాతావరణ హెచ్చరికలు" },
-        { "name": "ఏపీ విపత్తు నిర్వహణ సంస్థ", "url": "https://apsdma.ap.gov.in", "note": "తుఫాను, వరద హెచ్చరికలు" }
-      ]
-    },
-    {
-      "id": "culture",
-      "title": "సాహిత్యం & సంస్కృతి",
-      "items": [
-        { "name": "తెలుగు వికీపీడియా", "url": "https://te.wikipedia.org" },
-        { "name": "ఆంధ్రభారతి", "url": "https://www.andhrabharati.com", "note": "నిఘంటువులు, ప్రాచీన సాహిత్యం" },
-        { "name": "ఈమాట", "url": "https://eemaata.com", "note": "అంతర్జాల సాహిత్య పత్రిక" },
-        { "name": "కినిగె", "url": "https://kinige.com", "note": "తెలుగు ఈ-పుస్తకాలు" },
-        { "name": "పుస్తకం.నెట్", "url": "https://pustakam.net", "note": "పుస్తక సమీక్షలు" },
-        { "name": "కౌముది", "url": "https://www.koumudi.net", "note": "మాస పత్రిక" }
+        { "name": "ఈనాడు", "url": "https://www.eenadu.net" },
+        { "name": "సాక్షి", "url": "https://www.sakshi.com" },
+        { "name": "ఆంధ్రజ్యోతి", "url": "https://www.andhrajyothy.com" },
+        { "name": "నమస్తే తెలంగాణ", "url": "https://www.ntnews.com" },
+        { "name": "వీ6 వెలుగు", "url": "https://www.v6velugu.com" },
+        { "name": "బీబీసీ తెలుగు", "url": "https://www.bbc.com/telugu" }
       ]
     }
   ]

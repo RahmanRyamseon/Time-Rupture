@@ -1,21 +1,32 @@
 import { shared, store, voterId } from "./store.js";
 
 const SECTIONS = [
-  ["top", "ముఖ్యాంశాలు"],
-  ["ap", "ఆంధ్రప్రదేశ్"],
-  ["ts", "తెలంగాణ"],
-  ["national", "జాతీయం"],
-  ["world", "అంతర్జాతీయం"],
-  ["cinema", "సినిమా"],
-  ["sports", "క్రీడలు"],
-  ["business", "వాణిజ్యం"],
-  ["tech", "టెక్నాలజీ"],
-  ["health", "ఆరోగ్యం"],
-  ["jobs", "విద్య-ఉద్యోగాలు"],
-  ["farm", "వ్యవసాయం"],
-  ["devotional", "భక్తి"],
-  ["nri", "ప్రవాసం"],
+  ["top", "తెలుగు వారి వార్తలు"],
+  ["uae", "🇦🇪 యూఏఈ"],
+  ["saudi", "🇸🇦 సౌదీ"],
+  ["qatar", "🇶🇦 ఖతార్"],
+  ["kuwait", "🇰🇼 కువైట్"],
+  ["oman", "🇴🇲 ఒమన్"],
+  ["bahrain", "🇧🇭 బహ్రెయిన్"],
+  ["sangham", "సంఘాలు & వేడుకలు"],
+  ["exit", "తిరుగు ప్రయాణం & కష్టాలు"],
+  ["jobs", "ఉద్యోగం, వీసా & ప్రయాణం"],
+  ["gulf", "గల్ఫ్ పరిణామాలు"],
 ];
+const COUNTRY_IDS = ["uae", "saudi", "qatar", "kuwait", "oman", "bahrain"];
+// Short notes under section titles, so readers know what each tab collects.
+const SECTION_NOTE = {
+  top: "గల్ఫ్ దేశాల్లోని తెలుగు వారి గురించిన వార్తలు — తెలుగు, ఇంగ్లీష్ పత్రికల నుంచి.",
+  sangham: "గల్ఫ్‌లోని తెలుగు సంఘాలు, కమిటీలు, పండుగ వేడుకలు, సన్మానాలు.",
+  exit: "స్వదేశానికి తిరుగు ప్రయాణం, మృతదేహాల తరలింపు, చిక్కుకుపోయిన వారు, జైలు, క్షమాభిక్ష.",
+  jobs: "వీసా నియమాలు, ఉద్యోగాలు, జీతాలు, నకిలీ ఏజెంట్లు, విమానాలు, ప్రయాణ హెచ్చరికలు.",
+  gulf: "గల్ఫ్‌లో ఉన్న అందరిపై ప్రభావం చూపే సాధారణ పరిణామాలు.",
+};
+const SECTION_CTA = {
+  sangham: ["#/board/sangham", "🎉 మీ సంఘం కార్యక్రమం గురించి మీరే రాయండి"],
+  exit: ["#/board/help", "🆘 సాయం కావాలా? ఇక్కడ అడగండి"],
+  jobs: ["#/board/jobs", "💼 ఉద్యోగాలు & వీసా చర్చ"],
+};
 const SECTION_NAME = Object.fromEntries(SECTIONS);
 const REACTIONS = [
   ["like", "👍", "బాగుంది"],
@@ -27,7 +38,7 @@ const REACTIONS = [
 ];
 const PAGE = 24;
 
-const state = { news: [], updated: null, byId: new Map(), community: null, sources: null, publisher: "", shown: PAGE };
+const state = { news: [], updated: null, byId: new Map(), community: null, sources: null, rates: null, publisher: "", shown: PAGE };
 const $ = (sel, root = document) => root.querySelector(sel);
 const main = $("#main");
 const side = $("#side");
@@ -108,7 +119,7 @@ async function share(item) {
   toast("లింక్ కాపీ అయింది");
 }
 const waLink = (item) =>
-  `https://wa.me/?text=${encodeURIComponent(`${item.title}\n\nరచ్చబండలో చర్చించండి: ${storyLink(item.id)}`)}`;
+  `https://wa.me/?text=${encodeURIComponent(`${item.title}\n\nగల్ఫ్ రచ్చబండలో చర్చించండి: ${storyLink(item.id)}`)}`;
 
 // ---- data ---------------------------------------------------------------------------------
 async function loadJSON(path) {
@@ -120,11 +131,13 @@ async function loadJSON(path) {
 async function init() {
   setupChrome();
   try {
-    const [news, community, sources] = await Promise.all([
+    const [news, community, sources, rates] = await Promise.all([
       loadJSON("data/news.json"),
       loadJSON("data/community.json"),
       loadJSON("data/sources.json"),
+      loadJSON("data/rates.json").catch(() => null),
     ]);
+    state.rates = rates;
     state.news = news.items;
     state.updated = news.updated;
     state.community = community;
@@ -147,7 +160,7 @@ function setupChrome() {
   nav.push(
     `<li class="sep" aria-hidden="true"></li>`,
     `<li><a href="#/board" data-route="board" class="special">💬 రచ్చబండ</a></li>`,
-    `<li><a href="#/sources" data-route="sources">📰 వనరులు</a></li>`,
+    `<li><a href="#/sources" data-route="sources">📒 డైరెక్టరీ</a></li>`,
     `<li><a href="#/saved" data-route="saved">🔖 దాచినవి</a></li>`,
   );
   $("#nav").innerHTML = nav.join("");
@@ -212,11 +225,14 @@ function route() {
 
 // ---- news lists -----------------------------------------------------------------------------
 function cardHTML(item, { lead = false } = {}) {
-  const tags = item.sections
-    .filter((s) => s !== "top" && SECTION_NAME[s])
-    .slice(0, 2)
-    .map((s) => `<a class="tag" href="#/s/${s}">${SECTION_NAME[s]}</a>`)
-    .join("");
+  const tags = [
+    ...(item.telugu ? [`<span class="tag te">తెలుగు వారు</span>`] : []),
+    ...item.sections
+      .filter((s) => s !== "top" && SECTION_NAME[s])
+      .slice(0, 3)
+      .map((s) => `<a class="tag" href="#/s/${s}">${SECTION_NAME[s]}</a>`),
+    ...(item.lang === "en" ? [`<span class="tag en">English</span>`] : []),
+  ].join("");
   const related = item.related?.length
     ? `<ul class="related" aria-label="ఇతర పత్రికల్లో">${item.related
         .slice(0, lead ? 4 : 2)
@@ -285,7 +301,7 @@ function bindCardButtons(root) {
   };
 }
 
-function renderList(items, { title, sub = "", lead = true, filters = true }) {
+function renderList(items, { title, sub = "", lead = true, filters = true, note = "", cta = null, extra = "" }) {
   const pubs = {};
   for (const i of items) pubs[i.publisher] = (pubs[i.publisher] || 0) + 1;
   const topPubs = Object.entries(pubs)
@@ -298,6 +314,8 @@ function renderList(items, { title, sub = "", lead = true, filters = true }) {
 
   main.innerHTML = `
     <div class="section-head"><h1>${esc(title)}</h1><span class="count">${list.length} వార్తలు ${sub}</span></div>
+    ${note ? `<p class="section-note">${esc(note)}${cta ? ` <a href="${cta[0]}">${esc(cta[1])} →</a>` : ""}</p>` : ""}
+    ${extra}
     ${
       filters && topPubs.length > 1
         ? `<div class="chips" role="group" aria-label="పత్రిక">
@@ -316,7 +334,7 @@ function renderList(items, { title, sub = "", lead = true, filters = true }) {
     chip.onclick = () => {
       state.publisher = chip.dataset.pub;
       state.shown = PAGE;
-      renderList(items, { title, sub, lead, filters });
+      renderList(items, { title, sub, lead, filters, note, cta, extra });
     };
   }
   const more = $("#more");
@@ -324,7 +342,7 @@ function renderList(items, { title, sub = "", lead = true, filters = true }) {
     more.onclick = () => {
       const y = window.scrollY;
       state.shown += PAGE;
-      renderList(items, { title, sub, lead, filters });
+      renderList(items, { title, sub, lead, filters, note, cta, extra });
       window.scrollTo({ top: y });
     };
   bindCardButtons(main);
@@ -332,11 +350,23 @@ function renderList(items, { title, sub = "", lead = true, filters = true }) {
 }
 
 function renderSection(id) {
-  document.title = `${SECTION_NAME[id]} — రచ్చబండ`;
-  renderList(
-    state.news.filter((i) => i.sections.includes(id)),
-    { title: SECTION_NAME[id] },
-  );
+  document.title = `${SECTION_NAME[id]} — గల్ఫ్ రచ్చబండ`;
+  let items = state.news.filter((i) => i.sections.includes(id));
+  // Country pages lead with stories about Telugu people, then the rest of that country's news.
+  if (COUNTRY_IDS.includes(id)) items = [...items.filter((i) => i.telugu), ...items.filter((i) => !i.telugu)];
+  const assoc = COUNTRY_IDS.includes(id)
+    ? state.sources.groups.find((g) => g.id === "sanghalu").items.filter((a) => a.country === id)
+    : [];
+  renderList(items, {
+    title: SECTION_NAME[id],
+    note: SECTION_NOTE[id],
+    cta: SECTION_CTA[id],
+    extra: assoc.length
+      ? `<p class="assoc">ఇక్కడి తెలుగు సంఘాలు: ${assoc
+          .map((a) => (a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.name)}</a>` : esc(a.name)))
+          .join(" · ")}</p>`
+      : "",
+  });
 }
 
 function renderSearch(q) {
@@ -346,12 +376,12 @@ function renderSearch(q) {
     const text = `${i.title} ${i.description} ${i.publisher}`.toLowerCase();
     return terms.every((t) => text.includes(t));
   });
-  document.title = `"${q}" — రచ్చబండ`;
+  document.title = `"${q}" — గల్ఫ్ రచ్చబండ`;
   renderList(hits, { title: `"${q}" కోసం ఫలితాలు`, lead: false });
 }
 
 function renderSaved() {
-  document.title = "దాచినవి — రచ్చబండ";
+  document.title = "దాచినవి — గల్ఫ్ రచ్చబండ";
   renderList(saved.all(), { title: "🔖 దాచిన వార్తలు", sub: "(ఈ పరికరంలో మాత్రమే)", lead: false, filters: false });
   if (!saved.all().length)
     main.insertAdjacentHTML("beforeend", `<p class="empty">ఏ వార్త పక్కన 🔖 నొక్కితే అది ఇక్కడ దాచబడుతుంది.</p>`);
@@ -361,7 +391,7 @@ function renderSaved() {
 function renderStory(id) {
   const item = state.byId.get(id) || saved.all().find((s) => s.id === id);
   const thread = threadOf(id);
-  document.title = `${item ? item.title : "చర్చ"} — రచ్చబండ`;
+  document.title = `${item ? item.title : "చర్చ"} — గల్ఫ్ రచ్చబండ`;
   if (!item) {
     main.innerHTML = `<a class="back" href="#/">← వెనక్కి</a>
       <div class="story"><p>ఈ వార్త పాతదైపోవడంతో జాబితా నుంచి తొలగించాం. దానిపై జరిగిన చర్చ కింద ఉంది.</p></div>
@@ -384,7 +414,8 @@ function renderStory(id) {
           hour: "numeric",
           minute: "2-digit",
         })}</time> · ${ago(item.published)}
-        ${item.sections.map((s) => (SECTION_NAME[s] ? `<a class="tag" href="#/s/${s}">${SECTION_NAME[s]}</a>` : "")).join(" ")}</div>
+        ${item.telugu ? `<span class="tag te">తెలుగు వారు</span>` : ""}
+        ${item.sections.map((s) => (SECTION_NAME[s] && s !== "top" ? `<a class="tag" href="#/s/${s}">${SECTION_NAME[s]}</a>` : "")).join(" ")}</div>
       <h1>${esc(item.title)}</h1>
       ${item.description ? `<p class="lede">${esc(item.description)}</p>` : ""}
       <div class="story-links">
@@ -635,11 +666,11 @@ async function mountThread(el, thread, { title, placeholder = "మీ అభి�
 
 // ---- community boards ---------------------------------------------------------------------------
 async function renderBoards() {
-  document.title = "రచ్చబండ చర్చలు";
+  document.title = "రచ్చబండ చర్చలు — గల్ఫ్ రచ్చబండ";
   const boards = state.community.boards;
   main.innerHTML = `
     <div class="hero"><h1>🌳 రచ్చబండ</h1>
-      <p>ఊళ్లో అందరూ కలిసి మాట్లాడుకునే చోటు రచ్చబండ. ఇక్కడ మీ ఊరి కబుర్లు, సినిమా ముచ్చట్లు, రాజకీయ వాదనలు, కవితలు, వంటలు — ఏదైనా పంచుకోండి.</p></div>
+      <p>ఊళ్లో అందరూ కలిసి మాట్లాడుకునే చోటు రచ్చబండ. ఇంటికి దూరంగా గల్ఫ్‌లో ఉన్న మనందరికీ ఇదే మన రచ్చబండ — సంఘాల కార్యక్రమాలు, ఉద్యోగాలు, సాయం, రూములు, ఇంటికి తిరుగు ప్రయాణం — ఏదైనా పంచుకోండి.</p></div>
     <div class="boards">${boards
       .map(
         (b) => `<a class="board" href="#/board/${b.id}"><span class="icon">${b.icon}</span><strong>${esc(b.title)}</strong>
@@ -666,7 +697,7 @@ async function renderBoards() {
 function renderBoard(id) {
   const b = state.community.boards.find((x) => x.id === id);
   if (!b) return renderBoards();
-  document.title = `${b.title} — రచ్చబండ`;
+  document.title = `${b.title} — గల్ఫ్ రచ్చబండ`;
   main.innerHTML = `<a class="back" href="#/board">← రచ్చబండ</a>
     <div class="hero"><h1>${b.icon} ${esc(b.title)}</h1><p>${esc(b.desc)}</p></div>
     <section class="discuss" id="discuss"></section>`;
@@ -694,23 +725,31 @@ function recentHTML(c) {
 }
 
 // ---- sources & rules ----------------------------------------------------------------------------
+function sourceItemHTML(s) {
+  const inner = `${s.url ? `<img src="${favicon(s.url)}" alt="" loading="lazy" onerror="this.remove()" />` : `<span class="dot">🤝</span>`}
+    <span>${esc(s.name)}${s.phone ? `<b class="phone">📞 ${esc(s.phoneText)}</b>` : ""}${s.note ? `<small>${esc(s.note)}</small>` : ""}</span>`;
+  if (s.phone) return `<li><a href="tel:${esc(s.phone)}">${inner}</a></li>`;
+  return s.url ? `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${inner}</a></li>` : `<li><div class="nolink">${inner}</div></li>`;
+}
+
 function renderSources() {
-  document.title = "తెలుగు వార్తా వనరులు — రచ్చబండ";
+  document.title = "గల్ఫ్ తెలుగు డైరెక్టరీ — గల్ఫ్ రచ్చబండ";
   const counts = {};
   for (const i of state.news) counts[i.publisher] = (counts[i.publisher] || 0) + 1;
   const active = Object.entries(counts)
     .filter(([p]) => p)
     .sort((a, b) => b[1] - a[1]);
-  main.innerHTML = `<div class="section-head"><h1>📰 తెలుగు వార్తా వనరులు</h1></div>
-    <p class="muted">తెలుగు పత్రికలు, ఛానళ్లు, ప్రభుత్వ సైట్లు, సాహిత్య వనరులు — అన్నీ ఒకే చోట.</p>
+  main.innerHTML = `<div class="section-head"><h1>📒 గల్ఫ్ తెలుగు డైరెక్టరీ</h1></div>
+    <p class="muted">హెల్ప్‌లైన్లు, రాయబార కార్యాలయాలు, ప్రభుత్వ సేవలు, తెలుగు సంఘాలు, వార్తా పత్రికలు — అన్నీ ఒకే చోట. ఫోన్ నంబర్‌పై నొక్కితే నేరుగా కాల్ వెళ్తుంది.</p>
     ${state.sources.groups
       .map(
-        (g) => `<section class="src-group"><h2>${esc(g.title)}</h2><ul class="src-list">${g.items
-          .map(
-            (s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener"><img src="${favicon(s.url)}" alt="" loading="lazy" onerror="this.remove()" />
-            <span>${esc(s.name)}${s.note ? `<small>${esc(s.note)}</small>` : ""}</span></a></li>`,
-          )
-          .join("")}</ul></section>`,
+        (g) => `<section class="src-group" id="dir-${g.id}"><h2>${esc(g.title)}</h2><ul class="src-list">${g.items
+          .map(sourceItemHTML)
+          .join("")}</ul>${
+          g.id === "sanghalu"
+            ? `<p class="muted" style="font-size:.85rem">మీ సంఘం ఈ జాబితాలో లేదా? <a href="#/board/sangham">మన సంఘాలు & వేడుకలు</a> బోర్డులో వివరాలు రాయండి.</p>`
+            : ""
+        }</section>`,
       )
       .join("")}
     <section class="src-group"><h2>ఈ సైట్‌లో వార్తలు వస్తున్న పత్రికలు (${active.length})</h2>
@@ -720,25 +759,67 @@ function renderSources() {
 }
 
 function renderRules() {
-  document.title = "చర్చా నియమాలు — రచ్చబండ";
+  document.title = "చర్చా నియమాలు — గల్ఫ్ రచ్చబండ";
   main.innerHTML = `<div class="section-head"><h1>చర్చా నియమాలు</h1></div>
-    <div class="story"><p><strong>"కాలు జారితే తీసుకోగలం కానీ నోరు జారితే తీసుకోలేం."</strong> రచ్చబండ అందరిదీ — పెద్దలూ, పిల్లలూ, అన్ని ప్రాంతాల వారూ ఇక్కడ ఉంటారు.</p>
+    <div class="story"><p><strong>"కాలు జారితే తీసుకోగలం కానీ నోరు జారితే తీసుకోలేం."</strong> రచ్చబండ అందరిదీ — గల్ఫ్‌లో ఉన్న అన్ని ప్రాంతాల తెలుగు వారూ, ఇంటి దగ్గర వారి కుటుంబాలూ ఇక్కడ ఉంటారు.</p>
     <ol class="rules">
       <li>మర్యాదగా రాయండి. వ్యక్తిగత దూషణలు, బూతులు వద్దు.</li>
       <li>కులం, మతం, ప్రాంతం, లింగం పేరుతో ద్వేషం వ్యాపింపజేయవద్దు.</li>
       <li>తప్పుడు వార్తలు, పుకార్లు పంచవద్దు. ఆధారం ఉంటే లింక్ ఇవ్వండి.</li>
-      <li>ఫోన్ నంబర్లు, చిరునామాలు వంటి వ్యక్తిగత వివరాలు పెట్టవద్దు — మీవి కానీ ఇతరులవి కానీ.</li>
+      <li>ఫోన్ నంబర్లు, పాస్‌పోర్ట్ / ఇఖామా నంబర్లు, చిరునామాలు వంటి వ్యక్తిగత వివరాలు పెట్టవద్దు — మీవి కానీ ఇతరులవి కానీ.</li>
+      <li>ఉద్యోగం ఇప్పిస్తామని డబ్బులు అడిగే పోస్టులు నమ్మవద్దు. ఏజెంట్ రిజిస్టర్ అయ్యాడో లేదో <a href="https://emigrate.gov.in" target="_blank" rel="noopener">eMigrate</a>లో చూసుకోండి.</li>
       <li>అభ్యంతరకరమైన వ్యాఖ్య కనిపిస్తే 🚩 నొక్కండి. మూడు ఫిర్యాదులు వస్తే అది దాగిపోతుంది.</li>
     </ol></div>`;
 }
 
 // ---- sidebar ---------------------------------------------------------------------------------------
+const CLOCKS = [
+  ["ఇండియా", "Asia/Kolkata"],
+  ["యూఏఈ / ఒమన్", "Asia/Dubai"],
+  ["సౌదీ / ఖతార్ / కువైట్ / బహ్రెయిన్", "Asia/Riyadh"],
+];
+function tickClocks() {
+  const el = $("#clocks");
+  if (!el) return;
+  const now = new Date();
+  el.innerHTML = CLOCKS.map(
+    ([name, tz]) =>
+      `<div class="clock"><b>${new Intl.DateTimeFormat("te-IN", { hour: "numeric", minute: "2-digit", timeZone: tz }).format(now)}</b><span>${name}</span></div>`,
+  ).join("");
+  clearTimeout(tickClocks.t);
+  tickClocks.t = setTimeout(tickClocks, 30000);
+}
+
 async function renderSide() {
   const c = state.community;
   const proverb = pick(c.proverbs);
   const word = pick(c.words, 3);
   const poll = pick(c.polls);
+  const help = state.sources.groups.find((g) => g.id === "help").items.slice(0, 3);
+  const r = state.rates?.inrPer;
   side.innerHTML = `
+    <section class="widget sos"><h2>🆘 అత్యవసర సాయం</h2><ul class="mini">${help
+      .map((h) => `<li><a href="tel:${esc(h.phone)}"><b>📞 ${esc(h.phoneText)}</b><small>${esc(h.name)}</small></a></li>`)
+      .join("")}</ul><p style="margin:8px 0 0"><a href="#/sources">అన్ని హెల్ప్‌లైన్లు, రాయబార కార్యాలయాలు →</a></p></section>
+    <section class="widget"><h2>🕰️ ఇప్పుడు సమయం</h2><div class="clocks" id="clocks"></div></section>
+    ${
+      r
+        ? `<section class="widget"><h2>💱 రూపాయి మారకం</h2><table class="rates">${[
+            ["AED", "యూఏఈ దిర్హామ్"],
+            ["SAR", "సౌదీ రియాల్"],
+            ["QAR", "ఖతార్ రియాల్"],
+            ["KWD", "కువైట్ దినార్"],
+            ["OMR", "ఒమన్ రియాల్"],
+            ["BHD", "బహ్రెయిన్ దినార్"],
+          ]
+            .filter(([c]) => r[c])
+            .map(([c, n]) => `<tr><td>1 ${c}<small>${n}</small></td><td>₹${r[c].toFixed(2)}</td></tr>`)
+            .join("")}</table><p class="muted" style="font-size:.75rem;margin:6px 0 0">సూచిక రేటు (${dateTe(
+            new Date(state.rates.updated),
+            { day: "numeric", month: "short" },
+          )}). ఎక్స్ఛేంజ్ హౌస్ రేటు కొంచెం తక్కువగా ఉంటుంది.</p></section>`
+        : ""
+    }
     <section class="widget poll" id="poll"><h2>ఈరోజు ప్రశ్న</h2><p class="q">${esc(poll.q)}</p><div class="opts"></div></section>
     <section class="widget saying"><h2>నేటి సామెత</h2><blockquote>${esc(proverb.text)}</blockquote><p>${esc(proverb.meaning)}</p></section>
     <section class="widget"><h2>తాజా చర్చలు</h2><ul class="mini" id="recent"><li class="muted">లోడ్ అవుతోంది…</li></ul>
@@ -747,11 +828,13 @@ async function renderSide() {
       word.meaning,
     )}</p><p class="muted">"${esc(word.use)}"</p></section>
     <section class="widget"><h2>ఎక్కువ చర్చించిన వార్తలు</h2><ul class="mini" id="hot"><li class="muted">…</li></ul></section>
-    <section class="widget"><h2>పత్రికలు</h2><ul class="mini">${state.sources.groups[0].items
-      .slice(0, 6)
-      .map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a></li>`)
-      .join("")}</ul><p style="margin:8px 0 0"><a href="#/sources">అన్ని వనరులు →</a></p></section>`;
+    <section class="widget"><h2>తెలుగు సంఘాలు</h2><ul class="mini">${state.sources.groups
+      .find((g) => g.id === "sanghalu")
+      .items.slice(0, 6)
+      .map((a) => `<li>${a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.name)} ↗</a>` : esc(a.name)}</li>`)
+      .join("")}</ul><p style="margin:8px 0 0"><a href="#/sources">అన్ని సంఘాలు →</a></p></section>`;
 
+  tickClocks();
   mountPoll($("#poll"), poll);
   try {
     const recent = await store.recent(6);

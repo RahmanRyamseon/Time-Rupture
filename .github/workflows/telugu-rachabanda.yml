@@ -1,4 +1,4 @@
-name: Telugu Rachabanda news (every 2 hours)
+name: Gulf Rachabanda news (every 2 hours)
 
 on:
   schedule:
@@ -25,14 +25,14 @@ jobs:
       - name: Check parser
         run: node telugu-rachabanda/scripts/test.mjs
 
-      - name: Collect Telugu news
+      - name: Collect Gulf Telugu news and rupee rates
         run: node telugu-rachabanda/scripts/update.mjs
 
       - name: Commit updated news
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add telugu-rachabanda/data/news.json
+          git add telugu-rachabanda/data/news.json telugu-rachabanda/data/rates.json
           if git diff --cached --quiet; then
             echo "No news changes to commit."
           else
