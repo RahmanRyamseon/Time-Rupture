@@ -1,6 +1,6 @@
 // Offline checks for the collector's parsers and merge logic: node cables-market-watch/scripts/test.mjs
 import assert from "node:assert/strict";
-import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS, parseTED, tedRelevant, parseCanadaBuys, parseCSV, mergeNews as merge2, fetchWithRetry, isPaused, buildSources, PAUSE_AFTER, summarize, parseFTS, parseWB, parseWBDate, parseSAM, fetchSAM } from "./update.mjs";
+import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS, parseTED, tedRelevant, parseCanadaBuys, parseCSV, mergeNews as merge2, fetchWithRetry, isPaused, buildSources, PAUSE_AFTER, summarize, parseFTS, parseWB, parseWBDate, parseSAM, fetchSAM, parseSitemap, titleFromSlug } from "./update.mjs";
 
 const table = `<table><thead><tr class="shaded"><th>date</th><th>cash</th><th>3-month</th><th>stock</th></tr></thead><tbody>
 <tr>\n<td>03. November 2026</td>\n<td>3,082.00</td>\n<td>3,042.00</td>\n<td class="last">229,475</td>\n</tr>
@@ -206,5 +206,37 @@ assert.equal(skipped.skipped, true); assert.equal(skipped.length, 0);
 assert.ok(classify("CFE adjudica licitación de línea de transmisión de 400 kV en México").categories.includes("tenders"));
 assert.equal(detectStage("ANEEL: Neoenergia arremata lote de linhas de transmissão"), "Award");
 assert.ok(classify("住友電工、送電線を受注").categories.includes("projects"));
+
+
+// AL Circle sitemaps (entries exactly as served on 5 Nov 2026).
+const newsSm = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+<url><loc>https://www.alcircle.com/news/bahrains-aluminium-wire-exports-jump-23-7-y-o-y-to-80-895-tonnes-in-q2-2026-121817</loc><lastmod>2026-11-04T08:30:00.000Z</lastmod>
+<news:news><news:publication><news:name>AL Circle</news:name><news:language>en</news:language></news:publication><news:publication_date>2026-11-04T08:30:00.000Z</news:publication_date>
+<news:title>Bahrain’s aluminium wire exports jump 23.7% Y-o-Y to 80,895 tonnes in Q2 2026</news:title></news:news></url>
+<url><loc>https://www.alcircle.com/news/building-britain-s-future-novelis-aluminium-features-across-major-uk-projects-121834</loc><lastmod>2026-11-04T14:00:00.000Z</lastmod>
+<news:news><news:publication_date>2026-11-04T14:00:00.000Z</news:publication_date><news:title>Building Britain&apos;s future: Novelis aluminium features across major UK projects</news:title></news:news></url>
+<url><loc>https://www.alcircle.com/news/old-story-100000</loc><news:news><news:publication_date>2026-09-01T00:00:00.000Z</news:publication_date><news:title>Old aluminium story</news:title></news:news></url>
+</urlset>`;
+const now5 = Date.parse("2026-11-05T10:00:00Z");
+const al = parseSitemap(newsSm, { publisher: "AL Circle", origin: "https://www.alcircle.com", now: now5 });
+assert.equal(al.length, 2, "older than 7 days dropped");
+assert.equal(al[1].title, "Building Britain's future: Novelis aluminium features across major UK projects", "entities decoded");
+assert.equal(al[0].published, "2026-11-04T08:30:00.000Z");
+const alNews = merge2([], al, now5);
+const bah = alNews.find((i) => i.title.startsWith("Bahrain"));
+assert.ok(bah.categories.includes("aluminium") && bah.regions.includes("Bahrain") && bah.markets.includes("Middle East"));
+
+// Press-release sitemap has no titles: they come from the link.
+assert.equal(titleFromSlug("https://www.alcircle.com/news/press-release/china-sept-aluminium-extrusion-imports-rise-19-m-o-m-exports-hit-92-678-tonnes-121766"),
+  "China sept aluminium extrusion imports rise 19 M-o-M exports hit 92 678 tonnes");
+const prSm = `<urlset><url><loc>https://www.alcircle.com/news/press-release/face-the-eu-canada-raw-materials-alliance-is-an-opportunity-for-europes-aluminium-industry-121791</loc><lastmod>2026-11-02T08:55:00.000Z</lastmod></url></urlset>`;
+const pr = parseSitemap(prSm, { publisher: "AL Circle", origin: "https://www.alcircle.com", maxAgeDays: 14, now: now5 });
+assert.equal(pr[0].title, "Face the EU canada raw materials alliance is an opportunity for europes aluminium industry");
+assert.equal(pr[0].published, "2026-11-02T08:55:00.000Z");
+
+// Same story found by Google News and the sitemap counts once, with the direct link kept.
+const dup = merge2([{ ...alNews[0], url: "https://news.google.com/rss/articles/xyz" }], al, now5);
+assert.equal(dup.filter((i) => i.title.startsWith("Bahrain")).length, 1);
+assert.match(dup.find((i) => i.title.startsWith("Bahrain")).url, /^https:\/\/www\.alcircle\.com\//);
 
 console.log("all checks passed");

@@ -11,6 +11,8 @@ import {
   CATEGORIES,
   MARKETS,
   FEEDS,
+  SITEMAPS,
+  parseSitemap,
   METALS,
   NEWS_FILE,
   PRICES_FILE,
@@ -62,6 +64,9 @@ export function liveTasks(skip = new Set()) {
       tasks.push({ name: `projects:${market}`, url: feedUrl(q, lang, WINDOW), tag: { category: "projects", market } });
     }
   }
+  for (const sm of SITEMAPS) {
+    tasks.push({ name: `sitemap:${sm.label}`, url: sm.url, sitemap: sm });
+  }
   for (const f of FEEDS.filter((f) => !skip.has(f.name))) {
     tasks.push({ name: `feed:${f.name}`, url: f.url, publisher: f.name, tag: { market: f.market } });
   }
@@ -112,7 +117,9 @@ export async function buildLive(now = Date.now()) {
 
   const jobs = [
     ...tasks.map((t) => async () =>
-      parseItems(await fetchText(t.url), t.publisher ?? "", t.publisher ? new URL(t.url).origin : "").map((i) => ({ ...i, ...t.tag })),
+      t.sitemap
+        ? parseSitemap(await fetchText(t.url), { publisher: t.sitemap.name, origin: new URL(t.url).origin, maxAgeDays: t.sitemap.maxAgeDays })
+        : parseItems(await fetchText(t.url), t.publisher ?? "", t.publisher ? new URL(t.url).origin : "").map((i) => ({ ...i, ...t.tag })),
     ),
     async () => fetchTED({ pages: 1 }),
     async () => fetchFTS({ days: 2, maxPages: 3, pause: false }),

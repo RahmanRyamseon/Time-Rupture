@@ -89,7 +89,11 @@ LME quotes need a paid LME data licence.
    regional press is not crowded out by Indian and US outlets.
    awards and Tadawul disclosures often appear there first. It also reads five RSS feeds directly:
    **SaudiGulf Projects**, **GCC Tender News**, **Utilities Middle East**, **offshoreWIND.biz**
-   (Europe) and **Electrical Business** (Canada).
+   (Europe) and **Electrical Business** (Canada). **AL Circle** (aluminium industry) is read
+   directly from its Google News sitemap (titles and exact times, last 48 hours) and its
+   press-release sitemap (last 14 days, titles taken from the link). Both are allowed by its
+   robots.txt, and stories it also publishes through Google News are merged, keeping the
+   direct link.
 3. **Classification**: each item is matched against category rules, tagged with regions and with
    about 60 companies (`COMPANIES`), and given a deal stage and the first money amount in the
    headline. Off-topic items, such as water, sewerage and pipelines with no grid content, are
