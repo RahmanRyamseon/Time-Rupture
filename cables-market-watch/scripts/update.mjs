@@ -256,6 +256,39 @@ export const FEEDS = [
   { name: "Electrical Business (Canada)", url: "https://www.ebmag.com/feed/", market: "Canada" },
 ];
 
+// Publisher sitemaps (allowed by the sites' robots.txt). A Google News sitemap carries titles and
+// exact publish times; a plain sitemap has only links and dates, so the title comes from the link.
+export const SITEMAPS = [
+  { name: "AL Circle", label: "AL Circle (news)", url: "https://www.alcircle.com/news-sitemap.xml" },
+  { name: "AL Circle", label: "AL Circle (press releases)", url: "https://www.alcircle.com/press-release-sitemap.xml?page=1", maxAgeDays: 14 },
+];
+
+const ACRONYMS = /\b(lme|shfe|eu|uk|us|usa|uae|gcc|cbam|ets|ega|alba|nalco|ev|ai|hvdc|kv|q[1-4]|h[12]|fy\d*|cfr|cif|asi|esg|ipo|mou|tpa|kt|mt|gw|mw)\b/gi;
+export function titleFromSlug(url) {
+  const slug = decodeURIComponent(new URL(url).pathname.split("/").filter(Boolean).pop() ?? "")
+    .replace(/-\d{5,}$/, "")
+    // "y-o-y", "m-o-m", "q-o-q" keep their hyphens (AL Circle writes them "Y-o-Y").
+    .replace(/(^|-)([ymq])-o-([ymq])(?=-|$)/gi, (_, pre, a, b) => `${pre}${a.toUpperCase()}~o~${b.toUpperCase()}`)
+    .replace(/-/g, " ")
+    .replace(/~/g, "-")
+    .trim();
+  if (!slug) return "";
+  const t = slug.replace(ACRONYMS, (m) => m.toUpperCase());
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
+export function parseSitemap(xml, { publisher, origin, maxAgeDays = 7, now = Date.now() } = {}) {
+  const cutoff = now - maxAgeDays * 86_400_000;
+  return [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)]
+    .map(([, body]) => {
+      const url = decode(field(body, "loc")).trim();
+      const title = decode(field(body, "news:title")).trim() || titleFromSlug(url);
+      const date = decode(field(body, "news:publication_date") || field(body, "lastmod")).trim();
+      return { title, url, publisher, publisherUrl: origin, published: parseDate(date), description: "" };
+    })
+    .filter((i) => i.url && i.title && Date.parse(i.published) >= cutoff);
+}
+
 // Markets: each has country/region patterns (for tagging) and project searches (for collecting).
 // The searches run under the "projects" category, and items keep the market of the search that found them.
 export const MARKETS = {
@@ -488,7 +521,7 @@ const decode = (s = "") =>
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
-    .replace(/&#39;|&#x27;|&#8217;|&#8216;/g, "'")
+    .replace(/&#39;|&#x27;|&#8217;|&#8216;|&apos;/g, "'")
     .replace(/&#8220;|&#8221;/g, '"')
     .replace(/&#8211;|&#8212;/g, "–")
     .replace(/&#124;/g, "|")
@@ -540,7 +573,9 @@ const isArabic = (s) => /[؀-ۿ]/.test(s);
 
 // Merges freshly fetched items into the stored list. Pure, so it can be tested without network.
 export function mergeNews(existing, fetched, now = Date.now()) {
-  const byKey = new Map(existing.map((item) => [keyOf(item.title), item]));
+  // Older runs stored some titles with an undecoded "&apos;"; clean them so they merge with new copies.
+  const cleaned = existing.map((item) => (item.title.includes("&apos;") ? { ...item, title: item.title.replace(/&apos;/g, "'") } : item));
+  const byKey = new Map(cleaned.map((item) => [keyOf(item.title), item]));
   for (const raw of fetched) {
     if (!raw.title || !raw.url) continue;
     const text = `${raw.title} ${raw.description}`;
@@ -1030,6 +1065,16 @@ export function buildSources(window) {
         run: async (url) => parseItems(await get(url)).map((i) => ({ ...i, category: "projects", market })),
       });
     }
+  }
+  for (const sm of SITEMAPS) {
+    out.push({
+      id: `sitemap:${sm.label}`, kind: "feed", label: sm.label, url: sm.url,
+      run: async (url) => {
+        const items = parseSitemap(await get(url), { publisher: sm.name, origin: new URL(url).origin, maxAgeDays: sm.maxAgeDays });
+        items.note = `${items.length} articles in the last ${sm.maxAgeDays ?? 7} days`;
+        return items;
+      },
+    });
   }
   for (const f of FEEDS) {
     out.push({
