@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node scripts/build-pages.mjs",
+  "outputDirectory": "dist",
+  "installCommand": "",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [{ "source": "/((?!data/|app\\.js|store\\.js|config\\.js|style\\.css).*)", "destination": "/index.html" }],
+  "headers": [
+    { "source": "/data/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }] }
+  ]
+}

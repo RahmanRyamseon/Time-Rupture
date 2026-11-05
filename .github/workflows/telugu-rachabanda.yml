@@ -28,6 +28,9 @@ jobs:
       - name: Collect Gulf Telugu news and rupee rates
         run: node telugu-rachabanda/scripts/update.mjs
 
+      - name: Check the page build
+        run: node telugu-rachabanda/scripts/build-pages.mjs
+
       - name: Commit updated news
         run: |
           git config user.name "github-actions[bot]"

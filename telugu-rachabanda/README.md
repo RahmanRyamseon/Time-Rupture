@@ -17,8 +17,15 @@ Kuwait, Oman, Bahrain) in Telugu and English, and the page has a canonical URL, 
 it, add it to the Vercel project and change the URLs in `index.html`, `robots.txt` and
 `sitemap.xml` to it.
 
-Search engines currently index only the homepage: the story, section and discussion pages use
-`#/` links, which search engines treat as the same page.
+Every section, story, board and directory page has its own address (`/s/uae`, `/story/<id>`,
+`/board/help`, `/sources`). On each deploy Vercel runs `scripts/build-pages.mjs`, which writes a
+ready-made HTML page for each address with its own title, description, canonical URL and content
+(headlines and links), plus `sitemap.xml` listing them all. Search engines can read these pages
+without running JavaScript; in a browser the app takes over once it loads. Links shared in the
+old `/#/story/...` form are redirected to the new addresses.
+
+To get indexed faster, add the site in [Google Search Console](https://search.google.com/search-console)
+and submit `https://gulftelugunews.vercel.app/sitemap.xml`.
 
 ## What readers get
 
@@ -77,7 +84,8 @@ The word lists are at the top of `scripts/update.mjs`; edit them to tune what ge
 
 | File | Purpose |
 |---|---|
-| `index.html`, `style.css`, `app.js` | The site. Static, no build step. |
+| `index.html`, `style.css`, `app.js` | The site (app shell and logic). |
+| `scripts/build-pages.mjs`, `vercel.json` | Builds `dist/` on Vercel: one HTML page per address, and the sitemap. |
 | `store.js`, `config.js`, `supabase/schema.sql` | Comments, reactions and polls: Supabase when configured, the reader's browser otherwise. |
 | `data/news.json` | Collected stories (21 days). |
 | `data/rates.json` | Gulf currency → rupee rates from exchangerate-api.com's free endpoint. |
@@ -104,7 +112,8 @@ says so). To share them:
 ```bash
 node telugu-rachabanda/scripts/test.mjs
 node telugu-rachabanda/scripts/update.mjs     # refresh news and rates
-npx serve telugu-rachabanda
+node telugu-rachabanda/scripts/build-pages.mjs   # writes telugu-rachabanda/dist/
+npx serve telugu-rachabanda/dist
 ```
 
 ## Deploy
