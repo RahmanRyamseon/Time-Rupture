@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// News collector for Gulf Rachabanda (గల్ఫ్ రచ్చబండ): news about Telugu people in the Gulf.
+// News collector for Gulf Telugu News (గల్ఫ్ తెలుగు వార్తలు): news about Telugu people in the Gulf.
 //
 // Pulls Telugu and English Google News RSS searches about the six GCC countries, keeps the
 // stories that are about the Gulf, tags each with its countries and topics, and flags the ones
@@ -284,7 +284,7 @@ export function inrRates(api) {
 // ---- main ---------------------------------------------------------------------------------
 async function fetchText(url) {
   const res = await fetch(url, {
-    headers: { "User-Agent": "Mozilla/5.0 (compatible; GulfRachabandaBot/1.0)" },
+    headers: { "User-Agent": "Mozilla/5.0 (compatible; GulfTeluguNewsBot/1.0)" },
     signal: AbortSignal.timeout(20000),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);

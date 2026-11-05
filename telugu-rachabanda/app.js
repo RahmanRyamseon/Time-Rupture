@@ -119,7 +119,7 @@ async function share(item) {
   toast("లింక్ కాపీ అయింది");
 }
 const waLink = (item) =>
-  `https://wa.me/?text=${encodeURIComponent(`${item.title}\n\nగల్ఫ్ రచ్చబండలో చర్చించండి: ${storyLink(item.id)}`)}`;
+  `https://wa.me/?text=${encodeURIComponent(`${item.title}\n\nగల్ఫ్ తెలుగు వార్తలు సైట్‌లో చర్చించండి: ${storyLink(item.id)}`)}`;
 
 // ---- data ---------------------------------------------------------------------------------
 async function loadJSON(path) {
@@ -321,7 +321,7 @@ function featureHTML(items) {
 }
 
 function renderHome() {
-  document.title = "గల్ఫ్ రచ్చబండ — గల్ఫ్ తెలుగు వారి వార్తలు";
+  document.title = "గల్ఫ్ తెలుగు వార్తలు | Gulf Telugu News – దుబాయ్, సౌదీ, ఖతార్, కువైట్, ఒమన్, బహ్రెయిన్";
   const used = new Set();
   const take = (list, n) => {
     const fresh = list.filter((i) => !used.has(i.id));
@@ -540,7 +540,7 @@ function renderList(items, { title, sub = "", lead = true, filters = true, note 
 }
 
 function renderSection(id) {
-  document.title = `${SECTION_NAME[id]} — గల్ఫ్ రచ్చబండ`;
+  document.title = `${SECTION_NAME[id]} | గల్ఫ్ తెలుగు వార్తలు`;
   let items = state.news.filter((i) => i.sections.includes(id));
   // Country pages lead with stories about Telugu people, then the rest of that country's news.
   if (COUNTRY_IDS.includes(id)) items = [...items.filter((i) => i.telugu), ...items.filter((i) => !i.telugu)];
@@ -566,12 +566,12 @@ function renderSearch(q) {
     const text = `${i.title} ${i.description} ${i.publisher}`.toLowerCase();
     return terms.every((t) => text.includes(t));
   });
-  document.title = `"${q}" — గల్ఫ్ రచ్చబండ`;
+  document.title = `"${q}" | గల్ఫ్ తెలుగు వార్తలు`;
   renderList(hits, { title: `"${q}" కోసం ఫలితాలు`, lead: false });
 }
 
 function renderSaved() {
-  document.title = "దాచినవి — గల్ఫ్ రచ్చబండ";
+  document.title = "దాచినవి | గల్ఫ్ తెలుగు వార్తలు";
   renderList(saved.all(), { title: "🔖 దాచిన వార్తలు", sub: "(ఈ పరికరంలో మాత్రమే)", lead: false, filters: false });
   if (!saved.all().length)
     main.insertAdjacentHTML("beforeend", `<p class="empty">ఏ వార్త పక్కన 🔖 నొక్కితే అది ఇక్కడ దాచబడుతుంది.</p>`);
@@ -581,7 +581,7 @@ function renderSaved() {
 function renderStory(id) {
   const item = state.byId.get(id) || saved.all().find((s) => s.id === id);
   const thread = threadOf(id);
-  document.title = `${item ? item.title : "చర్చ"} — గల్ఫ్ రచ్చబండ`;
+  document.title = `${item ? item.title : "చర్చ"} | గల్ఫ్ తెలుగు వార్తలు`;
   if (!item) {
     main.innerHTML = `<a class="back" href="#/">← వెనక్కి</a>
       <div class="story"><p>ఈ వార్త పాతదైపోవడంతో జాబితా నుంచి తొలగించాం. దానిపై జరిగిన చర్చ కింద ఉంది.</p></div>
@@ -857,7 +857,7 @@ async function mountThread(el, thread, { title, placeholder = "మీ అభి�
 
 // ---- community boards ---------------------------------------------------------------------------
 async function renderBoards() {
-  document.title = "రచ్చబండ చర్చలు — గల్ఫ్ రచ్చబండ";
+  document.title = "రచ్చబండ చర్చలు | గల్ఫ్ తెలుగు వార్తలు";
   const boards = state.community.boards;
   main.innerHTML = `
     <div class="hero"><h1>🌳 రచ్చబండ</h1>
@@ -888,7 +888,7 @@ async function renderBoards() {
 function renderBoard(id) {
   const b = state.community.boards.find((x) => x.id === id);
   if (!b) return renderBoards();
-  document.title = `${b.title} — గల్ఫ్ రచ్చబండ`;
+  document.title = `${b.title} | గల్ఫ్ తెలుగు వార్తలు`;
   main.innerHTML = `<a class="back" href="#/board">← రచ్చబండ</a>
     <div class="hero"><h1>${b.icon} ${esc(b.title)}</h1><p>${esc(b.desc)}</p></div>
     <section class="discuss" id="discuss"></section>`;
@@ -924,7 +924,7 @@ function sourceItemHTML(s) {
 }
 
 function renderSources() {
-  document.title = "గల్ఫ్ తెలుగు డైరెక్టరీ — గల్ఫ్ రచ్చబండ";
+  document.title = "గల్ఫ్ తెలుగు డైరెక్టరీ | గల్ఫ్ తెలుగు వార్తలు";
   const counts = {};
   for (const i of state.news) counts[i.publisher] = (counts[i.publisher] || 0) + 1;
   const active = Object.entries(counts)
@@ -950,7 +950,7 @@ function renderSources() {
 }
 
 function renderRules() {
-  document.title = "చర్చా నియమాలు — గల్ఫ్ రచ్చబండ";
+  document.title = "చర్చా నియమాలు | గల్ఫ్ తెలుగు వార్తలు";
   main.innerHTML = `<div class="section-head"><h1>చర్చా నియమాలు</h1></div>
     <div class="story"><p><strong>"కాలు జారితే తీసుకోగలం కానీ నోరు జారితే తీసుకోలేం."</strong> రచ్చబండ అందరిదీ — గల్ఫ్‌లో ఉన్న అన్ని ప్రాంతాల తెలుగు వారూ, ఇంటి దగ్గర వారి కుటుంబాలూ ఇక్కడ ఉంటారు.</p>
     <ol class="rules">
@@ -995,7 +995,7 @@ async function renderSide() {
     <section class="widget wa-promo"><div class="wa-icon" aria-hidden="true">🟢</div>
       <p><strong>మీ వాట్సాప్ గ్రూపుల్లో పంచుకోండి</strong><br />గల్ఫ్‌లో ఉన్న మన వాళ్లందరికీ ఈ సైట్ చేరాలి.</p>
       <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(
-        `గల్ఫ్ తెలుగు వారి వార్తలు, హెల్ప్‌లైన్లు, మన సంఘాల కార్యక్రమాలు — గల్ఫ్ రచ్చబండ: ${location.origin}${location.pathname}`,
+        `గల్ఫ్ తెలుగు వారి వార్తలు, హెల్ప్‌లైన్లు, మన సంఘాల కార్యక్రమాలు — గల్ఫ్ తెలుగు వార్తలు: ${location.origin}${location.pathname}`,
       )}">వాట్సాప్‌లో పంపండి</a></section>
     <section class="widget market"><h2>రచ్చబండ బోర్డులు</h2><div class="market-grid">${[
       ["rooms", "🛏️", "రూములు", "#1e88e5"],
