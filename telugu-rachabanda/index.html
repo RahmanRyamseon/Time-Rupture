@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="te">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>రచ్చబండ — తెలుగు వార్తలు, మన ముచ్చట్లు</title>
+  <meta name="description" content="ఈనాడు, సాక్షి, ఆంధ్రజ్యోతి, బీబీసీ తెలుగు సహా అన్ని తెలుగు పత్రికల తాజా వార్తలు ఒకే చోట. ప్రతి వార్తపై మీ అభిప్రాయం చెప్పండి, రచ్చబండలో చర్చించండి." />
+  <meta name="theme-color" content="#8c1c13" />
+  <meta property="og:title" content="రచ్చబండ — తెలుగు వార్తలు, మన ముచ్చట్లు" />
+  <meta property="og:description" content="అన్ని తెలుగు పత్రికల వార్తలు ఒకే చోట. చదవండి, స్పందించండి, చర్చించండి." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B3%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;700&family=Ramabhadra&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Apply saved theme and text size before first paint.
+    document.documentElement.dataset.theme = localStorage.getItem("rb:theme") ||
+      (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.dataset.size = localStorage.getItem("rb:size") || "m";
+  </script>
+  <script src="config.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">ప్రధాన భాగానికి వెళ్ళండి</a>
+
+  <div class="topbar">
+    <div class="wrap topbar-in">
+      <span id="today"></span>
+      <span class="spacer"></span>
+      <button class="tb-btn" id="size-down" title="అక్షరాలు చిన్నవి" aria-label="అక్షరాలు చిన్నవి">అ−</button>
+      <button class="tb-btn" id="size-up" title="అక్షరాలు పెద్దవి" aria-label="అక్షరాలు పెద్దవి">అ+</button>
+      <button class="tb-btn" id="theme" title="రాత్రి / పగలు" aria-label="రాత్రి / పగలు మోడ్">🌙</button>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <div class="wrap">
+      <a href="#/" class="brand">
+        <span class="brand-tree" aria-hidden="true">🌳</span>
+        <span class="brand-name">రచ్చబండ</span>
+      </a>
+      <p class="tagline">తెలుగు వార్తలు · మన ముచ్చట్లు · మీ మాట</p>
+      <p class="edition" id="edition"></p>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="విభాగాలు">
+    <div class="wrap nav-in">
+      <ul id="nav"></ul>
+      <form id="search" class="search" role="search">
+        <input type="search" id="q" placeholder="వార్తల్లో వెతకండి…" aria-label="వెతకండి" />
+      </form>
+    </div>
+  </nav>
+
+  <div class="ticker" aria-label="తాజా వార్తలు">
+    <div class="wrap ticker-in">
+      <span class="ticker-label">తాజా</span>
+      <div class="ticker-track"><div id="ticker" class="ticker-move"></div></div>
+    </div>
+  </div>
+
+  <div class="wrap layout">
+    <main id="main" tabindex="-1"></main>
+    <aside id="side" class="side"></aside>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p><strong>రచ్చబండ</strong> — ఊరి నడిబొడ్డున అందరూ కలిసే చోటు. ఇక్కడ తెలుగు పత్రికల వార్తలన్నీ ఒకే చోట చదివి, మీ అభిప్రాయం పంచుకోండి.</p>
+      <p class="muted">వార్తల శీర్షికలు ఆయా పత్రికలవి; పూర్తి వార్త కోసం మూల వెబ్‌సైట్‌కు వెళ్తారు. వ్యాఖ్యలు రాసిన వారి వ్యక్తిగత అభిప్రాయాలు. వార్తలు Google News తెలుగు ద్వారా ప్రతి 2 గంటలకు అప్‌డేట్ అవుతాయి.</p>
+      <p class="muted"><a href="#/sources">తెలుగు వార్తా వనరులు</a> · <a href="#/board">రచ్చబండ చర్చలు</a> · <a href="#/rules">చర్చా నియమాలు</a></p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
