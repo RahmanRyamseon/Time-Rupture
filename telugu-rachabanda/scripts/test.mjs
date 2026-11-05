@@ -29,6 +29,16 @@ assert.equal(c("అల్లు అర్జున్ సినిమా దు�
 assert.equal(c("సౌదీకి విమానాలు బంద్ Andhra Prabha Top News").telugu, false, "paper name is not a Telugu signal");
 assert.ok(c("గల్ఫ్ దేశాల్లో యుద్ధ భయాలు").sections.includes("gulf"));
 
+// Gulf papers: expat and rules news is kept without a Telugu link, filed under the paper's country.
+const gdn = "https://www.gdnonline.com";
+assert.deepEqual(classify("Proposed curbs on expat driving licences rejected", "en", gdn).sections, ["bahrain", "gulf", "jobs"]);
+assert.deepEqual(classify("KSA: Legal action taken against 67 recruitment agencies in Saudi Arabia", "en", gdn).countries, ["saudi"]);
+assert.equal(classify("Indian national killed after two helicopters collide in Nepal", "en", gdn), null, "Indians outside the Gulf");
+assert.equal(classify("Mother of Ghanaian teen heads to US funeral after Trump grants visa", "en", gdn), null);
+assert.equal(classify("Tennis: Alcaraz reaches Vienna final", "en", gdn), null);
+assert.equal(classify("61Home - Gulf Digital News", "en", gdn), null);
+assert.equal(classify("Proposed curbs on expat driving licences rejected", "en", "https://example.com"), null, "only Gulf papers");
+
 // ---- same-story detection
 assert.ok(sameStory("NOV 14 వరకు సౌదీకి ఎయిరిండియా విమానాలు రద్దు", "Air India: సౌదీకి ఎయిర్ ఇండియా విమానాలు రద్దు"));
 assert.ok(!sameStory("దుబాయిలో బతుకమ్మ & దసరా సంబరాలు", "యాన్బూలో తెలుగు వారి ఆత్మీయ కలయికగా దసరా, బతుకమ్మ వేడుకలు"));

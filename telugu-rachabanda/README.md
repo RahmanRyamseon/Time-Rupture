@@ -27,15 +27,28 @@ people gather to talk; this is that common spot for Telugus away from home.
 - **Discussion boards**: general chat, association events, help desk, going home, jobs & visa,
   rooms & sharing, cricket, poems & stories, home cooking.
 
+## Layout
+
+The homepage follows the layout of Gulf newspaper portals such as Gulf Daily News: a red logo
+masthead, a white main menu (home, Telugu people, the six countries) beside a grey topic menu, a
+red "latest news" bar that steps through headlines, a 2 + 3 grid of large story tiles, colour-coded
+section bars (red for news, blue for topic columns, navy for Gulf affairs), a country tab strip, a
+dark discussion panel, and a right column with helplines, WhatsApp sharing, a coloured grid of
+discussion boards, clocks and rupee rates. Google News feeds have no photos, so every story gets
+an illustration drawn in CSS: its country's flag colours, a Gulf skyline and a topic icon.
+
 ## How the news is picked
 
-`scripts/update.mjs` runs 15 Google News searches (10 Telugu, 5 English) and classifies every
-headline:
+`scripts/update.mjs` runs 24 Google News searches (10 Telugu, 5 English about Telugu people, and
+one per Gulf newspaper: Gulf Daily News, Gulf News, Khaleej Times, Arab News, Saudi Gazette, Gulf
+Times, The Peninsula, Times of Oman, Arab Times) and classifies every headline:
 
 1. It must name a Gulf country or city, or "Gulf"/"గల్ఫ్".
 2. It is flagged **Telugu** when it names Telugu people or places: తెలుగు, తెలంగాణ, ఆంధ్ర, ప్రవాసాంధ్రులు,
    Gulf-migrant districts (Nizamabad, Jagtial, Karimnagar, Nirmal, Kadapa, Konaseema…), APNRTS, TOMCOM.
-3. English headlines are kept only when flagged Telugu (English Gulf news is otherwise too broad).
+3. English headlines are kept only when flagged Telugu, with one exception: stories from the Gulf
+   newspapers above about expats, or about labour, visa, residency, deportation and licence rules,
+   go into the jobs/visa/rules tab under that paper's country.
 4. Film shoots and celebrity trips are dropped.
 5. Topic words decide the topic tabs (associations/events, going home/hardship, jobs/visa/travel).
 6. The same story from several papers within three days is shown once, with the other papers

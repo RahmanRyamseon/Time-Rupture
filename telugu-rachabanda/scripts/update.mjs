@@ -24,6 +24,23 @@ const GN = "https://news.google.com/rss/search";
 const te = (q) => ({ lang: "te", url: `${GN}?q=${encodeURIComponent(`${q} when:3d`)}&hl=te&gl=IN&ceid=IN:te` });
 const en = (q) => ({ lang: "en", url: `${GN}?q=${encodeURIComponent(`${q} when:7d`)}&hl=en-IN&gl=IN&ceid=IN:en` });
 
+// Gulf newspapers and the country each one covers by default.
+export const GULF_PAPERS = {
+  "gdnonline.com": "bahrain",
+  "gulfnews.com": "uae",
+  "khaleejtimes.com": "uae",
+  "arabnews.com": "saudi",
+  "saudigazette.com.sa": "saudi",
+  "gulf-times.com": "qatar",
+  "thepeninsulaqatar.com": "qatar",
+  "timesofoman.com": "oman",
+  "arabtimesonline.com": "kuwait",
+};
+export const paperCountry = (publisherUrl = "") => {
+  const host = publisherUrl.replace(/^https?:\/\//, "").replace(/^(www|megamenu)\./, "").split("/")[0];
+  return GULF_PAPERS[host] || null;
+};
+
 export const FEEDS = [
   te("గల్ఫ్"),
   te("గల్ఫ్ కార్మికులు OR గల్ఫ్ బాధితులు OR గల్ఫ్ వలస"),
@@ -40,6 +57,11 @@ export const FEEDS = [
   en("(Telangana OR Andhra OR Hyderabad) (Gulf OR Dubai OR UAE OR Saudi OR Kuwait OR Qatar OR Oman OR Bahrain) (worker OR workers OR expat OR NRI OR migrant)"),
   en('APNRTS OR TOMCOM OR "Telangana Gulf" OR "Gulf workers" Telangana'),
   en('"Telugu Association" OR "Telugu Kala Samithi" OR "Andhra Kala Vedika" OR "Telugu community" Gulf'),
+  // Gulf newspapers, for rule changes and news that affect expats (one site per search:
+  // Google News ignores site: filters combined with OR).
+  ...Object.keys(GULF_PAPERS).map((site) =>
+    en(`site:${site} (expat OR expats OR expatriate OR Indian OR Indians OR visa OR residency OR labour OR workers OR recruitment OR deport OR amnesty)`),
+  ),
 ];
 
 // ---- classification ----------------------------------------------------------------------
@@ -47,11 +69,11 @@ export const FEEDS = [
 // English terms as case-insensitive word prefixes.
 export const COUNTRIES = {
   uae: { te: ["యూఏఈ", "దుబాయ్", "దుబాయి", "అబుదాబి", "అబుధాబి", "షార్జా", "అజ్మాన్", "ఎమిరేట్స్"], en: ["UAE", "Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Emirat"] },
-  saudi: { te: ["సౌదీ", "రియాద్", "జెద్దా", "జెడ్డా", "దమ్మామ్", "మక్కా", "మదీనా", "యాన్బూ", "జుబైల్"], en: ["Saudi", "Riyadh", "Jeddah", "Dammam", "Makkah", "Mecca", "Medina", "Madinah", "Umrah", "Yanbu", "Jubail", "Khobar"] },
+  saudi: { te: ["సౌదీ", "రియాద్", "జెద్దా", "జెడ్డా", "దమ్మామ్", "మక్కా", "మదీనా", "యాన్బూ", "జుబైల్"], en: ["Saudi", "KSA", "Riyadh", "Jeddah", "Dammam", "Makkah", "Mecca", "Medina", "Madinah", "Umrah", "Yanbu", "Jubail", "Khobar"] },
   qatar: { te: ["ఖతార్", "దోహా"], en: ["Qatar", "Doha"] },
   kuwait: { te: ["కువైట్"], en: ["Kuwait"] },
   oman: { te: ["ఒమన్", "ఒమాన్", "మస్కట్", "సలాలా"], en: ["Oman", "Muscat", "Salalah"] },
-  bahrain: { te: ["బహ్రెయిన్", "బహ్రైన్", "మనామా"], en: ["Bahrain", "Manama"] },
+  bahrain: { te: ["బహ్రెయిన్", "బహ్రైన్", "మనామా"], en: ["Bahrain", "Manama", "LMRA"] },
 };
 const GULF = { te: ["గల్ఫ్"], en: ["Gulf", "GCC"] };
 
@@ -113,12 +135,29 @@ const cinemaTest = compile(CINEMA);
 const topicTests = Object.entries(TOPICS).map(([id, terms]) => [id, compile(terms)]);
 
 // Returns the item's tags, or null when it is not a Gulf story for this site.
-export function classify(title, lang) {
-  const countries = countryTests.filter(([, t]) => t(title)).map(([id]) => id);
-  if (!countries.length && !gulfTest(title)) return null;
+// For English stories from Gulf papers that are not about Telugu people: keep the ones about
+// expats, or about labour, visa and residency rules.
+const expatTest = compile({ en: ["expat", "expatriate", "foreign worker"] }); // Gulf papers' word for residents
+const indianTest = compile({ en: ["Indian national", "Indians", "Indian worker", "Indian student", "migrant"] }); // only with a Gulf country
+const rulesTest = compile({ en: ["labour", "labor", "worker", "recruitment", "residency", "iqama", "deport", "amnesty", "licence", "license", "job vacanc", "Emiratisation", "Saudisation", "Saudization", "Nitaqat", "Bahrainisation", "Kuwaitisation", "Omanisation", "LMRA", "traffic rule", "visa"] });
+const strongRulesTest = compile({ en: ["labour", "labor", "recruitment", "residency", "iqama", "deport", "amnesty", "licence", "job vacanc", "LMRA"] });
+
+export function classify(title, lang, publisherUrl = "") {
+  if (/Gulf Digital News|^News$/i.test(title)) return null; // site furniture, not stories
+  const home = paperCountry(publisherUrl);
+  let countries = countryTests.filter(([, t]) => t(title)).map(([id]) => id);
+  if (!countries.length && !gulfTest(title) && !home) return null;
   // Newspaper names in a headline ("Andhra Prabha Top News") are not about Telugu people.
   const telugu = teluguTest(title.replace(/Andhra\s?(Prabha|Jyothy)|ఆంధ్ర\s?(ప్రభ|జ్యోతి)/gi, ""));
-  if (lang === "en" && !telugu) return null; // English Gulf news is too broad without a Telugu link
+  let expat = false;
+  if (lang === "en" && !telugu) {
+    // English Gulf news is too broad without a Telugu link, except expat and rules news in Gulf papers.
+    if (!home) return null;
+    const inTitle = countries.length > 0;
+    expat = expatTest(title) || (inTitle && (indianTest(title) || rulesTest(title))) || strongRulesTest(title);
+    if (!expat) return null;
+    if (!inTitle) countries = [home];
+  } else if (!countries.length && !gulfTest(title)) return null;
   const topics = topicTests.filter(([, t]) => t(title)).map(([id]) => id);
   if (cinemaTest(title) && !topics.includes("sangham")) return null;
 
@@ -127,8 +166,8 @@ export function classify(title, lang) {
   else sections.push("gulf");
   if (topics.includes("sangham") && telugu) sections.push("sangham");
   if (topics.includes("exit")) sections.push("exit");
-  if (topics.includes("jobs")) sections.push("jobs");
-  return { countries, telugu, sections };
+  if (topics.includes("jobs") || expat) sections.push("jobs");
+  return { countries, telugu, sections: [...new Set(sections)], ...(expat ? { expat } : {}) };
 }
 
 // ---- parsing ------------------------------------------------------------------------------
@@ -272,7 +311,7 @@ async function main() {
       const xml = feed.file ? await readFile(feed.url, "utf8") : await fetchText(feed.url);
       for (const item of parseItems(xml)) {
         raw += 1;
-        const tags = classify(item.title, feed.lang);
+        const tags = classify(item.title, feed.lang, item.publisherUrl);
         if (tags) fetched.push({ ...item, lang: feed.lang, ...tags });
       }
     } catch (err) {
@@ -286,7 +325,7 @@ async function main() {
     // Re-classify stored items too, so rule changes apply to everything on the next run.
     const restored = stored.items
       .map((i) => {
-        const tags = classify(i.title, i.lang || "te");
+        const tags = classify(i.title, i.lang || "te", i.publisherUrl);
         return tags ? { ...i, ...tags, related: i.related || [] } : null;
       })
       .filter(Boolean);

@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>గల్ఫ్ రచ్చబండ — గల్ఫ్ తెలుగు వారి వార్తలు, మన ముచ్చట్లు</title>
   <meta name="description" content="యూఏఈ, సౌదీ, ఖతార్, కువైట్, ఒమన్, బహ్రెయిన్‌లోని తెలుగు వారి వార్తలు, తెలుగు సంఘాల కార్యక్రమాలు, హెల్ప్‌లైన్లు ఒకే చోట. ప్రతి వార్తపై మీ అభిప్రాయం చెప్పండి." />
-  <meta name="theme-color" content="#8c1c13" />
+  <meta name="theme-color" content="#d71920" />
   <meta property="og:title" content="గల్ఫ్ రచ్చబండ — గల్ఫ్ తెలుగు వారి వార్తలు" />
   <meta property="og:description" content="గల్ఫ్ దేశాల్లోని తెలుగు వారి వార్తలు, సంఘాలు, సాయం — చదవండి, స్పందించండి, చర్చించండి." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B3%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;700&family=Ramabhadra&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;700;800&family=Ramabhadra&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script>
     // Apply saved theme and text size before first paint.
@@ -25,41 +25,53 @@
 <body>
   <a class="skip" href="#main">ప్రధాన భాగానికి వెళ్ళండి</a>
 
-  <div class="topbar">
-    <div class="wrap topbar-in">
+  <div class="utilbar">
+    <div class="wrap utilbar-in">
       <span id="today"></span>
-      <span class="spacer"></span>
-      <button class="tb-btn" id="size-down" title="అక్షరాలు చిన్నవి" aria-label="అక్షరాలు చిన్నవి">అ−</button>
-      <button class="tb-btn" id="size-up" title="అక్షరాలు పెద్దవి" aria-label="అక్షరాలు పెద్దవి">అ+</button>
-      <button class="tb-btn" id="theme" title="రాత్రి / పగలు" aria-label="రాత్రి / పగలు మోడ్">🌙</button>
+      <nav class="util-links" aria-label="త్వరిత లింకులు">
+        <a href="#/sources">హెల్ప్‌లైన్లు</a>
+        <a href="#/board/sangham">కార్యక్రమం ప్రకటించండి</a>
+        <a href="#/board/help">సాయం కావాలి</a>
+        <a href="#/rules">నియమాలు</a>
+      </nav>
+      <span class="util-tools">
+        <button class="tb-btn" id="size-down" title="అక్షరాలు చిన్నవి" aria-label="అక్షరాలు చిన్నవి">అ−</button>
+        <button class="tb-btn" id="size-up" title="అక్షరాలు పెద్దవి" aria-label="అక్షరాలు పెద్దవి">అ+</button>
+        <button class="tb-btn" id="theme" title="రాత్రి / పగలు" aria-label="రాత్రి / పగలు మోడ్">🌙</button>
+      </span>
     </div>
   </div>
 
   <header class="masthead">
-    <div class="wrap">
-      <a href="#/" class="brand">
-        <span class="brand-tree" aria-hidden="true">🌳</span>
-        <span class="brand-name"><small class="brand-gulf">గల్ఫ్</small>రచ్చబండ</span>
+    <div class="wrap mast-in">
+      <a href="#/" class="logo" aria-label="గల్ఫ్ రచ్చబండ – హోమ్">
+        <span class="logo-gulf">గల్ఫ్</span>
+        <span class="logo-name">రచ్చబండ</span>
+        <span class="logo-tree" aria-hidden="true">🌳</span>
       </a>
-      <p class="tagline">గల్ఫ్ తెలుగు వారి వార్తలు · మన సంఘాలు · మన ముచ్చట్లు</p>
-      <p class="edition" id="edition"></p>
+      <div class="mast-side">
+        <p class="tagline">గల్ఫ్ తెలుగు వారి వార్తలు · మన సంఘాలు · మన ముచ్చట్లు</p>
+        <p class="edition" id="edition"></p>
+        <form id="search" class="search" role="search">
+          <input type="search" id="q" placeholder="వార్తల్లో వెతకండి (ఉదా: దుబాయ్)…" aria-label="వెతకండి" />
+          <button type="submit" aria-label="వెతకండి">🔍</button>
+        </form>
+      </div>
     </div>
   </header>
 
   <nav class="nav" aria-label="విభాగాలు">
-    <div class="wrap nav-in">
-      <ul id="nav"></ul>
-      <form id="search" class="search" role="search">
-        <input type="search" id="q" placeholder="వార్తల్లో వెతకండి (ఉదా: దుబాయ్)…" aria-label="వెతకండి" />
-      </form>
+    <div class="wrap nav-row">
+      <ul id="nav" class="nav-main"></ul>
+      <ul id="nav2" class="nav-sub"></ul>
     </div>
   </nav>
 
-  <div class="ticker" aria-label="తాజా వార్తలు">
-    <div class="wrap ticker-in">
-      <span class="ticker-label">తాజా</span>
-      <div class="ticker-track"><div id="ticker" class="ticker-move"></div></div>
-    </div>
+  <div class="wrap latest" aria-label="తాజా వార్తలు">
+    <span class="latest-label">తాజా వార్తలు ⚡</span>
+    <button class="latest-btn" id="lt-prev" aria-label="ముందరి వార్త">‹</button>
+    <button class="latest-btn" id="lt-next" aria-label="తర్వాతి వార్త">›</button>
+    <div class="latest-text" id="ticker" aria-live="polite"></div>
   </div>
 
   <div class="wrap layout">
