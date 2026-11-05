@@ -30,14 +30,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;700;800&family=Ramabhadra&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <script>
     // Apply saved theme and text size before first paint.
     document.documentElement.dataset.theme = localStorage.getItem("rb:theme") ||
       (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     document.documentElement.dataset.size = localStorage.getItem("rb:size") || "m";
   </script>
-  <script src="config.js"></script>
+  <script src="/config.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">ప్రధాన భాగానికి వెళ్ళండి</a>
@@ -46,10 +46,10 @@
     <div class="wrap utilbar-in">
       <span id="today"></span>
       <nav class="util-links" aria-label="త్వరిత లింకులు">
-        <a href="#/sources">హెల్ప్‌లైన్లు</a>
-        <a href="#/board/sangham">కార్యక్రమం ప్రకటించండి</a>
-        <a href="#/board/help">సాయం కావాలి</a>
-        <a href="#/rules">నియమాలు</a>
+        <a href="/sources">హెల్ప్‌లైన్లు</a>
+        <a href="/board/sangham">కార్యక్రమం ప్రకటించండి</a>
+        <a href="/board/help">సాయం కావాలి</a>
+        <a href="/rules">నియమాలు</a>
       </nav>
       <span class="util-tools">
         <button class="tb-btn" id="size-down" title="అక్షరాలు చిన్నవి" aria-label="అక్షరాలు చిన్నవి">అ−</button>
@@ -61,7 +61,7 @@
 
   <header class="masthead">
     <div class="wrap mast-in">
-      <a href="#/" class="logo" aria-label="గల్ఫ్ తెలుగు వార్తలు – హోమ్">
+      <a href="/" class="logo" aria-label="గల్ఫ్ తెలుగు వార్తలు – హోమ్">
         <span class="logo-gulf">గల్ఫ్</span>
         <span class="logo-text"><span class="logo-name">తెలుగు వార్తలు</span><span class="logo-en">GULF TELUGU NEWS</span></span>
       </a>
@@ -100,7 +100,7 @@
     <div class="wrap">
       <p><strong>గల్ఫ్ తెలుగు వార్తలు (Gulf Telugu News)</strong> — యూఏఈ, సౌదీ అరేబియా, ఖతార్, కువైట్, ఒమన్, బహ్రెయిన్‌లోని తెలుగు వారందరూ కలిసే చోటు. ఊరి రచ్చబండ లాగే ఇక్కడ మన ముచ్చట్లు. మన వాళ్ల వార్తలు, మన సంఘాల కార్యక్రమాలు, అవసరమైనప్పుడు సాయం — అన్నీ ఇక్కడే.</p>
       <p class="muted">వార్తల శీర్షికలు ఆయా పత్రికలవి; పూర్తి వార్త కోసం మూల వెబ్‌సైట్‌కు వెళ్తారు. వ్యాఖ్యలు రాసిన వారి వ్యక్తిగత అభిప్రాయాలు. వార్తలు Google News ద్వారా తెలుగు, ఇంగ్లీష్ పత్రికల నుంచి ప్రతి 2 గంటలకు అప్‌డేట్ అవుతాయి. హెల్ప్‌లైన్ నంబర్లు అధికారిక వెబ్‌సైట్ల నుంచి తీసుకున్నవి; అత్యవసర సమయంలో రాయబార కార్యాలయ వెబ్‌సైట్‌లో కూడా సరిచూసుకోండి.</p>
-      <p class="muted"><a href="#/sources">గల్ఫ్ తెలుగు డైరెక్టరీ</a> · <a href="#/board">రచ్చబండ చర్చలు</a> · <a href="#/rules">చర్చా నియమాలు</a></p>
+      <p class="muted"><a href="/sources">గల్ఫ్ తెలుగు డైరెక్టరీ</a> · <a href="/board">రచ్చబండ చర్చలు</a> · <a href="/rules">చర్చా నియమాలు</a></p>
     </div>
   </footer>
 
@@ -112,6 +112,6 @@
   </noscript>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="app.js"></script>
+  <script type="module" src="/app.js"></script>
 </body>
 </html>

@@ -23,9 +23,9 @@ const SECTION_NOTE = {
   gulf: "గల్ఫ్‌లో ఉన్న అందరిపై ప్రభావం చూపే సాధారణ పరిణామాలు.",
 };
 const SECTION_CTA = {
-  sangham: ["#/board/sangham", "🎉 మీ సంఘం కార్యక్రమం గురించి మీరే రాయండి"],
-  exit: ["#/board/help", "🆘 సాయం కావాలా? ఇక్కడ అడగండి"],
-  jobs: ["#/board/jobs", "💼 ఉద్యోగాలు & వీసా చర్చ"],
+  sangham: ["/board/sangham", "🎉 మీ సంఘం కార్యక్రమం గురించి మీరే రాయండి"],
+  exit: ["/board/help", "🆘 సాయం కావాలా? ఇక్కడ అడగండి"],
+  jobs: ["/board/jobs", "💼 ఉద్యోగాలు & వీసా చర్చ"],
 };
 const SECTION_NAME = Object.fromEntries(SECTIONS);
 const REACTIONS = [
@@ -67,7 +67,7 @@ const favicon = (url) => `https://www.google.com/s2/favicons?domain=${host(url)}
 const dayIndex = () => Math.floor((Date.now() + 5.5 * 3600e3) / 864e5); // IST day number
 const pick = (list, salt = 0) => list[(dayIndex() + salt) % list.length];
 const threadOf = (id) => `news:${id}`;
-const storyLink = (id) => `${location.origin}${location.pathname}#/story/${id}`;
+const storyLink = (id) => `${location.origin}/story/${id}`;
 
 function toast(msg) {
   const t = $("#toast");
@@ -132,10 +132,10 @@ async function init() {
   setupChrome();
   try {
     const [news, community, sources, rates] = await Promise.all([
-      loadJSON("data/news.json"),
-      loadJSON("data/community.json"),
-      loadJSON("data/sources.json"),
-      loadJSON("data/rates.json").catch(() => null),
+      loadJSON("/data/news.json"),
+      loadJSON("/data/community.json"),
+      loadJSON("/data/sources.json"),
+      loadJSON("/data/rates.json").catch(() => null),
     ]);
     state.rates = rates;
     state.news = news.items;
@@ -150,7 +150,17 @@ async function init() {
   }
   $("#edition").textContent = state.updated ? `చివరి అప్‌డేట్: ${ago(state.updated)}` : "";
   renderTicker();
-  window.addEventListener("hashchange", route);
+  // Links shared before the move to real paths looked like /#/story/abc; send them to /story/abc.
+  if (location.hash.startsWith("#/")) history.replaceState(null, "", location.hash.slice(1));
+  window.addEventListener("popstate", route);
+  // Internal links change the page without a reload.
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a[href^='/']");
+    if (!a || a.target || a.hasAttribute("download") || e.defaultPrevented) return;
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    go(a.getAttribute("href"));
+  });
   route();
 }
 
@@ -170,10 +180,10 @@ function setupChrome() {
   $("#today").textContent = dateTe(new Date(), { weekday: "long", day: "numeric", month: "long", year: "numeric" });
   $("#nav").innerHTML = NAV_MAIN.map(([id, name]) =>
     id === "home"
-      ? `<li><a href="#/" data-route="home">${name}</a></li>`
-      : `<li><a href="#/s/${id}" data-route="s/${id}">${name}</a></li>`,
+      ? `<li><a href="/" data-route="home">${name}</a></li>`
+      : `<li><a href="/s/${id}" data-route="s/${id}">${name}</a></li>`,
   ).join("");
-  $("#nav2").innerHTML = NAV_SUB.map(([r, name]) => `<li><a href="#/${r}" data-route="${r}">${name}</a></li>`).join("");
+  $("#nav2").innerHTML = NAV_SUB.map(([r, name]) => `<li><a href="/${r}" data-route="${r}">${name}</a></li>`).join("");
 
   const sizes = ["s", "m", "l", "xl"];
   const setSize = (d) => {
@@ -196,7 +206,7 @@ function setupChrome() {
   $("#search").onsubmit = (e) => {
     e.preventDefault();
     const q = $("#q").value.trim();
-    location.hash = q ? `#/search/${encodeURIComponent(q)}` : "#/";
+    go(q ? `/search/${encodeURIComponent(q)}` : "/");
   };
 }
 
@@ -209,7 +219,7 @@ function renderTicker() {
   const el = $("#ticker");
   const show = (d = 0) => {
     i = (i + d + list.length) % list.length;
-    el.innerHTML = `<a href="#/story/${list[i].id}">${esc(list[i].title)}</a>`;
+    el.innerHTML = `<a href="/story/${list[i].id}">${esc(list[i].title)}</a>`;
   };
   const restart = () => {
     clearInterval(renderTicker.t);
@@ -222,8 +232,16 @@ function renderTicker() {
 }
 
 // ---- routing ------------------------------------------------------------------------------
+function go(path) {
+  if (path !== location.pathname) history.pushState(null, "", path);
+  route();
+}
+
 function route() {
-  const [view, arg] = location.hash.replace(/^#\/?/, "").split("/");
+  const [view = "", arg] = location.pathname.replace(/^\/+|\/+$/g, "").split("/");
+  // Keep the canonical address in step with the page (search and saved lists point at the homepage).
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.href = `https://gulftelugunews.vercel.app${["search", "saved"].includes(view) ? "/" : location.pathname}`;
   const key = view === "s" ? `s/${arg}` : view || "home";
   for (const a of document.querySelectorAll("#nav a, #nav2 a")) {
     if (a.dataset.route === key || (view === "board" && a.dataset.route === "board")) a.setAttribute("aria-current", "page");
@@ -290,7 +308,7 @@ const shortDate = (iso) => dateTe(new Date(iso), { weekday: "short", day: "2-dig
 
 function tileHTML(item, size = "md") {
   return `<article class="tile tile-${size}">
-    <a href="#/story/${item.id}" class="tile-link">${art(item)}<span class="tile-shade"></span>
+    <a href="/story/${item.id}" class="tile-link">${art(item)}<span class="tile-shade"></span>
       <span class="tile-body"><span class="kicker">${esc(kicker(item))}</span>
         <span class="tile-title">${esc(item.title)}</span>
         <span class="tile-meta"><time datetime="${item.published}">${shortDate(item.published)}</time> · ${esc(item.publisher)}
@@ -299,13 +317,13 @@ function tileHTML(item, size = "md") {
 }
 function liHTML(item) {
   const c = COUNTRY_ART[item.countries?.[0]];
-  return `<li class="li"><a href="#/story/${item.id}" class="li-thumb" tabindex="-1">${art(item)}</a>
-    <div><a class="li-title" href="#/story/${item.id}">${esc(item.title)}</a>
+  return `<li class="li"><a href="/story/${item.id}" class="li-thumb" tabindex="-1">${art(item)}</a>
+    <div><a class="li-title" href="/story/${item.id}">${esc(item.title)}</a>
     <div class="li-meta">${shortDate(item.published)}${c ? ` · ⚑ ${c[3]}` : ""}${item.telugu ? ` · <span class="te-dot">తెలుగు వారు</span>` : ""}</div></div></li>`;
 }
 function colCardHTML(item) {
-  return `<article class="colcard"><a href="#/story/${item.id}" class="colcard-img" tabindex="-1">${art(item)}</a>
-    <a class="colcard-title" href="#/story/${item.id}">${esc(item.title)}</a>
+  return `<article class="colcard"><a href="/story/${item.id}" class="colcard-img" tabindex="-1">${art(item)}</a>
+    <a class="colcard-title" href="/story/${item.id}">${esc(item.title)}</a>
     <div class="li-meta">${shortDate(item.published)} · ${esc(item.publisher)}</div></article>`;
 }
 const blockHead = (title, href, color = "red") =>
@@ -347,11 +365,11 @@ function renderHome() {
       <div class="lg-row lg-row-3">${hero.slice(2, 5).map((i) => tileHTML(i, "md")).join("")}</div>
     </section>
 
-    <section class="block">${blockHead("తెలుగు వారి వార్తలు", "#/s/top")}${featureHTML(teluguMore)}</section>
+    <section class="block">${blockHead("తెలుగు వారి వార్తలు", "/s/top")}${featureHTML(teluguMore)}</section>
 
     <section class="block cols3">${cols
       .map(
-        ([id, title, items]) => `<div class="col">${blockHead(title, `#/s/${id}`, "blue")}${
+        ([id, title, items]) => `<div class="col">${blockHead(title, `/s/${id}`, "blue")}${
           items.length
             ? colCardHTML(items[0]) + `<ul class="li-list">${items.slice(1).map(liHTML).join("")}</ul>`
             : `<p class="empty">ఇంకా వార్తలు లేవు.</p>`
@@ -372,19 +390,19 @@ function renderHome() {
     <section class="block community">
       <div class="comm-intro"><h2>💬 రచ్చబండ చర్చలు</h2>
         <p>గల్ఫ్‌లో ఉన్న మన వాళ్లందరూ కలిసే చోటు. సంఘం కార్యక్రమం ప్రకటించండి, రూమ్ వెతకండి, సాయం అడగండి.</p>
-        <a class="btn" href="#/board">రచ్చబండకు వెళ్ళండి</a></div>
+        <a class="btn" href="/board">రచ్చబండకు వెళ్ళండి</a></div>
       <ol class="comm-list">${boards
         .slice(0, 6)
         .map(
           (b, n) =>
-            `<li><a href="#/board/${b.id}"><span class="num">${n + 1}</span><span class="bicon">${b.icon}</span><span><strong>${esc(
+            `<li><a href="/board/${b.id}"><span class="num">${n + 1}</span><span class="bicon">${b.icon}</span><span><strong>${esc(
               b.title,
             )}</strong><small data-bcount="${b.id}">${esc(b.desc.slice(0, 48))}…</small></span></a></li>`,
         )
         .join("")}</ol>
     </section>
 
-    <section class="block">${blockHead("గల్ఫ్ పరిణామాలు", "#/s/gulf", "navy")}${featureHTML(take(by("gulf"), 5))}</section>`;
+    <section class="block">${blockHead("గల్ఫ్ పరిణామాలు", "/s/gulf", "navy")}${featureHTML(take(by("gulf"), 5))}</section>`;
 
   const panel = $("#tabpanel");
   const showTab = (c) => {
@@ -392,7 +410,7 @@ function renderHome() {
     const items = by(c);
     panel.innerHTML =
       featureHTML([...items.filter((i) => i.telugu), ...items.filter((i) => !i.telugu)]) +
-      `<p class="tab-more"><a href="#/s/${c}">${COUNTRY_ART[c][3]} వార్తలన్నీ →</a></p>`;
+      `<p class="tab-more"><a href="/s/${c}">${COUNTRY_ART[c][3]} వార్తలన్నీ →</a></p>`;
     decorate(panel);
   };
   main.querySelector(".tabs").onclick = (e) => {
@@ -419,7 +437,7 @@ function cardHTML(item, { lead = false } = {}) {
     ...item.sections
       .filter((s) => s !== "top" && SECTION_NAME[s])
       .slice(0, 3)
-      .map((s) => `<a class="tag" href="#/s/${s}">${SECTION_NAME[s]}</a>`),
+      .map((s) => `<a class="tag" href="/s/${s}">${SECTION_NAME[s]}</a>`),
     ...(item.lang === "en" ? [`<span class="tag en">English</span>`] : []),
   ].join("");
   const related = item.related?.length
@@ -435,14 +453,14 @@ function cardHTML(item, { lead = false } = {}) {
     : "";
   const H = lead ? "h2" : "h3";
   return `<article class="${lead ? "lead" : "card"}" data-id="${item.id}">
-    <a class="card-img" href="#/story/${item.id}" tabindex="-1">${art(item)}</a>
+    <a class="card-img" href="/story/${item.id}" tabindex="-1">${art(item)}</a>
     <div class="meta">${item.publisherUrl ? `<img src="${favicon(item.publisherUrl)}" alt="" loading="lazy" onerror="this.remove()" />` : ""}
       <span class="pub">${esc(item.publisher)}</span> · <time datetime="${item.published}">${ago(item.published)}</time> ${tags}</div>
-    <${H}><a href="#/story/${item.id}">${esc(item.title)}</a></${H}>
+    <${H}><a href="/story/${item.id}">${esc(item.title)}</a></${H}>
     ${item.description ? `<p class="desc">${esc(item.description)}</p>` : ""}
     ${related}
     <div class="actions">
-      <a class="act talk" href="#/story/${item.id}">💬 <span data-count="${item.id}">చర్చ</span></a>
+      <a class="act talk" href="/story/${item.id}">💬 <span data-count="${item.id}">చర్చ</span></a>
       <span class="act" data-reacts="${item.id}"></span>
       <a class="act" href="${esc(item.url)}" target="_blank" rel="noopener" title="పూర్తి వార్త">↗ పూర్తి వార్త</a>
       <a class="act" href="${waLink(item)}" target="_blank" rel="noopener" title="వాట్సాప్‌లో పంపండి">🟢 వాట్సాప్</a>
@@ -583,7 +601,7 @@ function renderStory(id) {
   const thread = threadOf(id);
   document.title = `${item ? item.title : "చర్చ"} | గల్ఫ్ తెలుగు వార్తలు`;
   if (!item) {
-    main.innerHTML = `<a class="back" href="#/">← వెనక్కి</a>
+    main.innerHTML = `<a class="back" href="/">← వెనక్కి</a>
       <div class="story"><p>ఈ వార్త పాతదైపోవడంతో జాబితా నుంచి తొలగించాం. దానిపై జరిగిన చర్చ కింద ఉంది.</p></div>
       <section class="discuss" id="discuss"></section>`;
     mountThread($("#discuss"), thread, { title: "చర్చ" });
@@ -594,7 +612,7 @@ function renderStory(id) {
     .slice(0, 6);
   const sec = item.sections.find((s) => s !== "top") || item.sections[0];
   main.innerHTML = `
-    <a class="back" href="#/s/${sec}">← ${SECTION_NAME[sec] || "వార్తలు"}</a>
+    <a class="back" href="/s/${sec}">← ${SECTION_NAME[sec] || "వార్తలు"}</a>
     <article class="story">
       <div class="story-art">${art(item)}</div>
       <div class="meta">${item.publisherUrl ? `<img src="${favicon(item.publisherUrl)}" alt="" onerror="this.remove()" />` : ""}
@@ -606,7 +624,7 @@ function renderStory(id) {
           minute: "2-digit",
         })}</time> · ${ago(item.published)}
         ${item.telugu ? `<span class="tag te">తెలుగు వారు</span>` : ""}
-        ${item.sections.map((s) => (SECTION_NAME[s] && s !== "top" ? `<a class="tag" href="#/s/${s}">${SECTION_NAME[s]}</a>` : "")).join(" ")}</div>
+        ${item.sections.map((s) => (SECTION_NAME[s] && s !== "top" ? `<a class="tag" href="/s/${s}">${SECTION_NAME[s]}</a>` : "")).join(" ")}</div>
       <h1>${esc(item.title)}</h1>
       ${item.description ? `<p class="lede">${esc(item.description)}</p>` : ""}
       <div class="story-links">
@@ -864,7 +882,7 @@ async function renderBoards() {
       <p>ఊళ్లో అందరూ కలిసి మాట్లాడుకునే చోటు రచ్చబండ. ఇంటికి దూరంగా గల్ఫ్‌లో ఉన్న మనందరికీ ఇదే మన రచ్చబండ — సంఘాల కార్యక్రమాలు, ఉద్యోగాలు, సాయం, రూములు, ఇంటికి తిరుగు ప్రయాణం — ఏదైనా పంచుకోండి.</p></div>
     <div class="boards">${boards
       .map(
-        (b) => `<a class="board" href="#/board/${b.id}"><span class="icon">${b.icon}</span><strong>${esc(b.title)}</strong>
+        (b) => `<a class="board" href="/board/${b.id}"><span class="icon">${b.icon}</span><strong>${esc(b.title)}</strong>
           <span>${esc(b.desc)}</span><span data-bcount="${b.id}"></span></a>`,
       )
       .join("")}</div>
@@ -889,7 +907,7 @@ function renderBoard(id) {
   const b = state.community.boards.find((x) => x.id === id);
   if (!b) return renderBoards();
   document.title = `${b.title} | గల్ఫ్ తెలుగు వార్తలు`;
-  main.innerHTML = `<a class="back" href="#/board">← రచ్చబండ</a>
+  main.innerHTML = `<a class="back" href="/board">← రచ్చబండ</a>
     <div class="hero"><h1>${b.icon} ${esc(b.title)}</h1><p>${esc(b.desc)}</p></div>
     <section class="discuss" id="discuss"></section>`;
   mountThread($("#discuss"), `board:${id}`, {
@@ -905,10 +923,10 @@ function recentHTML(c) {
   let where;
   if (kind === "board") {
     const b = state.community.boards.find((x) => x.id === key);
-    href = `#/board/${key}`;
+    href = `/board/${key}`;
     where = b ? `${b.icon} ${b.title}` : "రచ్చబండ";
   } else {
-    href = `#/story/${key}`;
+    href = `/story/${key}`;
     where = state.byId.get(key)?.title || "పాత వార్తపై";
   }
   return `<li><a href="${href}"><span class="quote">"${esc(c.body.slice(0, 90))}"</span>
@@ -938,14 +956,14 @@ function renderSources() {
           .map(sourceItemHTML)
           .join("")}</ul>${
           g.id === "sanghalu"
-            ? `<p class="muted" style="font-size:.85rem">మీ సంఘం ఈ జాబితాలో లేదా? <a href="#/board/sangham">మన సంఘాలు & వేడుకలు</a> బోర్డులో వివరాలు రాయండి.</p>`
+            ? `<p class="muted" style="font-size:.85rem">మీ సంఘం ఈ జాబితాలో లేదా? <a href="/board/sangham">మన సంఘాలు & వేడుకలు</a> బోర్డులో వివరాలు రాయండి.</p>`
             : ""
         }</section>`,
       )
       .join("")}
     <section class="src-group"><h2>ఈ సైట్‌లో వార్తలు వస్తున్న పత్రికలు (${active.length})</h2>
       <div class="chips">${active
-        .map(([p, n]) => `<a class="chip" href="#/search/${encodeURIComponent(p)}">${esc(p)} · ${n}</a>`)
+        .map(([p, n]) => `<a class="chip" href="/search/${encodeURIComponent(p)}">${esc(p)} · ${n}</a>`)
         .join("")}</div></section>`;
 }
 
@@ -991,11 +1009,11 @@ async function renderSide() {
   side.innerHTML = `
     <section class="widget sos"><h2>🆘 అత్యవసర సాయం</h2><ul class="mini">${help
       .map((h) => `<li><a href="tel:${esc(h.phone)}"><b>📞 ${esc(h.phoneText)}</b><small>${esc(h.name)}</small></a></li>`)
-      .join("")}</ul><p style="margin:8px 0 0"><a href="#/sources">అన్ని హెల్ప్‌లైన్లు, రాయబార కార్యాలయాలు →</a></p></section>
+      .join("")}</ul><p style="margin:8px 0 0"><a href="/sources">అన్ని హెల్ప్‌లైన్లు, రాయబార కార్యాలయాలు →</a></p></section>
     <section class="widget wa-promo"><div class="wa-icon" aria-hidden="true">🟢</div>
       <p><strong>మీ వాట్సాప్ గ్రూపుల్లో పంచుకోండి</strong><br />గల్ఫ్‌లో ఉన్న మన వాళ్లందరికీ ఈ సైట్ చేరాలి.</p>
       <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(
-        `గల్ఫ్ తెలుగు వారి వార్తలు, హెల్ప్‌లైన్లు, మన సంఘాల కార్యక్రమాలు — గల్ఫ్ తెలుగు వార్తలు: ${location.origin}${location.pathname}`,
+        `గల్ఫ్ తెలుగు వారి వార్తలు, హెల్ప్‌లైన్లు, మన సంఘాల కార్యక్రమాలు — గల్ఫ్ తెలుగు వార్తలు: ${location.origin}/`,
       )}">వాట్సాప్‌లో పంపండి</a></section>
     <section class="widget market"><h2>రచ్చబండ బోర్డులు</h2><div class="market-grid">${[
       ["rooms", "🛏️", "రూములు", "#1e88e5"],
@@ -1005,7 +1023,7 @@ async function renderSide() {
       ["cricket", "🏏", "క్రికెట్", "#2e9d4e"],
       ["return", "🏠", "తిరుగు ప్రయాణం", "#5d6670"],
     ]
-      .map(([id, i, t, c]) => `<a href="#/board/${id}" style="background:${c}"><span>${i}</span>${t}</a>`)
+      .map(([id, i, t, c]) => `<a href="/board/${id}" style="background:${c}"><span>${i}</span>${t}</a>`)
       .join("")}</div></section>
     <section class="widget"><h2>🕰️ ఇప్పుడు సమయం</h2><div class="clocks" id="clocks"></div></section>
     ${
@@ -1029,7 +1047,7 @@ async function renderSide() {
     <section class="widget poll" id="poll"><h2>ఈరోజు ప్రశ్న</h2><p class="q">${esc(poll.q)}</p><div class="opts"></div></section>
     <section class="widget saying"><h2>నేటి సామెత</h2><blockquote>${esc(proverb.text)}</blockquote><p>${esc(proverb.meaning)}</p></section>
     <section class="widget"><h2>తాజా చర్చలు</h2><ul class="mini" id="recent"><li class="muted">లోడ్ అవుతోంది…</li></ul>
-      <p style="margin:8px 0 0"><a class="btn ghost" href="#/board">💬 రచ్చబండకు వెళ్ళండి</a></p></section>
+      <p style="margin:8px 0 0"><a class="btn ghost" href="/board">💬 రచ్చబండకు వెళ్ళండి</a></p></section>
     <section class="widget word"><h2>తెలుగు పదం</h2><div class="w">${esc(word.word)}</div><p><strong>అర్థం:</strong> ${esc(
       word.meaning,
     )}</p><p class="muted">"${esc(word.use)}"</p></section>
@@ -1038,7 +1056,7 @@ async function renderSide() {
       .find((g) => g.id === "sanghalu")
       .items.slice(0, 6)
       .map((a) => `<li>${a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.name)} ↗</a>` : esc(a.name)}</li>`)
-      .join("")}</ul><p style="margin:8px 0 0"><a href="#/sources">అన్ని సంఘాలు →</a></p></section>`;
+      .join("")}</ul><p style="margin:8px 0 0"><a href="/sources">అన్ని సంఘాలు →</a></p></section>`;
 
   tickClocks();
   mountPoll($("#poll"), poll);
@@ -1055,7 +1073,7 @@ async function renderSide() {
       .sort((a, b) => b[1] - a[1])
       .slice(0, 5);
     $("#hot").innerHTML = hot.length
-      ? hot.map(([i, n]) => `<li><a href="#/story/${i.id}">${esc(i.title)}</a><small>💬 ${n} వ్యాఖ్యలు</small></li>`).join("")
+      ? hot.map(([i, n]) => `<li><a href="/story/${i.id}">${esc(i.title)}</a><small>💬 ${n} వ్యాఖ్యలు</small></li>`).join("")
       : `<li class="muted">ఇంకా చర్చలు మొదలవలేదు.</li>`;
   } catch (err) {
     console.warn(err);
