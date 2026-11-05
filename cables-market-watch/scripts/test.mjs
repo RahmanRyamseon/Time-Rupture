@@ -190,6 +190,12 @@ const wbNews = merge2([], wb, Date.parse("2026-11-05T12:00:00Z"));
 assert.deepEqual(wbNews.find((i) => i.title.startsWith("Rwanda")).markets, ["Africa"]);
 assert.deepEqual(wbNews.find((i) => i.title.startsWith("Turkiye")).markets, ["Middle East"]);
 
+// Region comes from the country field, not title words (real notice, 5 Nov 2026).
+const stp = merge2([], parseWB({ procnotices: [{ id: "OP1", notice_type: "Contract Award", noticedate: "01-Nov-2026", project_ctry_name: "Sao Tome and Principe",
+  bid_description: "Connection Works for Voice of America Power Thermal Power Plant to the National Grid of São Tomé and Príncipe", procurement_group: "CW" }] },
+  { now: Date.parse("2026-11-05") }), Date.parse("2026-11-05"));
+assert.deepEqual(stp[0].markets, ["Africa"]);
+
 // SAM.gov (shape per the GSA API docs) and the no-key skip.
 const sam = parseSAM({ opportunitiesData: [{ noticeId: "abc", title: "Rebuild 115-kV transmission line", solicitationNumber: "89503426RWA000123", postedDate: "2026-11-03", type: "Solicitation", fullParentPathName: "ENERGY, DEPARTMENT OF.WESTERN AREA POWER ADMINISTRATION", uiLink: "https://sam.gov/opp/abc/view" }] });
 assert.equal(sam[0].market, "USA"); assert.equal(sam[0].stage, "Tender"); assert.match(sam[0].description, /WESTERN AREA POWER/);

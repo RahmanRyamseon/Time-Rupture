@@ -306,7 +306,7 @@ export const MARKETS = {
       Egypt: /egypt|cairo|مصر/i,
       "North Africa": /morocco|algeria|tunisia|libya|المغرب|الجزائر/i,
       "South Africa": /south africa|eskom|\bntcsa\b/i,
-      "Sub-Saharan Africa": /nigeria|kenya|ethiopia|tanzania|ghana|zambia|uganda|mozambique|angola|senegal|cameroon|\bchad\b|rwanda|ivory coast|côte d'ivoire|cote d'ivoire|\bdrc\b|congo|namibia|botswana|zimbabwe|madagascar|malawi|\bmali\b|\bniger\b|burkina|benin|togo|guinea|sierra leone|liberia|gambia|mauritania|somalia|sudan|burundi|djibouti|eswatini|lesotho|comoros|cabo verde|cape verde|gabon|central african|\bafrica/i,
+      "Sub-Saharan Africa": /nigeria|kenya|ethiopia|tanzania|ghana|zambia|uganda|mozambique|angola|senegal|cameroon|\bchad\b|rwanda|ivory coast|côte d'ivoire|cote d'ivoire|\bdrc\b|congo|namibia|botswana|zimbabwe|madagascar|malawi|\bmali\b|\bniger\b|burkina|benin|togo|guinea|sierra leone|liberia|gambia|mauritania|somalia|sudan|burundi|djibouti|eswatini|lesotho|comoros|cabo verde|cape verde|gabon|central african|s[aã]o tom[eé]|equatorial guinea|seychelles|mauritius|\bafrica/i,
     },
     queries: [
       '(Eskom OR NTCSA OR "independent transmission") transmission line (contract OR tender OR awarded OR construction)',
@@ -317,7 +317,7 @@ export const MARKETS = {
   },
   Europe: {
     regions: {
-      "UK & Ireland": /\buk\b|britain|british(?! columbia)|england|scotland|wales|ireland|national grid(?! sa| saudi)|\bssen\b|great grid upgrade/i,
+      "UK & Ireland": /\buk\b|united kingdom|britain|british(?! columbia)|england|scotland|wales|ireland|national grid(?! sa| saudi)|\bssen\b|great grid upgrade/i,
       "Western Europe": /german|france|french|\bital|spain|spanish|portugal|netherlands|dutch|belgi|austria|switzerland|tennet|amprion|50hertz|\brte\b|terna\b/i,
       "Nordics & Eastern Europe": /norway|norwegian|sweden|swedish|denmark|danish|finland|finnish|iceland|poland|polish|polsk|romania|bulgaria|greece|greek|hungary|czech|slovak|slovenia|baltic|estonia|latvia|lithuania|ukraine|serbia|croatia|bosnia|montenegro|albania|north macedonia|moldova|kosovo|armenia|azerbaijan|statnett|fingrid|energinet|svenska kraftn|transelectrica/i,
       Europe: /europe|\beu\b|entso|ten-e|\bpci\b|\beib\b/i,
@@ -544,7 +544,11 @@ export function mergeNews(existing, fetched, now = Date.now()) {
   for (const raw of fetched) {
     if (!raw.title || !raw.url) continue;
     const text = `${raw.title} ${raw.description}`;
-    const { categories, companies, regions } = classify(text, raw.category);
+    const c = classify(text, raw.category);
+    const { categories, companies } = c;
+    // Official notices state their country in a field (placeText); tag regions from that alone, so
+    // names in a title ("National Grid", "Voice of America") don't add the wrong market.
+    const regions = raw.placeText != null ? detectRegions(raw.placeText) : c.regions;
     if (!categories.length) continue;
     const key = keyOf(raw.title);
     const prev = byKey.get(key);
@@ -744,7 +748,9 @@ export async function fetchCanadaBuys() {
 // UK: Find a Tender Service (FTS) — OCDS release packages, no key. Since Brexit, UK notices are
 // not on TED. Pages are followed through `links.next`; grid notices are kept by CPV code or title.
 export const FTS_URL = "https://www.find-tender.service.gov.uk/api/1.0/ocdsReleasePackages";
-const FTS_CPV = ["31320", "31321", "44321", "452314", "31341", "45231"];
+// 31320/31321 power cables, 44321 cable, 452314 power-line construction, 31341 cable accessories.
+// (Not the parent 45231, which also covers pipelines and telecoms and pulls in broad frameworks.)
+const FTS_CPV = ["31320", "31321", "44321", "452314", "31341"];
 const GRID_TITLE = /\d\s?kv\b|overhead line|substation|transmission line|power line|power cable|conductor|grid connection|interconnector|switchgear|reconductor/i;
 export function parseFTS(json) {
   return (json?.releases ?? [])
@@ -764,6 +770,7 @@ export function parseFTS(json) {
         title: title ? `UK – ${title}` : "",
         url: `https://www.find-tender.service.gov.uk/Notice/${r.id}`,
         publisher: "UK Find a Tender",
+        placeText: "United Kingdom",
         publisherUrl: "https://www.find-tender.service.gov.uk",
         published: new Date(Date.parse(r.date) || Date.now()).toISOString(),
         description: `${stage === "Award" ? "Contract award" : stage === "Plan" ? "Planned procurement" : "Tender"} notice on UK Find a Tender. Buyer: ${r.buyer?.name ?? "n/a"} (United Kingdom).${amount ? ` Value: ${v.currency ?? "GBP"} ${Math.round(amount).toLocaleString("en-GB")}.` : ""} Category: ${cpvs[0]?.description || "n/a"} (UK tender).`,
@@ -818,6 +825,7 @@ export function parseWB(json, { maxAgeDays = 45, now = Date.now() } = {}) {
         publisher: "World Bank procurement",
         publisherUrl: "https://projects.worldbank.org",
         published: published ?? new Date(now).toISOString(),
+        placeText: n.project_ctry_name ?? "",
         description: `${type || "Notice"} (${WB_GROUP[n.procurement_group] ?? n.procurement_group}) for the World Bank-financed project "${n.project_name ?? ""}". Country: ${n.project_ctry_name ?? "n/a"}.${n.submission_deadline_date ? ` Bid deadline: ${String(n.submission_deadline_date).slice(0, 10)}.` : ""} Category: electricity transmission and distribution (tender).`,
         category: "tenders",
         stage,
@@ -855,6 +863,7 @@ export function parseSAM(json) {
       title: `USA – ${String(o.title ?? "").replace(/\s+/g, " ").trim()}`,
       url: o.uiLink || `https://sam.gov/opp/${o.noticeId ?? ""}/view`,
       publisher: "SAM.gov (US federal)",
+      placeText: "United States",
       publisherUrl: "https://sam.gov",
       published: new Date(Date.parse(o.postedDate) || Date.now()).toISOString(),
       description: `${o.type ?? "Notice"} on SAM.gov. Agency: ${o.fullParentPathName ?? o.department ?? "n/a"}. Solicitation ${o.solicitationNumber ?? "n/a"}.${amount ? ` Award: $${Number(amount).toLocaleString("en-US")}.` : ""} United States (US federal tender).`,
