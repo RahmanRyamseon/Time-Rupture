@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="te">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>గల్ఫ్ రచ్చబండ — గల్ఫ్ తెలుగు వారి వార్తలు, మన ముచ్చట్లు</title>
+  <meta name="description" content="యూఏఈ, సౌదీ, ఖతార్, కువైట్, ఒమన్, బహ్రెయిన్‌లోని తెలుగు వారి వార్తలు, తెలుగు సంఘాల కార్యక్రమాలు, హెల్ప్‌లైన్లు ఒకే చోట. ప్రతి వార్తపై మీ అభిప్రాయం చెప్పండి." />
+  <meta name="theme-color" content="#d71920" />
+  <meta property="og:title" content="గల్ఫ్ రచ్చబండ — గల్ఫ్ తెలుగు వారి వార్తలు" />
+  <meta property="og:description" content="గల్ఫ్ దేశాల్లోని తెలుగు వారి వార్తలు, సంఘాలు, సాయం — చదవండి, స్పందించండి, చర్చించండి." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B3%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;700;800&family=Ramabhadra&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Apply saved theme and text size before first paint.
+    document.documentElement.dataset.theme = localStorage.getItem("rb:theme") ||
+      (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.dataset.size = localStorage.getItem("rb:size") || "m";
+  </script>
+  <script src="config.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">ప్రధాన భాగానికి వెళ్ళండి</a>
+
+  <div class="utilbar">
+    <div class="wrap utilbar-in">
+      <span id="today"></span>
+      <nav class="util-links" aria-label="త్వరిత లింకులు">
+        <a href="#/sources">హెల్ప్‌లైన్లు</a>
+        <a href="#/board/sangham">కార్యక్రమం ప్రకటించండి</a>
+        <a href="#/board/help">సాయం కావాలి</a>
+        <a href="#/rules">నియమాలు</a>
+      </nav>
+      <span class="util-tools">
+        <button class="tb-btn" id="size-down" title="అక్షరాలు చిన్నవి" aria-label="అక్షరాలు చిన్నవి">అ−</button>
+        <button class="tb-btn" id="size-up" title="అక్షరాలు పెద్దవి" aria-label="అక్షరాలు పెద్దవి">అ+</button>
+        <button class="tb-btn" id="theme" title="రాత్రి / పగలు" aria-label="రాత్రి / పగలు మోడ్">🌙</button>
+      </span>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <div class="wrap mast-in">
+      <a href="#/" class="logo" aria-label="గల్ఫ్ రచ్చబండ – హోమ్">
+        <span class="logo-gulf">గల్ఫ్</span>
+        <span class="logo-name">రచ్చబండ</span>
+        <span class="logo-tree" aria-hidden="true">🌳</span>
+      </a>
+      <div class="mast-side">
+        <p class="tagline">గల్ఫ్ తెలుగు వారి వార్తలు · మన సంఘాలు · మన ముచ్చట్లు</p>
+        <p class="edition" id="edition"></p>
+        <form id="search" class="search" role="search">
+          <input type="search" id="q" placeholder="వార్తల్లో వెతకండి (ఉదా: దుబాయ్)…" aria-label="వెతకండి" />
+          <button type="submit" aria-label="వెతకండి">🔍</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="విభాగాలు">
+    <div class="wrap nav-row">
+      <ul id="nav" class="nav-main"></ul>
+      <ul id="nav2" class="nav-sub"></ul>
+    </div>
+  </nav>
+
+  <div class="wrap latest" aria-label="తాజా వార్తలు">
+    <span class="latest-label">తాజా వార్తలు ⚡</span>
+    <button class="latest-btn" id="lt-prev" aria-label="ముందరి వార్త">‹</button>
+    <button class="latest-btn" id="lt-next" aria-label="తర్వాతి వార్త">›</button>
+    <div class="latest-text" id="ticker" aria-live="polite"></div>
+  </div>
+
+  <div class="wrap layout">
+    <main id="main" tabindex="-1"></main>
+    <aside id="side" class="side"></aside>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p><strong>గల్ఫ్ రచ్చబండ</strong> — ఊరి నడిబొడ్డున అందరూ కలిసే రచ్చబండ లాగే, గల్ఫ్‌లో ఉన్న తెలుగు వారందరూ కలిసే చోటు. మన వాళ్ల వార్తలు, మన సంఘాల కార్యక్రమాలు, అవసరమైనప్పుడు సాయం — అన్నీ ఇక్కడే.</p>
+      <p class="muted">వార్తల శీర్షికలు ఆయా పత్రికలవి; పూర్తి వార్త కోసం మూల వెబ్‌సైట్‌కు వెళ్తారు. వ్యాఖ్యలు రాసిన వారి వ్యక్తిగత అభిప్రాయాలు. వార్తలు Google News ద్వారా తెలుగు, ఇంగ్లీష్ పత్రికల నుంచి ప్రతి 2 గంటలకు అప్‌డేట్ అవుతాయి. హెల్ప్‌లైన్ నంబర్లు అధికారిక వెబ్‌సైట్ల నుంచి తీసుకున్నవి; అత్యవసర సమయంలో రాయబార కార్యాలయ వెబ్‌సైట్‌లో కూడా సరిచూసుకోండి.</p>
+      <p class="muted"><a href="#/sources">గల్ఫ్ తెలుగు డైరెక్టరీ</a> · <a href="#/board">రచ్చబండ చర్చలు</a> · <a href="#/rules">చర్చా నియమాలు</a></p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
