@@ -1,8 +1,22 @@
 {
-  "generatedAt": "2026-11-03T11:01:53.617Z",
+  "generatedAt": "2026-11-05T11:09:50.470Z",
   "retentionDays": 120,
-  "count": 12,
+  "count": 13,
   "items": [
+    {
+      "id": "630e27b1df4f",
+      "title": "Choose ‘Personal Data Breach Notification’.",
+      "url": "https://news.google.com/rss/articles/CBMijgRBVV95cUxQbHNLZUI2MUJTRDNRU1Q0Wko1UVZpUzFfVXNPWV9TUDBHaGJIcVBDc0tWM3JFX2RFaGJLQmQ5OVp0b0Fza1FwVlVTOG5zbkpGZmFVbXRmdmJLMFdQRGdJd3d2cUdUSGxiUHBOM2NqMjNhNGJWYzFTNjB0ZDgtQ3MxMmFINFBwN3hfRDBDek0zOXJaMmRVTDA1Tkt2TmdVSWNMTUlDcFYzOVRwcHlBLTN3Q3RScjFHY1FSLUFLNy1EdUdybzZaTkoxQlVnUUdPMzhqdVB6MEFYVWpXTzdDN0xOZkFRVWFONVhadkpUeUJEV3ZIRHUwekV4bmJUMnppUGhmOGlEVGdEV0FpT3dQZGcyRGFQaW13cFRRbVdyYmtJUjBiZzhkNEU4c0pka29MLVN5Tng4RXFkR2Nma1RYZE9ONjV2LTg5Z1U2TjR4VjNoM3ZNbHRwQXcxU3RCWV81S1FLc1NUMVBOeWY2Q25qMVVPZ29ZdDlRTHVtUURDOUU4WGllR0o0SnlaZ3JVaGY5bUx5VHZ2c1RUNmFobWJpSzBhSFVTNi1LRm1YampJNVVpbnJMcWZqWVlCM2RjbFRlNGFBTXpjLUNOUzBLX2RPc2VTXzBsY284T1R6Z016VE9hM2loTkxkb1VVZ053WnVYWmpfTWdPX0xlX19HVXpnb3phZ1AwcEViR0VnRDNlREd3?oc=5",
+      "publisher": "منصة حوكمة البيانات الوطنية",
+      "publisherUrl": "https://dgp.sdaia.gov.sa",
+      "published": "2026-11-03T17:13:49.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "official",
+      "firstSeen": "2026-11-05T11:09:50.468Z"
+    },
     {
       "id": "797615729c9b",
       "title": "Sharing Personal Data with AI: How Safe Is Your Privacy? | Aaj Pakistan with Sidra Iqbal",
