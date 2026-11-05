@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T22:55:19.982Z",
+  "generatedAt": "2026-11-05T23:41:09.733Z",
   "retentionDays": 120,
   "categories": {
     "projects": "Grid projects & awards",
@@ -396,8 +396,226 @@
       "role": "self"
     }
   ],
-  "count": 1976,
+  "count": 1988,
   "items": [
+    {
+      "id": "7ade86066046",
+      "title": "Poland – Construction work – OD Gorzów: Budowa stacji GPZ 110/15 kV Mironicka z powiązaniami sieci SN i WN, S-2026-15350 (projekt + wykonawstwo)",
+      "url": "https://ted.europa.eu/en/notice/-/detail/773053-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-06T00:00:00.000Z",
+      "description": "Contract notice on TED, the EU tender database. Buyer: ENEA Operator sp. z o.o. (POL). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
+    {
+      "id": "34affcfdffa9",
+      "title": "Germany – Low-voltage cable – Electrical Equipment and Cables",
+      "url": "https://ted.europa.eu/en/notice/-/detail/772594-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-06T00:00:00.000Z",
+      "description": "Contract award notice on TED, the EU tender database. Buyer: Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH (DEU). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "tenders"
+      ],
+      "regions": [
+        "Western Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
+    {
+      "id": "443303a414cb",
+      "title": "Poland – Construction work – AFiR Stacja Paliw BP Kołbaskowo (A6), w tym budowa stacji 110/15 kV Kołbaskowo",
+      "url": "https://ted.europa.eu/en/notice/-/detail/773702-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-06T00:00:00.000Z",
+      "description": "Contract notice on TED, the EU tender database. Buyer: ENEA Operator sp. z o.o. (POL). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
+    {
+      "id": "d756fb54b87e",
+      "title": "Belgium – Construction work for electricity power lines – Fourniture et pose d’une liaison par câbles 25 kV entre la sous-station d’Achêne et le poste de distribution de Braibant",
+      "url": "https://ted.europa.eu/en/notice/-/detail/773704-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-06T00:00:00.000Z",
+      "description": "Contract notice on TED, the EU tender database. Buyer: Infrabel sa (BEL). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Western Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
+    {
+      "id": "0adb5f99d0db",
+      "title": "Op-Ed: Canada trade deal would hurt European aluminum buyers",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPZWxJeUJJeTB0bmlWeENBUC0wNEpiNU5nYU5oMWZPeTI5TjJNU2VwVGNGek03SGFqUkg1cHUwTi1HaDd3U2NWcjZyNFY3NTFJTXpIblRSbmdBdWR5ZTl3T1QxYThtdkdiYWpXek9nU3ItSmZjUDl5ZkRwc2ZIOF91blM1b19BbTZjT0FZSlJFOGg?oc=5",
+      "publisher": "Mining.com",
+      "publisherUrl": "https://www.mining.com",
+      "published": "2026-11-05T23:31:52.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "Europe",
+        "Canada"
+      ],
+      "markets": [
+        "Europe",
+        "Canada"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
+    {
+      "id": "22edb01c98cf",
+      "title": "ACCC steps in to secure cash distribution amid Armaguard’s fight with big banks",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQVmFiZmZlVEtMLTIxbE9ESXdvTVVMdEpoZ0dGbHh1bmlveFZnU2k0Wm9salRlNlF6ZDA4cmdTbnE4QnpkMDZ3UEYwdlBvX0V6NjNSbG5pbW1FMVhuTkRSTnkweVhEOTNGZjNVcF9MV1BLXzBzel9TbFZfaG8tQ0FUUkVQY2NSa2RacjRiUV9EYXppQVBoSWZYa1BmOXlkdlpZS1AtTA?oc=5",
+      "publisher": "Switzer Daily",
+      "publisherUrl": "https://switzer.com.au",
+      "published": "2026-11-05T23:15:16.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [
+        "CTC Global"
+      ],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
+    {
+      "id": "2184c0a94a28",
+      "title": "Federal budget proposes incentives to encourage buildout of electrical grid",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQUzlxaWVXd2FRMDBYYnZkelp4eFc0WnhuNWdiaE51bUJPYlYzb0wxcnlQOXlCX2lMS3lpMXRXN3otMmt6eEF3Z0xZdk5yemFZSDdnLWJVQVVyTWg2dVBOdzR0VU01SEFPTkczSWNoV3BLNVhiV0d0MUEyQTQwaWkxTGp0dG5YWFpWOHNISFMxYmJjbXpySmQwV295V3RHdjJ3aVRvVEFnU1kxWFl5?oc=5",
+      "publisher": "The Globe and Mail",
+      "publisherUrl": "https://www.theglobeandmail.com",
+      "published": "2026-11-05T23:13:49.000Z",
+      "description": "",
+      "categories": [
+        "projects",
+        "government"
+      ],
+      "regions": [],
+      "markets": [
+        "Canada"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
+    {
+      "id": "1189092add08",
+      "title": "Century Aluminum Q3 2026 Earnings Call Transcript",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQelpZdXZRQ20tWXk3RnRGakFyTHZ6c05LbGl3eG5TY1NGSFE1R0RfTTZWWEFFLXNWQUFjdVFjUDhVOFc3UHhkUEc5WEZlUlQtWS03TmJKc0Y4UEE2S3BpRjB2UnpPcWN4TkRpLTV4al9XZXk0M0ZUZXRzZjZEVzB3VEdqckpIQ0JZUm1jelFaTkV1d2dpc05Zc2FR?oc=5",
+      "publisher": "Benzinga",
+      "publisherUrl": "https://www.benzinga.com",
+      "published": "2026-11-05T22:42:04.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
+    {
+      "id": "f7e0de3afa2c",
+      "title": "Canada's budget fuels new nuclear power with billions but bypasses faster renewables",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOYzY4ZWtkTENoMWtvaFhxbW1POTNzNTI0VHRRMjNnUnozSGFqYmV1M1ljamhFSVVJX3phVy1VQWhnVWhBTk4xYmJnc2pabjk0alpDbXNjazJpVndmcks5RWtUbXk3cWFhQ1N3djlOZ0R4azI1ZTg4aDJWVGlONzZvQ28zSFM2WHdZalUwUjIyWjJDdkZmRS1PTXpGYk9OT0FMWVhhYmN1bjdEOUZaTF9ZREpUWENmLXg1dDk0QVA3U2w?oc=5",
+      "publisher": "Canada's National Observer",
+      "publisherUrl": "https://www.nationalobserver.com",
+      "published": "2026-11-05T22:21:51.000Z",
+      "description": "",
+      "categories": [
+        "government"
+      ],
+      "regions": [
+        "Canada"
+      ],
+      "markets": [
+        "Canada"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
     {
       "id": "efbf4faa3cbb",
       "title": "Far East El Paso residents invited to meeting on controversial power line proposal",
@@ -706,6 +924,28 @@
       "firstSeen": "2026-11-05T10:11:16.154Z"
     },
     {
+      "id": "fc0fa77b7d24",
+      "title": "Projekt budowy linii elektroenergetycznej 220 kV podstacji Yên Dũng jest opóźniony: przeszkody wynikające z przejęcia gruntów pod korytarz bezpieczeństwa.",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOUmVnTFh0WGNPYmpaQmNad1hKWjZzaXhlUmFmN2NxdWpiZU5kMDc5enFObzl2RG9RRlkzdGVLVWFWeFlURG5vV2JRdGlrZ2hOcmxWTWlaZDBMcDE2cXEwVTJtWGxxdnNVd3pHMmJIcEM2MVFUV2xuTjd4RE91cDV6QmFrYTYxaFpUbWZwX0dwTVR6cU1UWnZ5cFY3ZXRWT0RIUGNLbE45R29jTnJQTmk0WW91ZnJUM0JUMGdtNHhzMGs?oc=5",
+      "publisher": "Vietnam.vn",
+      "publisherUrl": "https://www.vietnam.vn",
+      "published": "2026-11-05T18:34:12.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Construction",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
+    {
       "id": "2c55f4e209da",
       "title": "Nalco Smelter Expansion Moves Ahead After Odisha Land Push",
       "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQVVdseXMwX2FSN1NvdTFzb1otbGxXdVZvMGNrcUVWM0RXWlVYM3dBUUZDZXQyY1A5bmowdmtPOVprZFg2cmxLSXRaN3FPUGoxelhQUzRES2M0Nm03UHhyVFlCd2RBcE11eE1IM1hjWU5LVEpSNEhSemprZHBwMkNJU1h4T2JRVUMy?oc=5",
@@ -792,6 +1032,26 @@
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-05T22:55:19.836Z"
+    },
+    {
+      "id": "66288fb15479",
+      "title": "ارتفاع أسعار الألمنيوم لأعلى مستوى في 7 أسابيع",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1tYmRUd3FFMUNZQjNselJVRlBlZFBYQ1JJdnpCTk5ucUlac2NiQmhxYkM0Y0VkZTc5MFlfUDFOMW5pVTV0YmJxV2RuZkZMdTZJT3JiMll3?oc=5",
+      "publisher": "جريدة البورصة",
+      "publisherUrl": "https://alborsaanews.com",
+      "published": "2026-11-05T17:27:26.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "ar",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
     },
     {
       "id": "48c9959ec496",
@@ -3608,6 +3868,30 @@
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-05T06:40:26.167Z"
+    },
+    {
+      "id": "e6b487b04747",
+      "title": "أرباح الإمارات العالمية للألمنيوم 2.46 مليار درهم (+34%) بنهاية النصف الأول 2026",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1xWXFzbzkxYnFXRWRsTG1oN2o2NVZTSTlFNjhxSGJOa29UY2dOYzhGbUdRMW0xZWQ5U2ZvWmNqa2JrZXQwdC1RSTlRNHZyY1pTdzJEd0VMcDJrVlJkaEduSkFvQXBadWlYbFE?oc=5",
+      "publisher": "ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
+      "publisherUrl": "https://www.argaam.com",
+      "published": "2026-11-05T02:28:35.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "UAE"
+      ],
+      "markets": [
+        "Middle East"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "ar",
+      "firstSeen": "2026-11-04T17:14:19.145Z"
     },
     {
       "id": "3bcee2369bad",
@@ -12138,6 +12422,28 @@
       "firstSeen": "2026-11-04T22:55:21.905Z"
     },
     {
+      "id": "b5c55669393a",
+      "title": "Hà Tĩnh chấp thuận chủ trương đầu tư Dự án Đường dây 500kV ĐG Cha Lo – TBA 500kV Hà Tĩnh",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQaFRybnpUcDFHQzhoU3lJQUtpTjI3Q2lzRm5wWkc1S0pWbVBpdnhYLXF4c010WlpKN1MxQXZfQ0ZfdzFHcDlZMVRMcG9EYWs4eEpWZHozZm95ekxhQ0VhTWpicU5BaFppaHdpbEk2MUswamZiYkEzVE5XOVllVlFLOVhMWldLSHlDdVlmTzJLTEJ0YllTbUV4N29YYk9adElNRFZabjZTblI0dDZGNVVoOVpSaVhHd25LNEJHUnZEMERNYXlGNlBMTG10dw?oc=5",
+      "publisher": "Cổng thông tin điện tử tỉnh Hà Tĩnh",
+      "publisherUrl": "https://hatinh.gov.vn",
+      "published": "2026-11-03T08:00:00.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T23:41:09.643Z"
+    },
+    {
       "id": "86020b224d32",
       "title": "Jordan: Minister of Energy and Mineral Resources reviews progress on energy, mining EMV priorities",
       "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQaFZIUGYxQlVZTGlrZXdkN1pkalVrMVEzMDhWb1ZNRUY3WGYxcUhtRzk5RXVTUkdxOTBsZVkwbDdOUkM0ZWxOQlplblFwLWpnQy1kSnlRMnNfVHlVMlhTMXZvT0lSV2h3NV9keENNd243VkF2eXUzdmtEazdoa3BraHk1YXBDdF8wbkVuWjlYRlNleGRCdnVIMThxR28zMWlfQ1l4SWxXemRZMGp6a1UyQzRzOFA3SFVjRDNsVXBkM2FYU2hITXRfQ0VBY2JBMWFDMThv?oc=5",
@@ -12652,30 +12958,6 @@
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-04T22:55:21.905Z"
-    },
-    {
-      "id": "e6b487b04747",
-      "title": "أرباح الإمارات العالمية للألمنيوم 2.46 مليار درهم (+34%) بنهاية النصف الأول 2026",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1xWXFzbzkxYnFXRWRsTG1oN2o2NVZTSTlFNjhxSGJOa29UY2dOYzhGbUdRMW0xZWQ5U2ZvWmNqa2JrZXQwdC1RSTlRNHZyY1pTdzJEd0VMcDJrVlJkaEduSkFvQXBadWlYbFE?oc=5",
-      "publisher": "ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
-      "publisherUrl": "https://www.argaam.com",
-      "published": "2026-11-03T05:58:05.000Z",
-      "description": "",
-      "categories": [
-        "aluminium"
-      ],
-      "regions": [
-        "UAE"
-      ],
-      "markets": [
-        "Middle East"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "ar",
-      "firstSeen": "2026-11-04T17:14:19.145Z"
     },
     {
       "id": "b4a94e613d24",
@@ -18254,6 +18536,28 @@
       "firstSeen": "2026-11-04T22:55:21.905Z"
     },
     {
+      "id": "8f3c26542357",
+      "title": "Govt plans 70MW solar power plant on unused Matarbari land",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1YYWZ2OHdhdlkteklzckJJWU5wU0k5d2N2V2lELXcya0R2a3hfSk5qa20wejZDLTV6V2VLbkkzSkdJY1laNEUxLTE4NDNQVXgzMXRoWXN3?oc=5",
+      "publisher": "www.daily-sun.com",
+      "publisherUrl": "https://www.daily-sun.com",
+      "published": "2026-11-01T18:00:00.000Z",
+      "description": "",
+      "categories": [
+        "demand"
+      ],
+      "regions": [],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T22:55:21.905Z"
+    },
+    {
       "id": "d4dd16e026e4",
       "title": "National Grid agrees to buy land for substation on Teesside — The Guardian",
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNa1g1Q2FYNlF5QnBSZi1xZmZCQXlWWUxlTWd2eUNNNGRnZTFYRHFURU5Hb2l1M092VW1FQW9tN0tHdGhERjloeVVRYW85S3dIMVpOZG9ianR0OUN2V3NKbjdGXzFNRmpPV3NkZlVZX3dDWTh0M2cwV3F0ZnJJWTdEQ3g3emdjYnYyeS1vb1J1U2lGTWZiUmNOY25qZXdQeFdYSWI0U1VPR1h2dURYRFlkV2JHazh6STN3?oc=5",
@@ -18813,28 +19117,6 @@
       "firstSeen": "2026-11-04T17:14:19.145Z"
     },
     {
-      "id": "8f3c26542357",
-      "title": "Govt plans 70MW solar power plant on unused Matarbari land",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNLUN0MzdkaGlaQm5tdVpMT0ZlUHpiQlFTRDVLYUx3cEZPRWdBV0hjMGZMeUZUdFZUc0dSWlRUTS1QNEpuS2tOTGxkUk5OOERLeU8xS2ZFc0F5ZU5PNFl2QVBQRGJwc3htU1VVU01LVi1ERXdTMF9IUWJZUFdubmVJNlk4NXdubThydjkzNnpmdXRZaXk4ei1sSzQ2MUpxVjQ?oc=5",
-      "publisher": "Daily Sun",
-      "publisherUrl": "http://www.daily-sun.com",
-      "published": "2026-11-01T07:11:20.000Z",
-      "description": "",
-      "categories": [
-        "demand"
-      ],
-      "regions": [],
-      "markets": [
-        "Europe"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": "Award",
-      "value": null,
-      "lang": "en",
-      "firstSeen": "2026-11-04T22:55:21.905Z"
-    },
-    {
       "id": "7f858aee8d45",
       "title": "\"كابلات الرياض\" تناقش مع المستثمرين والمحللين الماليين النتائج المالية للربع الثالث .. الثلاثاء",
       "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPNHY4cWdKZjZrY29IZ3U5SldvWGJ4Qzdpb3BWSlJXOGxCUzBRR0FfUGFpUmFIRTQ1MERVZC1iNk8xYVREY1B0R1hsejFwTUhQZndLdG16UjhLbko0SXQyT0Roa3VVaVZ6MUJJcFZEVkkxSHZVUjFhVGN6R0xjOFNFb0ZPZFZTNzFaR2pOMFNibU9FLVZ6Z1lZVlNMRjJzeS1Pc2hFYmpXdmVtSmg2VVh5djRuQ2REQWVWaFRzT0pnaEdxLXducWtCSEtBVEJ6cXdNSW84eEVUTlFIY1d2b24wRWdqVQ?oc=5",
@@ -19306,10 +19588,10 @@
     {
       "id": "59409b325f3b",
       "title": "1,000億ドル規模の送電網整備計画は、アメリカン・エレクトリック・パワーの株式投資に関するストーリーを一変させたのか？",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOX3lLNzVmajRreTlubm9Lek9hYy1wVTRrN2x6Rk1zOGM3eERlanBEOHhMWElfdUxBWDFBbk9zMjJGVUVGNTBvR2NBSTk5SldteWNYLWN4T0RyUHBDeWNlQVdpbk9QMEU1ak5aN0xQdUxCSVJhT0lGbjhrNW52RnFPbGZrQVVxU1FtaFdhelRkOHZvYVR0VDBac1ZSVjF6MjN6dkp4NnJTTmTSAagBQVVfeXFMTl95Szc1Zmo0a3k5bm5vS3pPYWMtcFU0azdsekZNczhjN3hEZWpwRDh4TFhJX3VMQVgxQW5PczIyRlVFRjUwb0djQUk5OUpXbXljWC1jeE9EclBwQ3ljZUFXaW5PUDBFNWpOWjdMUHVMQklSYU9JRm44azVudkZxT2xma0FVcVNRbWhXYXpUZDh2b2FUdFQwWnNWUlYxejIzenZKeDZyU05k?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNWFNjelhFWkx6U1dCbG1Na0FVRC0zQ1Z1SlFzdFUtZDExXzM0dUpNVy1yWDQtR05TOFBKbHk2S3hpNUxnS1lMalo4X283NmdlU3lTQ3gxcU1iOWw1dTBnSDhuUXA2eWlLWDNsbFI1ai10MnByV3d3VU9ONTh6ekRBY0hvaEN6QW1URW5ONjRCOFozaUFNc1Q2MkhGTU1MUTNWZjI40gGoAUFVX3lxTE5feUs3NWZqNGt5OW5ub0t6T2FjLXBVNGs3bHpGTXM4Yzd4RGVqcEQ4eExYSV91TEFYMUFuT3MyMkZVRUY1MG9HY0FJOTlKV215Y1gtY3hPRHJQcEN5Y2VBV2luT1AwRTVqTlo3TFB1TEJJUmFPSUZuOGs1bnZGcU9sZmtBVXFTUW1oV2F6VGQ4dm9hVHRUMFpzVlJWMXoyM3p2Sng2clNOZA?oc=5",
       "publisher": "Simply Wall St",
       "publisherUrl": "https://simplywall.st",
-      "published": "2026-10-31T12:31:04.000Z",
+      "published": "2026-10-31T12:31:03.000Z",
       "description": "",
       "categories": [
         "projects"
@@ -21277,6 +21559,28 @@
       "firstSeen": "2026-11-05T10:11:16.154Z"
     },
     {
+      "id": "f505f779a526",
+      "title": "NALCO shares: Up 242% in 3 years, is there more rally left in this Navratna PSU? Check Q2 results date, dividend history",
+      "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxQQllPWVZWTFZHUVFCZzY1TXE0a3g0RWxaaC1TZkZzLU9HVThpOS13amdXN1VWU1R6LUllVFRjTFFCVEszcVZHSGEwZkJMaEUtMFNBbEZEQWRHQ3JTWUJJLWtkOGExeFdFN05FLTlTX19oM0Q0UDNXeWZrbmcwX0t1Yi1JazB1ZFh1akI0M2pkUmF0UENDaEFKQU9hVURuVnU2MjVsX2oyTG9sUHlkVEU2TjZoVG9idGtabk04bURqVlNmNEpRTDRkZkJra0VpUDVsVHpKVmlCazU4cEVoSUJSdElEa1dsd0NmRVdmQk9VTWt5SHAzc2oycEJfTDV2Z1NaN0E?oc=5",
+      "publisher": "TradingView",
+      "publisherUrl": "https://www.tradingview.com",
+      "published": "2026-10-30T12:19:27.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [
+        "NALCO"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T17:14:19.145Z"
+    },
+    {
       "id": "cf33fc956467",
       "title": "Prime Cable Industries Secures INR 12.98 Crore LT Cable Order from Listed EPC",
       "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5FaFpKZDhvUl9LdDQ4WUszQ0N3Z01pWk9ZcTk2MC1Ua1ZEM29hdUltM3FqQmIzc1pENUVRZG5sQ0pDaTREVHdRaWVtRlFfSnd4cWVMVVBaWVJ4ZlRU?oc=5",
@@ -21736,28 +22040,6 @@
       "actor": null,
       "stage": null,
       "value": "$3,078.5",
-      "lang": "en",
-      "firstSeen": "2026-11-04T17:14:19.145Z"
-    },
-    {
-      "id": "f505f779a526",
-      "title": "NALCO shares: Up 242% in 3 years, is there more rally left in this Navratna PSU? Check Q2 results date, dividend history",
-      "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxNS3J0THhfeVNfaFIzYURsTWNxNHJrejVTa3lVQmlQaUE0RGNBU2pDY3R2VmdXc1l2UjVpSkpDNWFObmFJTE93dklLWk4yc1VFVnRST2t1eU9mSlJCRWFxLXViVTZ5bmx2V2xHeEhqV0prZjJteUdRb1FSTTE0M1VDNzgxUlhtMTFoUTM3VlQ5TnBrdTA0T1ZmZW8tU3EzTWVxRmlYNnRNRlh4UldTbHRvMndXRDNuUGNBX0pPMjFQZ18tV3U5UGw2c0QwOHh2WUpNZjRycng3d3NFcVNaaV9lQXFDYW4tcVVNZ3hhZ1hQRDA1YUtQRU8wV0xtR0JJV3JQLVZRel9kTWRraXQzM3BqVXFxSdIBmAJBVV95cUxQUlBPaG11RThsU2lJZlZLTExuVmJaalQzNk9yeVNPeWVDRHp6d1hlMk1xTFk3T3Q4ZlNCY0doMXY3LUV5aTFoQU14VDFlc3hZUDl0eklhOGlCMHc1MDdXQUF4MDlmVUYydVJuaDJmWjBJbWpkNjRPcjdCcG1xWVBhR2tqWF92S3oxYlBYVTQ2MDVrMUpSbVVTdWlRQ2ltY0JEZFZuUU0yRi1NZTd4dk5lanA3N19zb0RpUU5SSjdKSXZoY2Q4cUl3dUlJRDZXVU1IdFZDdERjVllUQnN5cDVIODA5V245aXRSQ2R3bWdPMzhJQXhsNTMyTUtjdllJZDJUQ3p3RlczMHJVQktUdElDMElBY0I2LVhP?oc=5",
-      "publisher": "Livemint",
-      "publisherUrl": "https://www.livemint.com",
-      "published": "2026-10-30T09:10:18.000Z",
-      "description": "",
-      "categories": [
-        "competitors"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [
-        "NALCO"
-      ],
-      "actor": null,
-      "stage": null,
-      "value": null,
       "lang": "en",
       "firstSeen": "2026-11-04T17:14:19.145Z"
     },
@@ -22302,6 +22584,30 @@
       "value": "£350million",
       "lang": "en",
       "firstSeen": "2026-11-05T22:55:19.836Z"
+    },
+    {
+      "id": "7e0c48566553",
+      "title": "Cable maker Prysmian raises full-year outlook after Q3 beats forecasts",
+      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPVXdIQWVWQ0NjWXJNSmZKeFdMLWJBWEY1Znp2UHJGSHhLV3BJWG02cXItbEJXN1o2NTNfc3J1UmxiVkwzVTZQcGlIa2VuZ3FrT2xsSGVCYVBHeGZlc3VXeDdoWGgxZnMybzBJZS1rTGh2bU9FSTV6OE1yTUJjQm8zYnZ3Y1ZrUXd6b1lRNTZkQzhjOEIxMnowV0RTZEFUOHRvNFUybUlBeVktMFR3V2pIcV9JTHBYUzhIbVBRUk5nb1RHdDBwYmRqWG5vYm9rNUx6N0ZtUGhOSVBCb1EzbUpLeVFzaDNOSzDSAeIBQVVfeXFMTVZzeU1CdkFKZnVkOC00TVdOdXFyR0E3Ykxoc3BpYmZYbWJOa0xXclgweUw3T2JnRHRrUE1pTjByWjIzTlB6b3hxZmtlell3WF83QnBYc3ExaU8yUWZkRVhLZXhTM1ZRYzBJbFlCS0I2ekQwaFB4bU94ZEU1VjNVZE1TRklzS2NRdnV3LVg1Q3FJdnJRZm16cklZNkJCa1VMUlhMWUFkcENqNEUyR210LUV6RTdBODBfOWJ3bDFvX19uZVZOMU9aUnpQRGVBd3VIdG9kcVl6dVVZYWtFQjlXX2RaZw?oc=5",
+      "publisher": "ET Manufacturing",
+      "publisherUrl": "https://manufacturing.economictimes.indiatimes.com",
+      "published": "2026-10-30T07:00:00.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [
+        "USA"
+      ],
+      "companies": [
+        "Prysmian (incl. General Cable)"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-04T17:14:19.145Z"
     },
     {
       "id": "0e216ec4b2d4",
@@ -24326,30 +24632,6 @@
       "companies": [],
       "actor": null,
       "stage": "Construction",
-      "value": null,
-      "lang": "en",
-      "firstSeen": "2026-11-04T17:14:19.145Z"
-    },
-    {
-      "id": "7e0c48566553",
-      "title": "Cable maker Prysmian raises full-year outlook after Q3 beats forecasts",
-      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNWW5xbGd1aWdTWlNBQk5QcWFyWThWbnp3NGZVenl2RXNlY3JNRkRLUjBOSzF4U1Jya0FNR0RtVlVoaFhNbmpuMGsyakk5Mi1EbjUxT0tKQUJrT191RFEwcklNcFpVc01waUl6ZmMwalZnM2o2N0ZwSGxjeC1fQ0RvOGVHR1dTRmRHbDhkb2FDd2V2cTZMZ2JETTNNcC1hTVpWUTBVUUE0clprS2dYbVc1bVBGWklxWlZadUtHbXk2c3B6V3IyU1hOdFRUVll6QXZpbjdPTjladHVrU3BVMWfSAeMBQVVfeXFMT2pRaTlLRWdLQUw5MlYxLWZZTWJtTjJOQnBSa09RcmVoTVJVWDBzbFlEUm94dUhHQk5jdkpReHRIUFFrazVXdFp5ZGNGLUJXNVdsQ2hlMUhMQTJTRVctekg4bHNLM2pMaXoxcFZvNTg1M21ReG51Z2FwRjUySDdNVWhUekJNZVpWN1NrcDc4ZmlGSDNadGYyazVId3N0aWVGU2duQ0trNkN4Z2RkX3Yxd3lMblk0RTVKVGNHSG1HSW5vcjVsQUFWOWxSNHdKM210emR5cmpjUHlycjgzQXZQVFhQYVU?oc=5",
-      "publisher": "ET Manufacturing",
-      "publisherUrl": "https://manufacturing.economictimes.indiatimes.com",
-      "published": "2026-10-29T12:05:11.000Z",
-      "description": "",
-      "categories": [
-        "competitors"
-      ],
-      "regions": [],
-      "markets": [
-        "USA"
-      ],
-      "companies": [
-        "Prysmian (incl. General Cable)"
-      ],
-      "actor": null,
-      "stage": null,
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-04T17:14:19.145Z"
