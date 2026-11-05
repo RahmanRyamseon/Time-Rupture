@@ -1,4 +1,4 @@
--- Rachabanda (రచ్చబండ): comments, board posts, reactions and polls.
+-- Gulf Telugu News (గల్ఫ్ తెలుగు వార్తలు): comments, board posts, reactions and polls.
 -- Run once in the Supabase SQL editor. Anonymous readers can read and add, never edit or delete.
 
 create table if not exists public.comments (

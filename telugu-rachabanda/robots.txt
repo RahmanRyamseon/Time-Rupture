@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gulftelugunews.vercel.app/sitemap.xml

@@ -1,8 +1,24 @@
-# గల్ఫ్ రచ్చబండ (Gulf Rachabanda)
+# గల్ఫ్ తెలుగు వార్తలు (Gulf Telugu News)
+
+Live at **https://gulftelugunews.vercel.app** (the older https://gulf-rachabanda.vercel.app still works).
 
 A Telugu-language news and community site for Telugu people living in the Gulf (UAE, Saudi
-Arabia, Qatar, Kuwait, Oman, Bahrain). *Rachabanda* is the platform under the village tree where
-people gather to talk; this is that common spot for Telugus away from home.
+Arabia, Qatar, Kuwait, Oman, Bahrain). The discussion section is called *రచ్చబండ* (Rachabanda),
+the platform under the village tree where people gather to talk.
+
+## Name and search
+
+The name matches what people type into search engines: "gulf telugu news", "గల్ఫ్ తెలుగు
+వార్తలు". The page title and description carry the country and city names (Dubai, Saudi, Qatar,
+Kuwait, Oman, Bahrain) in Telugu and English, and the page has a canonical URL, Open Graph tags,
+`NewsMediaOrganization` structured data, `robots.txt` and `sitemap.xml`.
+
+`gulftelugunews.com` was unregistered on 5 Nov 2026 (about $12 a year through Vercel). If you buy
+it, add it to the Vercel project and change the URLs in `index.html`, `robots.txt` and
+`sitemap.xml` to it.
+
+Search engines currently index only the homepage: the story, section and discussion pages use
+`#/` links, which search engines treat as the same page.
 
 ## What readers get
 
