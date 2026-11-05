@@ -1,0 +1,3 @@
+data/.checkpoint.json
+data/*.tmp
+logs/

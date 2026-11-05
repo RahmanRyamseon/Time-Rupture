@@ -14,9 +14,13 @@ import {
   METALS,
   NEWS_FILE,
   PRICES_FILE,
+  RUN_REPORT_FILE,
+  BLOCKED,
   UA,
   feedUrl,
   fetchTED,
+  fetchFTS,
+  fetchWB,
   keyOf,
   mergeNews,
   mergeSeries,
@@ -35,7 +39,17 @@ const pair = (entry) => (Array.isArray(entry) ? entry : [entry, "en"]);
 // The live set: one search per category, the first searches of each market (two for Europe and
 // Canada), every trade feed and the EU tender database. The full ~120-search crawl runs every
 // three hours in GitHub Actions and is committed to data/news.json.
-export function liveTasks() {
+// Feeds that blocked the last full crawl (e.g. HTTP 403) block Vercel too, so the live layer
+// skips them; the 3-hourly crawl keeps checking and they come back once they answer again.
+export function blockedFeeds(report) {
+  return new Set(
+    (report?.sources ?? [])
+      .filter((r) => r.kind === "feed" && (r.status === "failed" || r.status === "paused") && BLOCKED.has(r.httpStatus))
+      .map((r) => r.label),
+  );
+}
+
+export function liveTasks(skip = new Set()) {
   const tasks = [];
   for (const [category, c] of Object.entries(CATEGORIES)) {
     const [q, lang] = pair(c.queries[0]);
@@ -48,7 +62,7 @@ export function liveTasks() {
       tasks.push({ name: `projects:${market}`, url: feedUrl(q, lang, WINDOW), tag: { category: "projects", market } });
     }
   }
-  for (const f of FEEDS) {
+  for (const f of FEEDS.filter((f) => !skip.has(f.name))) {
     tasks.push({ name: `feed:${f.name}`, url: f.url, publisher: f.name, tag: { market: f.market } });
   }
   return tasks;
@@ -87,22 +101,30 @@ async function readJson(file, fallback) {
 }
 
 export async function buildLive(now = Date.now()) {
-  const [newsBase, pricesBase] = await Promise.all([readJson(NEWS_FILE, { items: [] }), readJson(PRICES_FILE, { metals: {} })]);
-  const tasks = liveTasks();
+  const [newsBase, pricesBase, report] = await Promise.all([
+    readJson(NEWS_FILE, { items: [] }),
+    readJson(PRICES_FILE, { metals: {} }),
+    readJson(RUN_REPORT_FILE, null),
+  ]);
+  const skipped = blockedFeeds(report);
+  const tasks = liveTasks(skipped);
   const metals = Object.entries(METALS);
 
   const jobs = [
     ...tasks.map((t) => async () =>
       parseItems(await fetchText(t.url), t.publisher ?? "", t.publisher ? new URL(t.url).origin : "").map((i) => ({ ...i, ...t.tag })),
     ),
-    async () => fetchTED(),
+    async () => fetchTED({ pages: 1 }),
+    async () => fetchFTS({ days: 2, maxPages: 3, pause: false }),
+    async () => fetchWB({ rows: 60, terms: ["transmission", "substation", "kV"], pause: false }),
     ...metals.map(([, { field }]) => async () => parsePriceTable(await fetchText(priceUrl(field)))),
   ];
   const results = await pool(jobs, CONCURRENCY);
-  const names = [...tasks.map((t) => t.name), "tenders:TED", ...metals.map(([k]) => `price:${k}`)];
+  const TENDERS = ["tenders:TED", "tenders:UK-FTS", "tenders:WorldBank"];
+  const names = [...tasks.map((t) => t.name), ...TENDERS, ...metals.map(([k]) => `price:${k}`)];
 
-  const newsResults = results.slice(0, tasks.length + 1);
-  const priceResults = results.slice(tasks.length + 1);
+  const newsResults = results.slice(0, tasks.length + TENDERS.length);
+  const priceResults = results.slice(tasks.length + TENDERS.length);
   const fetched = newsResults.filter((r) => r.ok).flatMap((r) => r.value);
 
   // Merge with the committed history. Items first seen live get their publish time as firstSeen,
@@ -128,6 +150,7 @@ export async function buildLive(now = Date.now()) {
       ok: results.length - failed.length,
       failed,
       newItems: items.filter((i) => !known.has(keyOf(i.title))).length,
+      skippedBlocked: [...skipped],
       cacheSeconds: CACHE_SECONDS,
       historyFrom: newsBase.generatedAt ?? null,
     },

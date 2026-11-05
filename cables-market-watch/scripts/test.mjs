@@ -1,6 +1,6 @@
 // Offline checks for the collector's parsers and merge logic: node cables-market-watch/scripts/test.mjs
 import assert from "node:assert/strict";
-import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS, parseTED, tedRelevant, parseCanadaBuys, parseCSV, mergeNews as merge2 } from "./update.mjs";
+import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS, parseTED, tedRelevant, parseCanadaBuys, parseCSV, mergeNews as merge2, fetchWithRetry, isPaused, buildSources, PAUSE_AFTER, summarize, parseFTS, parseWB, parseWBDate, parseSAM, fetchSAM } from "./update.mjs";
 
 const table = `<table><thead><tr class="shaded"><th>date</th><th>cash</th><th>3-month</th><th>stock</th></tr></thead><tbody>
 <tr>\n<td>03. November 2026</td>\n<td>3,082.00</td>\n<td>3,042.00</td>\n<td class="last">229,475</td>\n</tr>
@@ -118,5 +118,87 @@ assert.equal(cb.length, 1);
 assert.equal(cb[0].market, "Canada");
 assert.match(cb[0].url, /pw-26-001/);
 assert.throws(() => parseCanadaBuys("foo,bar\n1,2\n"), /no title column/);
+
+
+// Retry behaviour (web-scraping checklist): backoff on 5xx/429/network, none on blocks.
+const fake = (...steps) => { let n = 0; const calls = []; return { calls, fn: async (url) => { calls.push(url); const s = steps[Math.min(n++, steps.length - 1)]; if (s instanceof Error) throw s; return { ok: s === 200, status: s, headers: { get: (h) => (h === "retry-after" && s === 429 ? "3" : null) }, text: async () => "body" }; } }; };
+const waits = []; const sleepImpl = async (ms) => { waits.push(ms); };
+let f = fake(503, 200);
+assert.equal((await fetchWithRetry("u", {}, { fetchImpl: f.fn, sleepImpl, base: 100 })).status, 200);
+assert.equal(f.calls.length, 2); assert.deepEqual(waits, [100]);
+f = fake(403); waits.length = 0;
+await assert.rejects(fetchWithRetry("u", {}, { fetchImpl: f.fn, sleepImpl, base: 100 }), (e) => e.status === 403 && /HTTP 403/.test(e.message));
+assert.equal(f.calls.length, 1, "a block is not retried");
+f = fake(new Error("ECONNRESET"), new Error("ECONNRESET"), 200); waits.length = 0;
+await fetchWithRetry("u", {}, { fetchImpl: f.fn, sleepImpl, base: 100 });
+assert.deepEqual(waits, [100, 200], "exponential backoff");
+f = fake(429, 200); waits.length = 0;
+await fetchWithRetry("u", {}, { fetchImpl: f.fn, sleepImpl, base: 100 });
+assert.deepEqual(waits, [3000], "honours Retry-After");
+f = fake(500); waits.length = 0;
+await assert.rejects(fetchWithRetry("u", {}, { fetchImpl: f.fn, sleepImpl, base: 100, retries: 2 }), (e) => e.status === 500);
+assert.equal(f.calls.length, 3);
+
+// Auto-pause: blocked PAUSE_AFTER times in a row → skipped for a day, then retried.
+const t = Date.parse("2026-11-04T12:00:00Z");
+const blocked = { consecutiveFailures: PAUSE_AFTER, httpStatus: 403, lastAttempt: "2026-11-04T09:00:00Z" };
+assert.equal(isPaused(blocked, t), true);
+assert.equal(isPaused({ ...blocked, lastAttempt: "2026-11-03T09:00:00Z" }, t), false, "retried after 24 h");
+assert.equal(isPaused({ ...blocked, httpStatus: 503 }, t), false, "server errors are not a block");
+assert.equal(isPaused({ ...blocked, consecutiveFailures: PAUSE_AFTER - 1 }, t), false);
+
+// Source ids are stable across runs (the look-back window changes the URL, not the id).
+const a = buildSources("30d"), b = buildSources("7d");
+assert.deepEqual(a.map((x) => x.id), b.map((x) => x.id));
+assert.equal(new Set(a.map((x) => x.id)).size, a.length, "ids are unique");
+assert.ok(a.some((x) => x.id === "tenders:CanadaBuys") && a.some((x) => x.id === "feed:offshoreWIND.biz"));
+assert.deepEqual(summarize([{ status: "ok", items: 3 }, { status: "empty", items: 0 }, { status: "failed" }, { status: "paused" }]),
+  { sources: 4, ok: 1, empty: 1, failed: 1, paused: 1, skipped: 0, items: 3 });
+
+
+// UK Find a Tender (OCDS). The research-study notice is real (5 Nov 2026) and must be dropped;
+// the grid notice uses the same release shape.
+const ftsJson = { releases: [
+  { id: "104928-2026", tag: ["tender"], date: "2026-11-05T05:48:13Z", buyer: { name: "British Council" },
+    tender: { title: "Mapping the Research and Innovation Ecosystem in select North African countries", value: { amountGross: 70000, currency: "GBP" },
+      items: [{ additionalClassifications: [{ scheme: "CPV", id: "73110000", description: "Research services" }] }] } },
+  { id: "104999-2026", tag: ["tender"], date: "2026-11-05T09:00:00Z", buyer: { name: "Scottish Hydro Electric Transmission plc" },
+    tender: { title: "Supply of 400kV overhead line conductor", value: { amount: 12500000, currency: "GBP" },
+      items: [{ additionalClassifications: [{ scheme: "CPV", id: "31321300", description: "High-voltage cable" }] }] } },
+  { id: "105000-2026", tag: ["award", "contract"], date: "2026-11-04T09:00:00Z", buyer: { name: "National Grid" },
+    tender: { title: "Substation civils framework", items: [{ additionalClassifications: [{ scheme: "CPV", id: "45000000" }] }] } },
+] };
+const fts = parseFTS(ftsJson);
+assert.deepEqual(fts.map((i) => i.url), ["https://www.find-tender.service.gov.uk/Notice/104999-2026", "https://www.find-tender.service.gov.uk/Notice/105000-2026"]);
+assert.equal(fts[0].stage, "Tender"); assert.equal(fts[1].stage, "Award", "kept by title (substation), award tag");
+assert.match(fts[0].description, /GBP 12,500,000/);
+const ftsNews = merge2([], fts, Date.parse("2026-11-05T12:00:00Z"));
+assert.ok(ftsNews.every((i) => i.categories.includes("tenders") && i.markets.includes("Europe") && i.regions.includes("UK & Ireland")));
+
+// World Bank procurement: records exactly as the API returned them on 5 Nov 2026.
+assert.equal(parseWBDate("03-Nov-2026"), "2026-11-03T00:00:00.000Z");
+const wbJson = { procnotices: [
+  { id: "OP00478903", notice_type: "Contract Award", noticedate: "03-Nov-2026", project_ctry_name: "Rwanda", project_id: "P180575", bid_description: "Design, Supply, and Installation of low voltage and medium voltage lines and service connections in Kicukiro district", procurement_group: "CW" },
+  { id: "OP00479165", notice_type: "Contract Award", noticedate: "03-Nov-2026", project_ctry_name: "Peru", project_id: "P174812", bid_description: "SERVICIO DE PUBLICACIÓN DE AVISO EN DIARIOS A NIVEL NACIONAL PARA LAS CONVOCATORIAS DE LOS PROYECTOS COMPRENDIDOS EN EL \"PROGRAMA PLAN DE INVERSIONES DE TRANSMISIÓN (PIT)", procurement_group: "NC" },
+  { id: "OP00477657", notice_type: "Invitation for Bids", noticedate: "02-Nov-2026", project_ctry_name: "Turkiye", project_id: "P508354", bid_description: "154 kV Antalya – Göksu Underground Cable Connection", procurement_group: "CW" },
+  { id: "OP00409784", notice_type: "Request for Expression of Interest", noticedate: "18-Nov-2025", project_ctry_name: "Uzbekistan", bid_description: "Training Program on High-Voltage Cable Systems", procurement_group: "CS" },
+] };
+const wb = parseWB(wbJson, { now: Date.parse("2026-11-05T12:00:00Z") });
+assert.deepEqual(wb.map((i) => i.url.split("/").pop()), ["OP00478903", "OP00477657"], "goods/works grid notices only");
+assert.equal(wb[0].stage, "Award"); assert.equal(wb[1].stage, "Tender");
+const wbNews = merge2([], wb, Date.parse("2026-11-05T12:00:00Z"));
+assert.deepEqual(wbNews.find((i) => i.title.startsWith("Rwanda")).markets, ["Africa"]);
+assert.deepEqual(wbNews.find((i) => i.title.startsWith("Turkiye")).markets, ["Middle East"]);
+
+// SAM.gov (shape per the GSA API docs) and the no-key skip.
+const sam = parseSAM({ opportunitiesData: [{ noticeId: "abc", title: "Rebuild 115-kV transmission line", solicitationNumber: "89503426RWA000123", postedDate: "2026-11-03", type: "Solicitation", fullParentPathName: "ENERGY, DEPARTMENT OF.WESTERN AREA POWER ADMINISTRATION", uiLink: "https://sam.gov/opp/abc/view" }] });
+assert.equal(sam[0].market, "USA"); assert.equal(sam[0].stage, "Tender"); assert.match(sam[0].description, /WESTERN AREA POWER/);
+const skipped = await fetchSAM({ key: "" });
+assert.equal(skipped.skipped, true); assert.equal(skipped.length, 0);
+
+// New languages are classified.
+assert.ok(classify("CFE adjudica licitación de línea de transmisión de 400 kV en México").categories.includes("tenders"));
+assert.equal(detectStage("ANEEL: Neoenergia arremata lote de linhas de transmissão"), "Award");
+assert.ok(classify("住友電工、送電線を受注").categories.includes("projects"));
 
 console.log("all checks passed");

@@ -29,13 +29,16 @@ jobs:
         run: node cables-market-watch/scripts/test.mjs
 
       - name: Collect prices and news
+        env:
+          # Optional: a free SAM.gov public API key enables US federal tenders (WAPA, BPA, Army Corps).
+          SAM_API_KEY: ${{ secrets.SAM_API_KEY }}
         run: node cables-market-watch/scripts/update.mjs
 
       - name: Commit updated data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cables-market-watch/data/prices.json cables-market-watch/data/news.json
+          git add cables-market-watch/data/prices.json cables-market-watch/data/news.json cables-market-watch/data/run-report.json
           if git diff --cached --quiet; then
             echo "No data changes to commit."
           else
