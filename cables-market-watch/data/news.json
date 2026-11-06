@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T22:27:45.422Z",
+  "generatedAt": "2026-11-06T23:09:08.596Z",
   "retentionDays": 120,
   "categories": {
     "projects": "Grid projects & awards",
@@ -399,6 +399,55 @@
   "count": 2000,
   "items": [
     {
+      "id": "e8650026e6a1",
+      "title": "NACC's Arreguin named ACCC Men’s Soccer Player of the Year",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQRll6dFpLUl96X0treTJTMWRraWlsVDlPcDlHVjl2NnpxUUtid1FVSkJxbDlKTkp5bGp1UzhiZmZwcjhtNnNBSVJncVZXc1ZSNHhJRzlsVXdtUDUtZlF1Q25SUFNaQlNrTEh0RHU5cUdIUVRDTWVaS3E1MWFaWHVySnFfSXFqZw?oc=5",
+      "publisher": "Jackson County Sentinel",
+      "publisherUrl": "https://jcsentinel.com",
+      "published": "2026-11-06T22:13:00.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [
+        "CTC Global"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-06T23:09:08.494Z"
+    },
+    {
+      "id": "5bb9ff6f7e26",
+      "title": "AMU: Aluminum Association urges for tariff harmony with Canada, Mexico",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPaWxieFl0UFVEb3U0T3NGUVkwaHZMTkJ3Q0ttZDktdWU1TjBPVVpHZ2QzamlGLVhWelp2OEQ5YVRLMFgyS0xEWkdZemZUMnZJY29YY0ZuT0xLUFJiN2FVUDUwVzBfbF96NDkybjRISTRaWlZma1VsMnFqa3UycTZDODZOVjBfTDltRk9EMDZWMnBmU3hmNjA0emhTbGhyVnFVNjlFMjdQZVNXS1R4bnlWTzVlMGk?oc=5",
+      "publisher": "Steel Market Update",
+      "publisherUrl": "https://www.steelmarketupdate.com",
+      "published": "2026-11-06T20:52:43.000Z",
+      "description": "",
+      "categories": [
+        "aluminium",
+        "policy"
+      ],
+      "regions": [
+        "Canada",
+        "Latin America"
+      ],
+      "markets": [
+        "Canada",
+        "Latin America"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-06T23:09:08.494Z"
+    },
+    {
       "id": "281d863e5e84",
       "title": "Copper Futures Price Today | Copper Futures Rate",
       "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE8tNDlSaHlxNUJJVmpuX2JRRHBKRjRXN1p1VVZOcmpKQXlDMTJPZ0pPNEZJdDJvalRmbnVkaTNKWERJZ2ExbzRZMFllNzZzbnlOWjZCVjB3?oc=5",
@@ -744,6 +793,26 @@
       "firstSeen": "2026-11-06T22:27:45.275Z"
     },
     {
+      "id": "910aa49a83ee",
+      "title": "أسمنت الجوف توقع عقد تنفيذ أعمال تصميم وتوريد وتركيب أعمال الربط الكهربائي بقيمة 27.8 مليون ريال",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1NYUxWbTQ2bURXeThLRlFaS2VRNGZiem05c0t0S1B6bmpqZi1Ic1NRdmpjS1FyU2Q0dnJXSy1RR3VOVVFIREowS0RUTENoc2pGMElrV0ZzczRpanBzdkpTbWRLdnJ2Z1V0WFE?oc=5",
+      "publisher": "ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
+      "publisherUrl": "https://www.argaam.com",
+      "published": "2026-11-06T17:05:54.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "ar",
+      "firstSeen": "2026-11-06T23:09:08.494Z"
+    },
+    {
       "id": "6edd70906a81",
       "title": "Call of Duty: Modern Warfare 4 composer reveals the secret tech behind his work — 'I have an aluminum garbage can lid that I save for special occasions'",
       "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxQeFhCV2dYUi00ekE4VHBZTW9JdWJBRGYzUlo3Nm1lNW15cVZZMjhtSG9IZE51bzFUV3ZEUmRGRWlIWXRVWVlKTlJuOGZIdWNva05oZnpSNXFVYVdyUnhXYllKaW9nUUk1akFUdWcwdnA3RjFFbXNrV09waVdtSFRQVUhrRUcxQ2xLMFF5NXZNeFNBSlBqaVNjNmVZS2piSE9TWThOMXpFTEotUWlNUUY4UzlXZUg1LW0xV3VGTGl1RzBvRU5sUE9ZUnU4ZGZVdXJzQ2lUUjdmMFBIVW1FUDZocEJXSXNRd2tpV01JVjVPVlZIRm9rSXlCS09lQks1Vm9sdFp4ZWFyVndBZ0R2?oc=5",
@@ -836,6 +905,28 @@
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-06T22:27:45.275Z"
+    },
+    {
+      "id": "34b10b4bfc74",
+      "title": "Southwire Celebrates Grand Opening of W.M. Berry Innovation Center",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNSVZHNDBRRHY5UlAxbVBydFN0REtWV2RkXzYwNkgwdUVnOE5BMl9BZ2tmUDFNYkprME5yU3B6VXZEN083cnVxWVdvTGF0TzZaRG9nRzAyclVhaVJuLVNfUTBmckJZTFEwX1BpTldYU0g4YmZVTEQ4LV9oTmZkRTcxLXJMZEpibWVhRWVWY1pB?oc=5",
+      "publisher": "the Electrical Distributor magazine",
+      "publisherUrl": "https://tedmag.com",
+      "published": "2026-11-06T16:39:16.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [
+        "Southwire"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-05T22:55:19.836Z"
     },
     {
       "id": "89a1e1ee792d",
@@ -1596,6 +1687,32 @@
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-06T16:49:02.847Z"
+    },
+    {
+      "id": "1cdc652f69c7",
+      "title": "Nexans to Supply Cables for Strategic Greek Power Link",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZHNqWVVGVktkT0hrT3RTb2Y1MHQ1M083ZGZncWFLSnNGZGhjYUhKeVQ5aXJ4dHVTZXR3UE5JN25UM3c5MTZHOTh3N2xsVVhjbzQxNW92UXQ0bjkxY2VVeFM0YzYyR2xKaGZ5NVVMZkNHQ2lQUTJYdjQ5WWJlMS01OU9kaUNpUFRRWWdrdlg2X0Z1MUlpTmtId2pYQjBKTTFiRnc5ZllTUHpyQQ?oc=5",
+      "publisher": "TipRanks",
+      "publisherUrl": "https://www.tipranks.com",
+      "published": "2026-11-06T12:07:39.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [
+        "Nordics & Eastern Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [
+        "Nexans"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-06T23:09:08.494Z"
     },
     {
       "id": "63532249449e",
@@ -4228,28 +4345,6 @@
       "firstSeen": "2026-11-06T22:27:45.275Z"
     },
     {
-      "id": "34b10b4bfc74",
-      "title": "Southwire Celebrates Grand Opening of W.M. Berry Innovation Center",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQMzdSbTNJVHN0bmRrNDhtOXJxbENLajhpY1VRZm1zQ3pqeDZSWWs0bzBicF9XYkxVRmtxSHc3MWpicEdFSzI3bXgybU9zcHpUemhVMVl2dUNQbWlJUDF3NUhUVkNjZmlrcGRKejVKeXRDVzJTa3cxci1QenEyN29fUUl1UlNlZ2I3aXhYa3lBR2ttV0RRV1VQLUM5UTIzakJXYldYSw?oc=5",
-      "publisher": "The City Menus",
-      "publisherUrl": "https://thecitymenus.com",
-      "published": "2026-11-05T20:39:31.000Z",
-      "description": "",
-      "categories": [
-        "competitors"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [
-        "Southwire"
-      ],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "firstSeen": "2026-11-05T22:55:19.836Z"
-    },
-    {
       "id": "e3d6cef4b83d",
       "title": "Vedanta Share Price - Live NSE: VEDL Stock Price & Chart",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE91QTlKSUg2Y3pJamcwYkpIc2tRWWpzQjA2dzFVbEtGcVB3bXZzWjdfZHRRUlVtcDRLQ1hGamxTcGVlbU9mc0FTUy1oekQ5d1NvY3NKb2FSSTZmZXNuRnFJNEFZbHU?oc=5",
@@ -4363,6 +4458,26 @@
       "value": "US$1.8bn",
       "lang": "en",
       "firstSeen": "2026-11-05T22:55:19.836Z"
+    },
+    {
+      "id": "4eb3e78df452",
+      "title": "Century Aluminum Q3 Earnings Call Highlights",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOQUl6bGVmNUlCRHAwMTZZWnNUQ2NKNjRvU0swVjRWWHJXZVNtT2lhTk51TURLaG1YZFVqS3ZRWE1SQlNIZEdtZUhVYVhPaXNmM2JXai1Ea0dmbFkzTGkwNnpsOXZacl9EazBuZEQ3c3RwZDdxb1RTOTFIT0h6ZzdIbEFWOXI3R3dLTzNqUXRmS2l2UTQtLWZBQk5tLWszcTRvVmZqM0Y2Zw?oc=5",
+      "publisher": "TradingView",
+      "publisherUrl": "https://fr.tradingview.com",
+      "published": "2026-11-05T19:14:00.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-06T23:09:08.494Z"
     },
     {
       "id": "aa73b913c2ab",
@@ -7440,26 +7555,6 @@
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-05T10:11:16.154Z"
-    },
-    {
-      "id": "4845ca20ef34",
-      "title": "Copper Futures Overview",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9hUDlTUEo4Y21yeC1JTl9FMGlwU1AtemRWNWhTVHdrZEVITDExbFRrOXEtUmxtcUNoRFp3a0VRX0wyZFc1RmtuM1VuMHJUdm1EX2ZnUWR2MlEwTm1CQXFuTk51emJKMUE?oc=5",
-      "publisher": "CME Group",
-      "publisherUrl": "https://www.cmegroup.com",
-      "published": "2026-11-05T04:44:00.000Z",
-      "description": "",
-      "categories": [
-        "metals"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "firstSeen": "2026-11-06T16:49:02.847Z"
     },
     {
       "id": "d0aefb2a5d4d",
@@ -10771,8 +10866,8 @@
     {
       "id": "424bf93cd6cc",
       "title": "PLN Tuntaskan Pemulihan Transmisi 150 kV Sibolga-Martabe Pascabencana",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQLWFSYk9qeWVWX3h0MUdoTzZLM1BfcDdmMENmUUQzVHAyOTFzVTcwM20zcjM4UjNwQWkzNWtwMVRveGtlWlloaF9LQVNEVEZXZ1N4VjdrOC1sakQtN1ZjSFlfaGlyaXIycmFPOFJZNnpKUmFpSE0wTWwzbG1tNUkwU3BGSU11NWp6a0NfNzNLNkI1dV83VUdiazhVUENoVlhEem8zdEZhVFdiSjVfaFdYSC14MFAwNzN4MVBB0gG7AUFVX3lxTE9BbDcxSVZZTk5LUm5SSnRDQk4td0pHLWJZejRpN0J1LTVRLVB4TU1yZ29UVEVUajVucjZBWFAtMGhyUVZhZGxkdE1yUDlxX2txS1VXZlpoNmdBb1VkMHI2YzhXQ0FRMkFZRDJfU3B4b1U3M1ZwRmVEV3ExRm5ZZXh0eXJicDBXUENNc0d2a1ByX3V2SGtJNVNEWlNmaHlRbFh3Zk9ReEQzTzB2WjdTTXU4TFh2ZmlUX1J4RmM?oc=5",
-      "publisher": "harianSIB.com",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQMkl6aVhCeXJ1c0lHdHRyX1hDT2JUSzdjc0ozYm9CNWg1Sm5QLVdWMjJaTndsSkFpM2JjVHF4MEUzZ0FfMEVoUXNvbF9wU3FfdDhIdHJPSFgwZFNBWGtFX295ZTl4WVA5NC1ITjVQa2V4WVVwVXNGeUZDaVVuOExGMmVxLUhzYzV6LTA2X3NraXR4aXE0N010SmpBRXZZQTg1eXB6bURFZzdsV1FkTjhpYWFiNlBxb3g2QUxhQmJfZXbSAbsBQVVfeXFMT0FsNzFJVllOTktSblJKdENCTi13SkctYll6NGk3QnUtNVEtUHhNTXJnb1RURVRqNW5yNkFYUC0waHJRVmFkbGR0TXJQOXFfa3FLVVdmWmg2Z0FvVWQwcjZjOFdDQVEyQVlEMl9TcHhvVTczVnBGZURXcTFGbllleHR5cmJwMFdQQ01zR3ZrUHJfdXZIa0k1U0RaU2ZoeVFsWHdmT1F4RDNPMHZaN1NNdThMWHZmaVRfUnhGYw?oc=5",
+      "publisher": "HarianSIB.com",
       "publisherUrl": "https://www.hariansib.com",
       "published": "2026-11-04T11:52:00.000Z",
       "description": "",
@@ -11778,6 +11873,26 @@
       "value": "INR 186.41 Crore",
       "lang": "en",
       "firstSeen": "2026-11-04T17:14:19.145Z"
+    },
+    {
+      "id": "4845ca20ef34",
+      "title": "Copper Futures Overview",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9hUDlTUEo4Y21yeC1JTl9FMGlwU1AtemRWNWhTVHdrZEVITDExbFRrOXEtUmxtcUNoRFp3a0VRX0wyZFc1RmtuM1VuMHJUdm1EX2ZnUWR2MlEwTm1CQXFuTk51emJKMUE?oc=5",
+      "publisher": "CME Group",
+      "publisherUrl": "https://www.cmegroup.com",
+      "published": "2026-11-04T08:00:00.000Z",
+      "description": "",
+      "categories": [
+        "metals"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-06T16:49:02.847Z"
     },
     {
       "id": "71d32250857e",
@@ -13033,30 +13148,6 @@
       "firstSeen": "2026-11-04T22:55:21.905Z"
     },
     {
-      "id": "6dbc9bcb9564",
-      "title": "Cabinet green lights over $ 8 m Sampur-Kappalthurai electricity transmission project",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOcVdTYWhBQzZrZHVvZTdFY2NacFpFem9wSzFkYzZuaEdPVXU2Mk1ueFhJcGhLV2xKell3Vl83OUdUclNCTXl0VFVmV1lqVjZjOTBvNXNKSzA4Q19nZmxJdnN5dkxpOW01amdPbzY2eXBtYjlHUVA4VDJVN0FWcFFiNlBDd0NKUFVqSVBUU2dkWkl5ZGFWcHl1b1F0NXFOSkxCTGZZWHVhcElmM25tVUc0REhiRTkzT0Y2Q24zeEZ5eEg?oc=5",
-      "publisher": "Daily FT",
-      "publisherUrl": "https://www.ft.lk",
-      "published": "2026-11-04T02:46:20.000Z",
-      "description": "",
-      "categories": [
-        "projects",
-        "tenders",
-        "government"
-      ],
-      "regions": [],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": "$ 8 m",
-      "lang": "en",
-      "firstSeen": "2026-11-05T22:55:19.836Z"
-    },
-    {
       "id": "8f2105fb4dd5",
       "title": "Alumina Costs Rise Slightly in October, Driven by Higher Coal Prices",
       "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPUWptRW1rdDdmOTZ5dlB6SldEUDBBckZkVjNwSDBzV3B1UWdxNTZUV1dnbEpqOFBIUkhlUDR5bUgxNFlHbFY3Mzh6YWFDLVJkUFpzbm1ySTZsQjFVNkR3Y3JKMGJTN3NJa0VMaWlZN0RsZXdNX2Y1d2FTeTJUdVE2RU9hbjgyXzV4RFpsWEVjZTZsczlCZFBwclQ0ZmRibEg1R1NmeEV4MTFlN3ktOVliTmdWZjZIUQ?oc=5",
@@ -13843,6 +13934,30 @@
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-05T10:11:16.154Z"
+    },
+    {
+      "id": "6dbc9bcb9564",
+      "title": "Cabinet green lights over $ 8 m Sampur-Kappalthurai electricity transmission project",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPNGlYcENYQVJhLTJ5eE1yOXZvSkpMOE1TYnFuU0JIdmtmNmdleWwwZmJQampfZF9Nb2dvNl9tTjA3ZzN1bmowVEk5ZTd1a3FUMGFmcl94RlJDNHVITTBkVUlodG9YNXZyRDVuN1NIWUl3dGJDc3NINWoxSzg3SG1PQUlVVFA0YUJEUUoyTnFBbVJYVWU3aW5ubktsMVUyOGRxZHBYT0QwNXdlNFpyUU10V1NmTXBjYjAza1RuNjBn?oc=5",
+      "publisher": "Daily FT",
+      "publisherUrl": "https://www.ft.lk",
+      "published": "2026-11-03T23:23:24.000Z",
+      "description": "",
+      "categories": [
+        "projects",
+        "tenders",
+        "government"
+      ],
+      "regions": [],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": "$ 8 m",
+      "lang": "en",
+      "firstSeen": "2026-11-05T22:55:19.836Z"
     },
     {
       "id": "6dac92e8d899",
@@ -15122,6 +15237,30 @@
       "firstSeen": "2026-11-04T22:55:21.905Z"
     },
     {
+      "id": "cc3c38b838db",
+      "title": "Germany’s outdated grid planning risks nearly $74B in unnecessary costs: Study",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNcGdITGJ0clA1ckRENTZ4S1R4TUxNckNGbjJZU3E5SHZUQ0ZJeUhGVUpzWjdDRzBhQndMakhXZ2MwVGdzcjczRDhtOTNnSURYTlZQVjFuX3hoVHhtdmYwemxoallSSnZHdFR6QU85aXlkU3lBZEFkRlprVTZSaEpaYk5xSldjYmdJMUdjWEgtNmpNdFluMUcxblFjdkRiNWdaWk51MEg2WUljZDQzU01nNlJUZFZlU1k?oc=5",
+      "publisher": "Anadolu Ajansı",
+      "publisherUrl": "https://www.aa.com.tr",
+      "published": "2026-11-03T13:04:01.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Western Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Plan",
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-06T23:09:08.494Z"
+    },
+    {
       "id": "e2fd7f8763b3",
       "title": "Alternergy energizes wind farm in Quezon",
       "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQR054NHhuTWFSdU9TVTJzWEd3ZlY4TUxBSGM1U1djbXFtbzhMMXk4d0JPMWFYZmZmaW1fZ1BrZWxwS1hKZHJxVDRjWjQyUlpiX2VQMUhBSG5xLWR3aXh6UTQ5Tl9MV0JGdTBfSUlET19DREhXTndMZHFRZjVKZENDLVJaZVJRaDlwQlE?oc=5",
@@ -15525,6 +15664,32 @@
       "value": null,
       "lang": "en",
       "firstSeen": "2026-11-04T17:14:19.145Z"
+    },
+    {
+      "id": "45af17f34aa0",
+      "title": "Ducab Highlights Contribution To UAE Energy Security And Transition At ADIPEC 2026",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPWUVuXzhreVJnRXFJbjhEWkt6cEI1QUJXSldiZUVFV3hEQi1jR2ZMOEpTNVRVNGpLbU9WMDRHc1VCQnN2SVN2cEZrbEUxSVZJNWgwVUdjbzhfLURUUlFxZXowZVVHdEp0NHU4MWsyS3gyal8weGNLY3ZySWxkdTRTQlN5VV9QbEZTZEZSeWNNTjRUQktNUVcxbFcycmJONnc0WjVOU3lmY1dLYU1WRkVRdHpR?oc=5",
+      "publisher": "Menafn",
+      "publisherUrl": "https://menafn.com",
+      "published": "2026-11-03T11:15:39.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [
+        "UAE"
+      ],
+      "markets": [
+        "Middle East"
+      ],
+      "companies": [
+        "Ducab"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "firstSeen": "2026-11-06T23:09:08.494Z"
     },
     {
       "id": "0895ef694441",
@@ -18846,7 +19011,7 @@
       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxONWZWeFVvUjBZdjVIc1dOQ2N3TTlFMkxaZTd5SWg1dl8xSWZ5Z2haS29ZWndIdV9ZaWtDWlktRW9qLXQ4NU9tUjdKVTBiTkUzVUhPWjZxLTBVbjBvUXktbldnMDFhUHMxemhuV0pkZTdrWUpPX2V4SjBvWWpTVmJNU1M5VUUzT3drMVlZcE54M1lOYVJrT0NlbzAyN3ZWNzVueDNWNFJrUEZtSWZ3Zy11dmZJejhOb2NONVlfYdIBwgFBVV95cUxQelZzQTBwYmZQOUIyQU42UHRpMUtYUWJiUzhXSUR0dktwU3lRTHl5WVFmWHlJR1ltYjFHV2Z2NVViSzdISERGcXBSOGtKQlZGZW1pNGVIRUh5TElUT2JtQ2tFRldlb0NJUlJDQW85WUpnbWc0ZEo3bE16M2hsNjg0bFFqZUpJSVpHV0RDNFpHMklQR0NNRWdaZ1dFUFhFVUkyb3hnNmFFbEkza0FjUW1ONHJKaXZ4N0gtWW9xZEktUUNBdw?oc=5",
       "publisher": "Simply Wall St",
       "publisherUrl": "https://simplywall.st",
-      "published": "2026-11-02T20:32:58.000Z",
+      "published": "2026-11-02T20:54:35.000Z",
       "description": "",
       "categories": [
         "competitors"
@@ -47344,178 +47509,6 @@
       "actor": null,
       "stage": null,
       "value": null,
-      "lang": "en",
-      "firstSeen": "2026-11-04T17:14:19.145Z"
-    },
-    {
-      "id": "8ae507480dd9",
-      "title": "LME aluminium may bounce into $3,100-$3,149 this week",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOWWlueWY4T3cwZVNoQ2hXTjlPbS1FN2l0bTlhTkQ2QXlqTGFYc0xZSkRDQ1g5Ymx0emMyT2J3LTB2MDNnczY1OWRDa1ROdHc4cFl4Mm1xOVhSQzFDM2hxWUdoNEpLU2tVenBnQk8waU1wbk13WnB0MkdzeTl3TUFraklSZTVrZjNfSzRiRjFHd3pDSzlOa29GUUd1QVVLcTh1WnVETFdzcWE3ZHFxUWtqV2JnNVBlTEJ1VHFCX3J3?oc=5",
-      "publisher": "TradingView",
-      "publisherUrl": "https://www.tradingview.com",
-      "published": "2026-10-12T07:00:00.000Z",
-      "description": "",
-      "categories": [
-        "aluminium",
-        "metals"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": "$3,100",
-      "lang": "en",
-      "firstSeen": "2026-11-04T17:14:19.145Z"
-    },
-    {
-      "id": "45b39da5d329",
-      "title": "SHFE aluminium pulls back while LME aluminium stabilises slightly, as the tug-of-war between longs and shorts in the aluminium market continues to consolidate",
-      "url": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxPRWJpUGh5WHZOU0piMldZTDVkUVpxT2F5UDhBdWZUSXNBT1VuWjdwOS1keC1aeWlrMDlQaTBKOERGaGJVM1Bxb1dVcDRjRVZGUjVaRzFLa3BWbklOMFgtU0x0ci1hNHEydjFzSnppOEpfMncteUpkWGpmdWNHUmE2dnYzdlZ0Uzcwa0RsS3NGYmV0Rm1Wa1lRc0pLWWdEc1FFcVpNWUQwQ2g0dWt4Q3llT1pqOVc1UzlSczBreFQ4YzFDNTNhVFNJM1FXMmxWQWJibGdVUFdvVENkM3VRUHlsQl8zVVhoMEZQWUpWWWFKYVJfM2RZMFBtRy1RdXZCSXB2aDk0WmJvT0V1WjBjNlo1UG01SDNielhCQWo0ZlhLYXVwOVd0cWh3Rw?oc=5",
-      "publisher": "AL Circle",
-      "publisherUrl": "https://www.alcircle.com",
-      "published": "2026-10-12T07:00:00.000Z",
-      "description": "",
-      "categories": [
-        "aluminium",
-        "metals"
-      ],
-      "regions": [
-        "China"
-      ],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "firstSeen": "2026-11-04T17:14:19.145Z"
-    },
-    {
-      "id": "b7547d8e9f9b",
-      "title": "POWERGRID Commissions Rajasthan Renewable Energy Transmission Project Under Phase III, Part C1",
-      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNR0dCVUhSNzNSM3BpZW02SkNGeFpkaHlHOW1SY1BzRFNuQWdsRkU0VkExem5Sb2hMRE00eXZoYm0xbkltamF6bFRrOW5SbVZObTZoa09ZVzNib3hpcXRSX2JrMzJNejI0elYxTk1RNnRTLWxRZUlyV3pxTW9yd2NJWDYtQWtldUVqT1NyRWlJUVBScTFDWUE0em4ta0RkeXMtSXY3bTlYVWdzXzAzOEN2RXJNai1nV3J3eGtxQXR1SVRhQjBkQnk5UVFn?oc=5",
-      "publisher": "SolarQuarter",
-      "publisherUrl": "https://solarquarter.com",
-      "published": "2026-10-12T07:00:00.000Z",
-      "description": "",
-      "categories": [
-        "projects"
-      ],
-      "regions": [
-        "India"
-      ],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [
-        "POWERGRID"
-      ],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "firstSeen": "2026-11-04T17:14:19.145Z"
-    },
-    {
-      "id": "b37dca66ebcc",
-      "title": "Power Grid commissions RE evacuation transmission project in Rajasthan",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPUWVlLVRpb0M3YXFGMzlheEd2a3A0X19zWmpsTUZuTkZGNGEyMzRYeFpNZjI5VWtCUV94UmlkcHZiU0c4ZG5JTTdMclZRbkh6Z0ozcmczUktIZS0xVVZZakFvUjA5YThIeVhuMzRfMDZKbXc5RDVQcUFCQ2dyTjJ1dzVkaDg5bkdmVVd1cnI1SDQ1YXRmQWttQWVxa3RmZ0ZFWjJXX0VR0gGzAUFVX3lxTE1JaGp3ZVFwZ3ljT3g3ZUVjRlpicnZHWDhKbzFsSktBM2ZBbl9hUnBzSC1penNocmR4WmVvVjdmazR6RktGN1hOa24yRnAzMDYtYmF6akZOeTVZVkdFNjRxU1BHRzV5TUNtWVltNW0tQ2RCdGlQY1AwZ0g1UlF5SUNLWWotLUhTUmxZYklMMGdUQy1jTmVqZV9vNkNYRzlSNTk1VUVKZGhqaDBfb1lNbHJBWFpV?oc=5",
-      "publisher": "PSU Watch",
-      "publisherUrl": "https://psuwatch.com",
-      "published": "2026-10-12T07:00:00.000Z",
-      "description": "",
-      "categories": [
-        "projects"
-      ],
-      "regions": [
-        "India"
-      ],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "firstSeen": "2026-11-04T17:14:19.145Z"
-    },
-    {
-      "id": "03a8118ab357",
-      "title": "POWERGRID commissions 2.5 GW solar transmission project in Karnataka",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOaV9oSW1lRXFqT3FlUFhxRExFM2lsSFF4ZGQzY3RwbG5TcXFWZXlkeGx5dXBSX1A3VDVfdzVFcEQtRWtHWGMtd1AxUjA2eTFBX3JMQ05RX0pRT1JKRUJSMTBvWjlGRVFWcktfaVg5ZjJ3X25JdTM4UHpzZUU3cE4tSC16UTBnR3Y0UXc5WHU2Y2xRbW9CU1FZZ2pXdEJMaVl2YUR5c1d6WUU3dw?oc=5",
-      "publisher": "Renewable Watch",
-      "publisherUrl": "https://renewablewatch.in",
-      "published": "2026-10-12T07:00:00.000Z",
-      "description": "",
-      "categories": [
-        "projects",
-        "demand"
-      ],
-      "regions": [
-        "India"
-      ],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [
-        "POWERGRID"
-      ],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "firstSeen": "2026-11-04T17:14:19.145Z"
-    },
-    {
-      "id": "3d5ce4718e5b",
-      "title": "Power Grid Acquires Lakadia II for Gujarat 7500 MW ISTS",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQZXRnZVQ5SWgtRlpKMC1GOWpJRGxtWFNtYmdpT3ZzVFUzdlRSQzRmbTAtTlpvN0VWS0ZMUEt0RTFFYlRBTE45NUFWR1hYSlFsRWEyMFB4M0U5ZDR0WnR5alNIZkZMbFpib0p0cGF5ZXlEaGN2R1FtUTI5TmJQTGVLVy1GQmptbGJxWUlKOTNaQzAyRjAzazBRem9QQlpodm1MMHBfRkd0dENfUknSAbABQVVfeXFMTXgtVmZnZzctVjJMbVB6VjB1ekpPUEtaMngzMTZ1ZWFjTnZ6VV85Q3pHYkRtM2Z1NFdLQS1vZ2tqOGtFa0FJSDRuVks1Z1h0emoyY2d3VlBEeGJEZHhjYUdFWC13MmNkVXBHWlFjbGt6RnkweGluczk1ZnJJaVBNbUg4aU11XzA3b21JTjVoV3FKR0NQTEZqZFVLSVJLVTkzWTE1WXRjTnBnTzNfQWRyZ1E?oc=5",
-      "publisher": "Rediff MoneyWiz",
-      "publisherUrl": "https://money.rediff.com",
-      "published": "2026-10-12T07:00:00.000Z",
-      "description": "",
-      "categories": [
-        "projects",
-        "demand"
-      ],
-      "regions": [
-        "India"
-      ],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "firstSeen": "2026-11-04T17:14:19.145Z"
-    },
-    {
-      "id": "d86cadc28d48",
-      "title": "Power Grid acquires Lakadia C Power Transmission for ₹19.94 crore",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNSFVLazRuc1g1TFM1aHVXaTYzNTBZSEdvT3NzOURCZGFvR0hiX3RnVk9zY1VvcUNpaTEtQnlsWVViUkJBT01KOUliU0F0c1BWcFV6U2ZpNGh6OVZqZ0J6aUZqMFQ5cXJtWVdZLUlzU0RMT2dYXzdldm1wUkRKNlo1ckZHek5tUF9uV2JqLUJjWWRsVmctTTFKcmg1dHBPMmN6RWoxODc4aF96QTF0SDY1bkRaSUhlRlA2?oc=5",
-      "publisher": "scanx.trade",
-      "publisherUrl": "https://scanx.trade",
-      "published": "2026-10-12T07:00:00.000Z",
-      "description": "",
-      "categories": [
-        "projects"
-      ],
-      "regions": [
-        "India"
-      ],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": "₹19.94 crore",
       "lang": "en",
       "firstSeen": "2026-11-04T17:14:19.145Z"
     }
