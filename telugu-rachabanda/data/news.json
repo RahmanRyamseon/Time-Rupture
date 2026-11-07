@@ -1,6 +1,82 @@
 {
- "updated": "2026-11-07T16:35:18.115Z",
+ "updated": "2026-11-07T22:11:46.138Z",
  "items": [
+  {
+   "title": "UAE President visits Saeed bin Lahej Al Mansoori",
+   "url": "https://gulfnews.com/uae/government/uae-president-visits-saeed-bin-lahej-al-mansoori-1.500739731",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T18:43:37.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "1b9aec1a5499",
+   "related": []
+  },
+  {
+   "title": "‘UAE is our home’: More than 55,000 attend Emirates Loves Syria celebration in Dubai",
+   "url": "https://gulfnews.com/uae/people/uae-is-our-home-more-than-55000-attend-emirates-loves-syria-celebration-in-dubai-1.500739829",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T18:15:33.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "ffd6baa6ec2c",
+   "related": []
+  },
+  {
+   "title": "Dubai diners get surprise visit from Sheikh Mohammed at Cherry House",
+   "url": "https://gulfnews.com/uae/government/dubai-diners-get-surprise-visit-from-sheikh-mohammed-at-cherry-house-1.500739832",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T18:14:30.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "fc2446cc680e",
+   "related": []
+  },
+  {
+   "title": "Exhausted pelican gets a helping hand on busy Dubai road",
+   "url": "https://gulfnews.com/uae/people/exhausted-pelican-gets-a-helping-hand-on-busy-dubai-road-1.500739818",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T17:38:34.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "30b8d79a0fe6",
+   "related": []
+  },
   {
    "title": "Dubai, Ras Al Khaimah Rulers attend wedding of Dubai Police chief's son",
    "url": "https://gulfnews.com/uae/dubai-ras-al-khaimah-rulers-attend-wedding-of-dubai-police-chiefs-son-1.500739581",
@@ -442,6 +518,25 @@
    ],
    "expat": true,
    "id": "f71e89ae9285",
+   "related": []
+  },
+  {
+   "title": "Middle East on edge as US tightens pressure on Iran and Houthis claim attacks on Saudi Arabia",
+   "url": "https://gulfnews.com/world/mena/middle-east-war-update-qeshm-island-strike-raises-tensions-talks-continue-1.500739148",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T02:33:40.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "saudi"
+   ],
+   "telugu": false,
+   "sections": [
+    "saudi",
+    "gulf"
+   ],
+   "id": "a99697045321",
    "related": []
   },
   {
