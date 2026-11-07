@@ -1,0 +1,7 @@
+{
+  "_note": "Fill these in before promoting the site. Legal pages show them; empty values show 'to be added'.",
+  "operator": "",
+  "contactEmail": "",
+  "grievanceOfficer": { "name": "", "email": "" },
+  "jurisdiction": ""
+}

@@ -50,31 +50,43 @@ and submit `https://gulftelugunews.vercel.app/sitemap.xml`.
 - **Discussion boards**: general chat, association events, help desk, going home, jobs & visa,
   rooms & sharing, cricket, poems & stories, home cooking.
 
+## Legal
+
+See [`LEGAL.md`](./LEGAL.md): how the site handles copyright, trademark, licensing and feed terms,
+and what the operator still has to do. In short, the site shows only headlines, publisher names,
+dates and links from publishers' own RSS feeds. It never copies article text, photos or logos, and
+it has About, Terms, Privacy, Copyright & takedown and Discussion-rules pages. Fill in
+`data/site.json` (contact email, grievance officer) before promoting the site.
+
 ## Layout
 
-The homepage follows the layout of Gulf newspaper portals such as Gulf Daily News: a red logo
-masthead, a white main menu (home, Telugu people, the six countries) beside a grey topic menu, a
-red "latest news" bar that steps through headlines, a 2 + 3 grid of large story tiles, colour-coded
-section bars (red for news, blue for topic columns, navy for Gulf affairs), a country tab strip, a
-dark discussion panel, and a right column with helplines, WhatsApp sharing, a coloured grid of
-discussion boards, clocks and rupee rates. Google News feeds have no photos, so every story gets
-an illustration drawn in CSS: its country's flag colours, a Gulf skyline and a topic icon.
+A news-portal layout with its own identity: a flat indigo wordmark with a saffron "గల్ఫ్" tag, a
+white main menu (home, Telugu people, the six countries) beside a light topic menu, a saffron
+"latest news" bar that steps through headlines, a 2 + 3 grid of story tiles, section titles with a
+coloured side rule, a country tab strip, a dark 🌳 రచ్చబండ panel, and a right column with helplines
+(the only red on the page), WhatsApp sharing, a grid of discussion boards, clocks and rupee rates.
+Feeds' photos are never used, so every story gets an illustration drawn in CSS: its country's flag
+colours, a Gulf skyline and a topic icon.
 
 ## How the news is picked
 
-`scripts/update.mjs` runs 24 Google News searches (10 Telugu, 5 English about Telugu people, and
-one per Gulf newspaper: Gulf Daily News, Gulf News, Khaleej Times, Arab News, Saudi Gazette, Gulf
-Times, The Peninsula, Times of Oman, Arab Times) and classifies every headline:
+`scripts/update.mjs` reads publishers' own RSS feeds (listed in `FEEDS`): the NRI sections of
+Namasthe Telangana, NTV Telugu and Oneindia Telugu, plus V6 Velugu, Sakshi, TV9 Telugu, BBC Telugu,
+Gulf News and The Siasat Daily. It keeps only each item's headline, link and date, and classifies
+every headline:
 
 1. It must name a Gulf country or city, or "Gulf"/"గల్ఫ్".
 2. It is flagged **Telugu** when it names Telugu people or places: తెలుగు, తెలంగాణ, ఆంధ్ర, ప్రవాసాంధ్రులు,
    Gulf-migrant districts (Nizamabad, Jagtial, Karimnagar, Nirmal, Kadapa, Konaseema…), APNRTS, TOMCOM.
-3. English headlines are kept only when flagged Telugu, with one exception: stories from the Gulf
-   newspapers above about expats, or about labour, visa, residency, deportation and licence rules,
-   go into the jobs/visa/rules tab under that paper's country.
-4. Film shoots and celebrity trips are dropped.
-5. Topic words decide the topic tabs (associations/events, going home/hardship, jobs/visa/travel).
-6. The same story from several papers within three days is shown once, with the other papers
+3. English headlines are kept only when flagged Telugu, or when they come from a Gulf newspaper
+   (Gulf News) and name a Gulf country or are about expats or labour, visa, residency and licence
+   rules.
+4. General "Gulf affairs" stories (security, war, public safety) come only from established outlets
+   (`ESTABLISHED`), to avoid spreading rumours.
+5. Stories about Telugu people are kept for 180 days; other stories for 21 days.
+6. Film shoots and celebrity trips are dropped.
+7. Topic words decide the topic tabs (associations/events, going home/hardship, jobs/visa/travel).
+8. The same story from several papers within three days is shown once, with the other papers
    listed under it. Stories are merged only if they share a country and agree on the Telugu flag.
 
 The word lists are at the top of `scripts/update.mjs`; edit them to tune what gets in.
@@ -124,7 +136,8 @@ default branch.
 
 ## Limits
 
-- Stories are found through Google News, so links go through `news.google.com`.
+- Only publishers with a public RSS feed are included, so some papers (Eenadu, Andhra Jyothy,
+  Khaleej Times, Gulf Daily News) are missing until they offer one or agree to be listed.
 - Classification reads only headlines. Some stories about Telugu people won't name them in the
   headline and will land in the general sections instead.
 - There is no login. Anyone can comment under any name.

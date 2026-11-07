@@ -63,7 +63,6 @@ const host = (url) => {
     return "";
   }
 };
-const favicon = (url) => `https://www.google.com/s2/favicons?domain=${host(url)}&sz=32`;
 const dayIndex = () => Math.floor((Date.now() + 5.5 * 3600e3) / 864e5); // IST day number
 const pick = (list, salt = 0) => list[(dayIndex() + salt) % list.length];
 const threadOf = (id) => `news:${id}`;
@@ -131,12 +130,16 @@ async function loadJSON(path) {
 async function init() {
   setupChrome();
   try {
-    const [news, community, sources, rates] = await Promise.all([
+    const [news, community, sources, rates, legal, site] = await Promise.all([
       loadJSON("/data/news.json"),
       loadJSON("/data/community.json"),
       loadJSON("/data/sources.json"),
       loadJSON("/data/rates.json").catch(() => null),
+      loadJSON("/data/legal.json"),
+      loadJSON("/data/site.json").catch(() => ({})),
     ]);
+    state.legal = legal;
+    state.site = site;
     state.rates = rates;
     state.news = news.items;
     state.updated = news.updated;
@@ -258,7 +261,11 @@ function route() {
     sources: renderSources,
     saved: renderSaved,
     search: () => renderSearch(decodeURIComponent(arg || "")),
-    rules: renderRules,
+    about: () => renderLegal("about"),
+    terms: () => renderLegal("terms"),
+    privacy: () => renderLegal("privacy"),
+    copyright: () => renderLegal("copyright"),
+    rules: () => renderLegal("rules"),
   };
   (views[view] || renderHome)();
   renderSide();
@@ -454,10 +461,9 @@ function cardHTML(item, { lead = false } = {}) {
   const H = lead ? "h2" : "h3";
   return `<article class="${lead ? "lead" : "card"}" data-id="${item.id}">
     <a class="card-img" href="/story/${item.id}" tabindex="-1">${art(item)}</a>
-    <div class="meta">${item.publisherUrl ? `<img src="${favicon(item.publisherUrl)}" alt="" loading="lazy" onerror="this.remove()" />` : ""}
+    <div class="meta">
       <span class="pub">${esc(item.publisher)}</span> · <time datetime="${item.published}">${ago(item.published)}</time> ${tags}</div>
     <${H}><a href="/story/${item.id}">${esc(item.title)}</a></${H}>
-    ${item.description ? `<p class="desc">${esc(item.description)}</p>` : ""}
     ${related}
     <div class="actions">
       <a class="act talk" href="/story/${item.id}">💬 <span data-count="${item.id}">చర్చ</span></a>
@@ -581,7 +587,7 @@ function renderSearch(q) {
   $("#q").value = q;
   const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
   const hits = state.news.filter((i) => {
-    const text = `${i.title} ${i.description} ${i.publisher}`.toLowerCase();
+    const text = `${i.title} ${i.publisher}`.toLowerCase();
     return terms.every((t) => text.includes(t));
   });
   document.title = `"${q}" | గల్ఫ్ తెలుగు వార్తలు`;
@@ -615,7 +621,7 @@ function renderStory(id) {
     <a class="back" href="/s/${sec}">← ${SECTION_NAME[sec] || "వార్తలు"}</a>
     <article class="story">
       <div class="story-art">${art(item)}</div>
-      <div class="meta">${item.publisherUrl ? `<img src="${favicon(item.publisherUrl)}" alt="" onerror="this.remove()" />` : ""}
+      <div class="meta">
         <span class="pub">${esc(item.publisher)}</span> ·
         <time datetime="${item.published}">${dateTe(new Date(item.published), {
           day: "numeric",
@@ -626,13 +632,13 @@ function renderStory(id) {
         ${item.telugu ? `<span class="tag te">తెలుగు వారు</span>` : ""}
         ${item.sections.map((s) => (SECTION_NAME[s] && s !== "top" ? `<a class="tag" href="/s/${s}">${SECTION_NAME[s]}</a>` : "")).join(" ")}</div>
       <h1>${esc(item.title)}</h1>
-      ${item.description ? `<p class="lede">${esc(item.description)}</p>` : ""}
       <div class="story-links">
         <a class="btn" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.publisher || "మూలం")}లో పూర్తి వార్త చదవండి ↗</a>
         <a class="btn wa" href="${waLink(item)}" target="_blank" rel="noopener">వాట్సాప్‌లో పంపండి</a>
         <button class="btn ghost" id="share">🔗 షేర్</button>
         <button class="btn ghost" id="save">${saved.has(id) ? "🔖 దాచారు" : "🔖 దాచండి"}</button>
       </div>
+      <p class="source-note">ఈ శీర్షిక, వార్త <strong>${esc(item.publisher)}</strong> వారిది. మేము శీర్షిక, లింక్ మాత్రమే చూపిస్తాము — పూర్తి వార్త, ఫోటోలు వారి సైట్‌లో చదవండి. పై బొమ్మ మా సొంత చిత్రం, వార్త ఫోటో కాదు.</p>
       <div class="box"><h2>ఈ వార్త చదివాక మీకు ఎలా అనిపించింది?</h2><div class="reacts" id="reacts"></div></div>
       ${
         item.related?.length
@@ -935,7 +941,7 @@ function recentHTML(c) {
 
 // ---- sources & rules ----------------------------------------------------------------------------
 function sourceItemHTML(s) {
-  const inner = `${s.url ? `<img src="${favicon(s.url)}" alt="" loading="lazy" onerror="this.remove()" />` : `<span class="dot">🤝</span>`}
+  const inner = `<span class="dot">${s.phone ? "📞" : s.url ? "🔗" : "🤝"}</span>
     <span>${esc(s.name)}${s.phone ? `<b class="phone">📞 ${esc(s.phoneText)}</b>` : ""}${s.note ? `<small>${esc(s.note)}</small>` : ""}</span>`;
   if (s.phone) return `<li><a href="tel:${esc(s.phone)}">${inner}</a></li>`;
   return s.url ? `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${inner}</a></li>` : `<li><div class="nolink">${inner}</div></li>`;
@@ -967,19 +973,34 @@ function renderSources() {
         .join("")}</div></section>`;
 }
 
-function renderRules() {
-  document.title = "చర్చా నియమాలు | గల్ఫ్ తెలుగు వార్తలు";
-  main.innerHTML = `<div class="section-head"><h1>చర్చా నియమాలు</h1></div>
-    <div class="story"><p><strong>"కాలు జారితే తీసుకోగలం కానీ నోరు జారితే తీసుకోలేం."</strong> రచ్చబండ అందరిదీ — గల్ఫ్‌లో ఉన్న అన్ని ప్రాంతాల తెలుగు వారూ, ఇంటి దగ్గర వారి కుటుంబాలూ ఇక్కడ ఉంటారు.</p>
-    <ol class="rules">
-      <li>మర్యాదగా రాయండి. వ్యక్తిగత దూషణలు, బూతులు వద్దు.</li>
-      <li>కులం, మతం, ప్రాంతం, లింగం పేరుతో ద్వేషం వ్యాపింపజేయవద్దు.</li>
-      <li>తప్పుడు వార్తలు, పుకార్లు పంచవద్దు. ఆధారం ఉంటే లింక్ ఇవ్వండి.</li>
-      <li>ఫోన్ నంబర్లు, పాస్‌పోర్ట్ / ఇఖామా నంబర్లు, చిరునామాలు వంటి వ్యక్తిగత వివరాలు పెట్టవద్దు — మీవి కానీ ఇతరులవి కానీ.</li>
-      <li>ఉద్యోగం ఇప్పిస్తామని డబ్బులు అడిగే పోస్టులు నమ్మవద్దు. ఏజెంట్ రిజిస్టర్ అయ్యాడో లేదో <a href="https://emigrate.gov.in" target="_blank" rel="noopener">eMigrate</a>లో చూసుకోండి.</li>
-      <li>అభ్యంతరకరమైన వ్యాఖ్య కనిపిస్తే 🚩 నొక్కండి. మూడు ఫిర్యాదులు వస్తే అది దాగిపోతుంది.</li>
-    </ol></div>`;
+// Fills contact placeholders in the legal pages from data/site.json.
+export function fillLegal(html, site = {}) {
+  const todo = "(త్వరలో చేర్చబడుతుంది / to be added)";
+  const email = site.contactEmail ? `<a href="mailto:${esc(site.contactEmail)}">${esc(site.contactEmail)}</a>` : todo;
+  const g = site.grievanceOfficer || {};
+  const officer = g.name ? `${esc(g.name)}${g.email ? `, <a href="mailto:${esc(g.email)}">${esc(g.email)}</a>` : ""}` : todo;
+  return html
+    .replaceAll("{{contactEmail}}", email)
+    .replaceAll("{{grievanceOfficer}}", officer)
+    .replaceAll("{{jurisdictionClause}}", site.jurisdiction ? ` (8) These terms are governed by the laws of ${esc(site.jurisdiction)}.` : "");
 }
+
+function renderLegal(id) {
+  const page = state.legal[id];
+  document.title = `${page.title} | గల్ఫ్ తెలుగు వార్తలు`;
+  main.innerHTML = `<div class="section-head"><h1>${esc(page.title)}</h1></div>
+    <div class="story legal">${fillLegal(page.html, state.site)}</div>
+    <p class="legal-nav">${LEGAL_LINKS}</p>`;
+}
+const LEGAL_LINKS = [
+  ["/about", "మా గురించి"],
+  ["/terms", "నిబంధనలు"],
+  ["/privacy", "గోప్యత"],
+  ["/copyright", "కాపీరైట్ & తొలగింపు"],
+  ["/rules", "చర్చా నియమాలు"],
+]
+  .map(([h, t]) => `<a href="${h}">${t}</a>`)
+  .join(" · ");
 
 // ---- sidebar ---------------------------------------------------------------------------------------
 const CLOCKS = [
@@ -1041,7 +1062,9 @@ async function renderSide() {
             .join("")}</table><p class="muted" style="font-size:.75rem;margin:6px 0 0">సూచిక రేటు (${dateTe(
             new Date(state.rates.updated),
             { day: "numeric", month: "short" },
-          )}). ఎక్స్ఛేంజ్ హౌస్ రేటు కొంచెం తక్కువగా ఉంటుంది.</p></section>`
+          )}). ఎక్స్ఛేంజ్ హౌస్ రేటు కొంచెం తక్కువగా ఉంటుంది. <a href="${esc(
+            state.rates.attribution?.url || "https://www.exchangerate-api.com",
+          )}" target="_blank" rel="noopener">${esc(state.rates.attribution?.text || "Rates By Exchange Rate API")}</a></p></section>`
         : ""
     }
     <section class="widget poll" id="poll"><h2>ఈరోజు ప్రశ్న</h2><p class="q">${esc(poll.q)}</p><div class="opts"></div></section>
