@@ -1,13 +1,21 @@
 #!/usr/bin/env node
 // News collector for Gulf Telugu News (గల్ఫ్ తెలుగు వార్తలు): news about Telugu people in the Gulf.
 //
-// Pulls Telugu and English Google News RSS searches about the six GCC countries, keeps the
-// stories that are about the Gulf, tags each with its countries and topics, and flags the ones
-// about Telugu people. English stories are kept only when they name Telugu people or places.
+// Reads the official RSS feeds that publishers provide for syndication, keeps the stories that
+// are about the Gulf, tags each with its countries and topics, and flags the ones about Telugu
+// people. English stories are kept only when they name Telugu people or places, or (from Gulf
+// papers) when they are about expats or labour, visa and residency rules.
+//
+// Copyright: only the headline, the link to the publisher's own page and the date are kept.
+// Feed descriptions, full text and images are ignored on purpose; the site never republishes
+// a publisher's writing or photos. Feeds are fetched once per run (every 2 hours), with a User-
+// Agent naming this site. Google News feeds are not used: their terms allow personal feed
+// readers only.
+//
 // Also refreshes Gulf currency → rupee rates. No dependencies: Node 18+ built-in fetch.
 //
 //   node scripts/update.mjs                   # live fetch
-//   FIXTURE_DIR=path node scripts/update.mjs  # offline: te-*.xml, en-*.xml and rates.json
+//   FIXTURE_DIR=path node scripts/update.mjs  # offline: <feed id>.xml files and rates.json
 
 import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile } from "node:fs/promises";
@@ -17,12 +25,9 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 export const DATA_FILE = join(here, "..", "data", "news.json");
 export const RATES_FILE = join(here, "..", "data", "rates.json");
-export const RETENTION_DAYS = 21;
+export const RETENTION_DAYS = 21; // general Gulf news
+export const TELUGU_RETENTION_DAYS = 180; // stories about Telugu people are rarer and stay useful longer
 export const MAX_ITEMS = 700;
-
-const GN = "https://news.google.com/rss/search";
-const te = (q) => ({ lang: "te", url: `${GN}?q=${encodeURIComponent(`${q} when:3d`)}&hl=te&gl=IN&ceid=IN:te` });
-const en = (q) => ({ lang: "en", url: `${GN}?q=${encodeURIComponent(`${q} when:7d`)}&hl=en-IN&gl=IN&ceid=IN:en` });
 
 // Gulf newspapers and the country each one covers by default.
 export const GULF_PAPERS = {
@@ -41,28 +46,26 @@ export const paperCountry = (publisherUrl = "") => {
   return GULF_PAPERS[host] || null;
 };
 
+// Publishers' own RSS feeds, each checked by hand on 7 Nov 2026. Add a feed only after reading
+// the publisher's terms; remove one (or add it to BLOCKED below) if a publisher asks.
 export const FEEDS = [
-  te("గల్ఫ్"),
-  te("గల్ఫ్ కార్మికులు OR గల్ఫ్ బాధితులు OR గల్ఫ్ వలస"),
-  te("ప్రవాసాంధ్రులు OR ఎన్ఆర్ఐ OR ఏపీఎన్ఆర్టీఎస్ OR ప్రవాసీ ప్రజావాణి"),
-  te("దుబాయ్ OR దుబాయి OR యూఏఈ OR అబుదాబి OR షార్జా"),
-  te("సౌదీ OR రియాద్ OR జెద్దా OR దమ్మామ్"),
-  te("ఖతార్ OR దోహా"),
-  te("కువైట్"),
-  te("ఒమన్ OR మస్కట్"),
-  te("బహ్రెయిన్"),
-  te("తెలుగు సంఘం OR కళా సమితి OR బతుకమ్మ OR ఉగాది (దుబాయ్ OR సౌదీ OR ఖతార్ OR కువైట్ OR ఒమన్ OR బహ్రెయిన్)"),
-  en('Telugu (Dubai OR UAE OR "Abu Dhabi" OR Sharjah)'),
-  en("Telugu (Saudi OR Riyadh OR Jeddah OR Qatar OR Doha OR Kuwait OR Oman OR Muscat OR Bahrain)"),
-  en("(Telangana OR Andhra OR Hyderabad) (Gulf OR Dubai OR UAE OR Saudi OR Kuwait OR Qatar OR Oman OR Bahrain) (worker OR workers OR expat OR NRI OR migrant)"),
-  en('APNRTS OR TOMCOM OR "Telangana Gulf" OR "Gulf workers" Telangana'),
-  en('"Telugu Association" OR "Telugu Kala Samithi" OR "Andhra Kala Vedika" OR "Telugu community" Gulf'),
-  // Gulf newspapers, for rule changes and news that affect expats (one site per search:
-  // Google News ignores site: filters combined with OR).
-  ...Object.keys(GULF_PAPERS).map((site) =>
-    en(`site:${site} (expat OR expats OR expatriate OR Indian OR Indians OR visa OR residency OR labour OR workers OR recruitment OR deport OR amnesty)`),
-  ),
+  { id: "oneindia-nri", name: "Oneindia Telugu", site: "https://telugu.oneindia.com", lang: "te", url: "https://telugu.oneindia.com/rss/feeds/telugu-nri-fb.xml" },
+  { id: "ntnews-nri", name: "Namasthe Telangana", site: "https://www.ntnews.com", lang: "te", url: "https://www.ntnews.com/nri/feed" },
+  { id: "ntv-nri", name: "NTV Telugu", site: "https://ntvtelugu.com", lang: "te", url: "https://ntvtelugu.com/nri/feed" },
+  { id: "v6velugu", name: "V6 Velugu", site: "https://www.v6velugu.com", lang: "te", url: "https://www.v6velugu.com/feed" },
+  { id: "sakshi", name: "Sakshi", site: "https://www.sakshi.com", lang: "te", url: "https://www.sakshi.com/rss.xml" },
+  { id: "tv9telugu", name: "TV9 Telugu", site: "https://tv9telugu.com", lang: "te", url: "https://tv9telugu.com/feed" },
+  { id: "bbc-telugu", name: "BBC Telugu", site: "https://www.bbc.com/telugu", lang: "te", url: "https://feeds.bbci.co.uk/telugu/rss.xml" },
+  { id: "gulfnews", name: "Gulf News", site: "https://gulfnews.com", lang: "en", url: "https://gulfnews.com/stories.rss" },
+  { id: "siasat", name: "The Siasat Daily", site: "https://www.siasat.com", lang: "en", url: "https://www.siasat.com/feed/" },
 ];
+
+// Publishers whose items must not appear (for takedown requests). Matched against the feed id.
+export const BLOCKED = new Set([]);
+
+// Only well-known outlets may feed the general "Gulf affairs" section (security news, war,
+// public-safety alerts), to avoid spreading rumours.
+export const ESTABLISHED = new Set(["Gulf News", "BBC Telugu", "Sakshi", "Namasthe Telangana", "V6 Velugu", "The Siasat Daily"]);
 
 // ---- classification ----------------------------------------------------------------------
 // Telugu terms are matched as substrings (Telugu has no \b word boundaries in JS regex);
@@ -155,7 +158,8 @@ export function classify(title, lang, publisherUrl = "") {
     if (!home) return null;
     const inTitle = countries.length > 0;
     expat = expatTest(title) || (inTitle && (indianTest(title) || rulesTest(title))) || strongRulesTest(title);
-    if (!expat) return null;
+    // A Gulf paper's own story about a Gulf country is local news for readers living there.
+    if (!expat && !inTitle) return null;
     if (!inTitle) countries = [home];
   } else if (!countries.length && !gulfTest(title)) return null;
   const topics = topicTests.filter(([, t]) => t(title)).map(([id]) => id);
@@ -163,7 +167,7 @@ export function classify(title, lang, publisherUrl = "") {
 
   const sections = [...countries];
   if (telugu) sections.push("top");
-  else sections.push("gulf");
+  else sections.push("gulf"); // the "Gulf affairs" section; see `fromEstablished` in main()
   if (topics.includes("sangham") && telugu) sections.push("sangham");
   if (topics.includes("exit")) sections.push("exit");
   if (topics.includes("jobs") || expat) sections.push("jobs");
@@ -179,6 +183,9 @@ const decode = (s = "") =>
     .replace(/&quot;/g, '"')
     .replace(/&#39;|&#x27;/g, "'")
     .replace(/&nbsp;/g, " ")
+    .replace(/&apos;/g, "'")
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
     .replace(/&amp;/g, "&");
 
 const field = (body, name) => {
@@ -191,20 +198,21 @@ const parseDate = (s) => {
   return Number.isNaN(t) ? new Date().toISOString() : new Date(t).toISOString();
 };
 
-export function parseItems(xml) {
-  return [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(([, body]) => {
-    const src = body.match(/<source\s+url="([^"]+)"[^>]*>([\s\S]*?)<\/source>/);
-    const publisher = src ? decode(src[2]).trim() : "";
-    let title = decode(decode(field(body, "title"))).trim();
-    if (publisher && title.endsWith(` - ${publisher}`)) title = title.slice(0, -(publisher.length + 3)).trim();
-    return {
-      title,
-      url: decode(field(body, "link")).trim(),
-      publisher,
-      publisherUrl: src ? decode(src[1]).trim() : "",
-      published: parseDate(decode(field(body, "pubDate"))),
-    };
-  });
+const plain = (s) => decode(decode(s)).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+
+// Reads an RSS 2.0 feed. Keeps only the headline, link and date: descriptions, full text and
+// images (description, content:encoded, media:*, enclosure) are deliberately not read.
+export function parseItems(xml, feed) {
+  return [...xml.matchAll(/<item\b[^>]*>([\s\S]*?)<\/item>/g)]
+    .map(([, body]) => ({
+      title: plain(field(body, "title")),
+      url: plain(field(body, "link")),
+      publisher: feed.name,
+      publisherUrl: feed.site,
+      published: parseDate(plain(field(body, "pubDate") || field(body, "dc:date"))),
+      feed: feed.id,
+    }))
+    .filter((i) => i.title.length > 3 && /^https?:\/\//.test(i.url));
 }
 
 // ---- merging ------------------------------------------------------------------------------
@@ -235,8 +243,9 @@ export function sameStory(a, b) {
 // from another paper within three days becomes a `related` link on the first one kept.
 export function merge(existing, fetched, now = Date.now()) {
   const cutoff = now - RETENTION_DAYS * 864e5;
+  const teluguCutoff = now - TELUGU_RETENTION_DAYS * 864e5;
   const all = [...existing, ...fetched]
-    .filter((i) => i.title && Date.parse(i.published) >= cutoff)
+    .filter((i) => i.title && Date.parse(i.published) >= (i.telugu ? teluguCutoff : cutoff))
     .sort((a, b) => b.published.localeCompare(a.published));
   const kept = [];
   const byId = new Map();
@@ -273,18 +282,36 @@ export function merge(existing, fetched, now = Date.now()) {
   return kept.slice(0, MAX_ITEMS);
 }
 
+// General Gulf news (not about Telugu people, not expat rules) only from established outlets.
+export function keepable(tags, publisher) {
+  if (!tags) return null;
+  if (!tags.telugu && !tags.expat && !ESTABLISHED.has(publisher)) {
+    const sections = tags.sections.filter((s) => s !== "gulf");
+    // Keep it only if it still belongs to a topic section (exit, jobs) besides its country.
+    if (!sections.some((s) => s === "exit" || s === "jobs")) return null;
+    return { ...tags, sections };
+  }
+  return tags;
+}
+
 // ---- rates --------------------------------------------------------------------------------
 export function inrRates(api) {
   const r = api.rates;
   const inrPer = {};
   for (const c of ["AED", "SAR", "QAR", "KWD", "OMR", "BHD"]) if (r[c] && r.INR) inrPer[c] = +(r.INR / r[c]).toFixed(2);
-  return { updated: new Date(api.time_last_update_utc || Date.now()).toISOString(), source: "exchangerate-api.com", inrPer };
+  // The free endpoint's terms ask for this attribution on any page showing the rates.
+  return {
+    updated: new Date(api.time_last_update_utc || Date.now()).toISOString(),
+    source: "exchangerate-api.com",
+    attribution: { text: "Rates By Exchange Rate API", url: "https://www.exchangerate-api.com" },
+    inrPer,
+  };
 }
 
 // ---- main ---------------------------------------------------------------------------------
 async function fetchText(url) {
   const res = await fetch(url, {
-    headers: { "User-Agent": "Mozilla/5.0 (compatible; GulfTeluguNewsBot/1.0)" },
+    headers: { "User-Agent": "GulfTeluguNewsBot/1.0 (+https://gulftelugunews.vercel.app/about)" },
     signal: AbortSignal.timeout(20000),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -298,20 +325,18 @@ async function main() {
     stored = JSON.parse(await readFile(DATA_FILE, "utf8"));
   } catch {}
 
-  const sources = fixtures
-    ? (await readdir(fixtures))
-        .filter((f) => /^(te|en)-.*\.xml$/.test(f))
-        .map((f) => ({ lang: f.slice(0, 2), url: join(fixtures, f), file: true }))
-    : FEEDS;
+  const sources = FEEDS.filter((f) => !BLOCKED.has(f.id));
+  const fixtureFiles = fixtures ? new Set(await readdir(fixtures)) : null;
 
   const fetched = [];
   let raw = 0;
   for (const feed of sources) {
+    if (fixtureFiles && !fixtureFiles.has(`${feed.id}.xml`)) continue;
     try {
-      const xml = feed.file ? await readFile(feed.url, "utf8") : await fetchText(feed.url);
-      for (const item of parseItems(xml)) {
+      const xml = fixtures ? await readFile(join(fixtures, `${feed.id}.xml`), "utf8") : await fetchText(feed.url);
+      for (const item of parseItems(xml, feed)) {
         raw += 1;
-        const tags = classify(item.title, feed.lang, item.publisherUrl);
+        const tags = keepable(classify(item.title, feed.lang, item.publisherUrl), item.publisher);
         if (tags) fetched.push({ ...item, lang: feed.lang, ...tags });
       }
     } catch (err) {
@@ -323,9 +348,11 @@ async function main() {
     process.exitCode = 1;
   } else {
     // Re-classify stored items too, so rule changes apply to everything on the next run.
+    // Items collected through Google News before the switch to publisher feeds are dropped.
     const restored = stored.items
+      .filter((i) => i.feed && !BLOCKED.has(i.feed) && !/news\.google\.com/.test(i.url))
       .map((i) => {
-        const tags = classify(i.title, i.lang || "te", i.publisherUrl);
+        const tags = keepable(classify(i.title, i.lang || "te", i.publisherUrl), i.publisher);
         return tags ? { ...i, ...tags, related: i.related || [] } : null;
       })
       .filter(Boolean);

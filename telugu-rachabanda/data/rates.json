@@ -1,6 +1,10 @@
 {
  "updated": "2026-11-07T00:02:31.000Z",
  "source": "exchangerate-api.com",
+ "attribution": {
+  "text": "Rates By Exchange Rate API",
+  "url": "https://www.exchangerate-api.com"
+ },
  "inrPer": {
   "AED": 25.63,
   "SAR": 25.1,

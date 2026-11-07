@@ -45,7 +45,7 @@ function storyList(items) {
 const sectionLinks = () =>
   `<nav><ul>${Object.entries(SECTIONS)
     .map(([id, [t]]) => `<li><a href="/s/${id}">${esc(t)}</a></li>`)
-    .join("")}<li><a href="/board">🌳 రచ్చబండ – మన ముచ్చట్ల వేదిక</a></li><li><a href="/sources">గల్ఫ్ తెలుగు డైరెక్టరీ</a></li></ul></nav>`;
+    .join("")}<li><a href="/board">🌳 రచ్చబండ – మన ముచ్చట్ల వేదిక</a></li><li><a href="/about">మా గురించి</a></li><li><a href="/sources">గల్ఫ్ తెలుగు డైరెక్టరీ</a></li></ul></nav>`;
 
 // Fills the page template for one address.
 export function page(template, { path, title, description, body, home = false }) {
@@ -64,7 +64,19 @@ export function page(template, { path, title, description, body, home = false })
   return html;
 }
 
-export function buildPages(template, news, community, sources) {
+// Same as fillLegal in app.js: fills contact placeholders from data/site.json.
+export function fillLegal(html, site = {}) {
+  const todo = "(త్వరలో చేర్చబడుతుంది / to be added)";
+  const email = site.contactEmail ? `<a href="mailto:${esc(site.contactEmail)}">${esc(site.contactEmail)}</a>` : todo;
+  const g = site.grievanceOfficer || {};
+  const officer = g.name ? `${esc(g.name)}${g.email ? `, <a href="mailto:${esc(g.email)}">${esc(g.email)}</a>` : ""}` : todo;
+  return html
+    .replaceAll("{{contactEmail}}", email)
+    .replaceAll("{{grievanceOfficer}}", officer)
+    .replaceAll("{{jurisdictionClause}}", site.jurisdiction ? ` (8) These terms are governed by the laws of ${esc(site.jurisdiction)}.` : "");
+}
+
+export function buildPages(template, news, community, sources, legal = {}, site = {}) {
   const items = news.items;
   const pages = [];
   const add = (p) => pages.push(p);
@@ -103,8 +115,8 @@ export function buildPages(template, news, community, sources) {
       description: `${i.title} — ${i.publisher}, ${day(i.published)}. ఈ వార్తపై గల్ఫ్ తెలుగు వారి అభిప్రాయాలు, చర్చ.`,
       body: `<article><h1>${esc(i.title)}</h1>
         <p>${esc(i.publisher)} · <time datetime="${i.published}">${day(i.published)}</time> · ${where.join(" · ")}</p>
-        ${i.description ? `<p>${esc(i.description)}</p>` : ""}
         <p><a href="${esc(i.url)}" rel="nofollow noopener">${esc(i.publisher)}లో పూర్తి వార్త చదవండి</a></p>
+        <p>ఈ శీర్షిక, వార్త ${esc(i.publisher)} వారిది. మేము శీర్షిక, లింక్ మాత్రమే చూపిస్తాము.</p>
         ${related}</article>
         <h2>ఇవి కూడా చదవండి</h2>${storyList(more)}`,
     });
@@ -145,12 +157,8 @@ export function buildPages(template, news, community, sources) {
       .join("")}`,
   });
 
-  add({
-    path: "/rules",
-    title: "చర్చా నియమాలు",
-    description: "గల్ఫ్ తెలుగు వార్తలు సైట్‌లో వ్యాఖ్యలు, చర్చలకు నియమాలు.",
-    body: `<h1>చర్చా నియమాలు</h1><p>మర్యాదగా రాయండి. ద్వేషం, తప్పుడు వార్తలు, వ్యక్తిగత వివరాలు వద్దు.</p>`,
-  });
+  for (const [id, p] of Object.entries(legal))
+    add({ path: `/${id}`, title: p.title, description: p.description, body: `<h1>${esc(p.title)}</h1>${fillLegal(p.html, site)}` });
 
   return pages;
 }
@@ -171,16 +179,18 @@ ${pages.map((p) => `  <url><loc>${SITE}${p.path === "/" ? "/" : p.path}</loc><la
 async function main() {
   const read = async (f) => readFile(join(root, f), "utf8");
   const template = await read("index.html");
-  const [news, community, sources] = await Promise.all(
-    ["data/news.json", "data/community.json", "data/sources.json"].map(async (f) => JSON.parse(await read(f))),
+  const [news, community, sources, legal, site] = await Promise.all(
+    ["data/news.json", "data/community.json", "data/sources.json", "data/legal.json", "data/site.json"].map(async (f) =>
+      JSON.parse(await read(f)),
+    ),
   );
 
   await rm(out, { recursive: true, force: true });
   await mkdir(join(out, "data"), { recursive: true });
   for (const f of ["app.js", "store.js", "config.js", "style.css", "robots.txt"]) await cp(join(root, f), join(out, f));
-  for (const f of ["news.json", "community.json", "sources.json", "rates.json"]) await cp(join(root, "data", f), join(out, "data", f));
+  for (const f of ["news.json", "community.json", "sources.json", "rates.json", "legal.json", "site.json"]) await cp(join(root, "data", f), join(out, "data", f));
 
-  const pages = buildPages(template, news, community, sources);
+  const pages = buildPages(template, news, community, sources, legal, site);
   for (const p of pages) {
     // /s/uae → dist/s/uae.html, served at /s/uae (cleanUrls in vercel.json).
     const file = p.path === "/" ? join(out, "index.html") : join(out, `${p.path.slice(1)}.html`);

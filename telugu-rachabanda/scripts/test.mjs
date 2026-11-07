@@ -1,20 +1,29 @@
 #!/usr/bin/env node
 // Offline checks for the collector. Run: node scripts/test.mjs
 import assert from "node:assert/strict";
-import { FEEDS, classify, idOf, inrRates, keyOf, merge, parseItems, sameStory } from "./update.mjs";
+import { BLOCKED, ESTABLISHED, FEEDS, classify, idOf, inrRates, keepable, keyOf, merge, parseItems, sameStory } from "./update.mjs";
 
-// ---- parsing
-const xml = `<rss><channel>
-<item><title>యాన్బూలో తెలుగు వారి దసరా, బతుకమ్మ వేడుకలు - Andhrajyothy</title><link>https://news.google.com/rss/articles/A?oc=5</link>
-<pubDate>Thu, 05 Nov 2026 14:59:57 GMT</pubDate><description>x</description><source url="https://www.andhrajyothy.com">Andhrajyothy</source></item>
-<item><title>దుబాయిలో బతుకమ్మ &amp;amp; దసరా సంబరాలు.. - sakshitha news</title><link>L</link><pubDate>bad date</pubDate><source url="https://s.com">sakshitha news</source></item>
+// ---- parsing: publisher RSS, headline + link + date only
+const feed = { id: "ntnews-nri", name: "Namasthe Telangana", site: "https://www.ntnews.com", lang: "te" };
+const xml = `<rss xmlns:media="http://search.yahoo.com/mrss/"><channel><title>NRI</title>
+<item><title><![CDATA[Dubai ETCA &#124; దుబాయ్‌లో ఘనంగా బతుకమ్మ సంబరాలు]]></title>
+<link><![CDATA[https://www.ntnews.com/nri/etca-bathukamma-1]]></link><pubDate>Tue, 13 Oct 2026 10:00:00 +0530</pubDate>
+<description><![CDATA[<p>The publisher's own summary text, which must never be copied.</p>]]></description>
+<content:encoded><![CDATA[<p>Full article text.</p>]]></content:encoded>
+<media:content url="https://img.example/photo.jpg" medium="image"/></item>
+<item><title>&apos;Smile&apos; in Sharjah</title><link>https://gulfnews.com/a</link><pubDate>bad date</pubDate></item>
+<item><title>No link</title></item>
 </channel></rss>`;
-const items = parseItems(xml);
-assert.equal(items.length, 2);
-assert.equal(items[0].title, "యాన్బూలో తెలుగు వారి దసరా, బతుకమ్మ వేడుకలు");
-assert.equal(items[0].publisher, "Andhrajyothy");
-assert.equal(items[0].published, "2026-11-05T14:59:57.000Z");
-assert.equal(items[1].title, "దుబాయిలో బతుకమ్మ & దసరా సంబరాలు..", "double-escaped & is decoded");
+const items = parseItems(xml, feed);
+assert.equal(items.length, 2, "items without a link are skipped");
+assert.equal(items[0].title, "Dubai ETCA | దుబాయ్‌లో ఘనంగా బతుకమ్మ సంబరాలు", "CDATA and numeric entities decoded");
+assert.equal(items[0].url, "https://www.ntnews.com/nri/etca-bathukamma-1");
+assert.equal(items[0].publisher, "Namasthe Telangana");
+assert.equal(items[0].published, "2026-10-13T04:30:00.000Z");
+assert.equal(items[1].title, "'Smile' in Sharjah");
+// Copyright: nothing but headline, link, date, publisher and feed id is kept.
+assert.deepEqual(Object.keys(items[0]).sort(), ["feed", "published", "publisher", "publisherUrl", "title", "url"]);
+assert.ok(!JSON.stringify(items).includes("summary") && !JSON.stringify(items).includes("photo.jpg"));
 
 // ---- classification
 const c = (t, lang = "te") => classify(t, lang);
@@ -68,5 +77,22 @@ const r = inrRates({ rates: { USD: 1, INR: 94.62, AED: 3.6725, KWD: 0.31 }, time
 assert.equal(r.inrPer.AED, 25.76);
 assert.equal(r.inrPer.KWD, 305.23);
 
-assert.ok(FEEDS.length >= 10 && FEEDS.every((f) => f.url.startsWith("https://news.google.com/")));
+// Sources: publishers' own feeds only, never Google News (its terms allow personal readers only).
+assert.ok(FEEDS.length >= 5 && FEEDS.every((f) => f.id && f.name && /^https:\/\//.test(f.url) && !/news\.google\./.test(f.url)));
+assert.equal(new Set(FEEDS.map((f) => f.id)).size, FEEDS.length);
+assert.ok(BLOCKED instanceof Set);
+
+// Rumour risk: general Gulf affairs only from established outlets.
+const war = classify("గల్ఫ్ దేశాల్లో మళ్లీ యుద్ధ భయాలు", "te");
+assert.ok(keepable(war, [...ESTABLISHED][0]).sections.includes("gulf"));
+assert.equal(keepable(war, "Some Small Site"), null);
+const flights = classify("సౌదీకి ఎయిర్ ఇండియా విమానాలు రద్దు", "te");
+assert.deepEqual(keepable(flights, "Some Small Site").sections, ["saudi", "jobs"], "travel news kept, but not in Gulf affairs");
+assert.ok(keepable(classify("దుబాయ్‌లో తెలుగు వారి బతుకమ్మ", "te"), "Some Small Site"), "Telugu-people stories from any listed feed");
+
+// Gulf papers' own local stories are kept under their country.
+assert.deepEqual(classify("Abu Dhabi warns against mixing household cleaners", "en", "https://gulfnews.com").countries, ["uae"]);
+
+// Exchange-rate attribution required by the free API's terms.
+assert.equal(r.attribution.text, "Rates By Exchange Rate API");
 console.log("ok");

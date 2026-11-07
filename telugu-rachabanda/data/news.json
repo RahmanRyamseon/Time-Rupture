@@ -1,33 +1,263 @@
 {
- "updated": "2026-11-07T09:03:23.035Z",
+ "updated": "2026-11-07T11:17:32.896Z",
  "items": [
   {
-   "title": "Philippines repatriates 38 Filipino workers from Saudi Arabia amid Middle East tensions",
-   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxON1U5TUF5Y2J4RkpZRnp6bm9Nd1BjcHItQXI4dEdYaTUzLUtsdXdFc3ZrVTZCUkhHYVNkTjdGQWtxY0EyUDZ3TmNfM1N5WmR2UzZNM1NNOFhVa1RNQ3hRc3pkWjdWcXRWNXBTendRZlZhVTE1NWlIOTZlSk4wRkltRmdCMUphY3hiQzAxbFRrbVdUV1hfaHFBb25VakpXd9IBpgFBVV95cUxQWjRMSU5icVVURlY4V09IdzFIbHdvbVg4MFdWY2NQclV0LXdfZVNiaUtSOFRzeG4zSTlJbUh6TmpLSkxwVDYtMW5VNF9XT2NUWXpjNDl3aWczM2gyVGpOSXZQX2VoVlZ3NlEzSXczRTZJX1kwNElNN0pHUnhIZVZ4NEFhaXdtcElwM2xPQ2t6V0NaVGQtV0JSLWVZd0lCV0h6VlQ3RndR?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-07T08:07:45.000Z",
+   "title": "UAE brings joy to Gaza with mass wedding amid ongoing humanitarian efforts",
+   "url": "https://gulfnews.com/uae/uae-brings-joy-to-gaza-with-mass-wedding-amid-ongoing-humanitarian-efforts-1.500739461",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T10:41:08.000Z",
+   "feed": "gulfnews",
    "lang": "en",
    "countries": [
-    "saudi"
+    "uae"
    ],
    "telugu": false,
    "sections": [
-    "saudi",
-    "gulf",
-    "exit",
-    "jobs"
+    "uae",
+    "gulf"
    ],
-   "expat": true,
-   "id": "a1ad5bffc54e",
+   "id": "5b57aaf61745",
    "related": []
   },
   {
-   "title": "'Smile, you're in Sharjah': Woman and SEWA workers rescue cat trapped inside streetlight",
-   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNS0ttc2xKaWpSMzFxYUVRQzRpNHhaaGZMNk9SbzF5TklVcmw5TE92T0ttUmFfTGZWUGpkMEtpOHhXU2JZU1Vxd2tJZm4yTlBsQ0hST2l2VElxcGhhLXg2UWVPOFQzblB4cFBwNm1udDMxV3daek9kUVh2QkJERTEwNXU2TEF1bjluM1pGTWdSSS02NXBaUndDWmRtRTBSQ0kz?oc=5",
+   "title": "Abu Dhabi Real Estate transactions surge 76% to Dh171.26 billion in 2026",
+   "url": "https://gulfnews.com/uae/abu-dhabi/abu-dhabi-real-estate-transactions-surge-76-to-dh17126-billion-in-2026-1.500739456",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T10:37:13.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "d843924992ab",
+   "related": []
+  },
+  {
+   "title": "Sheikh Mohammed extends Diwali greetings to residents in UAE and around the world",
+   "url": "https://gulfnews.com/uae/sheikh-mohammed-extends-diwali-greetings-to-residents-in-uae-and-around-the-world-1.500739446",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T10:16:45.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "269b3848bafe",
+   "related": []
+  },
+  {
+   "title": "Al Wahda vs Al Ain: Abu Dhabi derby could shape UAE Pro League title race",
+   "url": "https://gulfnews.com/sport/al-wahda-vs-al-ain-abu-dhabi-derby-could-shape-uae-pro-league-title-race-1.500739419",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T09:37:20.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "a2d9b56047d7",
+   "related": []
+  },
+  {
+   "title": "US Mission to UAE warns Americans of increased threat of attacks across Middle East",
+   "url": "https://gulfnews.com/uae/us-mission-to-uae-warns-americans-of-increased-threat-of-attacks-across-middle-east-1.500739410",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T09:35:10.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "412e7fb1671e",
+   "related": []
+  },
+  {
+   "title": "Abu Dhabi warns against mixing household cleaners over toxic gas risks",
+   "url": "https://gulfnews.com/uae/abu-dhabi/abu-dhabi-warns-against-mixing-household-cleaners-over-toxic-gas-risks-1.500739414",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T09:35:01.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "c2eace10e5b8",
+   "related": []
+  },
+  {
+   "title": "‘UAE is my first home’: Dubai teenager Riyan Malhan on historic Youth Olympic gold and a Diwali to remember",
+   "url": "https://gulfnews.com/sport/uae-is-my-first-home-dubai-teenager-riyan-malhan-on-historic-youth-olympic-gold-and-a-diwali-to-remember-1.500739375",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T09:04:37.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "c151426623a7",
+   "related": []
+  },
+  {
+   "title": "Maria Conceição’s new UAE book helps rescue cats and empowers young girls",
+   "url": "https://gulfnews.com/friday/lifetstyle/maria-concei%C3%A7%C3%A3os-new-uae-book-helps-rescue-cats-and-empowers-young-girls-1.500739400",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T09:04:22.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "6d2408c23cf8",
+   "related": []
+  },
+  {
+   "title": "Weekend digest: New UAE traffic rules, Dh25 million Big Ticket win, an A380 suite at home and more",
+   "url": "https://gulfnews.com/uae/weekend-digest-new-uae-traffic-rules-dh25-million-big-ticket-win-an-a380-suite-at-home-and-more-1.500739371",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T09:02:20.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf",
+    "jobs"
+   ],
+   "expat": true,
+   "id": "27e95741419d",
+   "related": []
+  },
+  {
+   "title": "UAE businesswoman gifts iPhone Duos to all female employees; housekeeping staffer breaks down in tears",
+   "url": "https://gulfnews.com/uae/uae-businesswoman-gifts-iphones-to-all-female-employees-housekeeping-staffer-breaks-down-1.500739374",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T08:38:46.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "a707f99a0f64",
+   "related": []
+  },
+  {
+   "title": "Abu Dhabi surgeons remove rare 4.4kg cancerous tumour from 49-year-old patient",
+   "url": "https://gulfnews.com/uae/health/abu-dhabi-surgeons-remove-rare-44kg-cancerous-tumour-from-49-year-old-patient-1.500739322",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T08:26:42.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "6330308e76d8",
+   "related": []
+  },
+  {
+   "title": "Abu Dhabi develops world's first quality assessment system for children's activities",
+   "url": "https://gulfnews.com/uae/abu-dhabi-develops-worlds-first-quality-assessment-system-for-childrens-activities-1.500739337",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T08:01:03.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "6e31cb932e86",
+   "related": []
+  },
+  {
+   "title": "Diljit Dosanjh Abu Dhabi tickets now on sale for New Year’s Eve concert: Where to book",
+   "url": "https://gulfnews.com/entertainment/diljit-dosanjh-abu-dhabi-tickets-now-on-sale-for-new-years-eve-concert-where-to-book-1.500739279",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-07T08:00:00.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf",
+    "jobs"
+   ],
+   "id": "e9ac3a321738",
+   "related": []
+  },
+  {
+   "title": "'Smile, you're in Sharjah': Even a trapped kitten wasn't left behind",
+   "url": "https://gulfnews.com/uae/smile-youre-in-sharjah-even-a-trapped-kitten-wasnt-left-behind-1.500739318",
    "publisher": "Gulf News",
    "publisherUrl": "https://gulfnews.com",
    "published": "2026-11-07T07:57:55.000Z",
+   "feed": "gulfnews",
    "lang": "en",
    "countries": [
     "uae"
@@ -35,91 +265,18 @@
    "telugu": false,
    "sections": [
     "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "61a15c07dc3a",
-   "related": []
-  },
-  {
-   "title": "గల్ఫ్ బాటలో ప్రాణాలు కోల్పోతున్న ప్రజలు - కన్నీటి సంద్రంలో మునిగిపోయిన కుటుంబాలు",
-   "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPNkJLTXduT0lsZ21ZN1RjMDNoVG5DRTQySmlTMWY4czBwYWxVVjFkTzhOQTROSHFTcGE0NVNuR2RhVks3bWdvWGQ3bXFFVUZwNktPYnBvNUI3QmxVVFJ0M29lWmZPZ1FVMlBqTFh3ZE5Wd1ZYMllRakhJdjBKZG1BekhJQ25GeVhybEJjeU1FbWV3dmR2ekZ4cWl0d3VYSVFfTXh6cDlUOHJ3dktFY3E1Z1ZueUlsaFhwX1pXTHhSZHlOX2dKV0o5MWZZQnU2Vk1IM3p3dmE2ZzYtS3NFak1vX093d9IB4wFBVV95cUxPNkJLTXduT0lsZ21ZN1RjMDNoVG5DRTQySmlTMWY4czBwYWxVVjFkTzhOQTROSHFTcGE0NVNuR2RhVks3bWdvWGQ3bXFFVUZwNktPYnBvNUI3QmxVVFJ0M29lWmZPZ1FVMlBqTFh3ZE5Wd1ZYMllRakhJdjBKZG1BekhJQ25GeVhybEJjeU1FbWV3dmR2ekZ4cWl0d3VYSVFfTXh6cDlUOHJ3dktFY3E1Z1ZueUlsaFhwX1pXTHhSZHlOX2dKV0o5MWZZQnU2Vk1IM3p3dmE2ZzYtS3NFak1vX093dw?oc=5",
-   "publisher": "ETV Bharat",
-   "publisherUrl": "https://www.etvbharat.com",
-   "published": "2026-11-07T07:20:27.000Z",
-   "lang": "te",
-   "countries": [],
-   "telugu": false,
-   "sections": [
     "gulf"
    ],
-   "id": "bf242bb5e9e9",
+   "id": "f002f7a54a8d",
    "related": []
   },
   {
-   "title": "Kuwait Court Jails Two Egyptians for 5 Years, Bangladeshi for 4 Years in Visa Trading and Forgery Case",
-   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONHFpaGJsc19SeTlCQjRYUnZJSThxYnI2T3dJNDJNc1dJdWdXSG9pYWNyajRnWnk3NXZUQXZWVEd4LUtQQXlKdEF0ZWF4VTg3WVVZNHZ5a29XU0xLQ3VFWkhhZnlFN01WMHhSWDBFdHFKMjVONjNIYzBKd1JFVGRfSzFkazRaMjQweURITTZwQS02YmZ3bWRJb0dpOUZieklxYWl5TTVUWUl6d1VUaEFGRE5EYmhLTWdScEw3c1RHT2tEdExFOVRscnVIQ0Z0QXhleXhkOFFR?oc=5",
-   "publisher": "Arab Times Kuwait News",
-   "publisherUrl": "https://www.arabtimesonline.com",
-   "published": "2026-11-07T06:53:36.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "168bb8ebc015",
-   "related": []
-  },
-  {
-   "title": "సౌదీ అరేబియాలో కేంద్రమంత్రి కిరణ్ రిజిజు పర్యటన",
-   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQbUdJdHlPY20ybnU3cUc4dkdkSHZ4S3BkN01yUlc5X0VRTUJsRkdwS3NRcF9xbGlMSV9ZeGJFeXR2ekNiUVJlSGNuY2Y3clFXMGhYUVViMmhnZlVoNWZqWXU5RUNPZkJOZ2EwMThEZ2JaV0UydjdUTE81T0tGWTdfdHhhSE95ajMtekRzMHZrU2bSAZABQVVfeXFMUG1HSXR5T2NtMm51N3FHOHZHZEh2eEtwZDdNclJXOV9FUU1CbEZHcEtzUXBfcWxpTElfWXhiRXl0dnpDYlFSZUhjbmNmN3JRVzBoWFFVYjJoZ2ZVaDVmall1OUVDT2ZCTmdhMDE4RGdiWldFMnY3VExPNU9LRlk3X3R4YUhPeWozLXpEczB2a1Nm?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-07T04:56:43.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf"
-   ],
-   "id": "02784597177f",
-   "related": []
-  },
-  {
-   "title": "అమెరికా - ఇరాన్ మధ్య ప్రాంతీయ ఉద్రిక్తతలను తగ్గించేందుకు ఖతార్ మధ్యవర్తిత్వం",
-   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxONWt4NE1uTkJwWGRaT1NRcEZNQW04cGdaaW5melhldVpVbGdvc3p6UHVpOE1zZFFvdDIwM213c0lGck04cURlenF5ZUVMY05MM1k5Q1R4ZGY4emlsTzRBWkI5a0VUS0J2MExtWUtxR3E2QmdnN1NoU2Q4Tmo1aWxuV3I2TjFwSl9RZ2w0ZDI3cGlyckNONkh3WV9MMmJHbUxuY2s1ZTdzTXVLbzFoWktUNWhUdFlNZ1NROE51RjA4TnBkd9IBwgFBVV95cUxONWt4NE1uTkJwWGRaT1NRcEZNQW04cGdaaW5melhldVpVbGdvc3p6UHVpOE1zZFFvdDIwM213c0lGck04cURlenF5ZUVMY05MM1k5Q1R4ZGY4emlsTzRBWkI5a0VUS0J2MExtWUtxR3E2QmdnN1NoU2Q4Tmo1aWxuV3I2TjFwSl9RZ2w0ZDI3cGlyckNONkh3WV9MMmJHbUxuY2s1ZTdzTXVLbzFoWktUNWhUdFlNZ1NROE51RjA4TnBkdw?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-07T04:44:18.000Z",
-   "lang": "te",
-   "countries": [
-    "qatar"
-   ],
-   "telugu": false,
-   "sections": [
-    "qatar",
-    "gulf"
-   ],
-   "id": "edf33a1a552e",
-   "related": []
-  },
-  {
-   "title": "Sharing stories and spreading hope: How this German expat is enriching life in Abu Dhabi",
-   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQbW9md21zS0lpc2tZUC1NNTh4ekZGc0lBVU5kQzZfSmZITWdYOWxmci1WSmFnY2tWT3NFRC1HRG9VcEZ3ZE9zckdqNk5oV0lJMkxOTG52VHo0bnpVNW9CbG1kd0NfYjhQaXNMVDBBaTBHRjFQNGU4ZlhXb2V0VC0zaWN5eENjZDFwbUYtTGJRcUg4RjZMY05leElWa0FmT3R5ZGdueFVJWVVNMVhaNTA2Qk9idXNfRUJGTkxLYnpPTkVmMUhNQUpaYkpOMNIB3gFBVV95cUxOZ2xySkU5ZmFZUDJCU2xpQVVmd3dMNkhjaVI3ZnU1MERZODJxVzU5OEhTc0kzQU81ZnZ5b3hyX1RScjhHdjBYdXVmZlMxZlNvejNDN19MdjNIWGl3UnA0aEpWTGpyeTVVdW91QUY4Sl9ETlBXSWpGclhQbEoxa2VXZ1hUNVoxdVRJZVNMZkhZTVEwdjRCcUp3bTBiX0hsclpKVDFabEVzX1N2R09xNjNTUjNyaTFFbXlmem4tdjhRRGY0MnFBOUlzbnBXcW1FazFJTnJpQ2hCYVZxMlFKQWc?oc=5",
+   "title": "How an Emirati boy became a young author and advocate",
+   "url": "https://gulfnews.com/uae/abu-dhabi/how-an-emirati-boy-became-a-young-author-and-advocate-1.500739328",
    "publisher": "Gulf News",
    "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-07T04:09:56.000Z",
+   "published": "2026-11-07T07:47:48.000Z",
+   "feed": "gulfnews",
    "lang": "en",
    "countries": [
     "uae"
@@ -127,34 +284,18 @@
    "telugu": false,
    "sections": [
     "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "0c619b1510c9",
-   "related": []
-  },
-  {
-   "title": "యూఎస్ గల్ఫ్ రిఫైనరీలకు కలిసొస్తున్న ఇరాన్ సంక్షోభం",
-   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPNGxKU0JVSlRTOWhfZTh2cXVhb09ZVXFEZXBzbDFPdDUyUmwtTlZaOWYwRTU3TE9kbU9XU3ZYRU5SeFBIc3JwYTNMYlFoRi03d0E0QmhYb1QwTl9IbzcwZG1Dc0RNNFpEX3FqMkFFUUVHZHlEOWFFVHladjl3NEQxZExSVGFuSTlOU3d2aGcwWG5VR2xnRHNNQnEwcWlJREotVHJHbGktSGxxckx1dGYzOHllaDVRMlhpaTNnNtIBvAFBVV95cUxPNGxKU0JVSlRTOWhfZTh2cXVhb09ZVXFEZXBzbDFPdDUyUmwtTlZaOWYwRTU3TE9kbU9XU3ZYRU5SeFBIc3JwYTNMYlFoRi03d0E0QmhYb1QwTl9IbzcwZG1Dc0RNNFpEX3FqMkFFUUVHZHlEOWFFVHladjl3NEQxZExSVGFuSTlOU3d2aGcwWG5VR2xnRHNNQnEwcWlJREotVHJHbGktSGxxckx1dGYzOHllaDVRMlhpaTNnNg?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-07T03:20:02.000Z",
-   "lang": "te",
-   "countries": [],
-   "telugu": false,
-   "sections": [
     "gulf"
    ],
-   "id": "7defdef56089",
+   "id": "83977f8a8552",
    "related": []
   },
   {
-   "title": "Indian expats illuminate Abu Dhabi with Diwali traditions and festive cheer",
-   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQZWlDNmF0cTBhZGRKc2piLWs0SUo5d1pUOENYaGFrandua0lBT3VNM0pIVnNkZWdma3VfRlIwYXkydnVrNjR6UWRmN0pERngxQndpUzBRTjkyMWM2OE9ZRFJwS1ZnbzVzOE1ZTzltX0pxaGFUc2h0elVQLTlreDhJcEFmOHdRUmRiRnl6T0VfQ2NjWVNyLTVyUFRiM1h5NV9yaFJyaDlfbEpXNFdpUTE5T1FfRW9LZC1WN2Y3MEhUQdIB0gFBVV95cUxPOWNVVUhpY01SaEIwczMtUzVqVHhacHA0dWpnSFItN2RaTXN0NS1ucExSVUlHQkc5SUtpdmw3UzBzRGptNVJVOU5DZVVNQm9rNzZuMzE5TmM2S0tPMFRtV0U0SExrWml0aTctZXpDeFo2bk04OXJXMHZLaGhrOUJWTHNKTEI5dlhERElkZUtIZDR2TnJCODA1XzZpNjZSOXdjdEFKSDVVenFQcG16NmZLUUZTZC1PNWRBSmJfb1dRYkpfWWVhd0JDcUZMdWhub2htb2c?oc=5",
+   "title": "Diwali in Dubai: More residential communities issue fireworks safety alerts",
+   "url": "https://gulfnews.com/uae/dubai/diwali-in-dubai-more-residential-communities-issue-fireworks-safety-alerts-1.500739303",
    "publisher": "Gulf News",
    "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-07T03:00:00.000Z",
+   "published": "2026-11-07T07:00:49.000Z",
+   "feed": "gulfnews",
    "lang": "en",
    "countries": [
     "uae"
@@ -162,19 +303,18 @@
    "telugu": false,
    "sections": [
     "uae",
-    "gulf",
-    "jobs"
+    "gulf"
    ],
-   "expat": true,
-   "id": "572c30d0dc0e",
+   "id": "62547f4406e4",
    "related": []
   },
   {
-   "title": "Kerala High Court gives NORKA six weeks to review expatriates’ complaint over insurance hike",
-   "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQRUhZNDNpY3BuYUc3N2xZeFVVQjJxeFVsekF6ZlNmdGIyN1JHSkJGVW9oNDQ4RVZWdmtxekZTZzZZOVlDMzFUUkdlUU9WLUxyVDdzQ0tNakJWZGJqdmotV3AzRGQ0dHlwbGZtOGRSWXFKYkJndkh4aGgyY2ZDLU96aDlYZHNqWk5CWGZ6dkJIUEp6MkZsQll2QlJWR0JwdFZpekhNZmFrZDBabVMxMGw0bFZTYWRyazI1TzFkdGk5V1RRVGNuRzAzX3lpbHV6alBobzVtM244SzHSAe4BQVVfeXFMTnVzSThyODEwZkRfZ1BBWVlEcnk0dWFZWWl4UTQ2dFpfTDlTdEw4ZVRQdE5UOXNjVUg0Vng5TXYzRGhfTkVWLUZKdTl0ZGNzd21KcURoY1pWcnEzVF83cVM3NVFCNXN2UWhnMlJOYnBPSUtCUzNiVm56QVo0d0NSbDN6Zm5ZV0hnWjBiM05GeGtZMmJHVUtjZVBDV0NiRGpmY2o1Z3NxdDNvUnctWFkzaVQzYkl3U2ZFcm8wbGFKLVplbV9YdzF3WEczeWZsa1RPVERlcENBWVRwYW5CWFU4c1QtT1hid3oxSW93bzYzQQ?oc=5",
+   "title": "Kerala High Court gives NORKA six weeks to review Indian expats’ complaint over insurance premium hike",
+   "url": "https://gulfnews.com/world/asia/india/kerala-high-court-gives-norka-six-weeks-to-review-expatriates-complaint-over-insurance-hike-1.500739000",
    "publisher": "Gulf News",
    "publisherUrl": "https://gulfnews.com",
    "published": "2026-11-07T02:40:00.000Z",
+   "feed": "gulfnews",
    "lang": "en",
    "countries": [
     "uae"
@@ -186,654 +326,17 @@
     "jobs"
    ],
    "expat": true,
-   "id": "50b57962c97d",
+   "id": "f71e89ae9285",
    "related": []
   },
   {
-   "title": "Khaleej Times - Dubai News, UAE News, Gulf, News, Latest news, Arab news, Gulf News, Dubai Labour News",
-   "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE5fYk8tWjBWRG9iZzVYQWtsRTQxaXpwVDY4OHVmV3ZDd055V2ptWVQzcURXVlN0WGFyUE4xdlFBYWxBcTQ?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-07T02:21:48.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "7385ad52dd30",
-   "related": []
-  },
-  {
-   "title": "US, Europe visa delays prompt UAE residents to rethink winter holiday travel plans",
-   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQLV9YNFlaMVFTeHJNYUZYN0ZHd0RUZ002djY5MlhTQmlRSUNfRVpmNTF5dDR6VGpDY0ktZXhDbHFsT2JldFdxZ1BuRlBXRjA0cEVpTmNGc1V6UXBxUFpoQXFZWnhndEpuaXJjdmk2VldFeWZsNE9vbWM1T0dHajNQdTM0QWljakdYWUplSGRHZExEbjVHc2wzMUk2STXSAaQBQVVfeXFMT3F1aDRTUXNNU1lPZ2VYcHdSalBjYXkyUzRfWTFLVkN4aDhvSDkyeWRWOTJrMDdXZ21EWVYtRlhlS0loaEo4VjkzRXFZQ2lpWl8xSGF5ZzFWcUc0LVNsdTlHUFZSZUh3cTczZzk0SzBJTEpGMVdkQTBSNG14cldvZWxTNU0tUUVMa09oejZkSUVwUl9kU1Q3OXMtRnFhdG1RbGZXRTQ?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-07T02:00:00.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "a87351ad38c7",
-   "related": []
-  },
-  {
-   "title": "US-Iran War: యుద్ధమా.. శాంతా? ట్రంప్‌తో ఖతార్ మంతనాలు.. అమెరికా ముందు ఇరాన్ 7 షరతులు!",
-   "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNV0FHMDZJUUx2YkxWWDJSOXF2S2YtTW0yX05nYm9zbnM2VEhRVGhGY1NIWG1OVU5nY3pTLVZXQXlyVmhaS05WV21rN2Y4a0xpc29VbXpCNjZPM2VlX2xTbE03c2hINE5Qd1ktZlRnOWs0V1lwSy10NWktQ05yZUtiaC1TUDl2b2h4Z0d3ZG5FcHh0MlBab21wd2d3ZnFzZEFGRXlxS0s4eEVxdl8tc1MtZV9jd3JQT3NYOTV5UlpCZEw3MVRaZ1pWWEdWSmVzdDdJVV9abjRKQjM5RXhM?oc=5",
-   "publisher": "News18 Telugu",
-   "publisherUrl": "https://telugu.news18.com",
-   "published": "2026-11-06T23:28:00.000Z",
-   "lang": "te",
-   "countries": [
-    "qatar"
-   ],
-   "telugu": false,
-   "sections": [
-    "qatar",
-    "gulf"
-   ],
-   "id": "d584f039a05f",
-   "related": []
-  },
-  {
-   "title": "Calls to abolish parallel Bahrainisation system dismissed",
-   "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9uamotQTMzTGM5MTlZVWQwQzBVeXNJa3NHWUo4SlhEYkZHbnJxdEhkdHRGOUJlTkxVUUdJblVjMjBpTndkRktVcDFHY1c1bzQ3bHJB?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-11-06T21:41:12.000Z",
-   "lang": "en",
-   "countries": [
-    "bahrain"
-   ],
-   "telugu": false,
-   "sections": [
-    "bahrain",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "84f8552f4bfa",
-   "related": []
-  },
-  {
-   "title": "‘Only 2.28 per cent of foreign workers abandon jobs’",
-   "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE03TjJxaWx4YUE0Y2hCYzd4YTl5SEkya183YU80dklrOTUxNm9XcnB3S20wSFJoYVJfOEFGaWI1VVp3aVUxRzhuSG5FWXE2M1VUQURN?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-11-06T21:16:34.000Z",
-   "lang": "en",
-   "countries": [
-    "bahrain"
-   ],
-   "telugu": false,
-   "sections": [
-    "bahrain",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "e5bcad7d429f",
-   "related": []
-  },
-  {
-   "title": "Scores of expatriates benefit from 20th Asian Medical Camp | Gulf Times",
-   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPREtuWEFmOWZGdE5GalRHN1dEMDVqbU80RGNzcmRHYTF2TFFyTDVZRmlnT2dWSHdSOGZnanJCUnkwTmM2bXVmNkM5dkt1RWRURWwweU9RelZQM0lQOFRPZDVhMWI5U09rTzNzcTgzbERuMklRM2xnZWtZeGRFOXRKaGdETlhwT3d4SkRjOG9sT2RncEFfazRQU2lIbDM3M1RybGtWSjRRcHJwZ9IBrwFBVV95cUxNdXZuUFFtU1ZzVFRaanh1TkNxRm9pd25qelpsOHg3RXlQUkJFNHg5bXUyVHRUWVhaN2ttNzRjajlUcGc4LUJReXNBdVZsTWNUVjN4dm5hdVNIRlBqYU5hcjZCR1pKMERlcmlvdVBVZ1BzNFVOY09rajlyX1prdkp4UHFmZVV3dllwbTNObzhpLVRPS3g1ZGxRSmtmU0tDN3BOa1hUWTRCQllmeE10SlI4?oc=5",
-   "publisher": "Gulf Times",
-   "publisherUrl": "https://www.gulf-times.com",
-   "published": "2026-11-06T21:00:00.000Z",
-   "lang": "en",
-   "countries": [
-    "qatar"
-   ],
-   "telugu": false,
-   "sections": [
-    "qatar",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "59261f8502b8",
-   "related": []
-  },
-  {
-   "title": "Envoys welcome Saudi Arabia’s new tourist e-Visa, visa on arrival expansion to 4 nations",
-   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNejY4bUwteENBWHk0NHFCOElCc2Z3WnJrenNYX09feWIyaWxqdU9DQzFkOWdKeGMzMGxLNjZIenBFWDh5RFV2emstc1NIZi1NbkY5Y3hVSGdkdU9rSUdMdnNCYk5ramVuNl9waDhnUU03V1JxcXRNb08yNVpSRWNJaVpYQVo2WS1hUnF1am5Ldm9USlZ1Wkhvc1RuYXVidjFlTERuYV9tRXZ3elJPa0REaW5SdS02d3ZjcXVjQlEwejRhSzRuMmhEaTVvTlk?oc=5",
-   "publisher": "Arab News",
-   "publisherUrl": "https://www.arabnews.com",
-   "published": "2026-11-06T19:22:52.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "7daaba50010b",
-   "related": [
-    {
-     "title": "Saudi Arabia expands tourist visa access to four more countries",
-     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNMm5fak5uWkZrODV6OVhNV3dzUXFsSEJZSkJKV0ktMnQyaHVjWDdWWTJKd0NhVmF4V2hMMFBYODJLMnhqN0ktVHI5ZUJScWZ0UGJJTW4yakNSVVcwb20xQ1NPSDhMUGVpWXdmVE5GZHExUGNkOFNuWGF3OTREcWQteXpLSmlONzdaeXA3ZjlSSmxwNU5lX1BISFJ0SVp6bzhPODY0Qmhn0gG7AUFVX3lxTE9fOGZTaVR2NDZpd2l2OXVVZC1ZUHBIcUZFUDg3OHZ0c3ZlT2VJdGNoN1U3SkhfSjF1Y2VTRU50RzZWVFpPOXFKay1zMUdyaTlyZE43Y3kyVHhvNC1TbkRpUmQzZklMN1c2VEtQT2p1NXdYcHdSRGZ6ZXpmbjluREFXWHVxRXVKWEtGRHAxNDN4QUZoR25ZOXFWSGE0NERiTFJpMVRMVXRhYUhVUHI2THBMUU1tY1VOZHlBbE0?oc=5",
-     "publisher": "Gulf News"
-    },
-    {
-     "title": "Saudi Arabia expands tourist visa eligibility to four new countries",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQNnRlZEZHVDVqeGhzeU94aDh6VXRkcUVwblpPVmtmVURfX3hWbHRyRWEwTzhRU1o0LTRjRTN0NGlMMFc2ZjBEVU83Q3FfT0IzSXlJWEdBMUJ3VlBJeVZSN0RLTEJnd1FmN2Fuc01YcGQ5c1RFaFU4RTd1N3A4ZHBwUU9ZdVVCZlZwdGVseVFVUGR1dXE3WTRGaGtIVXFmVEdVaVJtbkpXRUZMYVV3b25NdzFiek44V3UzWU9uZGtIRS0?oc=5",
-     "publisher": "Saudi Gazette"
-    }
-   ]
-  },
-  {
-   "title": "అమెరికా-ఇరాన్ యుద్ధానికి తెర ? అణు కార్యక్రమంపై రాజీకి ఇరాన్ సిద్ధం.. ఖతార్ ముమ్మర దౌత్యం!",
-   "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxPMllPMFNaSEdMWFd4el8xam11VzZpN3dLeDktdVNNVVgtVnJIQ0RIdVkzMnFZT0RXdFEyRlJMckVFc3Rya3BxeURvQWtVZ3lvbVpTbnNTdVpwcXFJNlZVZE1fWTF4Z01iNUZub0xnOThHcEtXdWRYejVfZ0d1SE1hM2lfSmZrSlJlVlhQbkdPZlR3elVOaGxtU0hQSUs3eUdVWm9DZlUtaEJzZkJ6YWoyNmNlNWxtSlpkOFktdFBzN0xXRk1mdWFLVXFLclZQLV9wWWdaTFdfaDUxNHZwbkhPdHlWQUZzUVo2OWR1LWRWN0laX3pIZk9UaUJ1YUFWcmU5Zmc?oc=5",
-   "publisher": "News18 Telugu",
-   "publisherUrl": "https://telugu.news18.com",
-   "published": "2026-11-06T16:09:22.000Z",
-   "lang": "te",
-   "countries": [
-    "qatar"
-   ],
-   "telugu": false,
-   "sections": [
-    "qatar",
-    "gulf"
-   ],
-   "id": "2e1ef482ed92",
-   "related": []
-  },
-  {
-   "title": "అండర్-19 ఆసియా కప్‌లో పాకిస్థాన్ ఘన విజయం.. యూఏఈపై 9 వికెట్ల తేడాతో భారీ గెలుపు!",
-   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNcGtyaTBWaERDMmJ0cEpmamF3TGJBRjJhc3RPWGtTd2VrOHZQOUVvSmUwWUJPNzdsYW5tcVBKV29STG1LbWhMTm9rTTh0Uk1kRXh5eEpMb05sN05tTDdlbmpuaTlLbmFSTkVvbUJ0dGJuQ1ZiZ3d6aUxlWk14UjB2UndDaWJaVjBqMFZnUFVTaFJTbVBsYkp2MVhxcHhiWVVuLUFUd0tZV3FwVTNuVHZDZ0tybUxLUdIBtgFBVV95cUxNcGtyaTBWaERDMmJ0cEpmamF3TGJBRjJhc3RPWGtTd2VrOHZQOUVvSmUwWUJPNzdsYW5tcVBKV29STG1LbWhMTm9rTTh0Uk1kRXh5eEpMb05sN05tTDdlbmpuaTlLbmFSTkVvbUJ0dGJuQ1ZiZ3d6aUxlWk14UjB2UndDaWJaVjBqMFZnUFVTaFJTbVBsYkp2MVhxcHhiWVVuLUFUd0tZV3FwVTNuVHZDZ0tybUxLUQ?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-06T15:39:39.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "ba010560e347",
-   "related": []
-  },
-  {
-   "title": "Trump Iran War Qatar Talks | ఇరాన్‌ యుద్ధానికి ముగింపు పలికే దిశగా ట్రంప్‌ అడుగులు! - Andhra Prabha | Telugu News Daily , Latest Telugu News , Latest తెలుగు వార్తలు and LIVE Updates | Breaking News in AP and Telangana |",
-   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE8wdnNMd3gwWEJySFg5MGhpeEhoU01JZi1RS0NLZW8tZFlCSWZNSERzVzZ5eS1KSXlQclQyOEx5NFlXZUpLbHFtVWQ0cHY1dnpHN0VGRkFMeEJtTDBrNWRz?oc=5",
-   "publisher": "prabhanews.com",
-   "publisherUrl": "https://prabhanews.com",
-   "published": "2026-11-06T13:17:01.000Z",
-   "lang": "te",
-   "countries": [
-    "qatar"
-   ],
-   "telugu": true,
-   "sections": [
-    "qatar",
-    "top"
-   ],
-   "id": "22c1be935765",
-   "related": []
-  },
-  {
-   "title": "Royal Air Force of Oman conducts medical evacuation of Indian national",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQenNqcEtkdTItOUd5b2MxSGFiZGYwOVdTQUJpVHMtVENSMEdfemFNeElZcHFHVEV6R3g4Y1pNMmJvWDFpNF9yNjUxUkFaVG5Kc1BhWmE1bzhvcWNMVWNzTlVWMjdXdmsxZjZfMklzZi13dHJiTVVUZGN1Vy1QbnpycEFobFFuT1ZzT2ptRmZWR1hWYnhkUXRiOUZac09YM3pSU1lyS2VOUFlrdndtc3c?oc=5",
-   "publisher": "Times of Oman",
-   "publisherUrl": "https://timesofoman.com",
-   "published": "2026-11-06T12:01:00.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "3e2a60fefa9d",
-   "related": []
-  },
-  {
-   "title": "Nigerian Expat Reports Kuwaiti Sponsor for Alleged Assault in Farwaniya",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOSTVhS2hRenZoWXJhblB3RDRwcDJidlRRbTI4RV9HMXBGc2xoOG1XaFhFUmRjdDM3Y2l5WmttWVBEZmJYa21SQjItMkwzTkNCc0xPczVMdjA0S1FjUG5raG1VRmFndjJkMDU4WDNBOE5VbmxCb3I4Njd2YndTZWc1Nml5Rm8wVFY5cWNnOTVSSjZSLS1Lc0hHYW5LU0c3NmJhLXdjaG9tal9JSEt6YXc?oc=5",
-   "publisher": "Arab Times Kuwait News",
-   "publisherUrl": "https://www.arabtimesonline.com",
-   "published": "2026-11-06T11:18:42.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "79c8ef698f16",
-   "related": []
-  },
-  {
-   "title": "ట్రావెలర్లకు బిగ్ అలర్ట్.. కువైట్ ఎయిర్‌పోర్టులో ఫోటోలు, వీడియోల చిత్రీకరణపై నిషేధం",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQVGVyUFVQbXR6b1laajFRcGRwMUhHa21SUS1RWTNORG03Ym9CMnI2YWM0ZEdVcmtnaEl1ZnpYekxpQ0xfeEVHclZucXBOZXk0aEh4UTNvX2djVnRzMXV6ZXdrYmI3bnVCdlRaTzNqb3U2c29QOU9ka3JsQWF4UDBIT3ZOYWxicHZ0Zk9WSW1EYzJTQXh6clluUGRsakRWNEN5T2xFNmQ2V2tlMWh2UDRWbVhuNzF5dVhiczhVeTNjTG1NRS1lVlE?oc=5",
-   "publisher": "BigTvLive",
-   "publisherUrl": "https://www.bigtvlive.com",
-   "published": "2026-11-06T10:01:45.000Z",
-   "lang": "te",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "jobs"
-   ],
-   "id": "eec7f362cfd8",
-   "related": [
-    {
-     "title": "కువైట్ అంతర్జాతీయ విమానాశ్రయంలో ఫోటోలు, వీడియోల చిత్రీకరణపై నిషేధం",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOd3JlTG9kcHdEQS1wdEo2YVdOd2NoUVNjU0Y0MEY2allud01GaUZWYVpiODl0TlpqUHp6NXZmVENwblJCRE5JMlJ6ZFozbjlXbmxtN28tM1J3OEh5bHNockM1eFJGTTJpNzNTOHk0eHNyYURMSVdWUzZYbkVNTHlxQkxqTHdZVnp2ZXF3ZDdSaHhaU2NCdXA0QVZiem9VOERVck5pZlFqZE1SUQ?oc=5",
-     "publisher": "Disha daily"
-    }
-   ]
-  },
-  {
-   "title": "ఢిల్లీ ఆభరణాల చైన్ మేనేజర్ పై అత్యాచారం ఆరోపణలు, అబుదాబి నుండి భారత్ కు అప్పగించారు",
-   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQMlFIYnVCS2JULWZDTGlYYy1rMXVWeUJSeUR3VFljTUdHQnItY1RyUFByMTdWX2ZNWFR1Vjc2eXYxazJteldZZlJyOTFtY0RsM3pKdi1KLWhSY0FlU1BEX2gzY3F3Q0Y4LWJEU3B3OFM4eldPNm5wVmtINHEwRFo3YjM1NHNHaERYV3Jj?oc=5",
-   "publisher": "Prime9News Telugu",
-   "publisherUrl": "https://prime9news.com",
-   "published": "2026-11-06T06:02:19.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "a350d9b1acf2",
-   "related": []
-  },
-  {
-   "title": "హైదరాబాద్‌ గల్ఫ్ గ్లోబల్ ప్రాపర్టీ ఎక్స్‌పోకు విపరీతమైన రెస్పాన్స్!",
-   "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPekFTeE13d3hfR1l3ZVhINkY0aVVfYnZ5cUlKX1VWeGRSb3FseWwyZ0dSOUhibXRDUTMxc2RoUkR4NnZyQldaa1lqcEZnQXlmTmVIdmpVS1NnT3F2V3hKUTNpeTNGT3g2RjdhZHNleGptZW5sUzNMaGhIR0JhbFhwLTB4cVhTMW8zMDBZcTVOUXRWeG9zTmFTTmlnWTMwb0trZ0dUbU5sdw?oc=5",
-   "publisher": "Telugu360",
-   "publisherUrl": "https://www.telugu360.com",
-   "published": "2026-11-06T05:20:41.000Z",
-   "lang": "te",
-   "countries": [],
-   "telugu": true,
-   "sections": [
-    "top",
-    "jobs"
-   ],
-   "id": "7e6736df09c0",
-   "related": []
-  },
-  {
-   "title": "టర్కీ పార్లమెంట్ మక్కా ఒప్పందాన్ని ఆమోదించింది",
-   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOTXFaS1VJZDNOdkp0NXludkY4ZlNEQjJKSEtsaDNsNUlkRkpvTGx4NVc0THZLQXZKZ2VVZVpkM0ZtcTlZSW9TV1RYdXcyXzR2T3BtQWUyRDdNWWN1T1FQQWRVRm0zTTYxSHdEa2NRRXRIblAydkRvbHVfUG5Lck85OUVNUjNVdw?oc=5",
-   "publisher": "Prime9News Telugu",
-   "publisherUrl": "https://prime9news.com",
-   "published": "2026-11-06T05:01:05.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf"
-   ],
-   "id": "204de083438a",
-   "related": [
-    {
-     "title": "సౌదీ-పాక్‌లతో రక్షణ కూటమికి టర్కీ పార్లమెంట్ ఆమోదం",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNZThJM3Rjak5NaDBHWVh2T1ZSbVMwMUw3bVU0aEszRk56b09BTFp1ekZUNG11VHo1ZFF2V2ZueEx4TlFwWVFIRk1GZC1UVGc1MkFyLUotLVI0bmNEci1oaktrNEt4bmlFMkVGRElfano5M2U1RnYzZGUxMjZDbzdrQzhna0NQekNNRmZneGdqUU4tdGFqUmRIMjV2b2tCNkxMNFHSAaIBQVVfeXFMTWU4STN0Y2pOTWgwR1lYdk9WUm1TMDFMN21VNGhLM0ZOem9PQUxadXpGVDRtdVR6NWRRdldmbnhMeE5RcFlRSEZNRmQtVFRnNTJBci1KLS1SNG5jRHItaGpLazRLeG5pRTJFRkRJX2p6OTNlNUZ2M2RlMTI2Q283a0M4Z2tDUHpDTUZmZ3hnalFOLXRhalJkSDI1dm9rQjZMTDRR?oc=5",
-     "publisher": "Suryaa News"
-    }
-   ]
-  },
-  {
-   "title": "Fresh tests needed to renew UAE driving licence expired over 10 years ago",
-   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNd2dkWmk1dDZaUkwwOTA3TkVUSXVUSndNVHJ4eEVuU0VfZjZNVGdxdDNTYkZwSk9KeGxZa3BCT3lvRzlIMGg1UFFvMkJPT0x4NGgzeHlWWmRBSERIenlmNkxOOVV2ZzU0bmRKWnZBX0RFdFo2ZzRGUzVZTzg0SEtHMktjV19iWVl4QjRRaENyMExfTzhvTENHSk9HREJoekIweEswNHBycjd3UdIBsgFBVV95cUxQN1ZsckNIMU9TNU1vV1hELThnV2xSejdEekMwYWM0YjNlYzFPNVBINVFQaUF2V3VEVWhxTkM5NFJHUGRLSkZNTmptamV5aE5LN19ZMXRBcmZvVGdXc1RfeTNYYTgtMlJsQkpTeGhkZEcwbFVXSktaZGRCeldzMFFuVHI5MFRLOGR5TWlkSnhqMGJ3YlY1dkRrNzJ2TlpuY25sVGZMRGRhRVh4SjREcnZDdmh3?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-06T04:47:36.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "f5b94740752b",
-   "related": [
-    {
-     "title": "UAE driving licence expired years ago? Here’s when you must retake driving tests",
-     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOVDVJemwwMDg0bHZEV0FLUVVxOUUtMmx1Ykt5WGFyeTdXZWIxYmdhbjdYeVBqVjllT1VHTXdQSERPM1JfdzN5c3hfdUxvaWVmQi16ZlgzX1dXMDNGNkNWYU5WWEZzWkRaWlJZeUxRc1ptVWRxdkR5eG9HMW1lV2kyR1hMclVpcEpsNVlxMlVuOEU1bVlPeng4ZkloMzg3a0E5cmFMN0kzLTlCeU1zTE1BRXRONUs1d9IBxgFBVV95cUxPOTNvbmZJT2pERlpaTE5wSlR6YUY5TXdFT2NBU1lhemtsVGI3czdJSEtnblpxOTZWX2tVSFR3bFJtcFlHTFF5bFB6ZGQ0YlF6UERxZmdXWmlTenJpQ3FESUZ1REd3OXNGbWlmQWQyQ1N6SWg1ZlA0MWVxTTJFNkl0c1EtRmN3UVRJbXhGb0FveWFkQkZaRFhpLWlyWXpWWWJCVUZPRWJhMDFScGdlNUlDLWRpQUV6QWt0cG9DNFBSTWpuVFZpaWc?oc=5",
-     "publisher": "Gulf News"
-    }
-   ]
-  },
-  {
-   "title": "US labour productivity rises 3.6% in Q3 2026, unit labour costs decline 0.7%",
-   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNTnVTTU5TWWZrZFR5Tm9CbUh6TXJlOHp1SXlEc1BXdkZvbzdkZVhLa29tekpqSXdSalVUY2NfakVTR2VEemhONkdUYnV4WVBmbllleDc0LVVjelBNcV83X0pxdFVuY2wxZXUwazc1b1BpUW9rVUJybHY0aFk1NXJlMU16UHBKRG9GYUVwaVBjNmRoNEVqUENNYVhNRjQ4cVlVRExVQWE4czhvaGhrYzVv?oc=5",
-   "publisher": "Times of Oman",
-   "publisherUrl": "https://timesofoman.com",
-   "published": "2026-11-06T03:58:00.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "03d25a3ba867",
-   "related": []
-  },
-  {
-   "title": "UAE traffic rules 2027: Five major changes every driver should know",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPby1FcG15NXRCTmJVeG5mWlVDTjRJa2RONUUwUTNmeVVuMzZvWlFhd3hqV1EtT29fM3FCTC1nUUJxVnAzYk1QdU1lMEl3aGRXUVE1UTA1NklyaUg1Zm9XYXpsSDhvZWN1VS1id1BmWmdqeTNDZGtMVGdyVVhjZmhieUtBQWkyZU40LWdNZW1wQUc0WkIzWmVWc0s2OHVvU0xmMzBaQS1uX2lJSklnYXI5V3lmQVp6MW5YVWZFaUd1X1nSAdMBQVVfeXFMTzZjOGVwV2V6U0o0VXVLS09xSEd3MmFpVXVqbGVjcHBGODQ0cXZJUk1JcEl0aG5Bd0VlZ1NhSExreERhMm1WWjVua3BaRFRXMlBkQjlRRHR6Q0pKRjRKd29PSjBmeWdaQUxBN1RNam9JT0hoT3paVjFKcmJWaGpoX3d2Z3JNV1hkOEVXNjFUb0hMYWZZWlJCcUxtamVoUFdJaThMc24wWVd6R0E0d0pTdUI1OGgtdVFfQU5jUUpuNi1zOU1iNmVBaUVDVFFUWFZjQmJNTQ?oc=5",
+   "title": "Why UAE pet owners could pay more for waiting",
+   "url": "https://gulfnews.com/friday/events/why-uae-pet-owners-could-pay-more-for-waiting-1.500729756",
    "publisher": "Gulf News",
    "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-06T02:25:58.000Z",
+   "published": "2026-10-30T12:24:06.000Z",
+   "feed": "gulfnews",
    "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "b921f28f31dc",
-   "related": []
-  },
-  {
-   "title": "ఇరాన్ ప్రభావం: అమెరికా LNG వైపు మళ్లుతున్న ఖతార్, ప్రపంచంలోనే అతిపెద్ద కొనుగోలుదారుగా అవతరించనుంది.",
-   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQdnpBMDlHS3J0bW12c1FLc3lIVmZOczBJTmJPMnA5c3daTDVuUlBIZE1vNWhMajJ1eXhsQUlLTVphNVA5RzdzT3FrN0Ryc0NRSDAyWG9nV1BlcXZTeU1teEp6YlV6WU9FWE5hWGk2RTlYalJNRmdBVmhZUG50TjVRLWlMUVI5S0g0ckd0Vk1PckpqVnJDX05LVEtWNkVyb3I0TnNFVXctTDVhbEZvb2pnaDZkR2p1dw?oc=5",
-   "publisher": "internationalfinance.com",
-   "publisherUrl": "https://internationalfinance.com",
-   "published": "2026-11-06T02:00:04.000Z",
-   "lang": "te",
-   "countries": [
-    "qatar"
-   ],
-   "telugu": false,
-   "sections": [
-    "qatar",
-    "gulf"
-   ],
-   "id": "3410c43e1ac6",
-   "related": []
-  },
-  {
-   "title": "గల్ఫ్ దేశాలతో ఇరాన్ విదేశాంగ మంత్రి అత్యవసర చర్చలు",
-   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPcmJ6ZHVVbVVtUFFlRmtudHRUdXNSSUFYaVVPRmhjSENzUXh3TTRSR09xeFFuMUsxdmZvUWx5aDdjVENHNjB2SVZ2eTNKZDNzeFlpMVdCZzYydTFld0FmVjkwbHpYNkdacTFlUUMtNWdWNXpfVjJqS1JwdFhDd3pfb2dpWC1uR3U1N3FNLWtpWmxQRTlXNlFRRkptRk5SRXhRdVBLcnhUYlZvSG9ZTnFhNzBSZWpYVVFHb1JyQWg1T1RMWXc4cEpXc19hSdIBywFBVV95cUxPcmJ6ZHVVbVVtUFFlRmtudHRUdXNSSUFYaVVPRmhjSENzUXh3TTRSR09xeFFuMUsxdmZvUWx5aDdjVENHNjB2SVZ2eTNKZDNzeFlpMVdCZzYydTFld0FmVjkwbHpYNkdacTFlUUMtNWdWNXpfVjJqS1JwdFhDd3pfb2dpWC1uR3U1N3FNLWtpWmxQRTlXNlFRRkptRk5SRXhRdVBLcnhUYlZvSG9ZTnFhNzBSZWpYVVFHb1JyQWg1T1RMWXc4cEpXc19hSQ?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-06T01:47:37.000Z",
-   "lang": "te",
-   "countries": [],
-   "telugu": false,
-   "sections": [
-    "gulf"
-   ],
-   "id": "68da96adad69",
-   "related": []
-  },
-  {
-   "title": "సౌదీ.. 51 బిలియన్‌ డాలర్లు ఇస్తే ‘శాంతి’స్తాం: హూతీలు",
-   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBvWUlnTXZyMGZJVUlIejZtT08zUnZRMDZ5WjB3OG5jcU9SZ0YzTWFfeDFiV0RWa3N2V2lkSTRTeWtTckN2TEI1dVJDMzVzeE5raFdOVWlVOUZseFQ0SWFxel9HbXFUNjJqeGw0TGVlNUfSAXBBVV95cUxQb1lJZ012cjBmSVVJSHo2bU9PM1J2UTA2eVowdzhuY3FPUmdGM01hX3gxYldEVmtzdldpZEk0U3lrU3JDdkxCNXVSQzM1c3hOa2hXTlVpVTlGbHhUNElhcXpfR21xVDYyanhsNExlZTVH?oc=5",
-   "publisher": "Eenadu",
-   "publisherUrl": "https://www.eenadu.net",
-   "published": "2026-11-06T00:23:43.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf"
-   ],
-   "id": "dde56b651497",
-   "related": []
-  },
-  {
-   "title": "దుబాయిలో మొగిలిపేట వాసి జీవన్మృతి",
-   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE42QjJZUE04R2M2Q2RHdWtrc3dfam45X1p5VnBNQ2pNdHVXYTRBMk9pSGdxMmhIZmwyMXZCT3dwXzVOVDkzVnJLRUxLOVd1LTlCRG1ud1BraXZfV0kwbmI2SERqOVQteUFSY0h6LUpSREZ4eXY5cVR3d3RSR3B5LTg?oc=5",
-   "publisher": "Eenadu",
-   "publisherUrl": "https://www.eenadu.net",
-   "published": "2026-11-06T00:11:35.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "exit"
-   ],
-   "id": "2d4b9c607cd5",
-   "related": []
-  },
-  {
-   "title": "More than 570 expats deported following October crackdown",
-   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQemFRUTc3alRrbHZDaGRLaWdwdEhWWVdqZklfYlRvYW5lc2hZcmcwaEFlQXVOYlRGQ3VvcnE4WXdVVzZUTTRDcUpwZDFYRE8tQlhrZ1ZETWpmcFItcDl6RXZ4WmZCQVB6V3lnRU13SFN2UWFjbllKUTdnSzJWeVV6bjl3Q0o2RW5WX0FtckJNWTlNV3VaN3ZLLUZrY09NTGZM?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-11-05T21:06:25.000Z",
-   "lang": "en",
-   "countries": [
-    "bahrain"
-   ],
-   "telugu": false,
-   "sections": [
-    "bahrain",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "239d5e85840d",
-   "related": []
-  },
-  {
-   "title": "Two Egyptian Expats Killed in Separate Accidents in Salwa and Mutlaa",
-   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOanFqakJsVUNaaF9wYlpnLUoxOVZmZ0I0T0I3YzFtZmV6aVRPZGR3amdSdElLX040NTlLNExORERTZE1VMjFpTXNDcTRSR05lamROd244UG5adEswOVdmSktfeXd0UUJ3LWJnYkw1QTZ5eTBqQUVhN0hLaE91Sm1zZUVzTnB3dU5ib1JBTjRJUUNHQnJlWXR1S1QwWV95SXdxeHlwWXR0ZXBGQQ?oc=5",
-   "publisher": "Arab Times Kuwait News",
-   "publisherUrl": "https://www.arabtimesonline.com",
-   "published": "2026-11-05T20:30:15.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "34f3aa4ea49d",
-   "related": []
-  },
-  {
-   "title": "పాకిస్తాన్-కువైట్ మధ్య రక్షణ ఒప్పందం ఆమోదం",
-   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxORklVa2NSa1psdmdBeXZGamVNZS1IUDFHWEVPc0tiN2prd0x3Z3I3VXhEdndrQUk5b3JQdVdPbHhGd2VXcFZhR1BZY3lIaTlfdUYtRzV1b2hSU1luWXRMVFBfV2Vvb3pGSm9GRW1UQ25GV0ZJblZrQ0xxZmY3NHpzbHYwQlJwdzlva3VLNWpLWkl0cUZMd0E?oc=5",
-   "publisher": "Prime9News Telugu",
-   "publisherUrl": "https://www.prime9news.com",
-   "published": "2026-11-05T19:58:00.000Z",
-   "lang": "te",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf"
-   ],
-   "id": "c31af5083ccc",
-   "related": []
-  },
-  {
-   "title": "Trump administration held talks with Iran on deporting Iranians during the war, court documents show",
-   "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOdlZPSUotQTBfMXNEa01nel83YmlNSW9ZeUpFdHluTVc1SVpaNXJmSzU3Qkk2VzZCekxPOFJmeVJDbENfSUJVbUJnWmpaeFhnN0RnaW9ONVpIQXBDZTBRUm9ZVkNLOE4tY0ZOMU5lZ3lqV2VDNmplNGxWRENUZW9wVzNVR0NvanowWnQ3ZV9sZHdsSTNPbXRsemFqYnRCRHB5QXAzRDVzNE14MDFqZ3lERkgtOTVGalNFcElWelpaMDZnT092TGRDY2dyOVdWZUxDQl9RVA?oc=5",
-   "publisher": "Arab News",
-   "publisherUrl": "https://www.arabnews.com",
-   "published": "2026-11-05T17:51:17.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "4d6d2f073343",
-   "related": []
-  },
-  {
-   "title": "UAE NRIs weigh investment options as India plans stock tax changes",
-   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxON0h3Y0hxNDJha2E4NWVaUDZReG04MWwtekRCZlpPYng0MDJNQTZzZ0J3cnhpTzhOWThTQmtNcmdxSHFWcVplR3lnYmZPTUxZVkxFWHhHRFRzdVFLVzR2Nm1GVlRXQjU5NUpPRFhERVQyV2FrdS1CU0l6dG5zd2NJbWlrNzlKUFhoRkFuVkRaU1FhVU53enVWTXVNRS0xVlNRbG5VSGNyWmhDSUk2UWlXcXg2bnJ4VjRvMzlz0gHOAUFVX3lxTFBOLTRMeXE2U21hRXo0eXJkZGNOQUtIRUV0YVQ5c2lLT05lUG9JdWlxWTNmaVc1R3JPcmpfTnItMERqcmRRN3JLUHFxVHJIMHNDWDZRV3NkYnltSWhfOXp4QjVfQ2dyZjJHdjRYV3Z3SjR0RlI1MXZSREMxU2s3aFFfVlF0NXdzbTV5Ni1PWUE5MlI1aDRRdGhWMXphaEViV3lXU1FwTFNrU0t5Vm5sLW42Qy1jREdINmZ2aW5wM3hmRzhhMmo1N1NvaGNfMzZR?oc=5",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-05T15:18:13.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": true,
-   "sections": [
-    "uae",
-    "top"
-   ],
-   "id": "eb30d274caa0",
-   "related": []
-  },
-  {
-   "title": "Asian expatriate arrested in Al Dhahirah Governorate with cigarettes",
-   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPMW5HaGhwWUJyQ1FrelpFYjZpRkVvOWZjM1ZjUXc3RVNJMGZIU200TlVvZlZWV1MxS3gxMWV3bUZjc2owaC1qc2U2UVVOM2ZYdGlWekowcWs3MC1pTTg2Z191Q2RmeTdCWWl3MU9qbHlhTFBLeUFwX09PcmpvQ1Z5RDltZGRTWVNHNTcxQnktampqVVZEaUxteHJBeGxZeHo1N3pneEZzUklfSHM?oc=5",
-   "publisher": "Times of Oman",
-   "publisherUrl": "https://timesofoman.com",
-   "published": "2026-11-05T13:43:00.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "8643f86b8f44",
-   "related": []
-  },
-  {
-   "title": "భారత్ - కువైట్ సాంస్కృతిక సమ్మేళనంతో అంబరాన్నంటిన సంబురాలు",
-   "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOb09qeDg0MC1pUEI3T3FoTDFTS1BsaXMwdHFvcWVKY0dGZDlNWl8wOC1TUTdCaFFmTWtpVUxMcU9kTHBsRjk0eGdnQjBNWXMtejd4OWVrczk0QUF1aEVZVmNHaUpXeEVKSk83ZlVjeG5FRDB3LXlRMGRFczRTeEwtNlN6ay16ajNFMUJ0OFlmT25ja2lKQndVVEd1cGw4cnRRcWFYREZ4b9IBpwFBVV95cUxOb09qeDg0MC1pUEI3T3FoTDFTS1BsaXMwdHFvcWVKY0dGZDlNWl8wOC1TUTdCaFFmTWtpVUxMcU9kTHBsRjk0eGdnQjBNWXMtejd4OWVrczk0QUF1aEVZVmNHaUpXeEVKSk83ZlVjeG5FRDB3LXlRMGRFczRTeEwtNlN6ay16ajNFMUJ0OFlmT25ja2lKQndVVEd1cGw4cnRRcWFYREZ4bw?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-05T13:40:21.000Z",
-   "lang": "te",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf"
-   ],
-   "id": "ad01c381aa22",
-   "related": []
-  },
-  {
-   "title": "అబుదాబి వేదికగా ప్రపంచ పెట్టుబడిదారుల ముందుకు భారత్ 'సముద్ర మంథన్'",
-   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOSEpBZ0Vld2d3V3F6RlROOUEyVVNWZzI5Yy1vc0FQeng3YlEwR1BCYVFULWJpM3U5S243UlZOLWZNZmh5VXN1aDRGdWh5Vi1zOE9ObklhZ05kSk5wZjVkTnJOSDAxRG02V244U0JFVTY0NUpqT0J3X1dhQUhub1llbVF4ZGZIR0NPa0V0WXRtVmRheDFtRXAxb0VxbkVFdWl3TUxIZVVxNGZBa0RqMm9kYdIBsAFBVV95cUxOSEpBZ0Vld2d3V3F6RlROOUEyVVNWZzI5Yy1vc0FQeng3YlEwR1BCYVFULWJpM3U5S243UlZOLWZNZmh5VXN1aDRGdWh5Vi1zOE9ObklhZ05kSk5wZjVkTnJOSDAxRG02V244U0JFVTY0NUpqT0J3X1dhQUhub1llbVF4ZGZIR0NPa0V0WXRtVmRheDFtRXAxb0VxbkVFdWl3TUxIZVVxNGZBa0RqMm9kYQ?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-05T13:40:20.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "id": "34d3e02973c6",
-   "related": []
-  },
-  {
-   "title": "KSA: Legal action taken against 67 recruitment agencies in Saudi Arabia",
-   "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNNTI0R3JOdFpWR1RqSS1uU1N6cVhYWXhfZ2RjSkF4aHk5MmEtQjJHVUwzVmM4N0RROU92NlFTV2JWRzNnaG95cElzM28zd3V0WVJoZVZKSEM4cGllaXcteFZqaklYZDlwcC1PM0lVNDkyZER0ajhFVjRkNEttRzNEQUdRQmR3TGpnX0duSnVyTWRzV1RjeWx4TXZtQjhmRS1QYXJnNjJPcWtTd2lR?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-11-05T13:18:34.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "7376d0c03a25",
-   "related": []
-  },
-  {
-   "title": "'నిర్మలా లక్ష్మణ్'కు ప్రతిష్టాత్మక అంతర్జాతీయ పురస్కారం.. 'ది తమిళ్స్' పుస్తకానికి షార్జా అవార్డు..!",
-   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPeWJYQ2VpeUMzZTVBX0Y4XzM1NW96bGt3b3hBSzlMNkQtQTRGSGdKWUJPakpjdXBDc3RiTk5vdGpQaGdMTWJ4SUw3R1VnQ3ZkZ2p0YktGaVdyTXpRaXlON3hRNEhwb0VJSkVnVldRVnlEOXphUmI5eEFIb1h4eGcxc1RKODlyRUpmNFpmUGYxdEtDbnI3djBGc3N6b1BWX3Z1c0ZsdW9ZaG9jbFpXQWdpazdLSnVLbWlRYmM0LWh5U0ZzcS1FNEZxY0FR?oc=5",
-   "publisher": "Sakshi Education",
-   "publisherUrl": "https://education.sakshi.com",
-   "published": "2026-11-05T12:25:06.000Z",
-   "lang": "te",
    "countries": [
     "uae"
    ],
@@ -842,1934 +345,35 @@
     "uae",
     "gulf"
    ],
-   "id": "1227ea4c626d",
+   "id": "3f687ac5189b",
    "related": []
   },
   {
-   "title": "5-year multiple-entry visa, hotel room upgrades: Dubai Access Club benefits explained",
-   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNNzFxbnQzM2U1U3dVQmc1aF9KNEFnNzI3QWp3XzYwTko1NDkxbkhldUViczJuVUY3dXRRbzhEbW1ZUHZjX1djNzZZbV9YSmlYMVFHMHJTdjRWaHJVaDZ3Y2QtUm1RdEJCM2Jib0FJZEVBWnQ1Qlk3U3dfeml0VHBQNzJ5d08ySzYwWjBTQWx0dzd1OUJaWTg4WjB6MGlLQdIBpgFBVV95cUxOcTdkVUljMGVZMmhUbnVGNEdpYXNaQXhRVFZLSjVTZ2xGWnBJVk5wRUFXUFJqMV9JbG9xUE13dE1leWwzTkItMzdHdW81VV91aG1TSnNNVFFZUkRDclhKTGhsZW8zc1NmSWtBU0VWMWRVUVJFUGM2LXpFQ3hXbXlxbzhNOHlkbGRtcVlRRnIwWlRNY2Rxa2ZDbl9FTFFSbEhYZ0VYM2x3?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-05T11:57:30.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "9c7f4d4bc24c",
-   "related": [
-    {
-     "title": "Dubai's new tourism club offers five-year visas, hotel upgrades and exclusive perks",
-     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQS3dKYTk1eVZDRTJ5MExuUEI5V3h0UmJXbFd2ZVJUSnd5UXYzTUFMRFU0eHZEcnZVR1FxYzZzY05BUVdwYmdQU1JHWUxsUV9xMnhNM292d1NNVzZYaVg1ZlJIX2c4b0Z6NHQ5TkhzX2lGMEtCbkdRQ3MtejRYa1RqNHV0UFNTbFlfSDdVQjE4OEgtcXJkS2QzVmZleDNCQzNNMXBFOHZoTW45djFLMG1TNEI5ZEJuVDBCaHcwM3JOMVRPd9IB1AFBVV95cUxQR3BubFVyMzU0OTl1WHZ1QTlkaG10SlRCVmU4YTBRTC1YdkhnM3lmbGRpc2ptY1J0cVJEVEVMVVFGZUd0LUJOZzRFS1B0NHdxMVBOUEtxX2tNY1AwYlBqalNCalpZVi1sV2QyV05vZFRaRng0SHpueEw2VmliWHBjLUhJSHJra0FPekpvODEzdl9iS2pxcGFWMVlWclZld09aTzJsYmMxanN6d1l2WWotTUtNOEs1cFFCUEo1ekNCdE5WWWs3OFpGT1pqRGFaTHJNeXNESw?oc=5",
-     "publisher": "Gulf News"
-    }
-   ]
-  },
-  {
-   "title": "Saudi Arabia: సౌదీ అరేబియా వెళ్తున్నారా.. అత్యవసర హెచ్చరికలు జారీ చేసిన ఆ దేశం..!",
-   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNRll0YmZNT29CbjB2cmFPS1R1eGg1eDY3Y2IzTUdOTmdPNl9GVC1fT0xZbnJ3cUZtRkpQTVhHa19QenMwcTlYYkE5dU4xLUY4Vmg2ejBWYmJnLWhxYnFQbTdVazkxWm1tMlhSWnlCNVFNV3FFZG12NFJuMWZWUk4zZjEwLVpkMm82NW9pTmdDOFlHMWlKT2xEQkhTTnBxQktuQ01zclhSMzFBODNnbGxKNW51Sl9va2tRcENtUGctSmxyTGN3Z0xlRGxkQQ?oc=5",
-   "publisher": "Goodreturns",
-   "publisherUrl": "https://telugu.goodreturns.in",
-   "published": "2026-11-05T10:46:27.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "id": "156b859fd6e2",
-   "related": []
-  },
-  {
-   "title": "Oman introduces mandatory savings scheme for expat workers from July 2027",
-   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPUklxMUVKaTZFZnZVMy1Rb1M3TVVDSTBzSVdQNmN0Z1N4TWdHOGJGcElHSFJkNzZ3cjJYVFJzWGtuMEhaUkFybFozUG5DSmx5MmVycWdrdjJaVl81UjJpMldpUEh3QWtyM3VVSnM5dVVrQ1V4RDIzV21IRld3aFFvVkVGWHhaSG9iODMzOHhtOHdDQWpJLUxHTXVuQTN2d09pdDBMVFFHc2RTV21veUJaaENXeFVnUXNMa05aUEl1VdIB1AFBVV95cUxOWWtMQVlqYjZnLW16ZExEUEs3emI1SDQ2YktLOXE2VW5rZEZyNFdQbzdhck5nbVpaMFlDZUpkMHJ1bE9fQjhqLUhNc2RHTG5HbEx6dG1BQ2xVanFMY3prMUctR3RNRlB2NlRhZW5zWGFuNm8zZE1zQWd0dmoySzJjOGM3Sl8xcURwTUxseEtPQ1Z6YzI4TWc1Yy1YWG9sd2NXWm8ySzkxWTRPOXFORlJuZVgxV3QzYjNmeEhQVTF3UExPRk0yYWprdVFwbWtwZ2JDWEhlbg?oc=5",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-05T10:23:14.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "8d9d891ee8fe",
-   "related": []
-  },
-  {
-   "title": "సౌదీ అరేబియా పాకిస్థాన్‌కు 3 బిలియన్ డాలర్ల ఆర్థిక సహాయం",
-   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMFViZF9GenMxZnBtSHlTTXhJRHljd2FPd0dWQnNZckxDa1pZOHhfYk9TM3ZNV0ExWjFJVzdaWUR3eGxFTENWeXdRQUNKNzc5d2RZYjZDZUlRQTZHWjVjSFA4V1JObHAyaUk2LVhidDlEUXA2eHNvcjBTbHNPTllEaTljQkhiOGZjQmZmMDFn?oc=5",
-   "publisher": "prime9news.com",
-   "publisherUrl": "https://prime9news.com",
-   "published": "2026-11-05T09:28:15.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf"
-   ],
-   "id": "9083a03bff38",
-   "related": []
-  },
-  {
-   "title": "Dubai Duty Free Offer: దుబాయ్ డ్యూటీ ఫ్రీలో భారతీయులకు యూపీఐతో 10 శాతం డిస్కౌంట్",
-   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPS3Y0WkJUOHltLWhfYlVxWTZkTi1sWnl2R2tZeXBPdjNEMk0xamhySXdBTjV2RjN4NjlTMnQzSWZVYWdFbnVKQi1zbDllZ202TEdSc21TcElhTklGYjJFVjJGb3lDdjRWUlM5M2dMb2o3VkdwY0d6SlpTd3p6ZmZDM2pFTFg0Z1VuNGEzekRHenEwNGhUU3UwbW9xejllSUhjeGVsQ3dfZDhnMU0?oc=5",
-   "publisher": "NewsBytes Telugu",
-   "publisherUrl": "https://telugu.newsbytesapp.com",
-   "published": "2026-11-05T08:50:17.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "id": "86bc8216fcbb",
-   "related": []
-  },
-  {
-   "title": "Veeserve is changing how UAE travellers navigate the visa process",
-   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOemhlcC1LUFQ3VzlQcDhKMTBUZjgzaTRpUTR3dzhBVXJIR3UyMjViOFBPU3E4akxKaGlUUnZZbS1vaFVsYUJseHFadnRVMWYwWlVJQkxQNXB0N2g5ZVQwUUFFb1FTb1pSVGdvdEJzNy1wOG8zNlNJd3c3bS1jd182V21WS3RpaV9EdERZeTNnUFM2N28wRFNlVDBuRnh5Q1R0eWlGNzl1U1dqVk55OVJ0NHNYM080TE8tY3l1UVRB0gHGAUFVX3lxTE50MVRJY2gxVDhuWkNNVGdoRGo3OHhWUnNHSUx2RGxHczhHcDhyR2YyQmRkNWoxWGc4cmVnZzdxbWFPRGtDMW1xV1lQS3M3R0NBWFoxMzc1Y204SktJNGE5MTNrWHlVM0dTeXQ1Z242aEQzbjNRUDI0dXB0RXVrVUZXYWpseEo2OTE4d1ljY3ppazNwMWhWcWJNemxWOHdwbHRYaUxlbzVZSmpSWVkxYW4yUEh0Z0w4Y09EVjIzcHdPdWNORGp2QQ?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-05T07:50:25.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "93a29383657b",
-   "related": []
-  },
-  {
-   "title": "సౌదీ దాడిలో మరో భారతీయుడు మృతి.. ఇద్దరికి చేరిన సంఖ్య | Saudi Riyadh Airport Attack Another Indian Dies",
-   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOM3dkYWpxYUcyeG51QWYtUGhqM1E2RWdIU3U5YTIxQjNtSnB2cEc4V0hVN2pKMko5XzBLaUtHeVpKWW9xTWFYOHNpWXVBWmstYmt5M2NMbGFJY0tCZEViWG5jRXo4YjNndjdfcUdDSGs4RnROckJvaTN2QmpLcmkzRDkwTEgtLXEwaWhndkl5WGVIX3BnejJXd3EzSjV4SW12RW00YWF1TFI?oc=5",
-   "publisher": "HMTV",
-   "publisherUrl": "https://www.hmtvlive.com",
-   "published": "2026-11-05T07:41:19.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "id": "91c9b95a9ccf",
-   "related": [
-    {
-     "title": "Saudi Arabia: రియాద్‌ ఎయిర్‌పోర్టులో దాడి ఘటన.. మరో భారతీయుడి మృతి",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNNXJzM1M1VTd1cGZjcHQ1enctaWVWT1lKMGdYOGdoY1JkMXZ2WE1EdnVEdmVIdHdLdjg1TGZTMUI3NGNtdmxzM21pLWpEWlpsaDFtT0VPVEpqTXVhQUlnQmF1X2FCSGhlZmZZR0hvQTIxdmUtMmtVSG0xY2xLdFFWdmVmWWl2NVlTRDBUUnFlOHlaTnFMMFBsaWlpVVViRVVjWDRUV2FFVHR3RUh2REJGTEY5cG0xWlNiTFg3S1NB0gG-AUFVX3lxTE01cnMzUzVVN3VwZmNwdDV6dy1pZVZPWUowZ1g4Z2hjUmQxdnZYTUR2dUR2ZUh0d0t2ODVMZlMxQjc0Y212bHMzbWktakRaWmxoMW1PRU9USmpNdWFBSWdCYXVfYUJIaGVmZllHSG9BMjF2ZS0ya1VIbTFjbEt0UVZ2ZWZZaXY1WVNEMFRScWU4eVpOcUwwUGxpaWlVVWJFVWNYNFRXYUVUdHdFSHZEQkZMRjlwbTFaU2JMWDdLU0E?oc=5",
-     "publisher": "Eenadu"
-    },
-    {
-     "title": "KSA: Indian national injured in Riyadh airport attack dies in hospital",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQMERCYWE3dGRZc2pWaDhSUUhXX3FUTVIzSWhrcnFXS2laS2FGcjFZSXhBTVRQbkUyQ1o2cmNBUXk4bWFIWDB3LTdtakZjczc4dnh3VW1jUnV4QTlISVlkS2dTSTBRSC1TMDlfN09zam42Njh6OEJjWkhlQWxicHNBMUVscTZNM29LZXFOTEhYQ3FIV3o0VEE5bGdjaUdoc19tREFtM3FHWUtCOFk?oc=5",
-     "publisher": "Gulf Daily News (Bahrain)"
-    },
-    {
-     "title": "రియాద్ ఎయిర్ పోర్టుపై దాడిలో.. మరో భారతీయుడి మృతి",
-     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQYlYxSHhYOExLVXZYYmljejNOVUowUGRzOXFIZVR1d3FNY0RKTU8xZlNBNk9QMkxXM0FJNjhQVjQwTXZNMWNNeUdzd2plQ2ZBbnFLMzA5NUVMbGxsb2QwTkxlQlljNjVrcWdndDBHNTA0TUFYeVpRdTZ0N3pLMFVTejF6WUpHMTFxem8yTDRCejZzaUlxVjY5Z2J4NnAteS1XZjI3ZTl0WEF4ZmdmR0FBdUg1aXFVbVXSAbcBQVVfeXFMUGJWMUh4WDhMS1V2WGJpY3ozTlVKMFBkczlxSGVUdXdxTWNESk1PMWZTQTZPUDJMVzNBSTY4UFY0ME12TTFjTXlHc3dqZUNmQW5xSzMwOTVFTGxsbG9kME5MZUJZYzY1a3FnZ3QwRzUwNE1BWHlaUXU2dDd6SzBVU3oxellKRzExcXpvMkw0Qno2c2lJcVY2OWdieDZwLXktV2YyN2U5dFhBeGZnZkdBQXVINWlxVW1V?oc=5",
-     "publisher": "మన తెలంగాణ"
-    },
-    {
-     "title": "రియాద్‌ విమానాశ్రయంపై దాడి.. మరో భారతీయుడు మృతి",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5xN2Qtb2tiNDgtQlpyMXpRZS13c01BUW1RVG5RT09EQWNjZmFOWVluSGVVaUZDYUFXSHdtMTI5UnNCcG8taWFBSTg1Um1wSmM0c1FDNFVUYXV0YUhxdVh3eWpiRGpWaXJnQUt2Qm5PZm5FU3lSUzBBR3JyMDI?oc=5",
-     "publisher": "విశాలాంధ్ర"
-    }
-   ]
-  },
-  {
-   "title": "Egyptian Expat Arrested in Kuwait for Selling Abortion Pills Worth KD 9,520",
-   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNaC1LYmQ2SEY3dEZUczRoRTBzS2ZnVFo2NElQVGlwakktSVJqVWQ0aTVXaG51Q01oN0tpQVREYWNNZldtQXVGcloyaVJFbmhhczduMjNUZ1FLbjI2WlpIaWpTUUFXYkxzcEZ6S1lVMERGemp1RWVUNVhhU05DaHNyd3JYRHFLNExMTjBYZW1PSVZHaEFiN2ZyelhBMkFGUThVdUJWUlVXdFA0dU1DUmJkM2tB?oc=5",
-   "publisher": "Arab Times Kuwait News",
-   "publisherUrl": "https://www.arabtimesonline.com",
-   "published": "2026-11-05T06:13:10.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "7f6bcafea167",
-   "related": [
-    {
-     "title": "Five Bangladeshi expats arrested in Kuwait for selling e-cigarettes to students",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNa3phV0xWX1dic2hZaVRxWWZheDlfcDY4SnlKQmF2ekdFLVNKMC0yZFpGUjZzN1JTbHpyWVJFNFI0ZllYWDl3eWlZZG9uYkljalVPYVMyLS1EckowX3dHZFVkVk11a3N3N3dHM2ljaXhGd0tNYWZiLXFIaEM3SUJmblo0ZjlJeUJMWWszTS04QzlrTkt2alZJNVA0SFAyanBSX0hZUXg4V3ZFOWRUMlB1enJQamlzVWgwaWtxMG5B?oc=5",
-     "publisher": "Gulf Daily News (Bahrain)"
-    }
-   ]
-  },
-  {
-   "title": "Mahadev Betting App: మహదేవ్ బెట్టింగ్ కేసులో బిగ్ ట్విస్ట్.. దుబాయ్‌లో రవి ఉప్పల్ అరెస్ట్..! తెరపైకి రాజకీయ నేతలు, అధికారుల లీలలు",
-   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQTEdxYUtOVHhhNFBiRDJZbmd0aGdDR003eGg2bnpneUc1c0JKaUJLNDU3MXBrZmRRWUtNN2NBOVdRNERNbW1HWHBkS2pqNWw3ZlNIWWZqUVNlMDl3X0kycGxUUk4yb2l1eXpOczlHdmZveEl0aXloRXRQRUNIOTd5YUlKelk5aFlGeVRQeTA4X2htUnAzUmtQcWVfdS0xbzlNS1ZKTFhPcktDRmNvYzB2cDdpRmbSAboBQVVfeXFMUGpnMW1pZjVqQi16UkhoM3hBWE5PZTIyQUdVSlpJRkFlYU1zV1lkemtvY0E4M0t5WUZ0bTJOa1M2N2RRanpCNm0tNWVXOHFBSklsbG9PYktsWEcwR1lOd1N1d0RpZVhWS1JSSnF2ZU9kYjN5Tk5QeUhacUYtaEQ4V284R3pPTHJmbDdjd1VrZGhFcWJJRFFDc2xpcmhKeTFjODFhdVVPbVQ5aEZQZWVDOEd6M19nUWU3Si1n?oc=5",
-   "publisher": "NTV Telugu",
-   "publisherUrl": "https://ntvtelugu.com",
-   "published": "2026-11-05T05:42:32.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "5614358a43f5",
-   "related": [
-    {
-     "title": "మహదేవ్‌ యాప్‌ కేసు.. దుబాయ్‌లో రవి ఉప్పల్‌ అరెస్ట్‌!",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQeTZzbko0WnNrQ29jV1JLRV9nUmtiTTJOd0JaMEl2VGx1VUp6bWloOHJBOXFDNXRJbDY2ckpMNVB1LW54WEpGZ28yZWFPWEExaVpaN2JFejJ5T1o1LUVxc1lzWmtrM2dZYmpIUGR0UHd6NWdlQ1Z1b0N3dHJrY3Jac2poTTJUbjJWWkpqUTlJY09hQ0RBcm43M3l1dEJzTGtvTHhPbw?oc=5",
-     "publisher": "Namasthe Telangana"
-    },
-    {
-     "title": "మహాదేవ్ యాప్ కేసులో బిగ్ ట్విస్ట్.. దుబాయ్‌లో రవి ఉప్పల్ అరెస్ట్",
-     "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPME83RmZfZE9yNHRzNVFzYUIzdkNLNzk2enNHS2pQLW1nSTVLZDFaVnFzVF9EVEwycUZNV2ZwQ0xnWDlfSXFKN2dJX1BJcnNIOGZJTV9wZnBkcHB4R0VkTkp5em1mejFEdW1rQ003bE01elZwS2M2NlFZMnRWS085YWlZbTRZbzAwbkJrMGNnTnkwOERPOWFhQXRSSUtYcWY4RXhfXzVwOUw5LURkVEY4?oc=5",
-     "publisher": "HMTV"
-    }
-   ]
-  },
-  {
-   "title": "Video: దుబాయ్‌లో రచ్చ.. పాక్ బాక్సర్ చెంప పగలగొట్టిన భారత ఫైటర్!",
-   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOelUtX2hGM2g3UUFsTWo4X0otYkg2elhjVi1yVDkwSFhJUDRBU2NYbkFZVUV1dmZyc29LemRydUhvR0FRQ29pRGxOZ2Z3RXpTZWE3Yk9iVjJKbzEyTUdrU2NZeUJzek8yeHh0TFFrZUhYTmFadkdEcnl5b0dBVVlzTVJMNzVZUjhVOGlKbVB2NGdEZ2lReUxTVmhYSTdJMDQ5RmJ0UGJRYm1pZ9IBrwFBVV95cUxNM2lxWnFua2hmWGR3czFDSUVvUE54Mmg5NDN4ZnZQOHpNcmtQckd5VHYtZ3lRZ1cxNVh4U2plbFVvYXpCa1RYalFPbXNkcFFCQVpNNXFEcWRrYlFIWlp4d2tTS0VoVXlaM1BLeDE0Z0FVSHVDYW5lNGVlMU5vd285LXdyeE5mWmt2NVVWTVp5d1d4NE13SlA4YXkteGFJblJnX1VfMWVfbVd2ZzNMZ3JB?oc=5",
-   "publisher": "TV9 Telugu",
-   "publisherUrl": "https://tv9telugu.com",
-   "published": "2026-11-05T04:51:06.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "2bfcb7906d99",
-   "related": []
-  },
-  {
-   "title": "సిరియా, సౌదీ అరేబియా రక్షణ ఒప్పందం కుదుర్చుకున్నాయి",
-   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPXy1mYnZGbmVDT1RfdkVsZEZaX2pRTlNseloxaG8wLUw5THZqcWxFSEh0azFtbWh4NzNqbm9OSVZrLW81OUJOblpWSmxseGNja3JHLXR1bDk2dVhfVDkwdVc3U1g4QV9wdXJZYlJnYkZhai0tYkJQWHNNalJLVmhMSjRXbG1YYWgxYzZfckJR?oc=5",
-   "publisher": "Prime9News Telugu",
-   "publisherUrl": "https://prime9news.com",
-   "published": "2026-11-05T03:56:16.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf"
-   ],
-   "id": "8ded9c26f056",
-   "related": []
-  },
-  {
-   "title": "Saudi Arabia suspends 66 recruitment agencies, revokes licence of another over violations",
-   "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQWk16TU9QOTdpdnVYazNLVVIzMnhrRkY3MFlsV1VqVHVTaDdCdjd2eGhmYnFiajV1eHIybW8yTGVlNzdTbzRuVWJHOFZ1MV9CWkUyY3pZSURBSHRVX2RKbTNBUUUzZGFkNHRjNWhIY1Y5Y1pfYWttVGlZbnNhamUyeEFjRU1FaDU1WlFIWDBCaEZvNURiVGUtNWgxaVJnQTNsM2pFR3dXU3NrV2pzbTBMcHdDcGhRb2h4QnVOWUVteFVNUXRGS3J3Zmw5NG5KcGxVaVlBbNIB6gFBVV95cUxNemc4S3VJNjVCcTN4UkRGTlRhVmcyeXV5a3lsdFBCeHBSRWhRWXc5ZGhSTnU1d0c4RWNUdHBrQ0c5QWwwNDRRTWhBenc2TGQ0VTVreTYwajFvWmYtTHFGUlFqUGl5SmE0eFBNNFlkbDFPcEhJdWV6ZUphaEZocDV4V1Z4YWlTQUZKcUZEZzlOQUJQZ09HZThqYllwc2YxU0pLQnlNNGVCdkl6M2RIQUhBeU10N1JlRmZXRTY3MTlZXzFfQy1zMnl3N0dMRVBZT2hfbTRmOXRLUTFFaGZ1VzlrQmtTbDNya3JFN1E?oc=5",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-05T03:02:24.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "7c121a266f16",
-   "related": []
-  },
-  {
-   "title": "UAE Golden Visa: Graduated from a university abroad? You could qualify for 10-year residency",
-   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQM1VtNjMtUDZNTzFRYzI0aFBoN3AzamFFNExkNnRETGY5RzFnc19pcU9pazNhLUtBaDZjbms2MnBOYzlJV2pkQjc0TU04ZXdPTUd0S3Y5ZG9FOVNZQzlfcmprcVVKX2ZpSlU5VTVIVjFBTXpMV2phZVdpNFUxdUNmdlp5R0RMandsLURUTHNLY0lfX1pybDJBeUhYS2pRTDdwSUlRYnY4bnhHOHZvYWhtaGtxOFU2MlNzYkZDMdIBzwFBVV95cUxPNy1DeHVHSTd5UDJiYWE3a19Hb3A4cEdiYUVsZHd6cV9ILVpldWZodU1Ba0pCRmFpNlZLWHhoUHMtRU9XMVgtaGt3RUFGRDZINzBYTHdNQUU1YWJCOVEtYmkwNG81bjJHTXRsd202aHRPNWdkdFJLRXkwZHFkVk5MZFZnTmJPOGNWaXNQMGlpejd2Y3lHR3ZSenpnekJKQl9XX3hOZ29DYWk1SmlHSGlyc0tGd0FYT0kwRXViS0s0UVhnNVI3Uk5nYnJyLXl5aHM?oc=5",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-05T02:00:00.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "3f36a908e280",
-   "related": []
-  },
-  {
-   "title": "Dubai Police rescue dogs, call pet ambulance after expat's car accident",
-   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNWXN5ZUlmU1czajlobE1kQjJmeVh4WjEyMnFkdkllTmFjVGJiNC1DNW5iM2xNRWRpTU5RbktwSXF2MzlVamhZOHNvR3pYMHVRNFFralJLSlBpZkpreXA3S3hvUXdxdncyaDVsamU4VDV3b3ZjSjdyQzE0ODMzaVJWeW80Z2EtbzJsYktKMGNjVDRNaUVwZ2N4S3U3bC1DdDBMVHd4OVo3dXQxckZ5SDRaVklkbjZjVHfSAb8BQVVfeXFMT095WjdxN3VhUmZpZFMtamhla0tTbEZsSm01aFZZTWpOaWZ5QUJfUXRJMks2UGpkbXNmNzlXdEdncDJyMi02STEyMGxlU1FlaXMxOURfWS00cGdiTWhGUlJlUXhpVnFzbUlxM3d0OWEtN1lFbW1SMHF4OFZPV2NVN191MlM4QV9QRllQMWdaZVpTc1NXQS1NX2ZQYTVfaW1NQ25YeV9HRzdKaFNRalM1eG4xWWw5UDlpWkdoY25aNWs?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-05T02:00:00.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "04feaf5813c2",
-   "related": []
-  },
-  {
-   "title": "గత నెల సౌదీలో హూతీల దాడిలో గాయపడ్డ తెలంగాణ వాసి మృతి",
-   "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNNnZ2VjdiMUpOUHplM0RoSUE4NUpDWGk2VEtPb1g4U292VkhydlBfUHg3aGRxdHN4aUN4Y2gxTWRtR0ctbDBERDNfOVVGSEw4RnVBX1k5c3R4MUlLaWpXcXdoUXdxenF1NFRGNWY1Wm92WmtDZmFwU0FPMXZFa1lLNVRicEVkTmFWbGpmSURRZjVpYVNmbWZIQ2RJWFZac2dpLUlKQ1ZmMzZ4NTJGUElpWE5RRHZFVlNkcmNOMzRWNVNWeHJUMEJIOExRaEc5WS1jMGtyR204UUJaU09PWWtSNUJ6QQ?oc=5",
-   "publisher": "Andhrajyothy",
-   "publisherUrl": "https://www.andhrajyothy.com",
-   "published": "2026-11-05T01:18:09.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": true,
-   "sections": [
-    "saudi",
-    "top",
-    "exit"
-   ],
-   "id": "4543c0665891",
-   "related": []
-  },
-  {
-   "title": "రియాద్‌లో చికిత్స పొందుతూ మరో భారతీయుని మృతి",
-   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE94MVIwb3c5X05WNmR0TzBBdGZJRFJ0d1pvWjhOSkxZWWd4eXg0azc1MmZzeTl2b3ZoM291VWlQSXpLNmNTMDlKQ0xoTmVKX3h3aUZMcy1Lc21WT1ZYTUFwWlBYQXp4cnF1VEF2WVp6dnDSAXBBVV95cUxPeDFSMG93OV9OVjZkdE8wQXRmSURSdHdab1o4TkpMWVlneHl4NGs3NTJmc3k5dm92aDNvdVVpUEl6SzZjUzA5SkNMaE5lSl94d2lGTHMtS3NtVk9WWE1BcFpQWEF6eHJxdVRBdllaenZw?oc=5",
-   "publisher": "Eenadu",
-   "publisherUrl": "https://www.eenadu.net",
-   "published": "2026-11-05T00:43:03.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "exit"
-   ],
-   "id": "1bfc561f2d35",
-   "related": []
-  },
-  {
-   "title": "రియాద్‌ ఎయిర్‌పోర్టుపై దాడిలో మరో ఇండియన్‌ మృతి",
-   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQOTlveUtQRnhhQjVjU2JkSzVjTTA1VXU2Y09xVWVGWnpvY0ZoQzhpWTRRaVkzdlBLZW9VeE44Wm5DSXlZNkE5czgxOG5GdVVtN1hwSVdjbUpJNURzTmJSYVVCeWt2YkRMd1dFYWltQ2l3MFlGVmw2U2dOekNSRElsTWh1OFRuMlZkY0lITmhESWZyN3NydFBVczRCQQ?oc=5",
+   "title": "Abhilasha Godishala | రాజకీయ దురుద్దేశంతో ‘వెలుగు’ దినపత్రిక క‌థ‌నం : బీఆర్‌ఎస్‌ ఎన్నారై కువైట్ అధ్యక్షురాలు అభిలాష గొడిశాల",
+   "url": "https://www.ntnews.com/nri/abhilasha-godishala-condemns-velugu-news-paper-fake-story-on-kcr-2540096",
    "publisher": "Namasthe Telangana",
    "publisherUrl": "https://www.ntnews.com",
-   "published": "2026-11-04T19:44:15.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "exit"
-   ],
-   "id": "d8a56dce6ea2",
-   "related": []
-  },
-  {
-   "title": "Delhi Gang Rape Case: యూఏఈ నుంచి కామాంధుడి అప్పగింత!",
-   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQVXNYY1llRkxpd0ZVSkQxRkxJVTZodG5WbHo1UmtGNUgxY3o3RDQ5WGlPdV9GdHgtc1RLZXZTWGFVa0UtUDN3MHNNRTNrQmdGM185bTc0em9VR1N5RXp5dUYxNmNVcEFCNFpWbXZZWWlXVVozeGp0N3BHMUlHbzZnVzZ4SWwtRHR0WE1Ici0xYjhwZTFTX3BqakNmZF9EMTgyMmJkN0JR0gGrAUFVX3lxTFBQYVQ5enRmd1kxOEtYYkFtZnZ2VFZRZWZQb1Y5UGZUc01ESDZVTmgtUnd4amtVSGRsUXVLSGFWdUJiTmVDRkJWZXp4bTJhX3pWZl9nQ0M0MHVPcjZxdm5Hck5aaDVrRXVqQTJOeElxMTJ4VVdhU3FLVmhJbWNOLUFHV3VYSHcwbmhEWEpxeF9JRHh5ZGR6ckZCeWIyRGJGWEJtV2FLMXI4NXdRTQ?oc=5",
-   "publisher": "NTV Telugu",
-   "publisherUrl": "https://ntvtelugu.com",
-   "published": "2026-11-04T15:18:14.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "c446506e539f",
-   "related": []
-  },
-  {
-   "title": "Oman introduces tougher rules for expat recruitment agencies from January 2027",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPRWJTazlGYWlTbWJBbWozRGlxU2N1Qkt1Qk5IYzZCcmJ6eWlCcG04LTlLTld5UjhaUG05X3FBLVdVOFd2NFNwYTROUEIxSlJ6bjZDMFhVRjNtYlhUaFRheXdiZUQtTlJXUFlKWGNYODhHakM2WTlUQlAySy1qeENORmFpQkpjZWFMS3JSRks4alJxb0JKMm5EbW00cnYtNGtRT1dhWXNEN2NFM3ZOb2wxbTcyXzVOWks5V2dRSmlKYUI5Z3NrMVHSAdsBQVVfeXFMT3IwaVJ5YTBMUEx4X2JmdU5OVkhRMzRteE85SnNWWkpIdkEtZERTRUI2NkRGMW94SFhKQ2RXSkpaOUNqaWxWTXFvMkdLX0lhWkZJMkF4MWEzRy1ObFpWQVJEVFJnTnA2VG5VTG05Wmc0RmhPUW14STRSVHZxZGJkcm1lT2FmdWtHdk83MUJXUHhmYWZZbWxjZHlGRG9KaG5WLWZ3WXlDRmtRUk9Oazdsdmk3eUFndFF3OHM4RThmUWYwdmd1YW1BOV9JWUVYU255dHQ0NnhEUS1wWjdB?oc=5",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-04T15:13:40.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "9b2c7cad0803",
-   "related": []
-  },
-  {
-   "title": "యూఏఈ నుంచి అత్యాచార నిందితుడిని రప్పించిన సీబీఐ",
-   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOdGFlejZmT2d2R0pWdHpnQlVXU2lwX0NUcFdYYVFRSU1ZYVlCcG9KSjh0SlNXWmI2LWpfRUNrc1RGd2R1djg0dmlfVE9uS18xUGtPbF9UdjZndF9HSnhieWNzdzJxNGZSR1VZSXY3UFJ1cUdlRUxTRDRlSFpLZGNfM1NPbWQxVE5QNWJMVkJjTDJmdw?oc=5",
-   "publisher": "Disha daily",
-   "publisherUrl": "https://www.dishadaily.com",
-   "published": "2026-11-04T13:24:25.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "3e15ef79127a",
-   "related": []
-  },
-  {
-   "title": "Savings system enhances protection of Non-Omani workers' rights, regulates end-of-service entitlements",
-   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNQ3kwMVJNdkMzVno0NkNpekx3dG9vTl9pNERmTlZMR0NRSjM0OVd3VU1DblpWYlFBSGk0QlNjUzRfNkQySmk0ZzVrbnljd3Y5YlRiaHBFMjByYzI0bXFUckFEWi1CVkhMRlFBZmlpTHJab0ZuMWdENmpnVjhzOTRMNGdzTW1KUnJ6QnVIdnFYMDlldUJGOEJNdzhZMkRMY1BmWDVieFF2M0xKam1aekpWUEltZF9Sb3JhNWw0dmlRQzU0ampKNDJsdlg2R2J5X3RNc2QyOW5R?oc=5",
-   "publisher": "Times of Oman",
-   "publisherUrl": "https://timesofoman.com",
-   "published": "2026-11-04T13:16:00.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "cceda7557796",
-   "related": []
-  },
-  {
-   "title": "Democrats take control of Congress, sparking hope among American expats in UAE",
-   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPbGdsTDJhUjZ5dlF5WkMxVks3dVRwdnlXZmlVWXFlYjJ4QW9DNmZxNGctcVd3TEVHdjNXSHdNd0x3aGU1cW1NM3hWNHcwbmEwUWFjNjJJMUVWS1F0MEJVd1ZmLVRFWlJHcDV2UzRjamVwcWZ6UlBLOW1pVDlYM25Xc3BQeTNwMlN6Z2RUcENHUFVydDhqZ2tNWlhGYU5IR3owSVJ3MHk1S2VFNTVWS3E1RDdRdXh3RG9lcGdaZWlXaWtYd9IB1AFBVV95cUxQQWlVYXhrekpJSklIc05nWHRWbF9OZFdrcC1JcHdqbmVWSFJnM2dtaW1maW94dld4RHhVbDBpUkUtejUwTDF2UkpIWFRXempzS1daVmc2YXZFckVPSVJ6NjJhMFZLdTVSTGRVT2s4Ul9QNUk3aXF6NWtiSHU2dHNHYzlXOVdETDVjc19sSXZLNldrM0dFczdDOGcySU52ZEVWZ25mdUppWFMtaWM4ZEtSTGJvbjI1SVNEV1hFRFZzUEgxNkhybGlveWdfSDdtejRfWkdmSA?oc=5",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-04T12:12:28.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "4cb33e504817",
-   "related": []
-  },
-  {
-   "title": "Telangana NRI Sheikh Saeed dies after Riyadh airport attack",
-   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNRHV1RlhDd3pwc0FVZ0loaXJ0VktsN3RQM0M4M2IxNnd4NVRPbFlVMGJEcXpqcU1zS2ZQcFVCM0tyU1kwc0cwblpCcVRJQms0WDYtLXpxZmJodVA1YnNLUHc5U01mYjZEZVg0eTJxOTZBVVJoSjhRYUJNZVZDWUpJcTd3ZlhwSTFZT3hKbVRYYw?oc=5",
-   "publisher": "Telangana Today",
-   "publisherUrl": "https://telanganatoday.com",
-   "published": "2026-11-04T12:01:31.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": true,
-   "sections": [
-    "saudi",
-    "top",
-    "exit"
-   ],
-   "id": "f220b77e28c9",
-   "related": []
-  },
-  {
-   "title": "కువైట్‌ను ఆక్రమించుకుని సద్దాం హుస్సేన్ 'కొత్త దేశాన్ని' సృష్టించారు, కానీ అది 4 రోజులే ఎందుకు కొనసాగింది?",
-   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1GbDMwQXY0bGwzRTJibGd4LU5ERGJpeVd1TzdwMEZ3eTVaQnpDNVZtR1VhYnFtMDlMY1VDak5keC02Q1RneThId3pwd0gxQkY5X3FqdlA4RXgzNHRfUlHSAWNBVV95cUxQTEhpRl9iOTB1aENpSkdzS2hOMjUwLUNUWDlIVWh2UnJDWUhlSjlETjVtZHUwYXN1RXNDOTIzZENjOXdaeF9wYUJkWl9qNUdJd29rQ2M4R3hJb3JXRW9qXzZTeXM?oc=5",
-   "publisher": "BBC",
-   "publisherUrl": "https://www.bbc.com",
-   "published": "2026-11-04T10:50:42.000Z",
+   "published": "2026-10-19T03:50:42.000Z",
+   "feed": "ntnews-nri",
    "lang": "te",
    "countries": [
     "kuwait"
    ],
-   "telugu": false,
+   "telugu": true,
    "sections": [
     "kuwait",
-    "gulf"
-   ],
-   "id": "89e25322111f",
-   "related": []
-  },
-  {
-   "title": "Death toll from Houthi attack on Riyadh airport rises to 14 after Indian national dies",
-   "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOcmlZQkgtcm9xaW5MQ2pPVFluRk1fQkFjTDBHLXVoSXFLRXpuT3Bma2ZoaXJEQ0p2MEp0ekFhbU0tRU1ieUpqYjhzeXlCczQtSU5McV8wd3Y0a08tZGZwVUVrSVpoNm1STWVRalBHTzVvTlVKLUd3SDhMMnVUTjlvVThjYkp4UTIzQU8zMEVVWHNHQzlGY1NtdW43Q2x3d0lYdEwzdmg1Yzk0OFVLQktWQmVEOWRGNVI0MTFqTThPc0JicHpOM1BoY3RFMEFNSkFKMmNCd1hNSzdJdw?oc=5",
-   "publisher": "Saudi Gazette",
-   "publisherUrl": "https://saudigazette.com.sa",
-   "published": "2026-11-04T10:47:00.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "20feb1a4ba6b",
-   "related": []
-  },
-  {
-   "title": "69 Asian and African nationals held for violating the Labour Law",
-   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPWVNUaVBJY0NOV2VxQWZhN1RHSG93cWlmZVlnZGlxOEhKTFhZWXA5V0tkUlBuV09XV2lQWG5LQTYtOTJKMC1fNE5JNG5raU9DbEYxTUNlaGI0aG5WRlBKM00wODVsdFFzRnk5WEpYemlGMnhWRkFFMFdRNVJtVmdpZEVnVWlmaHRuU1ZIaVhxazNZcVE1bGtyNmNEYXJIOE5mWVBOTFJB?oc=5",
-   "publisher": "Times of Oman",
-   "publisherUrl": "https://timesofoman.com",
-   "published": "2026-11-04T10:24:00.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "01fb736c5657",
-   "related": []
-  },
-  {
-   "title": "5thలో 48% మార్కులు.. తండ్రి షాపులో సమోసాల విక్రయం.. కట్ చేస్తే ఐఐటీ టాపర్, దుబాయిలో ఏఐ లీడ్!",
-   "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQV0JZelRLY1RCMnZoTkFZU2NVcDUwM0hHa1dkN1d2ejdxbHNaaFhyRlBfVjFBTmdLaHN4RDlVY3k0WjZkeFVacF9FYnpvM0w3cl9fMU5mZW9KX2dFX3Q1eFlBVzgxTlhrVHZrRG9zdENtSDhFU0duQmt1RnhUb3NMaU96ODVXWVBmVE9HajVKdWZ0czhCd296VzBiLWFhZno0THFJd0hOV2c4LWlQZW5qc2tBOVZRNHJqVWVmeU9nSDd2V0hMS3p3UXhTOFlTUQ?oc=5",
-   "publisher": "BigTvLive",
-   "publisherUrl": "https://www.bigtvlive.com",
-   "published": "2026-11-04T10:13:22.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "id": "82ee300a1e23",
-   "related": []
-  },
-  {
-   "title": "Riyadh airport attack: Kamareddy man to be buried in Saudi",
-   "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQbFZTck9oWExKemJRYWZGRWFzMEpWX0dCVzA4NHNzNHNmUE5mTkJlMWZKMkZEakJEUEp1VFFMQVAyY0c5T2Uzc0htYmNrUFdEb0ZZdUxjc3FGWWJ0R01vdDJHcndvVkY0MDZNQXpIakZ0S2FsckFDZUpOQ0hFNXBBNzhiQXE4Ui1SWnRBdEFSWGJEak3SAZgBQVVfeXFMUE5SRUpKQ1RmTTl1cVdTdHNKS1hTbFlFYUxOY2djUnUxMC1IWmp4S0RkR09XSHB2TndqLXNkcHBCbHBqallxVE5fWHpUU1d5SG1SNEl2Nmp5aURWSFBUVnBpTG5vRE1aTGJscm1FOEotRFZfZjQ5dW9nVjdKalZwakVqWEQ3Q0dmT2xORGQxRUZiZ1cxdmpZUDY?oc=5",
-   "publisher": "The Siasat Daily",
-   "publisherUrl": "https://www.siasat.com",
-   "published": "2026-11-04T10:06:59.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": true,
-   "sections": [
-    "saudi",
     "top"
    ],
-   "id": "bcd9e7f1f2db",
+   "id": "9b16222f2ace",
    "related": []
   },
   {
-   "title": "Over 60 foreign nationals arrested for violating labour and residency laws",
-   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNWHZhRXRsbWUwTkNnUVFLa2hucHlhV2lGekJmbE51RnI4M2F3NzNmdUV4SDZaUDVwSndpOU9pRW9XaUFlak4xVE9JVmcySGI1bnlyVHVSN3FLcVNDN2FqXzk5Vll1OFdFa201bVRFeGFuZjZ2N2pRRTJEa1RpeWhHNmpVMllXbENCcHZlTDdTV3Foczh3QlBuc25LbjZFUGxJS3JudkRLeTVVQjRZd0U4UXkyaw?oc=5",
-   "publisher": "Times of Oman",
-   "publisherUrl": "https://timesofoman.com",
-   "published": "2026-11-04T10:05:00.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "f9afd45d1f6c",
-   "related": []
-  },
-  {
-   "title": "రియాద్ విమానాశ్రయంలో జరిగిన దాడిలో గాయపడిన భారతీయుడు మృతి",
-   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQLTdVVnV4dVZXa3FOdDJ2cnNzU19yNm5sNl9UbGMyNk0ycHN5QWdtZ3p4UUpnY2Z3LUxfVTdfUTNBQmxaT3QzbFFMOEtRUTdSM2lKaXMwTHBhb3FRS3FLNzdHdVBOakJ2TG1XWGd3V2xtNGZsM1RKNkNjZkdjTHNoanAzRTNjZw?oc=5",
-   "publisher": "Prime9News Telugu",
-   "publisherUrl": "https://prime9news.com",
-   "published": "2026-11-04T07:29:56.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "id": "938effcbe2a4",
-   "related": []
-  },
-  {
-   "title": "KTR Help: మాట నిలబెట్టుకున్న కేటీఆర్.. మస్కట్‌లో చిక్కుకున్న కొడంగల్ మహిళకు సాయం",
-   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOcF9TSG1LdUxOVWVTODVSYnNnUkt0cHYwOVRyb3M5SkdLRkRrd0lzVTE4ZzlSMHhwcTRyR1FzaUdVaE83Q2xrT3g3d0VlaHYwaWhQUEhWZmxYMWxnS08zZ28wN3ZkRXkzbnZkY092Sy1LYnZseUtKNGhpbmJyd012bmk3QnFabFZfdHVELdIBkgFBVV95cUxQdlVfUjBWX1RlRXBfMVJ3QUNvQm1vTGl4TnpRUFF5SmxEM05VUGxlaWlZdGZ6V2g3UGhmSkRHWG5sOGsybFNOQm9CRzcxMEVkYjhkMVpOQWdYSHRJVWVmU2tZLTUwX3oxN2NHS3lVSjdwYlpmS19QMG1BTkxKWUhNZEpfcnNmX1V2X0tRbC0zMElHdw?oc=5",
-   "publisher": "ABP Desam",
-   "publisherUrl": "https://telugu.abplive.com",
-   "published": "2026-11-04T06:03:09.000Z",
-   "lang": "te",
-   "countries": [
-    "oman"
-   ],
-   "telugu": true,
-   "sections": [
-    "oman",
-    "top",
-    "exit"
-   ],
-   "id": "c885d4a4fae5",
-   "related": []
-  },
-  {
-   "title": "Ministry of Labour reaches 89% employment and training targets for 2026",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNMG8zN1VlZ2tmVkN3ZzFCdG5NZnJhQXhlQnhmTXZFTzNUaXF3dWRUcE9Yc2JHcGNWSnpSTkpjRWpTU2hSbHVRU0d3bUNSSGJHNkVwd0o4Z2lwQkJsdDZ5bVYteWkwTHlHVHE0cEJJYmx6Qm5sR0RLbWtRTHN6MzZZMnQ0NkFVdldBdl9RNmRMYmtTTlVDbnVyekFaWDJ0bEVKaXlhRlBNZXJCR3dKdXc?oc=5",
-   "publisher": "Times of Oman",
-   "publisherUrl": "https://timesofoman.com",
-   "published": "2026-11-04T05:38:00.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "8916d04b1603",
-   "related": []
-  },
-  {
-   "title": "New UAE driving licence rules 2027: Who gets one, two, five or ten years’ validity?",
-   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPczMweHVlWnI4aGxwUmE5WGRfZkVQWUQxSk9tMjFac1VMeHZhcF9VdUMtUU5yeEowbjRSX2VfWlhhWHlRbUxSRTNEUkp2ajNJcjVTMkdZM2ZQMzBtUUJ2U0ZnTTBkMnRzekFqUkVBM3p4YndiWEJuenFlVnNPWGEwc0FtRnBZUm95QjJmdHV5OGVob0h4V3FJc2UwLUhQS2ZZSHNVODRoZ092d2h6LU04cG85QUtfUHI1U2hjQdIBzAFBVV95cUxNZlNSdjJVMXhZZEdMOFpvYkdQMUpveHFlRm1IRU9ZaGRUaFp4dklFdXpfQWFZRVBaVVNoUl90SWFDTWpUV3RHNEtsWEFaYXY3aE5RR2hYVWJrU3VKOU5mYngydGRNNHVjNTVweXB2ZUF1bEdySXRtX2NzcmdIc0t2eXltZGI0OTFMWG1nOWs0WWY3MW0zUVJ6UFh4MWZfeXI4WUk2YXVXQklYeFl6MTVtMWhMQjkyM3AyZlUwVEM3QUVzZXktbmt4bm81czM?oc=5",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-04T04:04:45.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "d6f02ba78b62",
-   "related": []
-  },
-  {
-   "title": "కేటీఆర్ చొరవతో స్వదేశానికి.. మస్కట్ బాధితురాలి కృతజ్ఞతలు",
-   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPckZ1MEF3b1FVZXJBTVNIVHBMaXMzM1Npcm5uTVN3ZXo4emhRRzE3RXJ3RURJTlFjek5CX3lzMmJEWVA2ejc5RzVEQUR3VVVoNTI2OHNBTU54eGdRanBmUzlxR1ByRVRYYXVsQ29PMEpDS21KdTFSdmxmWGItUGhUZURqc2hYemZwaTU0YXRVam00dUdRSkdZN09Qc0tjb3N50gGmAUFVX3lxTFBfcTVfX2FNai1uVG9FTTFpTkstUVZrZWplbkRaaWFvUEhTWDl0TGw5alRRcjlxaXZ6cFhndmx4bTZVajl3WEd3SFZGZmpWZURDNDJETjlObHdBMFZTMDdyOFRzSk5BTW03NHFUOTduVHRNQWpNTDI2RERCM2FNcDllWnZRNE9lSDhDS0RoT0lOR3g2NnpiM0tyamR0cnNlSkd4YWxtTkE?oc=5",
-   "publisher": "AP7AM",
-   "publisherUrl": "https://www.ap7am.com",
-   "published": "2026-11-04T03:53:37.000Z",
-   "lang": "te",
-   "countries": [
-    "oman"
-   ],
-   "telugu": true,
-   "sections": [
-    "oman",
-    "top",
-    "exit"
-   ],
-   "id": "e8dd2d2e737b",
-   "related": [
-    {
-     "title": "కేటీఆర్‌ను కలిసిన మస్కట్‌ బాధితురాలు",
-     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQZjhfLWNUVXZQOUQ4UWRVSGRsMWEta0lRd20zRWJyU1JCTUprajBrdVUtQXByUlNDYTJxLVZpSmlHcHNQUW5UVG0tWWZKTkVRNTdQNGRTREFabmtfU1J3RFJ1TGQ0MXozUDBUcEdsQmNYYkdSREVvR1FNWUpmVmVsekx4bEZZcmVoZV9Md3Q5ZEI0U29xMEJrT2doRHNlbkxpei0xRVNCVllSRW1tSDg3SjFRVVFsOWFQM0s4?oc=5",
-     "publisher": "Andhrajyothy"
-    },
-    {
-     "title": "కొడంగల్ మహిళకు విముక్తి.. కేటీఆర్ చొరవతో మస్కట్ నుంచి క్షేమంగా తిరిగొచ్చిన లక్ష్మి!",
-     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPYmNjNTFSVnVmTFhDNDhoNFJtQVFNMUpXZDFubjMzMFhlUTVIblpFSGNWZDR2SFZLRV9FREhSdHhOc3ZxRFF3QUVJRnJWWXo0Qi1rZmVWb0c0amd4LUY1YVZ5SndfR2pTVDVhM1V6Skc1OUUzcUdkem9kQmlvTjVpTHR4N2Y3aTBEWTVybl9pbDFWaFZ5MDRJRVFFd0JfdkFSd1E?oc=5",
-     "publisher": "BigTvLive"
-    },
-    {
-     "title": "NRI | కేటీఆర్ చొరవతో స్వదేశానికి చేరుకున్న కొడంగల్ గల్ఫ్ బాధితురాలు",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPSlpnT1c1ZXg2Q3J0TEtsams1Vy15ZlRsVVRRakhQbEJ3QnczYzdPYm5vSVpLWE1Wc3JkalFxem9mVWVOeVRzdTliRTdPQzl2dzlmQVdmZWYtdHFnaXd2alhmRTJfRE5JdTRuU2UzbjB5QXh3MjJtQ2poZk9yU2FtWm9JeUVxc3cxOWJlZVRzRlBudUo3UUxFU1huNmhGX0Z3ODZ3NmhKRE1Ndw?oc=5",
-     "publisher": "Namasthe Telangana"
-    }
-   ]
-  },
-  {
-   "title": "From boardrooms to mountains: How the UAE changed this Italian expat’s perspective on life and success",
-   "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPcER1eUgxdldxQXNhNFNRanBrWnVyYUZ3NHRPUVEyRGMzSlRhLWQ5TUt5MmR5eGQ2ZkpFMlU5Zk9IcFZCWFdsUEpOeVRmbG9RTHFHU1pKM2ptYjQyY2dPa19nX29qZFBQQk03dmp4UWNROUdnRUctbEpzZ1B4TU5hT2t6djBCTDNkTTZSNUxoeWJ2RzJmU1dOUjZpajA3YkViU2NuSlFFMTVrQUI5VzNUVV9jSGxaME9OcVJ6QVRmMl8xcVBXVG8tODcybDFNME9lN2FtNnRxOXF6ZWgt0gHvAUFVX3lxTE5WU2JLNlFGQmVJZ1NkR3dGNEczTWFCb1JnWGJMZnpweDV1WDFsVjVvckJXVG5vMUVmeVRiRGFPcjkwemszZmRQWGExbUxJUnVEMVBFSlZIandQSFlWbkxyVXE1Vnp0X1BLb2wzWW9jSFdKemN4Q1pjR1NKLW1FOXliaTJXZ0JiYW1kWkJzckwzd0phUWxCMlRKb09udUNLYXBtVWx6UDBWaVBoeDZqTFpFYjlpamFVQ1haTlA4a3BCbDNtUUJvZkt4OWN5VV96ejRhamM2czFIcGNBOTVTSktjMGhTVmVVRWo5UTlIdklN?oc=5",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-04T02:45:00.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "e182ed29761f",
-   "related": []
-  },
-  {
-   "title": "Sharjah Charity sends 500 workers on 10-day Umrah trip",
-   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNVFGNzVKQ0ZsRFBxbWloTC1PelJQSEFxMUtQYmlYUFg4SzZ2Q2VjbWYwOHF1T3pYSWJSRkFWTWZCRm5MQTFTdWJlbUVSR05vSjBCcXpwbHZ4NzcyNGFWYWk5Rm8xdGRzckhLV191bXlmSmRUMnhEUkhtMXNvTjgwdFRzdmx3QTNRMllIRkI2TjEwSlpvN3fSAaYBQVVfeXFMUHhIemVhU1BzZE5zQVVWNnJWVmY4UnpFV3Nla254ZEFrRVpwNzU4LW45a2dtMEpBVi1EZU51TFR3VjhwaEV6TkxjREdJWWJPSzhaS3JtY2hjMmRGMDZHWllFMUt4ZTdnTzJCWEpaOWNkeFAzZDR1VVFMS1FGb3Z5Z1BsZzB2SzZSYW1PMzVsU3l2SE5RQ1BwN2JGdEVtSXozaGt2RXBBQQ?oc=5",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-04T02:44:00.000Z",
-   "lang": "en",
-   "countries": [
-    "uae",
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "1ccf399aea94",
-   "related": []
-  },
-  {
-   "title": "ఒమన్‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌ తీరంలో భారత నౌకపై దాడి..సెయిలర్ మృతి.. 13 మందిని రక్షించిన ఒమన్‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌ కోస్ట్‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌ గార్డ్‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌",
-   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOOEJSWlAtcXN4OEN5US1TZXVaR29FMnJ2SmJMa3Q5SEFpU2N5b1poLWpFZ1V0NnBiQmVQcGRYdG84a2RfZGRhS0JnUG9rbzVxbnhUZF9sUmJZaEhvTTBxR25MUVAtSFdrVi1qbUk3eGlVTF8xOWFrNTIyWHZ5Wm5FYVdrOThscDhfZkk4Tnh5QnpMb2poUG9SZ09VUDR6QjdlY0U1TDM0RnE4VkFTbGZBR25n?oc=5",
-   "publisher": "V6 Velugu",
-   "publisherUrl": "https://www.v6velugu.com",
-   "published": "2026-11-04T02:38:28.000Z",
-   "lang": "te",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "exit"
-   ],
-   "id": "b887df2d6d09",
-   "related": [
-    {
-     "title": "ఒమన్‌ తీరంలో వాణిజ్య నౌకపై గగనతల దాడి",
-     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNRml3VGptdWVHNDhEX3dqVXFxamYzZF90YnJRY1djQVRiUmpCVmFEcDJOblJBRTZSQlJBSXFXWU04c2hUODFqQ1JZWHpNV0FjLWlXZTNEZ3dtYjNKc0EyQnhDWFE1T1djNVB4VmJPNFE2MU1OTFV1dTJabmJrdjhCTzl6MHZIVTlURm5hSnJfNXFvbUFhQ19xQWgxclhUUFI4VkxJXzFwQkRzbzhiMnN6WTNJVQ?oc=5",
-     "publisher": "Andhrajyothy"
-    },
-    {
-     "title": "ఒమన్ తీరంలో భారత నౌకపై దాడి.. గుజరాత్ నావికుడు మృతి",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNQVJNb044VWJrdUtvemcwNTA1c1RXZWZWbW5jV2lYVjdFT0kwVVlFOGJ2NlVITFF3WHhrYU9EaHRUVDFVS0YwM0lmY1RVZ001bGQxRTU4T3RqQkFUa21ONW9PalVlOXBvNGZLX280NlU4cUQ2NlhKMjRpcW1KZGYzU05wQkRBMDZ2aVR2S2VMX0QyLVZ0N0hWRndjMlZkd3I1djNRNVpsYVl1cU5UZjJhMWhiZks?oc=5",
-     "publisher": "Disha daily"
-    },
-    {
-     "title": "ఒమన్ తీరంలో భారతీయ నౌకపై దాడి.. గుజరాత్‌కు చెందిన నావికుడు దుర్మరణం, 13 మందిని కాపాడిన సిబ్బంది",
-     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxObU16RWxnVHZRZGJleFlESmZDazVqU1NSYTd4VXlnVE1QUU5NTGxGaDFMd1RQLXYtWVpENHNYa0ZPei1tUWlUbm5KYmI5TEFFZTlIZzJlVVlaa051M3R0N2pGQWUxZkJtTXFDVEVlUnFoNzhjMDlGcV9HeFdvd01CWUU5VERMUVNSeXJCYkMxOXk0Umtid3ZyRDZ2M1JGdzZacWxicFRDdVczclpZNlNpS3NqcnRmYjF1U1loa3JTMlJXdThmeTdhelFLRTcwR0hCb0FBeEVTaVBzLTNyVXgtSFNwNkREWUct0gHuAUFVX3lxTFBvckVCTUNSZXRTMGMzTG5iaEZRX0lJNk9GRzNkaXl1VHBkbW1OZWtMZUUzQUJhdGYwa2l4QnFLMmpyQzhPOUJFTDlkdUoyRC05a2ptRkJoUjMzTnctd21mLV92OVMtR0ZFMkZWdlMtU19Uc2p0eG1ZVWNfQVk2WjNkWDVGakI4TENuUnJ2Zm1oTlhCRGFRanRwNVFvaWY4LWxwOGs2cW91bUJtS0d5a2lnTDZaVDJ5Tkk1di1kanRQYWt3VGdQN1plVkpTOFdKWmZqU2tiNmJrVkViY2NWcFI0eENBdzJOaG9tTlFvVkE?oc=5",
-     "publisher": "Samayam Telugu"
-    },
-    {
-     "title": "Oman Coast Ship Attack: ఒమన్ తీరంలో భారతీయ నౌకపై దాడి.. ఓ నావికుడు మృతి",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNbkVCcGFHei1FelN6S2x0NVRaZS1GNkxmQThfSDRIUlJSd3p5aC1reHFrNXZWejNkQWZHSDZTYXN5RUdHSmhLNUVrMUxKVklUbU9GdVhFVG9oU0s5bVdLb1lTbTJNQkJYV0dSa285VVVNTnFROUZHTWNTd0VyaTE2RzhvdEJteTJrSV9ISG4wTHBjVjJUNGFWcXZrZ0VsRm10a1N30gGoAUFVX3lxTE5mR1BSWEs3d3FPT0ljazg0MEQ4ZjM3UEVFWW40cFNha0t3a0JqbGd4Q1JhRU1wMDhlWGJqY1UtLWx0NVRGTHFDUjl0cWxJOUJzdl9EVGVNd0lxRDkybE1OVnpCN0l2aWVPdDIwbC1TMWtBbGxJUG0xRm1GN3N0UTFuOVJkLTdvc0VKTHk2bkVpWnE3NjZma0dvODIwMFRVSFBwMnJJQ1NsRg?oc=5",
-     "publisher": "NTV Telugu"
-    },
-    {
-     "title": "Oman: భారత నౌకపై దాడి.. భారత నావికుడు మృతి!",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPYml2dWRaZzV1ckpJRHJVN1R0MldVVjFzQXd3QTcxb3lXN3IwU1VHX1FVNHFRSGRSenRaOW9ubjZPdE93MTJIYTBXTFc0Zm5aU19KVktOZXczMUVXRzdfV1ZLenItaHRfQjRBTGVaVjcwSks3Vnl0c2hMUFZBX3BCVnJHM3g0b3N5dERpVWFaVlV3R0pWelRIRDg2R1plTVVfVmk1MDlPck9zNWNDempncWY5VHMxcFJ4?oc=5",
-     "publisher": "Sakshi"
-    },
-    {
-     "title": "Indian Seafarer: ఒమన్‌ తీరంలో నౌకపై దాడి.. భారతీయుడి మృతి",
-     "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPNWtlWHBuRDJyYzY0Y2hsc3huakFwbER1TVMzVmZzZzUwTmJEalNjdDgzYW5rQS13cEl0Y2szY1NNeWZHLXNrT25QNWFBbmdNc19BYkVNVDBXZkllR2ZaYXhvOTFTNFA0NE9haUV6cVVRc1V3TzRxbksyR3haSmVSME9ha1VqZkMycWxYS1Jlb0lZZDBXdlpnQWZlNW00Qk1ueXJwZElMOUR5VnlIbGlPX1NEMlZyVmhYQWU4d2htZjZ3eG1wUkRSclZ4Q0ZHN2V3RUdtcG04UU1VMVp4OHJPZS01a9IB4wFBVV95cUxPNWtlWHBuRDJyYzY0Y2hsc3huakFwbER1TVMzVmZzZzUwTmJEalNjdDgzYW5rQS13cEl0Y2szY1NNeWZHLXNrT25QNWFBbmdNc19BYkVNVDBXZkllR2ZaYXhvOTFTNFA0NE9haUV6cVVRc1V3TzRxbksyR3haSmVSME9ha1VqZkMycWxYS1Jlb0lZZDBXdlpnQWZlNW00Qk1ueXJwZElMOUR5VnlIbGlPX1NEMlZyVmhYQWU4d2htZjZ3eG1wUkRSclZ4Q0ZHN2V3RUdtcG04UU1VMVp4OHJPZS01aw?oc=5",
-     "publisher": "Eenadu"
-    }
-   ]
-  },
-  {
-   "title": "UAE’s new 2027 traffic rules set 9-hour driving limit in 24 hours to prevent fatigue",
-   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNak1IXzFwQzZkclY3Rk44VjNUalpLOExxa1FWOWp5WFp5alRtMTU3VkJRUTR0MFVleWpIMzhHTVEwVmQ3d0ptWGNIa3ZKb3lSYlFnV0VySmRjOVAyOUw1bFktZnI4ZlFBalNtMW9TaXZkc0h6NlZSeHNMc2xTSUF6bWpBTHNIQlFOVGdnODk5Y1dyTm9hWm9WRFlSamh4aTZqWkp4UmlSazRHUDdSLU9R0gG3AUFVX3lxTE5mcE40VjllQ2xXdGwzdzJ0Y3gtRndxVGpvUlQwRjhJRklZT3EtRVVLRW1QZ3pOQU95M24xNGtiSnJWZVotZnJ5M1ZCVDYtbWh4dUFVUG1PcVpRYUlsRXJRUktGWklta3lnZWV1bXFSZTk3MzZ4Y2NuclduaXpaQW1BX0Y0VU5vYm1DNUJyQ3ZiMGk4RFRBUGhFU00waGJNY3NiZEpWbmlZUmhIOUYzdVpUSmkxM1Babw?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-04T02:00:00.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "ce9b06f6bb8d",
-   "related": []
-  },
-  {
-   "title": "భారత్ ఇంధన రంగ సత్తా.. అబుదాబి వేదికగా ఏడిపెక్ 2026లో అదరగొట్టిన దేశీయ ఇంధన సామర్థ్యాలు",
-   "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQS0Q1c2JEYUc2clJCbEo3UGVrTjhKU1NSRmgtUy1WVHRQbTNuekdMUTA5MHBXMkp5c2lycG4tNUJ5XzhqUEgyUWhMNzNIOVFrYlViMXRjcmVSYU82clRfcmVXWkpad0dsa3dtNUEzeHlyMXhlR1VWbkZHZ1h5U0xwV1BYOXgxamFzMXItdEJRRnRSNTk3bkNWRVJ1RWFrQ0swM3EzR3luNTc0UmZJam9wc1NpbWt1Mm9ib1BoOEhQazJPUmhwbzRFYlJIR0RzX1BVd0swTU04UlNtb2pEYlZwQXBvMWJxUngy0gHeAUFVX3lxTE8tQ2laUkUzOEYwZE9uT25NVk80RXMzdTJ6dV9VQWtsQ0tfSzFTNHRxdVFBUVRCaUV1LW9CVlBYTDhiZjBUb0FiUXJXdkx2OS1rUFVRUmNLYU1saThGa2RRWXhwOE4yelc5Zk0wYV9FSzZGWVNyWUdwZkl2T1J4bFpFU2FMTEFwMEsxWmtVVER1czFXR0VfOGg4a2RGX052VjNZTFRXcG04Ull2UGJQa3Fnb3lOTDFMczhDQkRFLUdkZk1nLXBaZW5SbGlBSnd0LU1mM0NYSzR0M3F4YnVGUQ?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-04T01:48:00.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "695c3f0c5e9f",
-   "related": []
-  },
-  {
-   "title": "Move to report job vacancies to ministry",
-   "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBSTVlJX3dHVjdzRThWY0MwMmg4NERIN0VvUjZQbWpzM0JSYjI2WUF0UXFrV2MwMFVjeDZnUEMwaXFqRGg3QjhNbjhmNzczNy1LcE1z?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-11-03T23:01:51.000Z",
-   "lang": "en",
-   "countries": [
-    "bahrain"
-   ],
-   "telugu": false,
-   "sections": [
-    "bahrain",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "c6e0d126751e",
-   "related": []
-  },
-  {
-   "title": "సౌదీ విమానాశ్రయంపై హౌతీల దాడి...",
-   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNWmR5ZW1YRW1MNWZKLWNUMkExZ1gyX3FEdXFMd3RLN2JtbFJoY2JDVFZ4RDhSQ2JhV2NWdEVOTDNWN3BDc0JLd3l5c0V1WlNoWGh4Nm90UEtyOGxramxCN1kzcV9SeC10R2tILTVHVEJxTlRtdC1kYWl6WERUYnhQY1hBVUFEbzN4YWRyT3I2NTl4cVZRZHJNU0pBVzVqZHNwbXk3cGZ1dk9DLXRYeWFWRS1JMmRxYnNpSTNrNGR2RmZGUGQwd3BwUHU3aEI?oc=5",
-   "publisher": "Prajasakti",
-   "publisherUrl": "https://prajasakti.com",
-   "published": "2026-11-03T21:27:00.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "id": "8211c089603f",
-   "related": []
-  },
-  {
-   "title": "దుబాయ్‌లో పార్కులోనే ఆఫీసు",
-   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPczNfX0drTUdUWjZ3SW5qNFJGVS10V1cwRTd6UnFWY3JHdG85WE1mcVd5MU5kcjZDc2g2VzhvcVU3VXdLRGQ2TkxFNzdjcWZmVkZuSHZZNExRMEQwSDdQaUcwV2pKTUxXUFJKdENubTNpRkQ5bEJzUlpqUTRfWlRJWk13Z3JOelQ5WXpJQnlNZkV6N2JacFZaaS1KMVRvWmRGaHd4Xy1kbV93ajFid01Z?oc=5",
+   "title": "Dubai ETCA | దుబాయ్‌లో ఘనంగా ETCA 16వ బతుకమ్మ సంబరాలు.. 6 వేల మందికిపైగా తెలంగాణ ప్రవాసుల భాగస్వామ్యం",
+   "url": "https://www.ntnews.com/nri/etca-organised-bathukamma-celebrations-grandly-in-dubai-2535750",
    "publisher": "Namasthe Telangana",
    "publisherUrl": "https://www.ntnews.com",
-   "published": "2026-11-03T20:12:44.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "7d7ecc0d0041",
-   "related": []
-  },
-  {
-   "title": "Indian expat wins Dh25 million in Big Ticket Abu Dhabi's November live draw",
-   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9oY3BoQzBHSDhiRm9CRTlFS2tpN08wWWJlM1pVdTJnR3UzRU04SFFRcXA2T2FTUkN6WFZnd09hUHh0NlB6NW1hVWJKVi1MVkRxYzNRMHZyVG44cndhQ2xWRk5BZVpnNjVuLVZCdW5GNzlHd2tKQWd3c9IBgAFBVV95cUxQWUlqQ04yUzczc25RLURLSW5TME1LdnJKRjQ1d25vVGkwaWY0bDlRbnZfalVfZTBKNzBYNXRac212ZXBISDVXOFlIN1pOZ3Nac05mZlpwZXEyNlNpZmwzaHVQUnJxOUJxVHdqXzc2djU1Q1Brekw4YWJwWkdkQnNrLQ?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-03T16:43:03.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "572cd0879549",
-   "related": []
-  },
-  {
-   "title": "అరుణాచల్ కివీ పండ్లకు అంతర్జాతీయ గుర్తింపు..దుబాయ్‌కి తొలి ఎగుమతిని పూర్తిచేసిన అపెడా",
-   "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPcVhWanZQN29iUUVCOUhUaURzT2FQMkVKSlgwY1BTb1g2U3VSRFYtd3B6Q2Nzbl9wd3JxWG1YQ3Y5MUVfSHgtUHhSM3RVY1YxV1lzLXhHZU1sS3dVR2VXd1pYZmxRMEJNbjVOUFlUd1g5Mi04SWtJZ0U1NDBORGNsU3dfZHM0dVJydkVTS1NfSUdiSmtXbC05THFnRFNmTDl2TkZvU0dfVEJWUGdsbDRHb0FfY1NmanhXTHB4R015LVp5WEVnMzlYX0xGemg2dmvSAcQBQVVfeXFMTzAwUnNBdVpmcTZjSlg0aEZtZnZaLUEyU1ZvdVhkb1BaVFdXZXo0eEZEb29ybTM5YzZyOHpMTzhoNDQ3UUFZWGVJaFF6b3VIWjg4NzN6ZlBhNWF5UmVCa3M5a2M2RVFSd1ZpVC1QRjR1YWNfSzJEaUNsTmhocjViN2VrR0hDd0o5bEhaNXZqc2oxSzdEU19wZTdKWW0ySkh3N2ZRWkYteFFPWGZjaVEwY0lyOU9YaWNfSWVpeW5jVzZIVkxmQw?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-03T15:24:00.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "d1827f686759",
-   "related": []
-  },
-  {
-   "title": "Video : ఫైవ్‌ స్టార్‌ ఉద్యోగాన్ని వదిలి.. దుబాయ్‌లో రూ. 520కి చోలే భటూరే",
-   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOS084V2ZVN0hCVzR5Vkt5X0ZIMFJIdDkzOUJNRmliZnZxWlpnOHFfRlZaVUNBeHdkMFN1ZGowbExRNVpmbFNwTTRfNEE3NWo0VUE3S01pWk1hblZqOHpuRGltTWJSRmdrMFZYaUFNQVI3bmFPZzV4T0xQelNfV2RPY0V3N0d4eXlOUFhTZHdvcmJsekkzNWhRZ1pKZkJmaVQ0dnczR1R5bVZOaFVZN01FQTFWN2hicHNzd0M40gHAAUFVX3lxTE9xcjBuc0NZRDlob01QbDBjX3BETUFSdTQ0ZWFJR195WGFwUjZaRlpSa3U0NzBXYmt4b2NSX2N2NkdOZ0dxZ3hUWUVjVDM1eHhRdWswUmFOWlJ5QU5CYURwUHNENzI3NDJnTnpEWkZDbjhOMWFiYkRBN1VQVGhoTVVmbHNRckF1U1N5dVlBU2tvRXRnMTNMYjlSUzhrXzhPOEFzanczRlBCTmprd3Y4SVJwZlNxOFZKVDBibG8zTHNlRg?oc=5",
-   "publisher": "TV9 Telugu",
-   "publisherUrl": "https://tv9telugu.com",
-   "published": "2026-11-03T14:22:57.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "id": "a764ead01beb",
-   "related": []
-  },
-  {
-   "title": "దుబాయ్‌కి కుల్లు దానిమ్మ పండ్ల ఎగుమతి..600 మంది రైతులకు అంతర్జాతీయ మార్కెట్ అనుసంధానం",
-   "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPdl82bkYyNXV2SnRrN2Q5bUFheWsydUpWV05HWjJieU5qYTVidk9VWnNINThqcG5oRVZSbnFsUmRhbnZJcm90X3kzVHljRFlqckYwUmpZWVRDUWdBWEZOSlE2djF2Rl9uYUwzTnRXX0NHc1ZrQXBLTWRKcGx2TnA0Nkg5ZjlmcTY1Y0tfblhlenozcVM0ZmFIOWRtMVlRQk9VNlo5Mmhwc1MzYVpqSXlEOC1qS0dyOXlHamc0YmVnNXNHLTDSAcMBQVVfeXFMT3ZfNm5GMjV1dkp0azdkOW1BYXlrMnVKVldOR1oyYnlOamE1YnZPVVpzSDU4anBuaEVWUm5xbFJkYW52SXJvdF95M1R5Y0RZanJGMFJqWVlUQ1FnQVhGTkpRNnYxdkZfbmFMM050V19DR3NWa0FwS01kSnBsdk5wNDZIOWY5ZnE2NWNLX25YZXp6M3FTNGZhSDlkbTFZUUJPVTZaOTJocHNTM2Faakl5RDgtaktHcjl5R2pnNGJlZzVzRy0w?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-03T14:03:16.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "b6138c333006",
-   "related": []
-  },
-  {
-   "title": "Labour Ministry shuts down two recruitment offices in Qatar",
-   "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxONGdaa2FNMnRISzZWR0pDamt5NUYxWUhJQlVqV0FuWFpkS2hnRkpfYWFDRGpCOUVneS1kLUdsS2llWDBXd0Ruc2JpVnFUWkpQaVRMdlBoT0JBQ05Odk5pTkxqdEwwTjE1V1JnMUFUR0RxZ2kxSEg3X3NSS1VPT19vZGJ4V0dSLUNCLXBWVTBqelZfQUdIZDlGa2tJYmI4NDNPZXprUEF1Q1o3dnRD?oc=5",
-   "publisher": "The Peninsula Qatar",
-   "publisherUrl": "https://thepeninsulaqatar.com",
-   "published": "2026-11-03T11:02:07.000Z",
-   "lang": "en",
-   "countries": [
-    "qatar"
-   ],
-   "telugu": false,
-   "sections": [
-    "qatar",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "32b1d9862d62",
-   "related": []
-  },
-  {
-   "title": "Indian expat sentenced to prison, deportation acquitted over villa rental fraud",
-   "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNWXg2anZYbUk2NzZ4YWJuZFI5aldQRmp2aGhhdVNjbmVmS0VuWWM2bUROVHRiOUpkUHNKSXQ4eGZXcVdBb01zVzhHOG9MVC0xYjQ2UGxTX0E1b2c1VkVaMm85OVRxYk9sOElQN0QyckhyLVFCbHZxTTh2eGxzRFlYOWt6WjB6QTRNdjVfS3FMU3BQM3M1bFk0cE9tcFZMTjNCUFRKMmNYSDlxTDZa0gG0AUFVX3lxTE9JcGtINnBieVFIdmpYOTB2X09aQThaN09yTzNtQXRPeEV5LXlFOFVjWnh2cWQzRFlXQUNLTnJWLTItYm42LXNHejZPeVBRSWtwMGg2Z3dualZaVXNnd0Z1YlpsYmFYODNBdkRvanFVYmI2X0I0cm9DY2dkYjNMb2FtNTJBUllwNFdzNzNkSmVIMXZmc3lzVmhPdTRuUkxoOUhIejdPTlNmZWRuMk1JZW81RGZWcw?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-03T10:50:59.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "be336e32ef5f",
-   "related": []
-  },
-  {
-   "title": "Kuwait: Kuwaiti court sentences Egyptian, Bangladeshi and Indian expats over food supply theft",
-   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQRDg4cXB3ZGxqc05iUG5CdFNJdzR1UVRCanZ6TWwzNlRNcDFNMzNHUU04d0h1cUk0X3NhZHZTMy1kLWJvVVE2NlJOYmRpWWpMWEtJYUc4X2xuV2tTRzBzMUNCRFlnWktweG1tNlN4Q096Tzk4bml4LVZaelQwcHZjMF9wMDRibnU1TXIyc3hjd0s0bE9VMzRmNFdZTkVWNzI3RUQyaFlHWHJKZWNUVnhmVzlmd2t6anlnVnp1UnlJN3FWS2tETlNF?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-11-03T09:59:56.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "jobs",
-    "exit"
-   ],
-   "expat": true,
-   "id": "b6b8048bd0c2",
-   "related": [
-    {
-     "title": "Kuwait Court Sentences Food Supply Branch Manager, Egyptian, Bangladeshi and 2 Indian Expats to 3 Years in Jail",
-     "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPTEpYTWNxQWJFclR4UVpid3g0bEUwRHhwQWpTWWRFdFJ1S09nXzdvcHlJcV8wVFdwMUY4cF92SFFkRU9rb1RfSVY1dk5MY1hwMnpiWE5GMVNuR2pqeGtlODFiRnlXYS1JMFN5NkNYRTJYX0JGdlVRR1hYSXRyRktHX1o1MGJhcV9nVDJVcjNZTzc4QUVsYTFxaG9icEl1UUxBMFdzSWdqcnJHUzNmb3NiY2RteDlxanpVMHlDZWYwMWZJSWc3amhlcFc0dFpNOTU2VHU3WEM1dWFNZHF2TGJLaA?oc=5",
-     "publisher": "Arab Times Kuwait News"
-    }
-   ]
-  },
-  {
-   "title": "Telangana Woman Stranded In Muscat Returns Home After KTR's Intervention",
-   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOaDVuTFBPdVhCVGpHM3dXRC1DQ2ptTy1qa05iV1FWVnNyS2FSZkN4eUJzbGZ5Q3lQMmoxY0k1V0t4eU82QWdKOE1sNHEwZ2s0OE1VY1pNcGpTTFlqWVBwS2xyTmtZU2pZOUVWbmVKUVZZVGVSclJoOVVIbmFTVFhvSnZjSTJEZVNmaDFEQlhGYzVKZXBsWVNKZTBNQnE5V2NJcWZJd01JdkxxSEtXc2hOY1dXaF9FUGvSAb8BQVVfeXFMTzVTUVhrZ09zZjZSeUFaTHZ0LXdLXzJ1OTlScHZ4T1hqVnZCTjlHdGZ6YUNIOWdkQjd5TGg4OVpFMm51blJEd3lfS0g2R2JiNXMycTE0Q2NGRXhHeTNhMlN0S216T2N2cFMtcWxjSURtQnUxSzlWb2NYSjN2blh1N3BXVnFndVQtQXRvMkhNaVNCLXo0ajNlMDZlMkNTT2dJd2RzWjVPSG1TQ1d4M2doak5qc00tdGhUb0xvMVp3S1E?oc=5",
-   "publisher": "NDTV",
-   "publisherUrl": "https://www.ndtv.com",
-   "published": "2026-11-03T09:28:43.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": true,
-   "sections": [
-    "oman",
-    "top",
-    "exit"
-   ],
-   "id": "e8665dcf53dc",
-   "related": []
-  },
-  {
-   "title": "S.Sudan police recruitment sparks clampdown fears ahead of first-ever polls",
-   "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPRmhRS2dwOWpwa3p0SWlJU25sb3ZMVElER2VGclZOVkRGYWhiVlp5cnB2bndMdGVDeHg3RUxUWS1IRHo2dGdhRGxPUmkyZVJEY2JDNnF2VGNNcVdmeXlIWFVadEF6amwwYkFGLWFPTWdBR2hrUHdLbTBWQzFDclFWZ2NuYXFUX0J5ZVdtNzl6enVZUC1VVmlLRGxsbXBwYm9VNGlFVGtiTmRGa0dRb1dLeVZVZw?oc=5",
-   "publisher": "Arab News",
-   "publisherUrl": "https://www.arabnews.com",
-   "published": "2026-11-03T08:45:31.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "1293ddb15c89",
-   "related": []
-  },
-  {
-   "title": "Indian national dies in attack on vessel near Oman",
-   "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNemtZZFprMmwzYVEtV19uSUZMTFZwNUJLWmcxOUZIR19JS3V4aTJMaHZLWlBxSmIya3NUMlk5ZXAtMVhqUXpVcm4zMXAybEtoTWU0LWxRTmI0REkzYXRTRm1ieVdvTFdUVlMwWlUyZlFrS1hLYkMzMVo3Wm8yVGd3ZWtjMDZVWURDdDlDSElFLXV0THPSAaMBQVVfeXFMTmxDb0FYc2RZcFpkX0NtdXRCaTZJTGZSSkFadHVfcHFrMUR6N2VRMHJtWnoteVY0LXVxMDJ3RDdHaTBkbzRfbzM2anpIWTR1OW1Eb3Z6OE11X09TUlpickRUNnJjMlNKSDl0eEtFVzdqNThjd2QwdW1reXlkVjk2SHRZYWpDREh6SzlFMkwzMHpMYUY3ckFEZW1XRHJZeVphQUtGWQ?oc=5",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-03T07:25:13.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "e91af18c5ad9",
-   "related": []
-  },
-  {
-   "title": "UAE residents can own 2 vehicles, register 3 more for extra fee under new traffic rules",
-   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxONEdHZk8wcDhDRmZia2lVRENVUUNxYXM2UTRBand3ejdLa1lYb3BXb2tjMnZ3OUc0N25wZklHdndWUzhRbmdHcEhyc3FUWnlwT0VreFg5TVMxb016MndVVjZ1dlRhNnpuQmgtbDkwZTR3SGNwNjJrUGhmVWNRVGtyTXAzYnRRNGJfLUF5NDNHR0ZmNzQ0R2Z4WVdRNGlBM0twNElpN25GYjlqb3Bjd0h6WUZRcC3SAbwBQVVfeXFMTzFtdUNLVGZ4VlhlZkd5WWVkUEQyUHZfYmI5X3Z2U0NzNFVOSmQwVkN5NTNmVTBhc2lqTDRZdzMzRlhSZkEzNnFxMDNwUUFvcXM3LU9kUEw5TFhsQWlvRy1udG05NURxOWdXV2t0ZTBhOVV5enhFaWpXdE9aQ3o1N0djamxHUXQ0REZROFcyRXJZRnUxRWJpdFZlNWMtRHJJZTRiWkhfcTBrRWZHOFNQcHRrQkVwUnJRM09hUC0?oc=5",
-   "publisher": "Khaleej Times",
-   "publisherUrl": "https://www.khaleejtimes.com",
-   "published": "2026-11-03T02:00:00.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "8963b707713d",
-   "related": []
-  },
-  {
-   "title": "UK Labour to stop working with some Green councils over Zionism row",
-   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPSEw4bTc3TlI5dmhhN0MwbGhRelR3TnlnV2hwLXV6c2M5NWZPRVpkT0FUY3c2MmxBdW5FS09lWlhONXJyZVNGcE5UV2ljUUxrQjduUkp0dG9GZWJ5S3VJV0RnX0hDMkF4MmROSkFONWhBaWJ0UkkyVHJSV0N6dTlOWkNmY2tJR0t0TjJQU2t1QnhHY2FtV2lRS2hzMk9GTE5BZk42N2dmaWxHUQ?oc=5",
-   "publisher": "Arab News",
-   "publisherUrl": "https://www.arabnews.com",
-   "published": "2026-11-02T17:33:41.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "53dcee991ce0",
-   "related": []
-  },
-  {
-   "title": "షూ బాక్సుల్లో డ్రగ్స్ స్మగ్లింగ్: కువైట్‌లో భారతీయుడికి మరణశిక్ష",
-   "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQTHlweW1vMnlrbWFoaTh3WUc1NS1ZLUNualpnelRBM2U5UDFkRlkwZzZaY2ZIZnJjbjJ5UktjMWxkaUZjcVc1RmJiMGdZeTg1UDNOY3lKVUFPZ3pPR1E3NVFXRTFVSHd1NC1LdFhGZUlkcHBlUjN6MmI4ajdMNWc3Tnc5YW9YMm4yYXRHNWl6RzYxdUd4T2RIN1VFZXh5RUdtZDc1R2xaTkNSMzFVbkpWVFpYNElhUGVVS3I1N0RZSzJCTEVBenFYdw?oc=5",
-   "publisher": "NewsMeter Telugu",
-   "publisherUrl": "https://telugu.newsmeter.in",
-   "published": "2026-11-02T16:00:00.000Z",
-   "lang": "te",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "exit"
-   ],
-   "id": "b987ae063b97",
-   "related": []
-  },
-  {
-   "title": "6-month jail, SR100,000 fine for assisting residency and labor law violators",
-   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOaHR6V3kyeTc1S25EMGkwd1VZdENDYVFSLXJuLWxvVjdlYWV5RGdiTXQ1WksxWDNCZjIzbnBDLWxlUUhielIyMzNrUTNXSlZmd0gzY2t2MS1oVG9kLVNWaG9fdGJ2aU4yeWFWMVc2ZnBKcFJ6NExiSGl3LWNSRDQwMU8yR3ZhZnp6T0FCX1pJUWxGaXRDZm9NMUhUY1d6TDNMWi1aRjh2cGhrd2J3WVdRbUZaZ2Vvdkg0R28xMjctcEVvSE9qZ2hMQlBB?oc=5",
-   "publisher": "Saudi Gazette",
-   "publisherUrl": "https://saudigazette.com.sa",
-   "published": "2026-11-02T14:33:00.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "8f91f46eb886",
-   "related": []
-  },
-  {
-   "title": "Spain deports African, Asian asylum seekers to Morocco amid rights group outcry",
-   "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPd0NMSEFlRnlTQmlvVEpjRllWS1VYR3dkalNDTjVZcWNtd0EwMFR6OTlVLWtmb2phOF9jMUZsWW9XY3JyenZRRFIycXBoeUtrcEU3MFJadU5SM2NLNkppN3dSQjF1Vk9RYnlRclZiQml3OGZNX0twd3E1bjlQVEJjcTJDOWNudnZnS0hMQlpuR2MwR2pZNGZFNUhRZ2JZT2FFem9PVHZoeU1jU3FudUdYb1lKT19kV0V6?oc=5",
-   "publisher": "Arab News",
-   "publisherUrl": "https://www.arabnews.com",
-   "published": "2026-11-02T14:29:52.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "56e490bc0cc0",
-   "related": []
-  },
-  {
-   "title": "Pakistanis now eligible for visa-on-arrival in Qatar",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQRE5FSXZBb1B3ckJ3MU9LN3BEYWpRY29FbnUwU29TT1hQWXpIV3pSNkRuUmJfcWdRVFJfdlc1V3RDU0I4V240SXRUcEpYVkh3RzlWU1JpdWNBalB4Mm03VG5vYi0yY0hQQ2xZQWl0blQ5d3oxb2RDbHNNRUZ4V1JFNXJqb183Q0xNNzNjQ2hsNUdQa1BVSW4zOGV3?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-11-02T13:06:17.000Z",
-   "lang": "en",
-   "countries": [
-    "qatar"
-   ],
-   "telugu": false,
-   "sections": [
-    "qatar",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "7beea91aae76",
-   "related": []
-  },
-  {
-   "title": "గల్ఫ్ దేశాల్లో మళ్లీ మొదలైన యుద్ధ భయాలు",
-   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOZnNKUDN2VGtBMGtiZkJFZ1hJcDBNSTFsWlBXYWtHaS1ocnBSWW9oQ2FQQ2pmeU5KWGwxWkZQcDJLVHUyVG9EdkgwT0xWUU9oUHozLUpyc3FpLVJSREgwSzJHdVZ5aHVhdnZZN3pyVkNFbG1PRl9vLXNwaFdsQlZLSkdnbUZKS05qdEFrQTFLUmJrMWpnXzVzU3QybkZWd9IBkwFBVV95cUxOVU1YdEVMUTR0dEZrbFlOd3dlT29pR0U4N2tsUjN2NmJQbkp6VkFlMzdKT1ZpdXliY1M0NmhYZ2o1TjQta1poLVJVd0ZpU3hrekVmUDBZVC1JYW1SSDRIcUlMZy1ZQVJWWFlQN2xsM3RFX3VqU3FFcFNNc3JvMnIyOVZvamRvQVJfVl91R21ncnQ0RVk?oc=5",
-   "publisher": "Suryaa News",
-   "publisherUrl": "https://www.suryaa.com",
-   "published": "2026-11-02T12:59:00.000Z",
-   "lang": "te",
-   "countries": [],
-   "telugu": false,
-   "sections": [
-    "gulf"
-   ],
-   "id": "7c9c18578ba2",
-   "related": []
-  },
-  {
-   "title": "Social Protection Fund clarifies regrading new retirement savings framework for expats in Oman",
-   "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNNF9xMUJDb0ljQVZhN0ZXazZ3WFpYLXotR2Z4elR1OHVTaFAyNExKUnV6anZzRDdyZjZvdEdzZkk2YXdiUkdYYk53cXJPOGY3ZUsyMGUzRVNVdmR1cWplOXhTNlkwR21UdHNWb19BdlZXQmFCX1Q4aXVPdExoRldwZFZkc3NVWGhPSU8zQTZwM2pLVkFZeDlzdU1mdWxtQlNDXzR6eVFNZS1xTDB4Q283QmxNa2poZmJvRWRDQ3lYb25DZ1lfN3RVRmVsbG9xUQ?oc=5",
-   "publisher": "Times of Oman",
-   "publisherUrl": "https://timesofoman.com",
-   "published": "2026-11-02T09:41:00.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "b034ca63de6a",
-   "related": []
-  },
-  {
-   "title": "Allu Arjun's Raaka drops Dubai plan, shifts action schedule to Hyderabad - Telugu Cinema | News,",
-   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOVTE4QlJ2ZGlxaF9RNTU2ajJiMnkwT0trRGtuZ21hdThaZG9rOGJQMmllRVJQREhjdFp2bGRkbFlLX3l5NkI2akNlcVFEY0hrR0dzcllheWprT0oxNXVWSnItS3J3bk9PdF8xeXBWdHU2NUVrZzZYTkZtQmJzM3N0b1h3OGE1cjBkY0EwMV94bzZfME1wc1VJR1NCN3ZRTmJrMGfSAacBQVVfeXFMTXdaRUNwdHMzcG1sU3VRTUdqbktzZ3ZBbEpRVkhZUGFyak00MEFyem5RbVVIVlRlZkNRVktWdnNDbmxQVnJ4aG9ENEZXZjQ1U3FwbnlBbzZJbnc1QU1pcGpXN0RjeGZnWF80NDYtUWpxLWZtNUFKc3h3QW5DaTgya2NqOS1kVmxYa1FqbHkzZ3VxVmExZm55WVBoNXN5Sl81ck03WllMX3M?oc=5",
-   "publisher": "Telugu Cinema",
-   "publisherUrl": "https://telugucinema.com",
-   "published": "2026-11-02T06:30:12.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": true,
-   "sections": [
-    "uae",
-    "top"
-   ],
-   "id": "a0ab2a85a3a6",
-   "related": []
-  },
-  {
-   "title": "Afghanistan asks US to act responsibly on deporting Afghan immigrants back home",
-   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQOHFaeVMySTNSU05kSi1mRzlBRlNERkJoeXBTSFBhOERMOUpJZk5ITEQ0UFZRM09qQ1MxR211Yng4TGxDOHBTNnFvOURoaXhHWXNXemxwUmVzQUVrZVA2NjltNmczV1hDM3VVczNhZFlXQ3Nsa0F0bEVaVWFaVnhGT3pNXzE4aTFyTHliak9zbFlLbTRSZTlBWGlzd1RlMS1hdzFaSm9pU3dfdHpYYmR5a2Y5V3ZFVHpST1E?oc=5",
-   "publisher": "Arab News",
-   "publisherUrl": "https://www.arabnews.com",
-   "published": "2026-11-02T06:25:14.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "23ae0322d9f4",
-   "related": []
-  },
-  {
-   "title": "మహాదేవ్ బెట్టింగ్ యాప్ కేసు - 200 కోట్ల దుబాయ్ వివాహం పై సెలబ్రిటీలపై ED దృష్టి",
-   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOcHhGaEFRVkI2S3d0d3NvY0RkUXY2amN3SzBJNnJkeVV5SG1tZGROWHJkanpWdVk2LU1fQ1NjTXF5aVBfRXJ1MFNzeERtaE1lUzV0UjQ3WXVtRWFtbWlPaHJMUjVUc21ZVHZvRkdFdnhDLWJpQ0xxb1EyUVo2WVg5T1N1YnB0MUE?oc=5",
-   "publisher": "Prime9News Telugu",
-   "publisherUrl": "https://prime9news.com",
-   "published": "2026-11-02T05:04:20.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "44c6587938b7",
-   "related": []
-  },
-  {
-   "title": "Proposed curbs on expat driving licences rejected",
-   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPLTRsRndjV21kVFdxNHdSWUJleHYwMnQzQkxmd3NWWkk1TzQyek4zNVRuaEdNS2RrN2l6dE1PdU9Ra3A3TW5TYnUwSjVoYW9kZm02elRLLTQwVi1KUDRGakVLN2dRNFBGRjlfQ3N5dThraGM1Zmk5Wm5KNDZEbU5jV3dZY25XUHRMOFhyb3ZJVHU2dXY4NXJZ?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-11-02T01:00:45.000Z",
-   "lang": "en",
-   "countries": [
-    "bahrain"
-   ],
-   "telugu": false,
-   "sections": [
-    "bahrain",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "c9e59f548d32",
-   "related": []
-  },
-  {
-   "title": "Kuwait Launches Drive-Through Residency Service for Elderly and People with Special Needs",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQQXhfOExTMTEyd2RseDdKa25EbW83VWVYZllJTVd3S3VfVlJ0ZmpjWnk1MEpLRGYzQjI5bThnZGloaGhDOUt3WnpWZjd6UXo1UUlOVThkVFdsREJ1R3F4RjQ1RDlwWTRxZndSdU5JQ0JkWGdjdXB2TENPM1pEazhFT25ObUg5Q0hWZF9tNks3bVluYW9Md3FRUTBSTTBvTUtiR3k4SXlOQ2lUUzJ3eHd1VG9GdGk3Rl9US0VTcjB3cGpSLVhMTnc?oc=5",
-   "publisher": "Arab Times Kuwait News",
-   "publisherUrl": "https://www.arabtimesonline.com",
-   "published": "2026-11-01T19:59:08.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "de95173a06b7",
-   "related": []
-  },
-  {
-   "title": "Kuwait's MOI Warns Property Owners Against Hiring Guards, Haris Without Valid Residency",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOVXZOTThmZWhzMDFLVEJ3cHZMRHlESUd5OXNnM1pJX1FCMHJkRU94cFFEWFVWU3BxT1JrLXJzcnBvNG5sbXZBbUpMQVh2Q29CRDJVenFSS1R0b2dtVlRPV3pVSmZ3eS01eXNGTkRvd2xISndlcy1oRk9ERDY4emJ1YThTcU52cncwb3NLNURkaEFUc2tMVjBpODhibTZWcFFEeFZnMXFKTkpPWk5kU0JrX216TkxSMmFEanc2M2VydFo?oc=5",
-   "publisher": "Arab Times Kuwait News",
-   "publisherUrl": "https://www.arabtimesonline.com",
-   "published": "2026-11-01T19:42:58.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "e01e76cb573e",
-   "related": []
-  },
-  {
-   "title": "Minister of Labour meets ILO Regional Director for Arab States",
-   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQNkJYd3ZnUWcxU29yUUotV2RGNG8ya2ROUFpCQVZkYV9UcEF6akU4M01lM0FILWJHN2JEVWljdEdyYzhmUnlCU1FRd05vZjNlM0hqTTYxa3EwRVhpMzBuREI2ckJtbkxER3pkZXlpbnV3RVZIdmtvR25RUEotZjlrTU5ncXRRUnIyVjdsQVQtZmc3M182ajFLSGlJaEJWcXpkQ2tMdkpVMDQtaVVJekdlRA?oc=5",
-   "publisher": "The Peninsula Qatar",
-   "publisherUrl": "https://thepeninsulaqatar.com",
-   "published": "2026-11-01T14:57:35.000Z",
-   "lang": "en",
-   "countries": [
-    "qatar"
-   ],
-   "telugu": false,
-   "sections": [
-    "qatar",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "b8ef1c690629",
-   "related": []
-  },
-  {
-   "title": "మహాదేవ్ బెట్టింగ్ సామ్రాజ్యం - దుబాయ్ ఆస్తులు, ఛత్తీస్‌గఢ్ సంబంధాలు",
-   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1kTzBDMkV0U2xtZ1hVd1RodkJybEV2RE53aFRvbzNnQXZGenJGLWpqcUY0X2pRRkxDUW53Qm45UnlTeUY4eTJjam1yTUdxX2FOVzVZMHZIQVZocENIY05GYzZSR0thelR4ZFBuOEx3RVlkdGl2UDlPMQ?oc=5",
-   "publisher": "Prime9News Telugu",
-   "publisherUrl": "https://prime9news.com",
-   "published": "2026-11-01T14:53:48.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "57ea30df613e",
-   "related": []
-  },
-  {
-   "title": "ఒమన్‌లో చిక్కిన మహదేవ్ యాప్ కింగ్‌పిన్.. సౌరభ్ చంద్రకార్ భారత్‌కు",
-   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOak1xRVJYZkx1a3JfRkwxdUFxdXZWZndDeEU2Zm5BTHVIeUo4SEZjVFpUQ0YwM3ZpM3EzMjNJemhLa3plUEJ0UklBTXNKbXZBa3dLU1B4V1RjRXl0dmtmNGFjSUVadEdCSWctVVNsRG9NWjQwU2RGT0k3c1BRb05NNHhaeVZyeEg5SmwxVUxBQlZUZXFaQ3BMbTJEQmQzSmFyRlY0WU9XemVXcmgtekVSY0ctckhKU1HSAbwBQVVfeXFMUE1kSFY0N3VjbDI5WVIyRk0yOFVVSWZVSzh0a2liVUlheklQUkJva1dJc2F2M3pDYjg1ZFZqMFhCUFdhZ3U3SFg1V2NiUXQzR0RaQWZlbkU4aDZITWtFdXNfWVMzRXdrZ05BR3ZiYmVidVR4aGdhTnpMdkFwVWxzOTMtR20wTGlmdk5CbGprbzZLY1hwZnlqdTFDMnE4eGNSZUQ1LW5pblZUQ2ZtT1FiV3MtbzNEUFd1c1BXb3o?oc=5",
-   "publisher": "NTV Telugu",
-   "publisherUrl": "https://ntvtelugu.com",
-   "published": "2026-11-01T13:30:06.000Z",
-   "lang": "te",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf"
-   ],
-   "id": "fcf2e42f5e08",
-   "related": []
-  },
-  {
-   "title": "Death Sentences for Two Lebanese and an Indian Nationals in Kuwait Drug Cases",
-   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOV2wyYjZqQ3dkNjM4TFJTZUVDSHczendmd21EajVJY0hPX1g3emdPandFQll3NGhFX2V5VG5GZXIzMno1UWhwWmlyRXZjWENzWFVoc0pUOXhXcjdMMzdHdlNDODJuQTllekVfUFRyOXdjVE94NDBrcWJXZkVlNkpWLWtfYUZJZDRBN0M0YUdxaFo0NVRkUUFwZFd6cFExY0lSTmpBMmZmVEU1bHp4TFhSbXZjUkY1dw?oc=5",
-   "publisher": "Arab Times Kuwait News",
-   "publisherUrl": "https://www.arabtimesonline.com",
-   "published": "2026-11-01T13:13:20.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "3e95cfcbe71f",
-   "related": []
-  },
-  {
-   "title": "Kuwait: School cleaner jailed for sexual assault of Indian student",
-   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbU0zN0RUMjlKeTNITDdXX0lsNVdmalpaYS1tQmdBa0NvRU44S2dEMzJEM0RySkx1WlFaRDRCYW9kX3lpNGJDTjk1WmplTVZMY0RRaTdQcDBJYW1KcEJfdlVUOWJVNi10bXV3eDk4c3JzcVFVY1p1NE83eWhKQkY2dkJzd0cwWXY4N1VUWEVGNmZLS2NBQjEzTW1iTmY4Z2lDNFBUb05POHFPT2s?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-11-01T11:15:08.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "c1dd8947441c",
-   "related": []
-  },
-  {
-   "title": "Saudi Arabia: Telangana man dies of heart attack in bathroom",
-   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQVHFERmNoa3Y4S01JejB2eENNc1IxNHNEVjJWdlZkNTY3SC1QekZEWE1HejEyTnpSSmRxSjBMOHMtMUttbnh5dEN5MmlsLXAzZ3hQQUU2WVRsREVqWk80Q01NMUNhUHlMWk9QZzZWZmsyS2ZHUEZHZEMwVHJwcElIUS1DVGxkaTJBZ0FtdU1hX2k2dWRhTHc?oc=5",
-   "publisher": "The Siasat Daily",
-   "publisherUrl": "https://www.siasat.com",
-   "published": "2026-11-01T10:21:23.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": true,
-   "sections": [
-    "saudi",
-    "top",
-    "exit"
-   ],
-   "id": "693ce3999e48",
-   "related": []
-  },
-  {
-   "title": "పెళ్లయిన రెండు నెలలకే భర్త కువైట్‌ వెళ్లడంతో!",
-   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNZ2NxN3dlbVlMZmFiNDJsTWxUUC16ZnlFcHgxbElkR3RRcngyVDZyWEhWUHJ6c2FrbkpMUm55cjZSUU90cFh0UnhXRHQ5YlU1M2hyd3hsWE1kRHRCSEYyZ0xISlA3THRFLVVwMEtUQzRjQzVIVWgzWFdRSHFzeDBSYjNOSjdjUmpJeVlJWA?oc=5",
-   "publisher": "Sakshi",
-   "publisherUrl": "https://www.sakshi.com",
-   "published": "2026-11-01T05:40:34.000Z",
-   "lang": "te",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf"
-   ],
-   "id": "572e0a78d5c5",
-   "related": []
-  },
-  {
-   "title": "సోదరి పెళ్లికి ఆరాటం.. నాలుగు నెలలుగా దుబాయ్ జైల్లో!",
-   "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOS1N4TEhBTXNpZ2FhOU93WG51WlA5Q1h4UEY5TWhUZHFCbkdjNWpYcW5QMXVzbkFhZmJVTXgyWUlyeVJRN1I0dkVzM21Ud0p4dHBEci0zd2RPMFY5elhCMFlhUXlKREFvc3VKVUlRQ3JlRTFzdHRIUWEtR1owTXNDOEFXMmtCMzQyRzU5bGtxa29zdTRXU1Nmb3YySkZHVGJYWlVVQW9yTllva0RD0gGyAUFVX3lxTE16VE1uREhGSm1TTEg0TzdyeHlWT1hiWlRhYXp5dXRFVnl2NzctX0dUMHBjejRiWVJDalpnZGRnaWRScG15OXFhcEJhZHZNa3FWVGhxRTNwUmpFQVlVc3hHTWhhTWRQQnRXMFFSNnZncy1uZFBPdkZXUm0yc1JpR2NOZDk1NlRmcDlWREZMWkVhYlY4MGQ0UHlGYjEtbWxEQ0xiWnhBUTQwcG43UmU5TmU5OFE?oc=5",
-   "publisher": "TV9 Telugu",
-   "publisherUrl": "https://tv9telugu.com",
-   "published": "2026-10-31T16:29:35.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "exit"
-   ],
-   "id": "7d0b2a8b4c83",
-   "related": []
-  },
-  {
-   "title": "యాన్బూలో తెలుగు వారి ఆత్మీయ కలయికగా దసరా, బతుకమ్మ వేడుకలు",
-   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQSkZhMk9LTi1sMjdfQU9nRWo4dFdoOVFCalZmOFR2YXQta0M3ckdvdjBNekpuVmNmSGdqWUpkTVRLbEw1Q3kyME95YVhnZkpHSFlMVk9DQW9mOVNDS3dGR0dOOUc5bV95TnEyNzlfblFiTlhXS1lmNlNzbnZTRGxzWWlZY3dwSVFYSGQtRGdHLVJYa2VseEttS2ZCRnVNcjFhaEo3cERxamFqZzJNRDZXTy1PUFhDbTRzc0Fj?oc=5",
-   "publisher": "Andhrajyothy",
-   "publisherUrl": "https://www.andhrajyothy.com",
-   "published": "2026-10-31T12:54:36.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": true,
-   "sections": [
-    "saudi",
-    "top",
-    "sangham"
-   ],
-   "id": "8a18ca18b7a1",
-   "related": []
-  },
-  {
-   "title": "దుబాయ్ బుర్జ్ ఖలీఫా టికెట్లు ఇక UPI తో బుక్ చేసుకోవచ్చు.. సింగపూర్‌లోనూ ఇదే సౌకర్యం!",
-   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPcDZNdXo4Z3BBOVhxYkNsTE1MbXpkelR5dU40eFJ6ZUlJeUNTYWdJTDRZUWRZNjI1MzRtVHlWR2JJVFJXRUFZa3B2cjFlX3Fhc29sb241bHhTY0Jwblp1Zl9ZXzRUbEh4TG5FbnFZY3RRaktOdGZjSGhkazhUN0lmQVVnT3N3WFl2SXJZOGVqSkNlNXdjUU1NYTFObV9zUXhJUmRnUXd0OEpJMENueVdXdjFGLW0?oc=5",
-   "publisher": "AndhraPravasi",
-   "publisherUrl": "https://www.andhrapravasi.com",
-   "published": "2026-10-31T09:42:00.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "id": "1c2ae1b783c2",
-   "related": []
-  },
-  {
-   "title": "KSA: Saudi Arabia suspends travel to Kenya, bans visas and entry over Ebola concerns",
-   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNUWRUUTRFN2MyR0pBT0VqOEw5dVRaWTNacm50X1RlSVRuUDhMQ25fRGNfMGd5eFR4RDhvc21pWXlmQ1k4VWR5anpKYnVtZVV1MkoxeWhaTG5XZmk2N29qNncyZHZPUldpQm1jSjdJakFqVkR0YVlQdG0wLWNMaHlFQWpRTHdUekMwNzNTSm1fV3FKOWVzLW1meXU0bnQ2LUEzM0NsSU03ajhFOG9Na2pVdk9JaVFBUm1BOEZqWXB3?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-10-31T06:34:35.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "024b1e8e0d7d",
-   "related": []
-  },
-  {
-   "title": "సౌదీ అరేబియాకు విమాన సర్వీసులు నిలిపివేత",
-   "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQZDlNWXlkLW1yeGpGSGhuZXhuRXhHRmpmdkY1NEdpTHh5MHp0NXhYZ0V2OHlKXzNaTjdMaXNlZkI4a2Q1ZHpBZXBXeldmcHhLZkVWZ1JzVWJaOFFqV1hOTHpVRWVsQWRKN3dNSkc5aXpEWnZTcURaczZ1UGd3MDNlYWs5RFM1N0J2QVFwWlEwdVRUMjRfMnd2Y25ocDl3MGN6UjNVRVlQZU0tZmh3STNFTGg1VlBYeEdncldIeTJjYl9Rd0cxeG5leHpMdlZpQl9hODhTb1ZVU1E4SEQ5ZDFJcklyOFZyVnJ4ZFJoQtIB6gFBVV95cUxOclJpWGZNOGNkXzE4ZU5KalZUdTZzODFHSC1ZMGFJeVVGeWY4eG9sUlc2WElWNG1UVE1EQld0Z0drS2lPSmQybFd4eWdjbUQxaWNPazFEaHhCYS1KNXdMYnF1T0JqRDNmbXpOdzVZNFFidzlqS1phRnhuWFVRbF9TZF9URHZ6cUlzRXFRWVhhYkNRaXI2X2hISjB4cEpjZ1J0Z043TXF2SGNRVFJhQ1VUUHA0NUdvSV93Y0ZnZEVUcDlzWm1uUEtkYXRMeUtJOTBBQnViNlpTcEJ3Rm10OGN1VmhLSUhxeGZJS2c?oc=5",
-   "publisher": "Webdunia Telugu",
-   "publisherUrl": "https://telugu.webdunia.com",
-   "published": "2026-10-31T05:54:00.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "id": "e20d42745635",
-   "related": [
-    {
-     "title": "సౌదీ అరేబియాకు విమానాలు రద్దు చేసిన ఎయిర్ ఇండియా",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE0wdUZ1N3B5OGZsbTE3Zi1GeWlNM1VpSURvcFZab1FVeHhEWHBmcjB1N2U2YURQeWdBdm5FZGhPYVN1V1Jxb2V6ajRJUmhRRVRfTHo4NTZaRmtxVmZaaTIwWW9hUUp1dU04YVViaWZGeER0U2lvLWlQemt3X1Y4UdIBgwFBVV95cUxPaUZ4bHpIaXl6bXJrQW1sd3NwZUNqNUZuSDktS1pqel81azBUNF9fdFJCTkFJcUEySmhjTy1COEJzMlBUT1kxc2EyVldOUGpPYWNfaXp6Y2VYQU9iWVNvMGtjS2NaT1pSNHNGT3VLTlJROFluOU0wQXpwLTBWUGZ1YXRwVQ?oc=5",
-     "publisher": "AP7AM"
-    }
-   ]
-  },
-  {
-   "title": "Cockroaches in Kitchen, Workers Stuffed in Single Room at Kuwait Delivery Firm's Accommodation",
-   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNdEYzdmxxTkt3NTlOVkxxd2ZLRURzYTg3WXBSbnp2NU1JRmo5NEswWl9Vanc5V3AyV0Z1NFY5WU8wNW8zcnBOTXJ3RDU2XzFtWkNjN0RNN01jaVBjcDBDeUt6MFVPd0NxUEhxbU4yekQ0Rk9Qdko1YTMxUHpFdWlhM3BwZ2taWjZiM09BU2JEdUdsVjN4ZE81MV9hU0lndjRlNXY3YUZQblVBWHFyNGR5TldVel85VlphUzhNUnlIY2l3T0lOY2FJaWtn?oc=5",
-   "publisher": "Arab Times Kuwait News",
-   "publisherUrl": "https://www.arabtimesonline.com",
-   "published": "2026-10-31T05:45:15.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "5a836ac844cf",
-   "related": []
-  },
-  {
-   "title": "Bangladeshi Expat Surrenders to Police, Confesses to Killing Yemeni Resident in Mutlaa",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNbEFoTVBERDJRS0t1T0twN3dBcmJhWUlEUHBRS0lwdFQzY0RZSWpBU0ZGdXYzaXFmR2ZPalNXQ21QOVFSbUU1blhtVGVVWjViNWYwYWJ3RDdldzF0TTlXZVNEZi1VZFc4UkJvRE9sRzh4NEtReER4QVNBNXB1R1JQcjhOYXF1R01UZ21wQkRQVktUS3ZHTUhHSEJ1Vmw4Z2VvZjVxQzZzZ2JNVC1ORTM0QndFcUQtYXFxMFV0dUphUkw?oc=5",
-   "publisher": "Arab Times Kuwait News",
-   "publisherUrl": "https://www.arabtimesonline.com",
-   "published": "2026-10-31T04:37:02.000Z",
-   "lang": "en",
-   "countries": [
-    "kuwait"
-   ],
-   "telugu": false,
-   "sections": [
-    "kuwait",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "48483ecb8ea2",
-   "related": []
-  },
-  {
-   "title": "Air India: సౌదీకి ఎయిర్ ఇండియా విమానాలు రద్దు",
-   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPRFdHcFZxR0Nnd2tEeXFSdHdsSm9qT2E5TF9JUWVWOHdKekU1bHYyVllSQUFheUJ4em1wcWZ0OFc5SjhYSHF1SmFLb1M3cnpxTEhERnZibWVaN2c2aXJqYzdGWEY3VXdIWnVQbnExRXZVNWhBTm5ZWW1VWkhJQ05IRWVIRk9pOEY5XzEyRtIBkgFBVV95cUxOVzRCR0xabzZnUDhIYUpGdUM1ZDdTcFpBZGE2anpmTVE4S0VnSi16M2VjNTNPUm9CWWRzT0Y2SmprR2tnb1BKS0lQdGxkS0RQT1pNYXR4MjJ4anZvcndzckU4dmhtVFFUc2RETU1DQ1hfZ3A1Tng0NVhQSmllZ0xybm9WTXVpbFRSTFVldW5tWU00QQ?oc=5",
-   "publisher": "Vaartha Telugu",
-   "publisherUrl": "https://vaartha.com",
-   "published": "2026-10-31T04:32:00.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "id": "cb9a7f36d4f0",
-   "related": [
-    {
-     "title": "Air India: నవంబరు 14 వరకు.. సౌదీకి ఎయిరిండియా విమానాలు రద్దు",
-     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPeUY2emx3UlpBOEY4T0VPeGlLTjJScU5iTEJmR2w1NHhGaGxfenBCOGZPQUVlV1pqVm5rb1R5amhzT3ZwRnZVT1d4ek5KanJsME1yYnVJb2tWRVYyMzFUdGN0ZERaZEdaaHE5cUpOUmhRZEhiSnVrNS1oWkx0UmZJbGowMDA2eGlTUmJwTnJlWmk2QTZHRWI4OFQ0azNfbGU3RG01ODhyR3Nqd2Z0VF9hWVM1eHZOTE1JYno1M0l5Q09kN1VTUjFPc3VacHTSAcwBQVVfeXFMT3lGNnpsd1JaQThGOE9FT3hpS04yUnFOYkxCZkdsNTR4RmhsX3pwQjhmT0FFZVdaalZua29UeWpoc092cEZ2VU9XeHpOSmpybDBNcmJ1SW9rVkVWMjMxVHRjdGREWmRHWmhxOXFKTlJoUWRIYkp1azUtaFpMdFJmSWxqMDAwNnhpU1JicE5yZVppNkE2R0ViODhUNGszX2xlN0RtNTg4ckdzandmdFRfYVlTNXh2TkxNSWJ6NTNJeUNPZDdVU1IxT3N1WnB0?oc=5",
-     "publisher": "Eenadu"
-    },
-    {
-     "title": "నవంబర్ 14 వరకు సౌదీకి ఎయిరిండియా విమానాలు రద్దు",
-     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPZGx1amZ2U29pbjQxY1FZck1LcUNadDBRajlJS2VOX08wS1d3OVQyWWFXN3Q3NFg3R1ZDOEVvSEdMTXlDSnhyUVIwdHRINXJfMEJTeXdDZlBOdlN2V2NHVFJKck41V1p0bFMxNUlTd3JCQjlrQkNaaS1tdlE3a2tmUjhpVkdWaGNvanMwMzFncEJtYWZhZlVRSjQ0QlBLbjU4WEt3b2owWnlud3pqeUpvTFEtSEx6Z9IBuwFBVV95cUxOTVVoZEh1d0s2TThJMUc3QzFjOTBBclJxWlNTYkxMaXR5ZWlVV2hwQ2s3QVpZYzFBMzM2a2VwbEJrOTVuRW1WeVRNSzFiakU5UEtGa3pjNzNrNkxYZEJkelo4TDhEN1lZZGxqSTRQUlJ5UWdKRTF2MjROelM2UElaa04xQ0U2Zi1ZZV9rZHRYV19pVjNyeDJrMW02ZVdwZTRzZ1J1aXY0MnA3bTE4ZlRuejlLaXR5QmUwWGk4?oc=5",
-     "publisher": "Lokal Telugu"
-    }
-   ]
-  },
-  {
-   "title": "దుబాయ్ నుంచి సేఫ్⁭గా తెలంగాణకు... సీఎం ప్రజావాణి చొరవతో స్వదేశానికి యువకుడు",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQd05xNFYyN1MtcVRFd1c1S0pfVzJpMzF4MENKd3ZYTFh1b1ZwS1U0N0dNcWxSMndjWDFGcVRhejMzaHZEVnI0dGRNQmwyTDJpT3RjMUZSTGE0VmFPZlNUVXlmNUxPMkUzQkV0d1E0R2JwVVI0OUJuek5MbWNfY1l5QzA1OU5Jc0JMT3RDVmFxNzc1bnRqRUJmUTZ3ZUNQeHJHUS02MHo0ZEZvNjJIckE?oc=5",
-   "publisher": "V6 Velugu",
-   "publisherUrl": "https://www.v6velugu.com",
-   "published": "2026-10-31T02:33:24.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": true,
-   "sections": [
-    "uae",
-    "top",
-    "exit"
-   ],
-   "id": "04279e0e41df",
-   "related": []
-  },
-  {
-   "title": "MPs call for deportation of repeat expat traffic offenders",
-   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQbkVReWw1VWtEWVJkVXpsak93akJDaV9mQ2FHeDFmNE44cExWOHlYUU12d1ZvYi0xQTBZaGlWeVdtU0k5SlhPZUJpeE9QMG9MMnlqbkF4Q2JUM0JLekNxY1BibEF6M3NnYV9GcmJBWlQ5STlFc0VFcXFEcGlrT2Z6b21jd1VQZGdDNzhUMEozWTZQQkdOODNPN08xVEdJZVVmQUE?oc=5",
-   "publisher": "Gulf Daily News (Bahrain)",
-   "publisherUrl": "https://www.gdnonline.com",
-   "published": "2026-10-30T21:50:44.000Z",
-   "lang": "en",
-   "countries": [
-    "bahrain"
-   ],
-   "telugu": false,
-   "sections": [
-    "bahrain",
-    "gulf",
-    "exit",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "d19cbeae85ca",
-   "related": []
-  },
-  {
-   "title": "దుబాయ్‌, సింగపూర్‌లలో యూపీఐ చెల్లింపులకు వీలు",
-   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNTnI0YTQyVmtORDRLNmg1UDRZZzhrc19mWDhMLWpTTUJVbXBmLVpvUl9SYUNFV1cwR0MyU29PcENqWHRXaDNtUXlUWk1xOXdKVXdpaDZ0ZHc1QmxUaC1iZXNWTnJWdF9PeDB6cmkxUUEyYUpNREczZHRUdlRqbW90X1NxeG1PLWJMZEtBSERDbG1YREtkRFZOU1JLdkRPOXkzZHR6Y09yc0wxUnZ3a3dpWHJaUWNNWmhYTUR2ZzlZUXJrdWxxcHA0?oc=5",
-   "publisher": "Andhrajyothy",
-   "publisherUrl": "https://www.andhrajyothy.com",
-   "published": "2026-10-30T21:35:23.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "id": "843b23fd5c02",
-   "related": []
-  },
-  {
-   "title": "Air-India-Cancels-Saudi-Flights సౌదీకి వి్మానాలు బంద్‌..! Andhra Prabha Top News",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOMm83WlpTOVVHQXNIQllHSzRhQzhZR2ZIQ2lrSWhwZnEtUmdCd0drV003WEpPZkI5MHZDbzZ0YkRfdm1OamdQamNMLVJJZmtEb2htZk81MFRaMEN6SzNfX04wWkhYM1lISGRta2dFcHpiRjRQalIyQkdlYWFmZWc4THlDSGN5cFBQZndybWI4REdoV2ZHWmw2U3lB?oc=5",
-   "publisher": "Andhraprabha Daily",
-   "publisherUrl": "https://prabhanews.com",
-   "published": "2026-10-30T15:36:20.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "id": "627d5394561f",
-   "related": []
-  },
-  {
-   "title": "Saudi Flight Disruptions : సౌదీ వెళ్లేవారికి అలర్ట్.. నవంబర్ 14 వరకు ఎయిరిండియా సర్వీసులు రద్దు!",
-   "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOUDFyN213VVZWc1I0YkRTYUI2S2ZmTXVzcXFSeVZocjloNk14MzJnRFd6MjVhTldETnVpYUUxQ2tHbGpNTEFZRXg4NFNoZWQyMG1nQVROYVlPUGswVndHdm01NXdfZ2NQSGhMV2NQZkZxdW1CZy15OTlGOVFSMXhYQ2tPRmdoNzlnS0RWZ1FsN1VnOVlvajl6T3BvOUhHRzJtSDVDZnJLMWN1YTNLTXBLbFAzcXZrX2d2RWVGcVpxTmluWkNCbjJ4NNIByAFBVV95cUxOUDFyN213VVZWc1I0YkRTYUI2S2ZmTXVzcXFSeVZocjloNk14MzJnRFd6MjVhTldETnVpYUUxQ2tHbGpNTEFZRXg4NFNoZWQyMG1nQVROYVlPUGswVndHdm01NXdfZ2NQSGhMV2NQZkZxdW1CZy15OTlGOVFSMXhYQ2tPRmdoNzlnS0RWZ1FsN1VnOVlvajl6T3BvOUhHRzJtSDVDZnJLMWN1YTNLTXBLbFAzcXZrX2d2RWVGcVpxTmluWkNCbjJ4NA?oc=5",
-   "publisher": "10TV Telugu",
-   "publisherUrl": "https://10tv.in",
-   "published": "2026-10-30T14:41:23.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "id": "632f29a9acd5",
-   "related": []
-  },
-  {
-   "title": "Telangana worker stranded in Dubai returns home with CM Prajavani’s efforts",
-   "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPejh2S2dfb3Z4c1l0Y3hCeTB2cEFzUDZ4RnQ0YWVpb3ZVbElNSS1FRjB5ZWlXMl8zelo1Q2dqZmI0UzhpQkE5UmpYXzRmM25KRW5CVWJIZ2tvWUxXbjFJcU5sYnB5aUl3cWhZckNIOEQ1TVMzZTl1X29icC16bzV1VzBoN2pRUGNLcVFfZzJxc3ZfVXNzRWVCdzIybnAzN1VuQ0tQdUQ5YklzLVF1UVdZN3U5U1REUDNDQ2QxR1JleVNodUxKWGstSTBnMUhLQjN6NWVUOS0tSFc1VHfSAeIBQVVfeXFMTmlndFkwMkYtUGItaTV4cWpmczRHY2NhamNFSmdhZlNXa3gzVzk5a3g1NVEtRFdUbHI2WkhwSW1Pam1SUnZQS08xMS1iM1dkUlZ4YWllbnVBX2dPWWxWckpnT093dXo3WUlPNjkyc243RGJTYS1Cb2NQUjBkd0t6Y3lwUXJHVjlaWThYVDVpeVc2bVBhTjQxUUU3OFYtdnNvVndqaGY3R3RlWnpteEsyWHZjcmlIbkllWVlsaXNSWmhYWGRiRks3aTFOdzB1bjdZWWFOY25ZNDlTZXZycUxaTTVWUQ?oc=5",
-   "publisher": "The Hindu",
-   "publisherUrl": "https://www.thehindu.com",
-   "published": "2026-10-30T13:55:11.000Z",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": true,
-   "sections": [
-    "uae",
-    "top",
-    "exit",
-    "jobs"
-   ],
-   "id": "8d5b1e8d4c1b",
-   "related": []
-  },
-  {
-   "title": "Police arrest 108 for labour and residency law violations",
-   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOYW9nMXhSYzh2OXNBMDduQVBDekd2QndUcDJJYkNQZnhXalF5aUVVSVJ3bUF2RUxUZmUzRUhUMlJ4WE9JM2NadzRBdFpWOHdFemRTXzJ6RkgtYnVIczdDYmtvVTl4Vm9ZX1RDa2cxOVpXMUhSRy1LYVZHYkNhVUx3cV91Xzc5QlhCVFJfRTdFMUx5d1k1QzNzVEpjeUk?oc=5",
-   "publisher": "Times of Oman",
-   "publisherUrl": "https://timesofoman.com",
-   "published": "2026-10-30T13:37:00.000Z",
-   "lang": "en",
-   "countries": [
-    "oman"
-   ],
-   "telugu": false,
-   "sections": [
-    "oman",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "4dc7af1a3f62",
-   "related": []
-  },
-  {
-   "title": "మక్కా ప్రాంతంలో డ్రోన్‌ను కూల్చేశామన్న సౌదీ.. ఆరోపణలను ఖండించిన హూతీలు..",
-   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQZGl6ZFh3NUtjYXJzR1Z0aVc3eDc2VnF5WkFyZXN5R0UxVGRTUE1zNHlaMlhMaTE1VHBvQWJ3ME1yV1QwMTc1Ym9pWGRya19JT1FiNEJQU2hESVIxNTNJZjZ0Sm5SakRlZkRHYjhBQ1ZobXFmdW1OUmV1UW1taHYwZEs5WDVZOVVva3VBc3kwbDVpc2FJb281YkZJcGkyVUdBSXJhTlhGdkFPME1iZVUtVkpTRkJ0TkhKR0lIdGVyVHFwaFBtS3FaSlRKVWNnU2Y3?oc=5",
-   "publisher": "Andhrajyothy",
-   "publisherUrl": "https://www.andhrajyothy.com",
-   "published": "2026-10-30T08:27:10.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf"
-   ],
-   "id": "228d9f0030e1",
-   "related": []
-  },
-  {
-   "title": "Ministry of Labour organises First GCC Labour Market Skills Forum",
-   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNSjR0LTZuN2JJQmd0YVQ4bGhuREhFUmk3Rktxck5YV29PcGRIdGdMVThNZzZ2ck9aTUI5aDJpRzVINk95Vzh6YkFDbW05dHF4ZnZXSDI1eUxTSGFOMUVkNVdUZjJoWkRVVWRhTVVaT1JiNHoxS2prOWFTc21KTE1JLVJUUDYxSElZbXZJTXZ6NUcyWFBVendCRUItY0U2a1hleUhXUzNyX29CWWlhd180MHJZTDI?oc=5",
-   "publisher": "The Peninsula Qatar",
-   "publisherUrl": "https://thepeninsulaqatar.com",
-   "published": "2026-10-30T07:42:19.000Z",
-   "lang": "en",
-   "countries": [
-    "qatar"
-   ],
-   "telugu": false,
-   "sections": [
-    "qatar",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "583267636e7b",
-   "related": []
-  },
-  {
-   "title": "550 Private schools in Sanaa come under Houthi recruitment pressure",
-   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPS3QyU0lmOVlyS3UzN3RWM2Jhdjhsd1BudzFsWFRhd2hQdW5lalNYOTYwTGFYLWxFWlBodERtZkhKREM1bjhCT3Vmc214WjlCTDdVMnhISnRNMk5qUjR3YVJCUjVtQXNHcG9zSDQ0Q09ENi1PbWUyd05iUlZJcGczaTRDQzVhQzh6R1JPMDkyTXR4bGtjRHFRRUxxQ0xTQW8yWHhxQVJCSHNLY0R5RGNxNHVR?oc=5",
-   "publisher": "Arab News",
-   "publisherUrl": "https://www.arabnews.com",
-   "published": "2026-10-30T07:15:22.000Z",
-   "lang": "en",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "2d014cef9627",
-   "related": []
-  },
-  {
-   "title": "తొందరపడొద్దు.. ట్రంప్‌నకు సౌదీ కీలక రిక్వెస్ట్‌",
-   "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOVmswWDNtVlFsOUZXMzZaOXVVRXd0SnJpVGJELWIwZm5GNzRnd291MW9VQldfODVvMDRHWFZIX2YwUDBSVXZ1aWFhNTVFQjA1OHZPc3JBbTh4V1JuVW5NT3NyOHJaYkRNYjhfaXQyRzRHemt1X1BfVmpJdTlJYzVBTzFtUkNuZlFSY056c19ScklCRFp1cTZsZTVDaUVicWZBRjV4MTA4R2k1VVNmdGI1OWhyUUJqeFVo?oc=5",
-   "publisher": "Sakshi",
-   "publisherUrl": "https://www.sakshi.com",
-   "published": "2026-10-30T05:23:38.000Z",
-   "lang": "te",
-   "countries": [
-    "saudi"
-   ],
-   "telugu": false,
-   "sections": [
-    "saudi",
-    "gulf"
-   ],
-   "id": "8187d2db4a2d",
-   "related": []
-  },
-  {
-   "title": "హైదరాబాద్‌లో యూఏఈ ప్రాపర్టీ గ్రాండ్ ఎక్స్‌పో.. దుబాయ్ లోపెట్టుబడులపై అవగాహన",
-   "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOT0tWOXBDZWt4YVdtZE1iRGV2dnZoQ1J5X0dXOVdoRmhsOVFlOWJxQUFJMUVzSWRJWlJhajcxYjNRVWZYZThEOW1yUnlKYkoxcnJzMFE5QVQweDl0WktSQjRISEZJeDZFZXVKVE1DNXhFakttUWo1YTNUNWVaN0tieVNHYm11SkVXeG84a0RTMG1WNTRsYmN6c0wyb1ZWMkRSaXMxenNTeUlnOHVJU09HdkExMGJQQXQ3LWgxc2Q1VzJla2p2S0dLcGdabkw4UENMV1ZfYVpuZXVUSjZiVnFldVRRWQ?oc=5",
-   "publisher": "V6 Velugu",
-   "publisherUrl": "https://www.v6velugu.com",
-   "published": "2026-10-30T03:43:48.000Z",
-   "lang": "te",
-   "countries": [
-    "uae"
-   ],
-   "telugu": true,
-   "sections": [
-    "uae",
-    "top",
-    "jobs"
-   ],
-   "id": "1bac2a26c81f",
-   "related": []
-  },
-  {
-   "title": "దుబాయిలో బతుకమ్మ & దసరా సంబరాలు..",
-   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5OM2lUd2FjV2tkYzZsUWJ0RVhVNmxyUTVzSTZVU2lZUE1Rc2RMdmFtTTNRQmxtMmFibzhoMUVHUW1VQXZXTklDMl9Fa29uOHh5SlE?oc=5",
-   "publisher": "sakshitha news",
-   "publisherUrl": "https://sakshithanews.com",
-   "published": "2026-10-29T16:28:36.000Z",
+   "published": "2026-10-13T07:29:36.000Z",
+   "feed": "ntnews-nri",
    "lang": "te",
    "countries": [
     "uae"
@@ -2780,16 +384,17 @@
     "top",
     "sangham"
    ],
-   "id": "357ed91308ff",
+   "id": "08285ddd9925",
    "related": []
   },
   {
-   "title": "Hyderabad to Host UAE Property Grand Expo 2026 on October 31 and November 1 at JRC Conventions",
-   "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNd3NINExaMk1sXzQ4R2wwRjczSERvaWp6YjNzUlV6Mk5jSndCY0I1TUs2cU9vdkc0b1ZzeWZXYlR4VnFtNnlmZTZ2djNsenFuLTZnbVBzcGZrd21ObHRmdW56UGYyeERmV3VCUHVfZmYxbTRCUG1JRG5xZ0dXOTVtOV96V1NyUlhrWWpXb3pIT0I2ZXVhaDRDNTA1cVNiazZqVTNaRGp4dy1XV0FhcGE0ZzZQQWVmVllLYlBiSVU1bjNNbmYwTXZ1dWFESHZzWkYxdEhYeGZoaHRHOEE?oc=5",
-   "publisher": "Telugu Times",
-   "publisherUrl": "https://www.telugutimes.net",
-   "published": "2026-10-26T07:00:00.000Z",
-   "lang": "en",
+   "title": "Bathukamma Celebrations | దుబాయ్‌లో GTF ఆధ్వర్యంలో అంగరంగ వైభవంగా బతుకమ్మ సంబరాలు.. ఫొటోలు",
+   "url": "https://www.ntnews.com/nri/dubai-bathukamma-celebration-organised-by-gtf-photos-goes-viral-2535513",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-10-13T02:59:36.000Z",
+   "feed": "ntnews-nri",
+   "lang": "te",
    "countries": [
     "uae"
    ],
@@ -2797,64 +402,206 @@
    "sections": [
     "uae",
     "top",
-    "jobs"
+    "sangham"
    ],
-   "id": "f632a3f1b1ab",
+   "id": "7d4e4cea3e7b",
    "related": []
   },
   {
-   "title": "గల్ఫ్ వలస బతుకుల వేదనకు అద్దం",
-   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPc2hSSndYRzF5RHBDVzJNV0dxZEl5aVN5dE1FdG0wRW10cWJVa05EN09XcWdUOWdRSXZxbE9qaU9OaFJfS2xQa1BIU29YOTlSSEtkUkduY3VDTHNJMkQtMXhBWnUzWFRObmN0RWluNzI5dl9GSjh5clRHblJpMURrRg?oc=5",
-   "publisher": "Disha daily",
-   "publisherUrl": "https://www.dishadaily.com",
-   "published": "2026-10-26T01:00:01.000Z",
+   "title": "NRI | ఇండియన్ బిజినెస్ అండ్ ప్రొఫెషనల్ కౌన్సిల్ కువైట్ నూతన కార్యవర్గం బాధ్యతల స్వీకరణ",
+   "url": "https://www.ntnews.com/nri/new-executive-committee-of-the-indian-business-and-professional-council-kuwait-assumes-office-2532340",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-10-09T03:28:32.000Z",
+   "feed": "ntnews-nri",
    "lang": "te",
-   "countries": [],
-   "telugu": true,
-   "sections": [
-    "top",
-    "exit"
-   ],
-   "id": "02d221b10f68",
-   "related": []
-  },
-  {
-   "title": "Flight disruptions leave Andhra Umrah pilgrims stranded in Saudi Arabia; 40 to fly back to Hyderabad on October 26",
-   "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxOYVVpRTZTYjR5a0w2S3Y4X0N6QVE3Mk8tc2FjTkxkN1E3Y0V0OG5iOWIwaVVHbzA1bVdaU0JCUW42RVdDNmlnTzh4NTluVy1MRXVIa25xSmxyRkd1ZnNySUMtTnExSWkyWGxDallNVXdnWkxmTVM4QXd0cWxJVXBUWHdUS053XzFiM0ZYamNNTjhnRE9icTlwZlgxOWo3VmRiYjdYTWxjNGJ6QU5mRUlERk15eGNKTWZUSC0wNnZ4Q3d3Q05IUVdHMFZISkw2Q0wxR2FvWEhEb1FFS3U4eDVoT29wVENvUENUM1UtcDhJQkFaU25sR0JNTTVzZjFDdDZYZDZ5YzhFelNFVFRFdlFCMHY0NTFZUQ?oc=5",
-   "publisher": "The Hindu",
-   "publisherUrl": "https://www.thehindu.com",
-   "published": "2026-10-25T07:00:00.000Z",
-   "lang": "en",
    "countries": [
-    "saudi"
+    "kuwait"
    ],
    "telugu": true,
    "sections": [
-    "saudi",
-    "top",
-    "exit",
-    "jobs"
+    "kuwait",
+    "top"
    ],
-   "id": "837d6d0e6849",
+   "id": "4d50f7db691f",
    "related": []
   },
   {
-   "title": "సౌదీలో ఇరుక్కుపోయిన మక్కా యాత్రికులు",
-   "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNSG1GUEg0bzFONDZ2RmphOUZLVmdCTk1VRVBRbTZNOGVoTDZuUHZsV0E0MDV3bFFZU0tIUzZUT1ZVeUVRUjVVN0ZqNzN0WG5McUl1TDV0eFU2RHJ3Wl9OZVpQS3NmMHk0cmhDUURYcXBrTVBhbFotakYxU2xZazBMX3JHbWI3TXN6VldORGpRZ2xsV0RYdTJRU3pndTY2Wk0ydFdhcmtCU0wwbFY4azdpa1pIOG0xLTBIbkZhcUJlQkRrc2s?oc=5",
-   "publisher": "Andhrajyothy",
-   "publisherUrl": "https://www.andhrajyothy.com",
-   "published": "2026-10-24T07:00:00.000Z",
+   "title": "Bathukamma Celebrations | దుబాయ్‌లో బతుకమ్మ వేడుకలకు బీఆర్‌ఎస్‌ ప్రతినిధుల బృందం",
+   "url": "https://www.ntnews.com/nri/brs-deligates-team-to-attend-in-dubai-bathukamma-celebrations-2530823",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-10-07T10:13:27.000Z",
+   "feed": "ntnews-nri",
    "lang": "te",
    "countries": [
-    "saudi"
+    "uae"
    ],
-   "telugu": false,
+   "telugu": true,
    "sections": [
-    "saudi",
-    "gulf",
+    "uae",
+    "top",
+    "sangham"
+   ],
+   "id": "e68fb9449838",
+   "related": []
+  },
+  {
+   "title": "NRI | కువైట్‌లో ఘనంగా ఆయుర్వేద దినోత్సవం",
+   "url": "https://www.ntnews.com/nri/ayurveda-day-celebrated-grandly-in-kuwait-2519544",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-09-25T01:24:18.000Z",
+   "feed": "ntnews-nri",
+   "lang": "te",
+   "countries": [
+    "kuwait"
+   ],
+   "telugu": true,
+   "sections": [
+    "kuwait",
+    "top"
+   ],
+   "id": "f6eed73d9907",
+   "related": []
+  },
+  {
+   "title": "NRI | బతుకమ్మ వేడుకలకు కేటీఆర్‌కు దుబాయ్ గల్ఫ్ తెలంగాణ ఫోరం ఆహ్వానం",
+   "url": "https://www.ntnews.com/nri/dubai-gulf-telangana-forum-invites-ktr-to-bathukamma-celebrations-2503820",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-09-06T02:00:32.000Z",
+   "feed": "ntnews-nri",
+   "lang": "te",
+   "countries": [
+    "uae"
+   ],
+   "telugu": true,
+   "sections": [
+    "uae",
+    "top",
+    "sangham"
+   ],
+   "id": "f858fc514756",
+   "related": []
+  },
+  {
+   "title": "KTR | యూఏఈ బతుకమ్మ సంబురాలకు కేటీఆర్‌కు ఆహ్వానం",
+   "url": "https://www.ntnews.com/nri/ktr-invited-to-bathukamma-celebrations-in-the-uae-2477263",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-08-08T03:23:46.000Z",
+   "feed": "ntnews-nri",
+   "lang": "te",
+   "countries": [
+    "uae"
+   ],
+   "telugu": true,
+   "sections": [
+    "uae",
+    "top",
+    "sangham"
+   ],
+   "id": "8215ba10a816",
+   "related": []
+  },
+  {
+   "title": "Hyderabad Women Missing | ఆస్పత్రిలో పనికి వెళ్లి.. దుబాయ్‌లో హైదరాబాద్ యువతి అదృశ్యం",
+   "url": "https://www.ntnews.com/news/hyderabad-woman-missing-in-dubai-family-complaints-to-rgia-police-2474019",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-08-04T23:53:33.000Z",
+   "feed": "ntnews-nri",
+   "lang": "te",
+   "countries": [
+    "uae"
+   ],
+   "telugu": true,
+   "sections": [
+    "uae",
+    "top",
     "exit"
    ],
-   "id": "7cc3c3278ebd",
+   "id": "dcc6c29d56e9",
+   "related": []
+  },
+  {
+   "title": "KTR birthday | ఖతార్‌లో ఘనంగా కేటీఆర్‌ జన్మదిన వేడుకలు",
+   "url": "https://www.ntnews.com/nri/ktrs-birthday-celebrated-in-qatar-2461560",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-07-24T07:38:11.000Z",
+   "feed": "ntnews-nri",
+   "lang": "te",
+   "countries": [
+    "qatar"
+   ],
+   "telugu": true,
+   "sections": [
+    "qatar",
+    "top",
+    "sangham"
+   ],
+   "id": "4f51b3e31a56",
+   "related": []
+  },
+  {
+   "title": "Bahrain | బహ్రెయిన్‌లో విషాదం.. బీచ్‌లో మునిగి తెలంగాణ వాసి మృతి",
+   "url": "https://www.ntnews.com/nizamabad/telangana-man-thota-srinivas-dead-in-bahrain-2442331",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-07-06T01:09:50.000Z",
+   "feed": "ntnews-nri",
+   "lang": "te",
+   "countries": [
+    "bahrain"
+   ],
+   "telugu": true,
+   "sections": [
+    "bahrain",
+    "top",
+    "exit"
+   ],
+   "id": "fe1475eddfa0",
+   "related": []
+  },
+  {
+   "title": "NRI | కువైట్‌లో ఘనంగా అంతర్జాతీయ యోగా దినోత్సవం",
+   "url": "https://www.ntnews.com/nri/international-yoga-day-celebrated-grandly-in-kuwait-2427038",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-06-21T01:30:13.000Z",
+   "feed": "ntnews-nri",
+   "lang": "te",
+   "countries": [
+    "kuwait"
+   ],
+   "telugu": true,
+   "sections": [
+    "kuwait",
+    "top"
+   ],
+   "id": "3a0e97b61f31",
+   "related": []
+  },
+  {
+   "title": "Telangana Formation Day | బహ్రెయిన్ లో ఘనంగా తెలంగాణ రాష్ట్ర అవతరణ వేడుకలు",
+   "url": "https://www.ntnews.com/nri/bahrain-nri-brs-celebrated-telangana-formation-day-2408074",
+   "publisher": "Namasthe Telangana",
+   "publisherUrl": "https://www.ntnews.com",
+   "published": "2026-06-01T23:04:25.000Z",
+   "feed": "ntnews-nri",
+   "lang": "te",
+   "countries": [
+    "bahrain"
+   ],
+   "telugu": true,
+   "sections": [
+    "bahrain",
+    "top",
+    "sangham"
+   ],
+   "id": "fa1263095fd2",
    "related": []
   }
  ]
