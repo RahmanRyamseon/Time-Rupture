@@ -728,8 +728,10 @@ export const PROBLEMS: ProblemEntry[] = [
     sources: [
       { title: "Whoever made EPFO 3.0 compliance & Governance, kindly resign immediately (r/EPFO)", url: "https://www.reddit.com/r/EPFO/comments/1wdovk0/" },
       { title: "Unexpected EPFO employment entry from insurance advisor role — trying to understand how this could happen (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1uwbb0p/" },
+      { title: "EPFO Enables De-Linking of Wrong Member IDs from UAN — Legality Simplified", url: "https://www.legalitysimplified.com/epfo-introduces-process-to-de-link-incorrect-member-ids-from-uan/" },
+      { title: "EPFO Circular: How to De-Link a Wrong Member ID (MID) from UAN — SGCMS", url: "https://www.sgcms.com/regulatory-updates/epfo-circular-how-to-de-link-a-wrong-member-id-mid-from-your-uan/" },
     ],
-    lastVerified: "2026-09-15",
+    lastVerified: "2026-11-07",
     tags: ["delinking", "service history", "claim blocked", "grievance", "epfo 3.0"],
   },
   {
@@ -985,7 +987,7 @@ export const PROBLEMS: ProblemEntry[] = [
     category: "pension",
     title: "EPS (pension) contribution deducted even though you were never eligible",
     short:
-      "If you joined a new employer above the ₹15,000 EPS wage ceiling with no prior EPS history, you shouldn't be enrolled in EPS at all — but payroll mistakes routinely enroll people anyway, and reversing it takes an employer-filed correction, not a member-side fix.",
+      "If you joined a new employer above the EPS wage ceiling with no prior EPS history, you shouldn't be enrolled in EPS at all — but payroll mistakes routinely enroll people anyway, and reversing it takes an employer-filed correction, not a member-side fix. Note: the ceiling itself changed to ₹25,000 (from ₹15,000) on 17 September 2026 — check which figure applied on your actual date of joining.",
     symptoms: [
       "Passbook shows a monthly EPS deduction (commonly capped around ₹1,250) despite never having been an EPS member before",
       "A PF transfer gets rejected specifically citing an EPS contribution discrepancy",
@@ -994,6 +996,7 @@ export const PROBLEMS: ProblemEntry[] = [
     likelyCauses: [
       "New employees joining above the wage ceiling with no existing EPF/EPS account are not supposed to be enrolled in EPS at all — but payroll systems commonly default new joiners into EPS regardless, especially during onboarding automation",
       "This mistake typically isn't caught until a transfer or final-settlement claim cross-checks EPS eligibility and flags the discrepancy",
+      "The relevant wage ceiling itself changed on 17 September 2026 (notification S.O. 5109(E)) — raised from ₹15,000 to ₹25,000/month for mandatory EPF/EPS/EDLI coverage. Someone who joined above ₹15,000 but below ₹25,000 before that date was correctly exempt from EPS at the time; the same wage joining after 17 September 2026 now falls within mandatory coverage instead — so 'wrongly enrolled' and 'correctly newly covered' can look identical on a payslip and need to be distinguished by actual date of joining, not just the wage number.",
     ],
     fixSteps: [
       "Confirm the actual problem: check your passbook for a monthly EPS/pension-share entry (often ₹1,250, sometimes more) that shouldn't exist given your eligibility at joining.",
@@ -1013,9 +1016,11 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "PF Blunder? ₹1250 disappearing into EPS without eligibility! (r/IndiaTax)", url: "https://www.reddit.com/r/IndiaTax/comments/1mbg70f/pf_blunder_1250_disappearing_into_eps_without/" },
       { title: "Employer started EPS contribution even though previous... (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1thvpq0/employer_started_eps_contribution_even_though/" },
       { title: "PF Transfer Rejection Due to EPS Contribution (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1fwi7tp/pf_transfer_rejection_due_to_eps_contribution/" },
+      { title: "Cabinet approves enhancement of EPFO wage ceiling from Rs.15,000 to Rs.25,000 per month — Prime Minister's Office, Government of India", url: "https://www.pmindia.gov.in/en/news_updates/cabinet-approves-enhancement-of-epfo-wage-ceiling-from-rs-15000-to-rs-25000-per-month/" },
+      { title: "India – EPFO Releases FAQs on Revision of Statutory Wage Ceiling — KPMG GMS Flash Alert", url: "https://kpmg.com/xx/en/our-insights/gms-flash-alert/2026/flash-alert-2026-253.html" },
     ],
-    lastVerified: "2026-09-16",
-    tags: ["eps", "wage ceiling", "wrongly enrolled", "payroll error", "transfer rejected"],
+    lastVerified: "2026-11-07",
+    tags: ["eps", "wage ceiling", "wrongly enrolled", "payroll error", "transfer rejected", "25000"],
   },
   {
     slug: "higher-pension-arrears-tds-and-funding",
@@ -1072,13 +1077,13 @@ export const PROBLEMS: ProblemEntry[] = [
     likelyCauses: [
       "VPF is not automatic — it requires a written request to your employer's HR/payroll specifying the additional contribution percentage, on top of the mandatory 12% EPF",
       "Combined employee EPF + VPF contributions above ₹2.5 lakh in a financial year make the *interest* on the excess portion taxable — a rule many people aren't aware of until it shows up at tax-filing time",
-      "Employer match is capped at 12% of the ₹15,000 wage ceiling regardless of how much you contribute via VPF — the employer does not match your voluntary portion",
+      "Employer match is capped at 12% of the statutory wage ceiling (₹25,000/month as of 17 September 2026, raised from ₹15,000) regardless of how much you contribute via VPF — the employer does not match your voluntary portion",
       "Some employers only process VPF percentage changes once or twice a year (e.g. at the start of a financial year), making reductions slower than members expect",
     ],
     fixSteps: [
       "Submit a written request to HR/payroll specifying your desired VPF contribution percentage — up to 100% of Basic + Dearness Allowance is allowed.",
       "Before increasing VPF significantly, calculate whether your combined EPF + VPF contribution will cross ₹2.5 lakh for the year — if it will, the interest on the excess is taxable, which changes the real return math.",
-      "Don't expect employer matching on the voluntary portion — only the standard 12%-of-₹15,000 employer contribution applies regardless of your own VPF percentage.",
+      "Don't expect employer matching on the voluntary portion — only the standard 12%-of-ceiling (₹25,000/month as of 17 September 2026) employer contribution applies regardless of your own VPF percentage.",
       "To reduce or stop VPF, submit a similar written request to payroll — but check your employer's specific cycle for processing contribution-percentage changes, since some only apply them from the next financial year rather than the next pay cycle.",
     ],
     communitySolutions: [
@@ -1094,9 +1099,10 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Is Voluntary Provident Fund (VPF) one of the last few sensible (quasi...) (r/IndiaInvestments)", url: "https://www.reddit.com/r/IndiaInvestments/comments/kfcroy/is_voluntary_provident_fund_vpf_one_of_the_last/" },
       { title: "Wish to make voluntary contributions to PF (r/personalfinanceindia)", url: "https://www.reddit.com/r/personalfinanceindia/comments/1jnyzmo/wish_to_make_voluntary_contributions_to_pf/" },
       { title: "Did I commit a mistake by increasing VPF amount instead of... (r/IndiaInvestments)", url: "https://www.reddit.com/r/IndiaInvestments/comments/1b5meo7/did_i_committed_a_mistake_by_increasing_vpf/" },
+      { title: "Cabinet approves enhancement of EPFO wage ceiling from Rs.15,000 to Rs.25,000 per month — Prime Minister's Office, Government of India", url: "https://www.pmindia.gov.in/en/news_updates/cabinet-approves-enhancement-of-epfo-wage-ceiling-from-rs-15000-to-rs-25000-per-month/" },
     ],
-    lastVerified: "2026-09-16",
-    tags: ["vpf", "voluntary contribution", "wage ceiling", "tax", "2.5 lakh"],
+    lastVerified: "2026-11-07",
+    tags: ["vpf", "voluntary contribution", "wage ceiling", "tax", "2.5 lakh", "25000"],
   },
   {
     slug: "certificate-of-coverage-international-workers",
@@ -1209,6 +1215,8 @@ export const PROBLEMS: ProblemEntry[] = [
     sources: [
       { title: "Trying to get help regarding updating my mobile number in UAN (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1rn1bdy/trying_to_get_help_regarding_updating_my_mobile/" },
       { title: "Unable to access my previous PF account since my mobile number changed (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1oepl2s/unable_to_access_my_previous_pf_account_since_my/" },
+      { title: "Member Home — EPF UAN Portal (official login/forgot-password portal)", url: "https://unifiedportal-mem.epfindia.gov.in/memberinterface/" },
+      { title: "Employees' Provident Fund Organisation — official site (UAN activation, KYC)", url: "https://www.epfo.gov.in/" },
     ],
     lastVerified: "2026-11-04",
     tags: ["mobile number", "UAN login", "forgot password", "aadhaar OTP"],
@@ -1328,6 +1336,8 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Linked PAN status is FAIL (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ht7m88/linked_pan_status_is_fail/" },
       { title: "\"Withdrew my PF after 3.5 years, got ₹30k cut as TDS. EPFO didn't warn...\" (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1s2j6sp/withdrew_my_pf_after_35_years_got_30k_cut_as_tds/" },
       { title: "Stuck with EPFO Issues? Ask Me Your Questions About PF Claims (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1utp4vr/stuck_with_epfo_issues_ask_me_your_questions/" },
+      { title: "TDS on PF Withdrawal: Tax Rules, Rates and How to Minimize — Kotak Life", url: "https://www.kotaklife.com/insurance-guide/savingstax/tds-on-pf-withdrawal" },
+      { title: "EPF Withdrawal Tax Rules: Tax-Free vs Taxable PF — Ujjivan Small Finance Bank", url: "https://www.ujjivansfb.bank.in/banking-blogs/personal-finance/epf-withdrawal-tax-rules" },
     ],
     lastVerified: "2026-11-04",
     tags: ["TDS", "PAN not linked", "20 percent TDS", "form 15g", "kyc fail"],
@@ -1407,6 +1417,8 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Query on pension Withdrawal (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ncisul/query_on_pension_withdrawal/" },
       { title: "Submitted form 10C for withdrawal last month and received a scheme certificate (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1nd8nkm/submitted_form_10c_for_withdrawal_last_month_and/" },
       { title: "Can I discontinue EPS by withdrawing it before 10 years of service? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1tc1svt/can_i_discontinue_eps_by_withdrawing_it_before/" },
+      { title: "EPF Form 10C: Eligibility, Online Claim Process, and Pension — Bajaj Finserv", url: "https://www.bajajfinserv.in/investments/epf-form-10c" },
+      { title: "Form 10C — Employees' Provident Fund Organisation (official form PDF)", url: "https://epfindia.gov.in/site_docs/PDFs/Downloads_PDFs/Form10C.pdf" },
     ],
     lastVerified: "2026-11-04",
     tags: ["EPS", "form 10c", "scheme certificate", "10 years service", "pension withdrawal"],
@@ -1524,6 +1536,7 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "I'm unable to login to passbook website or Umang app, but... (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1nqrobx/im_unable_to_login_to_passbook_website_or_umang/" },
       { title: "EPFO portal has been inaccessible for over a week (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1ul67ts/epfo_portal_has_been_inaccessible_for_over_a_week/" },
       { title: "Cannot access passbook, tried more than 40-50 times with no luck (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1l42ljb/cannot_access_passbook_tried_more_than_4050_times/" },
+      { title: "UMANG — One App, Many Government Services (official app, EPFO services)", url: "https://web.umang.gov.in/landing/department/epfo.html" },
     ],
     lastVerified: "2026-11-04",
     tags: ["umang", "passbook", "service unavailable", "epfo outage", "login failure"],
@@ -1561,6 +1574,7 @@ export const PROBLEMS: ProblemEntry[] = [
     sources: [
       { title: "Should maternity benefits be treated as wages for EPF contributions? — LinkedIn", url: "https://www.linkedin.com/posts/shekhar-ganagaluru-94989633_maternity-benefits-as-wages-and-epf-contributions-activity-7374781685583982592-a4Ib" },
       { title: "My wife has quit her job to take maternity leave. Can she withdraw her EPF? — Quora", url: "https://www.quora.com/My-wife-has-quit-her-job-to-take-maternity-leave-Can-she-withdraw-her-EPF-amount" },
+      { title: "Maternity Benefit Act Ruling – An Update — Legal 500", url: "https://www.legal500.com/intelligence/india/employment-and-hr/maternity-benefit-act-ruling-%E2%80%93-an-update" },
     ],
     lastVerified: "2026-11-04",
     tags: ["maternity leave", "PF contribution", "wages", "women employees", "continuity"],
@@ -1600,6 +1614,7 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Exempted Trust to EPFO – Only Service Transferred, No Funds (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1p4vrkn/exempted_trust_to_epfo_only_service_transferred/" },
       { title: "Exempted PF trust confusion: no passbook, no transfer, and 30% tax on withdrawal (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1sbfa7j/exempted_pf_trust_confusion_no_passbook_no/" },
       { title: "PF Claim Stuck at an Exempted Establishment Trust: Case Study — Girish Chaudhary Associates", url: "https://girishchaudharyassociates.com/case-studies/exempted-establishment-trust-claim-stuck" },
+      { title: "SOP for Management and Regulation of EPF Exempted Establishments (Section 17 EPF Act) — official circular PDF", url: "https://www.comply360.in/wp-content/uploads/2024/04/sop-for-management-and-regulation-of-epf-exempted-establishments-4-1-1.pdf" },
     ],
     lastVerified: "2026-11-04",
     tags: ["exempted establishment", "private trust", "transfer", "service only transfer"],
@@ -1638,6 +1653,7 @@ export const PROBLEMS: ProblemEntry[] = [
       { title: "Can I receive EPF contribution from two companies at the same time? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1jqc8w9/can_i_receive_epf_contribution_from_two_companies/" },
       { title: "I am considering of doing 2 full-time remote jobs. Will there be any issue? (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1tnhvrg/i_am_considering_of_doing_2_fulltime_remote_jobs/" },
       { title: "Working two jobs? Know what happens to your EPF membership — Moneycontrol", url: "https://www.moneycontrol.com/news/business/personal-finance/working-two-jobs-know-what-happens-to-your-epf-membership-14040628.html" },
+      { title: "Why EPFO allow more than one active employer at one time (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1slznjs/why_epfo_allow_more_than_one_active_employer_at/" },
     ],
     lastVerified: "2026-11-04",
     tags: ["two jobs", "dual employment", "multiple employers", "simultaneous PF", "eligibility"],
@@ -1680,6 +1696,48 @@ export const PROBLEMS: ProblemEntry[] = [
     ],
     lastVerified: "2026-11-04",
     tags: ["minor nominee", "guardian", "e-nomination", "form 2", "nomination bug"],
+  },
+  {
+    slug: "epf-wage-ceiling-raised-to-25000",
+    category: "contributions",
+    title: "EPF wage ceiling raised from ₹15,000 to ₹25,000 (September 2026) — what it means for you",
+    short:
+      "The Union Cabinet raised the statutory wage ceiling for mandatory EPF/EPS/EDLI coverage from ₹15,000 to ₹25,000/month, effective 17 September 2026 — bringing over 51 lakh more employees into mandatory coverage and changing contribution math for many who were already members.",
+    symptoms: [
+      "Noticed a different (usually higher) PF deduction on payslips after September 2026 with no clear explanation",
+      "Was previously exempt from mandatory EPF because starting salary was above ₹15,000 — unsure if that exemption still applies",
+      "Confusion about whether existing EPS enrollment, pension calculations, or EDLI cover changed because of this",
+    ],
+    likelyCauses: [
+      "The Ministry of Labour & Employment notified (S.O. 5109(E), 17 September 2026) an increase in the statutory wage ceiling used to determine mandatory EPF/EPS/EDLI coverage, from ₹15,000 to ₹25,000 per month — the first change since the ceiling was last revised in September 2014",
+      "Employees earning between ₹15,000 and ₹25,000/month who previously had no EPF account at all (because they joined earning above the old ₹15,000 ceiling with no prior PF history) became mandatorily covered from 17 September 2026 — no separate application is needed; employers are statutorily responsible for enrolling them",
+      "EPF members who were previously excluded from EPS (enrolled only in EPF, not pension) are brought into EPS from 17 September 2026 if their wages are under ₹25,000/month",
+      "For September 2026 specifically, wages had to be apportioned and contributions calculated separately for 1–16 September (old ₹15,000 ceiling) and 17–30 September (new ₹25,000 ceiling) in a single ECR filing — a one-time transition quirk that explains any mid-month payslip oddities from that period specifically",
+    ],
+    fixSteps: [
+      "If your salary is between ₹15,000 and ₹25,000/month, check with HR whether you are now newly enrolled in EPF/EPS/EDLI from 17 September 2026 — this is mandatory on the employer's side and doesn't require you to apply.",
+      "If you already had an EPF account and were contributing only up to the old ₹15,000 ceiling, expect the employer's 12% matching contribution (3.67% EPF + 8.33% EPS) to now apply up to ₹25,000 instead, increasing both your deduction and the employer's matching contribution if your actual wages are ₹25,000 or above.",
+      "If you were already contributing on wages higher than ₹25,000 (e.g. opted for higher PF/pension contribution), the ceiling increase does not force you to reduce anything — existing higher-wage contribution arrangements continue under their own applicable rules.",
+      "Don't confuse this with Cost-to-Company (CTC) restructuring — CTC is not a statutory concept for PF purposes; an employer cannot simply relabel the increased statutory contribution as something deducted from a fixed CTC without adjusting other components, since contributions must follow the actual statutory wage definition.",
+      "If you were exempt from EPF because you joined above ₹15,000/month with no prior PF account, that exemption was based on the ceiling applicable on your specific date of joining — it does not automatically disappear retroactively, but any new employee joining after 17 September 2026 is measured against the new ₹25,000 threshold.",
+    ],
+    communitySolutions: [
+      "The Cabinet's own announcement frames the scale of the change: \"The decision is expected to bring more than 51 lakh additional employees within the ambit of mandatory EPFO coverage\" — the largest wage-ceiling revision since 2014.",
+      "EPFO's own FAQ release (via Press Information Bureau) clarifies the operational detail that trips people up most: for September 2026, \"Employer is required to file one single Electronic Challan-cum-Return (ECR)... Contributions to be calculated separately for: 1 September to 16 September [at the old ₹15,000 ceiling] and 17 September to 30 September [at the revised ₹25,000 ceiling]\" — which explains any confusing mid-month contribution jump that month specifically.",
+      "On the common worry that this just moves money from take-home pay without benefit, EPFO's FAQ reframes it directly: any increase \"is fully matched by the employer, earns better interest, comes with tax benefits, and builds towards a guaranteed pension and life insurance coverage... moving from the take-home pocket to the PF account pocket, where it belongs entirely to the employee.\"",
+    ],
+    officialEscalation: [
+      "This is an employer-administered statutory change — if your employer hasn't updated contributions/enrollment despite your wages falling in the newly-covered ₹15,000–₹25,000 band, raise it with HR/payroll first, and escalate via EPFiGMS if uncorrected.",
+      "EPFO's official wage-ceiling FAQ PDF (published via the PMVBRY/EPFO portal) is the authoritative reference for edge cases not covered here.",
+    ],
+    sources: [
+      { title: "Cabinet approves enhancement of EPFO wage ceiling from Rs.15,000 to Rs.25,000 per month — Prime Minister's Office, Government of India", url: "https://www.pmindia.gov.in/en/news_updates/cabinet-approves-enhancement-of-epfo-wage-ceiling-from-rs-15000-to-rs-25000-per-month/" },
+      { title: "India – EPFO Releases FAQs on Revision of Statutory Wage Ceiling — KPMG GMS Flash Alert", url: "https://kpmg.com/xx/en/our-insights/gms-flash-alert/2026/flash-alert-2026-253.html" },
+      { title: "Employees Provident Fund wage ceiling increased from INR15,000 to INR25,000 per month — EY India", url: "https://www.ey.com/en_in/technical/alerts-hub/2026/09/employees-provident-fund-wage-ceiling-increased" },
+      { title: "EPS Scheme — Employees' Provident Fund Organisation (PMVBRY portal)", url: "https://pmvbry.epfindia.gov.in/eps-scheme/" },
+    ],
+    lastVerified: "2026-11-07",
+    tags: ["wage ceiling", "25000", "EPF EPS EDLI coverage", "2026 notification", "mandatory enrollment"],
   },
 ];
 
