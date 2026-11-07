@@ -1,8 +1,50 @@
 {
-  "generatedAt": "2026-11-06T11:06:59.868Z",
+  "generatedAt": "2026-11-07T10:25:33.685Z",
   "retentionDays": 120,
-  "count": 13,
+  "count": 16,
   "items": [
+    {
+      "id": "c075672f16da",
+      "title": "Submit a personal data complaint",
+      "url": "https://news.google.com/rss/articles/CBMiuwRBVV95cUxNYTFaSElNcndCVjBhcGtlS2ZfQ3plc05UanlHWXd6TzVpMWFVeGVmWWlsQnp3X19zcUxTZ3FoQjJ4S1F4T1ZvdUZsckRXU3JNTlFGSEpsQzZlaVJ2c0RwREdzN0NZTDVnd3NuMndxZFo1amxVTFZJR1NmeG9MNE94eE02cGhPdkVhNjA5R0tUMFhDRDhsWEt2X0JUSHlTR1ltYnpQbkI0RVJubXJlMDF0REpYRTJWYnB2eFp2NHZxbWFQbXJwNENBb2trN2lQV2U3TVM2QlpSVzJ4elpWanFuVTZXVlB3d2RGeE5GTnZoenFWSC05WkhuQVl2dnI4MXZDNnNkMG1KRkFIcjdFNDNBWC1hSVBvTmJzRnY5ekhlc2FHcVFiNzRDNmc5OUNYbVRGdnRFOVN6NTFDa0VTNGw3NkItR0dpU2ZwUWNlTll1NjhkWXZVcHRzSDhKM091MDI5a0ZveVdaemxONVYyNE1GLXFfUm5LdmhHRENLdi1nNDFFZk55YnRhcUVjQV9wUzdJd3pMRVpXZjRNbEl0cHYzRFpKbThSamRRdmY3SmpPT2JyNmRSbGNzOUFhTGxHNXk4NWRNWVlrYVhoLU1wUXV3VDNzVW1xdU5YYnJxMkdSbHI4NVYyZkpSTEU4LTM3VDVmTlNHQ3dtUURSYVNVc0xGMzlTX3Jwb0JaZC1tUTBKczBDNDlTMkRwRFQ5bUl2WFQ0U3ZfQ1hVYkhhMmN2akQ0UXd3clBHQ3Fob2pJ?oc=5",
+      "publisher": "منصة حوكمة البيانات الوطنية",
+      "publisherUrl": "https://dgp.sdaia.gov.sa",
+      "published": "2026-11-06T09:51:09.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "official",
+      "firstSeen": "2026-11-07T10:25:33.683Z"
+    },
+    {
+      "id": "646cc32792ec",
+      "title": "Data Protection Impact Assessments",
+      "url": "https://news.google.com/rss/articles/CBMihgVBVV95cUxPV0VRdVhyUmVHTFRrNF9Bell2WVdZNFk5UWJlM0ZJM2dPVm9GRk9uci1xcENqS2JOVUtTYlViT0U1dm9ibkZ5TkRHa2d1LVpZNzRkcDFmTHdDSkRXWmdRbjNoOXZpRmp1YXVWTlNoV2hpRG9VV09nd2REcVQzWTJJTGVmU0Z2Q05aUWtwZl9LUnNjZWpabXI0SWswMW82VF93d3p2TnhyOGxFRHN4WHFjMWJMa2dBcmY1OHdxRm9TOWJraWNGbkNzNDF0Yko2d1hiX2t3VWFyb0NBWGN2Q1Zxc0ZIVWVYdHpMTnRlZVJUd1F0MlZrNTU2VktEanhJbkxYZ01OT0d6SzV0YlZlRnA2NkRaaklvSEdyRXpkaHdwNWhTcGhUSW9nQ3hjUjEyZXh1a19UMU9hbVBuYXJWZUJBazd2bVBsQ0VFTFJfTjlSUGZHOHhPNTA5TjBEX0M2VEdkRFN5RXpvSGFGejZMcWg3X2hCRmNiQ3pNT2hoQTBSalNuQzhCV3JXdU9CZ0xvUGtVLU9lWmg1cTJhZ3lOM2toWU5PQWFSeHBvN3JKOVZjRGo2dXNneDlJWGhxa01TZDZUSXVIYTF1dVhfendfbzhOeGo2TXZUOEJGTnU2dmdqOWVmTi1hSFE2VWZKejlZNVY5ZTJfUzNIMDNzUzg0ZF95SVJ3NkVSZVNpb3R5ano2SVlnVVA4SlJKT0x2NDNvaGpJWUFTSmQ4NmJrbWdlbEZVSm41dTZmdkRxbzVwU2huc2Y0VWhxTGhYbGZPYlI5dXRuQjgtQXJCNUYwdnB1a0RNNDlQS05KMS10QjU2RmhBSEd4MlRMZEM1T2ROZTk2QTRaNUdYZGlB?oc=5",
+      "publisher": "منصة حوكمة البيانات الوطنية",
+      "publisherUrl": "https://dgp.sdaia.gov.sa",
+      "published": "2026-11-06T09:24:49.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "official",
+      "firstSeen": "2026-11-07T10:25:33.683Z"
+    },
+    {
+      "id": "2b47d4571d16",
+      "title": "Personal data: how to avoid fines and earn user loyalty",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5nazZoWUw3WmhXajRWNUpjUlQyZ3VYWTh3MThZS3FuaVRGb3ZSRXBLTXlaSkQwUWo3cmtFVU8zUlczb3Y3Z01BMkpqY0RSYW14NnVwLWd6SkNQdw?oc=5",
+      "publisher": "revera.legal",
+      "publisherUrl": "https://revera.legal",
+      "published": "2026-11-05T22:58:31.000Z",
+      "description": "",
+      "countries": [
+        "AE"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-07T10:25:33.683Z"
+    },
     {
       "id": "630e27b1df4f",
       "title": "Choose ‘Personal Data Breach Notification’.",
