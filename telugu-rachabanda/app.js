@@ -171,7 +171,7 @@ const NAV_SUB = [
   ["s/exit", "తిరుగు ప్రయాణం"],
   ["s/jobs", "ఉద్యోగం & వీసా"],
   ["s/gulf", "గల్ఫ్ పరిణామాలు"],
-  ["board", "💬 రచ్చబండ"],
+  ["board", "🌳 రచ్చబండ"],
   ["sources", "📒 డైరెక్టరీ"],
   ["saved", "🔖 దాచినవి"],
 ];
@@ -388,9 +388,9 @@ function renderHome() {
     </section>
 
     <section class="block community">
-      <div class="comm-intro"><h2>💬 రచ్చబండ చర్చలు</h2>
+      <div class="comm-intro"><h2>🌳 రచ్చబండ</h2><p class="rb-tag">మన ముచ్చట్ల వేదిక</p>
         <p>గల్ఫ్‌లో ఉన్న మన వాళ్లందరూ కలిసే చోటు. సంఘం కార్యక్రమం ప్రకటించండి, రూమ్ వెతకండి, సాయం అడగండి.</p>
-        <a class="btn" href="/board">రచ్చబండకు వెళ్ళండి</a></div>
+        <a class="btn" href="/board">🌳 రచ్చబండకు వెళ్ళండి</a></div>
       <ol class="comm-list">${boards
         .slice(0, 6)
         .map(
@@ -875,10 +875,10 @@ async function mountThread(el, thread, { title, placeholder = "మీ అభి�
 
 // ---- community boards ---------------------------------------------------------------------------
 async function renderBoards() {
-  document.title = "రచ్చబండ చర్చలు | గల్ఫ్ తెలుగు వార్తలు";
+  document.title = "రచ్చబండ – మన ముచ్చట్ల వేదిక | గల్ఫ్ తెలుగు వార్తలు";
   const boards = state.community.boards;
   main.innerHTML = `
-    <div class="hero"><h1>🌳 రచ్చబండ</h1>
+    <div class="hero"><h1>🌳 రచ్చబండ</h1><p class="rb-tag">మన ముచ్చట్ల వేదిక</p>
       <p>ఊళ్లో అందరూ కలిసి మాట్లాడుకునే చోటు రచ్చబండ. ఇంటికి దూరంగా గల్ఫ్‌లో ఉన్న మనందరికీ ఇదే మన రచ్చబండ — సంఘాల కార్యక్రమాలు, ఉద్యోగాలు, సాయం, రూములు, ఇంటికి తిరుగు ప్రయాణం — ఏదైనా పంచుకోండి.</p></div>
     <div class="boards">${boards
       .map(
@@ -907,7 +907,7 @@ function renderBoard(id) {
   const b = state.community.boards.find((x) => x.id === id);
   if (!b) return renderBoards();
   document.title = `${b.title} | గల్ఫ్ తెలుగు వార్తలు`;
-  main.innerHTML = `<a class="back" href="/board">← రచ్చబండ</a>
+  main.innerHTML = `<a class="back" href="/board">← 🌳 రచ్చబండ</a>
     <div class="hero"><h1>${b.icon} ${esc(b.title)}</h1><p>${esc(b.desc)}</p></div>
     <section class="discuss" id="discuss"></section>`;
   mountThread($("#discuss"), `board:${id}`, {
@@ -1015,7 +1015,7 @@ async function renderSide() {
       <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(
         `గల్ఫ్ తెలుగు వారి వార్తలు, హెల్ప్‌లైన్లు, మన సంఘాల కార్యక్రమాలు — గల్ఫ్ తెలుగు వార్తలు: ${location.origin}/`,
       )}">వాట్సాప్‌లో పంపండి</a></section>
-    <section class="widget market"><h2>రచ్చబండ బోర్డులు</h2><div class="market-grid">${[
+    <section class="widget market"><h2>🌳 రచ్చబండ బోర్డులు</h2><div class="market-grid">${[
       ["rooms", "🛏️", "రూములు", "#1e88e5"],
       ["jobs", "💼", "ఉద్యోగాలు", "#7b3fb5"],
       ["help", "🆘", "సాయం", "#e53935"],
@@ -1047,7 +1047,7 @@ async function renderSide() {
     <section class="widget poll" id="poll"><h2>ఈరోజు ప్రశ్న</h2><p class="q">${esc(poll.q)}</p><div class="opts"></div></section>
     <section class="widget saying"><h2>నేటి సామెత</h2><blockquote>${esc(proverb.text)}</blockquote><p>${esc(proverb.meaning)}</p></section>
     <section class="widget"><h2>తాజా చర్చలు</h2><ul class="mini" id="recent"><li class="muted">లోడ్ అవుతోంది…</li></ul>
-      <p style="margin:8px 0 0"><a class="btn ghost" href="/board">💬 రచ్చబండకు వెళ్ళండి</a></p></section>
+      <p style="margin:8px 0 0"><a class="btn ghost" href="/board">🌳 రచ్చబండకు వెళ్ళండి</a></p></section>
     <section class="widget word"><h2>తెలుగు పదం</h2><div class="w">${esc(word.word)}</div><p><strong>అర్థం:</strong> ${esc(
       word.meaning,
     )}</p><p class="muted">"${esc(word.use)}"</p></section>

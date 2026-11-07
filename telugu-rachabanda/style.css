@@ -391,3 +391,13 @@ main:focus { outline: none; }
 .toast.show { transform: translateX(-50%) translateY(0); }
 .rules li { margin: 6px 0; }
 @media (prefers-reduced-motion: reduce) { .art { transition: none; } }
+
+/* రచ్చబండ: the community section's own mark — a green tree badge beside the red news brand. */
+.rb-mark { display: inline-block; color: #fff !important; background: #2e7d32; border-radius: 999px; padding: 0 10px; text-decoration: none; font-weight: 800; }
+.rb-mark:hover { background: #256628; }
+.rb-tag { margin: -4px 0 4px; font-weight: 700; color: #a5d6a7; }
+.hero .rb-tag { color: #fff; opacity: 0.9; }
+.community .comm-intro { border-left: 6px solid #2e7d32; }
+.hero { background: linear-gradient(135deg, #2e7d32, #1b4d1f); }
+.board { border-top-color: #2e7d32; }
+.board:hover { border-color: #2e7d32; }
