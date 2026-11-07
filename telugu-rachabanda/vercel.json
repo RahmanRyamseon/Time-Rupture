@@ -5,8 +5,21 @@
   "installCommand": "",
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [{ "source": "/((?!data/|app\\.js|store\\.js|config\\.js|style\\.css).*)", "destination": "/index.html" }],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
-    { "source": "/data/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }] }
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
   ]
 }
