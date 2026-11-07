@@ -59,7 +59,7 @@ export const CATEGORIES: Category[] = [
     slug: "contributions",
     name: "Contributions, VPF & Eligibility",
     icon: "📊",
-    description: "Voluntary Provident Fund, the ₹15,000 wage ceiling, and who's actually eligible for EPF.",
+    description: "Voluntary Provident Fund, the EPF wage ceiling (raised to ₹25,000 in September 2026), and who's actually eligible for EPF.",
   },
 ];
 
