@@ -45,7 +45,7 @@ function storyList(items) {
 const sectionLinks = () =>
   `<nav><ul>${Object.entries(SECTIONS)
     .map(([id, [t]]) => `<li><a href="/s/${id}">${esc(t)}</a></li>`)
-    .join("")}<li><a href="/board">రచ్చబండ చర్చలు</a></li><li><a href="/sources">గల్ఫ్ తెలుగు డైరెక్టరీ</a></li></ul></nav>`;
+    .join("")}<li><a href="/board">🌳 రచ్చబండ – మన ముచ్చట్ల వేదిక</a></li><li><a href="/sources">గల్ఫ్ తెలుగు డైరెక్టరీ</a></li></ul></nav>`;
 
 // Fills the page template for one address.
 export function page(template, { path, title, description, body, home = false }) {
@@ -112,9 +112,9 @@ export function buildPages(template, news, community, sources) {
 
   add({
     path: "/board",
-    title: "రచ్చబండ – గల్ఫ్ తెలుగు వారి చర్చా వేదిక",
+    title: "రచ్చబండ – గల్ఫ్ తెలుగు వారి ముచ్చట్ల వేదిక",
     description: "గల్ఫ్‌లోని తెలుగు వారి చర్చలు: సంఘాల కార్యక్రమాలు, ఉద్యోగాలు & వీసా, రూములు, సాయం, తిరుగు ప్రయాణం.",
-    body: `<h1>రచ్చబండ – గల్ఫ్ తెలుగు వారి చర్చా వేదిక</h1><ul>${community.boards
+    body: `<h1>🌳 రచ్చబండ – గల్ఫ్ తెలుగు వారి ముచ్చట్ల వేదిక</h1><ul>${community.boards
       .map((b) => `<li><a href="/board/${b.id}">${esc(b.title)}</a> — ${esc(b.desc)}</li>`)
       .join("")}</ul>`,
   });
