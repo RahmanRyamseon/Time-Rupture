@@ -1,8 +1,36 @@
 {
-  "generatedAt": "2026-11-08T10:34:10.296Z",
+  "generatedAt": "2026-11-09T11:48:30.888Z",
   "retentionDays": 120,
-  "count": 16,
+  "count": 18,
   "items": [
+    {
+      "id": "7e9420fc980c",
+      "title": "Dubai cybersecurity expert warns AI-powered fraudsters are using personal data to target victims",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNamlTdmpVVERSaWlHaWtsYUNZUzJDYUVBdEl0NEdvczhfUGJvV1BOTHdhMThId0ptWDFYT1BqOUhUU1hKMnZ1amJMX2lDSklDd1JzMlhyd3RMaGFBYldIZ2s4UExReDZybGlEeWgxV0hHWGE5am1LTVNkazczX2o5VVItb29mcHRWMU5YM3BRRmMtdHgza09NY2VpVnRQRFZtdF9oVktfMERyTEthWGFHdnp3em9oYVFKSnFJSUtINWlJYkVrS1V3anV4SW9Wd9IB6AFBVV95cUxPaHVfZHh4ZHg0UXdVUmk4REd2QXJJS2JQZHBwX1dSSVJ2WnVwdTZhSi1Rd3V1SlhnZk56SXpjSXBrT2pFYjNLS3ZVNnRpRkF0ZGpTTnZvaEszeENLOHNzVExMZ0R1N3p6eGdXN2swckg1eTZmRGxGaGNfeEFHYjliYWVKSHZrb2VmYVJhVTItU1N6d0o1MzNtYjRvWWw1VmhNTXFycVZQcFhlQTJRLVROSm5tbDVIVndJNnFCckU2S0VGOGJoTnJRdUMtMXROV0JROENySUU1OXZXaDFxSjBqbnEwVEFvdHhD?oc=5",
+      "publisher": "Emirates 24|7",
+      "publisherUrl": "https://www.emirates247.com",
+      "published": "2026-11-08T05:36:00.000Z",
+      "description": "",
+      "countries": [
+        "AE"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-09T11:48:30.886Z"
+    },
+    {
+      "id": "c85c7003a8e6",
+      "title": "Italian foreign minister says personal data leaked on dark web, exposing him to 'threats, intimidation'",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPcWZjd3lGMGIwc3dmSUExOEtkUFB6S2tDcWF3Y1paYWo3MHQybkdsTW52cTUyQ2dVZjZuS3NKVWJvMTRmcUcwYmk3UndkMjYyTzZSRDFSYy1hb3AwRkRNSlBacG85MEUyUHBvR2g2MlI5VGZCTkEtV2phSnZLM3VzOFJkRlN3NHVzSGxWLVZWaTZtLU9LcWE3amlUckVwSVBkempqWGN4ZVVmUnFNOUpfczVXVU5CSVVQS2RuaXBUM0VrV2JoSzVQTmZIY2xad0FtMTRBNlZn?oc=5",
+      "publisher": "Anadolu Ajansı",
+      "publisherUrl": "https://www.aa.com.tr",
+      "published": "2026-11-07T11:31:53.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-09T11:48:30.886Z"
+    },
     {
       "id": "c075672f16da",
       "title": "Submit a personal data complaint",
