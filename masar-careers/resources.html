@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مصادر مهنية عربية: منصات التوظيف والتدريب والكتابة | مسار</title>
+  <meta name="description" content="دليل منتقى لأهم المصادر المهنية باللغة العربية: منصات التوظيف في الخليج والعالم العربي، والبرامج الحكومية، ومنصات التعلم العربية المجانية، وأدوات الكتابة والخطوط العربية.">
+  <link rel="canonical" href="https://arabic-ats-resume.vercel.app/resources">
+  <link rel="alternate" hreflang="ar" href="https://arabic-ats-resume.vercel.app/resources">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="مصادر مهنية عربية: منصات التوظيف والتدريب والكتابة | مسار">
+  <meta property="og:description" content="دليل منتقى لأهم المصادر المهنية باللغة العربية: منصات التوظيف في الخليج والعالم العربي، والبرامج الحكومية، ومنصات التعلم العربية المجانية، وأدوات الكتابة والخطوط العربية.">
+  <meta property="og:locale" content="ar_AR">
+  <meta property="og:url" content="https://arabic-ats-resume.vercel.app/resources">
+  <meta property="og:site_name" content="مسار – سيرة ذاتية عربية ATS">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><span class="brand-mark">م</span><span>مسار<small>دليلك المهني بالعربية</small></span></a>
+      <nav class="nav" aria-label="القائمة الرئيسية">
+        <a href="index.html">الرئيسية</a>
+        <a href="resume.html">السيرة الذاتية</a>
+        <a href="documents.html">المستندات</a>
+        <a href="interview.html">المقابلة</a>
+        <a href="writing.html">لغة العمل</a>
+        <a href="resources.html">المصادر</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="page-hero">
+      <p class="eyebrow">المصادر</p>
+      <h1>مصادر مهنية منتقاة باللغة العربية</h1>
+      <p>روابط مختارة إلى منصات التوظيف، والبرامج الحكومية لدعم الباحثين عن عمل، ومنصات التعلم العربية، وأدوات الكتابة. الموقع غير تابع لأي منها، فتحقق دائماً من الشروط على الموقع الرسمي.</p>
+      <div class="filters">
+        <input id="res-search" type="search" placeholder="ابحث: تدريب، الإمارات، قاموس..." aria-label="البحث في المصادر">
+      </div>
+    </section>
+    <div id="res-list"></div>
+    <p class="note small">⚠️ احذر من الإعلانات التي تطلب منك دفع رسوم مقابل التوظيف أو تطلب بياناتك البنكية قبل التعاقد، فالجهات الموثوقة لا تتقاضى رسوماً من المتقدمين. تحقق من النطاق الرسمي للجهة (مثل ‎.gov.sa‎ أو ‎.gov.ae‎) قبل إدخال أي بيانات.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>مسار — دليل مهني مجاني باللغة العربية. المحتوى إرشادي ولا يُعد استشارة قانونية. © <span id="year"></span></p>
+    </div>
+  </footer>
+  <script src="assets/common.js"></script>
+  <script>
+    (function () {
+      const RES = [
+        { title: "🔎 منصات التوظيف العامة", items: [
+          ["بيت.كوم", "https://www.bayt.com", "من أكبر منصات التوظيف في الخليج والشرق الأوسط، وتتيح إنشاء سيرة ذاتية عربية."],
+          ["لينكدإن", "https://www.linkedin.com", "الشبكة المهنية الأهم؛ واجهة عربية كاملة وملف شخصي يمكن عرضه بالعربية والإنجليزية."],
+          ["نوكري جلف", "https://www.naukrigulf.com", "وظائف في دول الخليج العربي بمختلف المستويات."],
+          ["جلف تالنت", "https://www.gulftalent.com", "تركيز على الوظائف المتوسطة والعليا في الخليج، مع تقارير رواتب."],
+          ["وظّف (Wuzzuf)", "https://wuzzuf.net", "منصة رائدة لوظائف مصر والقطاع التقني."],
+          ["فرصنا", "https://forasna.com", "وظائف مصرية للمهن الفنية والحرفية والخدمية."],
+          ["أخطبوط", "https://www.akhtaboot.com", "منصة أردنية للتوظيف في الأردن والمنطقة."],
+          ["تنقيب", "https://www.tanqeeb.com", "محرك بحث يجمع إعلانات الوظائف العربية من مصادر متعددة."],
+        ]},
+        { title: "🏛️ البرامج والمنصات الحكومية", items: [
+          ["جدارات – المنصة الوطنية الموحدة للتوظيف (السعودية)", "https://jadarat.sa", "وظائف القطاعين العام والخاص للمواطنين السعوديين في منصة واحدة."],
+          ["صندوق تنمية الموارد البشرية – هدف (السعودية)", "https://www.hrdf.org.sa", "برامج دعم التوظيف والتدريب للباحثين عن عمل والمنشآت."],
+          ["منصة قوى (السعودية)", "https://www.qiwa.sa", "توثيق عقود العمل، وخدمات نقل الخدمات، وشهادات الخبرة الإلكترونية."],
+          ["نافس (الإمارات)", "https://nafis.gov.ae", "برنامج تنافسية الكوادر الإماراتية لدعم توظيف المواطنين في القطاع الخاص."],
+          ["وزارة الموارد البشرية والتوطين (الإمارات)", "https://www.mohre.gov.ae", "عقود العمل وحقوق العامل وخدماته."],
+          ["المزيد حسب الدولة", "documents.html#countries", "جدول الجهات الرسمية للعمل في الخليج والأردن."],
+        ]},
+        { title: "🎓 منصات تعلّم عربية مجانية", items: [
+          ["دروب (السعودية)", "https://doroob.sa", "منصة التدريب الإلكتروني من «هدف»: دورات في المهارات المهنية والتقنية واللغوية بشهادات."],
+          ["إدراك", "https://www.edraak.org", "مساقات عربية مجانية من مؤسسة الملكة رانيا في المهارات المهنية والتقنية والتعليم."],
+          ["رواق", "https://www.rwaq.org", "منصة عربية للمواد الأكاديمية المجانية يقدمها أكاديميون عرب."],
+          ["مهارة تك (مصر)", "https://maharatech.gov.eg", "منصة تدريب تقني مجانية من هيئة تنمية صناعة تكنولوجيا المعلومات المصرية."],
+        ]},
+        { title: "✍️ أدوات الكتابة واللغة", items: [
+          ["قاموس المعاني", "https://www.almaany.com", "معجم عربي–عربي وعربي–إنجليزي مفيد لاختيار المرادفات والمصطلحات."],
+          ["معجم الدوحة التاريخي للغة العربية", "https://www.dohadictionary.org", "مرجع موثوق لأصول الكلمات ودلالاتها."],
+          ["خطوط جوجل العربية", "https://fonts.google.com/?subset=arabic", "خطوط عربية مجانية للسيرة والمستندات: Tajawal وCairo وIBM Plex Sans Arabic وNoto Naskh Arabic."],
+          ["صفحة «لغة العمل» في مسار", "writing.html", "عبارات المراسلات، وألقاب المخاطبة، والأخطاء الشائعة، ومسرد المصطلحات."],
+        ]},
+      ];
+      const { esc } = Masar;
+      const norm = (s) => String(s).replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي").toLowerCase();
+      const el = document.getElementById("res-list");
+      const search = document.getElementById("res-search");
+      function render() {
+        const q = norm(search.value.trim());
+        el.innerHTML = RES.map((g) => {
+          const items = g.items.filter((i) => !q || norm(i.join(" ") + " " + g.title).includes(q));
+          if (!items.length) return "";
+          return `<h2>${esc(g.title)}</h2><div class="grid">${items
+            .map(([t, u, d]) => {
+              const ext = /^https?:/.test(u);
+              const host = ext ? new URL(u).hostname.replace(/^www\./, "") : "";
+              return `<a class="card tile" href="${esc(u)}" ${ext ? 'target="_blank" rel="noopener"' : ""}>
+                <h3>${esc(t)}</h3><p>${esc(d)}</p>${host ? `<p class="en small" style="margin-top:6px">${esc(host)} ↗</p>` : ""}</a>`;
+            })
+            .join("")}</div>`;
+        }).join("") || `<p class="muted">لا توجد نتائج.</p>`;
+      }
+      search.addEventListener("input", render);
+      render();
+    })();
+  </script>
+</body>
+</html>

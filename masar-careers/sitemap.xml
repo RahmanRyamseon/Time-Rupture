@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://arabic-ats-resume.vercel.app/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://arabic-ats-resume.vercel.app/resume</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://arabic-ats-resume.vercel.app/documents</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arabic-ats-resume.vercel.app/interview</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arabic-ats-resume.vercel.app/writing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://arabic-ats-resume.vercel.app/resources</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>
