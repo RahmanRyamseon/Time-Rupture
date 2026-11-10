@@ -1,6 +1,6 @@
 // Offline checks for the collector's parsers and merge logic: node cables-market-watch/scripts/test.mjs
 import assert from "node:assert/strict";
-import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS, parseTED, tedRelevant, parseCanadaBuys, parseCSV, mergeNews as merge2, fetchWithRetry, isPaused, buildSources, PAUSE_AFTER, summarize, parseFTS, parseWB, parseWBDate, parseSAM, fetchSAM, parseSitemap, titleFromSlug } from "./update.mjs";
+import { parsePriceTable, mergeSeries, parseItems, mergeNews, detectRegions, detectStage, detectValue, classify, marketsOf, detectActor, COMPETITORS, parseTED, tedRelevant, parseCanadaBuys, parseCSV, mergeNews as merge2, fetchWithRetry, isPaused, buildSources, PAUSE_AFTER, summarize, parseFTS, parseWB, parseWBDate, parseSAM, fetchSAM, parseSitemap, titleFromSlug, isNoise, scoreItem, groupSimilar } from "./update.mjs";
 
 const table = `<table><thead><tr class="shaded"><th>date</th><th>cash</th><th>3-month</th><th>stock</th></tr></thead><tbody>
 <tr>\n<td>03. November 2026</td>\n<td>3,082.00</td>\n<td>3,042.00</td>\n<td class="last">229,475</td>\n</tr>
@@ -238,5 +238,42 @@ assert.equal(pr[0].published, "2026-11-02T08:55:00.000Z");
 const dup = merge2([{ ...alNews[0], url: "https://news.google.com/rss/articles/xyz" }], al, now5);
 assert.equal(dup.filter((i) => i.title.startsWith("Bahrain")).length, 1);
 assert.match(dup.find((i) => i.title.startsWith("Bahrain")).url, /^https:\/\/www\.alcircle\.com\//);
+
+
+// Headline noise (real headlines from the store, 10 Nov 2026) — stock chatter out, deals kept.
+for (const t of ["Vedanta Share Price - Live NSE: VEDL Stock Price & Chart", "Oman Cables Industry SAOG Balance Sheet – MSX:OCAI",
+  "Cable Terminations Market To 2035: Grid Upgrades and Renewables Fuel Growth - News and Statistics", "What Is Going On With Prysmian (BIT:PRY)?",
+  "Century Aluminum (CENX) Q3 2026 Earnings Call Transcript"]) assert.ok(isNoise(t), t);
+for (const t of ["Quanta Services (NYSE: PWR) awarded 765-kV transmission line contract", "Nexans wins Greek interconnector cable subcontract",
+  "Hindalco Q2 PAT reaches ₹7,533 crore, up 59% year on year", "Saudi Cable Company: Nine-month profit rebounded, but liquidity stress and going-concern uncertainty remain"]) assert.ok(!isNoise(t), t);
+
+// Relevance score: a GCC overhead-line award beats an aluminium can story; "ACCC" the regulator is not the conductor.
+const hi = scoreItem({ title: "OETC awards 400kV overhead line and conductor supply in Oman", stage: "Award", regions: ["Oman"], companies: [], publisher: "Utilities Middle East" });
+const lo = scoreItem({ title: "Ball announces new aluminium can plant in Germany", stage: null, regions: [], companies: [], publisher: "AL Circle" });
+assert.ok(hi >= 10 && lo <= 1, `${hi} vs ${lo}`);
+assert.equal(scoreItem({ title: "ACCC steps in to secure cash distribution amid Armaguard’s fight with big banks", regions: [], companies: [] }), 0);
+assert.ok(!classify("ACCC steps in to secure cash distribution").companies.includes("CTC Global"));
+assert.ok(classify("CTC Global ACCC conductor reconductoring in Slovenia").companies.includes("CTC Global"));
+assert.deepEqual(marketsOf(detectRegions("VBB Infra wins 400 kV reconductoring contract in Chhattisgarh")), ["Asia"]);
+
+// Grouping: several outlets on one event collapse; a different event on the same day stays separate.
+const g = groupSimilar([
+  { id: "a", title: "Russia's Rusal agrees bauxite, alumina joint ventures to tap big deposit in Ghana", published: "2026-11-06T08:00:00Z", score: 2 },
+  { id: "b", title: "Rusal agrees bauxite, alumina joint ventures to tap big deposit in Ghana", published: "2026-11-06T10:00:00Z", score: 2 },
+  { id: "c", title: "Russia’s RUSAL agrees to bauxite and alumina joint venture in Ghana", published: "2026-11-07T08:00:00Z", score: 3 },
+  { id: "d", title: "Ghana signs new power transmission line financing deal", published: "2026-11-06T09:00:00Z", score: 5 },
+]);
+const rep = g.find((i) => i.similar);
+assert.equal(rep.id, "c", "most relevant copy is kept visible");
+assert.equal(rep.similar, 2);
+assert.deepEqual(g.filter((i) => i.dupOf).map((i) => i.id).sort(), ["a", "b"]);
+assert.ok(!g.find((i) => i.id === "d").dupOf);
+
+// Deadlines come from the official notices.
+const wbD = parseWB({ procnotices: [{ id: "OP9", notice_type: "Invitation for Bids", noticedate: "02-Nov-2026", project_ctry_name: "Mongolia", bid_description: "Construction of 220kV Double-Circuit Transmission Line", procurement_group: "CW", submission_deadline_date: "2026-12-15T00:00:00Z" }] }, { now: Date.parse("2026-11-05") });
+assert.equal(wbD[0].deadline, "2026-12-15T00:00:00.000Z");
+const ftsD = parseFTS({ releases: [{ id: "1-2026", tag: ["tender"], date: "2026-11-05T00:00:00Z", buyer: { name: "SSEN" }, tender: { title: "132kV overhead line works", tenderPeriod: { endDate: "2026-11-25T13:00:00Z" }, items: [] } }] });
+assert.equal(ftsD[0].deadline, "2026-11-25T13:00:00.000Z");
+assert.equal(merge2([], wbD, Date.parse("2026-11-05"))[0].deadline, "2026-12-15T00:00:00.000Z");
 
 console.log("all checks passed");

@@ -64,6 +64,19 @@ const link = (i) => `<a href="${esc(i.url)}" target="_blank" rel="noopener"${i.l
 // Deal flow keeps grid, tender and competitor news; demand items only when they name a tracked company.
 const DEAL_CATS = ["projects", "tenders", "competitors", "midal"];
 const isDeal = (i) => i.stage && (i.categories.some((c) => DEAL_CATS.includes(c)) || (i.companies ?? []).length > 0);
+const OFFICIAL = /^(?:TED|UK Find a Tender|World Bank procurement|SAM\.gov|CanadaBuys)/;
+const isOfficial = (i) => OFFICIAL.test(i.publisher ?? "");
+const visible = (i) => !i.dupOf; // near-duplicate copies are grouped under one item
+const daysLeft = (i) => (i.deadline ? Math.ceil((Date.parse(i.deadline) - Date.now()) / DAY) : null);
+const isOpen = (i) => daysLeft(i) !== null && daysLeft(i) >= 0;
+const closes = (i) => {
+  const d = daysLeft(i);
+  if (d === null) return "–";
+  const when = shortDate(i.deadline);
+  if (d < 0) return `<span class="muted">${when} · closed</span>`;
+  return `${when} · <b class="${d <= 7 ? "soon" : ""}">${d === 0 ? "today" : `${d} day${d === 1 ? "" : "s"} left`}</b>`;
+};
+const similarTag = (i) => (i.similar ? `<span class="tag" title="Other outlets reported the same event">+${i.similar} similar</span>` : "");
 const stageBadge = (s) => (s ? `<span class="stage s-${s.toLowerCase()}">${esc(s)}</span>` : "");
 
 const hhmm = (iso) => new Date(iso).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
@@ -86,7 +99,7 @@ setStamp();
 function brief() {
   const out = [];
   const week = items.filter((i) => Date.parse(i.published) >= since(7));
-  const deals = week.filter(isDeal);
+  const deals = week.filter((i) => isDeal(i) && visible(i));
   const count = (s) => deals.filter((i) => i.stage === s).length;
   if (deals.length) {
     const top = deals.filter((i) => i.stage === "Award" || i.stage === "Tender").slice(0, 3);
@@ -95,6 +108,11 @@ function brief() {
   } else {
     out.push("<strong>Deal flow:</strong> no tenders or awards picked up in the last 7 days.");
   }
+
+  const topWeek = week.filter((i) => visible(i) && (i.score ?? 0) >= 5).sort((a, b) => (b.score ?? 0) - (a.score ?? 0)).slice(0, 5);
+  if (topWeek.length) out.push(`<strong>Most relevant to Midal this week</strong> (conductors, rod, HV lines, GCC, competitors):<ul>${topWeek.map((i) => `<li>${stageBadge(i.stage)} ${link(i)} <span class="muted">· ${esc(i.publisher)}</span></li>`).join("")}</ul>`);
+  const closing = items.filter((i) => visible(i) && isOpen(i) && daysLeft(i) <= 14).sort((a, b) => Date.parse(a.deadline) - Date.parse(b.deadline));
+  if (closing.length) out.push(`<strong>Open tenders closing in the next 14 days:</strong> ${closing.length}<ul>${closing.slice(0, 3).map((i) => `<li>${link(i)} — ${closes(i)}</li>`).join("")}</ul>`);
 
   const month = items.filter((i) => Date.parse(i.published) >= since(30));
   const comp = new Map();
@@ -122,24 +140,48 @@ function brief() {
 
 const STAGES = ["Tender", "Award", "Construction", "Commissioned", "Plan"];
 let stage = store.get("cmw:stage") || "";
+let dealSrc = store.get("cmw:dealSrc") || "";
+let dealOpen = store.get("cmw:dealOpen") === "1";
+let dealSort = store.get("cmw:dealSort") || "new";
 function renderDeals() {
-  const deals = items.filter((i) => isDeal(i) && Date.parse(i.published) >= since(60));
+  document.querySelectorAll("#deal-source button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.src === dealSrc)));
+  $("deal-open").checked = dealOpen;
+  $("deal-sort").value = dealSort;
+  const deals = items.filter((i) => isDeal(i) && visible(i) && Date.parse(i.published) >= since(60)
+    && (!dealSrc || (dealSrc === "official") === isOfficial(i))
+    && (!dealOpen || isOpen(i)));
+  const order = {
+    new: (a, b) => Date.parse(b.published) - Date.parse(a.published),
+    score: (a, b) => (b.score ?? 0) - (a.score ?? 0) || Date.parse(b.published) - Date.parse(a.published),
+    closing: (a, b) => (isOpen(b) - isOpen(a)) || (Date.parse(a.deadline ?? "9999") - Date.parse(b.deadline ?? "9999")),
+  }[dealSort] ?? ((a, b) => 0);
+  deals.sort(order);
   $("stages").innerHTML = [["", "All"], ...STAGES.map((s) => [s, s])]
     .map(([k, l]) => `<button data-stage="${k}" aria-pressed="${k === stage}">${l}<span class="n">${k ? deals.filter((i) => i.stage === k).length : deals.length}</span></button>`)
     .join("");
   const list = deals.filter((i) => !stage || i.stage === stage).slice(0, 60);
-  $("deals").innerHTML = `<thead><tr><th>Date</th><th>Stage</th><th>Deal</th><th>Value</th><th>Where</th><th>Companies</th></tr></thead><tbody>${
+  $("deals").innerHTML = `<thead><tr><th>Date</th><th>Stage</th><th>Deal</th><th>Value</th><th>Closes</th><th>Where</th><th>Companies</th></tr></thead><tbody>${
     list.length
       ? list.map((i) => `<tr>
           <td data-l="Date">${shortDate(i.published)}</td>
           <td data-l="Stage">${stageBadge(i.stage)}</td>
-          <td data-l="Deal" class="deal">${link(i)}<span class="pub">${esc(i.publisher)}</span></td>
+          <td data-l="Deal" class="deal">${link(i)}<span class="pub">${esc(i.publisher)}${isOfficial(i) ? ' · <b class="official">official notice</b>' : ""} ${similarTag(i)}</span></td>
           <td data-l="Value" class="val">${esc(i.value ?? "–")}</td>
+          <td data-l="Closes">${closes(i)}</td>
           <td data-l="Where">${esc(i.regions.join(", ") || "–")}</td>
           <td data-l="Companies">${esc((i.companies ?? []).join(", ") || "–")}</td></tr>`).join("")
-      : `<tr><td colspan="6" class="empty">No deals at this stage in the last 60 days.</td></tr>`
+      : `<tr><td colspan="7" class="empty">No deals match these filters in the last 60 days.</td></tr>`
   }</tbody>`;
 }
+$("deal-source").addEventListener("click", (e) => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  dealSrc = b.dataset.src;
+  store.set("cmw:dealSrc", dealSrc);
+  renderDeals();
+});
+$("deal-open").addEventListener("input", (e) => { dealOpen = e.target.checked; store.set("cmw:dealOpen", dealOpen ? "1" : ""); renderDeals(); });
+$("deal-sort").addEventListener("input", (e) => { dealSort = e.target.value; store.set("cmw:dealSort", dealSort); renderDeals(); });
 $("stages").addEventListener("click", (e) => {
   const b = e.target.closest("button");
   if (!b) return;
@@ -207,6 +249,7 @@ function renderItems() {
   const region = $("region").value, company = $("company").value;
   const onlyNew = $("only-new").checked;
   const list = items.filter((i) =>
+    (q || visible(i)) &&
     (!cat || i.categories.includes(cat)) &&
     (!region || i.regions.includes(region)) &&
     (!company || (i.companies ?? []).includes(company)) &&
@@ -215,7 +258,7 @@ function renderItems() {
   $("news-count").textContent = `${list.length} of ${items.length} items · last ${news?.retentionDays ?? 120} days`;
   $("items").innerHTML = list.length
     ? list.slice(0, 200).map((i) => `<li>
-        <div class="meta"><span>${fmtDate(i.published)}</span><span>${esc(i.publisher)}</span>${stageBadge(i.stage)}${i.value ? `<b class="val">${esc(i.value)}</b>` : ""}${i.lang === "ar" ? '<span class="tag">Arabic</span>' : ""}${isNew(i) ? '<span class="badge-new">● New</span>' : ""}</div>
+        <div class="meta"><span>${fmtDate(i.published)}</span><span>${esc(i.publisher)}</span>${stageBadge(i.stage)}${i.value ? `<b class="val">${esc(i.value)}</b>` : ""}${i.lang === "ar" ? '<span class="tag">Arabic</span>' : ""}${isNew(i) ? '<span class="badge-new">● New</span>' : ""}${similarTag(i)}${isOpen(i) ? `<span class="tag">closes ${closes(i)}</span>` : ""}</div>
         <h3>${link(i)}</h3>
         ${i.description ? `<p${i.lang === "ar" ? ' dir="rtl" lang="ar"' : ""}>${esc(i.description)}</p>` : ""}
         <div class="tags">${i.categories.map((c) => `<span class="tag">${esc(cats[c] ?? c)}</span>`).join("")}${i.regions.map((r) => `<span class="tag t-region">${esc(r)}</span>`).join("")}${(i.companies ?? []).map((c) => `<button class="tag t-co" data-co="${esc(c)}">${esc(c)}</button>`).join("")}</div>

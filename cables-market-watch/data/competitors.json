@@ -323,7 +323,7 @@
       "hq": "USA",
       "market": "USA",
       "segment": "ACCC conductors (Midal is a licensee)",
-      "match": "ctc global|\\baccc\\b",
+      "match": "ctc global|\\baccc(?:®|\\s+conductor)|composite[- ]core conductor",
       "search": "\"CTC Global\" OR \"ACCC conductor\"",
       "sources": [
         "https://www.stratviewresearch.com/market-reports/overhead-conductors-market",
