@@ -576,7 +576,7 @@ const isArabic = (s) => /[؀-ۿ]/.test(s);
 // Merges freshly fetched items into the stored list. Pure, so it can be tested without network.
 // Headlines that are stock chatter or market-research ads, not market events.
 export const HEADLINE_NOISE =
-  /stock analysis|\bshares? (?:rise|rises|fall|falls|jump|jumps|surge|surges|drop|drops|slip|slips|gain|gains|tumble|tumbles)\b|\bstock (?:gets|price|rating|forecast)|investors? should(?:n['’]t| not)|(?:is|a) better buy|price target|target price|multibagger|market (?:size|share|outlook)\b|market to 20\d\d|\bcagr\b|fund utili[sz]ation|investor presentation|earnings call transcript|what is going on with/i;
+  /stock analysis|\bshares? (?:rise|rises|fall|falls|jump|jumps|surge|surges|drop|drops|slip|slips|gain|gains|tumble|tumbles)\b|\bstock (?:gets|price|rating|forecast)|investors? should(?:n['’]t| not)|(?:is|a) better buy|price target|target price|multibagger|market (?:size|share|outlook)\b|market to 20\d\d|\bcagr\b|fund utili[sz]ation|investor presentation|earnings call transcript|what is going on with|특징주|주가|株価/i;
 
 const OFFICIAL = /^(?:TED|UK Find a Tender|World Bank procurement|SAM\.gov|CanadaBuys)/;
 const ROLE = new Map(COMPANIES.map((c) => [c.name, c.role]));
