@@ -36,9 +36,22 @@
       <div class="section-head">
         <div>
           <h2 id="deals-h">Deal flow</h2>
-          <p class="hint">Tenders, awards, construction and commissioning picked up from the news in the last 60 days, newest first.</p>
+          <p class="hint">Tenders, awards, construction and commissioning from official tender databases and the news, last 60 days. Similar reports of one event are grouped.</p>
         </div>
         <div class="chips" id="stages" role="group" aria-label="Deal stage"></div>
+      </div>
+      <div class="row deal-controls">
+        <div class="seg" role="group" aria-label="Source" id="deal-source">
+          <button data-src="" aria-pressed="true">All sources</button>
+          <button data-src="official">Official tenders</button>
+          <button data-src="news">News</button>
+        </div>
+        <label class="check"><input type="checkbox" id="deal-open" /> Still open for bids</label>
+        <select id="deal-sort" aria-label="Sort">
+          <option value="new">Newest first</option>
+          <option value="score">Most relevant to Midal first</option>
+          <option value="closing">Closing soonest first</option>
+        </select>
       </div>
       <div class="card flush"><div class="table-scroll"><table class="deals" id="deals"></table></div></div>
     </section>

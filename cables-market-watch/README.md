@@ -10,7 +10,7 @@ government and utility plans, demand drivers, export markets, the aluminium mark
 |---|---|---|
 | **Market selector** | Middle East, Asia, Africa, Europe, Canada, USA, Latin America, Oceania — filters every section below | Market tags on news and projects |
 | **Today's brief** | Deal counts for the week and the top awards and tenders, the most active competitors, new government plans, Midal mentions, and a one-line metals summary | Computed from the data below |
-| **Deal flow** | Tenders, awards, construction, commissioning and plans from the last 60 days, with value, region and companies | News items, with stage and value read from the headline |
+| **Deal flow** | Tenders, awards, construction, commissioning and plans from the last 60 days, with value, region, companies and bid closing date. Filter by source (official tender databases or news) and to tenders still open; sort by newest, relevance to Midal or closing soonest. Reports of the same event are grouped ("+N similar") | Official tender databases and news items, with stage and value read from the headline |
 | **Project tracker** | 28 major grid and power projects across all eight markets, with owner, value, scope, parties, why each matters to Midal, and a source | `data/projects.json`, curated by hand from web research |
 | **Competitors** | 33 rod, conductor and cable makers with base, segment, news mentions over 30 days, the latest headline, and the market research that named them. Below the table: other companies seen winning cable or conductor work that are not on the list yet | `data/competitors.json`, built from web searches; news matches |
 | **Industry news** | Every item, filterable by 10 categories, region, company and search, with an option to show only items new since your last visit | Collector (below) |
@@ -89,7 +89,7 @@ LME quotes need a paid LME data licence.
    regional press is not crowded out by Indian and US outlets.
    awards and Tadawul disclosures often appear there first. It also reads five RSS feeds directly:
    **SaudiGulf Projects**, **GCC Tender News**, **Utilities Middle East**, **offshoreWIND.biz**
-   (Europe) and **Electrical Business** (Canada). **AL Circle** (aluminium industry) is read
+   (Europe), **Electrical Business** (Canada) and **Utility Dive** (USA). **AL Circle** (aluminium industry) is read
    directly from its Google News sitemap (titles and exact times, last 48 hours) and its
    press-release sitemap (last 14 days, titles taken from the link). Both are allowed by its
    robots.txt, and stories it also publishes through Google News are merged, keeping the
@@ -97,7 +97,14 @@ LME quotes need a paid LME data licence.
 3. **Classification**: each item is matched against category rules, tagged with regions and with
    about 60 companies (`COMPANIES`), and given a deal stage and the first money amount in the
    headline. Off-topic items, such as water, sewerage and pipelines with no grid content, are
-   dropped. Items are kept for 120 days.
+   dropped, as are stock-analysis, market-size-report and share-price headlines. Items are kept
+   for 120 days (up to 3,000).
+4. **Relevance and grouping**: each item gets a relevance score for Midal (conductor, rod and
+   overhead-line words score highest, then transmission and kV, tenders and awards, GCC, and
+   competitor names). Headlines about the same event within 4 days (shared key words) are
+   grouped under the most relevant one. Official tenders keep their bid closing date.
+5. **Rare topics**: a search that has returned nothing for 3 runs in a row looks back 30 days
+   instead of 7, so slow-moving markets (Bahrain, Kuwait, Oman, Iraq) still show something.
 
 `scripts/test.mjs` checks the parsers, the classifier and the stage and value extraction offline.
 The workflow runs it before every collection.

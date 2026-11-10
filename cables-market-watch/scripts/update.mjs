@@ -18,7 +18,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 export const PRICES_FILE = join(here, "..", "data", "prices.json");
 export const NEWS_FILE = join(here, "..", "data", "news.json");
 export const NEWS_RETENTION_DAYS = 120;
-export const MAX_NEWS = 2000;
+export const MAX_NEWS = 3000;
 export const PRICE_RETENTION_DAYS = 760; // ~2 years of trading days
 export const COMPETITORS_FILE = join(here, "..", "data", "competitors.json");
 
@@ -151,9 +151,10 @@ export const CATEGORIES = {
     match: /transmission|substation|\bgrid\b|interconnect|overhead (?:line|transmission)|power line|\d\s?kv\b|\bhvdc\b|bulk supply|feeder cable|distribution network|electrification|ligne (?:de transport|à haute tension|électrique)|poste (?:de transformation|électrique)|freileitung|übertragungsnetz|umspannwerk|netzausbau|stromtrasse|höchstspannung|l[ií]nea de (?:transmisi[oó]n|alta tensi[oó]n)|subestaci[oó]n|linha(?:s)? de transmiss[aã]o|subesta[cç][aã]o|elettrodott|linii? (?:elektroenergetyczn|400|220)|stacj[aie] elektroenergetyczn|送電|変電|송전|변전|đường dây|truyền tải|trạm biến áp|transmisi|gardu induk|sutet|نقل الكهرباء|محطة تحويل|محطات تحويل|الربط الكهربائي|خطوط? نقل|الشبكة/i,
     queries: [
       '(transmission line OR substation OR "overhead line" OR "grid project") (Saudi OR UAE OR Bahrain OR Qatar OR Oman OR Kuwait) (contract OR awarded OR wins)',
-      '("Saudi Energy" OR "Saudi Electricity" OR "National Grid SA") (transmission OR substation OR "380 kV" OR "132 kV" OR "BSP")',
+      '("Saudi Electricity" OR "Saudi Energy" OR "National Grid SA") (transmission OR substation)',
       '(DEWA OR TRANSCO OR TAQA OR EtihadWE) (substation OR transmission OR "400 kV" OR "132 kV")',
-      '(Kahramaa OR "Electricity and Water Authority" Bahrain OR OETC OR Nama OR "Ministry of Electricity" Kuwait) (substation OR transmission OR cable)',
+      '(Kahramaa OR OETC OR "Nama Networks" OR "Oman Electricity Transmission") (substation OR transmission)',
+      '(Bahrain OR Kuwait) electricity (substation OR transmission OR "power grid")',
       '(GCCIA OR "GCC interconnection" OR "Saudi-Egypt interconnection" OR "electricity interconnection") grid',
       '("380kV" OR "400kV" OR "220kV" OR "132kV") (Saudi OR UAE OR Bahrain OR Qatar OR Oman OR Kuwait OR Iraq)',
       'site:saudigulfprojects.com (substation OR transmission OR cable OR grid)',
@@ -172,7 +173,7 @@ export const CATEGORIES = {
       '(tender OR bids OR prequalification) (substation OR "transmission line" OR "power cables" OR "overhead line") (Saudi OR UAE OR Bahrain OR Qatar OR Oman OR Kuwait)',
       '(Kahramaa OR DEWA OR EWA OR "Saudi Energy" OR SPPC OR OETC OR Nama) tender',
       'site:gcctendernews.com (power OR substation OR cable OR grid OR solar)',
-      '("Tender Board" Bahrain OR CAPT Kuwait OR Etimad) (electricity OR cable OR substation)',
+      '(Bahrain OR Kuwait OR Oman OR Qatar) (tender OR bids) (electricity OR substation OR cable)',
       ['(مناقصة OR منافسة) (كابلات OR "محطة تحويل" OR "خطوط نقل" OR كهرباء)', "ar"],
     ],
   },
@@ -254,6 +255,7 @@ export const FEEDS = [
   { name: "Utilities Middle East", url: "https://www.utilities-me.com/feed", market: "Middle East" },
   { name: "offshoreWIND.biz", url: "https://www.offshorewind.biz/feed/", market: "Europe" },
   { name: "Electrical Business (Canada)", url: "https://www.ebmag.com/feed/", market: "Canada" },
+  { name: "Utility Dive", url: "https://www.utilitydive.com/feeds/news/", market: "USA" },
 ];
 
 // Publisher sitemaps (allowed by the sites' robots.txt). A Google News sitemap carries titles and
@@ -306,12 +308,12 @@ export const MARKETS = {
     },
     queries: [
       '(Iraq OR Jordan OR Lebanon OR Syria) ("transmission line" OR substation OR interconnection OR "400 kV") (contract OR awarded OR signs)',
-      '("Iraq-GCC" OR "Saudi-Iraq" OR "Jordan-Iraq" OR "Gulf interconnection") electricity Iraq',
+      'Iraq (electricity OR power) (interconnection OR transmission OR substation)',
     ],
   },
   Asia: {
     regions: {
-      India: /india|indian\b|\bcrore\b|₹|powergrid|\btbcb\b|\bists\b|gujarat|rajasthan|maharashtra|karnataka/i,
+      India: /india|indian\b|\bcrore\b|₹|powergrid|\bpgcil\b|\btbcb\b|\bists\b|\bctuil\b|gujarat|rajasthan|maharashtra|karnataka|chhattisgarh|meghalaya|odisha|uttar pradesh|madhya pradesh|tamil nadu|andhra pradesh|telangana|kerala|bihar|jharkhand|haryana|assam|west bengal|himachal|uttarakhand|tripura|manipur|nagaland|mizoram|arunachal|sikkim|ladakh|jammu|mumbai|chennai|kolkata|bengaluru|hyderabad|new delhi|khavda|\bntpc\b|\bnhpc\b|\bseci\b/i,
       China: /china|chinese|shfe|shanghai|الصين/i,
       "Southeast Asia": /vietnam|viet nam|philippine|indonesia|malaysia|thailand|cambodia|laos|lao pdr|myanmar|singapore|timor|asean|\bngcp\b|\bpln\b|\begat\b|\btnb\b|meralco|việt nam/i,
       "South & Central Asia": /pakistan|bangladesh|sri lanka|nepal|bhutan|maldives|uzbekistan|kazakhstan|kyrgyz|tajikistan|turkmenistan|afghanistan|mongolia|kegoc|ntdc|pgcb/i,
@@ -352,14 +354,14 @@ export const MARKETS = {
     regions: {
       "UK & Ireland": /\buk\b|united kingdom|britain|british(?! columbia)|england|scotland|wales|ireland|national grid(?! sa| saudi)|\bssen\b|great grid upgrade/i,
       "Western Europe": /german|france|french|\bital|spain|spanish|portugal|netherlands|dutch|belgi|austria|switzerland|tennet|amprion|50hertz|\brte\b|terna\b/i,
-      "Nordics & Eastern Europe": /norway|norwegian|sweden|swedish|denmark|danish|finland|finnish|iceland|poland|polish|polsk|romania|bulgaria|greece|greek|hungary|czech|slovak|slovenia|baltic|estonia|latvia|lithuania|ukraine|serbia|croatia|bosnia|montenegro|albania|north macedonia|moldova|kosovo|armenia|azerbaijan|statnett|fingrid|energinet|svenska kraftn|transelectrica/i,
+      "Nordics & Eastern Europe": /norway|norwegian|sweden|swedish|denmark|danish|finland|finnish|iceland|poland|polish|polsk|romania|bulgaria|greece|greek|corinth|crete|\bkos\b|athens|hungary|czech|slovak|slovenia|baltic|estonia|latvia|lithuania|ukraine|serbia|croatia|bosnia|montenegro|albania|north macedonia|moldova|kosovo|armenia|azerbaijan|statnett|fingrid|energinet|svenska kraftn|transelectrica/i,
       Europe: /europe|\beu\b|entso|ten-e|\bpci\b|\beib\b/i,
     },
     queries: [
       '("National Grid" OR SSEN OR "Great Grid Upgrade" OR SPEN) ("overhead line" OR pylons OR "400 kV") (contract OR consent OR construction)',
-      '(TenneT OR Amprion OR 50Hertz OR TransnetBW OR RTE OR Terna OR "Red Eléctrica" OR PSE OR Statnett) ("overhead line" OR "transmission line" OR "380 kV") contract',
+      '(TenneT OR Amprion OR 50Hertz OR TransnetBW OR Terna OR "Red Eléctrica" OR Statnett) (transmission OR "overhead line" OR substation)',
       '(Europe OR EU) (reconductoring OR HTLS OR "overhead line" OR "grid expansion") (contract OR order OR investment)',
-      '(Elia OR Fingrid OR Energinet OR "Svenska kraftnät" OR EirGrid OR REN OR APG OR Swissgrid) ("transmission line" OR "overhead line" OR "400 kV" OR substation) (contract OR tender OR awarded)',
+      '(Elia OR Fingrid OR Energinet OR "Svenska kraftnät" OR EirGrid OR APG OR Swissgrid) (transmission OR substation OR "power line")',
       '(Transelectrica OR PSE OR MAVIR OR ČEPS OR ELES OR HOPS OR EMS OR IPTO OR Litgrid OR Elering) ("400 kV" OR "transmission line" OR substation) (contract OR awarded OR construction)',
       '(SSEN OR SPEN OR "National Grid" OR NESO) (ASTI OR "accelerated strategic transmission" OR "Great Grid Upgrade" OR "Eastern Green Link") contract',
       '(interconnector OR HVDC) (Europe OR UK OR Ireland OR Germany OR Norway OR France) (contract OR awarded OR "final investment decision" OR order)',
@@ -385,13 +387,13 @@ export const MARKETS = {
       '("Hydro-Québec" OR "BC Hydro" OR "Hydro One" OR AltaLink OR SaskPower OR "Manitoba Hydro" OR "Nova Scotia Power" OR "Newfoundland and Labrador Hydro") transmission line',
       'Canada "transmission line" (construction OR approval OR contract OR "500 kV" OR "230 kV")',
       '(AESO OR IESO OR "NB Power" OR ATCO OR EPCOR OR FortisBC OR "Yukon Energy" OR "NT Hydro") (transmission OR substation OR "kV") (approval OR contract OR procurement)',
-      '("Ontario Energy Board" OR OEB) ("leave to construct" OR "transmission line") Hydro One',
+      '"Hydro One" (transmission OR "leave to construct" OR substation)',
       '("Canada Infrastructure Bank" OR "clean electricity investment tax credit" OR "Clean Electricity Regulations") (transmission OR grid OR intertie)',
       '("Hydro-Québec" OR Québec) ("Action Plan 2035" OR "735 kV" OR "line" OR "tender") transmission',
       '(intertie OR interconnection) (Canada OR Alberta OR "British Columbia" OR Manitoba OR Saskatchewan OR Atlantic) electricity (approval OR construction OR funding)',
       '(Canada OR Canadian) (cable OR conductor OR "wire") (plant OR manufacturer OR expansion OR order) ("Northern Cables" OR Nexans OR Prysmian OR Southwire OR "General Cable")',
       'site:ebmag.com (transmission OR cable OR utility)',
-      'site:dailycommercialnews.com ("transmission line" OR substation OR hydro)',
+      '(Ontario OR Alberta OR Quebec OR "British Columbia" OR Manitoba) ("transmission line" OR substation) project',
       ['("Hydro-Québec" OR Québec) ("ligne de transport" OR "poste" OR "735 kV") (contrat OR "appel d’offres" OR travaux)', "fr-CA"],
       ['("transmission line" OR substation OR intertie) (Ontario OR Alberta OR "British Columbia" OR Quebec OR Manitoba OR Saskatchewan OR "Nova Scotia") (contract OR awarded OR construction)', "en-CA"],
     ],
@@ -572,12 +574,63 @@ const DEAL_CATEGORIES = new Set(["projects", "tenders", "government", "demand", 
 const isArabic = (s) => /[؀-ۿ]/.test(s);
 
 // Merges freshly fetched items into the stored list. Pure, so it can be tested without network.
+// Headlines that are stock chatter or market-research ads, not market events.
+export const HEADLINE_NOISE =
+  /stock analysis|\bshares? (?:rise|rises|fall|falls|jump|jumps|surge|surges|drop|drops|slip|slips|gain|gains|tumble|tumbles)\b|\bstock (?:gets|price|rating|forecast)|investors? should(?:n['’]t| not)|(?:is|a) better buy|price target|target price|multibagger|market (?:size|share|outlook)\b|market to 20\d\d|\bcagr\b|fund utili[sz]ation|investor presentation|earnings call transcript|what is going on with/i;
+
+const OFFICIAL = /^(?:TED|UK Find a Tender|World Bank procurement|SAM\.gov|CanadaBuys)/;
+const ROLE = new Map(COMPANIES.map((c) => [c.name, c.role]));
+// How relevant an item is to an aluminium rod, conductor and cable maker based in the GCC (0–20).
+export function scoreItem(i) {
+  const t = `${i.title} ${i.description ?? ""}`;
+  let s = 0;
+  if (/conductor|\baaac\b|\bacsr\b|\bhtls\b|\baccc(?:®|\s+conductor)|composite[- ]core|overhead (?:line|transmission)|wire rod|alumin(?:i)?um rod|rod mill|ec grade|موصلات/i.test(t)) s += 4;
+  if (/\d\s?kv\b|transmission line|interconnect|substation|\bhvdc\b|power line|grid (?:expansion|upgrade|reinforcement)|نقل الكهرباء/i.test(t)) s += 3;
+  if (i.stage === "Tender" || i.stage === "Award") s += 2;
+  if ((i.regions ?? []).some((r) => GCC_REGIONS.has(r))) s += 2;
+  if ((i.companies ?? []).some((c) => ROLE.get(c) === "competitor" || ROLE.get(c) === "self")) s += 2;
+  if (/cable|كابل/i.test(t)) s += 1;
+  if (OFFICIAL.test(i.publisher ?? "")) s += 1;
+  if (i.value) s += 1;
+  return s;
+}
+const GCC_REGIONS = new Set(["Bahrain", "Saudi", "UAE", "Qatar", "Oman", "Kuwait"]);
+
+// Near-identical headlines about one event (several outlets, same week) are grouped: the most
+// relevant copy stays visible with `similar` = number of other copies; the others get `dupOf`.
+const STOP = new Set("the a an and or of for to in on at by with from as is are its new into over after amid says said will has have".split(" "));
+const tokens = (t) => new Set(t.toLowerCase().replace(/[^\p{L}\p{N} ]+/gu, " ").split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w)).map((w) => w.slice(0, 7)));
+export function groupSimilar(items, { days = 4, threshold = 0.4 } = {}) {
+  const sorted = [...items].sort((a, b) => (b.score ?? 0) - (a.score ?? 0) || Date.parse(b.published) - Date.parse(a.published));
+  const reps = [];
+  for (const it of sorted) {
+    delete it.dupOf; delete it.similar;
+    const tk = tokens(it.title);
+    const t = Date.parse(it.published);
+    const rep = reps.find((r) => {
+      if (Math.abs(Date.parse(r.item.published) - t) > days * 86_400_000) return false;
+      let inter = 0;
+      for (const w of tk) if (r.tk.has(w)) inter += 1;
+      return inter >= 3 && inter / (tk.size + r.tk.size - inter) >= threshold;
+    });
+    if (rep) { it.dupOf = rep.item.id; rep.item.similar = (rep.item.similar ?? 0) + 1; }
+    else reps.push({ item: it, tk });
+  }
+  return items;
+}
+
+// A stock ticker alone is not noise ("Quanta Services (NYSE: PWR) awarded ..." is a real deal), only
+// next to stock-data wording ("Balance Sheet – MSX:OCAI", "What comes next for X (NASDAQ:CENX)").
+const TICKER = /\b(?:NSE|BSE|BIT|LSE|NYSE|NASDAQ|SAU|TADAWUL|ASX|TSX|KRX|SZSE|SHSE|MSX|ADX|DFM|QSE|BHB|OTC|EPA|ETR)\s?:\s?[A-Z0-9.]+/;
+const STOCKY = /balance sheet|financial statements|statistics|number of employees|stock|share price|earnings|analysis|what comes next|valuation|dividend|quote/i;
+export const isNoise = (title) => HEADLINE_NOISE.test(title) || (TICKER.test(title) && STOCKY.test(title));
+
 export function mergeNews(existing, fetched, now = Date.now()) {
   // Older runs stored some titles with an undecoded "&apos;"; clean them so they merge with new copies.
   const cleaned = existing.map((item) => (item.title.includes("&apos;") ? { ...item, title: item.title.replace(/&apos;/g, "'") } : item));
   const byKey = new Map(cleaned.map((item) => [keyOf(item.title), item]));
   for (const raw of fetched) {
-    if (!raw.title || !raw.url) continue;
+    if (!raw.title || !raw.url || isNoise(raw.title)) continue;
     const text = `${raw.title} ${raw.description}`;
     const c = classify(text, raw.category);
     const { categories, companies } = c;
@@ -605,9 +658,20 @@ export function mergeNews(existing, fetched, now = Date.now()) {
       stage: raw.stage ?? (categories.some((c) => DEAL_CATEGORIES.has(c)) ? detectStage(raw.title, raw.description) : null),
       value: detectValue(raw.title) ?? detectValue(raw.description),
       lang: isArabic(raw.title) ? "ar" : "en",
+      deadline: raw.deadline ?? prev?.deadline ?? null,
       firstSeen: prev?.firstSeen ?? new Date(now).toISOString(),
     });
   }
+  for (const [k, item] of byKey) {
+    if (isNoise(item.title)) { byKey.delete(k); continue; }
+    // Items stored before a market rule existed have no market; work it out again from the text.
+    if (!item.markets?.length) {
+      item.regions = detectRegions(`${item.title} ${item.description ?? ""}`);
+      item.markets = marketsOf(item.regions);
+    }
+    item.score = scoreItem(item);
+  }
+  groupSimilar([...byKey.values()]);
   const cutoff = now - NEWS_RETENTION_DAYS * 86_400_000;
   return [...byKey.values()]
     .filter((i) => Date.parse(i.published) >= cutoff)
@@ -806,6 +870,7 @@ export function parseFTS(json) {
         url: `https://www.find-tender.service.gov.uk/Notice/${r.id}`,
         publisher: "UK Find a Tender",
         placeText: "United Kingdom",
+        deadline: t.tenderPeriod?.endDate && Date.parse(t.tenderPeriod.endDate) ? new Date(Date.parse(t.tenderPeriod.endDate)).toISOString() : null,
         publisherUrl: "https://www.find-tender.service.gov.uk",
         published: new Date(Date.parse(r.date) || Date.now()).toISOString(),
         description: `${stage === "Award" ? "Contract award" : stage === "Plan" ? "Planned procurement" : "Tender"} notice on UK Find a Tender. Buyer: ${r.buyer?.name ?? "n/a"} (United Kingdom).${amount ? ` Value: ${v.currency ?? "GBP"} ${Math.round(amount).toLocaleString("en-GB")}.` : ""} Category: ${cpvs[0]?.description || "n/a"} (UK tender).`,
@@ -861,6 +926,7 @@ export function parseWB(json, { maxAgeDays = 45, now = Date.now() } = {}) {
         publisherUrl: "https://projects.worldbank.org",
         published: published ?? new Date(now).toISOString(),
         placeText: n.project_ctry_name ?? "",
+        deadline: n.submission_deadline_date ? new Date(Date.parse(n.submission_deadline_date)).toISOString() : null,
         description: `${type || "Notice"} (${WB_GROUP[n.procurement_group] ?? n.procurement_group}) for the World Bank-financed project "${n.project_name ?? ""}". Country: ${n.project_ctry_name ?? "n/a"}.${n.submission_deadline_date ? ` Bid deadline: ${String(n.submission_deadline_date).slice(0, 10)}.` : ""} Category: electricity transmission and distribution (tender).`,
         category: "tenders",
         stage,
@@ -1050,7 +1116,7 @@ export function buildSources(window) {
     for (const entry of c.queries) {
       const [q, lang] = pairOf(entry);
       out.push({
-        id: `search:${category}:${lang}:${hashOf(q)}`, kind: "search", label: `${c.label} — ${q}`, lang,
+        id: `search:${category}:${lang}:${hashOf(q)}`, kind: "search", label: `${c.label} — ${q}`, lang, q,
         url: feedUrl(q, lang, window),
         run: async (url) => parseItems(await get(url)).map((i) => ({ ...i, category })),
       });
@@ -1060,7 +1126,7 @@ export function buildSources(window) {
     for (const entry of m.queries) {
       const [q, lang] = pairOf(entry);
       out.push({
-        id: `search:market:${market}:${lang}:${hashOf(q)}`, kind: "search", label: `${market} projects — ${q}`, lang, market,
+        id: `search:market:${market}:${lang}:${hashOf(q)}`, kind: "search", label: `${market} projects — ${q}`, lang, market, q,
         url: feedUrl(q, lang, window),
         run: async (url) => parseItems(await get(url)).map((i) => ({ ...i, category: "projects", market })),
       });
@@ -1192,7 +1258,11 @@ async function updateNews(prevById, records, { resume }) {
       log("INFO", `[${src.id}] paused (blocked ${prev.consecutiveFailures}× with HTTP ${prev.httpStatus}); next try after ${new Date(Date.parse(prev.lastAttempt) + PAUSE_RETRY_MS).toISOString()}`);
       continue;
     }
+    // Rare topics (a small competitor, Midal itself) can go a week without news: once a search has
+    // come back empty three runs in a row, look back 30 days instead of the usual window.
+    if (src.kind === "search" && (prev?.consecutiveEmpty ?? 0) >= 3 && window !== "30d") src.url = feedUrl(src.q, src.lang, "30d");
     const { items, record } = await runSource(src, prev, now);
+    if (src.url.includes("when%3A30d") && window !== "30d") record.note = "30-day look-back (rare topic)";
     attempted += 1;
     records.push(record);
     fetched.push(...items);
