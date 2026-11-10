@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T12:44:27.589Z",
+  "generatedAt": "2026-11-10T14:52:35.965Z",
   "retentionDays": 120,
   "categories": {
     "projects": "Grid projects & awards",
@@ -396,8 +396,562 @@
       "role": "self"
     }
   ],
-  "count": 2073,
+  "count": 2108,
   "items": [
+    {
+      "id": "395d0588fb70",
+      "title": "Nigeria’s power minister says nation to spend $2 billion on new electricity super grid",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOTGtPbjlwd19FbU9nVUtzdHhiOGk5V28yNWR3WGZCUHJ2VUFTYUctVmpmc3JfNzhTRzJDNGYyaFdqWkNGYk5heUkyeGFSSW9DMkRhQVpSOGs0R2tIX1c2NGFVQ1pYMGVJYkFGbGE1R1BaQ2lwbkp4TTd2Vy1nNEVBZW1IczByMmNTM1dIcjkzakk0aXlzbzBXcFdiUQ?oc=5",
+      "publisher": "Businessfront",
+      "publisherUrl": "https://businessfront.com",
+      "published": "2026-11-10T14:43:00.000Z",
+      "description": "",
+      "categories": [
+        "projects",
+        "government"
+      ],
+      "regions": [
+        "Sub-Saharan Africa"
+      ],
+      "markets": [
+        "Africa"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": "$2 billion",
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 1
+    },
+    {
+      "id": "c9a50484745f",
+      "title": "آستون فيلا يحصن مدافعه السويدي ليندلوف بعقد جديد حتى 2028",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPNHR6MTRhRzRQb3BxZV9nTU50OGd3aHBDX1lqUlN3VzJYQUZoMEpFcXF4Tm5KZmMxa2M0ZzZLRVV2N0MtREpMaFFybVZLWXdHdHFYYVA3MG9nS2JnMmJpaWdTa3hNa0Y4bC03cnIyMndfeVNlX3c3emx1U3Z2RjRVNzNHVQ?oc=5",
+      "publisher": "جريدة القدس",
+      "publisherUrl": "https://alquds.com",
+      "published": "2026-11-10T14:42:27.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [
+        "Elsewedy Electric"
+      ],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 4,
+      "similar": 2
+    },
+    {
+      "id": "3d2c8e3500ca",
+      "title": "آستون فيلا يمدد عقد مدافعه السويدي ليندلوف حتى 2028",
+      "url": "https://news.google.com/rss/articles/CBMinARBVV95cUxQeGFpNmQ2ZGNFeVgtNDgyOHl1cS0yb3I2UXFHcEVOWmFobW9rSFp4dEY4d3VoVVlUSWI4UWFrMkdlQUxQMG93bFdHOVFEOHZPZUdDYlluUXBTQWZFMzg2YnR3X3hJSV9LX1FadGVNUTFmd1JWX0MwbjJNRE5JaXNJNmtDOWEzSEFhVzFqRnhJeDhsc1BXYmRsQWk3ekJURWtQTHRveVJjcVBkQUNTaUpMMlYzZUl2Y1BwczRobnJlR1l2S3ZVU3EtOUJBUUFfcjBfZHRJNHAtWm1Sb1NwOUFGcDc0UHB0TnJ2RnN5ZXRtaVl4SmdtamNSWFhCc1dDbUZ1WVR1TVYxUS1EZy0xMWZmcnR5bjdZM3ZMT0FPZEFZbkhMbVVoa2E3dmp6a20tZHN0WGdRdFRRQWhZLTlYWmtaOFNVcVNwRVFxNHdTOHJvazNfZURTcXBIMFR6X0taNjc2S0ZDMzdoNEZab2JMVjJ2YkdMSXh6V2pfSnUybXNSd2dfNFdlNmNJV2FzU01GcExTVklGRFBIeTBXemlTYmpLNzh6VU1EYWEwenFZSVBOQ2JKd0dSQ0NDQWh6V0trdzFZeVR0RnJnVGhEVGE1WFlRQUZaamgwYndmRE9uN0ZVZzF5ZnVvRXM4ek9qT0pkdkhKUENHSkRpNW8za3JVaGo0Y1h4OGdpb2V2Z0RfTTZzbEpCeWpFekRiWVdaVF8?oc=5",
+      "publisher": "الشرق الأوسط",
+      "publisherUrl": "https://aawsat.com",
+      "published": "2026-11-10T14:28:39.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [
+        "Elsewedy Electric"
+      ],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 4,
+      "dupOf": "c9a50484745f"
+    },
+    {
+      "id": "bc48bf061014",
+      "title": "From scrap to billets: ClearFlow plans major secondary aluminum investment in Kentucky",
+      "url": "https://www.alcircle.com/news/from-scrap-to-billets-clearflow-plans-major-secondary-aluminum-investment-in-kentucky-121916",
+      "publisher": "AL Circle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-11-10T14:25:00.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
+    },
+    {
+      "id": "c4f2e82b72b5",
+      "title": "🇬🇧🇪🇺 Powering ASEAN 2050: How UK-EU lessons can unlock the $100B ASEAN power grid",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQbmkzdng2d3NhZnNSci1vbS1ZaThLWTVYMWg4ZVFOUDVTalVuY0poMGFzZVFSTjlKVm1YaFhNLUNnbmVWTHFUeE1rakZIZl9zaldJRkUzSjk4QkZrbXBkM2JNZnNyeUhiTUQzM215Y1BmeVNOa0ZTM2tOd3VYcHVycnlEWHlGOENYU3FqSDB3?oc=5",
+      "publisher": "The Southeast Asia Desk",
+      "publisherUrl": "https://www.thesoutheastasiadesk.com",
+      "published": "2026-11-10T14:01:58.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Southeast Asia",
+        "UK & Ireland",
+        "Europe"
+      ],
+      "markets": [
+        "Asia",
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
+    },
+    {
+      "id": "3b18ac82b516",
+      "title": "Bulgaria sets world record for energy storage",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPaHBESkNkNWFFZXJIUVpydGhTOG1mMXFQbzk0T0dnZGhSOFhTRkkxZUVfcG5TakFSbURvWUhfYUw3MDNBajQwZGFncTdJXzlnTFZ4ZThkT1hDSEVDamt0YU1ITDBJU2tJbm81YUJpdktoUWNwNkZUc3JqRFBwbENnLVFFblg4MjhkWDhMaS1vM0N0Zw?oc=5",
+      "publisher": "Energy Live News",
+      "publisherUrl": "https://www.energylivenews.com",
+      "published": "2026-11-10T14:00:15.000Z",
+      "description": "",
+      "categories": [
+        "demand"
+      ],
+      "regions": [
+        "Nordics & Eastern Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
+    },
+    {
+      "id": "f857e220f271",
+      "title": "كامل الوزير أمام لجنة النقل: تطوير السكك الحديدية ورفع الطاقة الاستيعابية للركاب والبضائع",
+      "url": "https://news.google.com/rss/articles/CBMi9ANBVV95cUxOMkp0YUlRNlJiM2NnRm43YV9PMlpDcURGUW1PQWJGVzN3Z0J3bEV2eWFpQzNSbWJuUl9oSzJOWmJQUFRaYXFpRHpoV0NJdHlFYThTNDhXQU5HV05BY3dOc0pHSldjamJNS3ppUUlKWW5oQVd1aGF2QllQRU9iMHRPejF6MGh1blNoRlU4b3dFdTJfdXVBNi1Zd2VNNGpWbFZ4V0hJTk1GUWlPVVlMc2JBVkVFZzRCY2hKcW4tT1AxdXhLOGx5ZlNPRjEwZlNQSkNwZG8zQTZHVWJqOGI5Zk5OMlA2bG5ldXRyelR5LWpWdkluYnM2eGIyVXVtYzFBRHBkcXExdlZnNV9kMWpQWGtWcHJPVVZmZ3RqM1hXc0NRRXhPeE5NUWRYTW9jVk42aGZTbHRwZUlxUHlVakJITmVuR0tzZHJ5SC1rTjBSaVFjSVFZdzBtdG1rX21IbHRCNXg3aEMwNVFFcGVEeEVzUm1FTEwtUktqUTh4aWpua2t2Rnp0SUlsVlZKYVoyQ01CbUJWeUpNTXh1REV1RFlpMUN5RzdEV0V0dEY5THFVNjR5Q3E1ajRaQWgyMDExV0JQQXJ6bXBmdjBvTHVDS214M1VIY2FNZDZ0VWl1Zy1wanlvYlZidkhDOEFMQzRLanIzWVI3dmJvQQ?oc=5",
+      "publisher": "برلمانى",
+      "publisherUrl": "https://www.parlmany.com",
+      "published": "2026-11-10T13:59:00.000Z",
+      "description": "",
+      "categories": [
+        "government"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
+    },
+    {
+      "id": "4dfe2b6efe1b",
+      "title": "أستون فيلا يمدد عقد مدافعه السويدي ليندلوف حتى 2028",
+      "url": "https://news.google.com/rss/articles/CBMiqANBVV95cUxPV3Ywdl9GNkZ5NXlOYWpkS2FHc1JISHpGOHlMb0NqLWdISlFoZ2FvckdLQW9pam5udURjc0w5Qjc1WTYtaEg0cVZ6cUlaRi1Pa1c0YWVoc2Y3elYwZWRUbjN1Tk9lZW1EeC1XNWhJV1pTTFNpWld0bktPZEJYNmstMTVFckU2WmZfRkZSMmxXSWZsMTJpNFRHSi1fTWkzdDFWdTBlVkt2MTZBamVabDFQS0NobHA2UGhndjQ2dWxmWGZtNDdPQWtFN1NMMG5HeERuU1NLaWRLOUFjVUwzbmRfTUc5TWswMW9iMnR3Q2xHVlp4UnptNHBESUtUamN2ZE9pNWk2ZVpJZUhPTm5fYlRENmVpTzRBWWx0LWEyNVV1MnFQTVpadU9nR1I5QlNkVE11MlRKbmd4VTM2M1dUS3ZDYUF3RU1nX2VONy1rWS1QNjJJS19hMVh2c0o4ajViWHlyR1RJZElza29rOGxyVUtrTFIzdG9tSlZrcmp6enNjUVhpQjg3Nk9WSTAxV2ZZcnItb3M4bHBuR0dGbEx6eVozZzdaOS1VTTB3?oc=5",
+      "publisher": "Qatar news agency",
+      "publisherUrl": "https://qna.org.qa",
+      "published": "2026-11-10T13:58:34.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [
+        "Elsewedy Electric"
+      ],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 4,
+      "dupOf": "c9a50484745f"
+    },
+    {
+      "id": "e42268186b14",
+      "title": "Gia Lai approves investment of over 612 billion VND for floating solar power plant.",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQQXhGcW9BVlNMTy1IdVpWb2g3RHdBdXR2NnV0VEtOUjVDZmVFOFlQVmZvT3dHczBqdTdGWjRFeWtPaTl2cDFmUnByTUw4NThHcm14NFNHM2YwLWxnaWdNUU5IYXZNVnVEVEQ2cEJ1cndqd3ZJWTJNWXpqbzFoUUlKZkZsZkI2c0JFS2tMWGNNYWJldVcyd09uQw?oc=5",
+      "publisher": "Vietnam.vn",
+      "publisherUrl": "https://www.vietnam.vn",
+      "published": "2026-11-10T13:56:57.000Z",
+      "description": "",
+      "categories": [
+        "demand"
+      ],
+      "regions": [],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
+    },
+    {
+      "id": "3f80b2adc153",
+      "title": "Statt Netzausbau: Bayernwerk Netz schreibt weiteren Batteriespeicher mit netzdienlicher Fahrweise aus",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPRnNpekNLM203em5XN0JoMnlweVZ5aGM2QzlzT2xjZGV6cFhTWGZZSktCZXJlOVoteVlVbTBOTk5DNXdCSzVHei01R3g3OWo1SXZsbFNHYjByU2lMVHZTSjlTRjNNbS1TZldKaGhxSmp5dHR0SW5yTjlvUGNTTUcwSVo0VWNHVENkYlp3MXBQN0FIdnNMSVJ3N2xjNklzTzN6TDVxQVR5YnNkY244WUhpUG1hbFFwdVgzbXJhRnU1TUJMQkItbWxNaU1R?oc=5",
+      "publisher": "www.photon.info",
+      "publisherUrl": "https://www.photon.info",
+      "published": "2026-11-10T13:53:00.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
+    },
+    {
+      "id": "0c63888b8a07",
+      "title": "EIB approves loan for 176-MW wind, solar portfolio in Italy",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOQWc5SS1OU19FcFh1eTllOWNVbXFvbU1Sc0FjajMtV213QkdRRWJPbC1fNTRRRjhOS2YtWVFMQjhwLV9XOWJaOVVwZHlzWnlpTF92OVlPckROSDNON2VWamRXb2toYnNKT0VqYmtpR21GYXI0RV94S3hWMVFpcHNvWG83QzVoRWJhTjVmZUZkdWYyXzdWWG1KOEdyUFJ5Ulk?oc=5",
+      "publisher": "Renewables Now",
+      "publisherUrl": "https://renewablesnow.com",
+      "published": "2026-11-10T13:52:31.000Z",
+      "description": "",
+      "categories": [
+        "demand"
+      ],
+      "regions": [
+        "Western Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
+    },
+    {
+      "id": "6d1e3fe92cf4",
+      "title": "LME Aluminium Premium Hits Five-Month High Amid Tight Inventories",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPSUY4VEdCa0FVUVU5OUVkS2ZEOWpGTEJoRW9iWXdGTWo2bVNMRWY4YVRfNDk1U2FhTlY1RWx2MDBzdkJDdTlXYWhMa0gxSFRfVFVtY0k3NWUzeDk0Uy1Wd1VJT0lOV1JhZ3BEaFQ4QUt3bFc0MVlNZ2RRbG5FRUo0MThmR1ZBTzBxTFV4dERfZ0lBN08yTHc?oc=5",
+      "publisher": "Global Banking & Finance Review",
+      "publisherUrl": "https://www.globalbankingandfinance.com",
+      "published": "2026-11-10T13:49:13.000Z",
+      "description": "",
+      "categories": [
+        "aluminium",
+        "metals"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0,
+      "similar": 1
+    },
+    {
+      "id": "b847356999c4",
+      "title": "المصرية لنقل الكهرباء توقع عقدًا مع GE Vernova لتحديث 44 وحدة طرفية",
+      "url": "https://news.google.com/rss/articles/CBMiywJBVV95cUxPeUp6RXFTMERfLTA2WktJUU1IY3hEdXdFZWU2NE0taGNVanB1cVB5TlE3SkNsTUJhRkxnNGtDVXJEbFFBcnR6YVR0UVQ0QVRzNjFhVkJOZXd3OTZweDRwN1V1Z24zM1NjcUFZN2JpX05TZmVwc2UwdFZuSXN4WkdLU3dOVFAyVktmZW5wUDJqOGE5Q1hqZmtNYkZ2ZlB2TTVvNEtILUVybHBLaUxHZHRiUW1EaU1VWUMxWm9KTHJwbFZycjJIQXJNRjdGbGVkaThZMjhtdUNYR3BEZmsxTkd0YkZFVWx6QjVrakxNT004dUdRYnBtM3RxbURCRlVOeXBic05OdFhhRW1aZC1fTXR4eXdrSllIT1ZscHJjaHFoN3ZkSFJJZ3UyamJvNDVXMHNKVjZMa253MmJaaE54SEJaTEhfZkJ1RmFTOHdn?oc=5",
+      "publisher": "إقرأ نيوز",
+      "publisherUrl": "https://www.iqraa.news",
+      "published": "2026-11-10T13:48:19.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Egypt"
+      ],
+      "markets": [
+        "Africa"
+      ],
+      "companies": [
+        "GE Vernova"
+      ],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 5
+    },
+    {
+      "id": "f10c17591355",
+      "title": "Construction begins on Mannar–Mullikulam power line for wind farm",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPTTlHc0d4YWNvakE1RnNPcVJpeEF6MEpSNzl0Zno4N1o5REpLOWRPN3pSZVZmb2E0MFFPNFdWeWlsYno0MVhLcXJkUmlRTVk0M2ZRNVpCVjNEaVZXVnFhRlh5emYyMzFVRmlxN3JfempoVnc2bFZJN01Nc19BdW04Ulk2ME1mY01QS2d6VW02ZjNkYTBQelZxNU5YeUE?oc=5",
+      "publisher": "Tamil Guardian",
+      "publisherUrl": "https://www.tamilguardian.com",
+      "published": "2026-11-10T13:37:53.000Z",
+      "description": "",
+      "categories": [
+        "projects",
+        "demand"
+      ],
+      "regions": [],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Construction",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 3,
+      "similar": 1
+    },
+    {
+      "id": "d27514f07ca4",
+      "title": "Tight stocks drive premium for near-term LME aluminium to five-month high",
+      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPRkZwaXRsMWxNRlpNLWJLM0ZzYUZGM0dtYmxhdTh6RGx5QVpNTXhnYXQ1M0N4UjcxY2lWVDlXaFlTdm45Y0dESnRuamVnenNzdkVmNUYzajB5c0FiOXdNWW1xZXNlMGhkV3pwWHpfSWlMMVVMZHczX01pTzlZNV9YWmRQNm1HN1VyVG5xTk8yQnFjTDVtbVBLdkpZVUNEUEdkb2N2YVF0QTdLbktmcnF3M1FwNzNjeVgzVFhHVGRPc3R3Z0FEOVpHRUdZYnJ5NXZETzNyQmtKZy1hcVU?oc=5",
+      "publisher": "TradingView",
+      "publisherUrl": "https://www.tradingview.com",
+      "published": "2026-11-10T13:32:43.000Z",
+      "description": "",
+      "categories": [
+        "aluminium",
+        "metals"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0,
+      "dupOf": "6d1e3fe92cf4"
+    },
+    {
+      "id": "d58b0fe29afa",
+      "title": "The Grid Gap: Barriers to Building the Missing Link in Global Electrification",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQVFR2aC1ENWZSaXN2OWtPUkxBaGZqQlA3NGhVX1ZyeGQxTUxEQWpKMW8yVnNrNk94YlhXUXVmV2FaaTNXQ3hZZV9CUldKUmMyVDJFcUFjWTVEdm9RcGJXRzZHeHJkb2x1RldxT01YYnVvSV9LcEhweDRKZGlMUk8wb3M4OEZEN2htMnRBNjlDWjlzaUhDaWstM2xaZVdtakJsSWswTVVoTWc?oc=5",
+      "publisher": "Clean Air Task Force",
+      "publisherUrl": "https://www.catf.us",
+      "published": "2026-11-10T13:21:00.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": "Plan",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
+    },
+    {
+      "id": "0b70eed884d3",
+      "title": "مناقصة NEDO: مراجعة تقنيات الطاقة المتجددة المتعثرة - الأخبار والإحصاءات",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQYVp5VDRPMUtLZDZobzB1N1JVSTRFOFJJVU91QU5XTnlvQ3BRUmtFZnhSSzdGSlVNTGttMWVHeEIzN0V5ZUc0TFVxWjJENVNuRmxaYTNMMEJLQTlFTVZRa0dseGI2eDd6ZG9Fdjg2dkI1MWwwV3ZCUkxudUgwZjhxWFkwWml1UXc1N1FyX0E4d1ZkS2tIRHVJ?oc=5",
+      "publisher": "IndexBox",
+      "publisherUrl": "https://www.indexbox.io",
+      "published": "2026-11-10T13:10:40.000Z",
+      "description": "",
+      "categories": [
+        "tenders"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 2
+    },
+    {
+      "id": "b4559693c490",
+      "title": "Aluminium Supply Squeeze Deepens as LME Inventories Hit Multi-Decade Lows by Amit Gupta, Kedia Advisory",
+      "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQTTlTUThQSTVTanFCTzJzN2R4WkdMTFhvNURIRnFXV1ctZFBHWUx0RmxVRm1CM3paN3Jya1RhdmlLbTJBZVk3NXFXT3R1emJ5QjQxRklxTXZzR1BQUlFSWnRDN1loYWNuUkFNaWhEMmlSVURPSGNzc0R3TFBqWDV6OU9ZLUd1bEs1YjdzYnplNXpfZUwtenpLZXRoN0FVcTlaam1JQ2dNam9HUlNzLURyRTJpS1FJQTBaNExIMFFacWxLTXI3bnVQUnE0MktfcGEtS1hHQXhoNGFoTmdfcnV6ZDhZVWQza3Y5VHE0?oc=5",
+      "publisher": "Investment Guru India",
+      "publisherUrl": "https://www.investmentguruindia.com",
+      "published": "2026-11-10T13:08:13.000Z",
+      "description": "",
+      "categories": [
+        "aluminium",
+        "metals"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T12:44:26.773Z",
+      "score": 0,
+      "similar": 3
+    },
+    {
+      "id": "b42d92c4ec5b",
+      "title": "The Government of the Canary Islands analyzes the reports from Red Eléctrica and Endesa on the blackout in Lanzarote",
+      "url": "https://news.google.com/rss/articles/CBMilAJBVV95cUxPTHVrbWgyY3NzSHVESGJPMkREZXFmbk1lekdHYlFxX1JuNlNTRVJUZGp0VGdlUmV2NjZBVWx1RVlMcnRydWtxMDlKLVZBQVp1OE92RTliMXRzMEt3WWg1dEtja0Nlekp3UGl0Y2MtTFJkSm52WTVWS0RXSGZ3OG1tcFowRTRyMUo1QWRCNGIzaHIyTlFXeE9kXzREc19pMHVCanJqSzdRY180OHdSZDgzOWZGY2UtbWZvTVRtcWR4d0dTYzRYU09uRXJodldIQzgwclNnblk1MjJyQlR6alBWd19ZTzZfdDRDdjV2dF9mZzRQMmxUWVVZcHdTM0tWVzBvWVVsbFNQbzE1R2loU2x2TWtBR3jSAZQCQVVfeXFMT0x1a21oMmNzc0h1REhiTzJERGVxZm5NZXpHR2JRcV9SbjZTU0VSVGRqdFRnZVJldjY2QVVsdUVZTHJ0cnVrcTA5Si1WQUFadThPdkU5YjF0czBLd1loNXRLY2tDZXpKd1BpdGNjLUxSZEpudlk1VktEV0hmdzhtbXBaMEU0cjFKNUFkQjRiM2hyMk5RV3hPZF80RHNfaTB1Qmpyaks3UWNfNDh3UmQ4MzlmRmNlLW1mb01UbXFkeHdHU2M0WFNPbkVyaHZXSEM4MHJTZ25ZNTIyckJUempQVndfWU82X3Q0Q3Y1dnRfZmc0UDJsVFlVWXB3UzNLVlcwb1lVbGxTUG8xNUdpaFNsdk1rQUd4?oc=5",
+      "publisher": "La Voz de Lanzarote",
+      "publisherUrl": "https://www.lavozdelanzarote.com",
+      "published": "2026-11-10T13:02:11.000Z",
+      "description": "",
+      "categories": [
+        "government"
+      ],
+      "regions": [],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [
+        "TenneT / EU TSOs"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
+    },
+    {
+      "id": "fb2cfd0ea4c9",
+      "title": "Aluminum Prices Slip As China Exports Pick Up",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9iWUdHblp5TFhneU1TT3VubTc1bG9ROWNKcWs3YWdNWHhoZERsYjJtQVpJa29DSlNNMlhqcG5zN3gyNzN2d1p6d1pQaUNuTlpBT19ORGk1NVc3b2Q3UjEyVW1lZmZEYW1MeWFlMzFLRWlrcjEzNUJFcFA3WUJ5bzA?oc=5",
+      "publisher": "Finimize",
+      "publisherUrl": "https://finimize.com",
+      "published": "2026-11-10T12:46:12.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "China"
+      ],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0,
+      "similar": 1
+    },
+    {
+      "id": "c6ce37a0cb54",
+      "title": "Puerto de Almería licita subestación eléctrica de 12,7 millones de euros",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNQ05SSUtySEVXQXRMNVVlQVNlVFpxcmFBeVR3clpRN3dxdTdYTU1NMG5VVHM1dkY4OHNKTndsVFVaRnFwb1NEY0lDX25wWHpJYTQzSDd1SlYxb2lCcUF2VXd0UjFUU09aR0xaeHEzVzkxSVRMYVdHVXk1dkdOYVdWR2wycXg2enc2V2xXSklJQ2hNNlFLVk8wNV9DaUFfTFZrV2VETFgxaGwtSjNBNVRfNmZxQmNfQlFXNTZHQ2I2TmNPRkRxV0hIVzhXaGU4OFBBUGU0QzBB?oc=5",
+      "publisher": "Data Portuaria",
+      "publisherUrl": "https://dataportuaria.com",
+      "published": "2026-11-10T12:40:07.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0,
+      "similar": 2
+    },
+    {
+      "id": "6f2f6db40687",
+      "title": "National Grid specialist civils framework: delivery and risk notes for engineers",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPTUNHVDg3M0s5XzQybjA3TTdkNzNNZU9XZFBBbThmVXNPS0J6RG1Ra19IR2dkRmhYNXZSQ1R0bFJjWVk4d0hYSTdhYWVtSnlxeUlobGtpZmhTbzhBaVdxZlp3OHdpdWxtQnJNUE9SX29keXFXMHEzRHF1N2F3UW00SlBIaGlsa24wck10UUNmc01ZMnZ2U0txU3BYSVU2cFdEUkR6aFJtbjRZVTFrNUI2c0R1SXYxM1czTFNBbQ?oc=5",
+      "publisher": "Geomechanics.io",
+      "publisherUrl": "https://www.geomechanics.io",
+      "published": "2026-11-10T12:08:09.000Z",
+      "description": "",
+      "categories": [
+        "projects",
+        "government"
+      ],
+      "regions": [
+        "UK & Ireland"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [
+        "National Grid (UK)"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0,
+      "similar": 1
+    },
     {
       "id": "1a698f07b948",
       "title": "انخفاض أسعار الألمنيوم بأكثر من 1% مع ارتفاع صادرات الصين",
@@ -447,29 +1001,6 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 0
-    },
-    {
-      "id": "41dc00ff7bec",
-      "title": "SSE secures consent for Berwick Bank C export cable infrastructure",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPbHBSaUVXWlBfSEdsSEFGRUNtMVh1T0VBeGs0VWNwU3lRc001U2xNUGNtY3dnQ3czcnlZV3o2T0c1bFhCaVJDUnBiZjlrLXlEbUdOWFVBRFE0WkdxeGl5X2o1N05FWldYSml3UW12NjU3YnRyb0M2M29SSG5qQkJiVy1fdldSdER4Vm5URFpJUnNQeU9wN0JtVUc0VURqV3JkWjI2TS05Y2RlN2ptQnRPQXFneDJTQQ?oc=5",
-      "publisher": "Riviera Maritime Media",
-      "publisherUrl": "https://www.rivieramm.com",
-      "published": "2026-11-10T12:00:00.000Z",
-      "description": "",
-      "categories": [
-        "competitors"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [],
-      "actor": "SSE",
-      "stage": "Award",
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-09T19:49:44.568Z",
-      "score": 3,
-      "similar": 2
     },
     {
       "id": "eefebafb1d25",
@@ -551,6 +1082,32 @@
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 0,
       "dupOf": "b011e809e77c"
+    },
+    {
+      "id": "f08219018500",
+      "title": "138 kV Nueva Runatullo–Nueva Satipo, Peru",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1ubF9xbU45bkhoMFlQWXZfNGZuRDBkTDdRNWdQaGthaThodzlZNFBJQ1FkYkRNZld0Nk1yUXVaV0tMOEpleE1fOUthNlUxM1I1YkJLbGJVSGV4Qmx4NHNyNzR0cmFieXVyWXRQNE84WjVKUFk0bWxhbGlmUmFCdw?oc=5",
+      "publisher": "Global Transmission Report",
+      "publisherUrl": "https://globaltransmission.info",
+      "published": "2026-11-10T11:55:46.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Latin America"
+      ],
+      "markets": [
+        "Latin America"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 3
     },
     {
       "id": "ff62bc778c21",
@@ -657,6 +1214,29 @@
       "score": 0
     },
     {
+      "id": "420e14f34f5b",
+      "title": "عجال يتفقد أشغال إنجاز مشروع الربط الكهربائي شمال–جنوب بالأغواط",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOcF91OUFKNWhNbGRmbzZLanJkNmRjYk1sTGNxZ0g0ZGRUNmItU2Z2T3hwejd4WTZ1aGljQWNRdVIyQTh2dUU0c3JsN21jSkU1bndOUHNBcW5JWWVsRTQ0UHBjX0xzWmtscEhkS2Z5SlZzRTI5OGh3ZHR5VERxd0JzNXlzd2cta05ramV0YzVaS2Y0c1BpeUZjMVViaTdwQQ?oc=5",
+      "publisher": "Alfadjr",
+      "publisherUrl": "https://alfadjr.dz",
+      "published": "2026-11-10T11:46:14.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0,
+      "similar": 1
+    },
+    {
       "id": "81a740d0d4d6",
       "title": "Russian aluminium's share of available LME stocks almost 100% in October",
       "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQaC1FakdZbUxxcU5zbUVKaGhtRmtZeWQyLVVIWTctcFdVV2p3R3NHNzRWb2tpX21sQ2NfRVVWM0dHWE9wYVVMMXFqM1BtTGdnU2JhY1F2eEVvX3BKbFpkQW1UMHphOTc1TjV6V2g5T0RTN0Qzd2pzOTcwQUVaQVdHY01vOEctMkUtTjNIUTJaZGtNM3VoOGozQlJPWThSbkgySV93bXF4NTBTdDdXTDlybjNTbEN3V1pHN1VJdkZCQXBCV0hBc2tSb0xpdEN6Tlh5aUFnWU4wZTI?oc=5",
@@ -682,7 +1262,7 @@
     {
       "id": "f8ef2c14e95d",
       "title": "Aluminium falls on higher Chinese exports and hopes for Middle East de-escalation",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPWEZ0a2oxemktNk1sNTkyQ0ZQdE84M3lReVZ2VEJCTWRTUHY0UDB1N09NSEpxQkJWNWxJc25sQzU1VG56YXlMdjFHYUQtRGIzZ0xmemRNQ2gwUUdIWkhOTWtRMW1rZUVReXNwS3d6d0s5a2h1NUJXaUdRLTNYdDh3cnlKcW55Q1VpZF90a3dVWHFkVUVITTEtd1BmdkNRX3dJdlZEZ0VlZDVIRnJ0MDRSVjZ1R29jczhmT213WU930gFWQVVfeXFMTlYwUjBVVWRhLVZ4eUhkS3RIVWVDUzlKTXVuZXoxSjJ3dGtDMlFSazl1Vnk0dmstMU5KUkJKeEZ2VGNjcTh6UzU4QThqeGlzRDZWa0dyLWc?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5WMFIwVVVkYS1WeHlIZEt0SFVlQ1M5Sk11bmV6MUoyd3RrQzJRUms5dVZ5NHZrLTFOSlJCSnhGdlRjY3E4elM1OEE4anhpc0Q2VmtHci1n0gFWQVVfeXFMTlYwUjBVVWRhLVZ4eUhkS3RIVWVDUzlKTXVuZXoxSjJ3dGtDMlFSazl1Vnk0dmstMU5KUkJKeEZ2VGNjcTh6UzU4QThqeGlzRDZWa0dyLWc?oc=5",
       "publisher": "Business Recorder",
       "publisherUrl": "https://www.brecorder.com",
       "published": "2026-11-10T11:39:48.000Z",
@@ -735,7 +1315,7 @@
     {
       "id": "94e267df04a8",
       "title": "El Puerto de Almería licita por 12,7 millones una subestación eléctrica clave para su desarrollo industrial",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQb205eXc5RGxuWGJUSjBseWl4bGk1VnNzTkdvYVBXMkJWM1lpeEJiMWw2QzRkeU9OVUJzX1ZzZ3FtMUZOaC01S1U5QVMyYlZ4d25STXlJcTFlejVNeXg0SDFzMUNYNDRGNHJjOGgxV0MtTHM4VUxZUlFZMHZGR1lOLU45LS15bkVhS0ZaTFM1VC1GUnEzY0p5VHNQQjFVQdIBowFBVV95cUxPRGF2eFNaUDZlTERrLXdMMmU4NDljdW5JSy04OTJCZ0t5bEFBQXdCQkZMOTU0dzl2LTNCYzEyQ1hZZmZuNEVmSUEwd2taZFd5RzFkcjdSalF4MmZmZXZSSkQ1ZmJHWlgxZEZ1Q2JHaGFXZS1zb1M0MEQ0dndveU93WjlmX1JNVzRBWm5wN0N5TlMySWM5N09BT2JmVGJUd2l2M2c4?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQb205eXc5RGxuWGJUSjBseWl4bGk1VnNzTkdvYVBXMkJWM1lpeEJiMWw2QzRkeU9OVUJzX1ZzZ3FtMUZOaC01S1U5QVMyYlZ4d25STXlJcTFlejVNeXg0SDFzMUNYNDRGNHJjOGgxV0MtTHM4VUxZUlFZMHZGR1lOLU45LS15bkVhS0ZaTFM1VC1GUnEzY0p5VHNQQjFVQQ?oc=5",
       "publisher": "El Conciso",
       "publisherUrl": "https://www.elconciso.es",
       "published": "2026-11-10T11:28:20.000Z",
@@ -755,7 +1335,7 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 0,
-      "similar": 1
+      "dupOf": "c6ce37a0cb54"
     },
     {
       "id": "dcf5aabc1d4d",
@@ -878,7 +1458,8 @@
       "lang": "ar",
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 0
+      "score": 0,
+      "dupOf": "420e14f34f5b"
     },
     {
       "id": "0dc581899394",
@@ -952,7 +1533,7 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 0,
-      "dupOf": "94e267df04a8"
+      "dupOf": "c6ce37a0cb54"
     },
     {
       "id": "ac517b60c0e6",
@@ -1030,35 +1611,6 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 2
-    },
-    {
-      "id": "36ffa0b18f54",
-      "title": "Contractors named on National Grid specialist civils framework",
-      "url": "https://news.google.com/rss/articles/CBMiwwJBVV95cUxNMGFXaG5QMGVnQjZ6ZWFRa1FEaGpfZ1VFaDdMOVJ4UlQyVHJ1RURzODhjcFktdkh2Y3Y0T3lOV2dFYnJVVDhNbjRraXV4UGoxdFJENnk5UTVka2RUY0hsc2lsZlFkeWhxRGxLaXFYZTBKM2tFUlpmV2QyR29VV29WR3V2RUxOR1hfNHlvaHpWd3ZNTFVqTEg3V0QtS2ExRjkyckRfRmhWZkJUeEF2MjZSaHktd1FMZFhwZUVNTmVtdmRiQThOMEZmOXpDMTdvQWxkRFRTSHQyaUM3U2FpUEZZNjNEbThWQUxldEl0c19YbVAzV0Z1XzFoM0pZaHZnc1BRdVBIRVBhWFExMi1wM1RKMVdVdngwZWVXbm9UMDhlbS1mOWQwb29SdEo1TkFLTjVLVFZWSW9zdkNQc3NxdU0zZ0lpZw?oc=5",
-      "publisher": "https://www.facilitiesmanagement-now.com/",
-      "publisherUrl": "https://www.facilitiesmanagement-now.com",
-      "published": "2026-11-10T10:13:38.000Z",
-      "description": "",
-      "categories": [
-        "projects",
-        "government"
-      ],
-      "regions": [
-        "UK & Ireland"
-      ],
-      "markets": [
-        "Europe"
-      ],
-      "companies": [
-        "National Grid (UK)"
-      ],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 0
     },
     {
       "id": "e6c5b4ae3a68",
@@ -1166,6 +1718,36 @@
       "similar": 1
     },
     {
+      "id": "36ffa0b18f54",
+      "title": "Contractors named on National Grid specialist civils framework",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNa002S2hqdmRULXd1WG5xQzl0VFNFc1lVSnNWY19nQ0xnRzJwaG9FcHR0UUVlTXoyYzNTNDNfeXFCM3h3R1RPcnRnZERZQjZRcmVFLUYyVC1neFlEakFrbkhLVmRrOHdLNXpYZ3R2SEplRDdFbjA1TnpoX3VUNVpfQTFtRjN3NGd6QVZNQU1TLU14QTFrdHFIeHNHT1VEdUYyZS1TOEZfc1g1N1haTHd4cmpzeno?oc=5",
+      "publisher": "New Civil Engineer",
+      "publisherUrl": "https://www.newcivilengineer.com",
+      "published": "2026-11-10T09:42:33.000Z",
+      "description": "",
+      "categories": [
+        "projects",
+        "government"
+      ],
+      "regions": [
+        "UK & Ireland"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [
+        "National Grid (UK)"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T12:44:26.773Z",
+      "score": 0,
+      "dupOf": "6f2f6db40687"
+    },
+    {
       "id": "db2761a5c8ec",
       "title": "Aluminium Supply Squeeze Deepens as LME Inventories Fall to Multi-Decade Lows",
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQSnNOMjZwbGtSa19TU01KM2stQ3owUmhGTlIzeWhHNWxDb3MxRWVCZUE2VXZiVlJuemIwck8tMmMwMmhDWmFnXzdlNWtQX05NalMyVGp3b3g1bnFlQ3liZGJoa2xBY2dSNzktV3RLSW8tVEJDNm9sdURacHhRMVRaZjhrcVRPV21jSXZzS01VTXhqUy00M2huWVNGRVlxNmhlbTBMZEkzUkF1N1BRbkM0SDROZUo?oc=5",
@@ -1187,7 +1769,7 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 0,
-      "similar": 3
+      "dupOf": "b4559693c490"
     },
     {
       "id": "da7b685a0bc0",
@@ -1261,34 +1843,6 @@
       "score": 1
     },
     {
-      "id": "a89c0f3c3ef0",
-      "title": "رئيس السعودية للطاقة:نتطلع لمواصلة تحقيق أولوياتنا الاستراتيجية بالمرحلة المقبلة",
-      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFB1VWhRZExEZUlxdnNldEd1bG9paEJkR2IxQ00zcmpudWRJU0hZclktZkQzVnRsLXpyaWxxYmx6WF81eHBiX0gta3E3SGpZY2lYUTU0?oc=5",
-      "publisher": "شبكة تواصل الإخبارية",
-      "publisherUrl": "https://twaslnews1.twaslnews.com",
-      "published": "2026-11-10T09:11:39.000Z",
-      "description": "",
-      "categories": [
-        "government"
-      ],
-      "regions": [
-        "Saudi"
-      ],
-      "markets": [
-        "Middle East"
-      ],
-      "companies": [
-        "Saudi Energy (SEC)"
-      ],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "ar",
-      "deadline": null,
-      "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 2
-    },
-    {
       "id": "a63849f601e1",
       "title": "Colombia's PazdelRío seeks to keep 35% wire rod import tariff",
       "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQZVVjdFRBSkxKZE53MnNBeTdIb1QwZXk2LWJLZDN3bEhkYkY5OVZfd3B6ODdFRUxDTUlnbDFBZWxUNGhmRUlyRWIyckRWVHNvQWNqR1BjalV0Ql84eXJaMGQzdnNTZDZxRXE1cHE4RkwzR3RBRk1VYTNDUzM2VDdGdW00SWMyNy1xc0dXNTJ2NGxNQ3hxajVVd2h2VU42Q2dhM21zMW5uMVJOSXBsZWpqQWlBdmdMcV96eGpINnhRU1N0a0RoUlIyQVhEeFQ1TkgxcGpwWEln?oc=5",
@@ -1313,6 +1867,60 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 4
+    },
+    {
+      "id": "a89c0f3c3ef0",
+      "title": "رئيس السعودية للطاقة:نتطلع لمواصلة تحقيق أولوياتنا الاستراتيجية بالمرحلة المقبلة",
+      "url": "https://news.google.com/rss/articles/CBMilgVBVV95cUxPVzd2dndDckZ3R29rbGRIYUpQU2dHRVVFUEM3U3NhVXVtZWJkdFZRTzFJUWxVNzhIdERGdW9SQlhkaEJ4R1N6cjJRajNZV3JpeWlJMGpZOGVQTEF4akpla29vRE5sMWUxS1lId3l0Y3UtQW1aS09WWEszVDBDVmpYRnZPeFJTRlE4TkVQWmE2ZlBWNGJnTjJ6Q01USV9xT1FEak84dzExRFNZLUg2WFdmN3dNYUxLaE5Ob0l2NU1KSEZRcjJNSWJxSlk4Wi1mRjFWSW92YU9ySklwa3B4Sk8wbEJLb0ZQakJPV01FUzBqVThRcTJUSW52bkZTaDRsQzA0YnJ0Tk0tckdxYTdwZnBaVEdjdG5JNVRzMmt1cmZtdDhQSTgwdjJEeHJOVy1qUDI3eG1idlRXN2xvYURaLWJhRkl6cVNiVHhPbFgweXg5Y0RpWWZFZVd2Y3hkQy15bjVkVm1RZmpxdjZNMEtqRmRQbzhZZVRINlhlcEhzM1M5ODRwaFU0bkdwVTg4TlJBYmUyV2w3M2E1dHlONWxZSTVyQ0tEZ3RGaUI4ckZzNUdJTkdZMXpPUE9WLXhDWGd4UGhuZjB5Ml9ZZ3FyNmhyVE04WmYwcFNhNTZFNE5YUXU5d29leEJJR2l6TndhRUllaW9nWG04VHpNUnluclJDNUtvOEFISUFHS2FnWGtuR2pxeVY3aHpNWTI3VGc3S1VvdXRhS2xxb0VDV0dJTUVVMWdJb2xRYVlSVWlwRWNUamo2YUZLYmFTcGZaNm1ydUZsbnZJS0pUa0tELUY3TzlQN0xkWEkyNno4aFpoVEdzYkw3UXhyMklhTjQ0Y0hkVG1KdmVZbkstTVkwRlVsUWZIdjRYdzRjdEZUQQ?oc=5",
+      "publisher": "معلومات مباشر",
+      "publisherUrl": "https://www.mubasher.info",
+      "published": "2026-11-10T09:08:10.000Z",
+      "description": "",
+      "categories": [
+        "government"
+      ],
+      "regions": [
+        "Saudi"
+      ],
+      "markets": [
+        "Middle East"
+      ],
+      "companies": [
+        "Saudi Energy (SEC)"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T12:44:26.773Z",
+      "score": 2
+    },
+    {
+      "id": "55ba6e04dd43",
+      "title": "Orbital Eye to Monitor Dutch Electricity Transmission Grid Construction from Space",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQRHJ3M0lVZElVU3R6bkdaWVIxUnUyelY1UFdmeXNpa0xrS0wxY2cwQzFuVFhFcnlCTTMwY2pGdTItbE9SdlpYejhDZ2p6bTItcDljeXFXdDlFemFBdnhoYlZMcEJkb0FjVkVuekdCM09PZS1kV2lSVi1zak4wb1lUY3hXQV9IYmI4ZUxITGJ2RGJqVFY2blZCLWttTC1RbThkUlQ0ajlxbDNyVDkxNm94Vkl2UDlQdy1E?oc=5",
+      "publisher": "SpaceWatch.GLOBAL",
+      "publisherUrl": "https://spacewatch.global",
+      "published": "2026-11-10T09:04:06.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Western Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Construction",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
     },
     {
       "id": "e41707aa2ff5",
@@ -1491,6 +2099,33 @@
       "score": 2
     },
     {
+      "id": "08b3a6fd95c7",
+      "title": "Aluminum Prices Slipped As China’s Exports Jumped",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOaHUxdmpJSzNkeGVjelRoUVNjLXpZMHFBVTM0aThDNmNwZkpiNmU0aUk1c3A3V2ttWExtaUxDZVZyRmhrQkQyejVYckxiWjFzNFkxb1l6dnNJMExBN1lIUkhwVURYSzdLNXpwUHhLSXc0RmFaR21RdFcyeEFLbWk4MS1RUQ?oc=5",
+      "publisher": "Finimize",
+      "publisherUrl": "https://finimize.com",
+      "published": "2026-11-10T08:32:40.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [
+        "China"
+      ],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T12:44:26.773Z",
+      "score": 0,
+      "dupOf": "fb2cfd0ea4c9"
+    },
+    {
       "id": "a3c06df9d867",
       "title": "DGTR Initiates Anti-Dumping Investigation Into Aluminium Imports Amid MSME Concerns",
       "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNWTRSdGV3VUdSUjhjdlduSFFsRG1ReW5OaUYwdkZ2MFRuZEhpcy1CdjI3M0JTUmVuMUJoQ0dzS29fUk1QLWhZQm1hcVlPVmJmZk11d2RzLUdTeEFLZWs2VnJqX25YTWVjcWhKWnktR3ZTTG42akIwSXRlWXhBMmN4RFJ3dy1pZTBqWm16VE1pUlZudGNkT3hHa1lJaDY0RUF4QXJrdFZnVnJPRVFlWnFtelB0dW9ST0p6VFMzWWZWV1p6SVg4TTBJ?oc=5",
@@ -1595,7 +2230,7 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 0,
-      "dupOf": "db2761a5c8ec"
+      "dupOf": "b4559693c490"
     },
     {
       "id": "db8345ff61b4",
@@ -1697,36 +2332,12 @@
       "score": 2
     },
     {
-      "id": "b4559693c490",
-      "title": "Aluminium Supply Squeeze Deepens as LME Inventories Hit Multi-Decade Lows by Amit Gupta, Kedia Advisory",
-      "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQTTlTUThQSTVTanFCTzJzN2R4WkdMTFhvNURIRnFXV1ctZFBHWUx0RmxVRm1CM3paN3Jya1RhdmlLbTJBZVk3NXFXT3R1emJ5QjQxRklxTXZzR1BQUlFSWnRDN1loYWNuUkFNaWhEMmlSVURPSGNzc0R3TFBqWDV6OU9ZLUd1bEs1YjdzYnplNXpfZUwtenpLZXRoN0FVcTlaam1JQ2dNam9HUlNzLURyRTJpS1FJQTBaNExIMFFacWxLTXI3bnVQUnE0MktfcGEtS1hHQXhoNGFoTmdfcnV6ZDhZVWQza3Y5VHE0?oc=5",
-      "publisher": "Investment Guru India",
-      "publisherUrl": "https://www.investmentguruindia.com",
-      "published": "2026-11-10T07:25:42.000Z",
-      "description": "",
-      "categories": [
-        "aluminium",
-        "metals"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 0,
-      "dupOf": "db2761a5c8ec"
-    },
-    {
       "id": "4deed9b13206",
       "title": "World’s potential largest offshore wind farm gets power exports approved",
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOWmpBa0gxZTNhTnBhNzE0M0VLamR3VThIZnE0SXl1UzVzaG1PMVlhQlU5NlVNY1pCM3pacUh3NHA3WHpFSWh6OTNHdFFaTDlJT212RUVHRnN6dk11MkowOUpOTjdrX1I3alJiMU9LTlZiNWI1alpvZ0RCUS11OS1uR3BFQXU0NGxrcjhvTms0NnBzN2o0ZHU0UUkzZjJpMDdrVFNuazJkV19vdFRVVVFFZkd6MDQ?oc=5",
       "publisher": "Energy Live News",
       "publisherUrl": "https://www.energylivenews.com",
-      "published": "2026-11-10T07:04:59.000Z",
+      "published": "2026-11-10T07:29:06.000Z",
       "description": "",
       "categories": [
         "demand"
@@ -1750,7 +2361,7 @@
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOTzN0R1BlTkdDVjg4LXZrbHBtVVJla2p5akpRZjRkUXNDLVZjNk9qdnUxQ3lyREp6aTc1dDlMQWgzRWlFMWQxWmUyOXYzQzdxczY3VkJDMk45b0k4SGJMcTRPMFhBaVdVWDdxcFhkMkZGWXFKeklYc1JqbFRsRnhMSC1aemp3YWtreE0taHFoSy03NW0wMWZBQWw5TlJOZUVj?oc=5",
       "publisher": "Construction UK Magazine",
       "publisherUrl": "https://constructionmaguk.co.uk",
-      "published": "2026-11-10T07:03:14.000Z",
+      "published": "2026-11-10T07:02:37.000Z",
       "description": "",
       "categories": [
         "projects",
@@ -1858,7 +2469,7 @@
       "url": "https://www.alcircle.com/news/weekly-china-s-alumina-prices-stabilise-on-supply-risks-but-weak-demand-caps-gains-121897",
       "publisher": "AL Circle",
       "publisherUrl": "https://www.alcircle.com",
-      "published": "2026-11-10T06:11:15.000Z",
+      "published": "2026-11-10T06:12:26.000Z",
       "description": "",
       "categories": [
         "aluminium"
@@ -1901,6 +2512,35 @@
       "score": 0
     },
     {
+      "id": "6694ed404686",
+      "title": "Saudi Energy: Revenue and regulated assets grew as investment expanded the grid and storage capacity",
+      "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxNb3NRbHZ3cUVUMTd0aGJ5cEYybnZzWDEwWXR2NVVUbWF4Zy1oRkJuT3pWemtPdVh4UXE4dDJsWlI2VTEyU0I5c3huN0kxZGNiUUZWWmhzX29uenltVTZNeFY4VnBROE9SektoUFNBOGVmRkdiUS1EOFZMbXlUMU9yU0NWR0JiM2NkdWlhX1ZYMjZGd25vNFpBaFpnRmpXVWwzYVR6YXQtY3BYTE5RbWpJVE1pQy13RVV3RUpQVUFSYTlGTEhwbThwWDBsTTNlV0FWQURJQUxaUjRzUzIwRGNvbG1FY1NMTVJWMXlqZVgxSXlZcFpfTGh1NzB2ME5aRk9TMzhYdTJRWDBNNEU2aE93?oc=5",
+      "publisher": "TradingView",
+      "publisherUrl": "https://www.tradingview.com",
+      "published": "2026-11-10T06:07:35.000Z",
+      "description": "",
+      "categories": [
+        "projects",
+        "government"
+      ],
+      "regions": [
+        "Saudi"
+      ],
+      "markets": [
+        "Middle East"
+      ],
+      "companies": [
+        "Saudi Energy (SEC)"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 2
+    },
+    {
       "id": "ec2c8891e344",
       "title": "Norway Halts New Data Center Grid Connections as 9.1 GW Queue Strains Power Network",
       "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5NTEVTRGtJdlVZZW5VVTY4WTU1TjlrUVJtM1pCMWMxSUJUdlN5UXpoM0RsV2JpT3NLVF9WR3dGTkppRE04bkdRN3hoT0FMQS1HZlp6SlgzUHpwektfOG5QMGw0UHNwNnU0cTRxZm91LVg5cVV6RGc?oc=5",
@@ -1926,6 +2566,34 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 0
+    },
+    {
+      "id": "02bf9dfd1a7b",
+      "title": "South Korea Accelerates Domestic Production of Rare Earth Magnets; LS Cable & System to Build 1,000-Ton-Per-Year Base in Gumi",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBLUUlJV05MM3RaRjRKYmhWcEt5cFBmc2JrRkszUUwtelVPdDNYcG9pWDhocmFxOTZFWll4TnVsMXJzb0VSLWtpeVZCRnAzSDEzbTR3Zm5vMUdZU3dMcWFDMDZyYnl2WGhqbEx2STRXUWJyMWx1TWc?oc=5",
+      "publisher": "finance.biggo.com",
+      "publisherUrl": "https://finance.biggo.com",
+      "published": "2026-11-10T06:05:00.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [
+        "East Asia"
+      ],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [
+        "LS Cable & System"
+      ],
+      "actor": null,
+      "stage": "Plan",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 3
     },
     {
       "id": "745c3e01977d",
@@ -2280,33 +2948,27 @@
       "score": 0
     },
     {
-      "id": "80d26b8f2ace",
-      "title": "Cambodia prime minister praises POWERCHINA's Pursat Hydropower Project",
-      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9hVkR5RXpobG1BTHo3aFRPVzR1VFpwaGd0bjZ4QWtXenFEQ0VndHJjQnlmM214VUZHMkFvRWk1bVR3YXlUOU1YblBCY0oxc3owNTNEcHFTZ3FrbHIy?oc=5",
-      "publisher": "POWERCHINA",
-      "publisherUrl": "https://en.powerchina.cn",
-      "published": "2026-11-10T02:46:08.000Z",
+      "id": "671af04a8c4e",
+      "title": "Budget 2026: Natural Resources and Clean Energy Measures",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQbE9PT1BIRDNXaGFDeFVmVExNOU04OHlId0ZLM3JGVzA3RW9wNDlzX01IUy1aYk8xVmdlRlJJWloyRUhhUmdiTnBkSGN6RVMwU2VJN3VnMGVrSmNvbjhPNHZFSElpY2xIRXdlaFoxSXE3cDBIQWtDYzB0VXAteXF6TVJfa2NOVm9iLTRGZW9PNkJEczE1QmtUSGItUXF0aGs?oc=5",
+      "publisher": "McMillan LLP",
+      "publisherUrl": "https://mcmillan.ca",
+      "published": "2026-11-10T03:10:56.000Z",
       "description": "",
       "categories": [
-        "government",
-        "demand"
+        "government"
       ],
-      "regions": [
-        "China",
-        "Southeast Asia"
-      ],
+      "regions": [],
       "markets": [
-        "Asia"
+        "Canada"
       ],
-      "companies": [
-        "Sinohydro / PowerChina"
-      ],
+      "companies": [],
       "actor": null,
       "stage": null,
       "value": null,
       "lang": "en",
       "deadline": null,
-      "firstSeen": "2026-11-10T12:44:26.773Z",
+      "firstSeen": "2026-11-10T03:35:04.152Z",
       "score": 0
     },
     {
@@ -2388,30 +3050,6 @@
       "dupOf": "8ca583e54479"
     },
     {
-      "id": "671af04a8c4e",
-      "title": "Budget 2026: Natural Resources and Clean Energy Measures",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQbE9PT1BIRDNXaGFDeFVmVExNOU04OHlId0ZLM3JGVzA3RW9wNDlzX01IUy1aYk8xVmdlRlJJWloyRUhhUmdiTnBkSGN6RVMwU2VJN3VnMGVrSmNvbjhPNHZFSElpY2xIRXdlaFoxSXE3cDBIQWtDYzB0VXAteXF6TVJfa2NOVm9iLTRGZW9PNkJEczE1QmtUSGItUXF0aGs?oc=5",
-      "publisher": "McMillan LLP",
-      "publisherUrl": "https://mcmillan.ca",
-      "published": "2026-11-10T01:28:54.000Z",
-      "description": "",
-      "categories": [
-        "government"
-      ],
-      "regions": [],
-      "markets": [
-        "Canada"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-10T03:35:04.152Z",
-      "score": 0
-    },
-    {
       "id": "f91f2e31a519",
       "title": "China's Aluminum Billet Inventory Falls on November 10",
       "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQOXBVenNVVDZ5YXdfMGwyazh2UElpNkJHcmFEQUJjMzlFalRWOGtCYXdULWZrX2x0VURQMU5xMjUtS2V3bFlfYS1UbkZLcDVndVVobUFXWXpadkdhSk9XeU1tX3puekRHclpDcTBhSjVzaVVIc3JIcUtVMThaLVRGbGRPeThTZFhXWEJKNzN4eThJbFJudms5dWtJUC0xZ2F1US1aa1hidmx3NVFRN1lkVDBsTE50VGs1UEpkNDRLVlBwUmZvRFVzVTl4TQ?oc=5",
@@ -2487,32 +3125,6 @@
       "score": 4
     },
     {
-      "id": "08b3a6fd95c7",
-      "title": "Aluminum Prices Slipped As China’s Exports Jumped",
-      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOaHUxdmpJSzNkeGVjelRoUVNjLXpZMHFBVTM0aThDNmNwZkpiNmU0aUk1c3A3V2ttWExtaUxDZVZyRmhrQkQyejVYckxiWjFzNFkxb1l6dnNJMExBN1lIUkhwVURYSzdLNXpwUHhLSXc0RmFaR21RdFcyeEFLbWk4MS1RUQ?oc=5",
-      "publisher": "Finimize",
-      "publisherUrl": "https://finimize.com",
-      "published": "2026-11-10T00:31:58.000Z",
-      "description": "",
-      "categories": [
-        "aluminium"
-      ],
-      "regions": [
-        "China"
-      ],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 0
-    },
-    {
       "id": "dd9ad50d90f3",
       "title": "Canada Expands US Tariff Exemptions, Cuts Some Aluminum Relief",
       "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPS0ZPN20tREFlMGZkQlFueUpZbmp5RmxFMEdFc0hRZ2Z0ejJkQV9DYjJ0RmFpQ05FZjdieVVzanUzNS1BbGpLX0s1RFQ0eUxPN3BfMFlHNlpRbVU3Q0UtMFRmdHBFWl8zb3cwZXpnNWpYSkl6NUdYSVMtT3B4azdyOV9XZmxlQ1lneUlPN3F6QkNreUp1d1J6dHZhQl9nRlQxT3MwYmxGVUFNNnVET0tOTTJB?oc=5",
@@ -2566,28 +3178,6 @@
       "deadline": null,
       "firstSeen": "2026-11-10T00:56:03.363Z",
       "score": 3
-    },
-    {
-      "id": "d06fc2de97bd",
-      "title": "Aluminum faces severe squeeze as London market awaits new supply",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQdVJKM1UxM3VUUnEyMlhHUi1IQ0sxNXVSazVjcFVucW1ySm1kT1Q2NFVmTnZuejltbkE5OC0xYnVxNDVSU2didXd4TFV1NGNhaGxhaEZvN1dMZTJsVHctREFocXRjMHhYVWZBM1kya3BKU0UyMDhWWFduUzNfeGJQNThqUmxtdWVmWWIxYXV3Z2FobGRPemVN?oc=5",
-      "publisher": "Mining.com",
-      "publisherUrl": "https://www.mining.com",
-      "published": "2026-11-10T00:04:12.000Z",
-      "description": "",
-      "categories": [
-        "aluminium"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 0
     },
     {
       "id": "dcd960519f09",
@@ -2719,6 +3309,28 @@
       "lang": "en",
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
+      "score": 0
+    },
+    {
+      "id": "50f792be10bf",
+      "title": "LME official prices",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5TcmtxNGJ0RlN5RUtmbGZlUjZjZU9lR3cxSUczOER5cTdCMmZzTTNMQlhYS3Jxdkd3MGVWcjNQVGdxWHZlc1VvSGNkMWxBRmhYaFgzblRMU1pwblN0ZFJxSjV4c1NpVXJiQ3E40gFWQVVfeXFMTVdqVnBlMHF4akFXaldHRkx1MDdSNVlQZkJqeWMtODBvaXpYeFVPbHlidnFvZW1pdjBXLVc2UzY0bUVuYUxwQTBtVmxtOHdoeTBxSTdCbEE?oc=5",
+      "publisher": "Business Recorder",
+      "publisherUrl": "https://www.brecorder.com",
+      "published": "2026-11-09T23:44:55.000Z",
+      "description": "",
+      "categories": [
+        "metals"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-04T22:55:21.905Z",
       "score": 0
     },
     {
@@ -2965,7 +3577,7 @@
       "deadline": null,
       "firstSeen": "2026-11-09T19:49:44.568Z",
       "score": 0,
-      "dupOf": "db2761a5c8ec"
+      "dupOf": "b4559693c490"
     },
     {
       "id": "d4f60205db22",
@@ -3067,6 +3679,28 @@
       "score": 0
     },
     {
+      "id": "d06fc2de97bd",
+      "title": "Aluminum Faces Severe Squeeze as London Market Awaits New Supply",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNMnRlUk4xNlJMU2pFTGJzRm9wdEZSWE5tOC1HOWI3bkJrVWlJbFpFTnpFTmp2UWpIMEdkUV8tcmx6MGlJVzByYm9Mbl8xR1FyYXpwb1B3Sk9Lb3RkRXZodXBVdXZGYWI1dGFiWXFqTXNQZXdXNzdJXy1lbndaU09hY0tIVXBKd2VYLVg2T2hsZXRqQl9LcmZYYTZBYncyMXRVSjVEdmtfWlg4WGRKcTZVazdR?oc=5",
+      "publisher": "Bloomberg.com",
+      "publisherUrl": "https://www.bloomberg.com",
+      "published": "2026-11-09T19:11:49.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T12:44:26.773Z",
+      "score": 0
+    },
+    {
       "id": "7a9e003eab7a",
       "title": "Alcazar Reaches Financial Close on $626M Egypt Wind Projects",
       "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQSjJJbTNUQnlXYW5saWZ4UFBPYTVaYTVuT0szNG5fMEloTU5xQzlvUGxZUVg2QzlaNzVqaGlXUzZRMGpFOG5FX3d2czNUVWF2MkZVTlBicE81NDVkUmZINm0wNXFtWXVORktVY3VVcjFXeWlXX29QeDdqazd0akFrV0lKZlA1QkpKcUE?oc=5",
@@ -3139,6 +3773,7 @@
       "stage": null,
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-09T19:49:44.568Z",
       "score": 0
     },
@@ -3779,6 +4414,29 @@
       "score": 0
     },
     {
+      "id": "41dc00ff7bec",
+      "title": "SSE secures consent for Berwick Bank C export cable infrastructure",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPVjliTXFBNTJzZmYtYmgwWG56TVpZX2dKcmp6d1NpRHV0dXZodXUxMWhxX3NFQWo3LWpSX3VRVEZFN1NPbXlSc0QwMDJLUzlPV2Jmc3I3YkpTX1AyQmNkTVRtaERtaGI0STBzX0dKVUN4TFlxd3RzV1Z0TVdsS1JDdDk4dUxkRHdXRVRKa0JsaU1YV1NjOWpkT1ZoYTdJOGdGc2hNVi1BLWdXTzQ?oc=5",
+      "publisher": "TGS | 4C Offshore",
+      "publisherUrl": "https://www.tgs4c.com",
+      "published": "2026-11-09T15:07:26.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": "SSE",
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-09T19:49:44.568Z",
+      "score": 3,
+      "similar": 2
+    },
+    {
       "id": "2522c85cec38",
       "title": "وزير الكهرباء يبحث مع \"ADVEC\" دعم الشبكة الموحدة بالحلول الرقمية والذكاء الاصطناعي",
       "url": "https://news.google.com/rss/articles/CBMiigVBVV95cUxNSHNZbVBqdS1vNVFmT25tNlplZUlmWFZucC15VGVTWlBJbmhWRTJWclR4QTBKVHBMcnhOdnJUckg0b0F6bGt5dXprUkVJNnl4YXBmTHowNnNELVdXVHNnZWVxMWtMNGdPN29hVlRncFZ0RlpvaWpCdlJWU01XbUJmVkw1Z0FRdmxkakVIQnhjMk9Ld3FFRWlYUllkMmlPdnBOTm5RLWZ4OGVFdmkwZmtST2tLaTgxOGxPWFc4dWtkNTA4TEU0aG1rV21HQjNQZDVsV0pab1pwWTR1RVZLd3pOX08tZFdhazBGZHgwVWpFWDdmTzVYNVhLQXN2bDhGQ1lDZXpPcDk4TGt2SXpYRkgzWFctci1zdmdXdjB5b2dlcU5mYTF1eWRqbE8xM3Nlc2NwU3NaTzdvcy01MHVvT1R0TWZxZVJDRV9SYXd0VUtWYkU0dVMzU3FEbXBBeGRwYWMyYzdFUm5qM3Nhc1B2LWxYT3Q5czUyaFNXeVdpaG93eWdFUHo5V0xUeFZUd2EtMkVGaU5oT2t2OFlzMDJWSWJmWWt4N1pmcExyaHNVa19FVVZsUTFUZ3diSGM2NHZGcUYyZmZTUmxXU0FPUGdaaDZWWVFEZzFxOThQM3hSbEtUVUV0bWl3OFJydHA2NnhDZzY2RTNOTGhqb2hEZll3YXJzcmlBb0pRR0ptc2pEa1pWZzVCQld3b0VGSGppMGJvVVZxNERsRzdlSmZWVEVtUzJXeDl4N2V0a1dkMXlzVXdFVENRaERwNGpEbVN1dlpCdWlpdkUzbG80Sk9yZWVmT0FKR0IxLUh2UmZLazFuNVREN2tqb1Vlc1NZdWF5b2xLQU5iU3BKeDFGZGJUUdIBjwVBVV95cUxOSXlrR29fTlNYa1NHZEFQRHZzMEpiczhzZTh6WnpES0RJLVBFb1NZdlFJajJ3NnBWNlJiMGQ5REJ4NmF1MktwZFpDakZCSk5FUlI3bXMtOGhtVjJhbmZZU1hHY3lXVmtidy05R3gzTVhreFByV3NfanRUMTFQemx3bUZWT0tteVA0SmFuX0ptNnFFTDE5Y2Y2dGtvX0tzdXM5Q3d2ckV4dEJCb28ybWEzaGRqZlRwdGJsd2RoRmZYZXd0cjNXM3dpUWZJMXZmNnFkSzYyTE5pWFdzS1J2TkxBUTRUNm9GLU1YdHJRdGtWWUR4azBScEx3ZURCcHRUZEVERVJBYnF4X3B0THEwNlRlTkl6YmJmeHBWOXJYTi10QkwtU19yMk50TlhjV2MtVmtlSE9ZeERJTHJFeGNCTjA5cDdZZFNoOUtFcE5CTUJST1FfSnZIazBEcm1YclRWbk1CRHR4NDdHTGpvUWxEdURJQmU3TlVHRWZJVzYtalBmOUIyWDQ2Y0ZUQkk5Sm94OFBXczZ3YlhfT1B0THo5eENWTGRMTjlFdDZKRmJrakxMNHdKTVB3NjFhUHpIN1dmZ3pzVnNtNDJlcUhIbldBeFotWW5rR1YxajdSZUREM1RBOXBjMEJ0bXJ2SmRkUDZTTE1jR3FUeTA3LVlNNEtyUkp0c0s5YzNrZDRwM3F0WXdaT0RJVUxvQWZZLXlMYUhnT1A1QUJERXNMVWR0dFYzejZobmx0VC1obUVBZmFtQnRiX1JXekVsY0E3cGJpLWpuZ3c0THhjT1VGcUF1aGd2RFR0ckg3dEpRcWZ0ZktXRmd0MG5iMXFFampxdXVVUjFJaUdVS1BDbHlwSVM4bGJjZXFJ?oc=5",
@@ -3952,6 +4610,28 @@
       "deadline": null,
       "firstSeen": "2026-11-09T19:49:44.568Z",
       "score": 0
+    },
+    {
+      "id": "cb4f86ddbc2e",
+      "title": "SPML Infra Secures Rs. 1.86 bn Power Transmission Order",
+      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNcUhuclJuQkY0NHh0eWdMSDd6MnAtX1FwVzhic1doQmhhLWlpdkNSMzR4SWd1X0dfVWt0cjNDTlRXMGxsUnFFb2k4MUJOWVBZa2RwTEY4ZGQtT0YyUFZ1UHRoR2F5c1RtTk0yOWpNVlI4bm1WeTRiZzFXd256TExqVzBpczlrcndud3RORG01V0tHNkRtUUhXakx6S0o0MFAxenRUX1QtRDhsWlpmU2QxdDhVWTc2ZEc4d3JPMTVKQzBEODBsaWpzR2o0WWF6alRuMFZ6ZzRDcUxHSDF6?oc=5",
+      "publisher": "Construction World",
+      "publisherUrl": "https://www.constructionworld.in",
+      "published": "2026-11-09T14:24:47.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": "Rs. 1.86 bn",
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 3
     },
     {
       "id": "cd00458ef463",
@@ -5750,6 +6430,36 @@
       "score": 3
     },
     {
+      "id": "80d26b8f2ace",
+      "title": "Cambodia prime minister praises POWERCHINA's Pursat Hydropower Project",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQX3JsN3hPY2ZLbkVvc2VyeGd6dkhKeWZXc0dvcHJwcklxb0JZbEtpNUZHX1ZJdndoc0dTMTByOVpZMU40U05oUjFlTU9rTVlMekNrTGVLSEtnRWFxMHo3empweTdrdENLNkY5ZnNScEVwZHBxUXVfWU5qZklZZzY1dFR2NXJZZTE1STZDSW9fVUVmNzZtV0M4WW5Jek9Yd2swZ192UnpMY05BZmNDMk9r?oc=5",
+      "publisher": "megaproject.com",
+      "publisherUrl": "https://megaproject.com",
+      "published": "2026-11-09T08:00:00.000Z",
+      "description": "",
+      "categories": [
+        "government",
+        "demand"
+      ],
+      "regions": [
+        "China",
+        "Southeast Asia"
+      ],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [
+        "Sinohydro / PowerChina"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T12:44:26.773Z",
+      "score": 0
+    },
+    {
       "id": "9569628d122c",
       "title": "GCC explores water interconnection network",
       "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNeENIVmN1UnhBbWFWTVBXSmxxVHBwandsaHp3UDVVUWN3WWZBQk1CODR1aHM2YTg1dkdockdJNTdZeWhNNFJ4SzZBVHFNc01EZG10cHBkQkZFZ1J5M1NKLXJGTEdLQkVPbWU3TjVfU3ptWkpVTXBZZGpqWEhXbVhEb01R?oc=5",
@@ -6484,6 +7194,32 @@
       "score": 7
     },
     {
+      "id": "8922a8dc5b1f",
+      "title": "Bajel Projects lands Rs 1,500 crore order for Gujarat transmission project",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNYllWNVFMNm5uYzNfa04yMXhSWEVUcVF2U056RVREc0NCc3AzVzBURGZ5ck1sNTc0NmF0VkgzbjhIam1KbG1YbkI1T1I5RlFnSTZJNVRfQzFlUXVCQk9xQlBsRDFkYnRaVW1BUmlDaDhudlplSXZLdVhEQndVU0JYbQ?oc=5",
+      "publisher": "Power Peak Digest",
+      "publisherUrl": "https://powerpeakdigest.com",
+      "published": "2026-11-09T04:13:09.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "India"
+      ],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [],
+      "actor": "Bajel Projects",
+      "stage": "Award",
+      "value": "Rs 1,500 crore",
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 3
+    },
+    {
       "id": "59e1bf05591c",
       "title": "Iranian Tankers Maneuver Over Undersea Cables Ahead of Possible U.S. Strikes",
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOUjI5VXZIUEw1MUxrMU4zRmVKV0VnRF85OVhmeVdEN3d2WmZ1QkZhU3lYbW1Id0lkOG1pa3lsVEVHdE1tLWNNdTR0U3ZyNHhxaVRIMEtjZE5pZFpDcGF3b2JZc0NuM0RnVEZTcWVhZjhweTJ6ZWpSR3hKWl9EUTk1c05NYjZ6TV9nMmxyTGRKR2VRRjhNend0Y3dhbUlsZw?oc=5",
@@ -6686,7 +7422,7 @@
       "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE95V3o4Z0YzaUJBVDVRWEF1b19VYWpTaEVROGd4cEp3XzRrUVhrMmp2eDJVc2hDQzZTdXNaOHRSX0hqNnVWWU9iWnliQ1pWUC1nUWhybW9ib1Fqdm9vY09pSjZDVGx2S0d3LXhkMjE2Yk1SS2VFM0E?oc=5",
       "publisher": "BigGo Finance",
       "publisherUrl": "https://finance.biggo.com",
-      "published": "2026-11-09T00:28:40.000Z",
+      "published": "2026-11-09T00:25:00.000Z",
       "description": "",
       "categories": [
         "projects"
@@ -7677,7 +8413,8 @@
       "value": "Rs. 2.5 billion",
       "lang": "en",
       "firstSeen": "2026-11-08T17:59:25.233Z",
-      "score": 1
+      "score": 1,
+      "dupOf": "f10c17591355"
     },
     {
       "id": "ae3b00b1dc32",
@@ -9099,7 +9836,7 @@
     {
       "id": "b97718ab17f4",
       "title": "الألمنيوم .. معركة الرسوم وتنافسية الأسواق",
-      "url": "https://news.google.com/rss/articles/CBMihANBVV95cUxQdzY2VTF3Vno0bHBwcjFLc0xJMXdrRmljLWxMVk5YSTJBUE1QRHR3S1hFMmxlSmMtYlVuV2J4UjEwLUtabGpOa3lRaGYyX1dZX01TMVdKU25PdG9FM2FWNU4xZk1ZRk9Hdi1KdzdSUnRHOC1JNmZPZzU3Tzd4bkFHU3JQYTJ4ZGQwU25heWVtZVIzaW5zX2xHaWR0QUJuclRwc1lBbmJINDJCeUpXYWQxU0l3dS1FU3ZrcEFwY2NrSURyNm85NGZZR3Atc3kwaXlQM3BpR3NKRzEyNzBYaF9USkFWRWI4U21MdXA4MUtBNG1CQWVMWmVybFJqREFGTFpOa0JJWmNZVkpHb3U3WDRpaHUxV0llb2dBVFk0eXpnYWJtTmpNQS03eGdrY2MzR3ZZM3dzY0pyaVhLMlBBOGNzYnpDcU0tWnUtdWdYSHYxeHB6OVVrNFl4SVV0VHg4MTRGajllS2RNb0xjZnF0WXh5YkNXXzEySHFheTUwNUVJX0dkMDVh0gGEA0FVX3lxTFB3NjZVMXdWejRscHByMUtzTEkxd2tGaWMtbExWTlhJMkFQTVBEdHdLWEUybGVKYy1iVW5XYnhSMTAtS1psak5reVFoZjJfV1lfTVMxV0pTbk90b0UzYVY1TjFmTVlGT0d2LUp3N1JSdEc4LUk2Zk9nNTdPN3huQUdTclBhMnhkZDBTbmF5ZW1lUjNpbnNfbEdpZHRBQm5yVHBzWUFuYkg0MkJ5SldhZDFTSXd1LUVTdmtwQXBjY2tJRHI2bzk0ZllHcC1zeTBpeVAzcGlHc0pHMTI3MFhoX1RKQVZFYjhTbUx1cDgxS0E0bUJBZUxaZXJsUmpEQUZMWk5rQklaY1lWSkdvdTdYNGlodTFXSWVvZ0FUWTR5emdhYm1Oak1BLTd4Z2tjYzNHdlkzd3NjSnJpWEsyUEE4Y3NiekNxTS1adS11Z1hIdjF4cHo5VWs0WXhJVXRUeDgxNEZqOWVLZE1vTGNmcXRZeHliQ1dfMTJIcWF5NTA1RUlfR2QwNWE?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMi_wJBVV95cUxPMUloVG5RMnR1NnU2c1NsMTdHWVlxb3MteE9vNTZxU3VEUWxrcVBEX0NmQnhPS0FyYVF3b1Y2MVdKc01OcS03WkdRMkpabnQxRzNxRmVXaFc0aTR6WHlhbF9tUm5YUE1pY0liaGY2cjc0TjZyVUcwdFRkTEhJa2Z0XzdYTUZnLXZNRWRTbzJ2MHFudnd5c1JzWVBYaVRGalJfMWpKZlQ3OHlQV2pHRHZ2NlVVd3JiRndLYmlxTnBNaFRaQU1GbFVYc1lYZ2hVSE51TkFlVXpUZ0NtNy15TFhpZ3puNUREOUFsWlRTX000aTFZV3J5cFp6cG85amRSV2xiMWJMakptMjNpX2Q0TU84LUJCMmJ1WlF2R2xQclNHMjh1cFdFdDlPajdLYjFMeFUtQkYwVW9fZ1dfMEhuUkVaVWZTVE9lS3lwOWFZOEIzQURGaC1YVmJGaVViU3lwMk52aHlUTFpyMFRBSDVpSklZbGd2UzlNWmZ2Z0cyUFpGMNIBhANBVV95cUxQdzY2VTF3Vno0bHBwcjFLc0xJMXdrRmljLWxMVk5YSTJBUE1QRHR3S1hFMmxlSmMtYlVuV2J4UjEwLUtabGpOa3lRaGYyX1dZX01TMVdKU25PdG9FM2FWNU4xZk1ZRk9Hdi1KdzdSUnRHOC1JNmZPZzU3Tzd4bkFHU3JQYTJ4ZGQwU25heWVtZVIzaW5zX2xHaWR0QUJuclRwc1lBbmJINDJCeUpXYWQxU0l3dS1FU3ZrcEFwY2NrSURyNm85NGZZR3Atc3kwaXlQM3BpR3NKRzEyNzBYaF9USkFWRWI4U21MdXA4MUtBNG1CQWVMWmVybFJqREFGTFpOa0JJWmNZVkpHb3U3WDRpaHUxV0llb2dBVFk0eXpnYWJtTmpNQS03eGdrY2MzR3ZZM3dzY0pyaVhLMlBBOGNzYnpDcU0tWnUtdWdYSHYxeHB6OVVrNFl4SVV0VHg4MTRGajllS2RNb0xjZnF0WXh5YkNXXzEySHFheTUwNUVJX0dkMDVh?oc=5",
       "publisher": "العربية",
       "publisherUrl": "https://www.alarabiya.net",
       "published": "2026-11-07T15:05:00.000Z",
@@ -9373,32 +10110,6 @@
       "deadline": null,
       "firstSeen": "2026-11-07T12:58:34.424Z",
       "score": 3
-    },
-    {
-      "id": "2ad9de589f18",
-      "title": "European Grid Package: JPMorgan Eyes €1.2 Trillion EU Electricity Grid Investment Opportunity",
-      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOdXdINmE2dlEyeHY5LTRyR1dCNXpvT0l1T21XeXZHUTBqeV9wRmM0eW5sbk4yM21wUlgzcFc1SkpQWS1vcnp2M3VKUE9ST1M5RnpOVWVIdWU2VVU0WXVVRE5pZndKb3A1QVRtZFphdGdBam01cFNUNjZ1U1Jiek5vclRYMW0wbG1XbUtFdXNVZmpnSGhlS1BEUmtNUjNvMnFWWE8wbEhsTjNvc1pUTElrWnVpWUhKMmZqSVg0MVExcVpFd29ySi05eGx3?oc=5",
-      "publisher": "Construction Review",
-      "publisherUrl": "https://constructionreviewonline.com",
-      "published": "2026-11-07T11:52:03.000Z",
-      "description": "",
-      "categories": [
-        "projects"
-      ],
-      "regions": [
-        "Europe"
-      ],
-      "markets": [
-        "Europe"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-04T17:14:19.145Z",
-      "score": 0
     },
     {
       "id": "ada2f611c91a",
@@ -9754,6 +10465,32 @@
       "lang": "en",
       "firstSeen": "2026-11-07T12:58:34.424Z",
       "score": 2
+    },
+    {
+      "id": "2ad9de589f18",
+      "title": "European Grid Package: JPMorgan Eyes €1.2 Trillion EU Electricity Grid Investment Opportunity",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOdXdINmE2dlEyeHY5LTRyR1dCNXpvT0l1T21XeXZHUTBqeV9wRmM0eW5sbk4yM21wUlgzcFc1SkpQWS1vcnp2M3VKUE9ST1M5RnpOVWVIdWU2VVU0WXVVRE5pZndKb3A1QVRtZFphdGdBam01cFNUNjZ1U1Jiek5vclRYMW0wbG1XbUtFdXNVZmpnSGhlS1BEUmtNUjNvMnFWWE8wbEhsTjNvc1pUTElrWnVpWUhKMmZqSVg0MVExcVpFd29ySi05eGx3?oc=5",
+      "publisher": "Construction Review",
+      "publisherUrl": "https://constructionreviewonline.com",
+      "published": "2026-11-07T08:00:00.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-04T17:14:19.145Z",
+      "score": 0
     },
     {
       "id": "1d40f79a7ef7",
@@ -10871,6 +11608,34 @@
       "score": 5
     },
     {
+      "id": "1681e130dd67",
+      "title": "Oman Cables Industry SAOG Revenue Breakdown – MSX:OCAI",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9MNHVLMGZIb2NkRC1kQ242M25pQVZxVkY4VnNMUUdxSEJUb1ljQklTWUFzY2xPc0hFWWRCWWhycDlXUVZ3b0Q4NG12bVZ1NjlIbkNZY1VhcmRLbVBvTGxnUlJGQmRMU3VTdzcybVdHVGZhNXM?oc=5",
+      "publisher": "TradingView",
+      "publisherUrl": "https://www.tradingview.com",
+      "published": "2026-11-06T17:38:36.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [
+        "Oman"
+      ],
+      "markets": [
+        "Middle East"
+      ],
+      "companies": [
+        "Oman Cables Industry"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 5
+    },
+    {
       "id": "449cf62386da",
       "title": "Copper price falls, heads for worst week since March on AI rout",
       "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQQzNDWVhoangtRlJ6R0U2aG5tcldob1Q3WGtLNFIyenRKbUVxLTAzZml4c1ZUejljTnhFWDFrcXlKLWVRZlpIT2dhSndFbXlBTUd4cGZCZHFrZEdTZEwxajhtWjdHbW9xVkllRU1lQk9UTHRIQ2RCNHJ2MVlINXhmd2dJZ21pOXlHWS1Tb2NudW1HUkw2?oc=5",
@@ -11296,7 +12061,30 @@
       "lang": "en",
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 3
+      "score": 3,
+      "similar": 1
+    },
+    {
+      "id": "819250c34c41",
+      "title": "H2-gas turbine enters operation at RWE power plant in Lingen",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQZVdFTzFaUHJJZVRFLXBpQzUzOXYtUDkwMXZRNzFlRy1FQktwVW8xNWw0elBBaWRXQ2JUaml6b2x4NVlIcG1NNU5ldmFKU01vcGxKdVZXRWRfdzRpcGFLWVM2Z3JoX1pETWJ6S0xQemZzMHJqT01BYUJzMnJaYkQ2ZnlUcFVXWFlwMDZwLUF1LXMyWllGcFhiLXdrQjYwNGp1N2s3dzl3OGo?oc=5",
+      "publisher": "Gas to Power Journal",
+      "publisherUrl": "https://gastopowerjournal.com",
+      "published": "2026-11-06T14:57:36.000Z",
+      "description": "",
+      "categories": [
+        "demand"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": "Commissioned",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0
     },
     {
       "id": "44410dcef2fa",
@@ -11392,6 +12180,7 @@
       "stage": "Award",
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-06T16:49:02.847Z",
       "score": 2
     },
@@ -11425,6 +12214,30 @@
       "firstSeen": "2026-11-06T22:27:45.275Z",
       "score": 5,
       "similar": 1
+    },
+    {
+      "id": "3dd850a0de29",
+      "title": "DTE expands investment plan 30%, will sell unregulated subsidiary to fund growth",
+      "url": "https://www.utilitydive.com/news/dte-expands-5-year-electric-investment-plan-sells-unregulated-vantage/873974/",
+      "publisher": "Utility Dive",
+      "publisherUrl": "https://www.utilitydive.com",
+      "published": "2026-11-06T14:15:24.000Z",
+      "description": "After the $3 billion sale of DTE Vantage, DTE &ldquo;becomes a higher growth premium utility&rdquo; and &ldquo;a simpler business,&rdquo; CEO Joi Harris told analysts Thursday. The company is also anticipating a push in the state legislature for multiyear rate making.",
+      "categories": [
+        "government"
+      ],
+      "regions": [],
+      "markets": [
+        "USA"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Plan",
+      "value": "$3 billion",
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 1
     },
     {
       "id": "5385f5ed4e62",
@@ -11610,6 +12423,7 @@
       "stage": null,
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-06T16:49:02.847Z",
       "score": 0
     },
@@ -11738,6 +12552,31 @@
       "deadline": null,
       "firstSeen": "2026-11-06T16:49:02.847Z",
       "score": 2
+    },
+    {
+      "id": "4d2b6b47770e",
+      "title": "Spring Mountain Butterfly Spotted Beneath Power Lines for First Time",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQUG1HdTZvMFNDa09BeWFMcmhDa3VSRGUycnQtMlB5UmJEQ2pMSGM4eklrZzF5NzZUa1BoWVgtNkdxR1FRaEdGZEJJTWR2UzMzSE1BTmN0aHgxVHpCajhBZzZrb0lLeUsxV1dWajJkWGY2cGhtT3lLUXZuOWE4NWdOazZSbHpILWx3RFE4?oc=5",
+      "publisher": "Mirage News",
+      "publisherUrl": "https://www.miragenews.com",
+      "published": "2026-11-06T13:05:00.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 3,
+      "dupOf": "ba88992d53b4"
     },
     {
       "id": "ea7f5f753535",
@@ -12070,6 +12909,7 @@
       "stage": null,
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-06T16:49:02.847Z",
       "score": 0
     },
@@ -13917,6 +14757,35 @@
       "lang": "en",
       "firstSeen": "2026-11-06T06:37:49.490Z",
       "score": 0
+    },
+    {
+      "id": "5fdaa2317326",
+      "title": "Tata Power Renewables commissions 300 MW solar project in Karnataka",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPUnBpMXpsa1NSbmpJOVBENTQ3SmN3NGJwTzBKV3IteVhMSkhwbURzMjVLLUpVelBuSTh6b1JfZjZneWZ4WEloQzBFQ2xwTWFva1IyTUdhTmNvbVFvWElZU3luRE5iOTUtMWMxWml2a1U3VlRZdjh1Vi12N0pnR3VnMlVrX1JTdEVfbjl5UG5qVUhGcWVaZTlwT2JucktGTGlpOHlHX0ZGY25yZw?oc=5",
+      "publisher": "Powerline Magazine",
+      "publisherUrl": "https://powerline.net.in",
+      "published": "2026-11-06T04:38:45.000Z",
+      "description": "",
+      "categories": [
+        "demand"
+      ],
+      "regions": [
+        "India"
+      ],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [
+        "Tata Power"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 0,
+      "similar": 1
     },
     {
       "id": "02db8281bcb9",
@@ -18206,6 +19075,7 @@
       "stage": null,
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-05T17:26:22.783Z",
       "score": 0
     },
@@ -19071,7 +19941,8 @@
       "lang": "en",
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 0
+      "score": 0,
+      "dupOf": "5fdaa2317326"
     },
     {
       "id": "90792f50ca19",
@@ -19639,6 +20510,7 @@
       "stage": null,
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-05T06:40:26.167Z",
       "score": 2
     },
@@ -19770,28 +20642,6 @@
       "score": 0
     },
     {
-      "id": "50f792be10bf",
-      "title": "LME official prices",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBhVkxsamV4TTZmRHp6czJLbHBycTVPOXd2bGFDMWlUYUZnUElJMlJtZHFZQ1hsNDFFNVM1T1hta3IxQlpIZE81T2tWTV9MbU1ObVZwWWxaZU44RVZ0eGl2UjdQOXg3a0NsUEJZ0gFWQVVfeXFMUEktMk5Bek1naU0xbUdmX1ltWURMRHlqbEpvTXFmT2prOWU2M0VtSEZIV2pXUWNLaWRxNExwejkzM19DOElXQVhNYkJ1N3VzRG9iajF6UFE?oc=5",
-      "publisher": "Business Recorder",
-      "publisherUrl": "https://www.brecorder.com",
-      "published": "2026-11-05T00:31:28.000Z",
-      "description": "",
-      "categories": [
-        "metals"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-04T22:55:21.905Z",
-      "score": 0
-    },
-    {
       "id": "8b4a870c78f2",
       "title": "Adani And Reliance Want A Share Of India's Aluminium Boom. Here's The Catch",
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOWVV3SHpnQTc1X1JGYmJuaUd2cEcwRG5Mc0tiWnJ2MnpOYWxKVDgxSTBjNzhQNlRjWnFJNUtucG82R09wbTdCWGFkREVTUU94M1ExS1pIaHVQekRwVmpzMkFBOFJlcWZfQ1padUVZVmp5MUhrbnRnN3AxLXdpclcya3VqSnJ1Nl9TUE5IeXNRSS1SZEVLTkd0RVJXLXE5RG1P?oc=5",
@@ -19881,6 +20731,7 @@
       "stage": null,
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-05T06:40:26.167Z",
       "score": 2
     },
@@ -23079,6 +23930,7 @@
       "stage": null,
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-04T17:14:19.145Z",
       "score": 0
     },
@@ -23101,6 +23953,7 @@
       "stage": null,
       "value": "$3,082",
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-04T17:14:19.145Z",
       "score": 1
     },
@@ -25658,6 +26511,32 @@
       "similar": 1
     },
     {
+      "id": "a304ffc3ffbc",
+      "title": "Building Ireland’s energy independence through €18.9bn grid investment",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5RWUI1NXotUlVQSFhTQlB0cEZXTFMzQzJvb21GNlNsZ0gxT21aX1VCSmFxc084dEF2Y2tiWWZFamlGWFRWZU5saGlFdERZcHNVcWhGWXN5cG84RDVJZWYzRjhn?oc=5",
+      "publisher": "The Journal",
+      "publisherUrl": "https://www.thejournal.ie",
+      "published": "2026-11-04T01:43:21.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [
+        "UK & Ireland"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": "€18.9bn",
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 1
+    },
+    {
       "id": "197f992ca86d",
       "title": "Ex-China trading recovery and China’s ample supply create mixed signals; alumina expected to consolidate at lows [SMM Alumina Morning Comment]",
       "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxNNHM5dC0tMFdfRGNpVEVwR2dZM2x6czJHOUxsM0taNkhLTWlGLWx5dWVDMGZJMEN2eDJKQjVBUFNsYkcwcmFFUnI5dDdxQzljMTZ5aFZScVZfYm1jczhnRWRfdGRsZUJ6R2swWjhjNm9POEJSdXYzWjZkZDIxbmw1eEIyTG1WemhsZk5XQWJ1aFdwQVF6djRiLWUzREV4Y1FWeGtPTl9GQ2ZkXzR2MUFhM2YwYkp6eE51NmxSV0tpbEg0c3pIU2tCemk3ckV0YWljVllYR2RhT2E2bDh4cjZjRnoxWllndHJOU3FKUWFlb0d1WjdYdUFNSm5ubHdlcHprczZmR3A5bjhSdldKbGd6Rw?oc=5",
@@ -26683,6 +27562,30 @@
       "score": 1
     },
     {
+      "id": "cd8dd53e969c",
+      "title": "Power Grid appoints Anupam Kumar as Govt nominee director",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxORkhIZWkyekItYnZrWEwzLTJoZ1laWUdRX25BSVlYTy1iOWpuMlBJRjEzcG1RYTgtc0wzQjgxenpEYVgxOExUdDl3VGx3Q0p1NDhzRDhvN2c0ZkVqWDRkbFJtU241Um1raE5TYl85S3RnZXhHbHVUR2ExUU1KVlRFN0JacVREVDczdkpMUnVkU1laSjJiMzBfdVBxWE5ZWV9LU3dtTEhCeDBTZWdsblIzMQ?oc=5",
+      "publisher": "scanx.trade",
+      "publisherUrl": "https://scanx.trade",
+      "published": "2026-11-03T19:09:39.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 2
+    },
+    {
       "id": "b93bd345da90",
       "title": "‘How was this permitted?’: 853 notices issued to unsafe ‘encroachments’ along high-tension power lines",
       "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxOcFNTNDA5UWpwWGRubG1SWUJZX2hFalFLZlNkTmVhMXBZMFFHSnVHeGEyMzlhbDd1RkpLbzVSRFlKcHBQUVdkMU5QbGNUUERleF96bEpEZ3hKbXJBbkJVYmU2S3pSRlRjMlNqMzJqMDNpMFdFZmhHV2JnWHZJREJBREhEeFhVTmVrUUpHSzU1ZDVTZ2tIa0pqYVpmZmdGbEhaWFo4SEtyWUE5MDBIX05DRUt6a1ViNFpXWUJrVDVPeW8yMndtd0UyZC14V0JReFhaRlI3TU9JX2l1cDA3cGxFUmVhQUUydkpKSFNVTTdvdUVoQ1l6cHc5WDNtUGVZQlnSAYQCQVVfeXFMTl8tWmZXTGpPUkFzaTNyZGEwVU5QenRQVU0wVThVRk81NmhjS3NUbTVCTFMxU0ZIbWwwM3N0VmdIYUdjcUZHUEEtZkxYWFA3eGhidHRwWVpfZ1Q5ZkR6a2UyT05qaVE3eV9zZmdtaDl4N1ZJa0F6ZmtvR0Z2M21LektHbWphbUZ3X3lpb2stdEVRbWczOGZKNFc4clBoRm1rVUhOV2luN3cwRDhOd0JmM2dteFJNcEVyaF9OOTNIbWxZc0FuQTJqRkMwRjRMTDVFUjIwZS1yWlNfNW5MN3dJSHM2cUNQdExEQUVINzZhQjJyQWFOeG5kSkxZT0gyQS1tLU5aR3k?oc=5",
@@ -27203,6 +28106,7 @@
       "stage": null,
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-04T22:55:21.905Z",
       "score": 0
     },
@@ -48199,9 +49103,7 @@
         "projects",
         "tenders"
       ],
-      "regions": [
-        "Levant & Iran"
-      ],
+      "regions": [],
       "markets": [
         "Middle East"
       ],
@@ -48226,9 +49128,7 @@
         "projects",
         "tenders"
       ],
-      "regions": [
-        "Sub-Saharan Africa"
-      ],
+      "regions": [],
       "markets": [
         "Africa"
       ],
