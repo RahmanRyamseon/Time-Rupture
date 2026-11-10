@@ -212,7 +212,8 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); ou
 .doc-card { display: flex; flex-direction: column; gap: 6px; }
 .doc-card h3 { font-size: 1.05rem; margin: 0; }
 .doc-card p { margin: 0; color: var(--muted); font-size: .92rem; flex: 1; }
-.doc-card .btn { align-self: flex-start; margin-top: 6px; }
+.doc-card .btn { align-self: flex-start; }
+.doc-card .btn-row { margin-top: 6px; }
 .cat-title { margin-top: 1.6rem; display: flex; align-items: center; gap: 10px; }
 
 dialog.generator {
@@ -269,6 +270,16 @@ legend { font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; color: var(--
 .resume.modern .r-side .r-dates, .resume.modern .r-side .r-org { color: #cfe3de; }
 .resume.modern h1 { color: #0b3b35; }
 @media (max-width: 640px) { .resume.modern { grid-template-columns: 1fr; } }
+
+/* executive variant: header band */
+.resume.executive { padding: 0; overflow: hidden; }
+.resume.executive .r-band { background: #0b3b35; color: #fff; padding: 36px 48px 26px; border-bottom: 5px solid #c9a34e; }
+.resume.executive .r-band h1 { color: #fff; }
+.resume.executive .r-band .r-title { color: #f2d49b; }
+.resume.executive .r-band .r-contact { color: #d8ebe6; }
+.resume.executive .r-body { padding: 26px 48px 40px; }
+.resume.executive h2 { border: none; border-inline-start: 4px solid #c9a34e; padding-inline-start: 10px; color: #0b3b35; background: #f4f1ea; padding-block: 2px; }
+@media (max-width: 640px) { .resume.executive .r-band, .resume.executive .r-body { padding-inline: 20px; } }
 
 /* minimal / ATS variant */
 .resume.ats h2 { border-bottom: 1px solid #333; color: #111; }

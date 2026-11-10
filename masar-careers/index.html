@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>سيرة ذاتية عربية متوافقة مع ATS ونماذج مستندات التوظيف | مسار</title>
-  <meta name="description" content="موقع عربي مجاني يجمع كل ما تحتاجه في رحلتك المهنية: منشئ سيرة ذاتية عربية، ونماذج مستندات التوظيف والمباشرة والتهيئة، وأسئلة المقابلات، والمراسلات الرسمية، ومسرد مصطلحات الموارد البشرية.">
-  <meta property="og:title" content="مسار — دليلك المهني بالعربية">
-  <meta property="og:description" content="سيرة ذاتية عربية، ونماذج مستندات التوظيف والتهيئة، والمقابلات، ولغة العمل، في مكان واحد.">
+  <meta name="description" content="أنشئ سيرة ذاتية عربية متوافقة مع ATS مجاناً من 11 مثالاً جاهزاً حسب المهنة، واملأ أكثر من 35 نموذجاً رسمياً لمستندات التوظيف والتهيئة: خطاب التقديم، قبول العرض، إقرار المباشرة، الإجازة، الاستقالة، شهادة الخبرة. تنزيل Word وPDF.">
+  <meta property="og:title" content="سيرة ذاتية عربية متوافقة مع ATS ونماذج مستندات التوظيف – مجاناً">
+  <meta property="og:description" content="منشئ سيرة ذاتية عربية + أكثر من 35 نموذجاً رسمياً للتوظيف والتهيئة، تنزيل Word وPDF، بلا تسجيل.">
   <meta property="og:locale" content="ar_AR">
   <link rel="canonical" href="https://arabic-ats-resume.vercel.app/">
   <link rel="alternate" hreflang="ar" href="https://arabic-ats-resume.vercel.app/">
@@ -23,16 +23,32 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
   <style>
-    .journey { counter-reset: step; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-    .journey .tile { position: relative; padding-top: 28px; }
-    .journey .tile::before {
-      counter-increment: step; content: counter(step, arabic-indic);
-      position: absolute; top: -12px; inset-inline-start: 18px; width: 30px; height: 30px; border-radius: 50%;
-      background: var(--gold); color: #fff; display: grid; place-items: center; font-weight: 700;
-    }
+    .hero { background: linear-gradient(160deg, var(--accent-soft), transparent 70%); padding-bottom: 28px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; }
+    @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
     .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
     .hero-cta .btn { font-size: 1.05rem; padding: 10px 22px; }
-    .hero { background: linear-gradient(160deg, var(--accent-soft), transparent 70%); }
+    .mini-cv { background: #fff; color: #1a1a1a; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.15); padding: 22px 26px; font-size: 12.5px; line-height: 1.7; transform: rotate(-1.5deg); }
+    .mini-cv h3 { margin: 0; font-size: 1.4em; }
+    .mini-cv .t { color: #0b6b5d; font-weight: 600; }
+    .mini-cv h4 { margin: 10px 0 3px; color: #0b6b5d; border-bottom: 2px solid #0b6b5d; font-size: 1em; }
+    .mini-cv ul { margin: 0; padding-inline-start: 18px; }
+    .mini-cv .stamp { display: inline-block; margin-top: 8px; background: #dcefe9; color: #0b6b5d; border-radius: 99px; padding: 0 10px; font-weight: 700; font-size: .95em; }
+    .ex-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+    .ex { text-decoration: none; color: inherit; text-align: center; padding: 16px 10px; }
+    .ex .icon { font-size: 2rem; display: block; }
+    .ex b { display: block; margin-top: 4px; }
+    .ex small { color: var(--muted); }
+    .ex:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .doc-search { font-size: 1.1rem; padding: 14px 18px; border-radius: 14px; max-width: 640px; }
+    .results { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+    .results li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; display: flex; gap: 10px; align-items: center; justify-content: space-between; }
+    .results li a.name { font-weight: 600; text-decoration: none; color: var(--ink); }
+    .cat-block h3 { font-size: 1.05rem; margin-bottom: 6px; }
+    .cat-block ul { list-style: none; padding: 0; margin: 0; font-size: .95rem; }
+    .cat-block li { padding: 3px 0; }
+    .cat-block a { text-decoration: none; }
+    .cat-block a:hover { text-decoration: underline; }
     .stat { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1.2; }
   </style>
 </head>
@@ -40,11 +56,11 @@
   <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><span class="brand-mark">م</span><span>مسار<small>دليلك المهني بالعربية</small></span></a>
+      <a class="brand" href="index.html"><span class="brand-mark">م</span><span>مسار<small>سيرة ذاتية عربية ATS ونماذج التوظيف</small></span></a>
       <nav class="nav" aria-label="القائمة الرئيسية">
         <a href="index.html">الرئيسية</a>
-        <a href="resume.html">السيرة الذاتية</a>
-        <a href="documents.html">المستندات</a>
+        <a href="resume.html">منشئ السيرة</a>
+        <a href="documents.html">نماذج المستندات</a>
         <a href="interview.html">المقابلة</a>
         <a href="writing.html">لغة العمل</a>
         <a href="resources.html">المصادر</a>
@@ -53,86 +69,119 @@
   </header>
 
   <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">سيرة ذاتية عربية متوافقة مع ATS · مجاني · بدون تسجيل</p>
-      <h1>كل ما تحتاجه لرحلتك المهنية… بالعربية</h1>
-      <p class="lede">من كتابة السيرة الذاتية إلى أول يوم في الوظيفة الجديدة وما بعده: أدلة عملية، ونماذج رسمية جاهزة للتعبئة، ومنشئ سيرة ذاتية يصدّر PDF وWord، وكلها مصممة للغة العربية واتجاهها وأعراف المراسلات في العالم العربي.</p>
-      <div class="hero-cta">
-        <a class="btn" href="resume.html#builder">🛠️ أنشئ سيرتك الذاتية</a>
-        <a class="btn ghost" href="documents.html">📚 تصفّح نماذج المستندات</a>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">مجاني · عربي أولاً · بلا تسجيل</p>
+        <h1>سيرة ذاتية عربية متوافقة مع ATS… ومستندات توظيفك جاهزة في دقائق</h1>
+        <p class="lede">اختر مثالاً جاهزاً لمهنتك وعدّله ببياناتك، ثم حمّله PDF أو Word. وعندما تأتيك الوظيفة، تجد هنا كل مستند تحتاجه رسمياً بالعربية: من خطاب التقديم وقبول العرض إلى إقرار المباشرة وشهادة الخبرة.</p>
+        <div class="hero-cta">
+          <a class="btn" href="resume.html#builder">🛠️ أنشئ سيرتك الذاتية الآن</a>
+          <a class="btn ghost" href="#find-doc">🔎 ابحث عن مستند</a>
+        </div>
+      </div>
+      <div aria-hidden="true">
+        <div class="mini-cv">
+          <h3>ريم خالد المطيري</h3>
+          <div class="t">أخصائية تسويق رقمي</div>
+          <h4>الملخص المهني</h4>
+          <p style="margin:0">أخصائية تسويق رقمي بخبرة 5 سنوات… رفعتُ المبيعات الإلكترونية بنسبة 45%.</p>
+          <h4>الخبرات العملية</h4>
+          <ul><li>قيادة حملات بميزانية تتجاوز مليوني ريال</li><li>رفع معدل التحويل من 1.8% إلى 3.1%</li></ul>
+          <h4>المهارات</h4>
+          <div>SEO، Google Analytics 4، إدارة الحملات</div>
+          <span class="stamp">✓ متوافق مع ATS</span>
+        </div>
       </div>
     </div>
   </section>
 
   <main id="main" class="wrap">
-    <section>
-      <h2>رحلتك الوظيفية خطوة بخطوة</h2>
-      <p class="muted">اختر المرحلة التي أنت فيها الآن.</p>
-      <div class="journey">
-        <a class="card tile" href="resume.html"><span class="icon">📄</span><h3>السيرة الذاتية</h3><p>الأقسام، والملخص المهني، وأفعال الإنجاز، والمنشئ.</p></a>
-        <a class="card tile" href="documents.html#library"><span class="icon">✉️</span><h3>التقديم</h3><p>خطاب التقديم، والمتابعة، وطلب التزكية.</p></a>
-        <a class="card tile" href="interview.html"><span class="icon">🎤</span><h3>المقابلة</h3><p>أسئلة شائعة بإجابات نموذجية، وطريقة STAR.</p></a>
-        <a class="card tile" href="documents.html#offer-accept"><span class="icon">🤝</span><h3>العرض الوظيفي</h3><p>القبول، والتفاوض، والاعتذار بلباقة.</p></a>
-        <a class="card tile" href="documents.html#checklist"><span class="icon">🗂️</span><h3>المباشرة والتهيئة</h3><p>المستندات المطلوبة، والإقرارات، وقائمة أول 90 يوماً.</p></a>
-        <a class="card tile" href="documents.html#leave-request"><span class="icon">🏢</span><h3>أثناء العمل</h3><p>الإجازات، وشهادات الراتب، والخطابات الرسمية.</p></a>
-        <a class="card tile" href="documents.html#resignation"><span class="icon">🚪</span><h3>إنهاء الخدمة</h3><p>الاستقالة، وشهادة الخبرة، وإخلاء الطرف.</p></a>
-      </div>
+    <section id="examples">
+      <h2>ابدأ من مثال سيرة ذاتية لمهنتك</h2>
+      <p class="muted">كل مثال مكتوب بلغة عربية مهنية، بإنجازات رقمية وكلمات مفتاحية لأنظمة الفرز الآلي. انقر لتحميله في المنشئ مباشرة.</p>
+      <div class="ex-grid" id="ex-grid"></div>
+      <p class="small" style="margin-top:10px"><a href="resume.html#examples">عرض الأمثلة كاملة ←</a></p>
+    </section>
+
+    <section id="find-doc">
+      <h2>ابحث عن المستند الذي تحتاجه</h2>
+      <p class="muted"><span id="doc-total"></span> نموذجاً رسمياً بالعربية، يُعبّأ مجاناً ويُنزَّل بصيغة Word أو PDF، مع ضبط التذكير والتأنيث والتاريخ الهجري تلقائياً.</p>
+      <input id="q" class="doc-search" type="search" placeholder="اكتب ما تحتاجه: استقالة، إجازة، زيادة راتب، عهدة، خطاب تقديم…" aria-label="ابحث عن مستند">
+      <ul class="results" id="results"></ul>
     </section>
 
     <section>
-      <h2>مستندات التهيئة الوظيفية الأكثر طلباً</h2>
-      <p class="muted">املأ الحقول، وسيُنشأ المستند بصيغة رسمية جاهزة للطباعة أو التنزيل بصيغة Word.</p>
-      <div class="grid">
-        <a class="card tile" href="documents.html#joining-report"><span class="icon">✅</span><h3>إقرار مباشرة العمل</h3><p>إثبات تاريخ استلام العمل.</p></a>
-        <a class="card tile" href="documents.html#employee-data"><span class="icon">🧾</span><h3>نموذج بيانات موظف جديد</h3><p>البيانات الشخصية، وجهة الطوارئ، والآيبان.</p></a>
-        <a class="card tile" href="documents.html#confidentiality"><span class="icon">🔐</span><h3>تعهد بالمحافظة على السرية</h3><p>إقرار حماية المعلومات.</p></a>
-        <a class="card tile" href="documents.html#asset-receipt"><span class="icon">💻</span><h3>إقرار استلام عهدة</h3><p>الأجهزة والبطاقات والأدوات.</p></a>
-        <a class="card tile" href="documents.html#conflict-of-interest"><span class="icon">⚖️</span><h3>إقرار عدم تعارض المصالح</h3><p>الإفصاح عن المصالح الخارجية.</p></a>
-        <a class="card tile" href="documents.html#bank-transfer"><span class="icon">🏦</span><h3>طلب إيداع الراتب</h3><p>تزويد الموارد البشرية بالحساب البنكي.</p></a>
-        <a class="card tile" href="documents.html#policy-ack"><span class="icon">📘</span><h3>إقرار الاطلاع على اللائحة</h3><p>لائحة تنظيم العمل والسياسات.</p></a>
-        <a class="card tile" href="documents.html#welcome-letter"><span class="icon">🎉</span><h3>رسالة ترحيب (لجهة العمل)</h3><p>تعليمات اليوم الأول للموظف الجديد.</p></a>
-      </div>
+      <h2>جميع النماذج حسب المرحلة</h2>
+      <div class="grid" id="cats"></div>
     </section>
 
     <section>
-      <h2>مصمَّم للغة العربية من الأساس</h2>
+      <h2>لماذا مسار؟</h2>
       <div class="grid">
-        <div class="card"><span class="icon">⚧️</span><h3>تذكير وتأنيث تلقائي</h3><p class="muted">اختر «مذكر» أو «مؤنث» فتتغير صيغ النص كلها: «أنا الموظف/ة»، «شاكراً/شاكرةً»، «باشر/باشرت».</p></div>
-        <div class="card"><span class="icon">🌙</span><h3>هجري وميلادي</h3><p class="muted">أدرج تاريخ اليوم بالتقويم الهجري (أم القرى) أو الميلادي أو كليهما بنقرة واحدة.</p></div>
-        <div class="card"><span class="icon">١٢٣</span><h3>أرقام مشرقية أو غربية</h3><p class="muted">حوّل أرقام المستند كله إلى (١٢٣) أو أبقها (123) بحسب أعراف الجهة.</p></div>
-        <div class="card"><span class="icon">⬇️</span><h3>Word وPDF من اليمين لليسار</h3><p class="muted">ملفات Word باتجاه عربي صحيح، وطباعة نظيفة إلى PDF بخطوط عربية واضحة.</p></div>
+        <div class="card"><span class="icon">🤖</span><h3>متوافق مع ATS</h3><p class="muted">قالب مبسّط وعناوين أقسام قياسية ونصوص قابلة للقراءة الآلية، دون صور أو جداول تُربك أنظمة الفرز.</p></div>
+        <div class="card"><span class="icon">⚧️</span><h3>تذكير وتأنيث تلقائي</h3><p class="muted">اختر «مذكر» أو «مؤنث» فتتغير صيغ المستند كلها: «أنا الموظف/ة»، «شاكراً/شاكرةً».</p></div>
+        <div class="card"><span class="icon">🌙</span><h3>هجري وميلادي وأرقام مشرقية</h3><p class="muted">تاريخ اليوم بالتقويمين بنقرة، وتحويل الأرقام إلى (١٢٣) بحسب أعراف الجهة.</p></div>
         <div class="card"><span class="icon">🔒</span><h3>خصوصيتك أولاً</h3><p class="muted">لا تسجيل ولا خوادم: بياناتك تبقى في متصفحك فقط.</p></div>
-        <div class="card"><span class="icon">📖</span><h3>لغة سليمة</h3><p class="muted">عبارات المراسلات الرسمية، وألقاب المخاطبة، وأشهر الأخطاء الإملائية في بيئة العمل.</p></div>
       </div>
     </section>
 
     <section>
       <div class="grid">
-        <div class="card"><div class="stat" id="stat-templates">٢٧</div><p class="muted">نموذج مستند رسمي</p></div>
-        <div class="card"><div class="stat">٣</div><p class="muted">قوالب للسيرة الذاتية (كلاسيكي، حديث، ATS)</p></div>
-        <div class="card"><div class="stat" id="stat-terms">٩٠</div><p class="muted">مصطلحاً في مسرد الموارد البشرية</p></div>
-        <div class="card"><div class="stat">١٠</div><p class="muted">أسئلة مقابلة بإجابات نموذجية</p></div>
+        <div class="card"><div class="stat" id="stat-cv"></div><p class="muted">مثالاً جاهزاً للسيرة الذاتية</p></div>
+        <div class="card"><div class="stat">٤</div><p class="muted">قوالب للسيرة (كلاسيكي، حديث، تنفيذي، ATS)</p></div>
+        <div class="card"><div class="stat" id="stat-templates"></div><p class="muted">نموذج مستند رسمي</p></div>
+        <div class="card"><div class="stat" id="stat-terms"></div><p class="muted">مصطلحاً في مسرد الموارد البشرية</p></div>
       </div>
     </section>
 
     <section>
       <div class="note">
-        <b>ملاحظة مهمة:</b> المحتوى إرشادي لمساعدتك في الصياغة والتنظيم. قوانين العمل وإجراءاته (فترة التجربة، والإشعار، والإجازات، وتوثيق العقود) تختلف من دولة لأخرى وتتغير مع الوقت، لذا ارجع دائماً إلى <a href="documents.html#countries">الجهات الرسمية في بلدك</a> وإلى عقد عملك.
+        <b>ملاحظة مهمة:</b> النماذج إرشادية للصياغة. قوانين العمل وإجراءاته (فترة التجربة، والإشعار، والإجازات، وتوثيق العقود) تختلف من دولة لأخرى، فارجع دائماً إلى <a href="documents.html#countries">الجهات الرسمية في بلدك</a> وإلى عقد عملك.
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>مسار — دليل مهني مجاني باللغة العربية. المحتوى إرشادي ولا يُعد استشارة قانونية. © <span id="year"></span></p>
+      <p>مسار — منشئ سيرة ذاتية عربية متوافقة مع ATS ونماذج مستندات التوظيف، مجاناً. المحتوى إرشادي ولا يُعد استشارة قانونية. © <span id="year"></span></p>
     </div>
   </footer>
   <script src="assets/common.js"></script>
   <script src="data/templates.js"></script>
+  <script src="data/resume-examples.js"></script>
   <script src="data/language.js"></script>
   <script>
-    document.getElementById("stat-templates").textContent = Masar.toArabicDigits(MASAR_TEMPLATES.length);
-    document.getElementById("stat-terms").textContent = Masar.toArabicDigits(MASAR_GLOSSARY.length);
+    (function () {
+      const { esc, toArabicDigits: ad } = Masar;
+      const T = MASAR_TEMPLATES, C = MASAR_CATEGORIES, X = MASAR_RESUME_EXAMPLES;
+      document.getElementById("stat-cv").textContent = ad(X.length);
+      document.getElementById("stat-templates").textContent = ad(T.length);
+      document.getElementById("stat-terms").textContent = ad(MASAR_GLOSSARY.length);
+      document.getElementById("doc-total").textContent = ad(T.length);
+
+      document.getElementById("ex-grid").innerHTML = X.map((x) => `
+        <a class="card ex" href="resume.html?example=${x.id}#builder">
+          <span class="icon">${x.icon}</span><b>${esc(x.title)}</b><small>${esc(x.level)}</small>
+        </a>`).join("");
+
+      document.getElementById("cats").innerHTML = C.map((c) => `
+        <div class="card cat-block"><h3>${c.icon} ${esc(c.title)}</h3><ul>${T.filter((t) => t.cat === c.id)
+          .map((t) => `<li><a href="doc/${t.id}.html">${esc(t.title)}</a></li>`).join("")}</ul></div>`).join("");
+
+      const norm = (s) => String(s).replace(/[\u064B-\u0652\u0640]/g, "").replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي").toLowerCase();
+      const q = document.getElementById("q"), out = document.getElementById("results");
+      const POPULAR = ["cover-letter", "resignation", "leave-request", "offer-accept", "joining-report", "salary-increase"];
+      function render() {
+        const v = norm(q.value.trim());
+        const items = v ? T.filter((t) => norm(t.title + " " + t.desc).includes(v)) : T.filter((t) => POPULAR.includes(t.id));
+        out.innerHTML = items.slice(0, 12).map((t) => `
+          <li><a class="name" href="doc/${t.id}.html">${esc(t.title)}</a>
+            <a class="btn small" href="documents.html#${t.id}">تعبئة</a></li>`).join("")
+          || `<li class="muted">لا توجد نتائج. جرّب كلمة أخرى أو <a href="documents.html">تصفّح المكتبة كاملة</a>.</li>`;
+      }
+      q.addEventListener("input", render);
+      render();
+    })();
   </script>
 </body>
 </html>

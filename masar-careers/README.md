@@ -8,12 +8,23 @@ HR requests, and leaving a job. Everything is right-to-left and written in Moder
 
 | Page | What it contains |
 | --- | --- |
-| `index.html` | Home: the career journey in 7 steps, most-requested onboarding documents. |
-| `resume.html` | Arabic résumé guide (sections and order, summary examples, action verbs as مصدر/فعل with English equivalents, achievement rewrites, Arabic-specific tips on RTL, fonts, digits, ATS, gender agreement, common mistakes) **plus a résumé builder** with 3 templates (classic, two-column modern, ATS-plain), completeness score, PDF (print) and Word export, JSON save/import. |
-| `documents.html` | Library of **27 fill-in document templates** in 6 categories (applying, offer, onboarding, during employment, exit, employer/HR side), an interactive onboarding checklist (before joining → first 90 days), and official labour portals per country. |
+| `index.html` | Home, built around the two tools: pick a résumé example by profession (loads into the builder), live document search, all templates by stage. |
+| `resume.html` | Arabic résumé guide (sections and order, summary examples, action verbs as مصدر/فعل with English equivalents, achievement rewrites, Arabic-specific tips on RTL, fonts, digits, ATS, gender agreement, common mistakes) **with the résumé builder first**: 11 ready examples by profession, 4 templates (classic, two-column modern, executive, ATS-plain), completeness score, PDF (print) and Word export, JSON save/import. |
+| `documents.html` | Library of **35 fill-in document templates** in 6 categories (applying, offer, onboarding, during employment, exit, employer/HR side), an interactive onboarding checklist (before joining → first 90 days), and official labour portals per country. |
 | `interview.html` | STAR method with a worked example, 10 common questions with model Arabic answers, salary-expectation phrasing, questions to ask, preparation checklists. |
 | `writing.html` | Business Arabic: formal letter structure with a sample, honorifics (معالي، سعادة…), copyable correspondence phrases, email etiquette, common spelling/style errors, searchable Arabic–English HR glossary (~90 terms). |
 | `resources.html` | Curated Arabic job boards, government employment programmes, free Arabic learning platforms, language tools. |
+
+## Static SEO pages (`doc/`, `cv/`)
+
+`scripts/build-pages.mjs` generates one indexable page per document template (`doc/<id>.html`, full
+sample text, fields, related templates) and per résumé example (`cv/<id>.html`, full résumé,
+keywords for that profession), plus `sitemap.xml`. The output is committed, so Vercel still serves
+plain static files. **Re-run it after editing `data/templates.js` or `data/resume-examples.js`:**
+
+```bash
+node masar-careers/scripts/build-pages.mjs
+```
 
 ## Arabic-specific features of the document generator
 
@@ -36,7 +47,10 @@ masar-careers/
   assets/common.js       helpers: escaping, bidi isolation, dates, digits, copy, Word export, print
   assets/documents.js    template library + generator + onboarding checklist
   assets/resume.js       résumé builder
-  data/templates.js      the 27 document templates (edit/add here)
+  data/templates.js      the 35 document templates (edit/add here)
+  data/resume-examples.js 11 résumé examples by profession
+  scripts/build-pages.mjs generates doc/*.html, cv/*.html and sitemap.xml
+  doc/  cv/              generated static pages (do not edit by hand)
   data/onboarding.js     onboarding checklist items
   data/language.js       phrases, common errors, HR glossary
 ```
