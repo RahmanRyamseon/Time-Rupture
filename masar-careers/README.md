@@ -56,7 +56,7 @@ npx serve masar-careers        # or: python3 -m http.server -d masar-careers
 
 ## Deploy
 
-Vercel: create a project with root directory `masar-careers` (static, no build command).
+Live at https://arabic-ats-resume.vercel.app (Vercel project `arabic-ats-resume`, root directory `masar-careers`, static, no build command). Every push to `master` redeploys.
 `vercel.json` enables clean URLs.
 
 ## Notes

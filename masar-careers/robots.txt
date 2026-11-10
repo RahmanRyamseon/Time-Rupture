@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arabic-ats-resume.vercel.app/sitemap.xml
