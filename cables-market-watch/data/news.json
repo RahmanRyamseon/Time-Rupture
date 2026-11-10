@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T21:21:16.577Z",
+  "generatedAt": "2026-11-10T22:35:39.305Z",
   "retentionDays": 120,
   "categories": {
     "projects": "Grid projects & awards",
@@ -396,8 +396,31 @@
       "role": "self"
     }
   ],
-  "count": 2153,
+  "count": 2161,
   "items": [
+    {
+      "id": "74cf4e585538",
+      "title": "مذكرة تفاهم تركية سعودية للتعاون في مشروعات الكهرباء والطاقة المتجددة",
+      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE55eENMZ2twQW83TDBxZmdwU2pzZUF3NXlMV0wyMEowa1RYamRtNTNPd3haNE1oeWtwWmlPU0ZsNFcwOTRNUUNhS2NCTG4?oc=5",
+      "publisher": "ترك برس | عين على تركيا",
+      "publisherUrl": "https://www.turkpress.co",
+      "published": "2026-11-10T20:56:48.000Z",
+      "description": "",
+      "categories": [
+        "government"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": "Plan",
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T22:35:38.785Z",
+      "score": 0,
+      "dupOf": "76235b273719"
+    },
     {
       "id": "28a7e5929ed6",
       "title": "Utility Regulators Seek Millions More From Taxpayers",
@@ -572,6 +595,31 @@
       "score": 0
     },
     {
+      "id": "3d2c8e3500ca",
+      "title": "آستون فيلا يمدد عقد مدافعه السويدي ليندلوف حتى 2028",
+      "url": "https://news.google.com/rss/articles/CBMinARBVV95cUxQeGFpNmQ2ZGNFeVgtNDgyOHl1cS0yb3I2UXFHcEVOWmFobW9rSFp4dEY4d3VoVVlUSWI4UWFrMkdlQUxQMG93bFdHOVFEOHZPZUdDYlluUXBTQWZFMzg2YnR3X3hJSV9LX1FadGVNUTFmd1JWX0MwbjJNRE5JaXNJNmtDOWEzSEFhVzFqRnhJeDhsc1BXYmRsQWk3ekJURWtQTHRveVJjcVBkQUNTaUpMMlYzZUl2Y1BwczRobnJlR1l2S3ZVU3EtOUJBUUFfcjBfZHRJNHAtWm1Sb1NwOUFGcDc0UHB0TnJ2RnN5ZXRtaVl4SmdtamNSWFhCc1dDbUZ1WVR1TVYxUS1EZy0xMWZmcnR5bjdZM3ZMT0FPZEFZbkhMbVVoa2E3dmp6a20tZHN0WGdRdFRRQWhZLTlYWmtaOFNVcVNwRVFxNHdTOHJvazNfZURTcXBIMFR6X0taNjc2S0ZDMzdoNEZab2JMVjJ2YkdMSXh6V2pfSnUybXNSd2dfNFdlNmNJV2FzU01GcExTVklGRFBIeTBXemlTYmpLNzh6VU1EYWEwenFZSVBOQ2JKd0dSQ0NDQWh6V0trdzFZeVR0RnJnVGhEVGE1WFlRQUZaamgwYndmRE9uN0ZVZzF5ZnVvRXM4ek9qT0pkdkhKUENHSkRpNW8za3JVaGo0Y1h4OGdpb2V2Z0RfTTZzbEpCeWpFekRiWVdaVF8?oc=5",
+      "publisher": "الشرق الأوسط",
+      "publisherUrl": "https://aawsat.com",
+      "published": "2026-11-10T17:53:03.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [
+        "Elsewedy Electric"
+      ],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T14:52:35.489Z",
+      "score": 4,
+      "similar": 4
+    },
+    {
       "id": "a6a9b1446cdb",
       "title": "LUMINO INDUSTRIES LTD. Stock/Share price , NSE/BSE Forecast News and Live Quotes",
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOY0FaSlNGSkNwMXczSmk4UkpnVm91TkNsdXVycExIRlROZzYxWXBXVlpiOF9YM29HekZpQ1JVVzNGSUZ1d3VLX0ZCTTQ2TTI1b2FFRWwySWNESjl0elZ5UGRtcHZPSWJHM1QyUUswZl9jRktzS19YeDJCMkpuSmcwTlRPNkc4bWg3dGNtZDlEbjVfRGI5TVhoYg?oc=5",
@@ -596,12 +644,12 @@
       "score": 2
     },
     {
-      "id": "3d2c8e3500ca",
-      "title": "آستون فيلا يمدد عقد مدافعه السويدي ليندلوف حتى 2028",
-      "url": "https://news.google.com/rss/articles/CBMinARBVV95cUxQeGFpNmQ2ZGNFeVgtNDgyOHl1cS0yb3I2UXFHcEVOWmFobW9rSFp4dEY4d3VoVVlUSWI4UWFrMkdlQUxQMG93bFdHOVFEOHZPZUdDYlluUXBTQWZFMzg2YnR3X3hJSV9LX1FadGVNUTFmd1JWX0MwbjJNRE5JaXNJNmtDOWEzSEFhVzFqRnhJeDhsc1BXYmRsQWk3ekJURWtQTHRveVJjcVBkQUNTaUpMMlYzZUl2Y1BwczRobnJlR1l2S3ZVU3EtOUJBUUFfcjBfZHRJNHAtWm1Sb1NwOUFGcDc0UHB0TnJ2RnN5ZXRtaVl4SmdtamNSWFhCc1dDbUZ1WVR1TVYxUS1EZy0xMWZmcnR5bjdZM3ZMT0FPZEFZbkhMbVVoa2E3dmp6a20tZHN0WGdRdFRRQWhZLTlYWmtaOFNVcVNwRVFxNHdTOHJvazNfZURTcXBIMFR6X0taNjc2S0ZDMzdoNEZab2JMVjJ2YkdMSXh6V2pfSnUybXNSd2dfNFdlNmNJV2FzU01GcExTVklGRFBIeTBXemlTYmpLNzh6VU1EYWEwenFZSVBOQ2JKd0dSQ0NDQWh6V0trdzFZeVR0RnJnVGhEVGE1WFlRQUZaamgwYndmRE9uN0ZVZzF5ZnVvRXM4ek9qT0pkdkhKUENHSkRpNW8za3JVaGo0Y1h4OGdpb2V2Z0RfTTZzbEpCeWpFekRiWVdaVF8?oc=5",
-      "publisher": "الشرق الأوسط",
-      "publisherUrl": "https://aawsat.com",
-      "published": "2026-11-10T17:28:49.000Z",
+      "id": "9e48c90df345",
+      "title": "أستون فيلا يجدد التعاقد مع مدافعه السويدي ليندوف",
+      "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE52WnRYT0xkOHFsYkZYWGdoRlFJU0lVV1FZNU5oZEttYnFOWTAxcE5pc2VjMVRQZXc1MEJsbTZuUGU2OUcwQTZz?oc=5",
+      "publisher": "صدى البلد",
+      "publisherUrl": "https://www.elbalad.news",
+      "published": "2026-11-10T17:31:00.000Z",
       "description": "",
       "categories": [
         "competitors"
@@ -612,13 +660,12 @@
         "Elsewedy Electric"
       ],
       "actor": null,
-      "stage": "Award",
+      "stage": null,
       "value": null,
       "lang": "ar",
       "deadline": null,
-      "firstSeen": "2026-11-10T14:52:35.489Z",
-      "score": 4,
-      "similar": 4
+      "firstSeen": "2026-11-10T22:35:38.785Z",
+      "score": 2
     },
     {
       "id": "1122202b36b3",
@@ -668,7 +715,8 @@
       "lang": "ar",
       "deadline": null,
       "firstSeen": "2026-11-10T21:21:16.044Z",
-      "score": 2
+      "score": 2,
+      "similar": 1
     },
     {
       "id": "102cfc138af8",
@@ -718,7 +766,31 @@
       "lang": "en",
       "deadline": null,
       "firstSeen": "2026-11-10T21:21:16.044Z",
-      "score": 0
+      "score": 0,
+      "similar": 1
+    },
+    {
+      "id": "be21e7e60769",
+      "title": "Firmer dollar, Middle East de-escalation hopes push aluminum price to three-week low",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOc0puS0NFMEs1TU9BQ2kxbzkzNnZtR0ktNUp1RFUxbVpBSVhTVUNCdDhUNi13Qkdnc0s5QktoOU51SHIyamZEMklrNHhEaE4tTHJkdk9ZQ3BQMmlobVV6c3Vtdk4tYTEyTHRRVldPdjdzendnRlFCQ3NtVzZHTUU0MUtOTzlRaVkxUW81SUNZR0doNS0zbmVzUkttSmk2X0FrUFlkSzR3YndHdw?oc=5",
+      "publisher": "Mining.com",
+      "publisherUrl": "https://www.mining.com",
+      "published": "2026-11-10T17:13:56.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T22:35:38.785Z",
+      "score": 0,
+      "dupOf": "7d13b7ebe3c4"
     },
     {
       "id": "1b90e75cb966",
@@ -795,6 +867,32 @@
       "deadline": null,
       "firstSeen": "2026-11-10T21:21:16.044Z",
       "score": 0
+    },
+    {
+      "id": "e81f136f2915",
+      "title": "GE Vernova to spend $34.5M expanding Louisiana transformer manufacturing capacity",
+      "url": "https://www.utilitydive.com/news/ge-vernova-to-spend-345m-expanding-transformer-manufacturing-capacity-in/874272/",
+      "publisher": "Utility Dive",
+      "publisherUrl": "https://www.utilitydive.com",
+      "published": "2026-11-10T17:03:44.000Z",
+      "description": "&ldquo;Electricity demand is growing, and transformers are part of the critical grid equipment essential to delivering the power our customers and modern economies depend on,&rdquo; said the head of the company&rsquo;s electrification segment.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [
+        "USA"
+      ],
+      "companies": [
+        "GE Vernova"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": "$34.5M",
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T22:35:38.785Z",
+      "score": 1
     },
     {
       "id": "b7d3f3c00a72",
@@ -903,6 +1001,31 @@
       "score": 3
     },
     {
+      "id": "49f348ec27fb",
+      "title": "أستون فيلا يعلن تمديد عقد مدافعه السويدي لينديلوف حتى 2028",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9OZ3NDdDBwOTcxNmthSTgyTC1qM0U3OFVFQ2lQSEt1M2FLUnZLc1BkWjFZc2pqcHA3aVZWTThtTkF1ajhwX3lJX1dkeWVaS1I4N2c?oc=5",
+      "publisher": "دار الهلال",
+      "publisherUrl": "https://darelhilal.com",
+      "published": "2026-11-10T16:37:33.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [
+        "Elsewedy Electric"
+      ],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-10T21:21:16.044Z",
+      "score": 4,
+      "dupOf": "3d2c8e3500ca"
+    },
+    {
       "id": "fb583ee23056",
       "title": "El Puerto de Almería licita una subestación de hasta 20 MW",
       "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNVFRNR1B3enJxeGxzRzNuMWJDY2t6OUw2bXFoMTNhQ1dWbVlRQzFRU09kNmJDVUhTT2thVkpqZnZHTzB0SHNXV1RZVW9hRU40NmR4VzVwc2l6SWRSVmpKT3I2Ny1XY2Rpc0dQejM3WXpTcHNXamppQTFjckRtZFdNVEhoZHNtNG9yekhsSw?oc=5",
@@ -980,29 +1103,28 @@
       "score": 2
     },
     {
-      "id": "49f348ec27fb",
-      "title": "أستون فيلا يعلن تمديد عقد مدافعه السويدي لينديلوف حتى 2028",
-      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9OZ3NDdDBwOTcxNmthSTgyTC1qM0U3OFVFQ2lQSEt1M2FLUnZLc1BkWjFZc2pqcHA3aVZWTThtTkF1ajhwX3lJX1dkeWVaS1I4N2c?oc=5",
-      "publisher": "دار الهلال",
-      "publisherUrl": "https://darelhilal.com",
-      "published": "2026-11-10T16:09:13.000Z",
-      "description": "",
+      "id": "5c45b03350a9",
+      "title": "Community engagement is key to on-site battery storage, experts say",
+      "url": "https://www.utilitydive.com/news/community-engagement-is-key-to-on-site-battery-energy-storage-experts-say/874194/",
+      "publisher": "Utility Dive",
+      "publisherUrl": "https://www.utilitydive.com",
+      "published": "2026-11-10T16:05:42.000Z",
+      "description": "Building operators are turning to batteries to combat rising energy prices and add resiliency, but safety concerns means these projects require thoughtful planning, Greenbuild panelists say.",
       "categories": [
-        "competitors"
+        "demand"
       ],
       "regions": [],
-      "markets": [],
-      "companies": [
-        "Elsewedy Electric"
+      "markets": [
+        "USA"
       ],
+      "companies": [],
       "actor": null,
-      "stage": "Award",
+      "stage": null,
       "value": null,
-      "lang": "ar",
+      "lang": "en",
       "deadline": null,
-      "firstSeen": "2026-11-10T21:21:16.044Z",
-      "score": 4,
-      "dupOf": "3d2c8e3500ca"
+      "firstSeen": "2026-11-10T22:35:38.785Z",
+      "score": 0
     },
     {
       "id": "dec3b037ab47",
@@ -1117,9 +1239,10 @@
       "publisher": "Utility Dive",
       "publisherUrl": "https://www.utilitydive.com",
       "published": "2026-11-10T15:35:36.000Z",
-      "description": "While local projects are fairly easy to trace back to a specific data center, regional system upgrades raise more complex questions about who benefits and cost allocation across jurisdictions, one expert told Utility Dive.",
+      "description": "While local grid infrastructure projects are fairly easy to trace back to a specific data center, regional system upgrades raise more complex questions about who benefits and cost allocation across jurisdictions, one expert told Utility Dive.",
       "categories": [
-        "demand"
+        "demand",
+        "projects"
       ],
       "regions": [
         "India"
@@ -1362,6 +1485,30 @@
       "firstSeen": "2026-11-10T14:52:35.489Z",
       "score": 4,
       "dupOf": "3d2c8e3500ca"
+    },
+    {
+      "id": "90c5d62979ae",
+      "title": "Most generators prepared for extreme cold, but risks remain: NERC",
+      "url": "https://www.utilitydive.com/news/generators-prepared-extreme-cold-nerc/874248/",
+      "publisher": "Utility Dive",
+      "publisherUrl": "https://www.utilitydive.com",
+      "published": "2026-11-10T14:30:50.000Z",
+      "description": "Despite improvements to cold-weather operations, the grid &ldquo;continues to face serious reliability risks during the winter period,&rdquo; NERC President and CEO Jim Robb said.",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [
+        "USA"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T22:35:38.785Z",
+      "score": 0
     },
     {
       "id": "bc48bf061014",
@@ -2417,7 +2564,7 @@
       "publisher": "Utility Dive",
       "publisherUrl": "https://www.utilitydive.com",
       "published": "2026-11-10T11:09:21.000Z",
-      "description": "&ldquo;Filing rate cases right now is really painful,&rdquo; Joseph Sullivan told Utility Dive in an interview where he also discussed his concerns with overly complex data center cost allocation and an erosion of public trust in institutions.",
+      "description": "&ldquo;Filing rate cases right now is really painful,&rdquo; Joseph Sullivan told Utility Dive in an interview. He also discussed his concerns with overly complex data center cost allocation and an erosion of public trust in institutions.",
       "categories": [
         "demand"
       ],
@@ -2607,6 +2754,35 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 2
+    },
+    {
+      "id": "07e733747c23",
+      "title": "National Grid invites local communities to help shape Community Fund potentially worth over £1 million as Blyth Substation project reaches important milestone",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNZkJsazgzcnJYNzdBY004U0FFYTVINkdRdFZ4SmVFVExXUHozLV82Z3NBRXhTNkhvSTJoSHhjQnhqbFVpODVyRU1GUHZEMUFlSlh5WWNEcE0tQS1tVkhBQm1UNmRnSVZhdG0tVkd1U3QzbFdjYllIRnFzTkNBSFlkdVdULXlRLUZSUWRFOEtsMWNVSFY1aWd5dERTZFZVQlRlSWgyYTBpd1hrQ3Vqc1B4bHJNRGt1cDNEUGZ3WnVB?oc=5",
+      "publisher": "National Grid Group",
+      "publisherUrl": "https://www.nationalgrid.com",
+      "published": "2026-11-10T10:27:17.000Z",
+      "description": "",
+      "categories": [
+        "projects",
+        "government"
+      ],
+      "regions": [
+        "UK & Ireland"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [
+        "National Grid (UK)"
+      ],
+      "actor": null,
+      "stage": "Tender",
+      "value": "£1 million",
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T22:35:38.785Z",
+      "score": 6
     },
     {
       "id": "c0649757213b",
@@ -3351,6 +3527,34 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 0
+    },
+    {
+      "id": "cb85f8683f85",
+      "title": "Rania Soud Al-Mazrouai Elevated to Chief Human Resources Officer at Oman Cables Industry",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNdDBvVUpMWXp1TFNYeTZlUXdONGdlaGhQMjRuQ1pDenVDNjlPTUtGN1JWOGJWdHNVb0d0eXBIanNEN1ZNY1ZqblA2bl9mR09NTzlDaV9RUFlFM0Fkckp2ZVRvcXBrWUVPSTdrVHpaaGplQ2ZCLWNpY1BWQXhseEZya3dUakl1ckFoMU40MGd4R0JFbENzRE5uLVo4TlhCVldlZFViZmFvRGdHTWxq?oc=5",
+      "publisher": "https://hrtoday.in/",
+      "publisherUrl": "https://hrtoday.in",
+      "published": "2026-11-10T07:44:33.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [
+        "Oman"
+      ],
+      "markets": [
+        "Middle East"
+      ],
+      "companies": [
+        "Oman Cables Industry"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-04T17:14:19.145Z",
+      "score": 5
     },
     {
       "id": "fb0a827d756a",
@@ -6008,7 +6212,7 @@
     {
       "id": "ec05d44356c5",
       "title": "ACER flags rising grid costs and infrastructure delays across Europe",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNWWx0aTdtekNzRGt3Y1FVZEdnS0hTeWs0SlJXdlQ5ZllobzB5bEE2bUVMNFdhclpyUEFBaS1NT1BqWmtWOVNSMWxJM2hFcXRmMkV4aFZGOC1PbWhsN1VmVjRZYURhZHFzd0szWlNWUEJVZmIzb0dKQWJDaUZELV9oN0cwT3JTTUhqajdGWGNIQkxBZWhTUmZfQlI3WHhXbTVZdkV0R2Rkc0lYV2FMX25COXdTTjUxRUg0OWNFaW9tUU8xUnFaak0xQ0xLOS1KWG5HbEE?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOcVRTc1dHaThEVVRwRHE2UVZ6elo4OWxRVEd0N1BhZFBHaGNXSXg1WjdTejhiTVc0RHlKNnB1Sy02V29qZVhxa29rLXJncWd1XzFPU2NEenFpeVZMVUJycDRrcFI0X0hkVnFmaUxybDgybnU5RXYySUdwNi1xZVYwRXRvYl9lc2d6a2k3ak50UjRmX193Q1g5V2dHdG40cTc0ZGVyOTQzMUYyMkE4ZW9qcWRhU2wzV0FRUHVLRHpYNk5zTlp5Q2UzUS1SZkl5a0k5?oc=5",
       "publisher": "INSIGHT EU MONITORING",
       "publisherUrl": "https://ieu-monitoring.com",
       "published": "2026-11-09T13:49:12.000Z",
@@ -6736,6 +6940,37 @@
       "lang": "en",
       "deadline": null,
       "firstSeen": "2026-11-09T19:49:44.568Z",
+      "score": 0
+    },
+    {
+      "id": "623a4bc54eb8",
+      "title": "Canada's aluminum industry shipped 800,000 tonnes to Europe to dodge 50% U.S. tariffs — and midterms may shift the tide",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNYmVzNWd1ZVdlYWVoX2JTTW5tRDlDc1hYUks0MDFrV0dGTmFkWGFrdzZVLWtscEVIeVpEVUJ6Yk9xcU5JbHZqdG53UGNFRkItSGMtU1NSbXU0RklBdGc5Sk1Ic2Z1NnBXTlpDMHpjOEZMVlJlZ0N1cXZuWURFcU55OWEyRXBZcmFHN2hKaW5Bcw?oc=5",
+      "publisher": "Yahoo! Finance Canada",
+      "publisherUrl": "https://ca.finance.yahoo.com",
+      "published": "2026-11-09T11:00:00.000Z",
+      "description": "",
+      "categories": [
+        "aluminium",
+        "policy"
+      ],
+      "regions": [
+        "Europe",
+        "Canada",
+        "USA"
+      ],
+      "markets": [
+        "Europe",
+        "Canada",
+        "USA"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-10T22:35:38.785Z",
       "score": 0
     },
     {
@@ -9396,29 +9631,6 @@
       "score": 0
     },
     {
-      "id": "1d2c04df2cda",
-      "title": "نقل الكهرباء توقع عقداً لتنفيذ خط هوائي لربط محطة شمسية 1000 ميجاوات بالشبكة القومية",
-      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9Kc09icDVPbk12Y2hpc2FRdGt4UUhGcjJBdlhpQWpzM3NuMVVyX2pXbFhqZW13cUduOTcwSzdoYkRJUXRtblpWbUw2YkFQS1Fp?oc=5",
-      "publisher": "أسواق للمعلومات",
-      "publisherUrl": "https://www.aswaqinformation.com",
-      "published": "2026-11-08T12:32:09.000Z",
-      "description": "",
-      "categories": [
-        "projects"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [],
-      "actor": null,
-      "stage": "Award",
-      "value": null,
-      "lang": "ar",
-      "deadline": null,
-      "firstSeen": "2026-11-08T17:59:25.233Z",
-      "score": 5,
-      "similar": 2
-    },
-    {
       "id": "4a239d125a55",
       "title": "Subestación de Montalbo: nueva licitación tras quedar desierta",
       "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNMjdQN1J1Y0QzVFRvVlJpU05PZUxaOGxmcHA3WUxmbUZGS3RkcWQtM3h5cURacWNlQk96ek1uUi1TWDFTNHFzbVBjZUZ0SlBDWnR0ZE1MZkZnYjZoSU1FNEF3VmI5emZoWm5MLWRuZFYxczdWNkd5eV9pU1JTTVlsU1dTUFcxN1NqT1lOTUFoTEgyNHRXejE5cXFJVWxMRW14ZzNRZzVRcjNUMHpoWnJ3Q3JCWGJlN09sS2fSAb8BQVVfeXFMTmdlNE8zcUJpbTNkV1l1cjZIQUY3U3l6WWtzaGVLVHBaLURRdEt6dFU0QVVzTnVhT0dvcnlRN2xmSVlvVGJBd3VPSzNRS2ZhMlVZR01OM2Yxd0Z2b3hlZnJrTnRlblRfWVN0ZXhhRzZwbVZrbE9HN2t5Y0d0LWNWN2tfSzBacFJhVFlFT284eG00Wk5Bd2ZSaldDT0hCQ3UyY1NFUDVKRXhSVjJILURBYU02WGp2WExxRkVPTUdxaDA?oc=5",
@@ -9460,6 +9672,29 @@
       "markets": [
         "Africa"
       ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-08T17:59:25.233Z",
+      "score": 5,
+      "similar": 2
+    },
+    {
+      "id": "1d2c04df2cda",
+      "title": "نقل الكهرباء توقع عقداً لتنفيذ خط هوائي لربط محطة شمسية 1000 ميجاوات بالشبكة القومية",
+      "url": "https://news.google.com/rss/articles/CBMi1AJBVV95cUxNd1JtSjhsV1c3ZUFkQ1VEV2JyTEJvUTBEeEVXckZPblFqX0tLZ1NKOEVEWFdXeWRfc1B0ZUVfRmtlVmVoZkRyWTBsY1hmdkMxb1RPSmFCVmVMZktOZ3VwekdFSlVHdkp0WkFVUmxMTjNjeklKY1VmUnBFcjZkVDlieVR3cmY1eWlMaDZ3eldXVzNoM0JEX3R5QU82Tlk1dDBrRzM2alAyWVpRdDlfclBPSGktWkxOMlc3NGxMTFFtS0Z6eGlLaWhwdDAxSU0tQnBqSUI4Z3pPdkZCRkx0amY4eTlXUVhsZnZRZmRaNGU5S29XWkdNYS1ydFR2SUU2cE1mWkh3ZGRaNHpJc2VYNHMwa0JUMkhDTjdjekY2eHFjNUg0VzhzUHVBU2V0UHp3R1VUNUVKdFNnNVBYdXdIaUF2QzU5RlhJT2NjclNVZG8zUnpsX0Nv?oc=5",
+      "publisher": "أموال الغد",
+      "publisherUrl": "https://amwalalghad.com",
+      "published": "2026-11-08T12:12:26.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [],
       "companies": [],
       "actor": null,
       "stage": "Award",
@@ -9547,7 +9782,7 @@
       "deadline": null,
       "firstSeen": "2026-11-08T17:59:25.233Z",
       "score": 5,
-      "dupOf": "1d2c04df2cda"
+      "dupOf": "85c5b178cf59"
     },
     {
       "id": "2def65f7b619",
@@ -13220,6 +13455,30 @@
       "score": 7
     },
     {
+      "id": "9fd2d8273030",
+      "title": "تراجع أسعار النحاس ومعظم المعادن الأساسية الأخرى",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5PNEEwZ1hvWFhvTTBQMnlaNWxZQU83aXg2bFZfWUROZGNtaHcxWjJ3VmlXNjNmUklNNk1UVnYyMFh3QlVkclZEWmwxRU5Da0x3V0E?oc=5",
+      "publisher": "صحيفة السوسنة الأردنية",
+      "publisherUrl": "https://www.assawsana.com",
+      "published": "2026-11-06T14:41:00.000Z",
+      "description": "",
+      "categories": [
+        "metals"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [
+        "Ma'aden"
+      ],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-06T16:49:02.847Z",
+      "score": 0
+    },
+    {
       "id": "fc3de7e4f019",
       "title": "Apar Industries falls 9.43% in Friday's session",
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPVmdRU2pnSWlwNVFvb1dPNl9pdkkxbVZ6RHk3RUNqMEUwOUd0LWUzVk1xeG14UW9pelNqLWRRZnlmTkswWHBRUVg4SXVZSXJUZjJpY0lxbXVIa2NrQzFPcGRJODhUNFQwRnB3UjF6Nnp4Ym9ua2hHZDlYRGxGZW9leWMtT3BKeWZmY0ZDYXRB?oc=5",
@@ -13507,30 +13766,6 @@
       "stage": null,
       "value": null,
       "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-06T16:49:02.847Z",
-      "score": 0
-    },
-    {
-      "id": "9fd2d8273030",
-      "title": "تراجع أسعار النحاس ومعظم المعادن الأساسية الأخرى",
-      "url": "https://news.google.com/rss/articles/CBMimwNBVV95cUxPN3IzakJXOTFyamlDeTR3cW9wNWpfeVNFNTlNWmp6MjVKcnRGbGotb0kwamtOOVk5dGR2ZEFLYlF1T1E1SElTbUo3TmsxUEk2cHRSWm5Ja2dlc0N3Njl0MHk4aWR4MkVtdl9XNE5zdkhqaWNJWnRaTzV1R2thQklkaXdEYzdyZEU4MTJqX09hN1pLSEZObzFGV3RVZDRzSnltSGNISk9MV3daU3FNOFk4OVhRZWV1QUNWakNCbndkTDhCTFJzZTZyV0xBVEVLS0VpM1MyQU9fbzQzOVVQVXNyN3c0dElHYllvOXNyNWNoa21nZ2g4YVg5ZXVUeVBWcnZRM2hQSHJDYWxNeTNQQzdydzBWaUtfZFZaUFJPc2tsbUZqejhGTDEwZ3d3OWFVZmxIdTBUVWdOU3BiNVk0bVQwUlNZUUlMa2I4bzdOOHhhcGRwbmpCa1B3LUI0aURYaEExU0dJOU5TZUgzdXRIdWJ5Q0x2NGttd2lnMW9ZbHJvQi1EeGROV1dXN2ptdURsd2RHMXl2c3U2VXpyQWc?oc=5",
-      "publisher": "وكالة الانباء الاردنية",
-      "publisherUrl": "https://petra.gov.jo",
-      "published": "2026-11-06T13:39:25.000Z",
-      "description": "",
-      "categories": [
-        "metals"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [
-        "Ma'aden"
-      ],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "ar",
       "deadline": null,
       "firstSeen": "2026-11-06T16:49:02.847Z",
       "score": 0
@@ -14284,35 +14519,6 @@
       "deadline": null,
       "firstSeen": "2026-11-04T22:55:21.905Z",
       "score": 5
-    },
-    {
-      "id": "cb85f8683f85",
-      "title": "Rania Soud Al-Mazrouai Elevated to Chief Human Resources Officer at Oman Cables Industry",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNdDBvVUpMWXp1TFNYeTZlUXdONGdlaGhQMjRuQ1pDenVDNjlPTUtGN1JWOGJWdHNVb0d0eXBIanNEN1ZNY1ZqblA2bl9mR09NTzlDaV9RUFlFM0Fkckp2ZVRvcXBrWUVPSTdrVHpaaGplQ2ZCLWNpY1BWQXhseEZya3dUakl1ckFoMU40MGd4R0JFbENzRE5uLVo4TlhCVldlZFViZmFvRGdHTWxq?oc=5",
-      "publisher": "https://hrtoday.in/",
-      "publisherUrl": "https://hrtoday.in",
-      "published": "2026-11-06T10:05:52.000Z",
-      "description": "",
-      "categories": [
-        "competitors"
-      ],
-      "regions": [
-        "Oman"
-      ],
-      "markets": [
-        "Middle East"
-      ],
-      "companies": [
-        "Oman Cables Industry"
-      ],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-04T17:14:19.145Z",
-      "score": 5,
-      "dupOf": "6eb0b42cc97f"
     },
     {
       "id": "620e464cc711",
@@ -16041,6 +16247,7 @@
       "stage": "Construction",
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-06T06:37:49.490Z",
       "score": 0,
       "dupOf": "a02a2a46181a"
@@ -19213,6 +19420,7 @@
       "stage": "Award",
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-05T17:26:22.783Z",
       "score": 2,
       "similar": 1
@@ -19433,6 +19641,7 @@
       "stage": null,
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-05T17:26:22.783Z",
       "score": 2
     },
@@ -22328,6 +22537,31 @@
       "score": 0
     },
     {
+      "id": "c32ac1c255f6",
+      "title": "Engie se adjudica tres proyectos de transmisión y refuerza su crecimiento en redes",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE80cVZ3bEJsZEJvX0FKaF9FVndwbU01RElSME9NMGtpWjd0Xy03d3FlVkZEam1VTlF2dGlNcEVCNUtIU2tvWVpSUk1LTXYwa0E2VTNyU2RCUVJRUzJtdTYzNG1HN0hhS213Rjh4M1FNV1ZoYTNVNElBaFNDdDZJRDg?oc=5",
+      "publisher": "Electrominería",
+      "publisherUrl": "https://electromineria.cl",
+      "published": "2026-11-04T21:42:30.000Z",
+      "description": "",
+      "categories": [
+        "projects"
+      ],
+      "regions": [],
+      "markets": [
+        "Latin America"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-05T10:11:16.154Z",
+      "score": 2,
+      "dupOf": "a0c401eae6b8"
+    },
+    {
       "id": "73976e5231b1",
       "title": "من قلب الضبعة إلى أعماق حقول الغاز.. ملفات استراتيجية على طاولة \"طاقة النواب\" لمتابعة مستقبل الكهرباء والطاقة المتجددة وزيادة إنتاج البترول وتطوير الشبكات وتأمين احتياجات مصر من الطاقة",
       "url": "https://news.google.com/rss/articles/CBMizANBVV95cUxOdzA2UUhRbnZ3Q2lnM2tObTNVdi1tVGNzMndpYU9jTHNyeUVMckktU2JjUVB5OXRIN09yQ2RVRXhETUtfVnBFTVRwNXRaTjFKYk9yZDI0U2M2X2dsYkNCSXh4TXpHd0JOZ0dIRURKVVdLZ2ZWYW1pY3pVVXk4VDZRRFVCODRkRUZSUkFTMmRabzJldGQ1NVpZcXA2OEtBc3NRb1kxTUNVOThJZW9qajh6UUNKU0VFampaVHlYdUhUVDVZVDh0cmtoZ3dJbUNqRDNadUIwMm9FWGVtWUtvcTFsUVlQYnItTnB5WElNT3RJQVo1U04zbV9zZUpERnNJSHhKbkhaTHllNDVZcHBGWEI0aGtUaldYbWJwQ1ExSmxSTnpIQjFPOEtqM1BOelFxOTNzVmRRQzlPR3QycHVHbHpGbjJRdV95Y2lPRFNDVmp4TzRLWjZjWHBLU2JBUjlaajQtUjhwU2VialE2bUJKVkE2Vi00LU42MlRyTlhHaXVrb2J4dlRrQ0d2eHV4T0ZxQVVBZUxqTEgzM0hKUk0xMEdVb2FyamJ1YS1FUGFXUlduS3NkOFNtZllGM0prUmVGTS11bHBEcUxuVWw1anNs?oc=5",
@@ -22790,31 +23024,6 @@
       "lang": "en",
       "firstSeen": "2026-11-04T22:55:21.905Z",
       "score": 0
-    },
-    {
-      "id": "c32ac1c255f6",
-      "title": "Engie se adjudica tres proyectos de transmisión y refuerza su crecimiento en redes",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNQi1WUC14Wk8yZVo0bXBsSHgya25sU20zRXZwcGQzRmIwZjV0MGZhMjZCcmp1cklWWUVKcXcxdDlPVzdRZDhkQ25SZnV4R1hjSWtyakhsUVRJOW1ZQmY0alJIcDVKNTk3YjE2dk5DVnoxaFo5UUJrSGt3cXNLUUo1OGRqYWt1SnU5SjJHM1BMUFVCaUlST2MxNC02TGhIOGNQYjZLTkVIUXBKM2RL?oc=5",
-      "publisher": "Revista Electricidad",
-      "publisherUrl": "https://www.revistaei.cl",
-      "published": "2026-11-04T18:23:28.000Z",
-      "description": "",
-      "categories": [
-        "projects"
-      ],
-      "regions": [],
-      "markets": [
-        "Latin America"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": "Award",
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-05T10:11:16.154Z",
-      "score": 2,
-      "dupOf": "a0c401eae6b8"
     },
     {
       "id": "0af0b1482991",
@@ -30953,7 +31162,7 @@
       "lang": "en",
       "firstSeen": "2026-11-04T17:14:19.145Z",
       "score": 7,
-      "similar": 2
+      "similar": 1
     },
     {
       "id": "d2233f61c52d",
