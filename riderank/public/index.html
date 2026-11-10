@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RideRank – Who has the best-looking car?</title>
+  <meta name="description" content="Show off your car with photos and videos. People rate it on looks, the leaderboard updates live, and you can buy the Spotlight slot.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">◆</span> <span id="site-name">RideRank</span></a>
+    <nav>
+      <a href="#board">Leaderboard</a>
+      <a href="#fresh">Rate new cars</a>
+      <a href="#spotlight-buy">Buy Spotlight</a>
+      <a class="btn btn-small" href="#submit">Add your car</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Paid Spotlight slot -->
+    <section id="spotlight" class="spotlight" aria-live="polite"></section>
+
+    <!-- Live leaderboard -->
+    <section id="board" class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Leaderboard <span class="live" title="Updates live as people rate"><i></i> LIVE</span></h2>
+          <p class="muted" id="board-sub">Ranked by a fair weighted score – a handful of 5★ votes can't beat hundreds of great ones.</p>
+        </div>
+        <div class="tabs" role="tablist">
+          <button role="tab" data-window="week" aria-selected="true">This week</button>
+          <button role="tab" data-window="all" aria-selected="false">All time</button>
+        </div>
+      </div>
+      <div id="podium" class="podium"></div>
+      <ol id="ranking" class="ranking"></ol>
+      <p id="board-empty" class="empty" hidden>No ratings yet in this period. Be the first – rate a car below!</p>
+    </section>
+
+    <!-- Unrated cars -->
+    <section id="fresh" class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Fresh off the street</h2>
+          <p class="muted">These cars are waiting for their first ratings. Your stars decide who climbs.</p>
+        </div>
+      </div>
+      <div id="fresh-grid" class="grid"></div>
+    </section>
+
+    <!-- Submit -->
+    <section id="submit" class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Add your car</h2>
+          <p class="muted">Upload up to 6 photos and 1 video (MP4/MOV/WebM, max 60 MB). Good light and clean angles win votes.</p>
+        </div>
+      </div>
+      <form id="car-form" class="form" novalidate>
+        <div class="row">
+          <label>Make* <input name="make" required maxlength="40" placeholder="e.g. Mahindra"></label>
+          <label>Model* <input name="model" required maxlength="60" placeholder="e.g. Thar Roxx"></label>
+          <label class="short">Year <input name="year" type="number" min="1886" max="2100" placeholder="2024"></label>
+        </div>
+        <div class="row">
+          <label>Nickname <input name="nickname" maxlength="60" placeholder="Optional – e.g. Midnight Beast"></label>
+          <label>City <input name="city" maxlength="60" placeholder="e.g. Hyderabad"></label>
+          <label>Your name* <input name="ownerName" required maxlength="40" placeholder="Shown on the board"></label>
+        </div>
+        <label>The story <textarea name="story" maxlength="600" rows="3" placeholder="Mods, wrap, what makes it special…"></textarea></label>
+
+        <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Add photos or videos">
+          <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/avif,video/mp4,video/quicktime,video/webm" multiple hidden>
+          <strong>Drop photos &amp; videos here</strong>
+          <span class="muted">or click to choose · JPEG/PNG/WebP up to 8 MB · 1 video up to 60 MB</span>
+        </div>
+        <ul id="uploads" class="uploads"></ul>
+
+        <label class="check"><input type="checkbox" name="confirmRights"> I own this car or have permission, and I took these photos/videos (or have the rights to post them). No number plates of other people, no faces without consent.</label>
+        <div class="actions">
+          <button class="btn" type="submit" id="submit-btn">Publish my car</button>
+          <span id="form-status" class="muted"></span>
+        </div>
+      </form>
+    </section>
+
+    <!-- Buy the top slot -->
+    <section id="spotlight-buy" class="panel buy">
+      <div class="panel-head">
+        <div>
+          <h2>Buy the Spotlight</h2>
+          <p class="muted">Pin your car above the leaderboard for everyone to see. The Spotlight is a clearly-labelled sponsored slot – the #1 crown on the leaderboard can only be won with votes.</p>
+        </div>
+      </div>
+      <div class="buy-grid">
+        <form id="buy-form" class="form">
+          <label>Your car
+            <select name="carId" id="buy-car"></select>
+          </label>
+          <label>How long?
+            <select name="days" id="buy-days"></select>
+          </label>
+          <div class="quote">
+            <div><span class="muted">Total</span> <strong id="buy-total">–</strong></div>
+            <div><span class="muted">Starts</span> <strong id="buy-start">–</strong></div>
+          </div>
+          <button class="btn btn-gold" type="submit" id="buy-btn">Pay &amp; book the slot</button>
+          <p class="muted small" id="buy-note"></p>
+        </form>
+        <div class="paymethods">
+          <h3>How you can pay</h3>
+          <ul>
+            <li><b>UPI</b> – GPay, PhonePe, Paytm, BHIM (instant, lowest fees in India)</li>
+            <li><b>Cards</b> – Visa, Mastercard, RuPay, Amex</li>
+            <li><b>Netbanking &amp; wallets</b></li>
+            <li><b>International</b> – cards, Apple Pay, Google Pay</li>
+          </ul>
+          <p class="muted small">Payments are handled by the payment gateway – we never see your card or UPI PIN. Your slot is held for 35 minutes while you pay; if paid late, it moves to the next free slot automatically.</p>
+          <div id="booked-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><span id="foot-name">RideRank</span> · Rate on looks, be kind. Report anything that breaks the rules. · <a href="#submit">Add your car</a></p>
+  </footer>
+
+  <!-- Car details -->
+  <dialog id="car-dialog" class="dialog">
+    <button class="close" aria-label="Close" data-close>×</button>
+    <div id="car-detail"></div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

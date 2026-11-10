@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo checkout – RideRank</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main style="max-width:520px">
+    <section class="panel" style="margin-top:3rem">
+      <span class="badge gold">DEMO CHECKOUT · no real money</span>
+      <h2 style="margin-top:.8rem">Pay for your Spotlight</h2>
+      <div id="summary" class="muted">Loading…</div>
+      <div class="form" style="margin-top:1rem">
+        <p class="muted small">In production this page is replaced by Razorpay (UPI / cards / netbanking / wallets) or Stripe Checkout. Pick a method to simulate a successful payment:</p>
+        <button class="btn btn-gold" data-pay="UPI">Pay with UPI (simulated)</button>
+        <button class="btn btn-ghost" data-pay="Card">Pay with card (simulated)</button>
+        <a class="btn btn-ghost" id="cancel" href="/">Cancel</a>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/checkout-demo.js" type="module"></script>
+</body>
+</html>
