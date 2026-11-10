@@ -1,6 +1,295 @@
 {
- "updated": "2026-11-10T04:14:43.323Z",
+ "updated": "2026-11-10T12:53:20.118Z",
  "items": [
+  {
+   "title": "UAE Award in Higher Education attracts strong interest with 1,300 nominations in its first edition",
+   "url": "https://gulfnews.com/uae/education/uae-award-in-higher-education-attracts-strong-interest-with-1300-nominations-in-its-first-edition-1.500742507",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T12:13:10.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "6d7156202ae5",
+   "related": []
+  },
+  {
+   "title": "Saudi Arabia opens bookings for ultra-luxury desert train launching in 2027",
+   "url": "https://gulfnews.com/world/gulf/saudi/saudi-arabia-opens-bookings-for-ultra-luxury-desert-train-launching-in-2027-1.500742431",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T11:36:19.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "saudi"
+   ],
+   "telugu": false,
+   "sections": [
+    "saudi",
+    "gulf"
+   ],
+   "id": "8965077083f2",
+   "related": []
+  },
+  {
+   "title": "Dubai tenants can now split rent payments into smaller instalments under new scheme",
+   "url": "https://gulfnews.com/business/property/dubai-tenants-can-now-split-rent-payments-into-smaller-instalments-under-new-scheme-1.500742452",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T11:28:35.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "547205670fd1",
+   "related": []
+  },
+  {
+   "title": "GCC approves advanced military command centre in Kuwait to bolster joint defence",
+   "url": "https://gulfnews.com/world/mena/gcc-approves-advanced-military-command-centre-in-kuwait-to-bolster-joint-defence-1.500742362",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T10:52:12.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "kuwait"
+   ],
+   "telugu": false,
+   "sections": [
+    "kuwait",
+    "gulf",
+    "qatar"
+   ],
+   "id": "e2866989ec74",
+   "related": []
+  },
+  {
+   "title": "Sharjah Executive Council approves housing support for 1,100 families",
+   "url": "https://gulfnews.com/uae/sharjah/sharjah-executive-council-approves-housing-support-for-1100-families-1.500742365",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T10:44:31.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "b197100d3df0",
+   "related": []
+  },
+  {
+   "title": "Abdullah bin Zayed attends US-Russia-Ukraine trilateral talks in Abu Dhabi",
+   "url": "https://gulfnews.com/uae/abu-dhabi/abdullah-bin-zayed-attends-us-russia-ukraine-trilateral-talks-in-abu-dhabi-1.500742343",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T10:39:43.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "5796988fbd1e",
+   "related": []
+  },
+  {
+   "title": "Saudi, Pakistani investors launch fund worth hundreds of millions of dollars",
+   "url": "https://gulfnews.com/business/markets/saudi-pakistani-investors-launch-fund-worth-hundreds-of-millions-of-dollars-1.500742368",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T10:39:30.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "saudi"
+   ],
+   "telugu": false,
+   "sections": [
+    "saudi",
+    "gulf"
+   ],
+   "id": "bc1d65cf55d1",
+   "related": []
+  },
+  {
+   "title": "Abu Dhabi launches campaign to detect child abuse and neglect early",
+   "url": "https://gulfnews.com/uae/abu-dhabi/abu-dhabi-launches-campaign-to-detect-child-abuse-and-neglect-early-1.500742230",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T09:57:12.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "ad16306a812b",
+   "related": []
+  },
+  {
+   "title": "Stakes are high ahead of the Emirates Dubai Sail Grand Prix",
+   "url": "https://gulfnews.com/sport/stakes-are-high-ahead-of-the-emirates-dubai-sail-grand-prix-1.500742329",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T09:54:02.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "46bfb4398f78",
+   "related": []
+  },
+  {
+   "title": "Dubai Metro to extend to Al Maktoum International Airport City by 2031",
+   "url": "https://gulfnews.com/uae/dubai/dubai-metro-to-extend-to-al-maktoum-airport-city-by-2031-1.500742291",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T09:26:35.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "f77fca810df0",
+   "related": []
+  },
+  {
+   "title": "UAE EV drivers: Why accidents and breakdowns need different safety precautions",
+   "url": "https://gulfnews.com/living-in-uae/transport/uae-ev-drivers-why-accidents-and-breakdowns-need-different-safety-precautions-1.500742226",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T09:08:16.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf",
+    "exit"
+   ],
+   "id": "672590148a32",
+   "related": []
+  },
+  {
+   "title": "Emirates adds more Premium Economy seats and winter flights from Dubai",
+   "url": "https://gulfnews.com/business/aviation/emirates-adds-more-premium-economy-seats-and-winter-flights-from-dubai-1.500742245",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T09:05:09.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf",
+    "jobs"
+   ],
+   "id": "08975a11ce00",
+   "related": []
+  },
+  {
+   "title": "UAE President, Vice President attend ‘We Will Emerge Stronger’ session at Government Annual Meetings",
+   "url": "https://gulfnews.com/uae/government/uae-president-vice-president-attend-we-will-emerge-stronger-session-at-government-annual-meetings-1.500742224",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T08:55:04.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "01ff8ddec84f",
+   "related": []
+  },
+  {
+   "title": "Small business, big win: UAE ranks first for SME support",
+   "url": "https://gulfnews.com/business/small-business-big-win-uae-ranks-first-for-sme-support-1.500742223",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T08:51:11.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "69ebdcbf1cbe",
+   "related": []
+  },
+  {
+   "title": "UAE flights status update: Emirates, Etihad, flydubai, Air Arabia cancellations and delays for November 10",
+   "url": "https://gulfnews.com/business/aviation/uae-flights-status-update-emirates-etihad-flydubai-air-arabia-cancellations-and-delays-for-november-10-1.500742182",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T08:47:18.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf",
+    "jobs"
+   ],
+   "id": "3bed14abb6ea",
+   "related": []
+  },
   {
    "title": "Chris Weidman replaces Colby Covington to face Khamzat Chimaev at RAF Abu Dhabi",
    "url": "https://gulfnews.com/sport/chris-weidman-replaces-colby-covington-to-face-khamzat-chimaev-at-raf-abu-dhabi-1.500741945",
@@ -211,44 +500,6 @@
    "related": []
   },
   {
-   "title": "Sheikh Mohammed outlines UAE's future vision at annual government meetings",
-   "url": "https://gulfnews.com/uae/sheikh-mohammed-outlines-uaes-future-vision-at-annual-government-meetings-1.500741544",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-09T17:00:42.000Z",
-   "feed": "gulfnews",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "c9395cf8228d",
-   "related": []
-  },
-  {
-   "title": "Nahyan bin Mubarak attends Diwali celebrations in Abu Dhabi mandir",
-   "url": "https://gulfnews.com/uae/abu-dhabi/nahyan-bin-mubarak-attends-diwali-celebrations-in-abu-dhabi-1.500741576",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-09T16:09:58.000Z",
-   "feed": "gulfnews",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "07401e3da191",
-   "related": []
-  },
-  {
    "title": "UAE postpones five-vehicle registration limit for residents following public feedback",
    "url": "https://gulfnews.com/living-in-uae/transport/uae-postpones-five-vehicle-registration-limit-for-residents-following-public-feedback-1.500741588",
    "publisher": "Gulf News",
@@ -319,26 +570,6 @@
     "gulf"
    ],
    "id": "0ee6760db8d8",
-   "related": []
-  },
-  {
-   "title": "UAE flights status update: Latest cancellations and delays for Nov 9",
-   "url": "https://gulfnews.com/uae/dubai/uae-flights-status-update-latest-cancellations-and-delays-for-nov-9-1.500740941",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-09T09:18:15.000Z",
-   "feed": "gulfnews",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "id": "ad14607fdaf5",
    "related": []
   },
   {
@@ -1183,25 +1414,6 @@
     "gulf"
    ],
    "id": "f065fc15f0a3",
-   "related": []
-  },
-  {
-   "title": "Abu Dhabi Police launch campaign to protect families from drugs, cybercrime",
-   "url": "https://gulfnews.com/uae/government/abu-dhabi-police-launch-campaign-to-protect-families-from-drugs-cybercrime-1.500739578",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-07T12:36:23.000Z",
-   "feed": "gulfnews",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "c4d36f86c24d",
    "related": []
   },
   {
