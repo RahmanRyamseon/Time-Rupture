@@ -47,7 +47,10 @@
               ${t.audience === "employer" ? '<span class="badge gold">لجهة العمل</span>' : ""}
               <h3>${esc(t.title)}</h3>
               <p>${esc(t.desc)}</p>
-              <button class="btn small" data-open="${t.id}">✍️ تعبئة وإنشاء</button>
+              <div class="btn-row">
+                <button class="btn small" data-open="${t.id}">✍️ تعبئة وإنشاء</button>
+                <a class="btn ghost small" href="doc/${t.id}.html">عرض النص</a>
+              </div>
             </article>`
           )
           .join("")}</div>`;

@@ -3,46 +3,9 @@
   const { esc } = Masar;
   const tx = Masar.escBidi;
 
-  const SAMPLE = {
-    name: "ريم خالد المطيري",
-    title: "أخصائية تسويق رقمي",
-    phone: "+966 50 000 0000",
-    email: "reem@example.com",
-    city: "الرياض، المملكة العربية السعودية",
-    linkedin: "linkedin.com/in/reem-example",
-    summary:
-      "أخصائية تسويق رقمي بخبرة 5 سنوات في إدارة الحملات الإعلانية وتحسين محركات البحث للعلامات التجارية في قطاعي التجزئة والتقنية. أسهمتُ في رفع المبيعات الإلكترونية بنسبة 45% عبر حملات مبنية على البيانات، وأتطلع إلى قيادة استراتيجية النمو الرقمي في جهة طموحة.",
-    personal: { show: true, nationality: "سعودية", dob: "", marital: "", visa: "" },
-    experience: [
-      {
-        role: "أخصائية تسويق رقمي أولى",
-        org: "شركة نجد للتجزئة",
-        city: "الرياض",
-        from: "2023",
-        to: "حتى الآن",
-        points:
-          "قيادة الحملات الإعلانية على منصات التواصل بميزانية سنوية تتجاوز مليوني ريال\nرفع معدل التحويل في المتجر الإلكتروني من 1.8% إلى 3.1% خلال 9 أشهر\nبناء لوحة مؤشرات أداء أسبوعية للإدارة العليا باستخدام Google Analytics 4 وLooker Studio\nالإشراف على فريق من 3 أخصائيين محتوى ووكالة إبداعية خارجية",
-      },
-      {
-        role: "أخصائية تسويق رقمي",
-        org: "شركة حلول السحابة",
-        city: "الرياض",
-        from: "2021",
-        to: "2023",
-        points:
-          "تحسين ظهور الموقع في محركات البحث (SEO) وزيادة الزيارات العضوية بنسبة 120%\nإطلاق برنامج تسويق بالبريد الإلكتروني حقق معدل فتح 32% مقارنة بمتوسط القطاع 21%",
-      },
-    ],
-    education: [
-      { degree: "بكالوريوس التسويق", school: "جامعة الملك سعود", from: "2016", to: "2020", note: "مرتبة الشرف الثانية – المعدل 4.5 من 5" },
-    ],
-    certs: "Google Ads Search Certification – Google، 2024\nشهادة التسويق بالمحتوى – HubSpot Academy، 2023",
-    courses: "أساسيات تحليل البيانات – منصة إدراك، 2022",
-    skills: "إدارة الحملات المدفوعة، تحسين محركات البحث (SEO)، Google Analytics 4، Meta Ads Manager، تحليل البيانات، كتابة المحتوى الإعلاني",
-    soft: "القيادة، التواصل الفعال، إدارة الوقت، التفكير التحليلي",
-    languages: "العربية – اللغة الأم\nالإنجليزية – متقدم (IELTS 7.0)",
-    volunteer: "متطوعة في تنظيم معرض الرياض الدولي للكتاب، 2022",
-  };
+  // أمثلة السير الجاهزة حسب المهنة (data/resume-examples.js)
+  const EXAMPLES = window.MASAR_RESUME_EXAMPLES || [];
+  const SAMPLE = EXAMPLES[0].data;
 
   const EMPTY = {
     name: "", title: "", phone: "", email: "", city: "", linkedin: "", summary: "",
@@ -54,6 +17,18 @@
 
   const clone = (o) => JSON.parse(JSON.stringify(o));
   let data = Masar.store.get("resume", null) || clone(SAMPLE);
+
+  // ?example=accountant يحمّل مثالاً جاهزاً (مع تأكيد إذا كانت لدى المستخدم سيرة خاصة به)
+  const isExample = (d) => EXAMPLES.some((x) => JSON.stringify(x.data) === JSON.stringify(d));
+  const wanted = new URLSearchParams(location.search).get("example");
+  const wantedEx = EXAMPLES.find((x) => x.id === wanted);
+  if (wantedEx) {
+    const saved = Masar.store.get("resume", null);
+    if (!saved || isExample(saved) || confirm(`تحميل مثال «${wantedEx.title}» بدلاً من سيرتك المحفوظة؟`)) {
+      data = clone(wantedEx.data);
+      Masar.store.set("resume", data);
+    }
+  }
   let opts = Masar.store.get("resume-opts", { theme: "classic", digits: false });
 
   const formEl = document.getElementById("cv-form");
@@ -229,6 +204,10 @@
         </aside>
         <div class="r-main">${head}${S.summary || ""}${S.experience || ""}${S.education || ""}${S.certs}${S.courses}${S.volunteer}</div>`;
     }
+    if (theme === "executive") {
+      return `<header class="r-band">${head}<div class="r-contact">${contactBits().map((c) => `<span>${c}</span>`).join("")}</div></header>
+        <div class="r-body">${S.summary || ""}${S.experience || ""}${S.education || ""}${S.skills}${S.soft}${S.certs}${S.courses}${S.languages}${S.volunteer}${S.personal}</div>`;
+    }
     const contact = theme === "ats" ? contactPlain : contactBits();
     return `${head}<div class="r-contact">${contact.map((c) => `<span>${c}</span>`).join(theme === "ats" ? " | " : "")}</div>
       ${S.summary || ""}${S.experience || ""}${S.education || ""}${S.skills}${S.soft}${S.certs}${S.courses}${S.languages}${S.volunteer}${S.personal}`;
@@ -310,12 +289,20 @@
     }
     e.target.value = "";
   });
-  document.getElementById("cv-sample").addEventListener("click", () => {
-    if (!confirm("استبدال البيانات الحالية بالمثال التوضيحي؟")) return;
-    data = clone(SAMPLE);
+  const exampleEl = document.getElementById("cv-example");
+  exampleEl.innerHTML =
+    `<option value="">📂 ابدأ من مثال جاهز…</option>` +
+    EXAMPLES.map((x) => `<option value="${x.id}">${x.icon} ${esc(x.title)} – ${esc(x.level)}</option>`).join("");
+  exampleEl.addEventListener("change", () => {
+    const ex = EXAMPLES.find((x) => x.id === exampleEl.value);
+    exampleEl.value = "";
+    if (!ex) return;
+    if (!isExample(data) && !confirm(`استبدال بياناتك الحالية بمثال «${ex.title}»؟`)) return;
+    data = clone(ex.data);
     save();
     renderForm();
     renderPreview();
+    Masar.toast(`تم تحميل مثال ${ex.title} ✓`);
   });
   document.getElementById("cv-clear").addEventListener("click", () => {
     if (!confirm("مسح جميع بيانات السيرة والبدء من جديد؟")) return;

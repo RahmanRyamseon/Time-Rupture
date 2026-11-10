@@ -27,11 +27,11 @@
   <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><span class="brand-mark">م</span><span>مسار<small>دليلك المهني بالعربية</small></span></a>
+      <a class="brand" href="index.html"><span class="brand-mark">م</span><span>مسار<small>سيرة ذاتية عربية ATS ونماذج التوظيف</small></span></a>
       <nav class="nav" aria-label="القائمة الرئيسية">
         <a href="index.html">الرئيسية</a>
-        <a href="resume.html">السيرة الذاتية</a>
-        <a href="documents.html">المستندات</a>
+        <a href="resume.html">منشئ السيرة</a>
+        <a href="documents.html">نماذج المستندات</a>
         <a href="interview.html">المقابلة</a>
         <a href="writing.html">لغة العمل</a>
         <a href="resources.html">المصادر</a>
@@ -41,19 +41,73 @@
 
   <main id="main" class="wrap">
     <section class="page-hero">
-      <p class="eyebrow">السيرة الذاتية</p>
-      <h1>اكتب سيرة ذاتية عربية تُقرأ وتُقنع</h1>
-      <p>يقضي مسؤول التوظيف ثوانيَ معدودة في المسح الأول للسيرة الذاتية. هذا الدليل يساعدك على ترتيب الأقسام، وصياغة الإنجازات بلغة عربية رصينة، وتجنب الأخطاء الشائعة، ثم بناء سيرتك مباشرة وتصديرها PDF أو Word.</p>
+      <p class="eyebrow">منشئ السيرة الذاتية العربية · متوافق مع ATS · مجاني</p>
+      <h1>أنشئ سيرتك الذاتية العربية الآن، وحمّلها PDF أو Word</h1>
+      <p>ابدأ من مثال جاهز لمهنتك أو من صفحة فارغة، واختر من 4 قوالب بينها قالب مبسّط لأنظمة الفرز الآلي (ATS). تُحفظ بياناتك في متصفحك فقط، بلا تسجيل.</p>
       <ul class="toc">
+        <li><a href="#builder">🛠️ المنشئ</a></li>
+        <li><a href="#examples">📂 أمثلة حسب المهنة</a></li>
         <li><a href="#structure">🧱 الأقسام وترتيبها</a></li>
         <li><a href="#summary">📝 الملخص المهني</a></li>
         <li><a href="#verbs">⚡ أفعال الإنجاز</a></li>
         <li><a href="#achievements">📈 صياغة الإنجازات</a></li>
-        <li><a href="#arabic">🔤 خصوصية العربية</a></li>
+        <li><a href="#arabic">🔤 خصوصية العربية وATS</a></li>
         <li><a href="#mistakes">⛔ أخطاء شائعة</a></li>
-        <li><a href="#builder">🛠️ منشئ السيرة</a></li>
       </ul>
     </section>
+
+    <section id="builder">
+      <p class="muted" style="margin-top:0">املأ الحقول وشاهد سيرتك تتكوّن مباشرة. تُحفظ بياناتك تلقائياً في متصفحك فقط، ولا تُرسل إلى أي خادم. للحصول على ملف PDF اختر «طباعة / PDF» ثم «حفظ بتنسيق PDF» من نافذة الطباعة.</p>
+      <div class="workspace">
+        <div class="card panel">
+          <div class="field">
+            <label>اكتمال السيرة: <span id="cv-score-num"></span></label>
+            <div class="progress"><span id="cv-score-bar"></span></div>
+            <p class="muted small" id="cv-score-miss"></p>
+          </div>
+          <form id="cv-form" onsubmit="return false"></form>
+          <div class="btn-row" style="border-top:1px solid var(--line);padding-top:12px">
+            <button class="btn danger small" id="cv-clear" type="button">مسح الكل</button>
+          </div>
+        </div>
+        <div>
+          <div class="toolbar">
+            <select id="cv-example" aria-label="ابدأ من مثال جاهز" style="width:auto;max-width:100%"></select>
+          </div>
+          <div class="toolbar">
+            <label class="inline">القالب:
+              <select id="cv-theme" style="width:auto">
+                <option value="classic">كلاسيكي</option>
+                <option value="modern">حديث (عمودان)</option>
+                <option value="executive">تنفيذي (شريط علوي)</option>
+                <option value="ats">مبسّط (ATS)</option>
+              </select>
+            </label>
+            <label class="inline"><input type="checkbox" id="cv-digits"> أرقام مشرقية</label>
+            <span class="spacer"></span>
+            <button class="btn" id="cv-print" type="button">🖨️ طباعة / PDF</button>
+            <button class="btn ghost" id="cv-word" type="button">⬇️ Word</button>
+          </div>
+          <div class="toolbar">
+            <button class="btn ghost small" id="cv-export" type="button">💾 حفظ نسخة (JSON)</button>
+            <label class="btn ghost small" style="margin:0;font-weight:400">📂 استيراد نسخة<input type="file" id="cv-import" accept="application/json,.json" hidden></label>
+          </div>
+          <div class="paper resume" id="cv-preview"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples">
+      <h2>أمثلة سير ذاتية عربية جاهزة حسب المهنة</h2>
+      <p class="muted">اقرأ المثال كاملاً، أو انقر «استخدم هذا المثال» ليُحمَّل في المنشئ أعلاه فتعدّله ببياناتك.</p>
+      <div class="grid" id="cv-gallery"></div>
+    </section>
+
+    <section>
+      <h2 style="margin-top:2.6rem">دليل كتابة السيرة الذاتية العربية</h2>
+      <p class="muted">كل ما تحتاج معرفته لتكون سيرتك مقنعة لمسؤول التوظيف ومقروءة لأنظمة الفرز الآلي.</p>
+    </section>
+
 
     <section id="structure">
       <h2>الأقسام الأساسية وترتيبها</h2>
@@ -202,44 +256,6 @@
       </div>
     </section>
 
-    <section id="builder">
-      <h2>منشئ السيرة الذاتية</h2>
-      <p class="muted">املأ الحقول وشاهد سيرتك تتكوّن مباشرة. تُحفظ بياناتك تلقائياً في متصفحك فقط، ولا تُرسل إلى أي خادم. للحصول على ملف PDF اختر «طباعة / PDF» ثم «حفظ بتنسيق PDF» من نافذة الطباعة.</p>
-      <div class="workspace">
-        <div class="card panel">
-          <div class="field">
-            <label>اكتمال السيرة: <span id="cv-score-num"></span></label>
-            <div class="progress"><span id="cv-score-bar"></span></div>
-            <p class="muted small" id="cv-score-miss"></p>
-          </div>
-          <form id="cv-form" onsubmit="return false"></form>
-          <div class="btn-row" style="border-top:1px solid var(--line);padding-top:12px">
-            <button class="btn ghost small" id="cv-sample" type="button">تحميل المثال</button>
-            <button class="btn danger small" id="cv-clear" type="button">مسح الكل</button>
-          </div>
-        </div>
-        <div>
-          <div class="toolbar">
-            <label class="inline">القالب:
-              <select id="cv-theme" style="width:auto">
-                <option value="classic">كلاسيكي</option>
-                <option value="modern">حديث (عمودان)</option>
-                <option value="ats">مبسّط (ATS)</option>
-              </select>
-            </label>
-            <label class="inline"><input type="checkbox" id="cv-digits"> أرقام مشرقية</label>
-            <span class="spacer"></span>
-            <button class="btn" id="cv-print" type="button">🖨️ طباعة / PDF</button>
-            <button class="btn ghost" id="cv-word" type="button">⬇️ Word</button>
-          </div>
-          <div class="toolbar">
-            <button class="btn ghost small" id="cv-export" type="button">💾 حفظ نسخة (JSON)</button>
-            <label class="btn ghost small" style="margin:0;font-weight:400">📂 استيراد نسخة<input type="file" id="cv-import" accept="application/json,.json" hidden></label>
-          </div>
-          <div class="paper resume" id="cv-preview"></div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
@@ -249,6 +265,19 @@
   </footer>
 
   <script src="assets/common.js"></script>
+  <script src="data/resume-examples.js"></script>
   <script src="assets/resume.js"></script>
+  <script>
+    document.getElementById("cv-gallery").innerHTML = MASAR_RESUME_EXAMPLES.map((x) => `
+      <article class="card doc-card">
+        <span class="badge">${x.level}</span>
+        <h3>${x.icon} ${Masar.esc(x.title)}</h3>
+        <p>${Masar.esc(x.data.summary.slice(0, 120))}…</p>
+        <div class="btn-row">
+          <a class="btn small" href="resume.html?example=${x.id}#builder">استخدم هذا المثال</a>
+          <a class="btn ghost small" href="cv/${x.id}.html">عرض المثال</a>
+        </div>
+      </article>`).join("");
+  </script>
 </body>
 </html>
