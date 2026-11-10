@@ -1,6 +1,64 @@
 {
- "updated": "2026-11-10T12:53:20.118Z",
+ "updated": "2026-11-10T20:56:56.804Z",
  "items": [
+  {
+   "title": "Dubai’s booming business of storing other people’s stuff",
+   "url": "https://gulfnews.com/business/dubais-booming-business-of-storing-other-peoples-stuff-1.500741205",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T20:00:00.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "7473a23c808c",
+   "related": []
+  },
+  {
+   "title": "Abu Dhabi Police unveils ambitious 2026–2030 strategic plan to strengthen security and safety",
+   "url": "https://gulfnews.com/uae/abu-dhabi/abu-dhabi-police-unveils-ambitious-20262030-strategic-plan-to-strengthen-security-and-safety-1.500743064",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T19:29:31.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "7b0a8b715135",
+   "related": []
+  },
+  {
+   "title": "Middle East war: IndiGo extends suspension of Saudi Arabia flights",
+   "url": "https://gulfnews.com/business/aviation/middle-east-war-indigo-extends-suspension-of-saudi-arabia-flights-1.500743017",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-10T18:23:57.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "saudi"
+   ],
+   "telugu": false,
+   "sections": [
+    "saudi",
+    "gulf",
+    "jobs"
+   ],
+   "id": "f3cf47c643fd",
+   "related": []
+  },
   {
    "title": "UAE Award in Higher Education attracts strong interest with 1,300 nominations in its first edition",
    "url": "https://gulfnews.com/uae/education/uae-award-in-higher-education-attracts-strong-interest-with-1300-nominations-in-its-first-edition-1.500742507",
