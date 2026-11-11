@@ -1,0 +1,103 @@
+/* Layout uses CSS logical properties throughout so Arabic (dir="rtl") mirrors automatically. */
+:root {
+  --ink: #1f2933;
+  --muted: #5f6b7a;
+  --line: #d9dee5;
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --accent: #0b5cad;
+  --danger: #b2182b;
+  --ok: #1b7a3d;
+  font-family: system-ui, "Segoe UI", "Noto Sans Arabic", "Noto Naskh Arabic", Tahoma, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+h1 { font-size: 1.4rem; margin: 0.4rem 0; }
+h2 { font-size: 1.05rem; margin: 0.4rem 0; }
+h3 { font-size: 1rem; margin: 0; }
+p { margin: 0.35rem 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+small { display: block; font-size: 0.8rem; }
+
+.muted { color: var(--muted); }
+.error { color: var(--danger); background: #fdecee; border-radius: 6px; padding: 0.5rem 0.7rem; }
+.ok { color: var(--ok); }
+.center { text-align: center; margin-block-start: 20vh; }
+.spacer { flex: 1; }
+.row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+
+button, .button {
+  font: inherit; cursor: pointer; border: 1px solid var(--line); background: var(--card);
+  color: var(--ink); border-radius: 6px; padding: 0.4rem 0.8rem; display: inline-block;
+}
+button:hover, .button:hover { border-color: var(--accent); }
+button:disabled { opacity: 0.5; cursor: default; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.active { border-color: var(--accent); box-shadow: 0 0 0 2px #0b5cad33; }
+button.link { border: 0; background: none; padding: 0.2rem 0.3rem; color: var(--accent); }
+button.link.danger { color: var(--danger); }
+
+label { display: block; font-size: 0.9rem; margin-block: 0.5rem; }
+input:not([type="checkbox"]), select {
+  font: inherit; display: block; inline-size: 100%; margin-block-start: 0.2rem;
+  padding: 0.45rem 0.6rem; border: 1px solid var(--line); border-radius: 6px; background: #fff;
+}
+/* Emails and passwords are typed left-to-right, but stay aligned with the Arabic layout. */
+[dir="rtl"] input[dir="ltr"] { text-align: end; }
+fieldset { border: 1px solid var(--line); border-radius: 6px; margin: 0.6rem 0; padding: 0.6rem; }
+label.check { display: flex; gap: 0.5rem; align-items: center; }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 0.9rem; margin-block: 0.7rem; }
+
+.shell { display: flex; flex-direction: column; height: 100%; }
+.topbar {
+  display: flex; align-items: center; gap: 1rem; padding: 0.55rem 1rem;
+  background: var(--ink); color: #fff; flex-wrap: wrap;
+}
+.topbar a, .topbar button.link { color: #dbe7f5; }
+.topbar a.active { color: #fff; font-weight: 600; }
+.topbar .muted { color: #a9b4c2; }
+.topbar nav { display: flex; gap: 1rem; }
+
+.page { max-inline-size: 60rem; inline-size: 100%; margin-inline: auto; padding: 1rem; overflow: auto; }
+.cards { list-style: none; padding: 0; display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+.cards .card { margin: 0; }
+.inline-form { display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); align-items: end; }
+.inline-form label { margin: 0; }
+table { inline-size: 100%; border-collapse: collapse; background: var(--card); }
+th, td { text-align: start; padding: 0.5rem 0.6rem; border-block-end: 1px solid var(--line); }
+
+.login { display: grid; place-items: center; min-height: 100%; padding: 1rem; }
+.login .card { inline-size: min(24rem, 100%); }
+.login button.primary { inline-size: 100%; margin-block: 0.6rem; }
+
+.workspace { flex: 1; display: flex; min-height: 0; }
+.panel { inline-size: 23rem; max-inline-size: 45vw; overflow: auto; padding: 0.9rem; border-inline-end: 1px solid var(--line); background: var(--bg); }
+.map-wrap { flex: 1; position: relative; min-inline-size: 0; }
+.map { position: absolute; inset: 0; }
+.map-toolbar {
+  position: absolute; inset-block-start: 0.7rem; inset-inline: 3.5rem; margin-inline: auto; max-inline-size: 40rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 0.5rem 0.7rem;
+  display: flex; gap: 0.5rem; align-items: center; box-shadow: 0 2px 8px #0002; font-size: 0.9rem;
+}
+.map-toolbar span { flex: 1; }
+.legend {
+  position: absolute; inset-block-end: 2.2rem; inset-inline-start: 0.7rem; margin: 0; padding: 0.5rem 0.7rem; list-style: none;
+  background: #fffffff0; border: 1px solid var(--line); border-radius: 8px; font-size: 0.8rem;
+}
+.legend li { display: flex; align-items: center; gap: 0.4rem; margin-block: 0.15rem; }
+.legend i { inline-size: 1rem; block-size: 0.7rem; border: 2px solid; border-radius: 2px; }
+
+.zones { list-style: none; padding: 0; margin: 0.4rem 0; }
+.zones li { display: flex; align-items: center; gap: 0.5rem; padding-block: 0.25rem; }
+.zones li span { flex: 1; }
+.zones i { inline-size: 0.75rem; block-size: 0.75rem; border-radius: 2px; flex: none; }
+
+@media (max-width: 720px) {
+  .workspace { flex-direction: column-reverse; }
+  .panel { inline-size: 100%; max-inline-size: none; max-block-size: 50%; border-inline-end: 0; border-block-start: 1px solid var(--line); }
+  .who { display: none; }
+}

@@ -1,0 +1,79 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "create": "Create",
+    "loading": "Loading…",
+    "name": "Name",
+    "description": "Description",
+    "back": "Back",
+    "language": "العربية",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "nav": { "projects": "Projects", "users": "Users", "signOut": "Sign out" },
+  "role": { "analyst": "Analyst", "viewer": "Viewer" },
+  "login": {
+    "title": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "tagline": "Independent earthworks progress and volume verification"
+  },
+  "projects": {
+    "title": "Projects",
+    "empty": "No projects yet.",
+    "emptyViewer": "No projects have been shared with you yet.",
+    "new": "New project",
+    "client": "Client",
+    "sites_one": "{{count}} site",
+    "sites_other": "{{count}} sites",
+    "open": "Open",
+    "confirmDelete": "Delete project “{{name}}” and all of its sites and zones?"
+  },
+  "project": {
+    "sites": "Sites",
+    "noSites": "No sites yet. Add one by drawing its boundary on the map or uploading a file.",
+    "addSite": "Add site",
+    "addZone": "Add zone",
+    "zones": "Zones",
+    "noZones": "No zones",
+    "area": "Area",
+    "zoom": "Zoom to",
+    "access": "Viewer access",
+    "accessHelp": "Viewers see only the projects ticked for them. Analysts see all projects.",
+    "noViewers": "There are no viewer accounts yet.",
+    "confirmDeleteSite": "Delete site “{{name}}” and its zones?",
+    "confirmDeleteZone": "Delete zone “{{name}}”?"
+  },
+  "zoneType": { "label": "Zone type", "cut": "Cut", "fill": "Fill", "mixed": "Cut and fill" },
+  "geometry": {
+    "newSite": "New site",
+    "newZone": "New zone in {{site}}",
+    "outline": "Outline",
+    "draw": "Draw on map",
+    "upload": "Upload file",
+    "uploadHelp": "GeoJSON, KML/KMZ or zipped Shapefile (with .prj), up to {{mb}} MB.",
+    "drawHelp": "Click on the map to add corners. Double-click or press Finish to close the outline.",
+    "finish": "Finish",
+    "undo": "Undo point",
+    "redraw": "Redraw",
+    "ready": "Outline ready",
+    "multiZones": "The file contains {{count}} polygons; one zone will be created for each.",
+    "needOutline": "Draw or upload an outline first."
+  },
+  "users": {
+    "title": "Users",
+    "new": "New user",
+    "fullName": "Full name",
+    "role": "Role",
+    "active": "Active",
+    "passwordHelp": "At least 10 characters.",
+    "deactivate": "Deactivate",
+    "activate": "Activate"
+  },
+  "legend": { "site": "Site boundary", "cut": "Cut zone", "fill": "Fill zone", "mixed": "Cut and fill zone" },
+  "units": { "ha": "ha", "m2": "m²", "km2": "km²" },
+  "error": { "generic": "Something went wrong. Please try again.", "network": "Cannot reach the server." }
+}
