@@ -1,8 +1,190 @@
 {
-  "generatedAt": "2026-11-10T11:24:03.197Z",
+  "generatedAt": "2026-11-11T11:10:57.021Z",
   "retentionDays": 120,
-  "count": 18,
+  "count": 30,
   "items": [
+    {
+      "id": "c2708723ba8c",
+      "title": "Teen developer's Autark lets AI agents run without guardrails, raising data protection risks",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOa05uZl9STEp2RkQ5VTlDaWl0cUVUc001eWxkbGZGR0xxTDNvWTRGclRjS2lJWHRBb2dmM0ZwbXZrZDkzR29uQzkwb0I3TS1NX3BHWk9zZU43TDRocHByRWY4ajdEV2k3eVZvQ0N6Rk9pMHgwWmxWMzlPZWNHS1hkOVFOTnU3dEZ0dmtFaGdSYjFqcGptUW5MY3ZXX3BsM0NRUlBMT25BY0JpSmhCMjVrMXFkU0drSEw5ZjV4cw?oc=5",
+      "publisher": "news.lavx.hu",
+      "publisherUrl": "https://news.lavx.hu",
+      "published": "2026-11-11T00:37:41.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "a10249e87049",
+      "title": "Getting the balance right: five practical challenges for forthcoming EU privacy-competition guidelines",
+      "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOSzlzU3NGeFl3d2JxLXFLdXduRnlFWmxzVUlIXy1KVjNTNHNIZHVrZ2huR3EtdUR3YlAtS1dhZ0dZeWdSYnFFQi1QU2hCX0lzOHNEX1NjTl9OUjVqNW5TaTNkTGFoaVdMZjQ5RTB4N2VzRkNKOVFqV3AxMXZxSmFRRlZja2ZRYWVubExVX3lmQThNZjc2MWx0THBoaUJHdTQ4UEZEWUM5WnE3SUdvYm1xYk52VFlvWkJfWXYwTE1DWVhkNFBqQkxPcEVzdUZuX2ZHSU5BS0V4QV9oN1BWVGg3SEx1T0M0d0JWUWZXUFRVR2VYSXktZDVVakV4a0VXZw?oc=5",
+      "publisher": "Clifford Chance",
+      "publisherUrl": "https://www.cliffordchance.com",
+      "published": "2026-11-10T23:59:44.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "63fda3e0f400",
+      "title": "Data privacy at the point of failure: key issues in an insolvency context (via Passle)",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObXJHQmlTM1hEMXMxMGxLUWxkal81a2VFak5rZG9TTnpHNFR5S3Rua3R5S2hqRjJzNzQxdHBNZTFldjZKUldxRmt0VU5KSUVoMGJpWXZWZGJhXzhiSC1mSnl0Y2hVTHEzWWJlTTNEMGFyMnctNzM0YWxxVDhHMkFOemgwYVhPYzFvTF9BbGM0MnRpLWlXQ3g0Q3hHekdpVmg5MWZnSGZIcHFVMGU4TUJCRzhLRWN6a0ZIYVZDb2Vn?oc=5",
+      "publisher": "Slaughter and May",
+      "publisherUrl": "https://thelens.slaughterandmay.com",
+      "published": "2026-11-10T17:27:16.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "471cf0dcdc6b",
+      "title": "Personal Data Breach Notification",
+      "url": "https://news.google.com/rss/articles/CBMioAVBVV95cUxObDhqbTlzT3B0c3RSd055cWNwTFFTRzJoMWVoMmgtZ20tamJhWXdEMFYyY1BSeGdmR3R0ZDFQVWcyWGFYR3NFUlktd0dfVjhUVy11MkNOd194R21TZVVmcXNjZ0FSN2tPT0lJNVlZX2FDblM2aVRndGhKSUZxWFVhbkVmRHRhNzgzSERldzZRZDY4R0JfX3dfdUQ2UkZ6NC13T05KLXN3YkpTSnBQcUstcGUxaVBEdmtJYzBRaGtLdzFyUXNLbXhON3VRMHBRdXItampaM1V3MGx1M1VCdGJsejRHVm9pdzBIakVDMnhXb193aHMtRFBEZGRiTGtIUzlsVVMtUU5lQm54VVc3ZFhMM1laQnVpTlQ1cHRNTFRoNHI5SThQcXFVUG5tYk4tQi1rU2xEeVV1LWg1MU1jRm8yd1hfVU1oTURRYmVOclROWEVqaXRxUkxhb0pNLWZjWFRJZjBrNWw2c3B6TWRtQl9KMzRkdVBac3ZERk95c1BLSGR6N2IwSUJTazRlMVRmNF93WVoxbFRJdG52ejBOM2ItVUZuZE5NOWQ4QmRyRVhhRGhyNDNES19xUFEwU004NmFTWTlPSEpCUzFpczZjdXhrYUdJUldHajBjb3N3R1NFSHMzMHpnQlI5eWdYSmVuZUdZdVM3a3NXREhGOVBoZWo2RS16TEVoYlBydHBYdmdGZ0RYLXlYMVlpTnFIYzQ5eHhZQjdwSXktbmNxYWxmbXlLRDEzVGJ0YnM1bmlyM0JmTHBBRUlMNWtVVEJKZGlxemdVLTFIbWZTdE5KNF9XSWlVOThFR2lvcFk0NDNwM3o5SVJHYmg3cHhuRkV3VGJwZnBtYl9TcFFwVEd4ajlMVHRkbFE4VGhCUlJkcThDUlc0dkw?oc=5",
+      "publisher": "منصة حوكمة البيانات الوطنية",
+      "publisherUrl": "https://dgp.sdaia.gov.sa",
+      "published": "2026-11-10T11:20:36.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "official",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "c075672f16da",
+      "title": "Submit a personal data complaint",
+      "url": "https://news.google.com/rss/articles/CBMi3ANBVV95cUxPTFd5Ulk0dWl2UHNwSGREaGl4eC1fNHhocEhENENMMjlmZW9UM2tzTER3SkIwcTdNUXhlaU43ZTcwSUc1U0cwX3JLWFhjdldjMHNlNmhydWdmYVMwNzdsTHdjbTlPYzU4czYtNU1OX284TFJIdDl5Vzh5OEhPdlc3TlAzTk9JUUY0anVwcHMxaS0xb3EwbUpLdWEtNnlEMGR2TVdfdGhQTVFmMnRCb0dmVWJfUE9YQzZGelNGcE9nTjdZazJBeTlPeDZDRXFOaDF5SGc2NEFjSnkzRF9nQlVYRDhOeXNFd2ZrQmlkZHI1cm9rRW5ILUszTjVYWHRTVXdqY3lPRWd1RVgwUl9jaFNMMjhackxrSXNPeGdHV2RoQ0ljay1WUlpESEVpNVl0M2pNTzhKcDhsT2RxZFhEM3dJNmx2OHVzUnlvTG4tdjl6cHNhalFnUmFIdFRjRG1EUVFham1vQVQ3bWlreEhfQ1lOWnJfRkk5YThPbHFiekg5LXFHOEI1T1REOE5FdURMVjhDaGFRNUJJVWd6ZHloWU1TZFdiMHFrejliYmNpNWxvUWtoX0ZJaGpSY2pBTm9iQnFnM2FGWHJ2VmVPTWZXRXZuTV9qS3c5QUxQWW1ZNw?oc=5",
+      "publisher": "منصة حوكمة البيانات الوطنية",
+      "publisherUrl": "https://dgp.sdaia.gov.sa",
+      "published": "2026-11-10T11:20:19.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "official",
+      "firstSeen": "2026-11-07T10:25:33.683Z"
+    },
+    {
+      "id": "7531d5887234",
+      "title": "The EU Commission's Meta Decision on \"Consent or Pay\" Foregoes Competition for Data Privacy Law",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPb0tjQUJJNlc4aUtLVVVuLVc4R1RMZklLY0daZDRwazE1QW1HX3JPQkVIc3ZXOU1qNFZPWFpEUUFxUE1JUkF2X3lYdHpXZHFvT2NkU1FqNXE1b0kySW5aamR0NHhfbWktMzZEc3UxZFlIR3prajBmczhFYWUxNU1iWVczcVV6b0tFQWxSSXVNWWpMT01vZ0tsa1QxaWpyT0p4RFU4VE9lR2VsN1NUd3FkV0FXaUd4X19ZVGpsbk1tc0RLbjZwamFhOGtR?oc=5",
+      "publisher": "ProMarket",
+      "publisherUrl": "https://www.promarket.org",
+      "published": "2026-11-10T11:00:00.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "59bb26233a90",
+      "title": "Data Protection, AI and Professional Service Firms: 2026 Privacy Developments",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOYjF0ZTNxY1hQTWE1aEItWWhFcjNpNzE1eEFzMHY1Rk5Sd3YxQmE0WXJ0UlkxTUtwT1YyTmJkUDc0OFJFRGRFR1VlNzhXdmhJUEZmcy1xU0t1ZWV4VGZMRU5PdXlBY0Qxak9jU1QtZkx5WV9UM2x5YjdHTHdxOXVhamFUazFGUFFGdVZaODNYVFZYNWdzTW55al83Vk4ybnMyQm9kc1ZGUjhYakE2dG1HY0ZrX1lYQjNMOUxpajNxMHlaaXNPU19ZaG5pdw?oc=5",
+      "publisher": "www.aon.com",
+      "publisherUrl": "https://www.aon.com",
+      "published": "2026-11-10T02:45:11.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "56989fbc9244",
+      "title": "Quantum leap for data protection",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQNDAwYzBMQjR0NTRib1JSMGZ1OWNLbE14Z1NkZ0lhM2RMZ0UxVElHTUY5elhHSWdOUDFKTG1xR1pDdWtUa2JiN2p3SUZKN2p2ejZ1bmN0cEdSbjVKcTlhNXVWdWdfU0lkRXBhWWFFOUdVRGVyMHRoMmUwYXBBeTJfNjNzYTA5dm0zWGc?oc=5",
+      "publisher": "The Star",
+      "publisherUrl": "https://www.thestar.com.my",
+      "published": "2026-11-10T00:38:05.000Z",
+      "description": "",
+      "countries": [
+        "QA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "05ab1f0931c8",
+      "title": "Digital Rulebook: Simplification of EU data protection and cyber rules",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNa3RDYXNWemFfcXN1b0tFZ3VmVHQwNXJZTFRXc0JYY29JTWVTQ1lheW83dGU5RkpGVFAwRHA1UTNhS2hfMlZDdDk5YlFoS1h5VlRkRElrS3JvcXFrM3dpOFdEMlZPVWdyUzgxUThmaHZ4aFZieUMyd3F3VHVnYkY0THdzcERlZ0FGSzV6OUlNWDdianhEOHR1eDYxS2dobW9ZX1EtT2Zmenk2NWlDcTVJVWtCZzF0cmtzZXdzNk01NEJVejg?oc=5",
+      "publisher": "Lewis Silkin",
+      "publisherUrl": "https://www.lewissilkin.com",
+      "published": "2026-11-10T00:28:41.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "131eb6409bb5",
+      "title": "Google Ireland challenges €403m fine by Data Protection Commission",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQa0lFUWZhSVAzTmd5bmtBM0lpNjIzbDFxcTdVRFFyeVMxXzhJMjNWT192VGl2bU54M0owNzRlanlkQmtTY204c0pxX2JIeXRGRTRyUHphZkU0c25Jb2gtYVRpZ3pZZ21hT2hnUHRQQVJWQkN3VzdveldDZFRfSjlhRWJsWVF2a1ZzTkJaY3dyZTFtSWdlbkptMVYzcU5yTWZRM0VpWmlIclFMNXgzQ1luMnRvSm9LLVNhNUE?oc=5",
+      "publisher": "Irish Independent",
+      "publisherUrl": "https://www.independent.ie",
+      "published": "2026-11-09T19:39:58.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "19758ea3c12a",
+      "title": "Google launches challenge to €403m data protection fine in High Court",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBqZ0VEYmEwRk1MaGpENWJVbkZnZU0wRTlZdzFJaENGNzIyOE1HeXhCZE1wV3BfTDVHbE5XY0Zmd1RXTF9UZHZUUjFQS2YtcWQ2YTZ4M2VXRFg4Z1QxQ015c3Z0eXQ3SUdaazR5QjFMUGJodjVBdkE?oc=5",
+      "publisher": "Irish Examiner",
+      "publisherUrl": "https://www.irishexaminer.com",
+      "published": "2026-11-09T16:53:00.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "6c1c19e222fc",
+      "title": "Data Protection Act: Consent Cannot Replace a Proportionality Test",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOQ0lMTEZhTHA2UjR1MkVENGFIZ3k0SUVBX3N1SFdIcTlxRUxGQ1FLWDJvUUF5emtOMXh4V0xSdHdqX2hLakl4VmVleXpWM2hrZFdfSkpReVE0ajI0Y2I2djBuaUd1NHR3WmZKS0tmeUdSbXNYdDBmcmpxeXdPZXVJMFlR?oc=5",
+      "publisher": "The India Forum",
+      "publisherUrl": "https://www.theindiaforum.in",
+      "published": "2026-11-09T06:43:48.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
+    {
+      "id": "190ad4b94591",
+      "title": "EU court confirms privacy watchdogs must respect GDPR access rights",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5GNThzbW1PaHFVSlUtTzlyckVzYmU2cndYcmZfUXVDSWNXMVNod1BxV2tuYnBVVTlkWmEtbjlrdDY4MUU1SEdyb2w3OFhidWtnakxPMTcxTmNrUmZWajNHX3BENHVuNk5LV3d0dFcyUVBjZjhOY0hBNTBB?oc=5",
+      "publisher": "Digital Watch Observatory",
+      "publisherUrl": "https://dig.watch",
+      "published": "2026-11-08T17:39:57.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-11T11:10:57.019Z"
+    },
     {
       "id": "7e9420fc980c",
       "title": "Dubai cybersecurity expert warns AI-powered fraudsters are using personal data to target victims",
@@ -30,20 +212,6 @@
       ],
       "category": "news",
       "firstSeen": "2026-11-09T11:48:30.886Z"
-    },
-    {
-      "id": "c075672f16da",
-      "title": "Submit a personal data complaint",
-      "url": "https://news.google.com/rss/articles/CBMiuwRBVV95cUxNYTFaSElNcndCVjBhcGtlS2ZfQ3plc05UanlHWXd6TzVpMWFVeGVmWWlsQnp3X19zcUxTZ3FoQjJ4S1F4T1ZvdUZsckRXU3JNTlFGSEpsQzZlaVJ2c0RwREdzN0NZTDVnd3NuMndxZFo1amxVTFZJR1NmeG9MNE94eE02cGhPdkVhNjA5R0tUMFhDRDhsWEt2X0JUSHlTR1ltYnpQbkI0RVJubXJlMDF0REpYRTJWYnB2eFp2NHZxbWFQbXJwNENBb2trN2lQV2U3TVM2QlpSVzJ4elpWanFuVTZXVlB3d2RGeE5GTnZoenFWSC05WkhuQVl2dnI4MXZDNnNkMG1KRkFIcjdFNDNBWC1hSVBvTmJzRnY5ekhlc2FHcVFiNzRDNmc5OUNYbVRGdnRFOVN6NTFDa0VTNGw3NkItR0dpU2ZwUWNlTll1NjhkWXZVcHRzSDhKM091MDI5a0ZveVdaemxONVYyNE1GLXFfUm5LdmhHRENLdi1nNDFFZk55YnRhcUVjQV9wUzdJd3pMRVpXZjRNbEl0cHYzRFpKbThSamRRdmY3SmpPT2JyNmRSbGNzOUFhTGxHNXk4NWRNWVlrYVhoLU1wUXV3VDNzVW1xdU5YYnJxMkdSbHI4NVYyZkpSTEU4LTM3VDVmTlNHQ3dtUURSYVNVc0xGMzlTX3Jwb0JaZC1tUTBKczBDNDlTMkRwRFQ5bUl2WFQ0U3ZfQ1hVYkhhMmN2akQ0UXd3clBHQ3Fob2pJ?oc=5",
-      "publisher": "منصة حوكمة البيانات الوطنية",
-      "publisherUrl": "https://dgp.sdaia.gov.sa",
-      "published": "2026-11-06T09:51:09.000Z",
-      "description": "",
-      "countries": [
-        "GCC"
-      ],
-      "category": "official",
-      "firstSeen": "2026-11-07T10:25:33.683Z"
     },
     {
       "id": "646cc32792ec",
