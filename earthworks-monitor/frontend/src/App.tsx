@@ -5,6 +5,7 @@ import { api } from "./api";
 import LoginPage from "./pages/LoginPage";
 import ProjectPage from "./pages/ProjectPage";
 import ProjectsPage from "./pages/ProjectsPage";
+import SitePage from "./pages/SitePage";
 import UsersPage from "./pages/UsersPage";
 import { SessionContext } from "./session";
 import type { AppConfig, User } from "./types";
@@ -68,6 +69,7 @@ export default function App() {
         <Routes>
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:projectId" element={<ProjectPage />} />
+          <Route path="/sites/:siteId" element={<SitePage />} />
           {isAnalyst && <Route path="/users" element={<UsersPage />} />}
           <Route path="*" element={<Navigate to="/projects" replace />} />
         </Routes>

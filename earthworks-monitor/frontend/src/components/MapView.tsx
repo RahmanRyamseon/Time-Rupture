@@ -1,11 +1,20 @@
 import type { Feature, FeatureCollection, Polygon, Position } from "geojson";
 import maplibregl, { GeoJSONSource, LngLatBoundsLike, Map as MlMap, StyleSpecification } from "maplibre-gl";
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { DRAFT_COLOR, SITE_COLOR, ZONE_COLORS } from "../mapColors";
 import type { AppConfig, Outline, Site } from "../types";
 
 export type BBox = [number, number, number, number];
+
+export interface RasterLayer {
+  /** Changes whenever the tiles change, so the layer is rebuilt. */
+  key: string;
+  url: string;
+  bounds: BBox;
+  maxzoom: number;
+  opacity: number;
+}
 
 interface Props {
   config: AppConfig;
@@ -14,9 +23,14 @@ interface Props {
   preview: Outline[];
   /** The map fits these bounds whenever the object identity changes. */
   focus: BBox | null;
-  drawing: boolean;
-  onDrawn: (polygon: Polygon) => void;
+  drawing?: boolean;
+  onDrawn?: (polygon: Polygon) => void;
+  /** Raster overlays, bottom first; drawn beneath the outlines. */
+  rasters?: RasterLayer[];
+  legendExtra?: ReactNode;
 }
+
+const NO_RASTERS: RasterLayer[] = [];
 
 const EMPTY: FeatureCollection = { type: "FeatureCollection", features: [] };
 
@@ -71,7 +85,16 @@ function setData(map: MlMap, source: string, features: Feature[]) {
   (map.getSource(source) as GeoJSONSource | undefined)?.setData({ type: "FeatureCollection", features });
 }
 
-export default function MapView({ config, sites, preview, focus, drawing, onDrawn }: Props) {
+export default function MapView({
+  config,
+  sites,
+  preview,
+  focus,
+  drawing = false,
+  onDrawn,
+  rasters = NO_RASTERS,
+  legendExtra,
+}: Props) {
   const { t } = useTranslation();
   const container = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MlMap | null>(null);
@@ -147,6 +170,35 @@ export default function MapView({ config, sites, preview, focus, drawing, onDraw
     map.fitBounds(bounds, { padding: 60, maxZoom: 17, duration: 400 });
   }, [ready, focus]);
 
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!ready || !map) return;
+    const wanted = new Map(rasters.map((r) => [`raster-${r.key}`, r]));
+    for (const layer of map.getStyle().layers) {
+      if (layer.id.startsWith("raster-") && !wanted.has(layer.id)) {
+        map.removeLayer(layer.id);
+        map.removeSource(layer.id);
+      }
+    }
+    for (const [id, raster] of wanted) {
+      if (!map.getSource(id)) {
+        map.addSource(id, {
+          type: "raster",
+          tiles: [raster.url],
+          tileSize: 256,
+          bounds: raster.bounds,
+          maxzoom: raster.maxzoom,
+        });
+        map.addLayer({ id, type: "raster", source: id, paint: { "raster-fade-duration": 0 } });
+      }
+      map.setPaintProperty(id, "raster-opacity", raster.opacity);
+      map.moveLayer(id, "sites-fill"); // keeps the given order, below the outlines
+    }
+    // Zone tints would distort the cut/fill colours, so only outlines stay on top.
+    map.setPaintProperty("zones-fill", "fill-opacity", rasters.length ? 0 : 0.25);
+    map.setPaintProperty("sites-fill", "fill-opacity", rasters.length ? 0 : 0.05);
+  }, [ready, rasters]);
+
   // --- polygon drawing ---
   useEffect(() => {
     const map = mapRef.current;
@@ -188,7 +240,7 @@ export default function MapView({ config, sites, preview, focus, drawing, onDraw
   function finish(current: Position[]) {
     if (current.length < 3) return;
     setPoints([]);
-    onDrawnRef.current({ type: "Polygon", coordinates: [[...current, current[0]]] });
+    onDrawnRef.current?.({ type: "Polygon", coordinates: [[...current, current[0]]] });
   }
 
   return (
@@ -215,6 +267,7 @@ export default function MapView({ config, sites, preview, focus, drawing, onDraw
             {t(`legend.${type}`)}
           </li>
         ))}
+        {legendExtra}
       </ul>
     </div>
   );

@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime
+from datetime import date, datetime
 from typing import Any, Literal
 
 from geoalchemy2.shape import to_shape
@@ -189,3 +189,86 @@ class ConfigOut(BaseModel):
     basemap_tile_url: str
     basemap_attribution: str
     max_upload_mb: int
+    max_dem_upload_mb: int
+
+
+# --- surfaces, analyses, jobs ---
+
+SurfaceKind = Literal["survey", "design"]
+VerticalDatum = Literal["ellipsoidal_wgs84", "egm2008", "egm96", "local"]
+
+
+class SurfaceOut(BaseModel):
+    id: uuid.UUID
+    site_id: uuid.UUID
+    kind: SurfaceKind
+    name: str
+    survey_date: date | None
+    source_type: str
+    vertical_datum: str
+    stated_accuracy_m: float | None
+    status: str
+    released: bool
+    is_reference: bool
+    original_filename: str
+    resolution_m: float | None
+    bounds_wgs84: list[float] | None
+    stats: dict[str, Any] | None
+    vertical_offset_m: float
+    alignment: dict[str, Any] | None
+    provenance: dict[str, Any]
+    error: str | None
+    created_at: datetime
+
+    @classmethod
+    def from_model(cls, surface: Any) -> "SurfaceOut":
+        data = {name: getattr(surface, name) for name in cls.model_fields if name != "is_reference"}
+        return cls(**data, is_reference=surface.site.reference_surface_id == surface.id)
+
+
+class SurfaceUpdate(BaseModel):
+    name: str | None = _name(default=None)
+    released: bool | None = None
+
+
+class ReferenceIn(BaseModel):
+    surface_id: uuid.UUID
+
+
+class AnalysisCreate(BaseModel):
+    from_surface_id: uuid.UUID
+    to_surface_id: uuid.UUID
+    # Absolute level-of-detection threshold in metres; omit to derive it from the data.
+    lod_m: float | None = Field(default=None, ge=0, le=1000)
+
+
+class AnalysisOut(BaseModel):
+    id: uuid.UUID
+    site_id: uuid.UUID
+    from_surface_id: uuid.UUID
+    to_surface_id: uuid.UUID
+    status: str
+    stale: bool
+    lod_override_m: float | None
+    results: dict[str, Any] | None
+    provenance: dict[str, Any]
+    error: str | None
+    computed_at: datetime | None
+
+
+class JobOut(_Orm):
+    id: uuid.UUID
+    site_id: uuid.UUID
+    kind: str
+    surface_id: uuid.UUID | None
+    analysis_id: uuid.UUID | None
+    status: str
+    attempts: int
+    error: str | None
+    created_at: datetime
+    started_at: datetime | None
+    finished_at: datetime | None
+
+
+class JobDetail(JobOut):
+    log: str

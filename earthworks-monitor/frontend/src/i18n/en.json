@@ -12,8 +12,15 @@
     "yes": "Yes",
     "no": "No"
   },
-  "nav": { "projects": "Projects", "users": "Users", "signOut": "Sign out" },
-  "role": { "analyst": "Analyst", "viewer": "Viewer" },
+  "nav": {
+    "projects": "Projects",
+    "users": "Users",
+    "signOut": "Sign out"
+  },
+  "role": {
+    "analyst": "Analyst",
+    "viewer": "Viewer"
+  },
   "login": {
     "title": "Sign in",
     "email": "Email",
@@ -45,9 +52,15 @@
     "accessHelp": "Viewers see only the projects ticked for them. Analysts see all projects.",
     "noViewers": "There are no viewer accounts yet.",
     "confirmDeleteSite": "Delete site “{{name}}” and its zones?",
-    "confirmDeleteZone": "Delete zone “{{name}}”?"
+    "confirmDeleteZone": "Delete zone “{{name}}”?",
+    "dashboard": "Open dashboard"
   },
-  "zoneType": { "label": "Zone type", "cut": "Cut", "fill": "Fill", "mixed": "Cut and fill" },
+  "zoneType": {
+    "label": "Zone type",
+    "cut": "Cut",
+    "fill": "Fill",
+    "mixed": "Cut and fill"
+  },
   "geometry": {
     "newSite": "New site",
     "newZone": "New zone in {{site}}",
@@ -73,7 +86,107 @@
     "deactivate": "Deactivate",
     "activate": "Activate"
   },
-  "legend": { "site": "Site boundary", "cut": "Cut zone", "fill": "Fill zone", "mixed": "Cut and fill zone" },
-  "units": { "ha": "ha", "m2": "m²", "km2": "km²" },
-  "error": { "generic": "Something went wrong. Please try again.", "network": "Cannot reach the server." }
+  "legend": {
+    "site": "Site boundary",
+    "cut": "Cut zone",
+    "fill": "Fill zone",
+    "mixed": "Cut and fill zone",
+    "cutFill": "Height change (m)",
+    "cutLabel": "Cut",
+    "fillLabel": "Fill"
+  },
+  "units": {
+    "ha": "ha",
+    "m2": "m²",
+    "km2": "km²"
+  },
+  "error": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "Cannot reach the server."
+  },
+  "site": {
+    "survey": "Survey",
+    "baseline": "Baseline",
+    "design": "Design surface",
+    "noSurveys": "No surveys yet.",
+    "noSurveysAnalyst": "No surveys yet. Upload a DEM/DSM GeoTIFF to start.",
+    "compare": "Compare",
+    "mode": {
+      "baseline": "Change since baseline",
+      "previous": "Change since previous survey",
+      "remaining": "Remaining to design",
+      "planned": "Planned (design vs baseline)",
+      "custom": "Any two surfaces"
+    },
+    "from": "From",
+    "to": "To",
+    "isBaseline": "This is the baseline survey; there is nothing earlier to compare it with.",
+    "isFirst": "This is the earliest survey; there is no previous one.",
+    "needDesign": "No design surface is available for this site.",
+    "notComputed": "This comparison has not been computed yet.",
+    "compute": "Compute",
+    "recompute": "Recompute",
+    "computing": "Computing…",
+    "stale": "Zones, alignment or settings changed after this result was computed.",
+    "layers": "Layers",
+    "hillshade": "Terrain (hillshade)",
+    "cutFill": "Cut / fill",
+    "surfaces": "Surveys and design",
+    "upload": "Upload survey or design",
+    "status": {
+      "processing": "Processing…",
+      "ready": "Ready",
+      "failed": "Failed"
+    },
+    "released": "Released",
+    "notReleased": "Not released",
+    "release": "Release to viewers",
+    "unrelease": "Withdraw",
+    "setBaseline": "Set as baseline",
+    "retry": "Retry",
+    "confirmDelete": "Delete “{{name}}” and every result that uses it?",
+    "confirmBaseline": "Make “{{name}}” the baseline? All surveys are re-aligned and all results recomputed.",
+    "shift": "Shifted {{offset}} m to match the baseline",
+    "noAlignment": "Not aligned (no stable ground); stated accuracy is used",
+    "resolution": "{{value}} m pixels",
+    "coverage": "Covers {{percent}}% of the site"
+  },
+  "volumes": {
+    "zone": "Zone",
+    "cut": "Cut (m³)",
+    "fill": "Fill (m³)",
+    "net": "Net (m³)",
+    "progress": "Progress",
+    "siteTotal": "Whole site",
+    "confidence": "± ranges are {{percent}}% confidence intervals.",
+    "lod": "Height changes smaller than {{lod}} m are not counted (level of detection).",
+    "sigma": "Height error used: {{pixel}} m per pixel, {{systematic}} m systematic — {{source}}.",
+    "source": {
+      "stable_ground": "measured on stable ground outside the zones",
+      "stated_accuracy": "from the surveys' stated accuracy",
+      "alignment_residual": "from the survey's alignment to the baseline"
+    },
+    "coverageWarning": "Elevation data covers only {{percent}}% of “{{name}}”; its volumes are incomplete.",
+    "net_help": "Net = fill − cut"
+  },
+  "upload": {
+    "file": "GeoTIFF elevation model (DEM/DSM)",
+    "kind": "Type",
+    "kindSurvey": "Survey epoch",
+    "kindDesign": "Design surface",
+    "date": "Survey date",
+    "datum": "Heights are measured from",
+    "datums": {
+      "ellipsoidal_wgs84": "WGS84 ellipsoid",
+      "egm2008": "EGM2008 geoid (mean sea level)",
+      "egm96": "EGM96 geoid (mean sea level)",
+      "local": "Local / project datum"
+    },
+    "datumHelp": "All surfaces of a site must use the same height reference.",
+    "accuracy": "Stated vertical accuracy (RMSE, m)",
+    "accuracyHelp": "From the supplier's report. Typical: drone 0.05–0.10, sub-metre satellite 0.3–0.5.",
+    "submit": "Upload",
+    "uploading": "Uploading…",
+    "limit": "Up to {{mb}} MB. The file must have its CRS embedded."
+  }
 }

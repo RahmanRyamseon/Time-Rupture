@@ -21,6 +21,9 @@ dependencies = [
   "python-multipart>=0.0.9",
   "redis>=5.0",
   "rq>=1.16,<3",
+  "numpy>=1.26",
+  "rasterio>=1.4",
+  "rio-tiler>=7",
 ]
 
 [project.optional-dependencies]
@@ -35,3 +38,4 @@ include = ["app*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning:rasterio.*", "ignore::PendingDeprecationWarning", "ignore::DeprecationWarning:affine.*", "ignore::DeprecationWarning:starlette.*", "ignore::DeprecationWarning:fastapi.*"]

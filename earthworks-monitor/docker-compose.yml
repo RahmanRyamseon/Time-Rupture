@@ -1,4 +1,4 @@
-# Phase 1 services. The tiler (Phase 2) and the ASP worker image (Phase 3) are added later.
+# The worker image with NASA Ames Stereo Pipeline is added in Phase 3.
 services:
   db:
     image: postgis/postgis:16-3.4
@@ -38,6 +38,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 12
+      start_period: 120s  # first start generates the demo surveys
     restart: unless-stopped
 
   worker:
@@ -51,10 +52,23 @@ services:
     command: ["python", "-m", "app.worker"]
     restart: unless-stopped
 
+  # Map tiles (hillshade, cut/fill) rendered from COGs with rio-tiler, behind the same
+  # authentication as the API.
+  tiler:
+    build: ./backend
+    env_file: .env
+    depends_on:
+      db: { condition: service_healthy }
+    volumes:
+      - appdata:/data:ro
+    command: ["uvicorn", "app.tiler:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+    restart: unless-stopped
+
   frontend:
     build: ./frontend
     depends_on:
       api: { condition: service_healthy }
+      tiler: { condition: service_started }
     ports:
       - "${WEB_PORT:-8080}:80"
     restart: unless-stopped

@@ -101,3 +101,30 @@ th, td { text-align: start; padding: 0.5rem 0.6rem; border-block-end: 1px solid 
   .panel { inline-size: 100%; max-inline-size: none; max-block-size: 50%; border-inline-end: 0; border-block-start: 1px solid var(--line); }
   .who { display: none; }
 }
+
+/* --- site dashboard --- */
+.panel.wide { inline-size: 30rem; }
+.button.primary-link { background: var(--accent); border-color: var(--accent); color: #fff; }
+.warn { color: #8a5300; background: #fff4de; border-radius: 6px; padding: 0.35rem 0.6rem; }
+small.warn { margin-block: 0.25rem; }
+.badge { font-size: 0.72rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.05rem 0.5rem; color: var(--muted); white-space: nowrap; }
+.badge.ok { color: var(--ok); border-color: #b9dcc5; background: #eef8f1; }
+.badge.failed { color: var(--danger); border-color: #f1c0c6; background: #fdecee; }
+.badge.processing { color: #8a5300; border-color: #f0d9a8; background: #fff4de; }
+.surface { padding: 0.65rem 0.8rem; margin-block: 0.45rem; }
+.surface .actions { margin-block-start: 0.3rem; }
+input[type="range"] { padding: 0; accent-color: var(--accent); }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.pair-line { font-size: 0.85rem; }
+.table-scroll { overflow-x: auto; margin-block: 0.5rem; }
+table.volumes { font-size: 0.85rem; }
+table.volumes th, table.volumes td { padding: 0.35rem 0.45rem; white-space: nowrap; }
+table.volumes td { text-align: end; font-variant-numeric: tabular-nums; }
+table.volumes thead th:not(:first-child) { text-align: end; }
+table.volumes tbody th { font-weight: 500; white-space: normal; }
+table.volumes tr.total th, table.volumes tr.total td { font-weight: 700; border-block-start: 2px solid var(--line); }
+small.notes { line-height: 1.45; margin-block: 0.5rem; }
+.legend .ramp { display: block; margin-block-start: 0.45rem; padding-block-start: 0.4rem; border-block-start: 1px solid var(--line); }
+.ramp-bar { block-size: 0.6rem; inline-size: 11rem; margin-block: 0.25rem; border-radius: 2px; background: linear-gradient(to right, #2166ac, #c9dbeb 49%, #f7f7f7 50%, #ecc7cb 51%, #b2182b); }
+.ramp-labels { display: flex; justify-content: space-between; inline-size: 11rem; direction: ltr; }
+@media (max-width: 720px) { .panel.wide { inline-size: 100%; } }

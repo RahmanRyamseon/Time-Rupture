@@ -251,6 +251,11 @@ export default function ProjectPage() {
                 <p className="muted">
                   {t("project.area")}: {formatArea(site.area_m2)}
                 </p>
+                <p>
+                  <Link to={`/sites/${site.id}`} className="button primary-link">
+                    {t("project.dashboard")}
+                  </Link>
+                </p>
                 {site.zones.length === 0 ? (
                   <p className="muted">{t("project.noZones")}</p>
                 ) : (

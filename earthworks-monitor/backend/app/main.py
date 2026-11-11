@@ -3,7 +3,7 @@ from sqlalchemy import text
 
 from app.config import get_settings
 from app.deps import DbSession
-from app.routers import auth, projects, sites, users
+from app.routers import auth, projects, sites, surfaces, users
 from app.schemas import ConfigOut
 
 
@@ -26,9 +26,10 @@ def create_app() -> FastAPI:
             basemap_tile_url=s.basemap_tile_url,
             basemap_attribution=s.basemap_attribution,
             max_upload_mb=s.max_upload_mb,
+            max_dem_upload_mb=s.max_dem_upload_mb,
         )
 
-    for module in (auth, users, projects, sites):
+    for module in (auth, users, projects, sites, surfaces):
         api.include_router(module.router)
     app.include_router(api)
     return app

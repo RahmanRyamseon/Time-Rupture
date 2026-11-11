@@ -8,6 +8,8 @@ os.environ["REDIS_URL"] = os.environ.get("TEST_REDIS_URL", "redis://localhost:56
 os.environ["SECRET_KEY"] = "test-secret-key-that-is-long-enough-0123456789"
 os.environ["COOKIE_SECURE"] = "false"
 os.environ["LOGIN_MAX_ATTEMPTS"] = "3"
+os.environ["JOBS_EAGER"] = "true"
+os.environ["DATA_DIR"] = __import__("tempfile").mkdtemp(prefix="em-test-data-")
 
 import pytest
 import redis

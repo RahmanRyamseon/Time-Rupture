@@ -6,7 +6,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.models import ROLE_ANALYST, Project, Site, User, Zone, project_members
+from app.models import ROLE_ANALYST, Analysis, Project, Site, Surface, User, Zone, project_members
 from app.security import decode_access_token
 
 SESSION_COOKIE = "em_session"
@@ -74,6 +74,41 @@ def get_zone(zone_id: uuid.UUID, user: CurrentUser, db: DbSession) -> Zone:
     return zone
 
 
+def get_surface(surface_id: uuid.UUID, user: CurrentUser, db: DbSession) -> Surface:
+    """Viewers can only reach surfaces that are ready and released."""
+    surface = db.get(Surface, surface_id)
+    if surface is None:
+        raise _not_found("Surface")
+    get_site(surface.site_id, user, db)
+    if user.role != ROLE_ANALYST and not surface_visible_to_viewer(surface):
+        raise _not_found("Surface")
+    return surface
+
+
+def surface_visible_to_viewer(surface: Surface) -> bool:
+    return surface.released and surface.status == "ready"
+
+
+def analysis_visible_to_viewer(analysis: Analysis) -> bool:
+    return (
+        analysis.status == "ready"
+        and surface_visible_to_viewer(analysis.from_surface)
+        and surface_visible_to_viewer(analysis.to_surface)
+    )
+
+
+def get_analysis(analysis_id: uuid.UUID, user: CurrentUser, db: DbSession) -> Analysis:
+    analysis = db.get(Analysis, analysis_id)
+    if analysis is None:
+        raise _not_found("Analysis")
+    get_site(analysis.site_id, user, db)
+    if user.role != ROLE_ANALYST and not analysis_visible_to_viewer(analysis):
+        raise _not_found("Analysis")
+    return analysis
+
+
 ProjectDep = Annotated[Project, Depends(get_project)]
 SiteDep = Annotated[Site, Depends(get_site)]
 ZoneDep = Annotated[Zone, Depends(get_zone)]
+SurfaceDep = Annotated[Surface, Depends(get_surface)]
+AnalysisDep = Annotated[Analysis, Depends(get_analysis)]
