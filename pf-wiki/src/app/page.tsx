@@ -25,6 +25,10 @@ export default function Home() {
     (p): p is NonNullable<typeof p> => !!p,
   );
 
+  const recentlyUpdated = [...PROBLEMS]
+    .sort((a, b) => b.lastVerified.localeCompare(a.lastVerified))
+    .slice(0, 6);
+
   return (
     <div className="flex flex-col gap-12">
       <section className="flex flex-col items-start gap-4">
@@ -57,6 +61,29 @@ export default function Home() {
               </span>
               <h3 className="font-semibold">{c.name}</h3>
               <p className="text-sm text-foreground/60">{c.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="recent-heading">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 id="recent-heading" className="text-lg font-semibold">Recently added or updated</h2>
+          <Link href="/feed.xml" className="text-sm font-medium text-brand-strong hover:underline">
+            RSS feed →
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {recentlyUpdated.map((entry) => (
+            <Link
+              key={entry.slug}
+              href={`/problem/${entry.slug}`}
+              className="card-surface flex flex-col gap-1 rounded-2xl p-4 transition-shadow hover:shadow-md"
+            >
+              <span className="text-xs font-medium text-foreground/45">
+                Updated <time dateTime={entry.lastVerified}>{entry.lastVerified}</time>
+              </span>
+              <h3 className="text-sm font-semibold leading-snug">{entry.title}</h3>
             </Link>
           ))}
         </div>
