@@ -264,6 +264,7 @@ export const PROBLEMS: ProblemEntry[] = [
     ],
     officialEscalation: [
       "File a grievance on epfigms.gov.in if your former employer won't update the Date of Exit despite repeated requests.",
+      "For the full picture of what changed in 2026 and why, see [the EPF/EPS/EDLI Scheme 2026 overhaul explained](/problem/epf-eps-edli-scheme-2026-overhaul/).",
     ],
     relatedForms: ["Form 19"],
     sources: [
@@ -308,6 +309,7 @@ export const PROBLEMS: ProblemEntry[] = [
     ],
     officialEscalation: [
       "File a grievance on epfigms.gov.in with the claim ID if a category-eligible claim is rejected without a clear stated reason.",
+      "For the full picture of what changed in 2026 and why, see [the EPF/EPS/EDLI Scheme 2026 overhaul explained](/problem/epf-eps-edli-scheme-2026-overhaul/).",
     ],
     relatedForms: ["Form 31"],
     sources: [
@@ -773,6 +775,7 @@ export const PROBLEMS: ProblemEntry[] = [
     ],
     officialEscalation: [
       "File a grievance at epfigms.gov.in with your claim ID if Form 10C is rejected despite qualifying service length and unemployment duration.",
+      "For the full picture of what changed in 2026 and why, see [the EPF/EPS/EDLI Scheme 2026 overhaul explained](/problem/epf-eps-edli-scheme-2026-overhaul/), and for the 10-years-plus case, [the Scheme Certificate entry](/problem/eps-scheme-certificate-under-10-years/).",
     ],
     relatedForms: ["Form 10C", "Form 10D", "Form 19"],
     sources: [
@@ -1419,7 +1422,8 @@ export const PROBLEMS: ProblemEntry[] = [
       "If service is under 10 years, Form 10C can return the EPS corpus as a lump sum.",
       "If service is 10 years or more, expect a Scheme Certificate instead of cash — this is correct EPFO behavior, not an error, and it preserves your service history toward an eventual monthly pension.",
       "If you deliberately want to withdraw EPS before hitting 10 years (e.g. permanently leaving the workforce), understand that doing so resets your pensionable service to zero if you rejoin employment later.",
-      "Factor in timing too: under EPS 2026 (effective 29 June 2026), even when you're under the 10-year threshold and eligible for a Form 10C cash withdrawal, the withdrawal benefit generally can't be claimed until 36 months after your last contribution's due date (or superannuation age, if earlier) — see the dedicated Form 10C entry for details. A Scheme Certificate has no such wait, since it simply preserves your service rather than paying out.",
+      "Factor in timing too: under EPS 2026 (effective 29 June 2026), even when you're under the 10-year threshold and eligible for a Form 10C cash withdrawal, the withdrawal benefit generally can't be claimed until 36 months after your last contribution's due date (or superannuation age, if earlier) — see [withdrawing EPS with Form 10C](/problem/form-10c-eps-withdrawal/) for details. A Scheme Certificate has no such wait, since it simply preserves your service rather than paying out.",
+      "For the full picture of what changed and why, see [the EPF/EPS/EDLI Scheme 2026 overhaul explained](/problem/epf-eps-edli-scheme-2026-overhaul/).",
     ],
     communitySolutions: [
       "A r/epfoindia reply to someone confused about this draws the line clearly: \"Early withdrawal of EPS is only allowed if your service is less than 10 years. So with 18+ years of service, you'll need to wait for pension...\"",
@@ -1779,7 +1783,7 @@ export const PROBLEMS: ProblemEntry[] = [
     ],
     fixSteps: [
       "If you're an existing member or pensioner: do nothing specific — your membership, service record, and any already-sanctioned pension continue under the new schemes automatically.",
-      "If you're planning a withdrawal (full, partial, or EPS-related), check the specific updated rule rather than assuming the old limits/waiting periods still apply — see the dedicated entries on PF advances, Form 19 withdrawal after resignation, and Form 10C/EPS withdrawal, all updated for the 2026 schemes.",
+      "If you're planning a withdrawal, check the specific updated rule rather than assuming the old limits/waiting periods still apply — see [partial withdrawal via Form 31](/problem/partial-withdrawal-advance/), [full withdrawal after resignation via Form 19](/problem/withdrawal-after-resignation/), and [EPS withdrawal via Form 10C](/problem/form-10c-eps-withdrawal/), all updated for the 2026 schemes.",
       "If you're an employer or payroll admin, review digital compliance obligations under the new schemes — electronic returns, record-keeping, and reporting requirements were formalized and tightened, even where the underlying contribution rules didn't change.",
       "Don't assume every number you see on social media/forums reflects the final notified rule — cross-check specific figures (contribution rates, waiting periods) against the actual scheme text or a professional compliance source, since some reporting during the transition described proposals rather than the final notified version.",
     ],
