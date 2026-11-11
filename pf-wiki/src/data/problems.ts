@@ -1801,6 +1801,83 @@ export const PROBLEMS: ProblemEntry[] = [
     lastVerified: "2026-11-10",
     tags: ["EPF Scheme 2026", "EPS Scheme 2026", "EDLI Scheme 2026", "Code on Social Security", "29 June 2026", "G.S.R."],
   },
+  {
+    slug: "service-overlap-employment-dates-rejected",
+    category: "transfer",
+    title: "Claim or transfer rejected over 'overlapping' employment dates",
+    short:
+      "If your date of joining at a new employer is recorded as being before your date of exit from the old one — even by a single day — EPFO's system treats this as an impossible 'service overlap' and blocks the claim or transfer until one of the two dates is corrected.",
+    symptoms: [
+      "A PF withdrawal, transfer, or final-settlement claim gets rejected citing 'overlapping employment' or 'overlapping service periods'",
+      "The portal shows two employments with dates that genuinely overlap by anywhere from one day to several weeks",
+      "Service history on the member portal looks fine at a glance, but a claim still fails this specific check",
+    ],
+    likelyCauses: [
+      "Many people genuinely do join a new employer a few days before their last working day at the old one (e.g. overlapping notice periods) — EPFO's system has no concept of 'transitioning between two jobs' and treats any date overlap as a data error",
+      "An employer sometimes records an incorrect Date of Exit (too late) or Date of Joining (too early), creating an overlap that doesn't reflect what actually happened",
+      "EPFO's automated checks reject the claim/transfer outright rather than flagging the overlap for manual review, so the first sign of the problem is often just a rejection with no further detail",
+    ],
+    fixSteps: [
+      "Check both dates precisely on the member portal — Date of Exit at the old employer and Date of Joining at the new one — and identify exactly which one is wrong (or whether both employments genuinely overlapped in reality, which still has to be corrected on paper even if that's what happened).",
+      "Request a correction from whichever employer's date is inaccurate — this usually needs to go through that employer's HR/payroll to update the EPFO record, not something you can self-correct as a member.",
+      "If the overlap reflects what genuinely happened (you started the new job before your official last day at the old one), you'll still need one of the two dates adjusted on paper to remove the overlap, even if it means your official EPFO record doesn't perfectly match your actual calendar.",
+      "Once corrected, re-check your service history on the portal before resubmitting the same claim — resubmitting without the underlying date fix will just fail again the same way.",
+    ],
+    communitySolutions: [
+      "A r/epfoindia post from someone who caused this themselves is a clear real-world example: \"I made a mistake. I admit. I joined my second organisation 15 days before leaving first organisation\" — a self-inflicted, but very fixable, version of the same problem.",
+      "A r/epfoindia AMA on EPF/EPS/PF transfers flags incorrect service history — including overlapping employment periods — as \"one of the most common causes\" of transfer and claim failures, confirming this isn't a rare edge case.",
+      "A r/epfoindia thread on a withdrawal rejected for overlapping accounts traces the actual mechanism precisely: \"The EPFO system still has an incorrect Date of Exit (DoE) for your old PF account that overlaps with the Date of Joining (DOJ) for your new\" one — the fix is correcting whichever date is actually wrong, not the claim itself.",
+    ],
+    officialEscalation: [
+      "Date corrections go through the relevant employer's HR/payroll via the EPFO employer portal; if an employer is unresponsive, escalate via EPFiGMS with both employers' establishment codes and the specific overlapping dates.",
+    ],
+    sources: [
+      { title: "15 day overlap in EPFO accounts (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1nyfmlf/15_day_overlap_in_epfo_accounts/" },
+      { title: "AMA: Ask Me Anything About EPF, EPS, PF Transfers (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1u9x35o/ama_ask_me_anything_about_epf_eps_pf_transfers/" },
+      { title: "PF Withdrawal Rejected Due to Overlapping Accounts (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1o5g7w5/pf_withdrawal_rejected_due_to_overlapping/" },
+      { title: "PLEASE HELP — EPFO showing overlapping employment (r/epfoindia)", url: "https://www.reddit.com/r/epfoindia/comments/1unvu0f/please_help_epfo_showing_overlapping_employment/" },
+    ],
+    lastVerified: "2026-11-11",
+    tags: ["service overlap", "date of exit", "date of joining", "transfer rejected", "claim rejected"],
+  },
+  {
+    slug: "annexure-k-transfer-certificate-download",
+    category: "transfer",
+    title: "Annexure-K: the transfer certificate you can now download yourself",
+    short:
+      "Annexure-K is the official document EPFO generates to move your PF balance, interest, and EPS service history between accounts during a transfer. Until a September 2025 circular, it was only ever exchanged between PF offices — members can now download it directly from the Member Portal.",
+    symptoms: [
+      "Need proof of what was actually transferred between two PF accounts, or confirmation that service history moved correctly",
+      "A transfer-related query (to EPFO, an employer, or a former exempted trust) is asking for a document you've never seen or heard of before",
+      "Unsure whether a transfer actually completed correctly, beyond just seeing a balance change",
+    ],
+    likelyCauses: [
+      "Annexure-K is generated automatically by the 'transferor' (source) PF office once a Form 13 transfer is processed, and forwarded to the 'transferee' (destination) office — historically, this only ever moved between offices, with members only getting a copy if they specifically requested one",
+      "A Ministry of Labour & Employment circular dated 18 September 2025 made Annexure-K directly downloadable by members themselves, specifically to improve transparency around what was actually transferred",
+      "Many members simply don't know this document exists or that they can now access it themselves, since it previously lived entirely in back-office correspondence between PF offices",
+    ],
+    fixSteps: [
+      "Log in to the EPFO Member Portal, go to Online Services → Track Claim Status, and look for the option to view/download Annexure-K for a completed transfer.",
+      "Use it to verify the specific details it contains: your PF balance with interest, complete EPS-relevant service history, dates of joining/exit, and both the past and present Member IDs involved in the transfer.",
+      "If you need this document for an exempted-trust-related query, a dispute over service history, or just a permanent record of a transfer, download and save it rather than relying only on the passbook balance looking correct.",
+      "If the portal doesn't show a download option for an older transfer, it may predate the online-access rollout — in that case, request it the traditional way through a grievance or directly with the relevant PF office.",
+    ],
+    communitySolutions: [
+      "The official Ministry of Labour & Employment circular states the change directly: \"With a view to enhance transparency and ensure greater convenience for PF members, the Transfer Certificate in Annexure K has now been made available for download in Member Portal for convenience.\"",
+      "A financial news explainer summarizes exactly what the document contains and where to find it: \"member's data, PF balance with interest, complete service history of EPS benefit computation, dates of joining and exit... Login to Member Portal → Online Services → Track Claim Status → Download Annexure K.\"",
+      "A r/epfoindia thread from before the official rollout describes members having to use browser developer-tools workarounds just to access their own Annexure-K — a good illustration of how undocumented this used to be, and why it's worth knowing the official route exists now.",
+    ],
+    officialEscalation: [
+      "Request via EPFiGMS if the Member Portal doesn't show a download option for a specific past transfer.",
+    ],
+    sources: [
+      { title: "Ministry of Labour & Employment circular on Annexure-K online availability — official PDF", url: "https://pmvbry-cdn.epfindia.gov.in/wp-content/uploads/2025/09/125.pdf" },
+      { title: "EPF balance transfer simplified: How you can download Annexure K document from EPF member portal — The Economic Times", url: "https://m.economictimes.com/wealth/save/epf-balance-transfer-simplified-how-you-can-download-annexure-k-document-from-epf-member-portal/articleshow/123998918.cms" },
+      { title: "Found a way to download annexure K (r/epfoindia, pre-official-rollout workaround)", url: "https://www.reddit.com/r/epfoindia/comments/1lecztk/found_a_way_to_download_annexure_k/" },
+    ],
+    lastVerified: "2026-11-11",
+    tags: ["annexure-k", "transfer certificate", "form 13", "service history", "member portal"],
+  },
 ];
 
 export function problemBySlug(slug: string): ProblemEntry | undefined {
