@@ -5,7 +5,7 @@
 set -eu
 VER="0.20.3"
 # sha256 of the official build; the build fails if the file ever differs.
-EXPECTED_SHA256="${SHEETJS_SHA256:-}"
+EXPECTED_SHA256="${SHEETJS_SHA256:-cc015130aa8521e7f088f88898eba949ccdcbfb38df0bd129b44b7273c3a6f41}"
 mkdir -p public/vendor
 curl -fsSL --retry 3 "https://cdn.sheetjs.com/xlsx-${VER}/package/dist/xlsx.full.min.js" -o public/vendor/xlsx.full.min.js
 ACTUAL=$(sha256sum public/vendor/xlsx.full.min.js | cut -d' ' -f1)
