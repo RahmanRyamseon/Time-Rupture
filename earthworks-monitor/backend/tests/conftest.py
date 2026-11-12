@@ -9,6 +9,8 @@ os.environ["SECRET_KEY"] = "test-secret-key-that-is-long-enough-0123456789"
 os.environ["COOKIE_SECURE"] = "false"
 os.environ["LOGIN_MAX_ATTEMPTS"] = "3"
 os.environ["JOBS_EAGER"] = "true"
+# Tests marked `asp` need Ames Stereo Pipeline; point ASP_PREFIX at its conda environment.
+os.environ.setdefault("ASP_PREFIX", "/opt/asp")
 os.environ["DATA_DIR"] = __import__("tempfile").mkdtemp(prefix="em-test-data-")
 
 import pytest
@@ -22,6 +24,9 @@ from app.cli import upsert_user
 from app.config import get_settings
 from app.db import get_engine, new_session
 from app.main import app
+
+HAS_ASP = os.path.exists(os.path.join(os.environ["ASP_PREFIX"], "bin", "pc_align"))
+requires_asp = pytest.mark.skipif(not HAS_ASP, reason="Ames Stereo Pipeline is not installed (ASP_PREFIX)")
 
 ANALYST = ("analyst@test.example", "analyst-password-1")
 VIEWER = ("viewer@test.example", "viewer-password-1")

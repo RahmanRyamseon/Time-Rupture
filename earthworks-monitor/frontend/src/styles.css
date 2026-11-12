@@ -128,3 +128,9 @@ small.notes { line-height: 1.45; margin-block: 0.5rem; }
 .ramp-bar { block-size: 0.6rem; inline-size: 11rem; margin-block: 0.25rem; border-radius: 2px; background: linear-gradient(to right, #2166ac, #c9dbeb 49%, #f7f7f7 50%, #ecc7cb 51%, #b2182b); }
 .ramp-labels { display: flex; justify-content: space-between; inline-size: 11rem; direction: ltr; }
 @media (max-width: 720px) { .panel.wide { inline-size: 100%; } }
+
+/* --- jobs --- */
+.page.wide-page { max-inline-size: 75rem; }
+pre.log { background: #10161d; color: #d7e0ea; padding: 0.8rem; border-radius: 6px; max-block-size: 28rem; overflow: auto; font-size: 0.78rem; line-height: 1.4; white-space: pre-wrap; word-break: break-word; text-align: left; margin: 0; }
+.job-error { white-space: pre-wrap; margin: 0; font-size: 0.85rem; }
+.actions-cell { white-space: nowrap; }

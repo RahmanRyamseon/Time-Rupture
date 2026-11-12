@@ -149,7 +149,12 @@
     "shift": "Shifted {{offset}} m to match the baseline",
     "noAlignment": "Not aligned (no stable ground); stated accuracy is used",
     "resolution": "{{value}} m pixels",
-    "coverage": "Covers {{percent}}% of the site"
+    "coverage": "Covers {{percent}}% of the site",
+    "ortho": "Orthoimage",
+    "jobs": "Processing jobs",
+    "stereoBadge": "Satellite stereo",
+    "demoNotice": "Demonstration resolution. This comparison uses elevation data at {{resolution}} m per pixel (typical of ASTER and Copernicus GLO-30). It shows the workflow only; real earthworks measurement needs sub-metre satellite stereo or drone surveys.",
+    "moved3d": "Moved {{north}} m north, {{east}} m east to match the baseline"
   },
   "volumes": {
     "zone": "Zone",
@@ -187,6 +192,54 @@
     "accuracyHelp": "From the supplier's report. Typical: drone 0.05–0.10, sub-metre satellite 0.3–0.5.",
     "submit": "Upload",
     "uploading": "Uploading…",
-    "limit": "Up to {{mb}} MB. The file must have its CRS embedded."
+    "limit": "Up to {{mb}} MB. The file must have its CRS embedded.",
+    "kindStereo": "Survey from satellite stereo pair",
+    "cameraModel": "Camera model",
+    "cameras": {
+      "rpc": "RPC (generic; Pléiades Neo, WorldView, SkySat…)",
+      "dg": "Maxar / DigitalGlobe (exact model)",
+      "aster": "ASTER Level 1A",
+      "pleiades": "Pléiades (exact model)",
+      "perusat": "PeruSat-1",
+      "csm": "Community Sensor Model",
+      "nadirpinhole": "Frame camera (pinhole)"
+    },
+    "scene": "Scene file (ASTER L1A .hdf)",
+    "leftImage": "Left image",
+    "rightImage": "Right image",
+    "leftCamera": "Left camera file",
+    "rightCamera": "Right camera file",
+    "cameraHelp": "Leave the camera files empty when the camera model is embedded in the images.",
+    "bundleAdjust": "Refine cameras first (bundle adjustment)",
+    "expectedAccuracy": "Expected vertical accuracy (RMSE, m)",
+    "expectedAccuracyHelp": "Typical: sub-metre stereo 0.3–0.5, ASTER about 10.",
+    "stereoLimit": "Up to {{mb}} MB per file. Heights are produced above the WGS84 ellipsoid and converted to the site's reference."
+  },
+  "jobs": {
+    "title": "Processing jobs",
+    "empty": "No jobs yet.",
+    "kind": {
+      "ingest_surface": "Prepare uploaded DEM",
+      "stereo_surface": "Stereo pair to DEM",
+      "analysis": "Volume comparison",
+      "realign_site": "Re-align site to new baseline"
+    },
+    "status": {
+      "queued": "Queued",
+      "running": "Running",
+      "failed": "Failed",
+      "done": "Done"
+    },
+    "job": "Job",
+    "target": "For",
+    "attempts": "Attempts",
+    "started": "Started",
+    "duration": "Duration",
+    "log": "Log",
+    "viewLog": "View log",
+    "hideLog": "Hide log",
+    "retry": "Retry",
+    "backToSite": "Back to dashboard",
+    "seconds": "{{value}} s"
   }
 }

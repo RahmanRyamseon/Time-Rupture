@@ -38,6 +38,7 @@ export default function SitePage() {
   const [customTo, setCustomTo] = useState("");
   const [showHillshade, setShowHillshade] = useState(true);
   const [showCutFill, setShowCutFill] = useState(true);
+  const [showOrtho, setShowOrtho] = useState(false);
   const [busy, setBusy] = useState(false);
 
   const reload = useCallback(async () => {
@@ -119,7 +120,17 @@ export default function SitePage() {
     const layers: RasterLayer[] = [];
     const latitude = site ? (site.bbox[1] + site.bbox[3]) / 2 : 0;
     const terrain = mode === "planned" ? design : (epoch ?? design);
-    if (showHillshade && terrain?.bounds_wgs84 && terrain.resolution_m) {
+    const image = terrain?.stats?.orthoimage;
+    if (showOrtho && terrain && image) {
+      layers.push({
+        key: `ortho-${terrain.id}`,
+        url: `${window.location.origin}/api/tiles/surfaces/${terrain.id}/ortho/{z}/{x}/{y}.png`,
+        bounds: image.bounds_wgs84,
+        maxzoom: maxZoomFor(image.resolution_m, latitude),
+        opacity: 1,
+      });
+    }
+    if (showHillshade && !(showOrtho && image) && terrain?.bounds_wgs84 && terrain.resolution_m) {
       layers.push({
         key: `hillshade-${terrain.id}`,
         url: `${window.location.origin}/api/tiles/surfaces/${terrain.id}/hillshade/{z}/{x}/{y}.png`,
@@ -138,7 +149,7 @@ export default function SitePage() {
       });
     }
     return layers;
-  }, [site, mode, epoch, design, analysis, showHillshade, showCutFill]);
+  }, [site, mode, epoch, design, analysis, showHillshade, showCutFill, showOrtho]);
 
   const sites = useMemo(() => (site ? [site] : []), [site]);
 
@@ -265,6 +276,15 @@ export default function SitePage() {
                 {analysis?.status === "processing" && <p className="muted">{t("site.computing")}</p>}
                 {analysis?.status === "failed" && <p className="error">{analysis.error}</p>}
                 {analysis?.stale && <p className="warn">{t("site.stale")}</p>}
+                {(fromSurface.demo_resolution || toSurface.demo_resolution) && (
+                  <p className="warn">
+                    {t("site.demoNotice", {
+                      resolution: formatNumber(
+                        Math.max(fromSurface.resolution_m ?? 0, toSurface.resolution_m ?? 0),
+                      ),
+                    })}
+                  </p>
+                )}
                 {analysis?.status === "ready" && analysis.results && (
                   <VolumeTable results={analysis.results} progress={zoneProgress} />
                 )}
@@ -286,11 +306,21 @@ export default function SitePage() {
                 <input type="checkbox" checked={showCutFill} onChange={(e) => setShowCutFill(e.target.checked)} />
                 {t("site.cutFill")}
               </label>
+              {epoch?.has_orthoimage && mode !== "planned" && (
+                <label className="check">
+                  <input type="checkbox" checked={showOrtho} onChange={(e) => setShowOrtho(e.target.checked)} />
+                  {t("site.ortho")}
+                </label>
+              )}
             </fieldset>
           </section>
         )}
 
-        <h2>{t("site.surfaces")}</h2>
+        <div className="row">
+          <h2>{t("site.surfaces")}</h2>
+          <span className="spacer" />
+          {isAnalyst && <Link to={`/sites/${site.id}/jobs`}>{t("site.jobs")}</Link>}
+        </div>
         {surfaces.map((surface) => (
           <SurfaceCard
             key={surface.id}
@@ -331,6 +361,7 @@ function SurfaceCard({ surface, job, busy, siteId, act }: CardProps) {
   const { isAnalyst } = useSession();
   const alignment = surface.alignment;
   const coverage = surface.stats?.site_coverage;
+  const pcAlign = alignment?.pc_align;
 
   return (
     <section className="card surface">
@@ -338,6 +369,7 @@ function SurfaceCard({ surface, job, busy, siteId, act }: CardProps) {
         <h3>{surface.name}</h3>
         {surface.is_reference && <span className="badge">{t("site.baseline")}</span>}
         {surface.kind === "design" && <span className="badge">{t("site.design")}</span>}
+        {surface.source_type === "stereo" && <span className="badge">{t("site.stereoBadge")}</span>}
         <span className="spacer" />
         {surface.status !== "ready" && (
           <span className={`badge ${surface.status}`}>{t(`site.status.${surface.status}`)}</span>
@@ -360,6 +392,14 @@ function SurfaceCard({ surface, job, busy, siteId, act }: CardProps) {
       {alignment?.method === "vertical_shift_median_stable_ground" && (
         <small className="muted" dir="auto">
           {t("site.shift", { offset: formatNumber(-surface.vertical_offset_m, 2) })}
+        </small>
+      )}
+      {pcAlign?.accepted && (
+        <small className="muted" dir="auto">
+          {t("site.moved3d", {
+            north: formatNumber(pcAlign.translation_north_m, 1),
+            east: formatNumber(pcAlign.translation_east_m, 1),
+          })}
         </small>
       )}
       {alignment?.method === "none" && <small className="warn">{t("site.noAlignment")}</small>}

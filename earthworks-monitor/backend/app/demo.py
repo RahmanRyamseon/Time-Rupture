@@ -146,8 +146,10 @@ def simulate_stereo_pair(
         coarse = rng.random((n_rows // scale + 2, n_cols // scale + 2)).astype("float32")
         texture += weight * np.kron(coarse, np.ones((scale, scale), "float32"))[:n_rows, :n_cols]
     image = (600.0 * (0.6 * shade + 0.4 * texture / texture.max()) + 100.0).astype("float32")
+    # A numeric no-data value matters: with none declared sat_sim marks missing pixels
+    # as NaN, and ASP then finds no interest points in the images.
     ortho_path = work / "texture.tif"
-    with rasterio.open(ortho_path, "w", **(profile | dict(width=n_cols, height=n_rows, transform=ortho_transform, nodata=None))) as dst:
+    with rasterio.open(ortho_path, "w", **(profile | dict(width=n_cols, height=n_rows, transform=ortho_transform, nodata=-9999.0))) as dst:
         dst.write(image, 1)
 
     # Two views converging on the site centre from 100 km up, one from the west and one
@@ -254,7 +256,9 @@ def main() -> None:
         print(f"Building '{name}' with ASP (this takes a few minutes)")
         surface, job = register_stereo_survey(
             db, site, files=files, camera_model=camera, name=name, survey_date=args.date,
-            stated_accuracy_m=accuracy, bundle_adjust=False, resolution_m=None, user_id=owner_id, released=True,
+            stated_accuracy_m=accuracy, bundle_adjust=False,
+            # 10 m simulated imagery: grid at twice the pixel size. ASTER: let ASP choose.
+            resolution_m=20.0 if args.simulate else None, user_id=owner_id, released=True,
         )
         surface_id, site_id = surface.id, site.id
         dispatch(db, [job], eager=True)

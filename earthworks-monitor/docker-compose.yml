@@ -1,4 +1,4 @@
-# The worker image with NASA Ames Stereo Pipeline is added in Phase 3.
+# The worker image includes NASA Ames Stereo Pipeline (see backend/Dockerfile.worker).
 services:
   db:
     image: postgis/postgis:16-3.4
@@ -42,7 +42,9 @@ services:
     restart: unless-stopped
 
   worker:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.worker
     env_file: .env
     depends_on:
       db: { condition: service_healthy }
@@ -50,6 +52,8 @@ services:
     volumes:
       - appdata:/data
     command: ["python", "-m", "app.worker"]
+    # ASP memory use grows with image size; give stereo jobs room.
+    shm_size: "1gb"
     restart: unless-stopped
 
   # Map tiles (hillshade, cut/fill) rendered from COGs with rio-tiler, behind the same

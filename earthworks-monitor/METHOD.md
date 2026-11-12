@@ -14,9 +14,14 @@ and settings (its *provenance*), so any figure can be traced and reproduced.
 - **Design surface** (optional): the elevation model of the finished works.
 - **Site boundary and zones**: polygons. Zones are the work areas (cut, fill, or both).
 
-Surfaces are only compared when they use the same height reference. Mixing, for example,
-ellipsoidal and sea-level heights would introduce errors of tens of metres in the Gulf, so
-the system refuses it.
+Surfaces are only compared in one common height reference. Mixing, for example,
+ellipsoidal and sea-level heights would introduce errors of tens of metres in the Gulf
+(about 32 m near Al Ain), so heights are converted first (section 3) or the file is refused.
+
+**Surveys from satellite stereo** are produced by NASA Ames Stereo Pipeline: the two images
+are matched pixel by pixel, each match is triangulated into a 3-D point using the camera
+models, and the points are gridded into an elevation model and an orthoimage. How well the
+two views agree on each point (the triangulation error) is stored as a quality indicator.
 
 ## 2. Preparing each surface
 
@@ -41,8 +46,22 @@ For every survey the system measures the height difference from the baseline ove
 vertical shift; it is removed before any comparison. The shift, the area of stable ground
 used and the remaining disagreement are stored with the survey.
 
-Only a vertical shift is corrected in this version. Horizontal misalignment and tilt are
-not removed, but they are *measured* (section 5) and widen the stated uncertainty.
+**Surveys built from satellite stereo** are first aligned in three dimensions, because
+their position on the ground can be off by several metres, not only their height. This
+uses the co-registration method of Nuth and Kääb (2011) as implemented in NASA Ames Stereo
+Pipeline (`pc_align`): the shift is estimated on stable ground only and then applied to
+the whole survey. The result is kept only if it measurably improves the agreement on
+stable ground; on flat terrain a sideways shift cannot be observed, and in that case only
+the vertical shift is applied. The movement north, east and up, and the agreement before
+and after, are stored with the survey. The same 3-D alignment can be switched on for
+uploaded elevation models.
+
+Tilt is not removed, but it is *measured* (section 5) and widens the stated uncertainty.
+
+**Height references.** When a survey's heights are referred to a different surface than
+the site's baseline — the WGS84 ellipsoid versus the EGM96 or EGM2008 geoid (mean sea
+level) — they are converted with the geoid model shipped with Ames Stereo Pipeline before
+anything else is done. Other height references cannot be converted and are refused.
 
 If a site has no usable stable ground, no shift is applied and the stated accuracies are
 used instead (section 5).
@@ -129,7 +148,10 @@ All thresholds are configuration values recorded with each result: level-of-dete
 multiplier, confidence level, correlation length, stable-ground margin, and the minimum
 amount of stable ground. See `.env.example`.
 
-## Reference
+## References
+
+Nuth, C. and Kääb, A. (2011). Co-registration and bias corrections of satellite elevation
+data sets for quantifying glacier thickness change. *The Cryosphere*, 5, 271–290.
 
 Rolstad, C., Haug, T. and Denby, B. (2009). Spatially integrated geodetic glacier mass
 balance and its uncertainty based on geostatistical analysis. *Journal of Glaciology*,

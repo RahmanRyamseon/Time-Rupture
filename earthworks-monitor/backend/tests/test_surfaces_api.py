@@ -215,8 +215,9 @@ def test_bad_uploads_are_rejected_immediately_with_reasons(analyst, site, tmp_pa
 
 
 def test_mixed_vertical_datums_are_refused(analyst, populated, tmp_path):
-    response = upload(analyst, populated["site"], dem_bytes(tmp_path), name="Geoid", survey_date="2026-04-01", vertical_datum="egm2008")
-    assert response.status_code == 422 and "vertical datum" in response.json()["detail"]
+    """A project datum cannot be converted, so it is refused against an ellipsoidal site."""
+    response = upload(analyst, populated["site"], dem_bytes(tmp_path), name="Local", survey_date="2026-04-01", vertical_datum="local")
+    assert response.status_code == 422 and "cannot be converted" in response.json()["detail"]
 
 
 def test_second_design_and_baseline_deletion_are_guarded(analyst, populated, tmp_path):

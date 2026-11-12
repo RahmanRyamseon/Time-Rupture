@@ -18,6 +18,9 @@ export interface AppConfig {
   basemap_attribution: string;
   max_upload_mb: number;
   max_dem_upload_mb: number;
+  max_stereo_upload_mb: number;
+  camera_models: string[];
+  single_file_camera_models: string[];
 }
 
 export interface Project {
@@ -69,6 +72,7 @@ export interface Alignment {
   offset_m?: number;
   residual_rmse_m?: number;
   stable_area_m2?: number;
+  pc_align?: { accepted: boolean; translation_north_m: number; translation_east_m: number; translation_up_m: number };
 }
 
 export interface Surface {
@@ -77,6 +81,9 @@ export interface Surface {
   kind: SurfaceKind;
   name: string;
   survey_date: string | null;
+  source_type: "dem_upload" | "stereo";
+  has_orthoimage: boolean;
+  demo_resolution: boolean;
   vertical_datum: VerticalDatum;
   stated_accuracy_m: number | null;
   status: ProcessingStatus;
@@ -84,7 +91,7 @@ export interface Surface {
   is_reference: boolean;
   resolution_m: number | null;
   bounds_wgs84: [number, number, number, number] | null;
-  stats: { site_coverage: number } | null;
+  stats: { site_coverage: number; orthoimage?: { bounds_wgs84: [number, number, number, number]; resolution_m: number } } | null;
   vertical_offset_m: number;
   alignment: Alignment | null;
   error: string | null;
@@ -151,5 +158,13 @@ export interface Job {
   surface_id: string | null;
   analysis_id: string | null;
   status: "queued" | "running" | "failed" | "done";
+  attempts: number;
+  error: string | null;
   created_at: string;
+  started_at: string | null;
+  finished_at: string | null;
+}
+
+export interface JobDetail extends Job {
+  log: string;
 }
