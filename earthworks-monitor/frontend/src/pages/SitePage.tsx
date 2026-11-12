@@ -252,8 +252,17 @@ export default function SitePage() {
               mode !== "planned" &&
               epoch && (
                 <label>
-                  {t("site.survey")}: <strong>{epoch.name}</strong>
-                  {epoch.survey_date && <span className="muted"> · {formatDate(epoch.survey_date)}</span>}
+                  {/* <bdi> keeps a Latin survey name and the date from being reordered in Arabic. */}
+                  {t("site.survey")}:{" "}
+                  <strong>
+                    <bdi>{epoch.name}</bdi>
+                  </strong>
+                  {epoch.survey_date && (
+                    <span className="muted">
+                      {" · "}
+                      <bdi>{formatDate(epoch.survey_date)}</bdi>
+                    </span>
+                  )}
                   {surveys.length > 1 && (
                     <input
                       type="range"

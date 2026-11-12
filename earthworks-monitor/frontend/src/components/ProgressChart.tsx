@@ -64,7 +64,12 @@ export default function ProgressChart({ epochs, selectedId, onSelect }: Props) {
               <line x1={x(days[i])} x2={x(days[i])} y1={M.top} y2={M.top + plotH} stroke="#e08a00" strokeWidth={1.5} />
             )}
             <rect x={x(days[i]) - 12} y={M.top} width={24} height={plotH + 20} fill="transparent" />
-            <text x={x(days[i])} y={H - 8} textAnchor="middle" className={`axis ${e.surface_id === selectedId ? "current" : ""}`}>
+            <text
+              x={x(days[i])}
+              y={H - 8}
+              textAnchor={i === 0 ? "start" : i === points.length - 1 ? "end" : "middle"}
+              className={`axis ${e.surface_id === selectedId ? "current" : ""}`}
+            >
               {e.survey_date.slice(0, 7)}
             </text>
           </g>
