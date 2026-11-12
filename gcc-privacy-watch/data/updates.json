@@ -1,8 +1,22 @@
 {
-  "generatedAt": "2026-11-11T11:10:57.021Z",
+  "generatedAt": "2026-11-12T11:28:39.533Z",
   "retentionDays": 120,
-  "count": 30,
+  "count": 31,
   "items": [
+    {
+      "id": "7cc9a6f0a7d5",
+      "title": "Shukran members’ personal data accessed in data breach, but card details safe",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOUGRRY3l4SktoRmJCU1k4aF9XTlEybTJzOFhOdVpJS1psM2Z2OVowZ0pqaWtGbm1rQmdoTUk3X0tuNkc5T2dKalpUSVM5NERySE9hMUxZYk04MFgzejNtRGJsMG8zRG1Rd0w4Wjk5UV9Ta0l4dGp4RVJMbTFPdE8tX3cwV0J4aU5wd0V3ZzByak5lbkJzeVhqRHFza1pnamhQdGlOOTc0NWJDSTQ4ZDZkaGl1VdIBuwFBVV95cUxNWEs5b2VWVlJaSFh5bWpNaWF5QUxsOHpLdlBhTUs4bG9heGlyZkFscGlMaEs5R19DbWZVZVZEQ1FFRHZCUGZTeElPRS1PQUVjejNRY01LZFpXRkdFZkJjM3hjajZnbFdBdU1mOGE1UzJHcUhMckVBdVFSZXFDWFktNXFpeFVBTTh3emRxZUtMMUt5RzliZlpja0k2LTJ3X1BScUlHSzloTXMtWm9jRmpVdnhYNHRtRmNNYmpB?oc=5",
+      "publisher": "Khaleej Times",
+      "publisherUrl": "https://www.khaleejtimes.com",
+      "published": "2026-11-11T13:57:45.000Z",
+      "description": "",
+      "countries": [
+        "AE"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-12T11:28:39.531Z"
+    },
     {
       "id": "c2708723ba8c",
       "title": "Teen developer's Autark lets AI agents run without guardrails, raising data protection risks",
