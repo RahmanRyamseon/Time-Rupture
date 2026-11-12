@@ -147,9 +147,16 @@ export interface ZoneProgress {
   progress_pm: number | null;
 }
 
+export interface ProgressEpoch {
+  surface_id: string;
+  name: string;
+  survey_date: string;
+  zones: (ZoneProgress & { name: string })[];
+}
+
 export interface Progress {
   available: boolean;
-  epochs: { surface_id: string; zones: ZoneProgress[] }[];
+  epochs: ProgressEpoch[];
 }
 
 export interface Job {

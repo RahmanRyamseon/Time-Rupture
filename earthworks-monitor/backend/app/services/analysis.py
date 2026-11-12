@@ -128,7 +128,8 @@ def validate_pair(from_surface: Surface, to_surface: Surface) -> None:
 
 
 def schedule_default_analyses(db: Session, site: Site, surface: Surface) -> list[Job]:
-    """Analyses every site wants: since baseline, since previous survey, design vs baseline."""
+    """Analyses every site wants: since baseline, since previous survey, remaining to
+    design, and design vs baseline."""
     reference = db.get(Surface, site.reference_surface_id) if site.reference_surface_id else None
     if reference is None or reference.status != STATUS_READY:
         return []
@@ -148,6 +149,10 @@ def schedule_default_analyses(db: Session, site: Site, surface: Surface) -> list
             pairs.append((surface, surveys[index + 1]))
     if design is not None:
         pairs.append((reference, design))
+        # Remaining to design, for the survey just processed or, when the design itself
+        # has just arrived, for every survey.
+        remaining = surveys if surface.kind == KIND_DESIGN else [surface]
+        pairs.extend((s, design) for s in remaining if s.kind == KIND_SURVEY and s.id != reference.id)
 
     jobs, seen = [], set()
     for from_surface, to_surface in pairs:

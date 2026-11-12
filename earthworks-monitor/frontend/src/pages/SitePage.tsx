@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import { api, errorMessage } from "../api";
 import MapView, { BBox, RasterLayer } from "../components/MapView";
+import ProgressChart from "../components/ProgressChart";
 import SurfaceUpload from "../components/SurfaceUpload";
 import VolumeTable from "../components/VolumeTable";
 import { formatDate, formatNumber } from "../format";
@@ -40,6 +41,7 @@ export default function SitePage() {
   const [showCutFill, setShowCutFill] = useState(true);
   const [showOrtho, setShowOrtho] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [reportLang, setReportLang] = useState<"en" | "ar" | "both">(i18n.language === "ar" ? "ar" : "en");
 
   const reload = useCallback(async () => {
     const [s, a, p, j] = await Promise.all([
@@ -294,6 +296,37 @@ export default function SitePage() {
                   </button>
                 )}
               </>
+            )}
+
+            {progress?.available && mode !== "custom" && (
+              <ProgressChart epochs={progress.epochs} selectedId={epoch?.id ?? null} onSelect={setEpochId} />
+            )}
+
+            {epoch && mode !== "custom" && (
+              <fieldset>
+                <legend>{t("report.title")}</legend>
+                <div className="report-row">
+                  <label>
+                    {t("report.language")}
+                    <select value={reportLang} onChange={(e) => setReportLang(e.target.value as typeof reportLang)}>
+                      <option value="en">{t("report.langEn")}</option>
+                      <option value="ar">{t("report.langAr")}</option>
+                      <option value="both">{t("report.langBoth")}</option>
+                    </select>
+                  </label>
+                  <a
+                    className="button primary"
+                    href={`/api/sites/${site.id}/report.pdf?surface_id=${epoch.id}&lang=${reportLang}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {t("report.pdf")}
+                  </a>
+                </div>
+                <small className="muted">
+                  {epoch.name} — {t("report.help")}
+                </small>
+              </fieldset>
             )}
 
             <fieldset>

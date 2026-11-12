@@ -242,5 +242,18 @@
     "backToSite": "Back to dashboard",
     "seconds": "{{value}} s",
     "statusLabel": "Status"
+  },
+  "report": {
+    "title": "Report",
+    "pdf": "PDF report",
+    "language": "Language",
+    "langEn": "English",
+    "langAr": "Arabic",
+    "langBoth": "English + Arabic",
+    "help": "Summary, maps, volumes with ± ranges, progress chart, method and data sources for the selected survey."
+  },
+  "chart": {
+    "title": "Progress over time",
+    "help": "Per zone, with ± range. Select a point to open that survey."
   }
 }

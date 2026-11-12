@@ -8,7 +8,7 @@
   --accent: #0b5cad;
   --danger: #b2182b;
   --ok: #1b7a3d;
-  font-family: system-ui, "Segoe UI", "Noto Sans Arabic", "Noto Naskh Arabic", Tahoma, sans-serif;
+  font-family: system-ui, "Segoe UI", "Noto Sans Arabic", Tahoma, sans-serif;
   color: var(--ink);
   background: var(--bg);
 }
@@ -134,3 +134,21 @@ small.notes { line-height: 1.45; margin-block: 0.5rem; }
 pre.log { background: #10161d; color: #d7e0ea; padding: 0.8rem; border-radius: 6px; max-block-size: 28rem; overflow: auto; font-size: 0.78rem; line-height: 1.4; white-space: pre-wrap; word-break: break-word; text-align: left; margin: 0; }
 .job-error { white-space: pre-wrap; margin: 0; font-size: 0.85rem; }
 .actions-cell { white-space: nowrap; }
+
+/* --- Arabic typography: the bundled Noto Sans Arabic leads, with more line height --- */
+[dir="rtl"] body, [dir="rtl"] button, [dir="rtl"] input, [dir="rtl"] select { font-family: "Noto Sans Arabic", system-ui, Tahoma, sans-serif; }
+[dir="rtl"] body { line-height: 1.7; }
+
+/* --- progress chart and report --- */
+figure.chart { margin: 0.6rem 0; }
+figure.chart figcaption { font-weight: 600; font-size: 0.9rem; }
+figure.chart svg { inline-size: 100%; block-size: auto; display: block; direction: ltr; }
+figure.chart .axis { font-size: 10px; fill: var(--muted); }
+figure.chart .axis.current { fill: var(--ink); font-weight: 700; }
+figure.chart .epoch { cursor: pointer; }
+.chart-legend { list-style: none; margin: 0.2rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: 0.82rem; }
+.chart-legend li { display: flex; align-items: center; gap: 0.35rem; }
+.chart-legend i { inline-size: 0.9rem; block-size: 3px; border-radius: 2px; }
+.report-row { display: flex; gap: 0.5rem; align-items: end; flex-wrap: wrap; }
+.report-row label { margin: 0; flex: 1; min-inline-size: 9rem; }
+a.button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }

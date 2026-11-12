@@ -1,3 +1,6 @@
+// Arabic UI font, bundled with the app (no font CDN): regular and bold.
+import "@fontsource/noto-sans-arabic/arabic-400.css";
+import "@fontsource/noto-sans-arabic/arabic-700.css";
 import "maplibre-gl/dist/maplibre-gl.css";
 import React from "react";
 import ReactDOM from "react-dom/client";

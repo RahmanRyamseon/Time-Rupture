@@ -41,21 +41,25 @@ def _tile_latitude(z: int, y: int) -> float:
     return math.degrees(math.atan(math.sinh(n)))
 
 
+def hillshade(values: np.ndarray, valid: np.ndarray, ground_res_m: float) -> np.ndarray:
+    """Grey levels 0-255 for terrain lit from the north-west (rows run north to south)."""
+    filled = np.where(valid, values, np.nanmean(values[valid]) if valid.any() else 0.0)
+    d_row, dz_dx = np.gradient(filled * HILLSHADE_EXAGGERATION, ground_res_m)
+    dz_dy = -d_row  # the northward gradient is minus the row gradient
+    slope = np.arctan(np.hypot(dz_dx, dz_dy))
+    aspect = np.arctan2(dz_dy, -dz_dx)
+    azimuth, altitude = math.radians(360.0 - 315.0 + 90.0), math.radians(45.0)
+    shade = np.sin(altitude) * np.cos(slope) + np.cos(altitude) * np.sin(slope) * np.cos(azimuth - aspect)
+    return np.clip(shade * 255.0, 0, 255)
+
+
 def hillshade_tile(path: str, z: int, x: int, y: int) -> bytes | None:
     read = _read(path, z, x, y, buffer=_BUFFER)
     if read is None:
         return None
     values, valid = read
     ground_res = 40075016.686 * math.cos(math.radians(_tile_latitude(z, y))) / (TILE_SIZE * 2**z)
-    filled = np.where(valid, values, np.nanmean(values[valid]) if valid.any() else 0.0)
-    # Rows run north to south, so the northward gradient is minus the row gradient.
-    d_row, dz_dx = np.gradient(filled * HILLSHADE_EXAGGERATION, ground_res)
-    dz_dy = -d_row
-    slope = np.arctan(np.hypot(dz_dx, dz_dy))
-    aspect = np.arctan2(dz_dy, -dz_dx)
-    azimuth, altitude = math.radians(360.0 - 315.0 + 90.0), math.radians(45.0)
-    shade = np.sin(altitude) * np.cos(slope) + np.cos(altitude) * np.sin(slope) * np.cos(azimuth - aspect)
-    grey = np.clip(shade * 255.0, 0, 255)
+    grey = hillshade(values, valid, ground_res)
     crop = (slice(_BUFFER, -_BUFFER), slice(_BUFFER, -_BUFFER))
     grey, valid = grey[crop], valid[crop]
     return _png(np.stack([grey, grey, grey]), valid)

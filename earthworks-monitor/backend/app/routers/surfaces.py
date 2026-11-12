@@ -3,9 +3,10 @@ import os
 import tempfile
 import uuid
 from datetime import date
-from typing import Annotated
+from typing import Annotated, Literal
 
-from fastapi import APIRouter, Form, HTTPException, UploadFile, status
+from fastapi import APIRouter, Form, HTTPException, Response, UploadFile, status
+from starlette.concurrency import run_in_threadpool
 from sqlalchemy import select
 
 from app import storage
@@ -303,6 +304,38 @@ def read_analysis(analysis: AnalysisDep):
 @router.get("/sites/{site_id}/progress")
 def read_progress(site: SiteDep, user: CurrentUser, db: DbSession):
     return analysis_service.site_progress(db, site, released_only=user.role != ROLE_ANALYST)
+
+
+# --- report ---
+
+
+@router.get("/sites/{site_id}/report.pdf")
+async def site_report(
+    site: SiteDep,
+    user: CurrentUser,
+    db: DbSession,
+    surface_id: uuid.UUID,
+    lang: Literal["en", "ar", "both"] = "en",
+):
+    """PDF report for one survey epoch: summary, maps, volumes with uncertainty, progress
+    chart, method and data-source notes. `lang=both` gives English then Arabic."""
+    from app.reports.report import ReportError, build_report_html, render_pdf
+
+    surface = db.get(Surface, surface_id)
+    if surface is None or surface.site_id != site.id:
+        raise HTTPException(404, "Survey not found on this site")
+    languages = ("en", "ar") if lang == "both" else (lang,)
+    try:
+        html = build_report_html(db, site, surface, languages, released_only=user.role != ROLE_ANALYST)
+    except ReportError as exc:
+        raise HTTPException(404, str(exc)) from exc
+    pdf = await run_in_threadpool(render_pdf, html)
+    filename = f"report-{surface.survey_date.isoformat()}-{lang}.pdf"
+    return Response(
+        pdf,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'inline; filename="{filename}"', "Cache-Control": "private, no-store"},
+    )
 
 
 # --- jobs (analysts only) ---
