@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T22:56:45.025Z",
+  "generatedAt": "2026-11-12T23:38:40.949Z",
   "retentionDays": 120,
   "categories": {
     "projects": "Grid projects & awards",
@@ -396,8 +396,456 @@
       "role": "self"
     }
   ],
-  "count": 2609,
+  "count": 2624,
   "items": [
+    {
+      "id": "cdb73754462e",
+      "title": "France – Construction work for electricity power lines – Marché Travaux et Maintenance Lignes Aériennes HTB 2028 - 2035 - DR CORSE",
+      "url": "https://ted.europa.eu/en/notice/-/detail/792469-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract notice on TED, the EU tender database. Buyer: EDF SA (FRA). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Western Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 7
+    },
+    {
+      "id": "4a0f4d449fab",
+      "title": "Spain – Construction work for electricity power lines – Contratación de la ejecución de obras para la Electrificación Secundaria del Recinto Portuario, mediante tramitación anticipada del gasto",
+      "url": "https://ted.europa.eu/en/notice/-/detail/790412-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract award notice on TED, the EU tender database. Buyer: Junta de Gobierno del Ayuntamiento de Torrevieja (ESP). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Western Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 7
+    },
+    {
+      "id": "b0b56f1392e4",
+      "title": "Czechia – Power distribution cables – Kvartální plnění za období 1.4.2026 - 30.9.2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/790745-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract award notice on TED, the EU tender database. Buyer: ČEZ Distribuce, a. s. (CZE). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "tenders"
+      ],
+      "regions": [
+        "Southeast Asia",
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Asia",
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 4,
+      "similar": 1
+    },
+    {
+      "id": "95adeda09ceb",
+      "title": "Czechia – Power distribution cables – Plnění na RD 021_2023_",
+      "url": "https://ted.europa.eu/en/notice/-/detail/791512-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract award notice on TED, the EU tender database. Buyer: ČEZ Distribuce, a. s. (CZE). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "tenders"
+      ],
+      "regions": [
+        "Southeast Asia",
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Asia",
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 4,
+      "dupOf": "b0b56f1392e4"
+    },
+    {
+      "id": "8cfaa58d858b",
+      "title": "France – Construction work for electricity power lines – Marché cadre et de référencement étude et travaux de Rénovation Programmée du réseau aérien de la DR AUVERGNE 2027-2032",
+      "url": "https://ted.europa.eu/en/notice/-/detail/792315-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract notice on TED, the EU tender database. Buyer: Enedis SA (FRA). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Western Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 7,
+      "dupOf": "da22011258dc"
+    },
+    {
+      "id": "abb667f19e48",
+      "title": "Czechia – High-voltage cable – Dodávky kabelů a vodičů vn",
+      "url": "https://ted.europa.eu/en/notice/-/detail/790050-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract award notice on TED, the EU tender database. Buyer: ČEZ Distribuce, a. s. (CZE). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "tenders"
+      ],
+      "regions": [
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 4
+    },
+    {
+      "id": "9b3e98a8cce3",
+      "title": "Austria – Overhead power lines – LWL-Erdseile für Ltg. 451 und Ltg. 417",
+      "url": "https://ted.europa.eu/en/notice/-/detail/790432-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract award notice on TED, the EU tender database. Buyer: Austrian Power Grid AG (AUT). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Western Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 7
+    },
+    {
+      "id": "9920ce190ffd",
+      "title": "Poland – Construction work for pipelines, communication and power lines, for highways, roads, airfields and railways; flatwork – Dostosowanie byłego przejścia granicznego w ciągu drogi krajowej nr 2 do parametrów autostrady",
+      "url": "https://ted.europa.eu/en/notice/-/detail/792071-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract notice on TED, the EU tender database. Buyer: Generalna Dyrekcja Dróg Krajowych i Autostrad (POL). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 7
+    },
+    {
+      "id": "85272e233a52",
+      "title": "Czechia – Power distribution cables – DODÁVKY KABELŮ A VODIČŮ NN - Plnění na RD 012-2022, RD 013-2022, RD 008-2022",
+      "url": "https://ted.europa.eu/en/notice/-/detail/790671-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract award notice on TED, the EU tender database. Buyer: ČEZ Distribuce, a. s. (CZE). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "tenders"
+      ],
+      "regions": [
+        "Southeast Asia",
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Asia",
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 4,
+      "similar": 1
+    },
+    {
+      "id": "ffaa84516614",
+      "title": "Greece – Overhead power lines – 403606 ΠΡΟΜΗΘΕΙΑ ΥΛΙΚΩΝ ΓΡΑΜΜΩΝ ΜΕΤΑΦΟΡΑΣ",
+      "url": "https://ted.europa.eu/en/notice/-/detail/790701-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract notice on TED, the EU tender database. Buyer: ΑΝΕΞΑΡΤΗΤΟΣ ΔΙΑΧΕΙΡΙΣΤΗΣ ΜΕΤΑΦΟΡΑΣ ΗΛΕΚΤΡΙΚΗΣ ΕΝΕΡΓΕΙΑΣ Α.Ε. (ΑΔΜΗΕ Α.Ε.) (GRC). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 7
+    },
+    {
+      "id": "46449c01325e",
+      "title": "Czechia – Power distribution cables – DODÁVKY KABELŮ A VODIČŮ NN_Plnění na RD 001_2023",
+      "url": "https://ted.europa.eu/en/notice/-/detail/791191-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract award notice on TED, the EU tender database. Buyer: ČEZ Distribuce, a. s. (CZE). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "tenders"
+      ],
+      "regions": [
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 4,
+      "dupOf": "85272e233a52"
+    },
+    {
+      "id": "04ae92c4ce39",
+      "title": "Croatia – Construction work for electricity power lines – Modernizacija 10(20) kV mreže u Elektri Sisak u Natura 2000 područjima - rekonstrukcija",
+      "url": "https://ted.europa.eu/en/notice/-/detail/791701-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract award notice on TED, the EU tender database. Buyer: HEP-Operator distribucijskog sustava d.o.o. (HRV). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 7
+    },
+    {
+      "id": "1446a8a3e7b7",
+      "title": "Spain – Power distribution cables – Suministro de cables submarinos para la plataforma de ensayos RENMARINAS Las Palmas, en el marco del proyecto RENMARINAS Las Palmas, financiado por la Unión Europea -NEXTGENERATION EU- en el marco del Plan de Recuperación, Transformación y Resiliencia.",
+      "url": "https://ted.europa.eu/en/notice/-/detail/790639-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract notice on TED, the EU tender database. Buyer: Instituto Tecnológico de Canarias S.A. (ESP). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "tenders"
+      ],
+      "regions": [
+        "Western Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 4
+    },
+    {
+      "id": "92efca225156",
+      "title": "Poland – Construction work – Przebudowa stacji 110/15 kV Junikowo [JKO]; S-2025-12601",
+      "url": "https://ted.europa.eu/en/notice/-/detail/791985-2026",
+      "publisher": "TED (EU tenders)",
+      "publisherUrl": "https://ted.europa.eu",
+      "published": "2026-11-13T00:00:00.000Z",
+      "description": "Contract notice on TED, the EU tender database. Buyer: ENEA Operator sp. z o.o. (POL). Category: power cables and power-line construction (EU tender).",
+      "categories": [
+        "projects",
+        "tenders"
+      ],
+      "regions": [
+        "Nordics & Eastern Europe",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 7
+    },
+    {
+      "id": "0bb79176eb24",
+      "title": "Copper price hits four-month low; focus on demand, US rates",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOcmx0cW1VQmpSQWlzeFU0Uzl1cy1IWjZOMDZZSmtEZFNmdUlaRkhFRUR0RTYwMFZhMnlVSV9RWDFJU1pDd3N2Q1Jlcl90VzhFeEwyVk9QbzBPY0YwbUN2ZXRBeHlFZlFoNzllRktWaWlWX3ZQeWlpVVp1aFBmWDBxdGt6M1ZhNUk?oc=5",
+      "publisher": "Mining.com.au",
+      "publisherUrl": "https://mining.com.au",
+      "published": "2026-11-12T23:15:00.000Z",
+      "description": "",
+      "categories": [
+        "metals"
+      ],
+      "regions": [
+        "USA"
+      ],
+      "markets": [
+        "USA"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T22:56:43.862Z",
+      "score": 0,
+      "similar": 1
+    },
+    {
+      "id": "f5099d6a58da",
+      "title": "Aluminium squeeze deepens as LME backwardation hits 36-year high",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNOURrSW1tSUczNUV0Mk5ZSm0xUmZSYTl6dzlSQWtqeVV6MGxWdUdzYkVITXdzb3NDSWdvR05YNWkwU0ctVEVsSjVtUTUyU0VTU2FLT3VOcGlfODRabWxIdDFRRzV4RVh0ZGJDNmN3NWNHQXdMTHE1YkpXdVF4QjdON1ZoUm1OX2s5dGtwTlZkMDE?oc=5",
+      "publisher": "Mining.com.au",
+      "publisherUrl": "https://mining.com.au",
+      "published": "2026-11-12T23:15:00.000Z",
+      "description": "",
+      "categories": [
+        "aluminium",
+        "metals"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T17:37:42.259Z",
+      "score": 0,
+      "similar": 1
+    },
     {
       "id": "5b0e58954d78",
       "title": "US facing extreme power transmission crisis, experts warn",
@@ -858,6 +1306,33 @@
       "similar": 2
     },
     {
+      "id": "07db325c39aa",
+      "title": "US data centre power demand rising 10x faster than grid capacity",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPTDFlV1RleWhYZHkybHFOLWloQWZpVTRUR3d2SWFNVjdCZ01RYUxxbjhteHVxSll0WkhhN0htR1ZJbUp5SWV4eEVOQjFVOUhEeF9QR2JCWU1kdkFyc0pDZ0JjOE1vQ2N0NHhMbUhtRGZCaGxkV1V4ckxSQ3hqLWRjVndWMzVmR1NpVjZicWN1c3hWaTB2eWt4S2tjRjNHNnlVX2s1NFVraHFIOG8?oc=5",
+      "publisher": "Energy Live News",
+      "publisherUrl": "https://www.energylivenews.com",
+      "published": "2026-11-12T17:38:57.000Z",
+      "description": "",
+      "categories": [
+        "projects",
+        "demand"
+      ],
+      "regions": [
+        "USA"
+      ],
+      "markets": [
+        "USA"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T17:37:42.259Z",
+      "score": 0
+    },
+    {
       "id": "7253b85d280a",
       "title": "CFE planea línea de transmisión que conectará Playa del Carmen y Cozumel, con inversión de más de 3 mil millones",
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNcmI1N1pqb09sLTV4aVZOekJDaEVOMkgwLVZFcUdicnQ2M0FvUmdrem5oUHpfN1pYNlpmWFl4SUJCMHA0ZFM1NE1MdG5pSWdPN2x0blFmRTNtN3QxQUstREJseV9BNmpwZnBaY3RvTWhDWHdKRHU4SHc5YmR6WU1BbXVTc0gwWTFPbjdvWENPSUZZOTQ?oc=5",
@@ -873,33 +1348,6 @@
       ],
       "markets": [
         "Latin America"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-12T17:37:42.259Z",
-      "score": 0
-    },
-    {
-      "id": "07db325c39aa",
-      "title": "US data centre power demand rising 10x faster than grid capacity",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPTDFlV1RleWhYZHkybHFOLWloQWZpVTRUR3d2SWFNVjdCZ01RYUxxbjhteHVxSll0WkhhN0htR1ZJbUp5SWV4eEVOQjFVOUhEeF9QR2JCWU1kdkFyc0pDZ0JjOE1vQ2N0NHhMbUhtRGZCaGxkV1V4ckxSQ3hqLWRjVndWMzVmR1NpVjZicWN1c3hWaTB2eWt4S2tjRjNHNnlVX2s1NFVraHFIOG8?oc=5",
-      "publisher": "Energy Live News",
-      "publisherUrl": "https://www.energylivenews.com",
-      "published": "2026-11-12T17:32:17.000Z",
-      "description": "",
-      "categories": [
-        "projects",
-        "demand"
-      ],
-      "regions": [
-        "USA"
-      ],
-      "markets": [
-        "USA"
       ],
       "companies": [],
       "actor": null,
@@ -1035,60 +1483,6 @@
       "score": 0
     },
     {
-      "id": "0bb79176eb24",
-      "title": "Copper price hits four-month low; focus on demand, US rates",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOcmx0cW1VQmpSQWlzeFU0Uzl1cy1IWjZOMDZZSmtEZFNmdUlaRkhFRUR0RTYwMFZhMnlVSV9RWDFJU1pDd3N2Q1Jlcl90VzhFeEwyVk9QbzBPY0YwbUN2ZXRBeHlFZlFoNzllRktWaWlWX3ZQeWlpVVp1aFBmWDBxdGt6M1ZhNUk?oc=5",
-      "publisher": "Mining.com.au",
-      "publisherUrl": "https://mining.com.au",
-      "published": "2026-11-12T17:12:31.000Z",
-      "description": "",
-      "categories": [
-        "metals"
-      ],
-      "regions": [
-        "USA"
-      ],
-      "markets": [
-        "USA"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-12T22:56:43.862Z",
-      "score": 0,
-      "similar": 1
-    },
-    {
-      "id": "f6bdf9ecb7e4",
-      "title": "اعلان مناقصة وزارة الكهرباء – Embassy of the Republic of Iraq in Madrid",
-      "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxObFZDY3M1TXZFRUtSdWtXNWhwZC1TNC1RNE4yVlBBRjh5ODRYQWRMeTFCdklWc1g5cVhCNTlPZ1hhTUFHQlhTQlJTS3pnN0ZXTkNfQWxSUnNaYzZScHY2dHd6ZThHaXhid3pXd2F5cG1yeDJIX3dVODJDQnJRcFc5aVlab2g1N05ZRkR6QTRCTjJrdXBSSUJMWjMzaWFKUWF1U1dvRGlseldNY3RJbERjTXRoT2hrc050bElBY0tuaUh0ZlllNGxaSWtsVm04Vm5QN1VETWRYVDRHVU10TVBKOVVvS0xYb3loWVMySDVQNTFLNzRfLXJLX1B3aUQ1bWZGWEZHSlc1Y3RPeDBETHNoTFpndk9jdWM?oc=5",
-      "publisher": "وزارة الخارجية العراقية",
-      "publisherUrl": "https://mofa.gov.iq",
-      "published": "2026-11-12T17:08:04.000Z",
-      "description": "",
-      "categories": [
-        "tenders",
-        "government"
-      ],
-      "regions": [
-        "Iraq"
-      ],
-      "markets": [
-        "Middle East"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": "Tender",
-      "value": null,
-      "lang": "ar",
-      "deadline": null,
-      "firstSeen": "2026-11-12T22:56:43.862Z",
-      "score": 2
-    },
-    {
       "id": "3c751e294d1d",
       "title": "JBICなど、送電網整備支援でBIDVに1億USDの協調融資［日系］",
       "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFB4Sk40bkNoeDBNU3FHdHROY01faHZ5M005MVc0aWlUN1FtanI0MlRwdkg0QWZJU0loSm1OaWEycFFza2dic056OHQ0bl9lNUE2TENlTm9mRTh6WkY4RU4wazZDcw?oc=5",
@@ -1136,30 +1530,6 @@
       "firstSeen": "2026-11-12T17:37:42.259Z",
       "score": 2,
       "similar": 6
-    },
-    {
-      "id": "f5099d6a58da",
-      "title": "Aluminium squeeze deepens as LME backwardation hits 36-year high",
-      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNOURrSW1tSUczNUV0Mk5ZSm0xUmZSYTl6dzlSQWtqeVV6MGxWdUdzYkVITXdzb3NDSWdvR05YNWkwU0ctVEVsSjVtUTUyU0VTU2FLT3VOcGlfODRabWxIdDFRRzV4RVh0ZGJDNmN3NWNHQXdMTHE1YkpXdVF4QjdON1ZoUm1OX2s5dGtwTlZkMDE?oc=5",
-      "publisher": "Mining.com.au",
-      "publisherUrl": "https://mining.com.au",
-      "published": "2026-11-12T16:42:13.000Z",
-      "description": "",
-      "categories": [
-        "aluminium",
-        "metals"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-12T17:37:42.259Z",
-      "score": 0,
-      "similar": 1
     },
     {
       "id": "f780f60d6dfe",
@@ -1291,6 +1661,33 @@
       "deadline": null,
       "firstSeen": "2026-11-12T17:37:42.259Z",
       "score": 1
+    },
+    {
+      "id": "f6bdf9ecb7e4",
+      "title": "اعلان مناقصة وزارة الكهرباء – Embassy of the Republic of Iraq in Madrid",
+      "url": "https://news.google.com/rss/articles/CBMilAJBVV95cUxNM3ZtczJXRWsxRFlvMDdpZy1DbDZ2bXd0enMyWG9VVGM3LVdGSy1pUVFXUFczeXFZT1ZoTk1xcFI1T051MzRrT0IyN0Y1OFBvaEtHWkwzZnVKY0JzX0FXSnpvVlVKRjJ1OEF3cENHQ3hmSEt6d3FmUWFUTGo3ZTRuRHBFRHFYeGM0Wl9LSTQxUlFYV1BRM2Zqb2h3akVXWEtSRTlCUjVfLVdIRFBfOEtza0szNUJMSEVrNW9sT3ZnRDd4Y1NCZHBRYlhfakFQbHdXbGFWdERKOUJJeU1tazk0M2hoY1M5NHMwLXp0VjdvRTh3MjBHSFFCQU5IUzh5c3R5Mi1zVG9ySm51THhxR2JJbXMtWnA?oc=5",
+      "publisher": "وزارة الخارجية العراقية",
+      "publisherUrl": "https://mofa.gov.iq",
+      "published": "2026-11-12T15:44:17.000Z",
+      "description": "",
+      "categories": [
+        "tenders",
+        "government"
+      ],
+      "regions": [
+        "Iraq"
+      ],
+      "markets": [
+        "Middle East"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "ar",
+      "deadline": null,
+      "firstSeen": "2026-11-12T22:56:43.862Z",
+      "score": 2
     },
     {
       "id": "29479d16ae3b",
@@ -2040,34 +2437,6 @@
       "score": 1
     },
     {
-      "id": "b89f9bd50223",
-      "title": "Tanzania awards EDTCO a tender to construct 92.3km, 33kv power project from Mtwara to Tandahimba",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNR3dZaElpbWdGMXA5MnYwb2VuVUpjYzE0NUp1ZjNjZm8wUHU4UC15UzAzcXpxZFdUTEZENTQydnk1NU9tU0NKb1RCOXZfeGFLMkxuTUxaRUVGYzFvVVBESFI2N1lwVG1OVE0tdExLck9FWkJmWGZwNTJfMHV2UkR1WjJzWlpZQlltYWRkTEF4R21GSjhnVFBVRldsVjZwdXZiZUZDYTZHN2ljR2ktOFNja3ZJS2NsLTRvNFQ2eA?oc=5",
-      "publisher": "Daily News",
-      "publisherUrl": "https://dailynews.co.tz",
-      "published": "2026-11-12T13:07:41.000Z",
-      "description": "",
-      "categories": [
-        "projects",
-        "tenders",
-        "demand"
-      ],
-      "regions": [
-        "Sub-Saharan Africa"
-      ],
-      "markets": [
-        "Africa"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": "Award",
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-12T17:37:42.259Z",
-      "score": 5
-    },
-    {
       "id": "fc6bea62e8a2",
       "title": "Red Eléctrica culmina la ampliación de la subestación de Abanto-Zierbena",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOVjNRMHdBWm5WOTdyY1JGd1JDeGp5TlZzZS00ck5STUZlN19RVE1KYWh6Q2lxZmpwZmg3NmtBM3llcUhLYk1NY1h3VTdKbm5uRlNXY1JXcG5VVDlyd3NaVEhsdG5WdXJrbWtBbkdBZ0ZLOWNxalQyLUdhSXoyRzVzdDNsWEFDZmc4T19Xc1RoWmFqZlJia0IwSzJqOXA3Mmlfb0dVX3ZYSTljREQyOWFPanR5QQ?oc=5",
@@ -2324,6 +2693,34 @@
       "deadline": null,
       "firstSeen": "2026-11-12T22:56:43.862Z",
       "score": 2
+    },
+    {
+      "id": "b89f9bd50223",
+      "title": "Tanzania awards EDTCO a tender to construct 92.3km, 33kv power project from Mtwara to Tandahimba",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNR3dZaElpbWdGMXA5MnYwb2VuVUpjYzE0NUp1ZjNjZm8wUHU4UC15UzAzcXpxZFdUTEZENTQydnk1NU9tU0NKb1RCOXZfeGFLMkxuTUxaRUVGYzFvVVBESFI2N1lwVG1OVE0tdExLck9FWkJmWGZwNTJfMHV2UkR1WjJzWlpZQlltYWRkTEF4R21GSjhnVFBVRldsVjZwdXZiZUZDYTZHN2ljR2ktOFNja3ZJS2NsLTRvNFQ2eA?oc=5",
+      "publisher": "Daily News",
+      "publisherUrl": "https://dailynews.co.tz",
+      "published": "2026-11-12T12:21:42.000Z",
+      "description": "",
+      "categories": [
+        "projects",
+        "tenders",
+        "demand"
+      ],
+      "regions": [
+        "Sub-Saharan Africa"
+      ],
+      "markets": [
+        "Africa"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T17:37:42.259Z",
+      "score": 5
     },
     {
       "id": "22aabb8e5f25",
@@ -3033,6 +3430,30 @@
       "deadline": null,
       "firstSeen": "2026-11-12T17:37:42.259Z",
       "score": 0
+    },
+    {
+      "id": "b02942903038",
+      "title": "LME Aluminum Market Faces Biggest Supply Squeeze in Decades",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPdkxZYlhkQ1FLR1QzbnkzYlp0aWhULUI5ZFFFbUs0WjlFdXItZHh1OWxpNF9oeWptVjI2emhPYUhDVDN5aHdLR0ZoaVQwVGhsQXY2Y1JjTW45TUI2RTNNam1vVmtVTTBnRXJtX1YwcW5IRFVuLVQ1emZxTHJXSU56S1FvODl0ZDlpVWJkbE1rc1E1aXBLdW4wekY3bkNpajZfMXRMTGlnb0cxd3AzNlJGay1tYw?oc=5",
+      "publisher": "Bloomberg.com",
+      "publisherUrl": "https://www.bloomberg.com",
+      "published": "2026-11-12T10:26:16.000Z",
+      "description": "",
+      "categories": [
+        "aluminium",
+        "metals"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T23:38:40.103Z",
+      "score": 0,
+      "similar": 2
     },
     {
       "id": "b1970a78a6dd",
@@ -5481,32 +5902,6 @@
       "score": 2
     },
     {
-      "id": "e276c1ac8465",
-      "title": "Insurance Australia Group Disagrees With ACCC's Preliminary Assessment of Proposed Strategic Alliance",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNaThCTXFFZFRyNTZpZ2VzeE1WcU14RXo3bllQSEEwMTZzQVNDbDZac2EyOHpsU2haWXdTVGo3ZGhqamZ6d2lxM25ZLWlqNVpPVERNZFZjbUJXTVRwanJJQktvdm5mV1hseWF0a2NKd3FIMnRQdDA4S3hfYjVENFpjVkI3ZmZTTmxHaUNWVjY5VjN0N2JLT0xQNVhOdGFHRVhib2RaXzV6RzVRU3EwbGdYb3Q4VEdPelpK?oc=5",
-      "publisher": "Moomoo",
-      "publisherUrl": "https://www.moomoo.com",
-      "published": "2026-11-11T22:14:30.000Z",
-      "description": "",
-      "categories": [
-        "competitors"
-      ],
-      "regions": [
-        "Oceania"
-      ],
-      "markets": [
-        "Oceania"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": "Plan",
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-12T22:56:43.862Z",
-      "score": 0
-    },
-    {
       "id": "bda96351ca94",
       "title": "Mexico says crackdown on Asian steel shipments is paying off as US tariff talks advance",
       "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQdnhxM01CN0U2eGllSHh2eHY1RUs2NFY0b25xczg3T1VMSEtobE40amxmZS1XVHN4YkcybG91dk5ZeEVoRzN3Y1kyb09GTnd4aGlQbmJvTWF0VjZ6N3VGTFRLb190U1AtVkVmMFg1bmlqc1JqODF5YlhSWUNVbEhtRmpPd240ZXJ5WVZ5UkpHUmJyNERwbDRRYTYyY21BX0hxbkJIWVY4dDVTa252R2pjdVBUVVhIT1RDMTFwbmdR?oc=5",
@@ -5693,7 +6088,7 @@
       "deadline": null,
       "firstSeen": "2026-11-11T23:47:00.606Z",
       "score": 0,
-      "similar": 1
+      "dupOf": "b02942903038"
     },
     {
       "id": "6f2452f44b8f",
@@ -6717,7 +7112,7 @@
     {
       "id": "6081dadb18bf",
       "title": "AEMA seeks govt to remove 8.25% duty on aluminium imports",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPWGtGcjVwcUotaW5jYVZrNzhST3FmMHUtem1RQ3k0V0IwT1dDcy1iOWVKcFdFeUlsTkdVbGVoYXlhUC1UeHViYk1TNDY1TF9TOTIzVlJpTXJZVWV1cTdMME1YUlRVczBFWnRDQXVyTENnd2NsWFlILTFVMHp4NkU5cEl3TnlJeGQwaTg2ZTNmSU5XQ2V6VFJVaW9oT21IektVdWZZcFdKRVlfXzJyaXZUa05mOVcxWlpF0gG_AUFVX3lxTE4yLTFXd1BQXzBRQmZnSGZLWnpsVVhmV3RWNjZ0QTVBWlN3WHlpWjlzcUZZNWVMVjAtN1BPVmhCYnBRNTFLMU5POEkzNDBSbVVPcXBGdDJJSW52V2lraTRNV29jX3BYTi1KUlBjMDA1MFpCVGxvbF92eWJaY1pUUGJBSlFTVXVOcjdXVWpWU3RqT1V6LWdGODZOOFlZWEJxN0Rndm1sNUZaY2xfRnlMV09Tc3RneTJxajhPU0lUS2xz?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOUF8yMWgzMkRyQ3NMSWxCS1loNC1PeTU0MmtUS0hHVklwWDh3SUU0aU5GXzhRMWE4VnBRd3RVdElZQ0ZRc2RRNWFhcVZiVWtfWUtFajcyU1dpQUFCZ09tWVFISUliUW8tWkFQalFHbHBEbnlsM2RhbFFEUGpkZnVLR2xieElNT0pRMXRXUHhUeEZjOTRURFBzRnpvWnJSSEVQX2d0cV9qR21YeFA1ZFhJTmg1VmNrODhfbDdkaDR0MWpNWXdvc3lfOTJEMjbSAdMBQVVfeXFMTVBYazJINHBVVUNwd2FGVDNCdzUweVlBR0ZLRGlaVTN3Zjdnd19uemxVRVlEdksxcElkQ1NYcE8yT2xCVG94YjRDMThkaXB1alNIVnJyaFp6bnNpVW5kYmJHNDQtZ01qalVfdjFzRnRBTHBaM1hDSWYyYnJ6YTBJQlRHOEFTMkU0WlNtbE42T0hmVGZBeldpOHFTSzhpdW9YZW5zMDRGdjBNeUI2SXE5MWxFa0YtOTFuV3JNdjVXaGxreVBFLUJfZzdsRDBjN3ZlVjhscw?oc=5",
       "publisher": "BusinessLine",
       "publisherUrl": "https://www.thehindubusinessline.com",
       "published": "2026-11-11T13:25:45.000Z",
@@ -9012,6 +9407,34 @@
       "dupOf": "c2a5206d4282"
     },
     {
+      "id": "49d202424e16",
+      "title": "韓国Iljin Electric、第3四半期営業利益98.3%急増…受注残高3兆ウォン突破",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE95LTd5VEtXMFhyWDdJZ3lCQTdIWExsbXFab0tzbjBzcnZ1M2gyYjZjcjJQOEswYktBSWliUmFWMkQwTGRIUTdQbndvTFFmMFFBNnE0TS01X0VBTE9Zdm9ZRV8zUHppdG41dWlRSkNSTHFyLXdk?oc=5",
+      "publisher": "BigGo ファイナンス",
+      "publisherUrl": "https://finance.biggo.jp",
+      "published": "2026-11-11T06:29:31.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [
+        "East Asia"
+      ],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [
+        "Iljin Electric"
+      ],
+      "actor": null,
+      "stage": "Award",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-11T14:16:13.485Z",
+      "score": 4
+    },
+    {
       "id": "772473957cd5",
       "title": "Ethiopia seeks $11 billion to connect 32.5 million households to the grid by 2035",
       "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOT2czMkNxbHVEQTlWRHNQODd1dmpFR24tVVlqVHJlTlVVT3d2SERKTXE5UUc4NzRGWWc2dGRjMVN3LUdGcEtDeDlPd1dQSVlzU3ZPMkp6eFZ0WG1wZnlBU0pxeHBveHhEYzI3UkVkZkxOTG95Z0FuM3JoUnpUYm05WXlVNA?oc=5",
@@ -9065,34 +9488,6 @@
       "firstSeen": "2026-11-11T14:16:13.485Z",
       "score": 4,
       "dupOf": "c2a5206d4282"
-    },
-    {
-      "id": "49d202424e16",
-      "title": "韓国Iljin Electric、第3四半期営業利益98.3%急増…受注残高3兆ウォン突破",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE95LTd5VEtXMFhyWDdJZ3lCQTdIWExsbXFab0tzbjBzcnZ1M2gyYjZjcjJQOEswYktBSWliUmFWMkQwTGRIUTdQbndvTFFmMFFBNnE0TS01X0VBTE9Zdm9ZRV8zUHppdG41dWlRSkNSTHFyLXdk?oc=5",
-      "publisher": "BigGo ファイナンス",
-      "publisherUrl": "https://finance.biggo.jp",
-      "published": "2026-11-11T06:26:00.000Z",
-      "description": "",
-      "categories": [
-        "competitors"
-      ],
-      "regions": [
-        "East Asia"
-      ],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [
-        "Iljin Electric"
-      ],
-      "actor": null,
-      "stage": "Award",
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-11T14:16:13.485Z",
-      "score": 4
     },
     {
       "id": "390e8a14f3a5",
@@ -9944,7 +10339,8 @@
       "lang": "en",
       "deadline": null,
       "firstSeen": "2026-11-11T06:09:13.074Z",
-      "score": 8
+      "score": 8,
+      "similar": 1
     },
     {
       "id": "baa5784139f5",
@@ -10205,6 +10601,32 @@
       "deadline": null,
       "firstSeen": "2026-11-11T21:58:19.770Z",
       "score": 4
+    },
+    {
+      "id": "e276c1ac8465",
+      "title": "Insurance Australia Group Disagrees With ACCC's Preliminary Assessment of Proposed Strategic Alliance",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNaThCTXFFZFRyNTZpZ2VzeE1WcU14RXo3bllQSEEwMTZzQVNDbDZac2EyOHpsU2haWXdTVGo3ZGhqamZ6d2lxM25ZLWlqNVpPVERNZFZjbUJXTVRwanJJQktvdm5mV1hseWF0a2NKd3FIMnRQdDA4S3hfYjVENFpjVkI3ZmZTTmxHaUNWVjY5VjN0N2JLT0xQNVhOdGFHRVhib2RaXzV6RzVRU3EwbGdYb3Q4VEdPelpK?oc=5",
+      "publisher": "Moomoo",
+      "publisherUrl": "https://www.moomoo.com",
+      "published": "2026-11-10T21:45:53.000Z",
+      "description": "",
+      "categories": [
+        "competitors"
+      ],
+      "regions": [
+        "Oceania"
+      ],
+      "markets": [
+        "Oceania"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": "Plan",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-12T22:56:43.862Z",
+      "score": 0
     },
     {
       "id": "bb693184b475",
@@ -15816,7 +16238,7 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 0,
-      "dupOf": "68c3f5475ed8"
+      "dupOf": "b02942903038"
     },
     {
       "id": "7a9e003eab7a",
@@ -28135,6 +28557,7 @@
       "stage": null,
       "value": null,
       "lang": "en",
+      "deadline": null,
       "firstSeen": "2026-11-06T06:37:49.490Z",
       "score": 0
     },
