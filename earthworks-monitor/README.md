@@ -217,7 +217,8 @@ API documentation is served at `/api/docs`.
 - Only WGS84-ellipsoid, EGM96 and EGM2008 heights are converted; a local project datum
   must match the site's.
 - One stereo pair per survey (no multi-pair mosaics); no ground control points.
-- The worker image is large (about 7 GB) and x86-64 only, as ASP's conda package is.
+- The worker image is large (about 10 GB) and x86-64 only, as ASP's conda package is.
+  Its first build downloads about 3 GB and takes several minutes.
 - One design surface per site.
 - Heights are assumed to be in metres.
 - A pixel counts towards a zone when its centre is inside; there is no partial-pixel weighting.

@@ -4,6 +4,7 @@ Run inside the worker container (it needs Ames Stereo Pipeline):
 
     python -m app.demo --scene /demo/AST_L1A_....hdf --date 2023-05-14
     python -m app.demo --simulate
+    python -m app.demo --simulate --queue     (run the stereo job in the worker service)
 
 Creates a demo project over an arid site with relief (default: Jebel Hafeet, on the
 UAE / Oman border), loads the Copernicus GLO-30 DEM as the reference surface, then
@@ -183,6 +184,7 @@ def main() -> None:
     parser.add_argument("--lon", type=float, default=55.77)
     parser.add_argument("--lat", type=float, default=24.07)
     parser.add_argument("--size-km", type=float, default=6.0, help="side of the square site")
+    parser.add_argument("--queue", action="store_true", help="hand the stereo job to the running worker service instead of running it here (follow it on the job screen)")
     args = parser.parse_args()
     if args.scene and not args.scene.exists():
         raise SystemExit(f"Scene file not found: {args.scene}")
@@ -261,6 +263,10 @@ def main() -> None:
             resolution_m=20.0 if args.simulate else None, user_id=owner_id, released=True,
         )
         surface_id, site_id = surface.id, site.id
+        if args.queue:
+            dispatch(db, [job], eager=False)
+            print("Stereo job queued. Follow it in the dashboard: site -> Processing jobs.")
+            return
         dispatch(db, [job], eager=True)
 
         surface = db.get(Surface, surface_id)

@@ -3,7 +3,7 @@
 # ASP is installed from its official conda package, with the version pinned, into its
 # own environment at /opt/asp. It is kept apart from the application's Python so the two
 # sets of geospatial libraries cannot interfere; the application calls the ASP tools as
-# subprocesses (app/engines/asp). The image is large (several GB) because ASP ships with
+# subprocesses (app/engines/asp). The image is large (about 10 GB) because ASP ships with
 # the USGS ISIS libraries.
 ARG ASP_VERSION=3.7.0
 
@@ -21,8 +21,9 @@ FROM python:3.11-slim
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 ASP_PREFIX=/opt/asp
 WORKDIR /app
 
-# libexpat is needed by the GDAL bundled in the rasterio wheel.
-RUN apt-get update && apt-get install -y --no-install-recommends libexpat1 \
+# libexpat is needed by the GDAL bundled in the rasterio wheel; procps provides `ps`,
+# which parallel_stereo calls.
+RUN apt-get update && apt-get install -y --no-install-recommends libexpat1 procps \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.lock ./

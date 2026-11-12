@@ -90,7 +90,7 @@ export default function JobsPage() {
               <tr>
                 <th>{t("jobs.job")}</th>
                 <th>{t("jobs.target")}</th>
-                <th />
+                <th>{t("jobs.statusLabel")}</th>
                 <th>{t("jobs.attempts")}</th>
                 <th>{t("jobs.started")}</th>
                 <th>{t("jobs.duration")}</th>

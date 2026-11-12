@@ -240,6 +240,7 @@
     "hideLog": "Hide log",
     "retry": "Retry",
     "backToSite": "Back to dashboard",
-    "seconds": "{{value}} s"
+    "seconds": "{{value}} s",
+    "statusLabel": "Status"
   }
 }

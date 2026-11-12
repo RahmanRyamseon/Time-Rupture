@@ -138,6 +138,11 @@ class StableGroundStats:
     systematic_m: float | None
     n_blocks: int
     center_m: float
+    # Measured noise leakage: the average phantom cut and fill per square metre of
+    # stable ground at the level of detection `leak_lod_m` (None if not requested).
+    leak_lod_m: float | None = None
+    leak_cut_m: float | None = None
+    leak_fill_m: float | None = None
 
     def as_dict(self) -> dict:
         return asdict(self)
@@ -150,6 +155,8 @@ def measure_stable_ground(
     *,
     center: float | None = 0.0,
     min_pixels: int = 1000,
+    lod_sigma_multiplier: float | None = None,
+    lod_m: float | None = None,
 ) -> StableGroundStats | None:
     """Compare two surfaces outside the `exclude` geometries (the work zones).
 
@@ -157,6 +164,11 @@ def measure_stable_ground(
     offset: it is the returned `median_m`). `center=0.0` measures the error remaining
     between two surfaces that are already aligned, residual bias included.
     Returns None when fewer than `min_pixels` stable pixels exist.
+
+    With `lod_m` (or `lod_sigma_multiplier`, times the measured RMSE) the phantom cut
+    and fill that noise alone produces at that level of detection are measured too,
+    using every stable pixel, outliers included: real DEM errors have heavier tails
+    than a normal distribution, especially on steep slopes.
     """
     with _Pair(from_, to) as pair:
         total = pair.width * pair.height
@@ -206,7 +218,18 @@ def measure_stable_ground(
         if len(block_medians) >= MIN_BLOCKS_FOR_SYSTEMATIC
         else None
     )
+    leak_lod = lod_m if lod_m is not None else (
+        lod_sigma_multiplier * rmse if lod_sigma_multiplier is not None else None
+    )
+    leak_cut = leak_fill = None
+    if leak_lod is not None:
+        deviations = values - centre
+        leak_fill = float(np.where(deviations >= leak_lod, deviations, 0.0).mean())
+        leak_cut = float(np.where(deviations <= -leak_lod, -deviations, 0.0).mean())
     return StableGroundStats(
+        leak_lod_m=leak_lod,
+        leak_cut_m=leak_cut,
+        leak_fill_m=leak_fill,
         n_pixels=stable_pixels,
         area_m2=stable_pixels * pixel_area,
         median_m=median,
@@ -241,6 +264,9 @@ class Uncertainty:
     correlation_length_m: float
     confidence_z: float = 1.96
     lod_m: float = 0.0  # level of detection the volumes were thresholded at
+    # Phantom cut / fill per square metre measured on stable ground at `lod_m`, if known.
+    measured_leak_cut_m: float | None = None
+    measured_leak_fill_m: float | None = None
 
 
 @dataclass(frozen=True)
@@ -390,19 +416,24 @@ def volume_sigma_m3(area_m2: float, pixel_area_m2: float, u: Uncertainty) -> flo
     return math.hypot(random_part, systematic_part)
 
 
-def noise_leakage_m3(area_m2: float, u: Uncertainty) -> float:
+def noise_leakage_m3(area_m2: float, u: Uncertainty, measured_m: float | None = None) -> float:
     """Phantom volume expected from pure noise that happens to exceed the threshold.
 
     Over unchanged ground a fraction of pixels still exceeds the level of detection by
     chance and is counted, as cut and as fill alike. For normal noise the expected
-    one-sided amount is sigma x pdf(LoD / sigma) per unit area. It cancels in the net
-    volume but not in cut or fill taken alone, so it is added to their +/- ranges
-    (conservatively over the region's whole surveyed area).
+    one-sided amount is sigma x pdf(LoD / sigma) per unit area. Where the amount was
+    measured on stable ground (`measured_m`, metres of phantom change per unit area)
+    the larger of the two is used, since real errors have heavier tails than normal
+    noise. It largely cancels in the net volume but not in cut or fill taken alone, so
+    it is added to their +/- ranges (conservatively over the region's surveyed area).
     """
-    if area_m2 <= 0 or u.sigma_pixel_m <= 0:
+    if area_m2 <= 0:
         return 0.0
-    k = u.lod_m / u.sigma_pixel_m
-    return area_m2 * u.sigma_pixel_m * math.exp(-0.5 * k * k) / math.sqrt(2.0 * math.pi)
+    theory = 0.0
+    if u.sigma_pixel_m > 0:
+        k = u.lod_m / u.sigma_pixel_m
+        theory = u.sigma_pixel_m * math.exp(-0.5 * k * k) / math.sqrt(2.0 * math.pi)
+    return area_m2 * max(theory, measured_m or 0.0)
 
 
 def finalize_volumes(acc: RegionSums, pixel_area_m2: float, u: Uncertainty) -> VolumeResult:
@@ -417,12 +448,14 @@ def finalize_volumes(acc: RegionSums, pixel_area_m2: float, u: Uncertainty) -> V
         fill_m3=fill,
         net_m3=fill - cut,
         cut_pm_m3=z * volume_sigma_m3(cut_area, pixel_area_m2, u)
-        + noise_leakage_m3(valid_area, u),
+        + noise_leakage_m3(valid_area, u, u.measured_leak_cut_m),
         fill_pm_m3=z * volume_sigma_m3(fill_area, pixel_area_m2, u)
-        + noise_leakage_m3(valid_area, u),
+        + noise_leakage_m3(valid_area, u, u.measured_leak_fill_m),
         # A shared height bias raises fill and lowers cut together, so for the net
-        # volume it acts over the whole changed area.
-        net_pm_m3=z * volume_sigma_m3(cut_area + fill_area, pixel_area_m2, u),
+        # volume it acts over the whole changed area. Phantom cut and fill cancel in
+        # the net only as far as they are equal; any measured imbalance is added.
+        net_pm_m3=z * volume_sigma_m3(cut_area + fill_area, pixel_area_m2, u)
+        + valid_area * abs((u.measured_leak_fill_m or 0.0) - (u.measured_leak_cut_m or 0.0)),
         cut_area_m2=cut_area,
         fill_area_m2=fill_area,
         below_lod_area_m2=max(valid_area - cut_area - fill_area, 0.0),

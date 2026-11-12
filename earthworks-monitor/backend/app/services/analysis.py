@@ -164,7 +164,9 @@ def schedule_default_analyses(db: Session, site: Site, surface: Surface) -> list
     return jobs
 
 
-def _pair_uncertainty(from_surface: Surface, to_surface: Surface, exclusions, log: Log) -> tuple[float, float, dict]:
+def _pair_uncertainty(
+    from_surface: Surface, to_surface: Surface, exclusions, lod_override_m: float | None, log: Log
+) -> tuple[float, float, dict]:
     """Choose the 1-sigma pixel and systematic height errors for a pair (METHOD.md §4)."""
     settings = get_settings()
     surveys = [s for s in (from_surface, to_surface) if s.kind == KIND_SURVEY]
@@ -175,6 +177,8 @@ def _pair_uncertainty(from_surface: Surface, to_surface: Surface, exclusions, lo
             exclusions,
             center=0.0,
             min_pixels=settings.min_stable_pixels,
+            lod_sigma_multiplier=settings.lod_sigma_multiplier,
+            lod_m=lod_override_m,
         )
         if stats is not None:
             systematic = stats.systematic_m if stats.systematic_m is not None else stats.rmse_m
@@ -215,8 +219,9 @@ def run_analysis(db: Session, analysis: Analysis, log: Log) -> None:
     areal_scale = areal_scale_factor(crs, centroid.x, centroid.y)
 
     sigma_px, sigma_sys, how = _pair_uncertainty(
-        from_surface, to_surface, stable_ground_exclusions(site, crs), log
+        from_surface, to_surface, stable_ground_exclusions(site, crs), analysis.lod_override_m, log
     )
+    measured = how.get("stable_ground") or {}
     resolution = max(from_surface.resolution_m, to_surface.resolution_m)
     lod = (
         analysis.lod_override_m
@@ -229,6 +234,8 @@ def run_analysis(db: Session, analysis: Analysis, log: Log) -> None:
         correlation_length_m=settings.uncertainty_correlation_pixels * resolution,
         confidence_z=settings.confidence_z,
         lod_m=lod,
+        measured_leak_cut_m=measured.get("leak_cut_m"),
+        measured_leak_fill_m=measured.get("leak_fill_m"),
     )
     log(f"Level of detection {lod:.3f} m; differencing '{to_surface.name}' minus '{from_surface.name}'")
 

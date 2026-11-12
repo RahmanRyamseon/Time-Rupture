@@ -244,6 +244,7 @@
     "hideLog": "إخفاء السجل",
     "retry": "إعادة المحاولة",
     "backToSite": "العودة إلى لوحة المتابعة",
-    "seconds": "{{value}} ث"
+    "seconds": "{{value}} ث",
+    "statusLabel": "الحالة"
   }
 }

@@ -115,8 +115,12 @@ The dashboard says which source was used.
 - The two parts are combined as √(systematic² + random²), then multiplied by 1.96.
 
 For **cut** and **fill** taken separately, an allowance is added for noise that happens
-to exceed the level of detection on unchanged ground: it creates small phantom cut and
-fill in equal amounts. They cancel in the net volume, so the allowance is not added there.
+to exceed the level of detection on unchanged ground: it creates phantom cut and fill.
+The allowance is the larger of two figures: what normally distributed noise would
+produce, and what is actually *measured* on the stable ground of the two surveys. The
+measurement matters because real elevation errors are not normally distributed — on steep
+slopes a small sideways offset produces occasional large height errors. Phantom cut and
+fill mostly cancel in the net volume; only their measured imbalance is added there.
 
 For the **net** volume, a shared height error raises fill and lowers cut together, so the
 changed area *A* is the cut area plus the fill area.

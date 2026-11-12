@@ -89,4 +89,6 @@ def test_deleting_project_cascades(analyst, project, site):
 
 def test_public_config_exposes_no_secrets(anon):
     config = anon.get("/api/config").json()
-    assert set(config) == {"app_name", "basemap_tile_url", "basemap_attribution", "max_upload_mb", "max_dem_upload_mb"}
+    assert set(config) == {"app_name", "basemap_tile_url", "basemap_attribution", "max_upload_mb", "max_dem_upload_mb",
+        "max_stereo_upload_mb", "camera_models", "single_file_camera_models",
+    }
