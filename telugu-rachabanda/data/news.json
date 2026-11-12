@@ -1,6 +1,174 @@
 {
- "updated": "2026-11-12T10:04:20.607Z",
+ "updated": "2026-11-12T18:30:02.047Z",
  "items": [
+  {
+   "title": "Abu Dhabi advances as global maritime hub, enters top 15",
+   "url": "https://gulfnews.com/business/abu-dhabi-advances-as-global-maritime-hub-enters-top-15-1.500745551",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-12T17:47:26.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "c83579869e64",
+   "related": []
+  },
+  {
+   "title": "Dubai to host global anti-drugs conference on November 17",
+   "url": "https://gulfnews.com/uae/dubai/dubai-to-host-global-anti-drugs-conference-on-november-17-1.500745065",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-12T16:47:45.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "6d66b20ae83a",
+   "related": []
+  },
+  {
+   "title": "Dubai remains Middle East's top maritime city",
+   "url": "https://gulfnews.com/business/dubai-remains-middle-easts-top-maritime-city-1.500745362",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-12T15:45:13.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "a048be3c2115",
+   "related": []
+  },
+  {
+   "title": "A Majestic blend of governance, heritage, and architecture define Abu Dhabi's Qasr Al Watan",
+   "url": "https://gulfnews.com/uae/abu-dhabi/a-majestic-blend-of-governance-heritage-and-architecture-define-abu-dhabis-qasr-al-watan-1.500745344",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-12T15:35:51.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "2ac6b8f04e48",
+   "related": []
+  },
+  {
+   "title": "UAE Minister highlights health security as key to national resilience at Global Military Medicine Congress",
+   "url": "https://gulfnews.com/uae/abu-dhabi/uae-minister-highlights-health-security-as-key-to-national-resilience-at-global-military-medicine-congress-1.500745277",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-12T15:02:39.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "a094781e3aa0",
+   "related": []
+  },
+  {
+   "title": "US-Israel-Iran war: What UAE residents need to know this evening, November 12",
+   "url": "https://gulfnews.com/world/mena/us-israel-iran-conflict-what-uae-residents-need-to-know-this-evening-november-12-1.500745263",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-12T14:41:40.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "e192d48fe887",
+   "related": []
+  },
+  {
+   "title": "Abu Dhabi reviews emergency readiness ahead of potential unstable weather",
+   "url": "https://gulfnews.com/uae/weather/abu-dhabi-reviews-emergency-readiness-ahead-of-potential-unstable-weather-1.500745271",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-12T14:33:26.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "cbbd82b94ada",
+   "related": []
+  },
+  {
+   "title": "Abu Dhabi announces weekend lane closure on Sheikh Zayed Bridge",
+   "url": "https://gulfnews.com/uae/transport/abu-dhabi-announces-weekend-lane-closure-on-sheikh-zayed-bridge-1.500745235",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-12T14:22:07.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "2e16202aa35d",
+   "related": []
+  },
+  {
+   "title": "Mars collaborates with Genpact, opens GCC in Hyderabad",
+   "url": "https://www.siasat.com/mars-collaborates-with-genpact-opens-gcc-in-hyderabad-3575572/",
+   "publisher": "The Siasat Daily",
+   "publisherUrl": "https://www.siasat.com",
+   "published": "2026-11-12T13:05:47.000Z",
+   "feed": "siasat",
+   "lang": "en",
+   "countries": [],
+   "telugu": true,
+   "sections": [
+    "top"
+   ],
+   "id": "39575653da98",
+   "related": []
+  },
   {
    "title": "UAE President receives US delegation participating in trilateral talks",
    "url": "https://gulfnews.com/uae/government/uae-president-receives-us-delegation-participating-in-trilateral-talks-1.500744705",
@@ -245,29 +413,9 @@
    "telugu": false,
    "sections": [
     "uae",
-    "gulf",
-    "saudi"
-   ],
-   "id": "5a9a2a1d72f3",
-   "related": []
-  },
-  {
-   "title": "US/Israel-Iran war: What UAE residents need to know today (Nov. 12, 2026)",
-   "url": "https://gulfnews.com/uae/usisrael-iran-war-what-uae-residents-need-to-know-today-nov-12-2026-1.500744621",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-12T07:54:51.000Z",
-   "feed": "gulfnews",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
     "gulf"
    ],
-   "id": "0183244c93ac",
+   "id": "5a9a2a1d72f3",
    "related": []
   },
   {
@@ -423,6 +571,25 @@
     "gulf"
    ],
    "id": "280f11acd414",
+   "related": []
+  },
+  {
+   "title": "Middle East tensions escalate as Iran threatens US bases, Trump rejects deal and Saudi Arabia intercepts missiles",
+   "url": "https://gulfnews.com/world/mena/us-israel-iran-war-tehran-threatens-american-bases-from-middle-east-to-europe-houthi-missile-debris-lands-in-makkah-eisenkot-cautions-netanyahu-1.500744472",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-12T03:58:33.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "saudi"
+   ],
+   "telugu": false,
+   "sections": [
+    "saudi",
+    "gulf"
+   ],
+   "id": "ee9515a5783e",
    "related": []
   },
   {
