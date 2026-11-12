@@ -15,12 +15,9 @@
 (function () {
   "use strict";
 
-  function norm(s) {
-    return (s || "").toString().toLowerCase()
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      .replace(/\b(ltd|llc|inc|co|corp|corporation|company|limited|plc|gmbh|sa|ag|jsc|oao|fze|dmcc|pjsc|the|and)\b/g, "")
-      .replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
-  }
+  var M = window.CSMatch;
+  var norm = M.norm, lev = M.lev, sim = M.sim, translit = M.translit, soundex = M.soundex,
+    tok = M.tok, pairScore = M.pairScore, nameScoreEx = M.nameScoreEx, nameScore = M.nameScore;
   function withTimeout(p, ms) { return Promise.race([p, new Promise(function (_, r) { setTimeout(function () { r(new Error("timeout")); }, ms); })]); }
   function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
 
@@ -45,109 +42,6 @@
      Token-level, order-independent, with a coverage rule that suppresses
      single-common-first-name false positives.
   */
-  function lev(a, b) {
-    var m = a.length, n = b.length; if (!m) return n; if (!n) return m;
-    var prev = [], cur = [], i, j;
-    for (j = 0; j <= n; j++) prev[j] = j;
-    for (i = 1; i <= m; i++) { cur[0] = i; for (j = 1; j <= n; j++) { var c = a.charCodeAt(i - 1) === b.charCodeAt(j - 1) ? 0 : 1; cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + c); } var t = prev; prev = cur; cur = t; }
-    return prev[n];
-  }
-  function sim(a, b) { var mx = Math.max(a.length, b.length); return mx ? 1 - lev(a, b) / mx : 0; }
-
-  // Transliteration / orthographic fold — collapses common spelling variants of
-  // the same underlying name across romanisation systems.
-  function translit(t) {
-    if (!t) return "";
-    return t
-      .replace(/sch/g, "sh").replace(/tsch/g, "ch")
-      .replace(/ph/g, "f").replace(/gh/g, "g").replace(/kh/g, "k")
-      .replace(/ck/g, "k").replace(/c(?=[eiy])/g, "s").replace(/c/g, "k")
-      .replace(/q/g, "k").replace(/x/g, "ks").replace(/z/g, "s")
-      .replace(/w/g, "v").replace(/y/g, "i").replace(/j/g, "i")
-      .replace(/(.)\1+/g, "$1")          // collapse doubled letters
-      .replace(/(?:ee|ea|ie|ei)/g, "i").replace(/(?:oo|ou)/g, "u")
-      .replace(/h/g, "")                 // silent/aspirated h is unreliable
-      .replace(/[aeiou]+/g, "a")         // fold vowel runs (Mohammed≈Muhammad)
-      .replace(/[^a-z]/g, "");
-  }
-
-  // Classic Soundex — phonetic key, 1 letter + 3 digits.
-  var SDX = { B: 1, F: 1, P: 1, V: 1, C: 2, G: 2, J: 2, K: 2, Q: 2, S: 2, X: 2, Z: 2, D: 3, T: 3, L: 4, M: 5, N: 5, R: 6 };
-  function soundex(t) {
-    t = (t || "").toUpperCase().replace(/[^A-Z]/g, ""); if (!t) return "";
-    var out = t[0], prev = SDX[t[0]] || 0;
-    for (var i = 1; i < t.length && out.length < 4; i++) {
-      var c = SDX[t[i]] || 0;
-      if (c && c !== prev) out += c;
-      if (t[i] !== "H" && t[i] !== "W") prev = c;
-    }
-    return (out + "000").slice(0, 4);
-  }
-
-  // token -> {l: literal, t: transliterated, s: soundex}
-  var tokCache = new Map();
-  function tok(t) { var v = tokCache.get(t); if (!v) { v = { l: t, t: translit(t), s: soundex(t) }; tokCache.set(t, v); } return v; }
-  // length-ratio of two strings (1 = same length, ->0 = very different lengths)
-  function lenRatio(a, b) { var x = a.length, y = b.length; return Math.min(x, y) / Math.max(x, y || 1); }
-  function pairScore(a, b) {            // a,b are tok() objects
-    if (a.l === b.l) return 1;
-    var litt = sim(a.l, b.l);
-    if (litt >= 0.84) return Math.max(litt, 0.9);   // literal near-match: typos / OCR noise
-    var lenOk = lenRatio(a.l, b.l) >= 0.6;          // comparable length (not one inside another)
-    // PRIMARY linguistic signal — the transliteration fold. Equality of the fold for
-    // two comparable, partly-overlapping tokens is strong evidence of ONE name spelt
-    // two ways across romanisation systems: Mohammed/Muhammad, Rahman/Rehman, Yusuf/
-    // Yousef, w↔v, ph↔f. This is word/spelling driven, not ear driven.
-    if (lenOk && a.t && a.t === b.t && litt >= 0.5) return Math.max(litt, 0.9);
-    // BACKSTOP ONLY — Soundex. It is a lossy phonetic code with poor precision:
-    // unrelated words share a code ("crisil" and the alias "chrisla" are both C624,
-    // yet only ~0.57 of their letters line up). So Soundex may only CONFIRM a pair
-    // that is already a near-spelling (high literal overlap) — it must never turn a
-    // mere sound-alike into a match on its own. Hence the strict literal floor.
-    if (lenOk && a.s && a.s === b.s && a.l[0] === b.l[0] && litt >= 0.74) return Math.max(litt, 0.86);
-    // weakest: transliterated edit distance, gated so a skeleton collision of
-    // unrelated words can never reach the token threshold.
-    var trt = a.t && b.t ? sim(a.t, b.t) : 0;
-    var corroborated = lenOk && litt >= 0.5;
-    return Math.max(litt, corroborated ? trt * 0.85 : trt * 0.45);
-  }
-
-  // Order-independent name score + the dominant match technique used.
-  function nameScoreEx(q, cand) {
-    if (q === cand) return { score: 1, type: "exact" };
-    var qt = q.split(" ").filter(function (t) { return t.length > 1; }).map(tok);
-    var ct = cand.split(" ").filter(function (t) { return t.length > 1; }).map(tok);
-    if (!qt.length || !ct.length) { var s0 = sim(q, cand); return { score: s0, type: "fuzzy" }; }
-    var used = [], matched = 0, mc = 0, viaPhon = 0, viaLit = 0;
-    for (var i = 0; i < qt.length; i++) {
-      var bestJ = -1, bestS = 0;
-      for (var j = 0; j < ct.length; j++) {
-        if (used[j]) continue;
-        var s = pairScore(qt[i], ct[j]);
-        if (s > bestS) { bestS = s; bestJ = j; }
-      }
-      if (bestS >= 0.8 && bestJ > -1) {
-        used[bestJ] = 1; matched += bestS; mc++;
-        if (qt[i].l === ct[bestJ].l || sim(qt[i].l, ct[bestJ].l) >= 0.84) viaLit++; else viaPhon++;
-      }
-    }
-    var coverage = matched / qt.length;
-    if (qt.length >= 2 && matched < 1.6) coverage *= 0.6;
-    // GENERIC-WORD GUARD. A single shared token between the query and a much longer
-    // name — the word "Global" inside "Global Sea Line", "Crisil" near one alias of a
-    // 3-word person — is a weak, ambiguous overlap, not an identity match. One word in
-    // common with a name carrying two-plus other distinct words can't reach the band.
-    if (mc <= 1 && (ct.length - mc) >= 2) coverage *= 0.5;
-    // Defence-in-depth: a match carried ENTIRELY by phonetic/fuzzy tokens (no
-    // single literally-anchored token) against a candidate far longer than the
-    // query is the signature of a skeleton-collision false positive. Require a
-    // literal anchor in that situation by damping the score below the review floor.
-    if (viaLit === 0 && viaPhon > 0 && ct.length >= qt.length + 2) coverage *= 0.7;
-    var score = Math.max(coverage, sim(q, cand) * 0.9);
-    var type = score >= 0.995 ? "exact" : (viaPhon > viaLit ? "phonetic" : (viaPhon ? "phonetic/fuzzy" : "fuzzy"));
-    return { score: score, type: type };
-  }
-  function nameScore(q, cand) { return nameScoreEx(q, cand).score; }
 
   /* ============================================================
      Sanctions: MULTI-LIST screening via OpenSanctions bulk data
@@ -421,7 +315,130 @@
     } catch (e) { return null; }
   }
   var pepJobPromise = null;
+  /* ============================================================
+     V3 FAST PATH — server-side prebuilt index
+     ------------------------------------------------------------
+     At deploy time the OpenSanctions sanctions, PEP, crime/wanted/
+     regulatory and debarment collections are downloaded ONCE and
+     indexed on the server (scripts/build.mjs). The browser fetches a
+     small metadata file and asks /api/screen for matches — no more
+     downloading ~100 lists on first load. If the API is unreachable
+     the original in-browser download path below is used instead.
+     ============================================================ */
+  var SERVER = { on: false, meta: null, ds: {} };
+  var srvCache = new Map();          // norm(name) -> server result | {error:true}
+  async function loadServerMeta() {
+    try {
+      var r = await withTimeout(fetch("/data/meta.json", { headers: { "Accept": "application/json" } }), 8000);
+      if (!r.ok) return false;
+      var m = await r.json();
+      if (!m || !m.datasets || !m.entities) return false;
+      m.datasets.forEach(function (d) { SERVER.ds[d.code] = d; });
+      var all = m.datasets.filter(function (d) { return d.count > 0; }).map(function (d) {
+        var t = d.lastChange ? Date.parse(d.lastChange) : NaN;
+        return { label: d.title, code: d.code, authority: d.publisher, jurisdiction: d.country, count: d.count, asOf: isNaN(t) ? null : t, kind: d.kind };
+      }).sort(function (a, b) { return b.count - a.count; });
+      var sanc = all.filter(function (l) { return l.kind === "Sanctions"; });
+      var peps = all.filter(function (l) { return l.kind === "PEP register"; });
+      var other = all.length - sanc.length - peps.length;
+      var asOf = Date.parse(m.asOf); if (isNaN(asOf)) asOf = Date.now();
+      sMeta = {
+        loaded: true, server: true, count: m.entities,
+        designations: sanc.reduce(function (a, l) { return a + l.count; }, 0),
+        asOf: asOf,
+        source: "OpenSanctions prebuilt index · " + sanc.length + " sanctions lists, " + peps.length + " PEP registers, " + other + " crime / wanted / regulatory / debarment lists",
+        tried: true, loading: false, lists: sanc, allLists: all, failed: [],
+        retrievedAt: Date.now(), version: m.builtAt
+      };
+      pMeta = { loaded: true, tried: true, server: true, count: peps.reduce(function (a, l) { return a + l.count; }, 0), lists: peps };
+      SERVER.meta = m; SERVER.on = true;
+      window.Sources.plannedLists = all.length;
+      return true;
+    } catch (e) { return false; }
+  }
+  async function screenBatch(batch) {
+    for (var attempt = 0; attempt < 3; attempt++) {
+      try {
+        var r = await withTimeout(fetch("/api/screen", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ names: batch }) }), 25000);
+        if (r.ok) {
+          var j = await r.json();
+          (j.results || []).forEach(function (x) { srvCache.set(norm(x.name), x); });
+          break;
+        }
+        if (r.status !== 429 && r.status < 500) break;
+      } catch (e) {}
+      await sleep(700 * (attempt + 1));
+    }
+    batch.forEach(function (n) { var q = norm(n); if (!srvCache.has(q)) srvCache.set(q, { error: true }); });
+  }
+  // Screen many names against the server index in batches (fills srvCache).
+  async function prefetch(names, onProgress) {
+    if (!SERVER.on) return;
+    var todo = [], seen = {};
+    (names || []).forEach(function (n) {
+      n = (n || "").toString().slice(0, 300); var q = norm(n);
+      if (q && !seen[q] && !(srvCache.has(q) && !srvCache.get(q).error)) { seen[q] = 1; todo.push(n); }
+    });
+    if (!todo.length) return;
+    var batches = [], B = 50, next = 0, done = 0;
+    for (var i = 0; i < todo.length; i += B) batches.push(todo.slice(i, i + B));
+    async function w() {
+      while (next < batches.length) {
+        var b = batches[next++];
+        await screenBatch(b);
+        done += b.length;
+        if (onProgress) try { onProgress(done, todo.length); } catch (e) {}
+      }
+    }
+    await Promise.all([w(), w(), w()]);
+  }
+  function srvGet(name) { return srvCache.get(norm((name || "").toString().slice(0, 300))); }
+  function dsInfo(codes, kinds) {
+    var ds = (codes || []).map(function (c) { return SERVER.ds[c] || { code: c, title: c, publisher: "", country: "", kind: "Watchlist" }; });
+    if (kinds) { var f = ds.filter(function (d) { return kinds.indexOf(d.kind) > -1; }); if (f.length) ds = f; }
+    function uniq(a) { return a.filter(function (x, i) { return x && a.indexOf(x) === i; }); }
+    return {
+      labels: uniq(ds.map(function (d) { return d.title; })),
+      authorities: uniq(ds.map(function (d) { return d.publisher; })),
+      jurisdictions: uniq(ds.map(function (d) { return d.country; })),
+      kinds: uniq(ds.map(function (d) { return d.kind; }))
+    };
+  }
+  function srvSanctions(name, searchUrl) {
+    var sr = srvGet(name);
+    if (!sr || sr.error) return { status: "unavailable", url: searchUrl };
+    var s = sr.sanctions;
+    if (!s) return { status: "clear", url: searchUrl, asOf: sMeta.asOf };
+    var li = dsInfo(s.datasets, ["Sanctions"]);
+    return {
+      status: s.status, list: li.labels[0] || "", lists: li.labels,
+      authority: li.authorities.slice(0, 4).join("; "), jurisdiction: li.jurisdictions.slice(0, 6).join("; "),
+      program: s.programs, score: s.score, matchType: s.matchType, matched: s.matched, matchedNorm: s.matchedNorm,
+      caption: s.caption, schema: s.schema, dob: s.dob, countries: s.countries, others: s.others,
+      entityId: s.id, url: s.url, searchUrl: searchUrl, asOf: sMeta.asOf
+    };
+  }
+  // Crime, wanted, terrorism, regulatory-enforcement & debarment lists.
+  function watchlist(name) {
+    var search = "https://www.opensanctions.org/search/?q=" + encodeURIComponent(name);
+    if (!SERVER.on) return { status: "unavailable", url: search };
+    var sr = srvGet(name);
+    if (!sr || sr.error) return { status: "unavailable", url: search };
+    var c = sr.crime, d = sr.debarment;
+    var best = c && (!d || c.score >= d.score) ? c : d;
+    if (!best) return { status: "clear", url: search, asOf: sMeta.asOf };
+    var li = dsInfo(best.datasets, ["Wanted / law enforcement", "Crime / terrorism", "Regulatory enforcement", "Debarment / exclusion", "Watchlist"]);
+    return {
+      status: best.status, kinds: li.kinds, lists: li.labels, list: li.labels[0] || "",
+      authority: li.authorities.slice(0, 4).join("; "), jurisdiction: li.jurisdictions.slice(0, 6).join("; "),
+      matched: best.matched, caption: best.caption, score: best.score, matchType: best.matchType,
+      program: best.programs, dob: best.dob, countries: best.countries, schema: best.schema,
+      others: best.others, entityId: best.id, url: best.url, searchUrl: search, asOf: sMeta.asOf
+    };
+  }
+
   function ensurePeps() {
+    if (SERVER.on) return Promise.resolve(pMeta);
     if (pepJobPromise) return pepJobPromise;
     pepJobPromise = (async function () {
       var lists = null;
@@ -442,6 +459,12 @@
   // person names are noisy, so single-word queries only match exactly and the
   // fuzzy floor is the auto-confirm band (>= 0.92).
   function pepLocalLookup(name) {
+    if (SERVER.on) {
+      var sr = srvGet(name);
+      if (!sr || sr.error || !sr.pep) return null;
+      var pi = dsInfo(sr.pep.datasets, ["PEP register"]);
+      return { score: sr.pep.score, matched: sr.pep.matched, lists: pi.labels, country: sr.pep.countries, url: sr.pep.url, dob: sr.pep.dob };
+    }
     if (!pMeta.loaded) return null;
     var q = norm(name); if (!q) return null;
     if (pepExact.has(q)) { var e0 = pepIdx[pepExact.get(q)]; return { score: 1, matched: e0.name, lists: e0.lists, country: e0.country }; }
@@ -619,6 +642,7 @@
 
   async function ensureSanctions() {
     if (sMeta.loaded || sMeta.tried) return sMeta;
+    if (await loadServerMeta()) return sMeta;      // fast path: prebuilt server index
     sMeta.tried = true; sMeta.loading = true;
     var pepJob = ensurePeps();                       // PEP registers load in parallel
     var lists = null;
@@ -656,6 +680,7 @@
 
   function sanctions(name) {
     var ofac = "https://www.opensanctions.org/search/?q=" + encodeURIComponent(name);
+    if (SERVER.on) return srvSanctions(name, ofac);
     if (!sMeta.loaded) return { status: "unavailable", url: ofac };
     var q = norm(name);
     if (exactMap.has(q)) { var e0 = index[exactMap.get(q)]; return { status: "hit", list: e0.source, lists: e0.lists, authority: e0.authority, jurisdiction: e0.jurisdiction, program: e0.programs, score: 1, matchType: "exact", matched: e0.name, url: ofac, asOf: sMeta.asOf }; }
@@ -1010,7 +1035,7 @@
         status: "hit",
         position: (wiki && wiki.status === "hit" && wiki.position) || ("On PEP register" + (loc.country ? " \u00b7 " + loc.country.toUpperCase() : "")),
         detail: (loc.score < 1 ? "Matched \u201c" + loc.matched + "\u201d (" + Math.round(loc.score * 100) + "% \u2014 confirm identity) \u2014 " : "") + loc.lists.slice(0, 4).join(", ") + (wiki && wiki.status === "hit" ? " \u00b7 Wikipedia profile confirms public office" : ""),
-        url: (wiki && wiki.status === "hit" && wiki.url) || ("https://www.opensanctions.org/search/?q=" + encodeURIComponent(name))
+        url: (wiki && wiki.status === "hit" && wiki.url) || loc.url || ("https://www.opensanctions.org/search/?q=" + encodeURIComponent(name))
       };
     }
     if (wiki && wiki.status === "hit") {
@@ -1099,6 +1124,7 @@
 
       var ents = await getEntities(principals.map(function (p) { return p.qid; }));
       // sanctions (instant, local index) + light PEP (from claims) for every principal
+      await prefetch(principals.map(function (p) { return labelOf(ents[p.qid]) || ""; }));
       var officers = principals.map(function (p) {
         var e = ents[p.qid];
         var nm = labelOf(e) || "";
@@ -1195,6 +1221,7 @@
       var rec = await gleifFind(name);
       if (!rec) return { status: "none" };
       var self = gleifEntity(rec);
+      await prefetch([self.name]);
       self.sanctions = self.name ? sanctions(self.name) : { status: "clear" };
       var dp = await gleifRelated(self.lei, "direct-parent");
       var up = await gleifRelated(self.lei, "ultimate-parent");
@@ -1208,6 +1235,7 @@
       // whole row (e.g. CRISIL, which has real subsidiaries). Related entities
       // are marked "news not screened"; the entity's OWN adverse media still
       // streams in via the background enrichment in app.js.
+      await prefetch(related.map(function (x) { return x.name; }));
       related.forEach(function (x) { x.sanctions = x.name ? sanctions(x.name) : { status: "clear" }; x.adverse = { status: "skip" }; });
       return { status: "resolved", self: self, related: related, url: "https://search.gleif.org/#/record/" + self.lei, source: "GLEIF / LEI" };
     } catch (err) {
@@ -1340,6 +1368,15 @@
 
   window.Sources = {
     pep: pep, sanctions: sanctions, ensureSanctions: ensureSanctions,
+    watchlist: watchlist, prefetch: prefetch, serverMode: function () { return SERVER.on; },
+    pepRegister: function (name) {
+      var loc = null; try { loc = pepLocalLookup(name); } catch (e) {}
+      if (!loc) return null;
+      return { status: "hit", prelim: true,
+        position: "On PEP register" + (loc.country ? " \u00b7 " + String(loc.country).toUpperCase() : ""),
+        detail: (loc.score < 1 ? "Matched \u201c" + loc.matched + "\u201d (" + Math.round(loc.score * 100) + "% \u2014 confirm identity) \u2014 " : "") + loc.lists.slice(0, 4).join(", ") + " \u00b7 checking Wikidata / Wikipedia for the position\u2026",
+        url: loc.url };
+    },
     sanctionsMeta: function () { return sMeta; }, adverse: adverse, norm: norm,
     companyGraph: companyGraph, gleifGraph: gleifGraph, plannedLists: "90+",
     pepMeta: function () { return pMeta; }, ensurePeps: ensurePeps,

@@ -81,7 +81,7 @@
 
     <div class="steps">
       <div class="step"><div class="n">STEP 1</div><h4>Type or upload names</h4><p>One name, or a whole spreadsheet — that's all you provide.</p></div>
-      <div class="step"><div class="n">STEP 2</div><h4>Automatic live check</h4><p>The tool queries free sources itself: sanctions, PEP and adverse media.</p></div>
+      <div class="step"><div class="n">STEP 2</div><h4>Automatic live check</h4><p>Sanctions, PEP, wanted, regulatory &amp; debarment lists, ownership and adverse media — checked in seconds.</p></div>
       <div class="step"><div class="n">STEP 3</div><h4>Review &amp; export</h4><p>See a risk table, open any row for detail and sources, download results.</p></div>
     </div>
 
@@ -155,6 +155,7 @@
             <th class="col-type">Type</th>
             <th>Sanctions</th>
             <th>PEP</th>
+            <th title="Wanted, crime, terrorism, regulatory enforcement &amp; debarment lists">Watchlists</th>
             <th>Adverse media</th>
             <th class="col-conf">Confidence</th>
             <th>Overall risk</th>
@@ -206,6 +207,15 @@
       <div class="src-block">
         <div class="src-h">Sanctions <span class="src-count">90+ lists · live · timestamped</span></div>
         <p class="src-links">V2 no longer uses a fixed list set: it reads the public <a href="https://www.opensanctions.org/datasets/" target="_blank" rel="noopener">OpenSanctions data catalog</a> live and screens against <strong>every source list in the Consolidated Sanctions collection — 90+ official lists</strong> — each pulled free (no key) as a daily-updated feed from the OpenSanctions data CDN. Coverage spans the <strong>UN Security Council</strong>; the <strong>EU</strong> and its member states; the <strong>UK</strong> (OFSI/FCDO); the <strong>US</strong> across OFAC, BIS, State, DHS and DoD; <strong>Canada, Australia, New Zealand, Switzerland, Japan</strong>; the <strong>Gulf &amp; Middle East</strong>; <strong>Asia-Pacific, Africa, Latin America</strong> and more — plus multilateral <strong>debarment and wanted lists</strong> (e.g. World Bank, regional development banks) where published. New lists added by OpenSanctions are picked up automatically. Every match keeps its provenance — which list(s) and authority designated it — and each list's own publication date is captured as its <strong>as-of</strong> stamp and recorded on every screening reference. Lists that fail to download on a given run are reported, never silently dropped; a curated ~38-list set is the built-in fallback if the catalog is unreachable.</p>
+      </div>
+      <div class="src-block">
+        <div class="src-h">Fast server-side index <span class="src-count">new · rebuilt on every deploy</span></div>
+        <p class="src-links">All OpenSanctions collections below are downloaded <strong>once on the server</strong> when the site is deployed and indexed by phonetic name key. Your browser no longer downloads ~100 lists: each name is checked in milliseconds via <code>/api/screen</code> (names are sent only to this site's own server, never to third parties, and are not stored). If the index is unreachable the app falls back to downloading the lists in the browser as before.</p>
+      </div>
+      <div class="src-block">
+        <div class="src-h">Wanted, crime, regulatory &amp; debarment lists <span class="src-count">new · 150+ lists</span></div>
+        <p class="src-links">From the OpenSanctions <a href="https://www.opensanctions.org/datasets/crime/" target="_blank" rel="noopener">Crime</a>, <a href="https://www.opensanctions.org/datasets/regulatory/" target="_blank" rel="noopener">Regulatory</a> and <a href="https://www.opensanctions.org/datasets/debarment/" target="_blank" rel="noopener">Debarment</a> collections: <strong>Interpol red notices</strong>, FBI / Europol / NCA / national most-wanted lists, <strong>India NIA wanted</strong> and <strong>NSE debarred</strong> entities, terrorism lists, regulator enforcement actions (SEC, FINRA, FinCEN, Fed, OCC, MAS, DFSA, FINMA, AMF, ESMA…), disqualified directors (UK, Isle of Man, Guernsey) and multilateral / government <strong>debarment</strong> (World Bank, ADB, AfDB, IADB, EBRD, EU EDES, US SAM). A match is flagged <em>Review</em>: confirm identity before acting. US state Medicaid exclusion registers are left out as noise for KYC.</p>
+        <p class="src-links"><strong>Quick checks:</strong> every result also links pre-filled searches of registers with no open bulk data — ICIJ Offshore Leaks, OpenCorporates, UK Companies House, India (SEBI, MCA, RBI, Enforcement Directorate, CIBIL wilful defaulters, FCRA) and Gulf / US / UK regulators.</p>
       </div>
       <div class="src-block">
         <div class="src-h">Corporate ownership &amp; control — UBO <span class="src-count">live · 2 sources</span></div>
@@ -286,6 +296,7 @@
 </div>
 
 <script src="data.js"></script>
+<script src="match.js"></script>
 <script src="sources-v2.js"></script>
 <script src="app.js"></script>
 <script src="visitors.js"></script>

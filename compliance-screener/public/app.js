@@ -50,6 +50,7 @@
   function hasSignal(r) {
     if (r.sanctions.status === "hit" || r.sanctions.status === "possible" ||
       r.pep.status === "hit" || r.pep.status === "rca" || r.adverse.status === "hit") return true;
+    if (r.watchlist && (r.watchlist.status === "hit" || r.watchlist.status === "possible")) return true;
     var g = selfGleifSanc(r);
     if (g === "hit" || g === "possible") return true;   // entity's own LEI legal name on a list
     return officerAgg(r).flagged > 0;
@@ -188,6 +189,8 @@
     if (s === "unavailable") return "unavailable";
     return "clear";
   }
+  // Crime / wanted / regulatory / debarment watchlist result (older logged runs lack it).
+  function wl(r) { return (r && r.watchlist) || { status: "clear" }; }
   function scoreRisk(r) {
     var a = officerAgg(r);
     var own = ownSanction(r);
@@ -195,6 +198,7 @@
     if (r.pep.status === "hit" && r.adverse.status === "hit") return "High";
     if (a.pep && a.adverse) return "High";                          // owner/officer is a PEP AND in adverse media
     if (own === "possible" || a.sanctionPossible) return "Review";  // fuzzy/phonetic near-match
+    if (wl(r).status === "hit" || wl(r).status === "possible") return "Review";  // wanted / enforcement / debarment — verify identity
     if (r.pep.status === "hit" || r.pep.status === "rca" || r.adverse.status === "hit" || a.pep || a.adverse) return "Medium";  // RCAs + flagged principals get PEP-equivalent scrutiny (FATF)
     if (own === "unavailable") return "Review";       // couldn't confirm sanctions
     return "Low";
@@ -209,6 +213,7 @@
     if (r.pep.status === "hit") c = Math.max(c, 90);              // Wikidata identity + office held
     if (r.pep.status === "rca") c = Math.max(c, 75);             // identity + documented relation to a PEP
     if (r.adverse.status === "hit") c = Math.max(c, 70);          // corroborating adverse coverage
+    if (wl(r).status === "hit" || wl(r).status === "possible") c = Math.max(c, Math.round((wl(r).score || 0) * 100));
     var a = officerAgg(r);
     if (a.sanctionHit) c = Math.max(c, 90);                       // a sanctioned owner/officer
     if (a.sanctionPossible) c = Math.max(c, 80);
@@ -222,6 +227,7 @@
     if (r.pep.status === "hit") out.push("PEP");
     if (r.pep.status === "rca") out.push("PEP-linked (RCA)");
     if (r.adverse.status === "hit") out.push("Adverse Media");
+    if (wl(r).status === "hit" || wl(r).status === "possible") out.push("Watchlist / enforcement");
     var a = officerAgg(r);
     if (a.sanctionHit || a.sanctionPossible) out.push("Sanctioned principal");
     if (a.pep) out.push("PEP principal");
@@ -242,7 +248,9 @@
   // adverse-media news all stream in the background so rows appear instantly.
   async function screenEntry(e) {
     var sanc = window.Sources.sanctions(e.name);          // sync vs. loaded OFAC index (instant)
-    var r = { name: e.name, type: e.type || "", pep: { status: "checking" }, sanctions: sanc, adverse: { status: "checking" }, company: null, gleif: null, id: Math.random().toString(36).slice(2) };
+    var pepReg = window.Sources.pepRegister ? window.Sources.pepRegister(e.name) : null;
+    var r = { name: e.name, type: e.type || "", pep: pepReg || { status: "checking" }, sanctions: sanc,
+      watchlist: window.Sources.watchlist ? window.Sources.watchlist(e.name) : { status: "unavailable" }, adverse: { status: "checking" }, company: null, gleif: null, id: Math.random().toString(36).slice(2) };
     r.reviewer = "";
     r.reviewedAt = null;
     r.note = "";
@@ -312,7 +320,7 @@
     var bar = document.querySelector("#progressBar > div");
     var txt = document.getElementById("progressText");
     bar.style.width = "4%";
-    txt.textContent = "Loading " + (window.Sources.plannedLists || 38) + " official sanctions lists & PEP registers (first run downloads them once; afterwards they load from the local cache in seconds)\u2026";
+    txt.textContent = "Connecting to the screening index\u2026";
     // live download progress → progress bar
     window.Sources.onProgress = function (done, total) {
       if (!total) return;
@@ -322,6 +330,13 @@
 
     await window.Sources.ensureSanctions();
     window.Sources.onProgress = null;
+    if (window.Sources.serverMode && window.Sources.serverMode()) {
+      txt.textContent = "Screening " + entries.length + " name" + (entries.length === 1 ? "" : "s") + " against sanctions, PEP, wanted, regulatory & debarment lists\u2026";
+      await window.Sources.prefetch(entries.map(function (e) { return e.name; }), function (done, total) {
+        bar.style.width = Math.max(8, Math.round(done / total * 90)) + "%";
+        txt.textContent = "Screened " + done + " of " + total + " names against the watchlist index\u2026";
+      });
+    }
     bar.style.width = "96%";
     refreshSourceUI();
     var meta = window.Sources.sanctionsMeta();
@@ -338,7 +353,7 @@
       listVersion: meta.version || null,
       listCount: meta.designations || meta.count || 0,
       listLoaded: !!meta.loaded,
-      lists: (meta.lists || []).map(function (l) { return { label: l.label, count: l.count, asOf: l.asOf, jurisdiction: l.jurisdiction, authority: l.authority }; }),
+      lists: (meta.allLists || meta.lists || []).map(function (l) { return { label: l.label, count: l.count, asOf: l.asOf, jurisdiction: l.jurisdiction, authority: (l.kind ? l.kind + " \u2014 " : "") + (l.authority || "") }; }),
       listsFailed: meta.failed || [],
       total: entries.length,
       entries: []
@@ -449,6 +464,7 @@
     if (status === "rca") return '<span class="badge rca"><span class="d"></span>PEP-linked</span>';
     if (status === "possible") return '<span class="badge poss"><span class="d"></span>Possible</span>';
     if (status === "unavailable") return '<span class="badge chk"><span class="d"></span>Check</span>';
+    if (status === "checking") return '<span class="news-checking">checking\u2026</span>';
     return '<span class="badge no"><span class="d"></span>No</span>';
   }
   function dispBadge(d) {
@@ -522,7 +538,7 @@
     tb.innerHTML = "";
     var pending = (state.screening && state.pending) ? state.pending : [];
     document.getElementById("resultCount").textContent = state.filtered.length + " of " + state.results.length + " shown" + (state.screening ? " \u00b7 screening " + (pending.length ? pending.length + " more\u2026" : "\u2026") : "");
-    if (!state.filtered.length && !pending.length) { tb.innerHTML = '<tr class="empty-row"><td colspan="8">No entries match this filter.</td></tr>'; return; }
+    if (!state.filtered.length && !pending.length) { tb.innerHTML = '<tr class="empty-row"><td colspan="9">No entries match this filter.</td></tr>'; return; }
     state.filtered.forEach(function (r) {
       var tr = document.createElement("tr");
       tr.onclick = function () { openDrawer(r); };
@@ -532,6 +548,7 @@
         '<td class="col-type cell-type">' + detectedType(r) + "</td>" +
         "<td>" + badge(r.sanctions.status, "Match", "high") + "</td>" +
         "<td>" + badge(r.pep.status, "PEP", "med") + "</td>" +
+        "<td>" + badge(wl(r).status, "Listed", "high") + "</td>" +
         "<td>" + adverseCell(r) + "</td>" +
         '<td class="col-conf">' + conf + "</td>" +
         '<td><span class="risk ' + r.risk + '"><span class="pill">' + r.risk + "</span></span></td>" +
@@ -546,7 +563,7 @@
         tr.innerHTML =
           '<td><div class="cell-name">' + esc(nm) + '</div><div class="cell-sub">screening live sources\u2026</div></td>' +
           '<td class="col-type cell-type">\u2014</td>' +
-          '<td colspan="4"><span class="news-checking">checking sanctions \u00b7 PEP \u00b7 ownership\u2026</span></td>' +
+          '<td colspan="5"><span class="news-checking">checking sanctions \u00b7 PEP \u00b7 watchlists \u00b7 ownership\u2026</span></td>' +
           '<td><span class="conf-na">\u2026</span></td>' +
           '<td class="col-disp">\u2014</td>';
         tb.appendChild(tr);
@@ -618,6 +635,77 @@
     html += '<div class="caveat">Coverage note: ownership &amp; officer links come from open data (Wikidata) and are incomplete \u2014 it captures listed public companies and notable firms far better than private ones. For a legally reliable beneficial-owner check, use a corporate registry or a licensed KYB/UBO data source.</div>';
     html += '<div class="news-links">' + srcLink(co.url, "Open company record").trim() + "</div></div>";
     return html;
+  }
+
+  // Identity attributes from the matched record — analysts must compare these
+  // with the customer's own identifiers before confirming a name match.
+  function identityRows(m) {
+    if (!m) return "";
+    var h = "";
+    if (m.caption && m.caption !== m.matched) h += "<dt>Listed as</dt><dd>" + esc(m.caption) + "</dd>";
+    if (m.schema) h += "<dt>Record type</dt><dd>" + esc(m.schema) + "</dd>";
+    if (m.dob) h += "<dt>Date of birth</dt><dd>" + esc(m.dob) + "</dd>";
+    if (m.countries) h += "<dt>Countries</dt><dd>" + esc(String(m.countries).toUpperCase().split(";").join(", ")) + "</dd>";
+    if (m.others) h += "<dt>Other similar records</dt><dd>" + esc(m.others) + " more above the review threshold \u2014 open the search to compare</dd>";
+    return h;
+  }
+
+  function watchlistBlock(r) {
+    var w = wl(r);
+    var html = '<div class="finding"><div class="ftop"><span class="ftitle">Wanted, crime, regulatory &amp; debarment lists</span>' + badge(w.status, "Listed", "high") + "</div>";
+    if (w.status === "hit" || w.status === "possible") {
+      html += "<dl><dt>Type of listing</dt><dd>" + esc((w.kinds || []).join(" \u00b7 ") || "Watchlist") + "</dd>" +
+        "<dt>Listed on</dt><dd>" + ((w.lists || []).slice(0, 6).map(esc).join(" \u00b7 ") || "\u2014") + ((w.lists || []).length > 6 ? " <em>(+" + (w.lists.length - 6) + " more)</em>" : "") + "</dd>" +
+        (w.jurisdiction ? "<dt>Jurisdiction</dt><dd>" + esc(w.jurisdiction) + (w.authority ? " \u00b7 " + esc(w.authority) : "") + "</dd>" : "") +
+        (w.program ? "<dt>Details</dt><dd>" + esc(w.program) + "</dd>" : "") +
+        "<dt>Matched name</dt><dd>" + esc(w.matched) + "</dd><dt>Match method</dt><dd>" + matchTypeLabel(w.matchType) + "</dd>" +
+        "<dt>Confidence</dt><dd>" + Math.round((w.score || 0) * 100) + "%</dd>" + identityRows(w) + "</dl>";
+      html += '<div class="fbody">Name-based match only \u2014 confirm identity (date of birth, nationality, registration number) against the record before acting.</div>';
+    } else if (w.status === "unavailable") {
+      html += '<div class="fbody">The watchlist index did not respond for this name. Search the records directly:</div>';
+    } else {
+      html += '<div class="fbody">No match on wanted lists (Interpol red notices, FBI, Europol, NCA, India NIA\u2026), terrorism &amp; crime lists, regulator enforcement actions (SEC, FINRA, FCA-style regulators, India NSE\u2026) or debarment lists (World Bank, ADB, AfDB, IADB, EBRD, EU EDES, US SAM\u2026).</div>';
+    }
+    html += '<div class="news-links">' + srcLink(w.entityId ? w.url : null, "Open listing record").trim() + srcLink(w.searchUrl || w.url, "Search all records") + "</div></div>";
+    return html;
+  }
+
+  // One-click, pre-filled searches of official registers and regulators that
+  // have no open bulk data. India set inspired by common Indian KYC/KYB practice.
+  function quickChecksBlock(r) {
+    var n = r.name || "";
+    var qn = encodeURIComponent('"' + n + '"');
+    function site(host, extra) { return "https://www.google.com/search?q=" + encodeURIComponent("site:" + host + ' "' + n + '"' + (extra ? " " + extra : "")); }
+    var groups = [
+      ["Offshore & leaks", [
+        ["ICIJ Offshore Leaks", "https://offshoreleaks.icij.org/search?q=" + encodeURIComponent(n)],
+        ["OpenCorporates", "https://opencorporates.com/companies?q=" + encodeURIComponent(n)],
+        ["UK Companies House", "https://find-and-update.company-information.service.gov.uk/search?q=" + encodeURIComponent(n)]
+      ]],
+      ["India", [
+        ["SEBI orders", site("sebi.gov.in")],
+        ["MCA (companies / directors)", site("mca.gov.in")],
+        ["RBI", site("rbi.org.in")],
+        ["Enforcement Directorate", site("enforcementdirectorate.gov.in")],
+        ["Wilful defaulters (CIBIL)", site("cibil.com", "wilful defaulter")],
+        ["FCRA", site("fcraonline.nic.in")]
+      ]],
+      ["Global regulators & courts", [
+        ["US SEC", site("sec.gov")],
+        ["US DOJ", site("justice.gov")],
+        ["UK FCA", site("fca.org.uk")],
+        ["UAE (CBUAE / DFSA / SCA)", "https://www.google.com/search?q=" + encodeURIComponent('(site:centralbank.ae OR site:dfsa.ae OR site:sca.gov.ae) "' + n + '"')],
+        ["Saudi CMA / SAMA", "https://www.google.com/search?q=" + encodeURIComponent('(site:cma.org.sa OR site:sama.gov.sa) "' + n + '"')],
+        ["Court records (web)", "https://www.google.com/search?q=" + qn + encodeURIComponent(" (court OR judgment OR convicted OR indicted)")]
+      ]]
+    ];
+    var html = '<div class="finding"><div class="ftop"><span class="ftitle">Registry &amp; regulator quick checks</span></div>' +
+      '<div class="fbody">Sources with no open bulk data. Each link opens a pre-filled search for this name \u2014 record what you find in the reviewer note.</div>';
+    groups.forEach(function (g) {
+      html += '<div class="fbody" style="margin-top:6px"><strong>' + esc(g[0]) + '</strong></div><div class="news-links">' +
+        g[1].map(function (l) { return srcLink(l[1], l[0]).trim(); }).join(" ") + "</div>";
+    });
+    return html + "</div>";
   }
 
   function gleifBlock(r) {
@@ -698,7 +786,8 @@
         (r.sanctions.jurisdiction ? "<dt>Jurisdiction</dt><dd>" + esc(r.sanctions.jurisdiction) + (r.sanctions.authority ? " \u00b7 " + esc(r.sanctions.authority) : "") + "</dd>" : "") +
         "<dt>Program</dt><dd>" + (esc(r.sanctions.program) || "—") +
         "</dd><dt>Matched name</dt><dd>" + esc(r.sanctions.matched) + "</dd><dt>Match method</dt><dd>" + matchTypeLabel(r.sanctions.matchType) +
-        "</dd><dt>Confidence</dt><dd>" + Math.round((r.sanctions.score || 0) * 100) + "%</dd><dt>List version</dt><dd>" + fmtDate(r.sanctions.asOf) + "</dd></dl>";
+        "</dd><dt>Confidence</dt><dd>" + Math.round((r.sanctions.score || 0) * 100) + "%</dd>" + identityRows(r.sanctions) +
+        "<dt>List version</dt><dd>" + fmtDate(r.sanctions.asOf) + "</dd></dl>";
       if (r.sanctions.status === "possible") html += '<div class="fbody">Below the auto-confirm threshold (92%) but above the review floor (84%) — a human must confirm or clear this against the official record.</div>';
     } else if (r.sanctions.status === "unavailable") {
       html += '<div class="fbody">The sanctions lists didn\'t download this time. Check this name directly on the official, free search:</div>';
@@ -708,7 +797,11 @@
     if ((gSelfSanc === "hit" || gSelfSanc === "possible") && r.sanctions.status !== "hit" && r.sanctions.status !== "possible") {
       html += '<div class="fbody"><strong>' + (gSelfSanc === "hit" ? "Match on the canonical legal name." : "Possible match on the canonical legal name.") + '</strong> The official legal name on this entity\u2019s GLEIF/LEI record \u2014 \u201c' + esc(r.gleif.self.name) + '\u201d \u2014 ' + (gSelfSanc === "hit" ? "matches" : "is a near-match to") + ' a screened sanctions list even though the name as entered did not. This drives the entity\u2019s own risk ranking; confirm it against the official record below.</div>';
     }
-    html += '<div class="news-links">' + srcLink(r.sanctions.url, "Open sanctions search").trim() + "</div></div>";
+    html += '<div class="news-links">' + srcLink(r.sanctions.url, r.sanctions.entityId ? "Open listing record" : "Open sanctions search").trim() +
+      (r.sanctions.searchUrl ? srcLink(r.sanctions.searchUrl, "Search all records") : "") + "</div></div>";
+
+    // Crime / wanted / terrorism / regulatory enforcement / debarment
+    html += watchlistBlock(r);
 
     // PEP / RCA
     html += '<div class="finding"><div class="ftop"><span class="ftitle">Politically Exposed Person</span>' + badge(r.pep.status, "PEP", "med") + "</div>";
@@ -758,6 +851,9 @@
     // ---- ownership & control (companies only) ----
     html += officersBlock(r);
     html += gleifBlock(r);
+
+    // ---- regulator & registry quick checks (India + global) ----
+    html += quickChecksBlock(r);
 
     // ---- disposition workflow ----
     html += '<div class="finding disp-block"><div class="ftop"><span class="ftitle">Analyst disposition</span>' + dispBadge(r.disposition) + "</div>";
@@ -835,7 +931,7 @@
     var ls = run.lists || [];
     if (ls.length) {
       rows.push([]);
-      rows.push(["SANCTIONS LISTS SCREENED (" + ls.length + ")"]);
+      rows.push(["LISTS SCREENED (" + ls.length + ")"]);
       rows.push(["List", "Jurisdiction / authority", "Designations", "List as-of"]);
       ls.forEach(function (l) {
         rows.push([l.label, (l.jurisdiction || "") + (l.authority ? " — " + l.authority : ""), (l.count || 0).toLocaleString(), fmtDate(l.asOf)]);
@@ -878,6 +974,12 @@
         "Sanctions Jurisdiction": (r.sanctions.status === "hit" || r.sanctions.status === "possible") ? (r.sanctions.jurisdiction || "") : "",
         "Sanctions Program": (r.sanctions.status === "hit" || r.sanctions.status === "possible") ? (r.sanctions.program || "") : "",
         "Matched Entry": (r.sanctions.status === "hit" || r.sanctions.status === "possible") ? (r.sanctions.matched || "") : "",
+        "Matched Record DOB / Countries": (r.sanctions.status === "hit" || r.sanctions.status === "possible") ? [r.sanctions.dob, r.sanctions.countries].filter(Boolean).join(" / ") : "",
+        "Watchlist Match": sStatus(wl(r)),
+        "Watchlist Type": (wl(r).kinds || []).join("; "),
+        "Watchlist List(s)": (wl(r).lists || []).join("; "),
+        "Watchlist Matched Entry": wl(r).matched || "",
+        "Watchlist Score %": (wl(r).status === "hit" || wl(r).status === "possible") ? Math.round((wl(r).score || 0) * 100) : "",
         "List Version (as-of)": state.run && state.run.listLoaded ? fmtDate(state.run.listAsOf) : "",
         "PEP": sStatus(r.pep),
         "PEP / RCA Detail": pepDetail(r),
@@ -943,6 +1045,7 @@
           "Categories": (r.categories || []).join("; "),
           "Sanctions": sStatus(r.sanctions),
           "PEP": sStatus(r.pep),
+          "Watchlist": sStatus(wl(r)),
           "Adverse Media": r.adverse.status === "hit" ? "Yes" : "No/Review",
           "Disposition": (DISPOSITIONS[r.disposition] || {}).label || r.disposition,
           "Reviewer": r.reviewer || "",
@@ -1035,15 +1138,24 @@
     var banner = document.getElementById("sourceBanner");
     if (meta.loaded) {
       pill.classList.add("on");
-      t.textContent = "Live \u00b7 " + ((meta.lists || []).length) + " lists as-of " + new Date(meta.asOf).toLocaleDateString(undefined, { month: "short", day: "2-digit", year: "numeric" });
+      t.textContent = "Live \u00b7 " + ((meta.allLists || meta.lists || []).length) + " lists as-of " + new Date(meta.asOf).toLocaleDateString(undefined, { month: "short", day: "2-digit", year: "numeric" });
       if (banner) {
         banner.className = "src-banner ok";
-        var topLists = (meta.lists || []).slice(0, 6).map(function (l) { return l.label + " (" + l.count.toLocaleString() + ")"; }).join(" \u00b7 ");
+        var topLists = (meta.lists || []).slice(0, 6).map(function (l) { return esc(l.label) + " (" + Number(l.count || 0).toLocaleString() + ")"; }).join(" \u00b7 ");
         var nLists = (meta.lists || []).length;
         var more = nLists > 6 ? " \u00b7 +" + (nLists - 6) + " more" : "";
+        if (meta.server) {
+          var all = meta.allLists || [];
+          var kc = {}; all.forEach(function (l) { kc[l.kind] = (kc[l.kind] || 0) + 1; });
+          var kinds = Object.keys(kc).sort(function (a, b) { return kc[b] - kc[a]; }).map(function (k) { return kc[k] + " " + esc(k.toLowerCase()); }).join(" \u00b7 ");
+          banner.innerHTML = "<strong>" + all.length + " official lists indexed \u2014 " + Number(meta.count || 0).toLocaleString() + " people &amp; entities, data as-of " + fmtDate(meta.asOf) + ".</strong> " +
+            kinds + ". Largest sanctions lists: " + topLists + more +
+            ". Plus live Wikidata / Wikipedia (PEP &amp; relatives), GLEIF (ownership) and Google News (adverse media).";
+        } else {
         banner.innerHTML = "<strong>" + nLists + " official sanctions lists loaded \u2014 most recent update " + fmtDate(meta.asOf) + ".</strong> " +
-          (meta.designations || meta.count || 0).toLocaleString() + " designations across: " + topLists + more +
+          Number(meta.designations || meta.count || 0).toLocaleString() + " designations across: " + topLists + more +
           ". PEP: Wikidata (live). Adverse media: Google News (live). The per-list as-of dates are recorded on every screening reference.";
+        }
       }
     } else if (meta.tried) {
       pill.classList.remove("on");

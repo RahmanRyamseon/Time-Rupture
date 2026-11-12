@@ -4,10 +4,34 @@ Browser-based sanctions / PEP / adverse-media / UBO screener, deployed as a stat
 site plus one serverless function on Vercel. Source: `compliance-screener-skill/assets` (v2).
 
 ## Layout
-- `public/` – the app (index.html, app.js, sources-v2.js, styles.css, data.js, visitors.js)
-- `api/fetch.mjs` – same-origin, allowlisted fetch proxy (Google News RSS, OpenSanctions, trade.gov CSL)
-- `scripts/vendor.sh` – downloads SheetJS 0.20.3 at build time into `public/vendor/`
-- `vercel.json` – build settings and security headers
+- `public/` – the app (index.html, app.js, sources-v2.js, match.js, styles.css, data.js, visitors.js)
+- `functions/screen.js` – `/api/screen`: searches the prebuilt watchlist index
+- `functions/fetch.js` – `/api/fetch`: same-origin, allowlisted fetch proxy (Google News RSS, OpenSanctions, trade.gov CSL)
+- `scripts/build.mjs` – deploy-time build: downloads the data, builds the index, fetches
+  checksum-pinned SheetJS 0.20.3 and writes a Vercel Build Output API tree (incl. security headers)
+- `vercel.json` – build command
+
+## v3: speed and coverage
+Previously every visitor's browser downloaded and parsed ~100 sanctions CSVs plus PEP registers
+before the first screening (minutes on a first visit). Now `scripts/build.mjs` downloads the
+OpenSanctions **sanctions, PEP, crime (wanted / terrorism / regulatory) and debarment** collections
+once at deploy time and writes a phonetic-sharded gzip index into the `/api/screen` function.
+The page loads a small `data/meta.json` and screens names in batches of 50; results return in
+milliseconds and rows appear immediately. Wikidata/Wikipedia PEP & RCA, GLEIF ownership and
+Google News adverse media still stream in per row in the background.
+
+New checks: a **Watchlists** column (Interpol red notices, FBI/Europol/NCA wanted, India NIA wanted &
+NSE debarred, regulator enforcement, World Bank/ADB/AfDB/IADB/EBRD/EU EDES/US SAM debarment), the
+full 240+ PEP register collection, identity attributes (DOB, countries, record link) on every match,
+and one-click registry/regulator searches (ICIJ Offshore Leaks, OpenCorporates, Companies House,
+SEBI, MCA, RBI, ED, CIBIL wilful defaulters, FCRA, Gulf/US/UK regulators). Lexemer.com was
+reviewed for ideas; it publishes no screening data (and marks its content proprietary), so only
+the India-focused check ideas were adopted, using official sources.
+
+Data freshness: the index is rebuilt on every deployment. Redeploy (or merge to `master`, which
+the repo's daily bot commits redeploy) to refresh; the as-of date is shown in the app.
+
+Local test: `OS_BASE=http://localhost:8765/ LOCAL_XLSX=/path/xlsx.full.min.js node scripts/build.mjs`
 
 ## Security fixes vs. the original bundle
 1. **XSS** – feed-supplied URLs were written into `href` unescaped (e.g. `javascript:` links or

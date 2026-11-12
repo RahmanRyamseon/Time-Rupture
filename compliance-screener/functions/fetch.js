@@ -9,6 +9,7 @@
 //  - Redirects are followed manually and re-checked against the allowlist.
 //  - Only same-origin browser requests are served (Sec-Fetch-Site), to stop hotlinking.
 //  - Best-effort per-IP rate limit, upstream timeout and response-size cap.
+//  - Node (req, res) handler for the Vercel Build Output API.
 //  - Responses are returned as text/plain-ish types with nosniff, never as HTML.
 
 const ALLOW = [
@@ -23,11 +24,12 @@ const RATE_LIMIT = 240; // requests per IP per window (per function instance)
 const RATE_WINDOW_MS = 60_000;
 const hits = new Map();
 
-function json(status, msg, extra = {}) {
-  return new Response(JSON.stringify({ error: msg }), {
-    status,
-    headers: { "content-type": "application/json; charset=utf-8", "x-content-type-options": "nosniff", "cache-control": "no-store", ...extra },
-  });
+function send(res, status, body, headers) {
+  res.writeHead(status, headers);
+  res.end(body);
+}
+function json(res, status, msg, extra = {}) {
+  send(res, status, JSON.stringify({ error: msg }), { "content-type": "application/json; charset=utf-8", "x-content-type-options": "nosniff", "cache-control": "no-store", ...extra });
 }
 
 function match(u) {
@@ -47,20 +49,21 @@ function rateLimited(ip) {
   return rec.n > RATE_LIMIT;
 }
 
-export async function GET(request) {
-  const site = request.headers.get("sec-fetch-site");
-  if (site && site !== "same-origin") return json(403, "cross-site requests are not allowed");
+module.exports = async function handler(req, res) {
+  if (req.method !== "GET") return json(res, 405, "method not allowed", { allow: "GET" });
+  const site = req.headers["sec-fetch-site"];
+  if (site && site !== "same-origin") return json(res, 403, "cross-site requests are not allowed");
 
-  const ip = (request.headers.get("x-forwarded-for") || "").split(",")[0].trim() || "unknown";
-  if (rateLimited(ip)) return json(429, "rate limit exceeded", { "retry-after": "60" });
+  const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
+  if (rateLimited(ip)) return json(res, 429, "rate limit exceeded", { "retry-after": "60" });
 
-  const raw = new URL(request.url).searchParams.get("url");
-  if (!raw || raw.length > 2048) return json(400, "missing or oversized url");
+  const raw = new URL(req.url, "http://localhost").searchParams.get("url");
+  if (!raw || raw.length > 2048) return json(res, 400, "missing or oversized url");
 
   let target;
-  try { target = new URL(raw); } catch { return json(400, "invalid url"); }
+  try { target = new URL(raw); } catch { return json(res, 400, "invalid url"); }
   let rule = match(target);
-  if (!rule) return json(403, "host not allowed");
+  if (!rule) return json(res, 403, "host not allowed");
 
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
@@ -75,15 +78,15 @@ export async function GET(request) {
       if (upstream.status >= 300 && upstream.status < 400 && upstream.headers.get("location")) {
         target = new URL(upstream.headers.get("location"), target);
         rule = match(target);
-        if (!rule) return json(502, "upstream redirected to a disallowed host");
+        if (!rule) return json(res, 502, "upstream redirected to a disallowed host");
         continue;
       }
       break;
     }
-    if (!upstream.ok) return json(upstream.status === 429 ? 429 : 502, "upstream error " + upstream.status);
+    if (!upstream.ok) return json(res, upstream.status === 429 ? 429 : 502, "upstream error " + upstream.status);
 
     const len = Number(upstream.headers.get("content-length") || 0);
-    if (len > MAX_BYTES) return json(413, "upstream response too large");
+    if (len > MAX_BYTES) return json(res, 413, "upstream response too large");
 
     const reader = upstream.body.getReader();
     const chunks = [];
@@ -92,7 +95,7 @@ export async function GET(request) {
       const { done, value } = await reader.read();
       if (done) break;
       total += value.byteLength;
-      if (total > MAX_BYTES) { ctrl.abort(); return json(413, "upstream response too large"); }
+      if (total > MAX_BYTES) { ctrl.abort(); return json(res, 413, "upstream response too large"); }
       chunks.push(value);
     }
     const body = new Uint8Array(total);
@@ -107,10 +110,10 @@ export async function GET(request) {
     };
     const lm = upstream.headers.get("last-modified");
     if (lm) headers["last-modified"] = lm;
-    return new Response(body, { status: 200, headers });
+    return send(res, 200, Buffer.from(body), headers);
   } catch (e) {
-    return json(e && e.name === "AbortError" ? 504 : 502, "upstream fetch failed");
+    return json(res, e && e.name === "AbortError" ? 504 : 502, "upstream fetch failed");
   } finally {
     clearTimeout(timer);
   }
-}
+};
