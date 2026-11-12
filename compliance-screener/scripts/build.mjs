@@ -93,7 +93,15 @@ async function streamCSV(url, onRow) {
 log("Fetching OpenSanctions catalog…");
 const catalog = await (await fetchRetry(OS + "index.json")).json();
 const catByName = new Map();
-for (const d of catalog.datasets || []) if (d && d.name) catByName.set(d.name, d);
+const codeByTitle = new Map();
+for (const d of catalog.datasets || []) {
+  if (!d || !d.name) continue;
+  catByName.set(d.name, d);
+  if (d.title) codeByTitle.set(d.title.trim().toLowerCase(), d.name);
+}
+// The CSV "dataset" column carries dataset TITLES in practice (docs say names);
+// accept either and normalise to the dataset code.
+const toCode = (v) => (catByName.has(v) ? v : codeByTitle.get(v.toLowerCase()) || v);
 const collectionMembers = {};
 for (const c of COLLECTIONS) {
   const d = catByName.get(c.name);
@@ -168,7 +176,7 @@ for (const coll of COLLECTIONS) {
     const id = row[ci.id], name = (row[ci.name] || "").trim();
     if (!id || !name) return;
     const dsCodes = (row[ci.ds] || "").split(";").map((s) => s.trim()).filter(Boolean)
-      .filter((c) => !EXCLUDE_DS.test(c));
+      .map(toCode).filter((c) => !EXCLUDE_DS.test(c));
     if (!dsCodes.length) { skipped++; return; }
     let idx = entIndex.get(id);
     if (idx === undefined) {
@@ -194,6 +202,8 @@ for (const coll of COLLECTIONS) {
   const cm = catByName.get(coll.name) || {};
   collMeta[coll.name] = { title: cm.title || coll.name, version: cm.version || null, lastChange: cm.last_change || cm.updated_at || null, rows, kept, skipped };
   log(`${coll.name}: ${kept} entities kept (${skipped} skipped), ${postings.size} phonetic keys`);
+  const unresolved = dsTable.filter((d) => !catByName.has(d[0])).length;
+  if (unresolved) log(`warning: ${unresolved} dataset labels not found in catalog`);
 }
 
 // Masks on postings were set at first sight; refresh them from the merged entity.
