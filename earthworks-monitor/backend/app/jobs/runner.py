@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 
 from app.config import get_settings
 from app.db import new_session
+from app.engines.base import EngineError
 from app.geo.raster_io import RasterInputError
 from app.geo.volume import AnalysisError
 from app.models import (
@@ -28,9 +29,11 @@ from app.models import (
     Surface,
 )
 from app.services import analysis as analysis_service
+from app.services import stereo as stereo_service
 from app.services import surfaces as surface_service
 
 log = logging.getLogger(__name__)
+_MAX_LOG_CHARS = 400_000  # keep the most recent output of very chatty tools
 
 
 def _now() -> datetime:
@@ -69,7 +72,7 @@ def run_job(job_id: str, eager: bool = False) -> None:
         db.commit()
 
         def write(message: str) -> None:
-            job.log += f"[{_now().strftime('%Y-%m-%d %H:%M:%S')}Z] {message}\n"
+            job.log = (job.log + f"[{_now().strftime('%Y-%m-%d %H:%M:%S')}Z] {message}\n")[-_MAX_LOG_CHARS:]
             db.commit()
 
         write(f"Attempt {job.attempts}: {job.kind} started")
@@ -78,7 +81,7 @@ def run_job(job_id: str, eager: bool = False) -> None:
             job.status = JOB_DONE
             job.finished_at = _now()
             write("Finished")
-        except (RasterInputError, AnalysisError) as exc:
+        except (RasterInputError, AnalysisError, EngineError) as exc:
             db.rollback()
             _fail(db, job, str(exc), write)
             return
@@ -104,7 +107,7 @@ def _fail(db: Session, job: Job, message: str, write) -> None:
 
 
 def _target(db: Session, job: Job) -> Surface | Analysis | None:
-    if job.kind == "ingest_surface":
+    if job.kind in ("ingest_surface", "stereo_surface"):
         return db.get(Surface, job.surface_id)
     if job.kind == "analysis":
         return db.get(Analysis, job.analysis_id)
@@ -130,6 +133,13 @@ def _ingest_surface(db: Session, job: Job, write) -> list[Job]:
     return analysis_service.schedule_default_analyses(db, surface.site, surface)
 
 
+def _stereo_surface(db: Session, job: Job, write) -> list[Job]:
+    surface = db.get(Surface, job.surface_id)
+    stereo_service.build_stereo_surface(db, surface, write)
+    db.flush()
+    return analysis_service.schedule_default_analyses(db, surface.site, surface)
+
+
 def _analysis(db: Session, job: Job, write) -> list[Job]:
     analysis_service.run_analysis(db, db.get(Analysis, job.analysis_id), write)
     return []
@@ -138,10 +148,14 @@ def _analysis(db: Session, job: Job, write) -> list[Job]:
 def _realign_site(db: Session, job: Job, write) -> list[Job]:
     """After the baseline changes: re-align every survey, then recompute every analysis."""
     site = db.get(Site, job.site_id)
-    for surface in site.surfaces:
+    reference_first = sorted(site.surfaces, key=lambda s: s.id != site.reference_surface_id)
+    for surface in reference_first:
         if surface.kind == KIND_SURVEY and surface.status == STATUS_READY:
+            # Re-run the whole preparation: a 3-D alignment is baked into the stored
+            # raster, so it has to be rebuilt from the original against the new baseline.
             write(f"Re-aligning '{surface.name}'")
-            surface_service.align_surface(db, surface, write)
+            surface_service.ingest_surface(db, surface, write)
+            db.flush()
     db.flush()
     jobs = []
     for analysis in db.scalars(select(Analysis).where(Analysis.site_id == site.id)):
@@ -164,6 +178,7 @@ def _realign_site(db: Session, job: Job, write) -> list[Job]:
 
 _HANDLERS = {
     "ingest_surface": _ingest_surface,
+    "stereo_surface": _stereo_surface,
     "analysis": _analysis,
     "realign_site": _realign_site,
 }

@@ -190,6 +190,9 @@ class ConfigOut(BaseModel):
     basemap_attribution: str
     max_upload_mb: int
     max_dem_upload_mb: int
+    max_stereo_upload_mb: int
+    camera_models: list[str]
+    single_file_camera_models: list[str]
 
 
 # --- surfaces, analyses, jobs ---
@@ -219,11 +222,22 @@ class SurfaceOut(BaseModel):
     provenance: dict[str, Any]
     error: str | None
     created_at: datetime
+    has_orthoimage: bool
+    # Too coarse for real earthworks measurement; shown with a "demonstration" notice.
+    demo_resolution: bool
 
     @classmethod
     def from_model(cls, surface: Any) -> "SurfaceOut":
-        data = {name: getattr(surface, name) for name in cls.model_fields if name != "is_reference"}
-        return cls(**data, is_reference=surface.site.reference_surface_id == surface.id)
+        from app.config import get_settings
+
+        computed = ("is_reference", "has_orthoimage", "demo_resolution")
+        data = {name: getattr(surface, name) for name in cls.model_fields if name not in computed}
+        return cls(
+            **data,
+            is_reference=surface.site.reference_surface_id == surface.id,
+            has_orthoimage=bool((surface.stats or {}).get("orthoimage")),
+            demo_resolution=(surface.resolution_m or 0) >= get_settings().demo_resolution_threshold_m,
+        )
 
 
 class SurfaceUpdate(BaseModel):

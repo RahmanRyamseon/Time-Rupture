@@ -76,3 +76,13 @@ def dod_tile(path: str, z: int, x: int, y: int, lod_m: float, value_range: float
     dh, valid = read
     visible = valid & (np.abs(dh) >= lod_m) & (dh != 0)
     return _png(dod_colors(np.where(visible, dh, 0.0), value_range), visible)
+
+
+def ortho_tile(path: str, z: int, x: int, y: int, low: float, high: float) -> bytes | None:
+    """Grey-scale orthoimage tile, linearly stretched between `low` and `high`."""
+    read = _read(path, z, x, y)
+    if read is None:
+        return None
+    values, valid = read
+    grey = np.clip((np.where(valid, values, low) - low) / max(high - low, 1e-9), 0.0, 1.0) * 255.0
+    return _png(np.stack([grey, grey, grey]), valid)

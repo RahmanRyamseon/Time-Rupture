@@ -37,6 +37,31 @@ class Settings(BaseSettings):
     # Surveys are cropped to the site boundary plus this margin (stable-ground context).
     site_buffer_m: float = 150.0
 
+    # --- photogrammetry engine (worker only) ---
+    photogrammetry_engine: str = "asp"
+    asp_prefix: str = "/opt/asp"  # conda environment that holds Ames Stereo Pipeline
+    asp_threads: int = 0  # 0 = let ASP use every core
+    asp_processes: int = 0  # parallel_stereo processes; 0 = automatic
+    stereo_algorithm: str = "asp_mgm"
+    stereo_subpixel_mode: int = 9
+    max_stereo_upload_mb: int = 8192
+    keep_engine_workdir: bool = False  # keep intermediate stereo files for debugging
+
+    # --- alignment to the baseline ---
+    # vertical_shift: remove the median height difference on stable ground.
+    # pc_align: 3-D alignment with ASP first, then the same vertical check.
+    alignment_method_upload: str = "vertical_shift"
+    alignment_method_stereo: str = "pc_align"
+    pc_align_method: str = "nuth"  # nuth (DEM co-registration) or point-to-plane (ICP)
+    pc_align_translation_only: bool = True
+    pc_align_max_displacement_m: float = 0.0  # 0 = derive from the data
+    # Convert between ellipsoid and EGM96/EGM2008 heights with ASP when a surface's
+    # height reference differs from the site's.
+    geoid_conversion: bool = True
+
+    # Surfaces coarser than this are flagged "demonstration resolution" in UI and reports.
+    demo_resolution_threshold_m: float = 10.0
+
     # --- jobs ---
     jobs_eager: bool = False  # run jobs inline instead of queueing (tests, seed)
     job_timeout_seconds: int = 6 * 3600

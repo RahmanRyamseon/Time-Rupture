@@ -256,3 +256,120 @@ def _clean_and_summarise(path: str, site_geom: BaseGeometry) -> dict:
                 out["min"] = min(out["min"], float(values.min()))
                 out["max"] = max(out["max"], float(values.max()))
     return out
+
+
+def write_masked_copy(src_path: str, dst_path: str, blank: list[BaseGeometry]) -> None:
+    """Copy a raster, setting pixels inside the `blank` polygons (raster CRS) to no-data."""
+    from rasterio.features import geometry_mask
+
+    with rasterio.open(src_path) as src:
+        profile = src.profile | {"driver": "GTiff", "tiled": True, "compress": "DEFLATE"}
+        nodata = src.nodata if src.nodata is not None else NODATA
+        profile["nodata"] = nodata
+        with rasterio.open(dst_path, "w", **profile) as dst:
+            for window in iter_windows(src.width, src.height):
+                data = src.read(1, window=window)
+                if blank:
+                    keep = geometry_mask(
+                        blank, out_shape=data.shape, transform=src.window_transform(window)
+                    )
+                    data = np.where(keep, data, nodata).astype(data.dtype)
+                dst.write(data, 1, window=window)
+
+
+@dataclass(frozen=True)
+class PreparedImage:
+    bounds_wgs84: tuple[float, float, float, float]
+    resolution_m: float
+    display_min: float  # 2nd / 98th percentile, for the grey-scale stretch
+    display_max: float
+
+    def as_dict(self) -> dict:
+        return asdict(self)
+
+
+def prepare_orthoimage(
+    src_path: str,
+    dst_path: str,
+    grid_crs: CRS,
+    site_geom_wgs84: BaseGeometry,
+    buffer_m: float,
+    shift_east_m: float = 0.0,
+    shift_north_m: float = 0.0,
+) -> PreparedImage:
+    """Store band 1 of an orthoimage as a COG on the site grid, cropped to the site.
+
+    `shift_*` moves the image by the horizontal translation found when its DEM was
+    aligned, so that image and terrain stay registered to each other.
+    """
+    from affine import Affine
+
+    site_geom = reproject_geometry(site_geom_wgs84, WGS84, grid_crs)
+    dst_crs_wkt = grid_crs.to_wkt()
+    tmp_path = dst_path + ".tmp.tif"
+    try:
+        with rasterio.open(src_path) as src:
+            if src.crs is None:
+                raise RasterInputError("The orthoimage has no coordinate reference system.")
+            t = src.transform
+            src_transform = Affine(t.a, t.b, t.c + shift_east_m, t.d, t.e, t.f + shift_north_m)
+            left0, top0 = src_transform.c, src_transform.f
+            src_bounds_native = (left0, top0 + t.e * src.height, left0 + t.a * src.width, top0)
+            transform, _, _ = calculate_default_transform(
+                src.crs, dst_crs_wkt, src.width, src.height, *src_bounds_native
+            )
+            res = float(transform.a)
+            src_bounds = transform_bounds(src.crs, dst_crs_wkt, *src_bounds_native, densify_pts=21)
+            want = site_geom.buffer(buffer_m).bounds
+            left, bottom = max(src_bounds[0], want[0]), max(src_bounds[1], want[1])
+            right, top = min(src_bounds[2], want[2]), min(src_bounds[3], want[3])
+            if right - left < res or top - bottom < res:
+                raise RasterInputError("The orthoimage does not overlap the site boundary.")
+            left, top = math.floor(left / res) * res, math.ceil(top / res) * res
+            width = max(1, math.ceil((right - left) / res))
+            height = max(1, math.ceil((top - bottom) / res))
+            nodata = src.nodata if src.nodata is not None else NODATA
+            profile = {
+                "driver": "GTiff",
+                "dtype": "float32",
+                "count": 1,
+                "crs": dst_crs_wkt,
+                "transform": from_origin(left, top, res, res),
+                "width": width,
+                "height": height,
+                "nodata": nodata,
+                "tiled": True,
+                "blockxsize": BLOCK,
+                "blockysize": BLOCK,
+                "compress": "DEFLATE",
+            }
+            with rasterio.open(tmp_path, "w", **profile) as dst:
+                reproject(
+                    source=rasterio.band(src, 1),
+                    destination=rasterio.band(dst, 1),
+                    src_transform=src_transform,
+                    src_crs=src.crs,
+                    src_nodata=src.nodata,
+                    dst_nodata=nodata,
+                    resampling=Resampling.bilinear,
+                    warp_mem_limit=256,
+                )
+        with rasterio.open(tmp_path) as img:
+            scale = max(1, max(img.width, img.height) // 1024)
+            sample = img.read(
+                1, out_shape=(max(1, img.height // scale), max(1, img.width // scale)), masked=True
+            ).compressed()
+        if sample.size == 0:
+            raise RasterInputError("The orthoimage has no valid pixels inside the site area.")
+        low, high = (float(v) for v in np.percentile(sample, [2, 98]))
+        rasterio.shutil.copy(tmp_path, dst_path, **(COG_OPTIONS | {"predictor": 1}))
+    finally:
+        if os.path.exists(tmp_path):
+            os.remove(tmp_path)
+    bounds = (left, top - height * res, left + width * res, top)
+    return PreparedImage(
+        bounds_wgs84=tuple(transform_bounds(dst_crs_wkt, WGS84.to_wkt(), *bounds)),  # type: ignore[arg-type]
+        resolution_m=res,
+        display_min=low,
+        display_max=high if high > low else low + 1.0,
+    )

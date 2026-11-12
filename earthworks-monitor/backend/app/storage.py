@@ -22,6 +22,23 @@ def surface_dem_path(site_id: uuid.UUID, surface_id: uuid.UUID) -> Path:
     return surface_dir(site_id, surface_id) / "dem.tif"
 
 
+def surface_ortho_raw_path(site_id: uuid.UUID, surface_id: uuid.UUID) -> Path:
+    return surface_dir(site_id, surface_id) / "ortho_raw.tif"
+
+
+def surface_ortho_path(site_id: uuid.UUID, surface_id: uuid.UUID) -> Path:
+    return surface_dir(site_id, surface_id) / "ortho.tif"
+
+
+def surface_inputs_dir(site_id: uuid.UUID, surface_id: uuid.UUID) -> Path:
+    """Raw stereo inputs (images, cameras) kept for reprocessing and audit."""
+    return surface_dir(site_id, surface_id) / "inputs"
+
+
+def surface_work_dir(site_id: uuid.UUID, surface_id: uuid.UUID) -> Path:
+    return surface_dir(site_id, surface_id) / "work"
+
+
 def analysis_dir(site_id: uuid.UUID, analysis_id: uuid.UUID) -> Path:
     return site_dir(site_id) / "analyses" / str(analysis_id)
 

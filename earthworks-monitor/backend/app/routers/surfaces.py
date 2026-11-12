@@ -20,6 +20,7 @@ from app.deps import (
     analysis_visible_to_viewer,
     surface_visible_to_viewer,
 )
+from app.engines.base import EngineError
 from app.geo.raster_io import RasterInputError
 from app.geo.volume import AnalysisError
 from app.jobs.runner import dispatch, reset_for_retry
@@ -36,6 +37,7 @@ from app.schemas import (
     VerticalDatum,
 )
 from app.services import analysis as analysis_service
+from app.services.stereo import PAIR_ROLES, SCENE_ROLE, register_stereo_survey
 from app.services.surfaces import register_surface
 
 router = APIRouter(tags=["surfaces"])
@@ -124,6 +126,90 @@ async def upload_surface(
     finally:
         if os.path.exists(tmp_path):
             os.remove(tmp_path)
+    dispatch(db, [job])
+    return SurfaceOut.from_model(db.get(Surface, surface.id))
+
+
+async def _save_upload(file: UploadFile, directory, limit: int, limit_mb: int) -> str:
+    handle, tmp_path = tempfile.mkstemp(dir=directory)
+    size = 0
+    try:
+        with os.fdopen(handle, "wb") as out:
+            while chunk := await file.read(_CHUNK):
+                size += len(chunk)
+                if size > limit:
+                    raise HTTPException(
+                        status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+                        f"'{file.filename}' is larger than the {limit_mb} MB limit.",
+                    )
+                out.write(chunk)
+    except BaseException:
+        os.remove(tmp_path)
+        raise
+    return tmp_path
+
+
+@router.post(
+    "/sites/{site_id}/stereo-surveys", response_model=SurfaceOut, status_code=status.HTTP_201_CREATED
+)
+async def upload_stereo_survey(
+    site: SiteDep,
+    user: AnalystUser,
+    db: DbSession,
+    camera_model: Annotated[str, Form()],
+    name: Annotated[str, Form(min_length=1, max_length=200)],
+    survey_date: Annotated[date, Form()],
+    stated_accuracy_m: Annotated[float, Form(gt=0, le=100)],
+    bundle_adjust: Annotated[bool, Form()] = False,
+    resolution_m: Annotated[float | None, Form(gt=0, le=1000)] = None,
+    scene: UploadFile | None = None,
+    left_image: UploadFile | None = None,
+    right_image: UploadFile | None = None,
+    left_camera: UploadFile | None = None,
+    right_camera: UploadFile | None = None,
+):
+    """Create a survey epoch from a satellite stereo pair.
+
+    Send either `scene` (a single-file product such as an ASTER L1A .hdf) or
+    `left_image` + `right_image`, with `left_camera` + `right_camera` unless the camera
+    model is embedded in the images. The worker builds the DEM and orthoimage with the
+    photogrammetry engine, then aligns the DEM to the site's baseline.
+    """
+    settings = get_settings()
+    uploads = {
+        role: upload
+        for role, upload in zip(
+            (SCENE_ROLE, *PAIR_ROLES), (scene, left_image, right_image, left_camera, right_camera)
+        )
+        if upload is not None and upload.filename
+    }
+    incoming = storage.site_dir(site.id) / "incoming"
+    incoming.mkdir(parents=True, exist_ok=True)
+    limit = settings.max_stereo_upload_mb * 1024 * 1024
+    saved: dict[str, tuple[str, str]] = {}
+    try:
+        for role, upload in uploads.items():
+            path = await _save_upload(upload, incoming, limit, settings.max_stereo_upload_mb)
+            saved[role] = (path, upload.filename or role)
+        try:
+            surface, job = register_stereo_survey(
+                db,
+                site,
+                files=saved,
+                camera_model=camera_model,
+                name=name,
+                survey_date=survey_date,
+                stated_accuracy_m=stated_accuracy_m,
+                bundle_adjust=bundle_adjust,
+                resolution_m=resolution_m,
+                user_id=user.id,
+            )
+        except (AnalysisError, EngineError) as exc:
+            raise _unprocessable(exc) from exc
+    finally:
+        for path, _ in saved.values():
+            if os.path.exists(path):
+                os.remove(path)
     dispatch(db, [job])
     return SurfaceOut.from_model(db.get(Surface, surface.id))
 

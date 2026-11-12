@@ -8,7 +8,7 @@ from starlette.concurrency import run_in_threadpool
 
 from app import storage
 from app.deps import AnalysisDep, SurfaceDep
-from app.geo.tiles import dod_tile, hillshade_tile
+from app.geo.tiles import dod_tile, hillshade_tile, ortho_tile
 from app.models import STATUS_READY
 
 app = FastAPI(title="Tiles", docs_url=None, redoc_url=None, openapi_url=None)
@@ -33,6 +33,19 @@ async def surface_hillshade(surface: SurfaceDep, z: int, x: int, y: int):
         raise HTTPException(404, "Surface is not ready")
     path = str(storage.surface_dem_path(surface.site_id, surface.id))
     return _respond(await run_in_threadpool(hillshade_tile, path, z, x, y))
+
+
+@app.get("/api/tiles/surfaces/{surface_id}/ortho/{z}/{x}/{y}.png")
+async def surface_orthoimage(surface: SurfaceDep, z: int, x: int, y: int):
+    _check_zoom(z)
+    image = (surface.stats or {}).get("orthoimage")
+    if surface.status != STATUS_READY or not image:
+        raise HTTPException(404, "This surface has no orthoimage")
+    path = str(storage.surface_ortho_path(surface.site_id, surface.id))
+    png = await run_in_threadpool(
+        ortho_tile, path, z, x, y, image["display_min"], image["display_max"]
+    )
+    return _respond(png)
 
 
 @app.get("/api/tiles/analyses/{analysis_id}/dod/{z}/{x}/{y}.png")
