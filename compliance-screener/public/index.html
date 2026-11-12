@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Compliance Screener v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script src="vendor/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<!-- top bar -->
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <rect width="240" height="240" rx="40" fill="#2f5d8a"/>
+    <path d="M120 56 L168 76 V120 C168 152 146 174 120 184 C94 174 72 152 72 120 V76 Z" fill="none" stroke="#ffffff" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M100 120 l14 14 l28 -32" fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</template>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="mark"></span>
+    <div>
+      <h1>Compliance Screener <span style="font-family:var(--mono,monospace);font-size:11px;font-weight:600;letter-spacing:.06em;padding:2px 7px;border:1px solid currentColor;border-radius:999px;vertical-align:2px;opacity:.85">V2</span></h1>
+      <div class="sub">Sanctions · PEP · Adverse media · UBO — expanded coverage</div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <span class="live-pill" id="livePill"><span class="dot"></span><span class="txt">Free live sources</span></span>
+  <button class="icon-btn analyst-btn unset" id="analystBtn" title="The analyst on record for screenings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+    <span id="analystLabel">Set analyst</span>
+  </button>
+  <button class="icon-btn" id="logBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg>
+    Screening log
+  </button>
+  <button class="icon-btn" id="settingsBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+    Data sources &amp; method
+  </button>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ UPLOAD VIEW ============ -->
+  <section id="uploadView">
+    <div class="hero">
+      <h2>Screen names against sanctions, PEP &amp; adverse-media lists</h2>
+      <p>Upload a spreadsheet of people or companies. Get a clear risk table back — no setup, no coding.</p>
+    </div>
+
+    <div class="single-check">
+      <div class="single-label">Check one name instantly</div>
+      <div class="single-row">
+        <input type="text" id="singleName" placeholder="Type a person or company name…" autocomplete="off" />
+        <button class="btn-primary" id="singleBtn">Screen</button>
+      </div>
+    </div>
+
+    <div class="or-divider"><span>or screen a whole list</span></div>
+
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept=".csv,.xlsx,.xls" style="display:none" />
+      <div class="up-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+      </div>
+      <h3>Drop a file of names here</h3>
+      <p>Excel (.xlsx) or CSV — one column of people or company names to verify</p>
+      <div class="dz-row">
+        <button class="btn-primary" id="browseBtn">Choose file</button>
+        <span style="color:var(--muted-2);font-size:13px">or</span>
+        <button class="link-btn" id="sampleBtn">Download a sample file to test</button>
+      </div>
+      <div class="dz-hint">Names are screened live against free sources — <strong>90+ official sanctions &amp; watch lists</strong> (every list in the OpenSanctions consolidated sanctions collection: UN, EU &amp; member states, US, UK, the Gulf, Asia-Pacific, Africa, the Americas &amp; more, plus multilateral debarment lists), <strong>100+ national PEP registers</strong> plus Wikidata, Wikipedia &amp; Google News (PEP), and adverse-media news. For companies, the owners, directors &amp; officers are pulled and screened too. Nothing is stored on a server.</div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div class="n">STEP 1</div><h4>Type or upload names</h4><p>One name, or a whole spreadsheet — that's all you provide.</p></div>
+      <div class="step"><div class="n">STEP 2</div><h4>Automatic live check</h4><p>The tool queries free sources itself: sanctions, PEP and adverse media.</p></div>
+      <div class="step"><div class="n">STEP 3</div><h4>Review &amp; export</h4><p>See a risk table, open any row for detail and sources, download results.</p></div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Please read:</strong> This is a screening aid that supports a human decision — not legal advice or an automated compliance verdict. Sanctions are screened against <strong>90+ live, timestamped official lists</strong> — every source list in the OpenSanctions consolidated sanctions collection (UN, EU &amp; member states, US, UK, Canada, Australia, Switzerland, the Gulf, Asia-Pacific, Africa, the Americas and more), plus multilateral debarment and wanted lists where published. PEP status is screened against 100+ national PEP registers (via OpenSanctions), live Wikidata (including the RCA family/associate graph), Wikipedia profiles and Google News political coverage — news-only signals are always marked "verify". For company names, the owners, shareholders, directors and officers are retrieved from open data (Wikidata) and the parent/subsidiary chain from GLEIF (LEI), and each is screened in their own right, so the company inherits the risk of who controls it. Name matching is fuzzy/phonetic and produces both false positives (different people, same name) and false negatives — every "Possible" and "Match" must be confirmed by an analyst against the official record. PEP and ownership data come from open sources and may be incomplete. Each run is logged with a reference ID and the list versions screened; record a disposition for every alert before acting.
+    </div>
+  </section>
+
+  <!-- ============ PROGRESS VIEW ============ -->
+  <section id="progressView" style="display:none">
+    <div class="progress-wrap">
+      <h3>Screening your list…</h3>
+      <p id="progressText">Preparing…</p>
+      <div class="bar" id="progressBar"><div></div></div>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS VIEW ============ -->
+  <section id="resultsView" style="display:none">
+    <div id="sourceBanner" class="src-banner"></div>
+    <div class="results-head">
+      <div>
+        <h2>Screening results</h2>
+        <div class="run-meta" id="runMeta"></div>
+        <div class="file-name">Source: <span id="fileNameLabel"></span></div>
+      </div>
+      <div class="head-actions">
+        <button class="icon-btn" id="exportCsvBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          CSV
+        </button>
+        <button class="icon-btn" id="exportXlsxBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Audit record (Excel)
+        </button>
+        <button class="icon-btn" id="newBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          New screening
+        </button>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card clickable active" id="cardTotal"><div class="label">Total screened</div><div class="num" id="statTotal">0</div></div>
+      <div class="card clickable high" id="cardHigh"><div class="label"><span class="swatch" style="background:var(--high-ink)"></span>High risk</div><div class="num" id="statHigh">0</div></div>
+      <div class="card clickable med" id="cardMed"><div class="label"><span class="swatch" style="background:var(--med-ink)"></span>Medium risk</div><div class="num" id="statMed">0</div></div>
+      <div class="card clickable" id="cardReview"><div class="label"><span class="swatch" style="background:var(--accent)"></span>Needs review</div><div class="num" id="statReview">0</div></div>
+      <div class="card clickable low" id="cardLow"><div class="label"><span class="swatch" style="background:var(--low-ink)"></span>Low risk</div><div class="num" id="statLow">0</div></div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search names…" />
+      </div>
+      <select class="filter" id="riskFilter">
+        <option value="all">All risk levels</option>
+        <option value="High">High risk only</option>
+        <option value="Medium">Medium risk only</option>
+        <option value="Review">Needs review only</option>
+        <option value="Low">Low risk only</option>
+      </select>
+      <span style="font-size:13px;color:var(--muted);font-family:var(--mono)" id="resultCount"></span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th class="col-type">Type</th>
+            <th>Sanctions</th>
+            <th>PEP</th>
+            <th>Adverse media</th>
+            <th class="col-conf">Confidence</th>
+            <th>Overall risk</th>
+            <th class="col-disp">Disposition</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+    </div>
+
+    <p style="text-align:center;margin-top:18px">
+      <button class="link-btn" id="sampleBtn2">Download the sample test file</button>
+    </p>
+  </section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <span class="foot-note">Screens live against free public sources · supports a human decision, not a compliance verdict</span>
+  <span class="visitor-pill" id="visitorPill" title="Total visits to this site">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+    <span class="vp-num" id="visitorCount">—</span>
+    <span class="vp-label">visits</span>
+  </span>
+</footer>
+
+<!-- ============ DRAWER ============ -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div>
+      <h3 id="drawerName">—</h3>
+      <div class="meta" id="drawerMeta"></div>
+    </div>
+    <button class="x-btn" id="drawerClose">&times;</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<!-- ============ INFO MODAL ============ -->
+<div class="modal-backdrop" id="settingsModal">
+  <div class="modal" style="width:600px">
+    <div class="modal-head">
+      <h3>Data sources &amp; method</h3>
+      <p>You provide names — the tool checks authoritative, free public sources live, by itself, and records the list version it screened against.</p>
+    </div>
+    <div class="modal-body">
+      <div class="src-block">
+        <div class="src-h">Sanctions <span class="src-count">90+ lists · live · timestamped</span></div>
+        <p class="src-links">V2 no longer uses a fixed list set: it reads the public <a href="https://www.opensanctions.org/datasets/" target="_blank" rel="noopener">OpenSanctions data catalog</a> live and screens against <strong>every source list in the Consolidated Sanctions collection — 90+ official lists</strong> — each pulled free (no key) as a daily-updated feed from the OpenSanctions data CDN. Coverage spans the <strong>UN Security Council</strong>; the <strong>EU</strong> and its member states; the <strong>UK</strong> (OFSI/FCDO); the <strong>US</strong> across OFAC, BIS, State, DHS and DoD; <strong>Canada, Australia, New Zealand, Switzerland, Japan</strong>; the <strong>Gulf &amp; Middle East</strong>; <strong>Asia-Pacific, Africa, Latin America</strong> and more — plus multilateral <strong>debarment and wanted lists</strong> (e.g. World Bank, regional development banks) where published. New lists added by OpenSanctions are picked up automatically. Every match keeps its provenance — which list(s) and authority designated it — and each list's own publication date is captured as its <strong>as-of</strong> stamp and recorded on every screening reference. Lists that fail to download on a given run are reported, never silently dropped; a curated ~38-list set is the built-in fallback if the catalog is unreachable.</p>
+      </div>
+      <div class="src-block">
+        <div class="src-h">Corporate ownership &amp; control — UBO <span class="src-count">live · 2 sources</span></div>
+        <p class="src-links">When a <strong>company</strong> is screened, the tool maps who owns and controls it from two free, open sources and screens every party found:</p>
+        <p class="src-links"><strong>1. Natural-person owners &amp; officers — <a href="https://www.wikidata.org/" target="_blank" rel="noopener">Wikidata</a>:</strong> owners / shareholders, parent organisation, founders, CEO/COO, chairperson, board members and directors. Each person is screened for sanctions, PEP status and adverse media.</p>
+        <p class="src-links"><strong>2. Corporate ownership chain — <a href="https://www.gleif.org/" target="_blank" rel="noopener">GLEIF / LEI</a>:</strong> the official Legal Entity Identifier record resolves the company’s <strong>direct parent, ultimate parent and subsidiaries</strong> (legal entities), each screened for sanctions and adverse media. GLEIF is free, open and keyless.</p>
+        <p class="src-links">The company inherits the highest risk found among its principals, so a clean company with a <em>sanctioned owner</em>, a <em>PEP director</em> or a <em>sanctioned parent</em> is escalated and flagged. <strong>Coverage limit:</strong> Wikidata is incomplete for private firms and GLEIF carries corporate ownership only (not natural-person beneficial owners) — for a legally reliable UBO check, pair this with a corporate registry or a licensed KYB/UBO source.</p>
+      </div>
+      <div class="src-block">
+        <div class="src-h">Name matching <span class="src-count">fuzzy</span></div>
+        <p class="src-links">Not exact string match. A layered matcher handles real-world name variation: <strong>Levenshtein edit-distance</strong> for typos/OCR noise, a <strong>transliteration fold</strong> for romanisation variants (Mohammed / Muhammad / Mohamad), and <strong>Soundex phonetic</strong> codes for sound-alikes (Rahman / Rehman). Scoring is token-based and order-independent. A score of <strong>≥ 92% auto-confirms a match</strong>; <strong>84–92% is flagged "Possible"</strong> for human review; below that is cleared. Every match shows its confidence score and the method used.</p>
+      </div>
+      <div class="src-block">
+        <div class="src-h">PEP &amp; RCA <span class="src-count">4 sources · live</span></div>
+        <p class="src-links">PEP status is screened against <strong>four free sources, layered</strong> — any one can flag a name, and agreeing sources are shown as corroboration:</p>
+        <p class="src-links"><strong>1. National PEP registers:</strong> 100+ country-level PEP lists — parliament &amp; government registers, CIA World Leaders, RuPEP and more — are downloaded live from the free <a href="https://www.opensanctions.org/datasets/peps/" target="_blank" rel="noopener">OpenSanctions PEP collection</a> and indexed locally with the same fuzzy matcher used for sanctions.</p>
+        <p class="src-links"><strong>2. Live <a href="https://www.wikidata.org/" target="_blank" rel="noopener">Wikidata</a>:</strong> checks whether the name holds or held political office, and shows the position. It also screens for <strong>RCAs (Relatives &amp; Close Associates)</strong>: it walks the family/associate graph <strong>two relationship steps deep</strong> (spouse, parent, child, sibling, grandparent, grandchild, aunt/uncle, niece/nephew, in-laws, business associates) and flags the person <em>"PEP-linked"</em> when a relation holds office. Under FATF guidance, RCAs warrant the same enhanced due diligence as the PEP.</p>
+        <p class="src-links"><strong>3. Live <a href="https://en.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>:</strong> the person's profile description and lead paragraph are scanned for public-office language (minister, senator, ambassador, head of state…) — catching office-holders whose registers or Wikidata records are incomplete. The <strong>full article body</strong> (lead + early-life / personal-life / family sections) is also scanned for <strong>RCA ties stated in prose</strong> — e.g. "her grandfather, a former Chief Minister" — catching family links to PEPs that Wikidata's structured graph doesn't record. Prose-derived ties are always marked "per Wikipedia — verify".</p>
+        <p class="src-links"><strong>4. Live <a href="https://news.google.com/" target="_blank" rel="noopener">Google News</a>:</strong> when sources 1–3 are all clear, recent news coverage is scanned for political-office context as a catch-net. News alone is <em>indicative, not an identity match</em> — it requires 2+ corroborating headlines and is always flagged as "Possible PEP — verify". <strong>Coverage limit:</strong> open data is incomplete for many people and family ties, so a "no match" is not a guarantee — a licensed PEP database is needed for full RCA assurance.</p>
+      </div>
+      <div class="src-block">
+        <div class="src-h">Adverse / negative media <span class="src-count">live</span></div>
+        <p class="src-links">Live <a href="https://news.google.com/" target="_blank" rel="noopener">Google News</a> — recent headlines are scanned for adverse terms (allegations, arrests, fraud, lawsuits, sanctions, notices, orders, jail). Every name also gets a 1-click pre-filtered news search.</p>
+      </div>
+      <div class="src-block">
+        <div class="src-h">Audit trail <span class="src-count">recorded</span></div>
+        <p class="src-links">Every screening run is recorded with a <strong>reference ID</strong>, the analyst who ran it, start/finish timestamps, the sanctions list version, the result and confidence per name, and the analyst's <strong>disposition</strong> (confirm / escalate / false positive / clear). Open <em>Screening log</em> to review and export the full record as a defensible audit file.</p>
+      </div>
+      <p class="src-links" style="margin:4px 2px 0"><em>Uses OpenSanctions free bulk data, which is available without a key for non-commercial use; commercial deployments require an OpenSanctions data licence.</em></p>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-primary" id="settingsClose">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ANALYST IDENTITY MODAL ============ -->
+<div class="modal-backdrop" id="identityModal">
+  <div class="modal" style="width:440px">
+    <div class="modal-head">
+      <h3>Analyst on record</h3>
+      <p>AML screening must be attributable. Enter the name (or ID) of the analyst running these checks — it is written to every screening reference and disposition.</p>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label for="analystInput">Analyst name or ID</label>
+        <input type="text" id="analystInput" placeholder="e.g. J. Okafor · Compliance Ops" autocomplete="off" />
+        <div class="help">Stored only in this browser. Used to attribute screenings and review decisions in the audit log.</div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="link-btn" id="identityCancel">Cancel</button>
+      <button class="btn-primary" id="identitySave">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCREENING LOG MODAL ============ -->
+<div class="modal-backdrop" id="logModal">
+  <div class="modal log-modal" style="width:680px">
+    <div class="modal-head">
+      <div class="log-head-row">
+        <div>
+          <h3>Screening log</h3>
+          <p>Every run, with reference ID, analyst, list version and disposition status. <span id="logCount"></span></p>
+        </div>
+        <button class="x-btn" id="logClose">&times;</button>
+      </div>
+    </div>
+    <div class="modal-body log-body-wrap">
+      <div id="logBody"></div>
+    </div>
+    <div class="modal-foot log-foot">
+      <button class="link-btn danger" id="clearLogBtn">Clear log</button>
+      <button class="btn-primary" id="exportLogBtn">Download full audit log (Excel)</button>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="sources-v2.js"></script>
+<script src="app.js"></script>
+<script src="visitors.js"></script>
+</body>
+</html>
