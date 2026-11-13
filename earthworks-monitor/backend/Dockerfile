@@ -1,6 +1,7 @@
 FROM python:3.11-slim
 
-ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 \
+    XDG_CACHE_HOME=/tmp/.cache
 WORKDIR /app
 
 # libexpat is needed by the GDAL bundled in the rasterio wheel; Pango and HarfBuzz by
