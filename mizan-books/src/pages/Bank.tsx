@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useStore } from "../lib/store";
 import { AccountSelect, Card, Dropzone, Money } from "../components/ui";
 import { detectColumns, parseStatementText, rowsToTxns, type RawTxn } from "../lib/bankParser";
@@ -20,10 +20,8 @@ export default function Bank() {
   const [error, setError] = useState<string>("");
   const [fileName, setFileName] = useState("");
   const [learn, setLearn] = useState(true);
-  const [ai, setAi] = useState(false);
   const [filter, setFilter] = useState("");
 
-  useEffect(() => { aiAvailable().then(setAi); }, []);
 
   const toLines = (raw: RawTxn[]): BankLine[] =>
     raw.map((r) => {
@@ -50,7 +48,7 @@ export default function Bank() {
         setStatus("reading PDF");
         const text = await pdfText(await openPdf(f));
         raw = parseStatementText(text);
-        if (raw.length < 2 && ai && settings.aiEnabled) {
+        if (raw.length < 2 && settings.aiEnabled && (await aiAvailable())) {
           setStatus("AI");
           raw = await aiReadStatement(f, COUNTRIES[books.company.country].name).catch(() => []);
         }
@@ -59,7 +57,7 @@ export default function Bank() {
           raw = parseStatementText(scan.text);
         }
       } else {
-        if (ai && settings.aiEnabled) {
+        if (settings.aiEnabled && (await aiAvailable())) {
           setStatus("AI");
           raw = await aiReadStatement(f, COUNTRIES[books.company.country].name).catch(() => []);
         }

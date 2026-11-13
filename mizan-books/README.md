@@ -55,7 +55,10 @@ Use `netlify dev` to run the site together with the `/api/extract` function loca
 The repo's `netlify.toml` builds with `npm run build`, publishes `dist/` and deploys the function in
 `netlify/functions/`. In a monorepo set **Base directory = `mizan-books`**.
 
-Optional AI reading: add these environment variables (scope: Functions) and redeploy:
+Optional readers: add these environment variables (scope: Functions) and redeploy. On Netlify's
+credit-based plans the AI Gateway provides `ANTHROPIC_API_KEY` automatically (usage is billed to
+your Netlify credits). AI reading is **off by default** for each user – they opt in under
+*Company & settings*.
 
 | Variable | Purpose |
 |---|---|

@@ -47,7 +47,7 @@ const StoreCtx = createContext<Ctx | null>(null);
 
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
-  const [settings, setSettingsState] = useState<Settings>({ lang: "en", aiEnabled: true, activeCompanyId: null });
+  const [settings, setSettingsState] = useState<Settings>({ lang: "en", aiEnabled: false, activeCompanyId: null });
   const [companies, setCompanies] = useState<Company[]>([]);
   const [books, setBooks] = useState<Books>(() => emptyBooks(newCompany()));
   const [period, setPeriod] = useState<Period>(() => financialYear(1, todayISO()));
@@ -69,7 +69,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         await set(kBooks(c.id), b);
       }
       const lang: Lang = s?.lang ?? (navigator.language.startsWith("ar") ? "ar" : "en");
-      setSettingsState({ lang, aiEnabled: s?.aiEnabled ?? true, ocrEngine: s?.ocrEngine ?? "auto", activeCompanyId: b.company.id });
+      setSettingsState({ lang, aiEnabled: s?.aiEnabled ?? false, ocrEngine: s?.ocrEngine ?? "auto", activeCompanyId: b.company.id });
       setCompanies(list);
       setBooks(b);
       setPeriod(financialYear(b.company.fyStartMonth, todayISO()));

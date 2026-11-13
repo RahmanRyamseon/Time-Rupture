@@ -91,7 +91,7 @@ export default function Capture() {
         let text = "";
         let preview: string | undefined;
         let engine: Item["engine"];
-        if (useAi) {
+        if (settings.aiEnabled && (await aiAvailable())) {
           try {
             patch(next.id, { progress: "AI" });
             const r = await aiReadInvoice(next.file, country);
@@ -117,7 +117,7 @@ export default function Capture() {
         setItems((l) => [...l]); // trigger next
       }
     })();
-  }, [items, useAi, books, vatRate]);
+  }, [items, settings.aiEnabled, books, vatRate]);
 
   const add = (files: File[]) => setItems((l) => [...l, ...files.map((file) => ({ id: uid(), file, status: "queued" as const }))]);
 
