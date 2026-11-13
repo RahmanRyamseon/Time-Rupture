@@ -150,7 +150,7 @@ export default function Capture() {
 
   return (
     <div className="page">
-      <Card title={t("capture")} actions={<span className={`pill ${useAi ? "ok" : ""}`}>{useAi ? t("aiOn") : t("aiOff")}</span>}>
+      <Card title={t("capture")} actions={<span className={`pill ${useAi ? "ok" : ""}`}>{useAi ? t("aiOn") : ai ? t("aiAvailOff") : t("aiOff")}</span>}>
         <Dropzone onFiles={add} accept="image/*,application/pdf" label={t("dropFiles")} hint={t("supported")} capture />
       </Card>
       {ready.length > 1 && (

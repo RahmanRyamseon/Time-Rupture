@@ -103,6 +103,7 @@ const dict = {
   rawText: ["Scanned text", "النص الممسوح"],
   useAi: ["Read with AI", "قراءة بالذكاء الاصطناعي"],
   aiOn: ["AI reading is available on this site", "القراءة بالذكاء الاصطناعي متاحة على هذا الموقع"],
+  aiAvailOff: ["AI reading available – switched off in settings (using on-device OCR)", "القراءة بالذكاء الاصطناعي متاحة – متوقفة في الإعدادات (يتم استخدام OCR على الجهاز)"],
   aiOff: ["AI reading not configured – using on-device OCR", "القراءة بالذكاء الاصطناعي غير مفعلة – يتم استخدام OCR على الجهاز"],
   derivedNote: ["computed", "محسوب"],
   vatAssumed: ["VAT not printed – assumed standard rate. Please check.", "الضريبة غير مطبوعة – تم افتراض النسبة القياسية. يرجى المراجعة."],
