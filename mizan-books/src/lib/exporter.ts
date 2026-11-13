@@ -2,6 +2,7 @@ import type { Books, Lang } from "./types";
 import { balanceSheet, cashFlow, generalLedger, incomeStatement, trialBalance, vatSummary, type Line, type Period } from "./ledger";
 import { t } from "./i18n";
 import { download } from "./files";
+import { returnBoxes, TREATMENTS } from "./vat";
 import { accountName } from "./store";
 
 /** Builds an Excel workbook with TB, P&L, balance sheet, cash flow, VAT and journal (bilingual labels). */
@@ -57,15 +58,19 @@ export async function exportWorkbook(books: Books, p: Period, lang: Lang, decima
   const vs = vatSummary(books, p);
   const wv = wb.addWorksheet(t(lang, "vat").slice(0, 31));
   title(wv, t(lang, "vat"), periodLabel);
-  wv.columns = [{ width: 50 }, { width: 18 }];
-  for (const [k, val] of [["standardSales", vs.salesNet], ["outputVat", vs.outputVat], ["standardPurchases", vs.purchasesNet], ["inputVat", vs.inputVat], ["netVat", vs.netPayable]] as const) {
-    wv.addRow([t(lang, k), v(val)]).getCell(2).numFmt = fmt;
+  wv.columns = [{ width: 8 }, { width: 55 }, { width: 18 }, { width: 18 }];
+  wv.addRow([t(lang, "box"), t(lang, "description"), t(lang, "amount"), t(lang, "vatAmount")]).font = { bold: true };
+  for (const r of returnBoxes(co.country, vs)) {
+    const row = wv.addRow([r.box, lang === "ar" ? r.labelAr : r.label, r.amount != null ? v(r.amount) : null, r.vat != null ? v(r.vat) : null]);
+    row.getCell(3).numFmt = fmt; row.getCell(4).numFmt = fmt;
+    if (r.bold) row.font = { bold: true };
   }
+  if (vs.blocked.vat) wv.addRow(["", t(lang, "blockedVat"), v(vs.blocked.net), v(vs.blocked.vat)]);
   wv.addRow([]);
-  wv.addRow([t(lang, "date"), t(lang, "reference"), t(lang, "party"), t(lang, "trn"), t(lang, "type"), t(lang, "netAmount"), t(lang, "vatAmount")]).font = { bold: true };
+  wv.addRow([t(lang, "date"), t(lang, "reference"), t(lang, "party"), t(lang, "trn"), t(lang, "type"), t(lang, "vatTreatment"), t(lang, "netAmount"), t(lang, "vatAmount")]).font = { bold: true };
   for (const e of vs.entries) {
-    const r = wv.addRow([e.date, e.ref ?? "", e.party ?? e.memo, e.tax?.partyTrn ?? "", e.tax?.kind, v(e.tax!.net), v(e.tax!.vat)]);
-    r.getCell(6).numFmt = fmt; r.getCell(7).numFmt = fmt;
+    const r = wv.addRow([e.date, e.ref ?? "", e.party ?? e.memo, e.tax?.partyTrn ?? "", e.tax?.kind, TREATMENTS[e.tax?.treatment ?? "standard"][lang === "ar" ? 1 : 0], v(e.tax!.net), v(e.tax!.vat)]);
+    r.getCell(7).numFmt = fmt; r.getCell(8).numFmt = fmt;
   }
 
   // Journal

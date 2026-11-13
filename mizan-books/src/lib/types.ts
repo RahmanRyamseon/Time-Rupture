@@ -54,6 +54,8 @@ export interface TaxInfo {
   vat: Mils;
   rate: number; // percent
   partyTrn?: string;
+  /** VAT treatment; absent on older entries = standard. See lib/vat.ts. */
+  treatment?: "standard" | "zero" | "export" | "exempt" | "out_of_scope" | "reverse_charge" | "blocked";
 }
 
 export interface JournalEntry {

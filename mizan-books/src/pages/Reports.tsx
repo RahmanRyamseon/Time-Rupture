@@ -5,6 +5,7 @@ import { balanceSheet, cashFlow, generalLedger, incomeStatement, trialBalance, v
 import { exportWorkbook } from "../lib/exporter";
 import { COUNTRIES } from "../lib/countries";
 import { SYS } from "../lib/coa";
+import { returnBoxes, TREATMENTS } from "../lib/vat";
 
 function ReportActions() {
   const { t, books, period, lang, decimals } = useStore();
@@ -203,15 +204,21 @@ export function Vat() {
         <ReportHeader title={`${t("vat")} – ${lang === "ar" ? preset.vatAuthorityAr : preset.vatAuthority}`} sub={`${period.from} → ${period.to}`} />
         {preset.vatRate === 0 && <div className="warn">{t("noVatCountry")}</div>}
         <p className="muted">{t("vatReturnHint")}</p>
-        <table className="statement">
+        <h3 className="sub-h">{t("returnBoxes")}</h3>
+        <table className="grid boxes">
+          <thead><tr><th>{t("box")}</th><th>{t("description")}</th><th className="amt">{t("amount")}</th><th className="amt">{t("vatAmount")}</th></tr></thead>
           <tbody>
-            <tr><td>{t("standardSales")}</td><td className="amt"><Money m={v.salesNet} /></td></tr>
-            <tr><td>{t("outputVat")}</td><td className="amt"><Money m={v.outputVat} /></td></tr>
-            <tr><td>{t("standardPurchases")}</td><td className="amt"><Money m={v.purchasesNet} /></td></tr>
-            <tr><td>{t("inputVat")}</td><td className="amt"><Money m={v.inputVat} /></td></tr>
-            <tr className="total bold"><td>{t("netVat")}</td><td className="amt"><Money m={v.netPayable} /></td></tr>
+            {returnBoxes(books.company.country, v).map((r) => (
+              <tr key={r.box} className={r.bold ? "total" : ""}>
+                <td>{r.box}</td><td>{lang === "ar" ? r.labelAr : r.label}</td>
+                <td className="amt">{r.amount != null ? <Money m={r.amount} /> : ""}</td>
+                <td className="amt">{r.vat != null ? <Money m={r.vat} /> : ""}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
+        <p className="muted small">{t("boxesHint")}</p>
+        {v.blocked.vat > 0 && <div className="warn">{t("blockedVat")}: <Money m={v.blocked.vat} /> ({t("netAmount")} <Money m={v.blocked.net} />)</div>}
         {(v.outputLedger !== v.outputVat || v.inputLedger !== v.inputVat) && (
           <div className="warn">{t("ledgerCheck")}: {t("outputVat")} <Money m={v.outputLedger} /> / {t("inputVat")} <Money m={v.inputLedger} /> {lang === "ar" ? "(تتضمن قيوداً يدوية على حسابات الضريبة)" : "(includes manual postings to VAT accounts)"}</div>
         )}
@@ -219,12 +226,13 @@ export function Vat() {
       <Card title={`${t("journal")} – VAT`}>
         <div className="table-wrap">
           <table className="grid">
-            <thead><tr><th>{t("date")}</th><th>{t("reference")}</th><th>{t("party")}</th><th>{t("trn")}</th><th>{t("type")}</th><th className="amt">{t("netAmount")}</th><th className="amt">{t("vatAmount")}</th><th className="amt">{t("total")}</th></tr></thead>
+            <thead><tr><th>{t("date")}</th><th>{t("reference")}</th><th>{t("party")}</th><th>{t("trn")}</th><th>{t("type")}</th><th>{t("vatTreatment")}</th><th className="amt">{t("netAmount")}</th><th className="amt">{t("vatAmount")}</th><th className="amt">{t("total")}</th></tr></thead>
             <tbody>
               {v.entries.map((e) => (
                 <tr key={e.id}>
                   <td>{e.date}</td><td>{e.ref}</td><td dir="auto">{e.party ?? e.memo}</td><td>{e.tax?.partyTrn}</td>
                   <td>{e.tax?.kind === "sales" ? t("sale") : t("purchase")}</td>
+                  <td>{TREATMENTS[e.tax?.treatment ?? "standard"][lang === "ar" ? 1 : 0]}</td>
                   <td className="amt"><Money m={e.tax!.net} /></td><td className="amt"><Money m={e.tax!.vat} /></td>
                   <td className="amt"><Money m={e.tax!.net + e.tax!.vat} /></td>
                 </tr>

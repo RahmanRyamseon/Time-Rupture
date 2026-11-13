@@ -1,5 +1,6 @@
 import { SYS } from "./coa";
 import type { Account, Books, JournalEntry, JournalLine, Mils, TaxInfo } from "./types";
+import type { VatTotals } from "./vat";
 
 // ---------- validation ----------
 
@@ -42,6 +43,7 @@ export interface InvoiceDraft {
   vatRate: number;
   account: string; // expense / asset account for purchases, revenue account for sales
   settlement: Settlement;
+  treatment?: TaxInfo["treatment"];
   memo?: string;
   attachment?: string;
   fx?: JournalEntry["fx"];
@@ -50,22 +52,51 @@ export interface InvoiceDraft {
 const settlementAccount = (kind: InvoiceDraft["kind"], s: Settlement) =>
   s === "bank" ? SYS.bank : s === "cash" ? SYS.cash : kind === "purchase" ? SYS.ap : SYS.ar;
 
+/**
+ * Builds the journal entry for an invoice according to its VAT treatment:
+ * - standard: VAT to input/output VAT accounts
+ * - blocked: VAT is not recoverable, so it is added to the cost
+ * - reverse_charge: supplier charged no VAT; self-account output and input VAT at the rate
+ * - zero / export / exempt / out_of_scope: no VAT lines
+ */
 export function invoiceToEntry(d: InvoiceDraft, id: string, now: string): JournalEntry {
-  const total = d.net + d.vat;
+  const treatment = d.treatment ?? "standard";
+  const noVat = treatment === "zero" || treatment === "export" || treatment === "exempt" || treatment === "out_of_scope";
+  const vat = noVat ? 0 : d.vat;
   const contra = settlementAccount(d.kind, d.settlement);
-  const lines: JournalLine[] =
-    d.kind === "purchase"
-      ? [
-          { account: d.account, debit: d.net, credit: 0 },
-          ...(d.vat ? [{ account: SYS.vatIn, debit: d.vat, credit: 0 }] : []),
-          { account: contra, debit: 0, credit: total },
-        ]
-      : [
-          { account: contra, debit: total, credit: 0 },
-          { account: d.account, debit: 0, credit: d.net },
-          ...(d.vat ? [{ account: SYS.vatOut, debit: 0, credit: d.vat }] : []),
-        ];
-  const tax: TaxInfo = { kind: d.kind, net: d.net, vat: d.vat, rate: d.vatRate, ...(d.partyTrn ? { partyTrn: d.partyTrn } : {}) };
+  let lines: JournalLine[];
+  let taxVat = vat;
+  if (d.kind === "purchase") {
+    if (treatment === "blocked") {
+      lines = [
+        { account: d.account, debit: d.net + vat, credit: 0, ...(vat ? { note: "incl. non-recoverable VAT" } : {}) },
+        { account: contra, debit: 0, credit: d.net + vat },
+      ];
+    } else if (treatment === "reverse_charge") {
+      taxVat = Math.round((d.net * d.vatRate) / 100);
+      lines = [
+        { account: d.account, debit: d.net, credit: 0 },
+        ...(taxVat ? [
+          { account: SYS.vatIn, debit: taxVat, credit: 0, note: "reverse charge" },
+          { account: SYS.vatOut, debit: 0, credit: taxVat, note: "reverse charge" },
+        ] : []),
+        { account: contra, debit: 0, credit: d.net },
+      ];
+    } else {
+      lines = [
+        { account: d.account, debit: d.net, credit: 0 },
+        ...(vat ? [{ account: SYS.vatIn, debit: vat, credit: 0 }] : []),
+        { account: contra, debit: 0, credit: d.net + vat },
+      ];
+    }
+  } else {
+    lines = [
+      { account: contra, debit: d.net + vat, credit: 0 },
+      { account: d.account, debit: 0, credit: d.net },
+      ...(vat ? [{ account: SYS.vatOut, debit: 0, credit: vat }] : []),
+    ];
+  }
+  const tax: TaxInfo = { kind: d.kind, net: d.net, vat: taxVat, rate: d.vatRate, treatment, ...(d.partyTrn ? { partyTrn: d.partyTrn } : {}) };
   return {
     id, date: d.date, ref: d.number || undefined,
     memo: d.memo || `${d.kind === "purchase" ? "Purchase" : "Sale"}${d.party ? ` – ${d.party}` : ""}`,
@@ -307,26 +338,49 @@ export function cashFlow(books: Books, p: Period): CashFlow {
 
 // ---------- VAT ----------
 
-export interface VatSummary {
-  salesNet: Mils; outputVat: Mils; purchasesNet: Mils; inputVat: Mils;
-  outputLedger: Mils; inputLedger: Mils; netPayable: Mils;
+export interface VatSummary extends VatTotals {
+  salesNet: Mils; purchasesNet: Mils;
+  outputLedger: Mils; inputLedger: Mils;
   entries: JournalEntry[];
 }
 
 export function vatSummary(books: Books, p: Period): VatSummary {
   const inP = books.entries.filter((e) => e.date >= p.from && e.date <= p.to);
-  let salesNet = 0, outputVat = 0, purchasesNet = 0, inputVat = 0;
+  const t: VatTotals = {
+    salesStandard: { net: 0, vat: 0 }, salesZero: 0, salesExport: 0, salesExempt: 0, salesOutOfScope: 0,
+    purchStandard: { net: 0, vat: 0 }, reverseCharge: { net: 0, vat: 0 }, purchZero: 0, purchExempt: 0, purchOutOfScope: 0,
+    blocked: { net: 0, vat: 0 }, outputVat: 0, inputVat: 0, netPayable: 0,
+  };
+  let salesNet = 0, purchasesNet = 0;
   for (const e of inP) {
-    if (!e.tax) continue;
-    if (e.tax.kind === "sales") { salesNet += e.tax.net; outputVat += e.tax.vat; }
-    else { purchasesNet += e.tax.net; inputVat += e.tax.vat; }
+    const x = e.tax;
+    if (!x) continue;
+    const tr = x.treatment ?? "standard";
+    if (x.kind === "sales") {
+      salesNet += x.net;
+      if (tr === "standard") { t.salesStandard.net += x.net; t.salesStandard.vat += x.vat; }
+      else if (tr === "zero") t.salesZero += x.net;
+      else if (tr === "export") t.salesExport += x.net;
+      else if (tr === "exempt") t.salesExempt += x.net;
+      else t.salesOutOfScope += x.net;
+    } else {
+      purchasesNet += x.net;
+      if (tr === "standard") { t.purchStandard.net += x.net; t.purchStandard.vat += x.vat; }
+      else if (tr === "reverse_charge") { t.reverseCharge.net += x.net; t.reverseCharge.vat += x.vat; }
+      else if (tr === "blocked") { t.blocked.net += x.net; t.blocked.vat += x.vat; }
+      else if (tr === "zero") t.purchZero += x.net;
+      else if (tr === "exempt") t.purchExempt += x.net;
+      else t.purchOutOfScope += x.net;
+    }
   }
+  t.outputVat = t.salesStandard.vat + t.reverseCharge.vat;
+  t.inputVat = t.purchStandard.vat + t.reverseCharge.vat;
+  t.netPayable = t.outputVat - t.inputVat;
   const b = balances(inP, () => true);
-  const outputLedger = -(b.get(SYS.vatOut) ?? 0);
-  const inputLedger = b.get(SYS.vatIn) ?? 0;
   return {
-    salesNet, outputVat, purchasesNet, inputVat, outputLedger, inputLedger,
-    netPayable: outputVat - inputVat,
+    ...t, salesNet, purchasesNet,
+    outputLedger: -(b.get(SYS.vatOut) ?? 0),
+    inputLedger: b.get(SYS.vatIn) ?? 0,
     entries: inP.filter((e) => e.tax),
   };
 }

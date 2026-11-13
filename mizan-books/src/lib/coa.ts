@@ -99,6 +99,17 @@ export function defaultRules(): CategoryRule[] {
     ...r("2200", ["fta ", "federal tax", "zatca", "nbr ", "tax authority", "vat payment", "vat return", "ضريبة القيمة المضافة", "الزكاة والضريبة"]),
     ...r("1000", ["atm", "cash withdrawal", "cash deposit", "سحب نقدي", "صراف"]),
     ...r("4000", ["pos settlement", "card settlement", "network international", "magnati", "geidea", "mada settlement", "stripe", "checkout.com", "tap payments", "تسوية نقاط البيع"]),
+    // Invoice line-item words (used when the supplier name alone doesn't tell).
+    ...r("6400", ["toner", "printer paper", "a4 paper", "stationery", "pens", "envelopes", "cartridge", "ورق", "حبر"]),
+    ...r("1500", ["laptop", "computer", "desktop pc", "monitor", "furniture", "office chair", "desk ", "air conditioner", "split ac", "حاسوب", "أثاث", "مكيف"]),
+    ...r("1510", ["vehicle purchase", "car purchase", "pickup truck", "شراء سيارة"]),
+    ...r("6700", ["repair", "maintenance", "spare parts", "servicing", "plumbing", "electrical work", "صيانة", "إصلاح", "قطع غيار"]),
+    ...r("6300", ["diesel", "gasoline", "parking", "car rental", "courier", "aramex", "dhl", "fedex", "smsa", "shipping", "freight", "شحن", "توصيل"]),
+    ...r("5000", ["goods for resale", "inventory purchase", "raw material", "stock purchase", "بضاعة", "مواد خام"]),
+    ...r("6860", ["software", "licence fee", "license fee", "domain", "hosting", "cloud", "saas", "برنامج", "استضافة"]),
+    ...r("6600", ["consultancy", "audit fee", "accounting services", "legal services", "pro services", "typing centre", "أتعاب", "خدمات قانونية"]),
+    ...r("6500", ["printing of flyers", "brochure", "billboard", "promotion", "sponsorship", "طباعة إعلانات", "ترويج"]),
+    ...r("6850", ["entertainment", "catering", "hospitality", "business lunch", "business dinner", "ضيافة"]),
     ...r("3100", ["drawings", "owner withdrawal", "dividend", "مسحوبات", "توزيعات"]),
     ...r("2400", ["credit card payment", "card payment", "loan installment", "loan repayment", "قسط", "سداد بطاقة"]),
   ];
@@ -106,7 +117,16 @@ export function defaultRules(): CategoryRule[] {
 
 /** Picks an account for a narration using rules (learned rules win), or null. */
 export function classify(text: string, rules: CategoryRule[]): string | null {
-  const t = ` ${text.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF&.]+/g, " ").replace(/\s+/g, " ")} `;
+  return classifyDetailed(text, rules)?.account ?? null;
+}
+
+/** Like classify, but also returns the rule that matched (to explain the choice). */
+export function classifyDetailed(text: string, rules: CategoryRule[]): CategoryRule | null {
+  const base = text.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF&.]+/g, " ").replace(/\s+/g, " ").trim();
+  // Arabic attaches prefixes (ال، لل، و، ب، ف…) to words: add each word's bare form so
+  // "للصيانة" also matches the keyword "صيانة".
+  const bare = base.split(" ").map((w) => w.replace(/^(?:وال|بال|فال|كال|لل|ال|و|ب|ف|ل)(?=[\u0600-\u06FF]{3,})/, "")).join(" ");
+  const t = ` ${base} ${bare !== base ? bare + " " : ""}`;
   // Keywords match from a word start; a trailing space in a keyword ("du ") also requires a word end.
   const hit = (k: string) => t.includes(` ${k.trim()}${k.endsWith(" ") ? " " : ""}`);
   const ordered = [...rules.filter((r) => r.learned), ...rules.filter((r) => !r.learned)];
@@ -116,7 +136,7 @@ export function classify(text: string, rules: CategoryRule[]): string | null {
       best = r;
     }
   }
-  return best?.account ?? null;
+  return best;
 }
 
 /** Derives a short, reusable keyword from a bank narration for a learned rule. */

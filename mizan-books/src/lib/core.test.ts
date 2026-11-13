@@ -230,3 +230,51 @@ describe("OpenOCR output", async () => {
       .toEqual(["Gulf Office Supplies LLC", "100456789012345", "GOS-7781", "2026-02-03", 1200, 60, 1260, "AED"]);
   });
 });
+
+describe("VAT treatments", async () => {
+  const { suggestTreatment, verifyInvoice, returnBoxes, trnCountry } = await import("./vat");
+  const base = { kind: "purchase" as const, text: "", account: "6400", partyTrn: "100456789012345", vat: toMils(60), country: "AE" as const, currency: "AED", baseCurrency: "AED" };
+  it("suggests treatments", () => {
+    expect(suggestTreatment(base).treatment).toBe("standard");
+    expect(suggestTreatment({ ...base, text: "Business dinner – restaurant" }).treatment).toBe("blocked");
+    expect(suggestTreatment({ ...base, partyTrn: "" }).treatment).toBe("blocked"); // no tax invoice
+    expect(suggestTreatment({ ...base, partyTrn: "300987654321003" }).treatment).toBe("blocked"); // Saudi VAT on a UAE return
+    expect(suggestTreatment({ ...base, partyTrn: "", vat: 0, currency: "USD" }).treatment).toBe("reverse_charge");
+    expect(suggestTreatment({ ...base, account: "6000", vat: 0 }).treatment).toBe("out_of_scope");
+    expect(suggestTreatment({ ...base, kind: "sales", partyTrn: "", vat: 0, currency: "EUR", account: "4000" }).treatment).toBe("export");
+    expect(suggestTreatment({ ...base, country: "KW" }).treatment).toBe("out_of_scope");
+    expect(trnCountry("300987654321003")).toBe("SA");
+  });
+  it("verifies tax invoices", () => {
+    const ok = verifyInvoice({ kind: "purchase", number: "1", date: "2026-02-03", party: "X", partyTrn: "100456789012345", net: toMils(1200), vat: toMils(60), rate: 5, treatment: "standard", country: "AE", currency: "AED", baseCurrency: "AED" });
+    expect(ok).toEqual([]);
+    const bad = verifyInvoice({ kind: "purchase", number: "", date: "2026-02-03", party: "X", partyTrn: "", net: toMils(1000), vat: toMils(70), rate: 5, treatment: "standard", country: "AE", currency: "AED", baseCurrency: "AED" });
+    expect(bad.map((f) => f.level)).toEqual(["warn", "error", "warn"]);
+  });
+  it("posts blocked, reverse-charge and zero-rated invoices correctly", () => {
+    const mk = (treatment: "blocked" | "reverse_charge" | "zero", vat: number) =>
+      invoiceToEntry({ kind: "purchase", date: "2026-01-10", number: "1", party: "S", partyTrn: "", net: toMils(1000), vat: toMils(vat), vatRate: 5, account: "6850", settlement: "credit", treatment }, "x", now);
+    const blocked = mk("blocked", 50);
+    expect(blocked.lines).toEqual([{ account: "6850", debit: toMils(1050), credit: 0, note: "incl. non-recoverable VAT" }, { account: SYS.ap, debit: 0, credit: toMils(1050) }]);
+    const rc = mk("reverse_charge", 0);
+    expect(rc.lines.find((l) => l.account === SYS.vatIn)?.debit).toBe(toMils(50));
+    expect(rc.lines.find((l) => l.account === SYS.vatOut)?.credit).toBe(toMils(50));
+    expect(rc.lines.find((l) => l.account === SYS.ap)?.credit).toBe(toMils(1000));
+    const z = mk("zero", 0);
+    expect(z.lines).toHaveLength(2);
+    const b = books([blocked, rc, z]);
+    const v = vatSummary(b, { from: "2026-01-01", to: "2026-12-31" });
+    expect([v.outputVat, v.inputVat, v.netPayable, v.blocked.vat]).toEqual([toMils(50), toMils(50), 0, toMils(50)]);
+    expect(trialBalance(b, { from: "2026-01-01", to: "2026-12-31" }).totals.closingDr).toBe(trialBalance(b, { from: "2026-01-01", to: "2026-12-31" }).totals.closingCr);
+    const boxes = returnBoxes("AE", v);
+    expect(boxes.find((x) => x.box === "3")?.vat).toBe(toMils(50));
+    expect(boxes.find((x) => x.box === "14")?.vat).toBe(0);
+  });
+});
+
+describe("Arabic categorisation", () => {
+  it("matches words with Arabic prefixes", () => {
+    expect(classify("مؤسسة النخيل للصيانة", defaultRules())).toBe("6700");
+    expect(classify("شركة الكهرباء", defaultRules())).toBe("6200");
+  });
+});

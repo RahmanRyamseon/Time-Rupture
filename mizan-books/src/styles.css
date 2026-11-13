@@ -211,3 +211,11 @@ table.statement td.code { color: var(--muted); font-size: 0.8rem; }
   .warn, .ok-msg, .error { background: none; padding: 0; }
 }
 .statement .neg { color: inherit; }
+
+.hint { font-size: 0.78rem; color: var(--brand-2); }
+.posting { margin-top: 0.9rem; border-top: 1px dashed var(--line); padding-top: 0.6rem; }
+.findings-h { font-weight: 600; font-size: 0.85rem; margin: 0.4rem 0 0.2rem; color: var(--muted); }
+.findings .warn, .findings .error { margin: 0.2rem 0; padding: 0.3rem 0.6rem; font-size: 0.88rem; }
+table.preview { max-width: 640px; }
+.sub-h { font-size: 0.95rem; margin: 1rem 0 0.4rem; }
+table.boxes { max-width: 820px; }
