@@ -5,6 +5,7 @@ import { COUNTRIES } from "./countries";
 import { financialYear, type Period } from "./ledger";
 import { todayISO, uid } from "./money";
 import { t as translate, type TKey } from "./i18n";
+import { setOcrEngine } from "./ocr";
 import type { Books, Company, CountryCode, JournalEntry, Lang, Settings } from "./types";
 
 const K_SETTINGS = "mizan:settings";
@@ -68,7 +69,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         await set(kBooks(c.id), b);
       }
       const lang: Lang = s?.lang ?? (navigator.language.startsWith("ar") ? "ar" : "en");
-      setSettingsState({ lang, aiEnabled: s?.aiEnabled ?? true, activeCompanyId: b.company.id });
+      setSettingsState({ lang, aiEnabled: s?.aiEnabled ?? true, ocrEngine: s?.ocrEngine ?? "auto", activeCompanyId: b.company.id });
       setCompanies(list);
       setBooks(b);
       setPeriod(financialYear(b.company.fyStartMonth, todayISO()));
@@ -83,6 +84,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (ready) set(K_SETTINGS, settings);
+    setOcrEngine(settings.ocrEngine ?? "auto");
   }, [settings, ready]);
 
   const persist = useCallback((b: Books) => {

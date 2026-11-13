@@ -102,5 +102,6 @@ export interface Books {
 export interface Settings {
   lang: Lang;
   aiEnabled: boolean;
+  ocrEngine?: "auto" | "tesseract" | "openocr";
   activeCompanyId: string | null;
 }

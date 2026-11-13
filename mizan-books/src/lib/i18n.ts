@@ -182,6 +182,12 @@ const dict = {
   aiSetting: ["Use AI reading when available", "استخدام القراءة بالذكاء الاصطناعي عند توفرها"],
   aiPrivacy: ["When on, scanned documents are sent to the site's AI service (Anthropic Claude) for reading. When off, everything stays on this device.", "عند التفعيل تُرسل المستندات الممسوحة إلى خدمة الذكاء الاصطناعي (Anthropic Claude) لقراءتها. عند الإيقاف تبقى كل البيانات على هذا الجهاز."],
   saved: ["Saved", "تم الحفظ"],
+  ocrEngine: ["Text recognition engine", "محرك التعرف على النصوص"],
+  ocrAuto: ["Auto – OpenOCR when available, on-device for Arabic / weak results", "تلقائي – OpenOCR عند توفره، وعلى الجهاز للعربية أو النتائج الضعيفة"],
+  ocrTesseract: ["On-device only (English + Arabic, private)", "على الجهاز فقط (عربي + إنجليزي، خاص)"],
+  ocrOpen: ["OpenOCR server only (English / Chinese)", "خادم OpenOCR فقط (إنجليزي / صيني)"],
+  ocrServerOn: ["OpenOCR server connected", "خادم OpenOCR متصل"],
+  ocrServerOff: ["OpenOCR server not configured on this site", "خادم OpenOCR غير مهيأ على هذا الموقع"],
   // accounts
   name: ["Name (English)", "الاسم (إنجليزي)"],
   nameAr: ["Name (Arabic)", "الاسم (عربي)"],

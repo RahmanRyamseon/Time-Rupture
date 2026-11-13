@@ -5,6 +5,7 @@ import { COUNTRIES, decimalsFor } from "../lib/countries";
 import { MONTH_NAMES } from "../lib/i18n";
 import { download } from "../lib/files";
 import { aiAvailable } from "../lib/ai";
+import { openocrAvailable } from "../lib/openocr";
 import type { Books, CountryCode } from "../lib/types";
 
 export default function Settings() {
@@ -12,9 +13,10 @@ export default function Settings() {
   const c = books.company;
   const [confirmText, setConfirmText] = useState("");
   const [ai, setAi] = useState(false);
+  const [ocrSrv, setOcrSrv] = useState(false);
   const [msg, setMsg] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
-  useEffect(() => { aiAvailable().then(setAi); }, []);
+  useEffect(() => { aiAvailable().then(setAi); openocrAvailable().then(setOcrSrv); }, []);
 
   const setCo = (p: Partial<typeof c>) => update((b) => ({ ...b, company: { ...b.company, ...p } }));
   const hasEntries = books.entries.length > 0;
@@ -66,6 +68,15 @@ export default function Settings() {
         </div>
         <label className="chk block"><input type="checkbox" checked={settings.aiEnabled} onChange={(e) => setSettings({ aiEnabled: e.target.checked })} /> {t("aiSetting")} — <span className={ai ? "good" : "muted"}>{ai ? t("aiOn") : t("aiOff")}</span></label>
         <p className="muted small">{t("aiPrivacy")}</p>
+        <div className="grid-form">
+          <label className="wide">{t("ocrEngine")} — <span className={ocrSrv ? "good" : "muted"}>{ocrSrv ? t("ocrServerOn") : t("ocrServerOff")}</span>
+            <select value={settings.ocrEngine ?? "auto"} onChange={(e) => setSettings({ ocrEngine: e.target.value as "auto" | "tesseract" | "openocr" })}>
+              <option value="auto">{t("ocrAuto")}</option>
+              <option value="tesseract">{t("ocrTesseract")}</option>
+              <option value="openocr" disabled={!ocrSrv}>{t("ocrOpen")}</option>
+            </select>
+          </label>
+        </div>
       </Card>
 
       <Card title={t("companies")} actions={<button className="secondary" onClick={() => createCompany(newCompany(c.country, lang === "ar" ? "منشأة جديدة" : "New company"))}>+ {t("newCompany")}</button>}>

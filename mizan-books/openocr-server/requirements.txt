@@ -1,0 +1,4 @@
+openocr-python==0.1.5
+onnxruntime>=1.18
+fastapi>=0.115
+uvicorn[standard]>=0.30

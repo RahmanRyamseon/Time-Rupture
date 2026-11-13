@@ -2,6 +2,14 @@
 // QR decoding (for Saudi ZATCA e-invoices). Nothing leaves the browser here.
 import type { Worker } from "tesseract.js";
 import type { PDFDocumentProxy } from "pdfjs-dist";
+import { openocrAvailable, openocrCanvas } from "./openocr";
+
+/** auto: OpenOCR server when configured, falling back to Tesseract (needed for Arabic). */
+export type OcrEngine = "auto" | "tesseract" | "openocr";
+let engine: OcrEngine = "auto";
+export const setOcrEngine = (e: OcrEngine) => { engine = e; };
+/** OpenOCR results below this mean confidence (typical for Arabic, which it can't read) fall back to Tesseract. */
+export const OPENOCR_MIN_SCORE = 0.92;
 
 export type Progress = (msg: string, pct?: number) => void;
 
@@ -150,7 +158,22 @@ export async function renderPdfPage(doc: PDFDocumentProxy, pageNo: number, scale
   return c;
 }
 
-export interface ScanResult { text: string; qr: string | null; method: "pdf-text" | "ocr"; preview?: string }
+export interface ScanResult { text: string; qr: string | null; method: "pdf-text" | "ocr"; engine?: "openocr" | "tesseract"; preview?: string }
+
+/** Reads one page image with the selected engine. */
+export async function readCanvas(canvas: HTMLCanvasElement, onProgress?: Progress): Promise<{ text: string; engine: "openocr" | "tesseract" }> {
+  if (engine !== "tesseract" && (await openocrAvailable())) {
+    try {
+      onProgress?.("OpenOCR");
+      const r = await openocrCanvas(canvas);
+      if (engine === "openocr" || (r.score >= OPENOCR_MIN_SCORE && r.text.replace(/\s/g, "").length > 20)) return { text: r.text, engine: "openocr" };
+    } catch (e) {
+      if (engine === "openocr") throw e;
+      console.warn("OpenOCR failed, using Tesseract", e);
+    }
+  }
+  return { text: await ocrCanvas(canvas, onProgress), engine: "tesseract" };
+}
 
 /**
  * Reads any invoice/statement file: PDF text layer if present, otherwise OCR of
@@ -166,17 +189,20 @@ export async function scanFile(file: File, onProgress?: Progress, maxPages = 8):
     const preview = first.toDataURL("image/jpeg", 0.6);
     if (text.replace(/\s/g, "").length > 40) return { text, qr, method: "pdf-text", preview };
     const pages: string[] = [];
+    let used: "openocr" | "tesseract" = "tesseract";
     const n = Math.min(doc.numPages, maxPages);
     for (let p = 1; p <= n; p++) {
       onProgress?.(`OCR page ${p}/${n}`);
-      pages.push(await ocrCanvas(p === 1 ? await renderPdfPage(doc, 1) : await renderPdfPage(doc, p), onProgress));
+      const r = await readCanvas(p === 1 ? first : await renderPdfPage(doc, p), onProgress);
+      pages.push(r.text);
+      used = r.engine;
     }
-    return { text: pages.join("\n"), qr, method: "ocr", preview };
+    return { text: pages.join("\n"), qr, method: "ocr", engine: used, preview };
   }
   const canvas = await fileToCanvas(file);
   const qr = await scanQr(canvas).catch(() => null);
-  const text = await ocrCanvas(canvas, onProgress);
-  return { text, qr, method: "ocr", preview: canvas.toDataURL("image/jpeg", 0.6) };
+  const r = await readCanvas(canvas, onProgress);
+  return { text: r.text, qr, method: "ocr", engine: r.engine, preview: canvas.toDataURL("image/jpeg", 0.6) };
 }
 
 /** Shrinks an image for upload to the AI endpoint (keeps it under the 4 MB limit). */

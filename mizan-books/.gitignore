@@ -3,3 +3,4 @@ dist
 public/ocr
 .netlify
 *.local
+__pycache__/

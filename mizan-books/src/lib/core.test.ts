@@ -205,3 +205,28 @@ describe("sample books", async () => {
     expect(parseInvoiceText("Supplier X\nVAT No 300987654321003\nTotal 115.00", 15).currency).toBe("SAR");
   });
 });
+
+describe("OpenOCR output", async () => {
+  const { linesToText, meanScore } = await import("./openocr");
+  // Real response from openocr-server for the English test invoice (OpenOCR drops some spaces).
+  const lines = [
+    { text: "Gulf Office Supplies LLC", score: 0.9775, box: [45, 49, 401, 83] },
+    { text: "TAXINVOICE", score: 0.9977, box: [46, 109, 172, 128] },
+    { text: "TRN:100456789012345", score: 0.9967, box: [46, 133, 265, 152] },
+    { text: "InvoiceNo:GOS-7781", score: 0.9973, box: [46, 155, 249, 174] },
+    { text: "Date:03/02/2026", score: 0.9954, box: [46, 176, 201, 198] },
+    { text: "A4Paperx20", score: 0.9884, box: [55, 254, 187, 277] },
+    { text: "400.00", score: 1, box: [207, 256, 273, 275] },
+    { text: "SubtotalAED1,200.00", score: 0.9964, box: [47, 346, 249, 366] },
+    { text: "VAT5%AED60.00", score: 0.9995, box: [47, 369, 218, 388] },
+    { text: "TotalAmountDueAED1,260.00", score: 0.9914, box: [47, 391, 346, 410] },
+  ] as { text: string; score: number; box: [number, number, number, number] }[];
+  it("rebuilds lines and parses the invoice", () => {
+    const text = linesToText(lines);
+    expect(text.split("\n")[5]).toBe("A4Paperx20 400.00");
+    expect(meanScore(lines)).toBeGreaterThan(0.98);
+    const r = parseInvoiceText(text, 5);
+    expect([r.supplier, r.supplierTrn, r.number, r.date, r.subtotal, r.vat, r.total, r.currency])
+      .toEqual(["Gulf Office Supplies LLC", "100456789012345", "GOS-7781", "2026-02-03", 1200, 60, 1260, "AED"]);
+  });
+});

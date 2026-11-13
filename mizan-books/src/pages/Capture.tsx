@@ -35,6 +35,7 @@ interface Item {
   preview?: string;
   draft?: Draft;
   error?: string;
+  engine?: "openocr" | "tesseract";
 }
 
 function toDraft(x: ExtractedInvoice, books: Books, vatRate: number, category?: string): Draft {
@@ -89,6 +90,7 @@ export default function Capture() {
         let category: string | undefined;
         let text = "";
         let preview: string | undefined;
+        let engine: Item["engine"];
         if (useAi) {
           try {
             patch(next.id, { progress: "AI" });
@@ -102,12 +104,12 @@ export default function Capture() {
           preview = await previewFile(next.file);
         } else {
           const scan = await scanFile(next.file, (m, p) => patch(next.id, { progress: `${m}${p != null ? ` ${Math.round(p * 100)}%` : ""}` }));
-          text = scan.text; preview = scan.preview;
+          text = scan.text; preview = scan.preview; engine = scan.engine;
           if (scan.qr) extracted = decodeZatcaQr(scan.qr);
           if (!extracted) extracted = parseInvoiceText(scan.text, vatRate, books.company.trn.replace(/\D/g, "") || undefined);
           if (extracted.source === "ocr" && scan.method === "pdf-text") extracted.source = "text";
         }
-        patch(next.id, { status: "ready", extracted, text, preview, draft: toDraft(extracted, books, vatRate, category), progress: undefined });
+        patch(next.id, { status: "ready", engine, extracted, text, preview, draft: toDraft(extracted, books, vatRate, category), progress: undefined });
       } catch (e) {
         patch(next.id, { status: "failed", error: e instanceof Error ? e.message : String(e) });
       } finally {
@@ -166,7 +168,7 @@ export default function Capture() {
               {it.preview && <img className="doc-preview" src={it.preview} alt="" />}
               <div className="doc-form">
                 <div className="meta">
-                  {t("readBy")}: <b>{it.extracted?.source === "zatca-qr" ? "ZATCA QR" : it.extracted?.source === "ai" ? "AI (Claude)" : it.extracted?.source === "text" ? "PDF text" : "OCR"}</b> ·{" "}
+                  {t("readBy")}: <b>{it.extracted?.source === "zatca-qr" ? "ZATCA QR" : it.extracted?.source === "ai" ? "AI (Claude)" : it.extracted?.source === "text" ? "PDF text" : it.engine === "openocr" ? "OpenOCR" : "OCR (Tesseract)"}</b> ·{" "}
                   {t("confidence")}: <b className={`conf-${it.extracted?.confidence}`}>{it.extracted?.confidence}</b>
                   {it.extracted?.notes?.map((n) => <div key={n} className="warn">⚠ {["vatAssumed", "totalGuessed", "totalsMismatch"].includes(n) ? t(n as "vatAssumed") : n}</div>)}
                   {isDuplicate(it.draft) && <div className="warn">⚠ {t("duplicateWarn")}</div>}

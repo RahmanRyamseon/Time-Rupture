@@ -17,6 +17,8 @@ businesses in the GCC (UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman) — in *
   choose are learned for next time.
 - **Manual journal entries** with templates (opening balances, capital, depreciation, end-of-service
   provision, VAT settlement).
+- **Optional OpenOCR server** ([Topdu/OpenOCR](https://github.com/Topdu/OpenOCR)) – faster, more accurate
+  English reading; Arabic pages automatically fall back to the on-device reader. See `openocr-server/`.
 - **Optional AI reading** (Claude, via a Netlify Function) for hard-to-read scans – see below.
 
 **Getting reports out**
@@ -60,7 +62,10 @@ Optional AI reading: add these environment variables (scope: Functions) and rede
 | `ANTHROPIC_API_KEY` | Enables `/api/extract` (Claude reads invoices / statements directly from the image or PDF). |
 | `ANTHROPIC_MODEL` | Optional model override; default `claude-opus-5-5`. |
 
-Without the key the app works fully with on-device OCR.
+| `OPENOCR_URL` | Base URL of your OpenOCR server (see `openocr-server/README.md`). |
+| `OPENOCR_TOKEN` | Bearer token matching the server's `OCR_TOKEN`. |
+
+Without these the app works fully with on-device OCR (English + Arabic).
 
 ## Notes & limits
 
