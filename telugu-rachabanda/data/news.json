@@ -1,6 +1,45 @@
 {
- "updated": "2026-11-13T17:57:31.599Z",
+ "updated": "2026-11-13T23:46:11.221Z",
  "items": [
+  {
+   "title": "US orders nationwide flight ground stop: Are UAE flights affected?",
+   "url": "https://gulfnews.com/business/aviation/us-orders-nationwide-flight-ground-stop-are-uae-flights-affected-1.500746844",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-13T21:46:15.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf",
+    "jobs"
+   ],
+   "id": "cf44fb187b28",
+   "related": []
+  },
+  {
+   "title": "From wagyu sliders to chocolate rain: Day one, Taste of Abu Dhabi 2026",
+   "url": "https://gulfnews.com/uae/abu-dhabi/from-wagyu-sliders-to-chocolate-rain-day-one-taste-of-abu-dhabi-2026-1.500746815",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-13T20:54:34.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "4f8bb010da90",
+   "related": []
+  },
   {
    "title": "UAE warns truck drivers of Dh3,000 fines after deadly Fujairah crash",
    "url": "https://gulfnews.com/uae/transport/uae-warns-truck-drivers-of-dh3000-fines-after-deadly-fujairah-crash-1.500746707",
@@ -406,25 +445,6 @@
    "related": []
   },
   {
-   "title": "Taste of Abu Dhabi, free fitness classes: Best things to do in Dubai and Abu Dhabi this weekend: November 13-15, 2026",
-   "url": "https://gulfnews.com/lifestyle/taste-of-abu-dhabi-free-fitness-classes-best-things-to-do-in-dubai-and-abu-dhabi-this-weekend-november-13-15-2026-1.500745695",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-13T07:59:49.000Z",
-   "feed": "gulfnews",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "104460878320",
-   "related": []
-  },
-  {
    "title": "OFW Pass, AKSYON Fund, and more: How the Philippines is strengthening workers' support in the UAE",
    "url": "https://gulfnews.com/uae/ofw-pass-aksyon-fund-and-more-how-the-philippines-is-strengthening-workers-support-in-the-uae-1.500746010",
    "publisher": "Gulf News",
@@ -559,6 +579,25 @@
     "gulf"
    ],
    "id": "55dfa7044154",
+   "related": []
+  },
+  {
+   "title": "US-Israel-Iran war: Turkey, Qatar sign defence pact as Trump warns Tehran, Hormuz risks persist",
+   "url": "https://gulfnews.com/world/mena/us-israel-iran-war-turkey-qatar-sign-defence-pact-as-trump-warns-tehran-hormuz-risks-persist-1.500745854",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-13T04:10:47.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "qatar"
+   ],
+   "telugu": false,
+   "sections": [
+    "qatar",
+    "gulf"
+   ],
+   "id": "bc703729ecc2",
    "related": []
   },
   {
