@@ -256,13 +256,17 @@ API documentation is served at `/api/docs`.
 
 ## Known limitations
 
-**Not yet verified**
+**Verified once, on one scene**
 
-- The ASTER path (`aster2asp`, the `aster` camera model) is written from the ASP
-  documentation but has not been run on a real scene. The same stereo pipeline is tested
-  end to end on a simulated pair.
-- The images were built in a restricted environment where the operating-system package
-  step could not run as written; check `docker compose up --build` on your machine.
+- The ASTER path has been run on one real scene (`AST_L1A`, 13 November 2023, Jebel
+  Hafeet) against Copernicus GLO-30. It produced a 30 m DEM that agrees with the
+  reference to 8.7 m RMSE on stable ground after the vertical shift. The 3-D alignment
+  proposed a 115 m horizontal move, which did not improve the agreement and was rejected
+  by the acceptance check, so only the vertical shift was applied. Other scenes, and
+  whether a horizontal correction can be made reliable at this resolution, are untested.
+- The images build with their operating-system package steps as written, but were built
+  behind a TLS-inspecting proxy (extra CA certificate, HTTPS package mirror). A build on
+  an ordinary network has not been run.
 
 **Measurement**
 

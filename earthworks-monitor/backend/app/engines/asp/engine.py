@@ -30,6 +30,10 @@ from app.engines.base import (
 
 ELLIPSOIDAL = "ellipsoidal_wgs84"
 
+# DEM grid spacing used when the request names none. Left to itself, point2dem picked
+# 80 m for a real ASTER scene (15 m images); the ASP guide grids ASTER at about 30 m.
+DEFAULT_DEM_SPACING_M = {"aster": 30.0}
+
 
 class AspEngine(PhotogrammetryEngine):
     name = "NASA Ames Stereo Pipeline"
@@ -125,11 +129,12 @@ class AspEngine(PhotogrammetryEngine):
         if not stereo.point_cloud.exists():
             raise EngineError("Stereo finished without producing a point cloud.")
 
+        spacing = request.resolution_m or DEFAULT_DEM_SPACING_M.get(request.camera_model)
         log("Gridding the point cloud into a DEM, error image and orthoimage")
         grid = Point2Dem(
             stereo.point_cloud,
             request.target_epsg,
-            request.resolution_m,
+            spacing,
             error_image=True,
             orthoimage_texture=stereo.left_aligned_image,
             threads=self.threads,
@@ -152,6 +157,7 @@ class AspEngine(PhotogrammetryEngine):
                 "bundle_adjust": request.bundle_adjust,
                 "target_epsg": request.target_epsg,
                 "requested_resolution_m": request.resolution_m,
+                "dem_spacing_m": spacing,
                 "dem_resolution_m": resolution,
             },
         )

@@ -15,7 +15,7 @@ from pathlib import Path
 
 from app.engines.base import EngineError, EngineUnavailable, Log
 
-_PROGRESS = re.compile(r"-->\s*\[")  # progress bars would flood the job log
+_PROGRESS = re.compile(r"-->\s*\[|\[[*.]{10,}\]")  # progress bars would flood the job log
 _TAIL_LINES = 25
 
 
