@@ -21,7 +21,14 @@ curl --data-binary @invoice.png localhost:7860/ocr
 ```
 
 ## Deploy (pick one)
-The Dockerfile bakes the models in, uses ~600 MB RAM and runs on CPU (≈0.3–0.5 s per page).
+The Dockerfile needs no system packages, bakes the models in (the container runs with no network
+access), and gives a ~1.2 GB image that runs on CPU (≈0.3 s per page). Tested with Docker 29:
+
+```bash
+docker build -t mizan-ocr .
+docker run -d -p 7860:7860 -e OCR_TOKEN=change-me mizan-ocr
+curl -H "Authorization: Bearer change-me" --data-binary @invoice.png localhost:7860/ocr
+```
 
 - **Hugging Face Spaces (free CPU):** create a Space → SDK *Docker* → upload `Dockerfile`, `app.py`,
   `requirements.txt`. Add a secret `OCR_TOKEN`. URL looks like `https://<user>-<space>.hf.space`.
