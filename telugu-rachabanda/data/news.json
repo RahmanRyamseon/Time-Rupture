@@ -1,6 +1,26 @@
 {
- "updated": "2026-11-12T18:30:02.047Z",
+ "updated": "2026-11-13T01:19:43.966Z",
  "items": [
+  {
+   "title": "Born together, gone together: Twins killed in Fujairah crash to be buried with toddler nephew in UAE",
+   "url": "https://gulfnews.com/uae/born-together-gone-together-twins-killed-in-fujairah-crash-to-be-buried-with-toddler-nephew-in-uae-1.500745745",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-13T00:06:13.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf",
+    "jobs"
+   ],
+   "id": "05d2f72a0959",
+   "related": []
+  },
   {
    "title": "Abu Dhabi advances as global maritime hub, enters top 15",
    "url": "https://gulfnews.com/business/abu-dhabi-advances-as-global-maritime-hub-enters-top-15-1.500745551",
@@ -435,27 +455,6 @@
     "gulf"
    ],
    "id": "006f51392059",
-   "related": []
-  },
-  {
-   "title": "Fujairah car-truck crash: Indian expat twins, 21, and toddler nephew killed",
-   "url": "https://gulfnews.com/uae/fujairah-car-truck-crash-indian-expat-twins-21-and-toddler-nephew-killed-1.500744606",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-12T07:16:16.000Z",
-   "feed": "gulfnews",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf",
-    "jobs"
-   ],
-   "expat": true,
-   "id": "f2895a581c82",
    "related": []
   },
   {
