@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { communityEnabled, loadSupabase, useSupabase } from "@/lib/supabase/browser";
 
 type Opt = { id: string; label: string };
 type Review = { id: string; body: string; city: string | null; climate: string | null; created_at: string };
@@ -9,7 +9,7 @@ type Review = { id: string; body: string; city: string | null; climate: string |
 export function Reviews({ productId, climates }: { productId: string; climates: Opt[] }) {
   const t = useTranslations("product");
   const c = useTranslations("common");
-  const sb = getBrowserSupabase();
+  const sb = useSupabase();
   const [items, setItems] = useState<Review[]>([]);
   const [status, setStatus] = useState("");
   useEffect(() => {
@@ -46,7 +46,7 @@ export function Reviews({ productId, climates }: { productId: string; climates: 
           {status && <p role="status" className="text-sm text-sand-300">{status}</p>}
         </form>
       </details>
-      {!sb && <p className="text-sm text-sand-400">{c("communityOff")}</p>}
+      {!communityEnabled && <p className="text-sm text-sand-400">{c("communityOff")}</p>}
     </div>
   );
 }

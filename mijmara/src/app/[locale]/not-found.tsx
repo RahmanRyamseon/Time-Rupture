@@ -10,7 +10,7 @@ export default async function NotFound() {
     <div className="py-20 text-center">
       <h1 className="mb-4 text-4xl">{t("title")}</h1>
       <p className="mb-8 text-sand-300">{t("text")}</p>
-      <Link className="btn btn-gold" href={href(locale, "/")}>{t("home")}</Link>
+      <Link prefetch={false} className="btn btn-gold" href={href(locale, "/")}>{t("home")}</Link>
     </div>
   );
 }

@@ -60,7 +60,7 @@ export default async function ProductPage({ params }: Params) {
     const name = note.name[locale];
     const origin = r.origin ? taxName(c, "origin_group", r.origin, locale) : "";
     const label = origin ? (locale === "ar" ? `${name.replace(/ \(.*\)$/, "")} ${origin}` : `${origin} ${name.replace(/ \(.*\)$/, "")}`) : name;
-    return <Link href={href(locale, "/notes/[slug]", { slug: note.slug[locale] })} className="chip no-underline hover:border-gold-500">{label}</Link>;
+    return <Link prefetch={false} href={href(locale, "/notes/[slug]", { slug: note.slug[locale] })} className="chip no-underline hover:border-gold-500">{label}</Link>;
   };
   const tiers = [["top", p.notes.top], ["heart", p.notes.heart], ["base", p.notes.base]] as const;
   const hasNotes = tiers.some(([, l]) => l.length > 0);
@@ -71,13 +71,13 @@ export default async function ProductPage({ params }: Params) {
   const notesNums = reg.use(p.citations.notes);
   // Body rows: label + content (rendered as a definition list)
   const rows: { k: string; v: React.ReactNode }[] = [
-    { k: t("house"), v: <Link href={href(locale, "/houses/[slug]", { slug: house.slug[locale] })}>{house.name[locale]}</Link> },
-    { k: t("category"), v: <Link href={href(locale, "/category/[slug]", { slug: p.category })}>{taxName(c, "category", p.category, locale)}</Link> },
+    { k: t("house"), v: <Link prefetch={false} href={href(locale, "/houses/[slug]", { slug: house.slug[locale] })}>{house.name[locale]}</Link> },
+    { k: t("category"), v: <Link prefetch={false} href={href(locale, "/category/[slug]", { slug: p.category })}>{taxName(c, "category", p.category, locale)}</Link> },
     { k: t("origin"), v: <CitedValue value={p.origins.length ? "x" : ""} nums={cite("origins")} locale={locale} editHref={editHref}>
         <span className="inline-flex flex-wrap gap-1.5">{p.origins.map((o) => {
           const og = c.origins.find((x) => x.id === o);
           const label = taxName(c, "origin_group", o, locale);
-          return og ? <Link key={o} className="chip no-underline" href={href(locale, "/oud-origins/[slug]", { slug: og.slug[locale] })}>{label}</Link> : <span key={o} className="chip">{label}</span>;
+          return og ? <Link prefetch={false} key={o} className="chip no-underline" href={href(locale, "/oud-origins/[slug]", { slug: og.slug[locale] })}>{label}</Link> : <span key={o} className="chip">{label}</span>;
         })}</span>
       </CitedValue> },
     { k: t("wild"), v: p.wildStatus && p.wildStatus !== "undocumented" ? <CitedValue value={taxName(c, "wild_status", p.wildStatus, locale)} nums={cite("wild_status")} locale={locale} editHref={editHref} /> : <Undocumented locale={locale} editHref={editHref} /> },

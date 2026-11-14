@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { COLLECTION_KEY, type CollectionItem, type Shelf, onStoreChange, readJSON, writeJSON } from "@/lib/local-store";
-import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { loadSupabase } from "@/lib/supabase/browser";
 
 export function CollectionButton({ id }: { id: string }) {
   const t = useTranslations("collection");
@@ -13,7 +13,7 @@ export function CollectionButton({ id }: { id: string }) {
     const cur = readJSON<CollectionItem[]>(COLLECTION_KEY, []).filter((x) => x.id !== id);
     const next = shelf ? [...cur, { id, shelf, added: new Date().toISOString() }] : cur;
     writeJSON(COLLECTION_KEY, next);
-    const sb = getBrowserSupabase();
+    const sb = await loadSupabase();
     const { data } = (await sb?.auth.getUser()) ?? { data: { user: null } };
     if (sb && data.user) {
       if (shelf) await sb.from("collection_items").upsert({ user_id: data.user.id, product_id: id, shelf });

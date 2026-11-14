@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { communityEnabled, loadSupabase, useSupabase } from "@/lib/supabase/browser";
 
 type Rev = { id: number; status: "pending" | "approved" | "rejected"; summary: string; created_at: string; diff: { field: string; before: string; after: string }[]; author: { username: string | null } | null };
 
@@ -9,14 +9,15 @@ export function HistoryClient({ entityType, entityId }: { entityType: string; en
   const t = useTranslations("history");
   const c = useTranslations("common");
   const locale = useLocale();
-  const sb = getBrowserSupabase();
+  const sb = useSupabase();
   const [revs, setRevs] = useState<Rev[] | null>(null);
   useEffect(() => {
-    if (!sb) return setRevs([]);
+    if (!sb) return;
     sb.from("revisions").select("id,status,summary,created_at,diff,author:profiles(username)").eq("entity_type", entityType).eq("entity_id", entityId).order("created_at", { ascending: false }).limit(100)
       .then(({ data }) => setRevs((data as unknown as Rev[]) ?? []));
   }, [sb, entityType, entityId]);
-  if (!sb) return <p className="text-sand-400">{c("communityOff")}</p>;
+  if (!communityEnabled) return <p className="text-sand-400">{c("communityOff")}</p>;
+  if (!sb) return <p>{c("loading")}</p>;
   if (!revs) return <p>{c("loading")}</p>;
   if (!revs.length) return <p className="text-sand-300">{t("empty")}</p>;
   return (

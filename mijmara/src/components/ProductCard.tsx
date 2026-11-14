@@ -10,7 +10,7 @@ export function ProductCard({ p, c, locale }: { p: Product; c: Content; locale: 
     <article className="card group relative flex h-full flex-col gap-2 p-5 transition-colors hover:border-gold-600">
       <p className="text-xs text-gold-400">{taxName(c, "category", p.category, locale)}</p>
       <h3 className="text-xl">
-        <Link href={href(locale, "/products/[slug]", { slug: p.slug[locale] })} className="text-gold-300 no-underline after:absolute after:inset-0">
+        <Link prefetch={false} href={href(locale, "/products/[slug]", { slug: p.slug[locale] })} className="text-gold-300 no-underline after:absolute after:inset-0">
           {p.name[locale]}
         </Link>
       </h3>

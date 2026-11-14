@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { communityEnabled, loadSupabase, useSupabase } from "@/lib/supabase/browser";
 
 type Opt = { id: string; label: string };
 type Summary = { votes: number; strength: number | null; longevity: number | null; sillage: number | null; seasons: Record<string, number> };
@@ -10,7 +10,7 @@ export const MIN_VOTES = 5;
 export function VotePanel({ productId, scales, seasons }: { productId: string; scales: Record<"strength" | "longevity" | "sillage", Opt[]>; seasons: Opt[] }) {
   const t = useTranslations("product");
   const c = useTranslations("common");
-  const sb = getBrowserSupabase();
+  const sb = useSupabase();
   const [summary, setSummary] = useState<Summary | null>(null);
   const [mine, setMine] = useState<{ strength?: number; longevity?: number; sillage?: number; seasons: string[] }>({ seasons: [] });
   const [status, setStatus] = useState("");

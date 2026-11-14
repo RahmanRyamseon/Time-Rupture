@@ -19,7 +19,7 @@ export default async function Page({ params }: Params) {
   return (
     <>
       <PageHeader title={t("title")} intro={t("intro")}>
-        <p className="text-sm"><Link href={href(locale, "/contributing")}>{locale === "ar" ? "اقرأ دليل المساهمة" : "Read the contributing guide"}</Link> · <Link href={href(locale, "/citation-policy")}>{locale === "ar" ? "سياسة المصادر" : "Citation policy"}</Link> · <Link href={href(locale, "/image-policy")}>{locale === "ar" ? "سياسة الصور" : "Image policy"}</Link></p>
+        <p className="text-sm"><Link prefetch={false} href={href(locale, "/contributing")}>{locale === "ar" ? "اقرأ دليل المساهمة" : "Read the contributing guide"}</Link> · <Link prefetch={false} href={href(locale, "/citation-policy")}>{locale === "ar" ? "سياسة المصادر" : "Citation policy"}</Link> · <Link prefetch={false} href={href(locale, "/image-policy")}>{locale === "ar" ? "سياسة الصور" : "Image policy"}</Link></p>
       </PageHeader>
       <ContributeClient products={products} />
     </>

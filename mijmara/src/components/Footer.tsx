@@ -21,9 +21,9 @@ export async function Footer({ locale }: { locale: Locale }) {
         </div>
         <nav aria-label={t("pages")}>
           <ul className="grid grid-cols-2 gap-2 text-sm md:grid-cols-1">
-            {pages.map(([to, label]) => <li key={to}><Link href={to}>{label}</Link></li>)}
-            <li><Link href={href(locale, "/contribute")}>{n("contribute")}</Link></li>
-            <li><Link href={href(locale, "/settings")}>{n("settings")}</Link></li>
+            {pages.map(([to, label]) => <li key={to}><Link prefetch={false} href={to}>{label}</Link></li>)}
+            <li><Link prefetch={false} href={href(locale, "/contribute")}>{n("contribute")}</Link></li>
+            <li><Link prefetch={false} href={href(locale, "/settings")}>{n("settings")}</Link></li>
           </ul>
         </nav>
       </div>

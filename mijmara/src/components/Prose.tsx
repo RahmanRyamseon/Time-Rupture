@@ -6,12 +6,19 @@ import type { ReactNode } from "react";
  * bold, links, and {{cite:id}} markers). No raw HTML is ever rendered.
  */
 export function Prose({ text, citeNumbers }: { text: string; citeNumbers: Map<string, number> }) {
-  // Split into blocks; a heading line always starts its own block.
+  // Split into blocks: blank lines separate blocks, and within a block consecutive lines
+  // of the same kind (heading, ordered, unordered, quote, text) form their own block.
+  const kind = (l: string) => (/^#{2,3}\s/.test(l) ? "h" : /^\d+\.\s/.test(l) ? "ol" : /^[-*]\s/.test(l) ? "ul" : /^>\s?/.test(l) ? "q" : "p");
   const blocks: string[] = [];
   for (const raw of text.replace(/\r/g, "").split(/\n{2,}/)) {
-    const lines = raw.split("\n");
-    if (/^#{2,3}\s/.test(lines[0]) && lines.length > 1) { blocks.push(lines[0], lines.slice(1).join("\n")); }
-    else blocks.push(raw);
+    let cur: string[] = [];
+    let k = "";
+    for (const line of raw.split("\n")) {
+      const lk = kind(line);
+      if (cur.length && (lk !== k || lk === "h")) { blocks.push(cur.join("\n")); cur = []; }
+      cur.push(line); k = lk;
+    }
+    if (cur.length) blocks.push(cur.join("\n"));
   }
   return (
     <div className="prose-ar">
@@ -42,7 +49,7 @@ function inline(text: string, cites: Map<string, number>): ReactNode[] {
     } else if (m[2]) out.push(<strong key={k++}>{m[2]}</strong>);
     else if (m[3]) {
       const url = m[4];
-      out.push(url.startsWith("/") ? <Link key={k++} href={url}>{m[3]}</Link> : <a key={k++} href={url} rel="noopener noreferrer" target="_blank">{m[3]}</a>);
+      out.push(url.startsWith("/") ? <Link prefetch={false} key={k++} href={url}>{m[3]}</Link> : <a key={k++} href={url} rel="noopener noreferrer" target="_blank">{m[3]}</a>);
     }
     last = re.lastIndex;
   }

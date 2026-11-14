@@ -36,7 +36,7 @@ export async function ArticleList({ kind, locale }: { kind: ArticleKind; locale:
       <ul className="grid gap-4 md:grid-cols-2">
         {items.map((a) => (
           <li key={a.id} className="card relative p-6">
-            <h2 className="mb-2 text-2xl"><Link className="no-underline after:absolute after:inset-0" href={href(locale, ENTITY_ROUTES[kind], { slug: a.slug[locale] })}>{a.title[locale]}</Link></h2>
+            <h2 className="mb-2 text-2xl"><Link prefetch={false} className="no-underline after:absolute after:inset-0" href={href(locale, ENTITY_ROUTES[kind], { slug: a.slug[locale] })}>{a.title[locale]}</Link></h2>
             <p className="text-sand-300">{a.summary[locale]}</p>
             <p className="mt-3 text-xs text-sand-400">{t("readingTime", { min: readingMinutes(a.body[locale]) })}</p>
           </li>

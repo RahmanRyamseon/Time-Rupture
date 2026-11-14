@@ -1,14 +1,14 @@
 "use client";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { communityEnabled, loadSupabase, useSupabase } from "@/lib/supabase/browser";
 import { Icon } from "../Icon";
 
 export function FlagButton({ entityType, entityId, fields }: { entityType: string; entityId: string; fields: string[] }) {
   const t = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState("");
-  const sb = getBrowserSupabase();
+  const sb = useSupabase();
   async function submit(form: FormData) {
     if (!sb) return setStatus(t("communityOff"));
     const { data } = await sb.auth.getUser();

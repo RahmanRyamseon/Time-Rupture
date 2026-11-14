@@ -30,14 +30,14 @@ export default async function NotesPage({ params }: Params) {
         {documented.map((x) => (
           <li key={x.id} className="card relative p-6">
             <p className="text-xs text-gold-400">{taxName(c, "character", x.family, locale)}</p>
-            <h3 className="mb-2 text-2xl"><Link className="no-underline after:absolute after:inset-0" href={href(locale, "/notes/[slug]", { slug: x.slug[locale] })}>{x.name[locale]}</Link></h3>
+            <h3 className="mb-2 text-2xl"><Link prefetch={false} className="no-underline after:absolute after:inset-0" href={href(locale, "/notes/[slug]", { slug: x.slug[locale] })}>{x.name[locale]}</Link></h3>
             <p className="line-clamp-3 text-sm text-sand-300">{x.description[locale]}</p>
           </li>
         ))}
       </ul>
       <h2 className="mb-4 text-2xl">{t("others")}</h2>
       <ul className="flex flex-wrap gap-2">
-        {others.map((x) => <li key={x.id}><Link className="chip no-underline hover:border-gold-500" href={href(locale, "/notes/[slug]", { slug: x.slug[locale] })}>{x.name[locale]}</Link></li>)}
+        {others.map((x) => <li key={x.id}><Link prefetch={false} className="chip no-underline hover:border-gold-500" href={href(locale, "/notes/[slug]", { slug: x.slug[locale] })}>{x.name[locale]}</Link></li>)}
       </ul>
     </>
   );

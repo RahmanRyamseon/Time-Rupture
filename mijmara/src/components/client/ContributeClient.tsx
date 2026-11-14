@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { communityEnabled, loadSupabase, useSupabase } from "@/lib/supabase/browser";
 
 const TYPES = ["product", "house", "origin", "note", "culture", "guide"] as const;
 const LICENSES = ["own-work", "cc-by", "cc-by-sa", "cc0", "brand-permission"] as const;
@@ -10,7 +10,7 @@ export function ContributeClient({ products }: { products: { id: string; label: 
   const t = useTranslations("contribute");
   const s = useTranslations("search");
   const c = useTranslations("common");
-  const sb = getBrowserSupabase();
+  const sb = useSupabase();
   const [status, setStatus] = useState("");
   const [imgStatus, setImgStatus] = useState("");
 

@@ -1,7 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { communityEnabled, loadSupabase, useSupabase } from "@/lib/supabase/browser";
 
 type Row = Record<string, unknown> & { id: number | string };
 const TABS = ["revisions", "reviews", "media", "flags"] as const;
@@ -10,14 +10,14 @@ type Tab = (typeof TABS)[number];
 export function ModerationClient() {
   const t = useTranslations("moderation");
   const c = useTranslations("common");
-  const sb = getBrowserSupabase();
+  const sb = useSupabase();
   const [allowed, setAllowed] = useState<boolean | null>(null);
   const [tab, setTab] = useState<Tab>("revisions");
   const [rows, setRows] = useState<Row[]>([]);
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
-    if (!sb) return setAllowed(false);
+    if (!sb) return;
     sb.auth.getUser().then(async ({ data }) => {
       if (!data.user) return setAllowed(false);
       const { data: p } = await sb.from("profiles").select("role").eq("id", data.user.id).maybeSingle();
@@ -51,7 +51,8 @@ export function ModerationClient() {
     load();
   }
 
-  if (!sb) return <p className="card p-6 text-sand-300">{c("communityOff")}</p>;
+  if (!communityEnabled) return <p className="card p-6 text-sand-300">{c("communityOff")}</p>;
+  if (!sb) return <p>{c("loading")}</p>;
   if (allowed === null) return <p>{c("loading")}</p>;
   if (!allowed) return <p className="card p-6">{t("forbidden")}</p>;
   return (

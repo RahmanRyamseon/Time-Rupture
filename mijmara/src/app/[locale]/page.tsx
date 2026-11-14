@@ -48,7 +48,7 @@ export default async function Home({ params }: Params) {
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
           {cats.map((cat) => (
             <li key={cat.id}>
-              <Link href={href(locale, "/category/[slug]", { slug: cat.id })} className="card flex min-h-20 items-center justify-center p-4 text-center text-sand-100 no-underline hover:border-gold-500 hover:text-gold-300">{cat.name[locale]}</Link>
+              <Link prefetch={false} href={href(locale, "/category/[slug]", { slug: cat.id })} className="card flex min-h-20 items-center justify-center p-4 text-center text-sand-100 no-underline hover:border-gold-500 hover:text-gold-300">{cat.name[locale]}</Link>
             </li>
           ))}
         </ul>
@@ -57,7 +57,7 @@ export default async function Home({ params }: Params) {
       <section aria-labelledby="latest" className="mt-14">
         <div className="mb-5 flex items-end justify-between gap-4">
           <h2 id="latest" className="text-3xl">{t("latestProducts")}</h2>
-          <Link href={href(locale, "/products")} className="text-sm">{locale === "ar" ? "عرض الكل" : "View all"}</Link>
+          <Link prefetch={false} href={href(locale, "/products")} className="text-sm">{locale === "ar" ? "عرض الكل" : "View all"}</Link>
         </div>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {c.products.slice(0, 8).map((p) => <li key={p.id}><ProductCard p={p} c={c} locale={locale} /></li>)}
@@ -69,7 +69,7 @@ export default async function Home({ params }: Params) {
           <h2 id="orig" className="mb-3 text-3xl">{t("originsTitle")}</h2>
           <p className="mb-6 text-sand-300">{t("originsText")}</p>
           <ul className="flex flex-wrap gap-2">
-            {c.origins.map((o) => <li key={o.id}><Link className="chip no-underline hover:border-gold-500" href={href(locale, "/oud-origins/[slug]", { slug: o.slug[locale] })}>{o.name[locale]}</Link></li>)}
+            {c.origins.map((o) => <li key={o.id}><Link prefetch={false} className="chip no-underline hover:border-gold-500" href={href(locale, "/oud-origins/[slug]", { slug: o.slug[locale] })}>{o.name[locale]}</Link></li>)}
           </ul>
         </div>
         <div className="card flex flex-col justify-between gap-6 p-8">
@@ -77,7 +77,7 @@ export default async function Home({ params }: Params) {
             <h2 className="mb-3 text-3xl">{t("matcherTitle")}</h2>
             <p className="text-sand-300">{t("matcherText")}</p>
           </div>
-          <Link href={href(locale, "/matcher")} className="btn btn-gold self-start"><Icon name="spark" />{t("matcherCta")}</Link>
+          <Link prefetch={false} href={href(locale, "/matcher")} className="btn btn-gold self-start"><Icon name="spark" />{t("matcherCta")}</Link>
         </div>
       </section>
 
@@ -86,7 +86,7 @@ export default async function Home({ params }: Params) {
         <ul className="grid gap-4 md:grid-cols-3">
           {culture.map((a) => (
             <li key={a.id} className="card relative p-6">
-              <h3 className="mb-2 text-xl"><Link className="no-underline after:absolute after:inset-0" href={href(locale, "/culture/[slug]", { slug: a.slug[locale] })}>{a.title[locale]}</Link></h3>
+              <h3 className="mb-2 text-xl"><Link prefetch={false} className="no-underline after:absolute after:inset-0" href={href(locale, "/culture/[slug]", { slug: a.slug[locale] })}>{a.title[locale]}</Link></h3>
               <p className="text-sm text-sand-300">{a.summary[locale]}</p>
             </li>
           ))}

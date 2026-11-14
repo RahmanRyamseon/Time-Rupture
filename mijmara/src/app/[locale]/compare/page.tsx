@@ -57,7 +57,7 @@ export default async function ComparePage({ params, searchParams }: Props) {
             <thead>
               <tr>
                 <th scope="col" className="w-40">{t("attribute")}</th>
-                {items.map((x) => <th key={x.id} scope="col" className="min-w-48"><Link href={href(locale, "/products/[slug]", { slug: x.slug[locale] })}>{x.name[locale]}</Link></th>)}
+                {items.map((x) => <th key={x.id} scope="col" className="min-w-48"><Link prefetch={false} href={href(locale, "/products/[slug]", { slug: x.slug[locale] })}>{x.name[locale]}</Link></th>)}
               </tr>
             </thead>
             <tbody>

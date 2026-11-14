@@ -26,7 +26,7 @@ export async function Undocumented({ locale, editHref }: { locale: Locale; editH
   const [a, b] = t("undocumented").split("—").map((s) => s.trim());
   return (
     <span className="undocumented">
-      {a}{b ? <> — <Link href={editHref ?? href(locale, "/contribute")}>{b}</Link></> : null}
+      {a}{b ? <> — <Link prefetch={false} href={editHref ?? href(locale, "/contribute")}>{b}</Link></> : null}
     </span>
   );
 }

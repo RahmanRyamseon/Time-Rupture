@@ -27,7 +27,7 @@ export default async function HousesPage({ params }: Params) {
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {houses.map((h) => (
           <li key={h.id} className="card relative p-6">
-            <h2 className="mb-1 text-2xl"><Link className="no-underline after:absolute after:inset-0" href={href(locale, "/houses/[slug]", { slug: h.slug[locale] })}>{h.name[locale]}</Link></h2>
+            <h2 className="mb-1 text-2xl"><Link prefetch={false} className="no-underline after:absolute after:inset-0" href={href(locale, "/houses/[slug]", { slug: h.slug[locale] })}>{h.name[locale]}</Link></h2>
             <p className="text-sm text-sand-300">{h.country[locale]}{h.foundedYear ? ` · ${t("founded")} ${h.foundedYear}` : ""}</p>
             <p className="mt-3 text-sm text-sand-400">{c.products.filter((p) => p.houseId === h.id).length} {locale === "ar" ? "منتج في الموسوعة" : "products here"}</p>
           </li>

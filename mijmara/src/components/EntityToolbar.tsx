@@ -11,8 +11,8 @@ export async function EntityToolbar({ locale, editHref, historyHref, entityType,
   return (
     <div className="flex flex-wrap items-center gap-2">
       {children}
-      <Link href={editHref} className="btn btn-ghost text-sm"><Icon name="pen" className="h-4 w-4" />{t("edit")}</Link>
-      <Link href={historyHref} className="btn btn-ghost text-sm"><Icon name="clock" className="h-4 w-4" />{t("history")}</Link>
+      <Link prefetch={false} href={editHref} className="btn btn-ghost text-sm"><Icon name="pen" className="h-4 w-4" />{t("edit")}</Link>
+      <Link prefetch={false} href={historyHref} className="btn btn-ghost text-sm"><Icon name="clock" className="h-4 w-4" />{t("history")}</Link>
       <FlagButton entityType={entityType} entityId={entityId} fields={fields} />
     </div>
   );

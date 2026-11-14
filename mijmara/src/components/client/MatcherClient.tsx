@@ -45,7 +45,7 @@ export function MatcherClient({ locale, options, products }: { locale: Locale; o
                   <li key={r.id} className="card relative flex gap-4 p-5">
                     <span aria-hidden="true" className="font-display text-3xl text-gold-600">{i + 1}</span>
                     <div>
-                      <Link href={products[r.id].href} className="text-xl no-underline after:absolute after:inset-0">{products[r.id].name}</Link>
+                      <Link prefetch={false} href={products[r.id].href} className="text-xl no-underline after:absolute after:inset-0">{products[r.id].name}</Link>
                       <p className="text-sm text-sand-300">{products[r.id].house}</p>
                       <p className="mt-2">{r.reason}</p>
                     </div>

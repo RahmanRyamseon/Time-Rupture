@@ -50,13 +50,13 @@ export function SearchClient({ locale, contributeHref }: { locale: Locale; contr
           <>
             <p className="mb-3 text-sm text-sand-300">{result.fuzzy && result.hits.length ? t("fuzzy", { q }) : cm("results", { count: result.hits.length })}</p>
             {result.hits.length === 0 ? (
-              <p className="card p-6">{t("empty")} <Link href={contributeHref}>{cm("undocumented").split("—")[1]?.trim()}</Link></p>
+              <p className="card p-6">{t("empty")} <Link prefetch={false} href={contributeHref}>{cm("undocumented").split("—")[1]?.trim()}</Link></p>
             ) : (
               <ul className="space-y-3">
                 {result.hits.slice(0, 50).map(({ doc }) => (
                   <li key={doc.kind + doc.id} className="card relative p-4">
                     <p className="text-xs text-gold-400">{t(`kinds.${doc.kind}`)}</p>
-                    <Link href={doc.href[locale]} className="text-lg no-underline after:absolute after:inset-0">{doc.title[locale]}</Link>
+                    <Link prefetch={false} href={doc.href[locale]} className="text-lg no-underline after:absolute after:inset-0">{doc.title[locale]}</Link>
                     <p className="line-clamp-2 text-sm text-sand-300">{doc.subtitle[locale]}</p>
                   </li>
                 ))}

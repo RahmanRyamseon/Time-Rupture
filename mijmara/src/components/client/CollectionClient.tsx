@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { COLLECTION_KEY, type CollectionItem, type Shelf, onStoreChange, readJSON, writeJSON } from "@/lib/local-store";
-import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { communityEnabled, loadSupabase } from "@/lib/supabase/browser";
 
 const SHELVES: Shelf[] = ["owned", "tried", "wishlist"];
 
@@ -14,9 +14,8 @@ export function CollectionClient({ products }: { products: Record<string, { name
   useEffect(() => { const load = () => setItems(readJSON<CollectionItem[]>(COLLECTION_KEY, [])); load(); return onStoreChange(load); }, []);
   // Merge the account shelf with the local one when signed in.
   useEffect(() => {
-    const sb = getBrowserSupabase();
-    if (!sb) return;
-    sb.auth.getUser().then(async ({ data }) => {
+    if (!communityEnabled) return;
+    loadSupabase().then((sb) => sb?.auth.getUser().then(async ({ data }) => {
       if (!data.user) return;
       const { data: rows } = await sb.from("collection_items").select("product_id,shelf,created_at").eq("user_id", data.user.id);
       const local = readJSON<CollectionItem[]>(COLLECTION_KEY, []);
@@ -26,7 +25,7 @@ export function CollectionClient({ products }: { products: Record<string, { name
       writeJSON(COLLECTION_KEY, all);
       await sb.from("collection_items").upsert(all.map((x) => ({ user_id: data.user!.id, product_id: x.id, shelf: x.shelf })));
       setSynced(true);
-    });
+    }));
   }, []);
   const known = items.filter((x) => products[x.id]);
   if (!known.length) return <p className="card p-6 text-sand-300">{t("empty")}</p>;
@@ -42,10 +41,10 @@ export function CollectionClient({ products }: { products: Record<string, { name
             <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {list.map((x) => (
                 <li key={x.id} className="card flex items-start justify-between gap-3 p-4">
-                  <div><Link href={products[x.id].href} className="text-lg">{products[x.id].name}</Link><p className="text-sm text-sand-300">{products[x.id].meta}</p></div>
+                  <div><Link prefetch={false} href={products[x.id].href} className="text-lg">{products[x.id].name}</Link><p className="text-sm text-sand-300">{products[x.id].meta}</p></div>
                   <button type="button" className="btn btn-ghost !min-h-9 !px-2 text-xs" onClick={async () => {
                     writeJSON(COLLECTION_KEY, readJSON<CollectionItem[]>(COLLECTION_KEY, []).filter((y) => y.id !== x.id));
-                    const sb = getBrowserSupabase(); const { data } = (await sb?.auth.getUser()) ?? { data: { user: null } };
+                    const sb = await loadSupabase(); const { data } = (await sb?.auth.getUser()) ?? { data: { user: null } };
                     if (sb && data.user) await sb.from("collection_items").delete().eq("user_id", data.user.id).eq("product_id", x.id);
                   }}>{t("remove")}</button>
                 </li>

@@ -46,7 +46,7 @@ export async function ProductsBrowser({ c, locale, filters, action, lockCategory
         ))}
         <div className="flex gap-2">
           <button className="btn btn-gold flex-1">{t("apply")}</button>
-          <Link href={action} className="btn btn-ghost">{t("reset")}</Link>
+          <Link prefetch={false} href={action} className="btn btn-ghost">{t("reset")}</Link>
         </div>
         <p className="text-xs text-sand-400">{t("strengthNote")}</p>
       </form>

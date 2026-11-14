@@ -1,14 +1,15 @@
 "use client";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { communityEnabled, loadSupabase, useSupabase } from "@/lib/supabase/browser";
 
 export function SignInClient({ redirectPath }: { redirectPath: string }) {
   const t = useTranslations("auth");
   const c = useTranslations("common");
-  const sb = getBrowserSupabase();
+  const sb = useSupabase();
   const [msg, setMsg] = useState("");
-  if (!sb) return <p className="card max-w-xl p-6 text-sand-300">{c("communityOff")}</p>;
+  if (!communityEnabled) return <p className="card max-w-xl p-6 text-sand-300">{c("communityOff")}</p>;
+  if (!sb) return <p>{c("loading")}</p>;
   const redirectTo = typeof window !== "undefined" ? window.location.origin + encodeURI(redirectPath) : undefined;
   return (
     <div className="card max-w-md space-y-4 p-6">

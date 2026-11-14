@@ -39,7 +39,7 @@ export default async function OriginsExplorer({ params }: Params) {
           return (
             <li key={o.id} className="card relative flex flex-col gap-3 p-6">
               <span aria-hidden="true" className="font-display text-4xl text-oud-600">{String(i + 1).padStart(2, "0")}</span>
-              <h2 className="text-2xl"><Link className="no-underline after:absolute after:inset-0" href={href(locale, "/oud-origins/[slug]", { slug: o.slug[locale] })}>{o.name[locale]}</Link></h2>
+              <h2 className="text-2xl"><Link prefetch={false} className="no-underline after:absolute after:inset-0" href={href(locale, "/oud-origins/[slug]", { slug: o.slug[locale] })}>{o.name[locale]}</Link></h2>
               <p className="text-sm text-sand-300">{o.region[locale]}</p>
               {o.smell[locale] && <p className="line-clamp-3 text-sm">{o.smell[locale]}</p>}
               <div className="mt-auto flex items-center justify-between pt-2 text-xs text-sand-400">

@@ -22,7 +22,7 @@ export function CompareButton({ id, compareHref }: { id: string; compareHref: st
       <button type="button" onClick={toggle} aria-pressed={on} className={`btn text-sm ${on ? "btn-gold" : "btn-ghost"}`}>
         <Icon name="scale" className="h-4 w-4" />{on ? t("removeFromCompare") : t("addToCompare")}
       </button>
-      {ids.length > 0 && <Link className="btn btn-ghost text-sm" href={`${compareHref}?p=${ids.join(",")}`}>{t("compareCount", { count: ids.length })}</Link>}
+      {ids.length > 0 && <Link prefetch={false} className="btn btn-ghost text-sm" href={`${compareHref}?p=${ids.join(",")}`}>{t("compareCount", { count: ids.length })}</Link>}
       {msg && <span role="status" className="text-sm text-gold-300">{msg}</span>}
     </>
   );

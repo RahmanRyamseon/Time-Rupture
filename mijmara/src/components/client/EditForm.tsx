@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { getBrowserSupabase } from "@/lib/supabase/browser";
+import { communityEnabled, loadSupabase, useSupabase } from "@/lib/supabase/browser";
 import { diffSnapshots } from "@/lib/snapshot";
 
 type Field = { key: string; long?: boolean; dir?: "ltr" | "rtl" };
@@ -13,7 +13,7 @@ type Field = { key: string; long?: boolean; dir?: "ltr" | "rtl" };
 export function EditForm({ entityType, entityId, fields, current }: { entityType: string; entityId: string; fields: Field[]; current: Record<string, string> }) {
   const t = useTranslations("contribute");
   const c = useTranslations("common");
-  const sb = getBrowserSupabase();
+  const sb = useSupabase();
   const [values, setValues] = useState(current);
   const [cites, setCites] = useState<Record<string, string>>({});
   const [status, setStatus] = useState("");
@@ -37,7 +37,7 @@ export function EditForm({ entityType, entityId, fields, current }: { entityType
 
   return (
     <form action={submit} className="space-y-6">
-      {!sb && <p className="card p-4 text-sand-300">{c("communityOff")}</p>}
+      {!communityEnabled && <p className="card p-4 text-sand-300">{c("communityOff")}</p>}
       <p className="text-sm text-sand-300">{t("fieldsHint")}</p>
       <div className="grid gap-5 md:grid-cols-2">
         {fields.map((f) => {
