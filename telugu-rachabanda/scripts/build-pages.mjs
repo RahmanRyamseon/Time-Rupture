@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Builds dist/: the site plus a ready-made HTML page for every section, story, board and
-// directory page, so search engines can read each address without running the app.
-// Vercel runs this on every deploy (see vercel.json). The app takes over once it loads.
+// Builds dist/: the site plus a ready-made HTML page for every guide, topic, country, board and
+// legal page, so search engines can read each address without running the app. Vercel runs this
+// on every deploy (see vercel.json); the app takes over once it loads.
 //
 //   node scripts/build-pages.mjs   → dist/
 
@@ -11,43 +11,13 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, "dist");
-export const SITE = "https://gulftelugunews.vercel.app";
-const BRAND = "గల్ఫ్ తెలుగు వార్తలు";
-
-// Keep in step with SECTIONS in app.js.
-export const SECTIONS = {
-  top: ["తెలుగు వారి వార్తలు", "గల్ఫ్ దేశాల్లోని తెలుగు వారి గురించిన తాజా వార్తలు"],
-  uae: ["యూఏఈ తెలుగు వార్తలు", "దుబాయ్, అబుదాబి, షార్జా సహా యూఏఈలోని తెలుగు వారి వార్తలు, యూఏఈ నియమాలు"],
-  saudi: ["సౌదీ అరేబియా తెలుగు వార్తలు", "రియాద్, జెద్దా, దమ్మామ్ సహా సౌదీలోని తెలుగు వారి వార్తలు, సౌదీ నియమాలు"],
-  qatar: ["ఖతార్ తెలుగు వార్తలు", "దోహా సహా ఖతార్‌లోని తెలుగు వారి వార్తలు"],
-  kuwait: ["కువైట్ తెలుగు వార్తలు", "కువైట్‌లోని తెలుగు వారి వార్తలు, కువైట్ నియమాలు"],
-  oman: ["ఒమన్ తెలుగు వార్తలు", "మస్కట్ సహా ఒమన్‌లోని తెలుగు వారి వార్తలు"],
-  bahrain: ["బహ్రెయిన్ తెలుగు వార్తలు", "మనామా సహా బహ్రెయిన్‌లోని తెలుగు వారి వార్తలు, బహ్రెయిన్ నియమాలు"],
-  sangham: ["గల్ఫ్ తెలుగు సంఘాలు & వేడుకలు", "గల్ఫ్‌లోని తెలుగు సంఘాలు, కమిటీలు, బతుకమ్మ, ఉగాది, దసరా వేడుకలు"],
-  exit: ["తిరుగు ప్రయాణం & గల్ఫ్ కార్మికుల కష్టాలు", "స్వదేశానికి తిరుగు ప్రయాణం, మృతదేహాల తరలింపు, చిక్కుకుపోయిన గల్ఫ్ కార్మికులు, క్షమాభిక్ష"],
-  jobs: ["గల్ఫ్ ఉద్యోగాలు, వీసా & నియమాలు", "గల్ఫ్ వీసా, ఉద్యోగ, ట్రాఫిక్ నియమాల మార్పులు, నకిలీ ఏజెంట్లు, విమానాలు"],
-  gulf: ["గల్ఫ్ పరిణామాలు", "గల్ఫ్‌లో ఉన్న అందరిపై ప్రభావం చూపే వార్తలు"],
-};
+export const SITE = "https://gulfteluguguide.vercel.app";
+const BRAND = "గల్ఫ్ తెలుగు గైడ్";
 
 export const esc = (s = "") =>
   String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const day = (iso) => new Intl.DateTimeFormat("te-IN", { day: "numeric", month: "long", year: "numeric" }).format(new Date(iso));
 
-function storyList(items) {
-  if (!items.length) return "<p>ఇంకా వార్తలు లేవు.</p>";
-  return `<ul>${items
-    .map(
-      (i) =>
-        `<li><a href="/story/${i.id}">${esc(i.title)}</a> — ${esc(i.publisher)}, <time datetime="${i.published}">${day(i.published)}</time></li>`,
-    )
-    .join("")}</ul>`;
-}
-const sectionLinks = () =>
-  `<nav><ul>${Object.entries(SECTIONS)
-    .map(([id, [t]]) => `<li><a href="/s/${id}">${esc(t)}</a></li>`)
-    .join("")}<li><a href="/board">🌳 రచ్చబండ – మన ముచ్చట్ల వేదిక</a></li><li><a href="/about">మా గురించి</a></li><li><a href="/sources">గల్ఫ్ తెలుగు డైరెక్టరీ</a></li></ul></nav>`;
-
-// Fills the page template for one address.
 export function page(template, { path, title, description, body, home = false }) {
   const url = `${SITE}${path}`;
   const fullTitle = home ? title : `${title} | ${BRAND}`;
@@ -76,56 +46,83 @@ export function fillLegal(html, site = {}) {
     .replaceAll("{{jurisdictionClause}}", site.jurisdiction ? ` (8) These terms are governed by the laws of ${esc(site.jurisdiction)}.` : "");
 }
 
-export function buildPages(template, news, community, sources, legal = {}, site = {}) {
-  const items = news.items;
+
+const guideList = (guides) =>
+  `<ul>${guides.map((g) => `<li><a href="/g/${g.id}">${esc(g.title)}</a> — ${esc(g.summary)}</li>`).join("")}</ul>`;
+const sourceItem = (s) =>
+  `<li>${s.url ? `<a href="${esc(s.url)}" rel="noopener">${esc(s.name)}</a>` : esc(s.name)}${s.phoneText ? ` — ${esc(s.phoneText)}` : ""}${
+    s.note ? ` — ${esc(s.note)}` : ""
+  }</li>`;
+
+export function buildPages(template, { guides, countries, community, sources, legal = {}, site = {} }) {
   const pages = [];
   const add = (p) => pages.push(p);
+  const nav = `<nav><ul>${guides.categories
+    .map((c) => `<li><a href="/t/${c.id}">${esc(c.title)} (${esc(c.en)})</a></li>`)
+    .join("")}${countries.countries.map((c) => `<li><a href="/c/${c.id}">${esc(c.name)} (${esc(c.en)})</a></li>`).join("")}</ul></nav>`;
 
   add({
     path: "/",
     home: true,
     title: template.match(/<title>([\s\S]*?)<\/title>/)[1],
     description: template.match(/<meta name="description" content="([^"]*)"/)[1],
-    body: `<h2>తెలుగు వారి తాజా వార్తలు</h2>${storyList(items.filter((i) => i.telugu).slice(0, 20))}
-      <h2>గల్ఫ్ ఉద్యోగాలు, వీసా & నియమాలు</h2>${storyList(items.filter((i) => i.sections.includes("jobs")).slice(0, 10))}
-      ${sectionLinks()}`,
+    lastmod: countries.checked,
+    body: `<h2>గైడ్లు</h2>${guideList(guides.guides)}${nav}`,
   });
 
-  for (const [id, [title, description]] of Object.entries(SECTIONS)) {
-    const list = items.filter((i) => i.sections.includes(id));
+  for (const c of guides.categories) {
+    const list = guides.guides.filter((g) => g.cat === c.id);
     add({
-      path: `/s/${id}`,
-      title,
-      description: `${description}. ${list.length} తాజా వార్తలు.`,
-      body: `<h1>${esc(title)}</h1><p>${esc(description)}.</p>${storyList(list.slice(0, 60))}${sectionLinks()}`,
+      path: `/t/${c.id}`,
+      title: `${c.title} – ${c.en}`,
+      description: `${c.desc} గల్ఫ్‌లోని తెలుగు వారికి గైడ్లు.`,
+      body: `<h1>${esc(c.title)} – ${esc(c.en)}</h1><p>${esc(c.desc)}</p>${guideList(list)}${nav}`,
     });
   }
 
-  for (const i of items) {
-    const where = i.sections.filter((s) => SECTIONS[s]).map((s) => `<a href="/s/${s}">${esc(SECTIONS[s][0])}</a>`);
-    const related = i.related?.length
-      ? `<h2>ఇదే వార్త ఇతర పత్రికల్లో</h2><ul>${i.related
-          .map((r) => `<li><a href="${esc(r.url)}" rel="nofollow noopener">${esc(r.title)}</a> — ${esc(r.publisher)}</li>`)
-          .join("")}</ul>`
-      : "";
-    const more = items.filter((x) => x.id !== i.id && x.sections.some((s) => i.sections.includes(s))).slice(0, 8);
+  for (const g of guides.guides) {
+    const cat = guides.categories.find((c) => c.id === g.cat);
     add({
-      path: `/story/${i.id}`,
-      title: i.title,
-      description: `${i.title} — ${i.publisher}, ${day(i.published)}. ఈ వార్తపై గల్ఫ్ తెలుగు వారి అభిప్రాయాలు, చర్చ.`,
-      body: `<article><h1>${esc(i.title)}</h1>
-        <p>${esc(i.publisher)} · <time datetime="${i.published}">${day(i.published)}</time> · ${where.join(" · ")}</p>
-        <p><a href="${esc(i.url)}" rel="nofollow noopener">${esc(i.publisher)}లో పూర్తి వార్త చదవండి</a></p>
-        <p>ఈ శీర్షిక, వార్త ${esc(i.publisher)} వారిది. మేము శీర్షిక, లింక్ మాత్రమే చూపిస్తాము.</p>
-        ${related}</article>
-        <h2>ఇవి కూడా చదవండి</h2>${storyList(more)}`,
+      path: `/g/${g.id}`,
+      title: `${g.title} – ${g.en}`,
+      description: `${g.summary} ${g.en_summary}`.slice(0, 300),
+      lastmod: g.checked,
+      body: `<article><p><a href="/t/${g.cat}">${esc(cat.title)}</a></p><h1>${esc(g.title)}</h1><p lang="en">${esc(g.en)}</p>
+        <p>చివరిగా సరిచూసినది: ${day(g.checked)}</p><p>${esc(g.summary)}</p>${g.html}
+        <h2>అధికారిక మూలాలు</h2><ul>${g.sources.map((s) => `<li><a href="${esc(s.url)}" rel="noopener">${esc(s.name)}</a></li>`).join("")}</ul>
+        <p lang="en">${esc(g.en_summary)}</p>
+        <p>ఇది సాధారణ మార్గదర్శనం మాత్రమే, న్యాయ సలహా కాదు.</p></article>`,
     });
   }
+
+  for (const c of countries.countries) {
+    add({
+      path: `/c/${c.id}`,
+      title: `${c.name} తెలుగు గైడ్ – ${c.en}`,
+      description: `${c.name}లో తెలుగు వారికి: ${c.idCard}, కార్మిక శాఖ ఫిర్యాదులు, భారత రాయబార కార్యాలయం, హెల్ప్‌లైన్లు, తెలుగు సంఘాలు.`,
+      lastmod: countries.checked,
+      body: `<h1>${esc(c.name)} – ${esc(c.en)}</h1>
+        <h2>ఐడీ కార్డు</h2><p>${esc(c.idCard)} — <a href="${esc(c.residence.url)}" rel="noopener">${esc(c.residence.name)}</a></p>
+        <h2>కార్మిక శాఖ</h2><p><a href="${esc(c.labour.url)}" rel="noopener">${esc(c.labour.name)}</a>${c.labour.phoneText ? ` — ${esc(c.labour.phoneText)}` : ""}</p>
+        <h2>భారత రాయబార కార్యాలయం</h2><ul>${c.embassies.map((u) => `<li><a href="${esc(u)}" rel="noopener">${esc(u)}</a></li>`).join("")}</ul>
+        ${c.notes.length ? `<ul>${c.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : ""}${nav}`,
+    });
+  }
+
+  const group = (id) => sources.groups.find((g) => g.id === id);
+  add({
+    path: "/updates",
+    title: "అధికారిక సమాచారం – Official updates",
+    description: "కొత్త నియమాలు, ఆమ్నెస్టీ, ప్రయాణ హెచ్చరికలు — భారత రాయబార కార్యాలయాలు, గల్ఫ్ కార్మిక శాఖలు, భారత ప్రభుత్వ అధికారిక ఛానళ్లు.",
+    body: `<h1>అధికారిక సమాచారం</h1><ul>${group("missions").items.map(sourceItem).join("")}</ul>
+      <ul>${countries.countries.map((c) => sourceItem({ name: c.labour.name, url: c.labour.url })).join("")}</ul>
+      <ul>${group("portals").items.map(sourceItem).join("")}</ul>`,
+  });
 
   add({
     path: "/board",
     title: "రచ్చబండ – గల్ఫ్ తెలుగు వారి ముచ్చట్ల వేదిక",
-    description: "గల్ఫ్‌లోని తెలుగు వారి చర్చలు: సంఘాల కార్యక్రమాలు, ఉద్యోగాలు & వీసా, రూములు, సాయం, తిరుగు ప్రయాణం.",
+    description: "గల్ఫ్‌లోని తెలుగు వారి ప్రశ్నలు, అనుభవాలు: సంఘాల కార్యక్రమాలు, ఉద్యోగాలు & వీసా, రూములు, సాయం, తిరుగు ప్రయాణం.",
     body: `<h1>🌳 రచ్చబండ – గల్ఫ్ తెలుగు వారి ముచ్చట్ల వేదిక</h1><ul>${community.boards
       .map((b) => `<li><a href="/board/${b.id}">${esc(b.title)}</a> — ${esc(b.desc)}</li>`)
       .join("")}</ul>`,
@@ -141,20 +138,8 @@ export function buildPages(template, news, community, sources, legal = {}, site 
   add({
     path: "/sources",
     title: "గల్ఫ్ తెలుగు డైరెక్టరీ – హెల్ప్‌లైన్లు, రాయబార కార్యాలయాలు, తెలుగు సంఘాలు",
-    description: "గల్ఫ్‌లోని తెలుగు వారికి: ఏపీఎన్ఆర్టీఎస్, భారత రాయబార కార్యాలయ హెల్ప్‌లైన్లు, యూఏఈ, సౌదీ, ఖతార్, కువైట్, ఒమన్, బహ్రెయిన్ తెలుగు సంఘాలు, గల్ఫ్ పత్రికలు.",
-    body: `<h1>గల్ఫ్ తెలుగు డైరెక్టరీ</h1>${sources.groups
-      .map(
-        (g) =>
-          `<h2>${esc(g.title)}</h2><ul>${g.items
-            .map(
-              (s) =>
-                `<li>${s.url ? `<a href="${esc(s.url)}" rel="noopener">${esc(s.name)}</a>` : esc(s.name)}${
-                  s.phoneText ? ` — ${esc(s.phoneText)}` : ""
-                }${s.note ? ` — ${esc(s.note)}` : ""}</li>`,
-            )
-            .join("")}</ul>`,
-      )
-      .join("")}`,
+    description: "ఏపీఎన్ఆర్టీఎస్, భారత రాయబార కార్యాలయ హెల్ప్‌లైన్లు, ప్రభుత్వ సేవలు, యూఏఈ, సౌదీ, ఖతార్, కువైట్, ఒమన్, బహ్రెయిన్ తెలుగు సంఘాలు.",
+    body: `<h1>గల్ఫ్ తెలుగు డైరెక్టరీ</h1>${sources.groups.map((g) => `<h2>${esc(g.title)}</h2><ul>${g.items.map(sourceItem).join("")}</ul>`).join("")}`,
   });
 
   for (const [id, p] of Object.entries(legal))
@@ -163,41 +148,34 @@ export function buildPages(template, news, community, sources, legal = {}, site 
   return pages;
 }
 
-export function sitemap(pages, news) {
-  const lastmod = (p) => {
-    const id = p.path.startsWith("/story/") ? p.path.slice(7) : null;
-    const item = id && news.items.find((i) => i.id === id);
-    return (item ? item.published : news.updated || new Date().toISOString()).slice(0, 10);
-  };
+export function sitemap(pages, today = new Date().toISOString().slice(0, 10)) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map((p) => `  <url><loc>${SITE}${p.path === "/" ? "/" : p.path}</loc><lastmod>${lastmod(p)}</lastmod></url>`).join("\n")}
+${pages.map((p) => `  <url><loc>${SITE}${p.path}</loc><lastmod>${(p.lastmod || today).slice(0, 10)}</lastmod></url>`).join("\n")}
 </urlset>
 `;
 }
 
 async function main() {
-  const read = async (f) => readFile(join(root, f), "utf8");
-  const template = await read("index.html");
-  const [news, community, sources, legal, site] = await Promise.all(
-    ["data/news.json", "data/community.json", "data/sources.json", "data/legal.json", "data/site.json"].map(async (f) =>
-      JSON.parse(await read(f)),
-    ),
-  );
+  const read = async (f) => JSON.parse(await readFile(join(root, f), "utf8"));
+  const template = await readFile(join(root, "index.html"), "utf8");
+  const data = {};
+  for (const k of ["guides", "countries", "community", "sources", "legal", "site"]) data[k] = await read(`data/${k}.json`);
 
   await rm(out, { recursive: true, force: true });
   await mkdir(join(out, "data"), { recursive: true });
-  for (const f of ["app.js", "store.js", "config.js", "style.css", "robots.txt"]) await cp(join(root, f), join(out, f));
-  for (const f of ["news.json", "community.json", "sources.json", "rates.json", "legal.json", "site.json"]) await cp(join(root, "data", f), join(out, "data", f));
+  for (const f of ["app.js", "store.js", "gratuity.js", "config.js", "style.css", "robots.txt"]) await cp(join(root, f), join(out, f));
+  for (const f of ["guides.json", "countries.json", "community.json", "sources.json", "rates.json", "legal.json", "site.json"])
+    await cp(join(root, "data", f), join(out, "data", f));
 
-  const pages = buildPages(template, news, community, sources, legal, site);
+  const pages = buildPages(template, data);
   for (const p of pages) {
-    // /s/uae → dist/s/uae.html, served at /s/uae (cleanUrls in vercel.json).
+    // /g/gratuity → dist/g/gratuity.html, served at /g/gratuity (cleanUrls in vercel.json).
     const file = p.path === "/" ? join(out, "index.html") : join(out, `${p.path.slice(1)}.html`);
     await mkdir(dirname(file), { recursive: true });
     await writeFile(file, page(template, p));
   }
-  await writeFile(join(out, "sitemap.xml"), sitemap(pages, news));
+  await writeFile(join(out, "sitemap.xml"), sitemap(pages));
   console.log(`Built ${pages.length} pages into dist/.`);
 }
 

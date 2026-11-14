@@ -439,3 +439,56 @@ main:focus { outline: none; }
 .legal-nav { margin-top: 16px; font-weight: 700; }
 .utilbar { background: var(--brand-dark); }
 :root[data-theme="dark"] .utilbar { background: #12163a; }
+
+/* ---- Guide site ---- */
+.intro { background: linear-gradient(135deg, var(--brand), var(--brand-dark)); color: #fff; padding: 26px 24px; border-radius: 6px; }
+.intro h1 { margin: 0 0 8px; font-weight: 800; font-size: clamp(1.35rem, 3.4vw, 2rem); line-height: 1.45; }
+.intro p { margin: 0 0 14px; opacity: 0.92; }
+.intro-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.intro .btn { background: var(--saffron); color: #1a1a1a; }
+.intro .btn.sos-btn { background: #fff; color: var(--alert); }
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+.cat-card { display: grid; gap: 4px; padding: 16px; border-radius: 6px; color: #fff; text-decoration: none; background: linear-gradient(135deg, var(--a), var(--b)); }
+.cat-card:hover { color: #fff; filter: brightness(1.08); }
+.cat-icon { font-size: 2rem; }
+.cat-card small { opacity: 0.88; font-size: 0.8rem; line-height: 1.45; }
+.ggrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.gcard-link { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; height: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); text-decoration: none; }
+.gcard-link:hover { border-color: var(--brand); color: inherit; }
+.gcard-icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 12px; font-size: 1.8rem; background: linear-gradient(135deg, var(--a), var(--b)); }
+.gcard-body { display: grid; gap: 3px; align-content: start; }
+.gcard-cat { font-size: 0.74rem; color: var(--muted); font-weight: 700; }
+.gcard-body strong { line-height: 1.5; }
+.gcard-sum { font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+.checked { font-size: 0.72rem; color: #2e7d32; font-weight: 700; }
+.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+.country-chip { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); text-decoration: none; font-weight: 700; }
+.country-chip span { font-size: 1.5rem; }
+.country-chip:hover { border-color: var(--brand); }
+.sub-h { font-size: 1.05rem; margin: 18px 0 8px; }
+.guide-head { display: flex; gap: 14px; align-items: center; }
+.guide-icon { font-size: 2.6rem; }
+.guide h1 { margin: 0; }
+.guide-en { margin: 0; color: var(--muted); }
+.checked-line { display: inline-block; font-size: 0.85rem; color: #2e7d32; background: #e8f5e9; border-radius: 4px; padding: 3px 10px; margin: 10px 0; }
+:root[data-theme="dark"] .checked-line { background: #1b3320; color: #a5d6a7; }
+.guide-body h2 { font-size: 1.15rem; margin: 20px 0 6px; border-left: 4px solid var(--saffron); padding-left: 8px; }
+.guide-body li { margin: 5px 0; }
+.sources-list { margin: 0; padding-left: 18px; }
+.disclaimer { font-size: 0.85rem; background: var(--gold-soft); border-left: 4px solid var(--saffron); padding: 8px 12px; margin: 16px 0; }
+.en-summary { margin: 10px 0; font-size: 0.92rem; }
+.en-summary summary { cursor: pointer; font-weight: 700; color: var(--brand); }
+.calc { margin: 18px 0; padding: 16px; border: 2px solid var(--brand); border-radius: 6px; background: var(--brand-soft); }
+.calc h2 { margin: 0 0 10px; font-size: 1.1rem; }
+.calc-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; align-items: end; }
+.calc-form label { display: grid; gap: 4px; font-size: 0.85rem; font-weight: 700; }
+.calc-form label.resign { display: flex; align-items: center; gap: 6px; }
+.calc-form input, .calc-form select { padding: 7px 9px; border: 1px solid var(--line); border-radius: 4px; background: var(--card); }
+.calc-out { grid-column: 1 / -1; font-size: 1.05rem; padding: 8px 0 0; }
+.facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.fact { border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; background: var(--card); }
+.fact h2 { font-size: 0.98rem; margin: 0 0 6px; }
+.fact p { margin: 4px 0; }
+.phone-big { font-size: 1.15rem; font-weight: 800; color: var(--alert); text-decoration: none; }
+.helpbox { margin-top: 20px; }
+.helpbox h2 { font-size: 1.05rem; color: #fff; background: var(--alert); padding: 6px 12px; margin: 0 0 10px; }

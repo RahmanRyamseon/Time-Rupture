@@ -1,44 +1,12 @@
 import { shared, store, voterId } from "./store.js";
+import { gratuity } from "./gratuity.js";
 
-const SECTIONS = [
-  ["top", "తెలుగు వారి వార్తలు"],
-  ["uae", "🇦🇪 యూఏఈ"],
-  ["saudi", "🇸🇦 సౌదీ"],
-  ["qatar", "🇶🇦 ఖతార్"],
-  ["kuwait", "🇰🇼 కువైట్"],
-  ["oman", "🇴🇲 ఒమన్"],
-  ["bahrain", "🇧🇭 బహ్రెయిన్"],
-  ["sangham", "సంఘాలు & వేడుకలు"],
-  ["exit", "తిరుగు ప్రయాణం & కష్టాలు"],
-  ["jobs", "ఉద్యోగం, వీసా & నియమాలు"],
-  ["gulf", "గల్ఫ్ పరిణామాలు"],
-];
+// Gulf Telugu Guide (గల్ఫ్ తెలుగు గైడ్): practical guidance for Telugu people going to, living in
+// and returning from the Gulf. Content lives in data/guides.json and data/countries.json; every
+// guide cites official sources and shows the date it was last checked.
+
 const COUNTRY_IDS = ["uae", "saudi", "qatar", "kuwait", "oman", "bahrain"];
-// Short notes under section titles, so readers know what each tab collects.
-const SECTION_NOTE = {
-  top: "గల్ఫ్ దేశాల్లోని తెలుగు వారి గురించిన వార్తలు — తెలుగు, ఇంగ్లీష్ పత్రికల నుంచి.",
-  sangham: "గల్ఫ్‌లోని తెలుగు సంఘాలు, కమిటీలు, పండుగ వేడుకలు, సన్మానాలు.",
-  exit: "స్వదేశానికి తిరుగు ప్రయాణం, మృతదేహాల తరలింపు, చిక్కుకుపోయిన వారు, జైలు, క్షమాభిక్ష.",
-  jobs: "వీసా, ఉద్యోగ, ట్రాఫిక్ నియమాల మార్పులు (గల్ఫ్ పత్రికల నుంచి కూడా), జీతాలు, నకిలీ ఏజెంట్లు, విమానాలు, ప్రయాణ హెచ్చరికలు.",
-  gulf: "గల్ఫ్‌లో ఉన్న అందరిపై ప్రభావం చూపే సాధారణ పరిణామాలు.",
-};
-const SECTION_CTA = {
-  sangham: ["/board/sangham", "🎉 మీ సంఘం కార్యక్రమం గురించి మీరే రాయండి"],
-  exit: ["/board/help", "🆘 సాయం కావాలా? ఇక్కడ అడగండి"],
-  jobs: ["/board/jobs", "💼 ఉద్యోగాలు & వీసా చర్చ"],
-};
-const SECTION_NAME = Object.fromEntries(SECTIONS);
-const REACTIONS = [
-  ["like", "👍", "బాగుంది"],
-  ["love", "❤️", "నచ్చింది"],
-  ["laugh", "😂", "నవ్వొచ్చింది"],
-  ["wow", "😮", "ఆశ్చర్యం"],
-  ["sad", "😢", "బాధగా ఉంది"],
-  ["angry", "😡", "కోపం"],
-];
-const PAGE = 24;
-
-const state = { news: [], updated: null, byId: new Map(), community: null, sources: null, rates: null, publisher: "", shown: PAGE };
+const state = { guides: [], categories: [], tips: [], countries: [], checked: "", byId: new Map(), community: null, sources: null, rates: null, legal: null, site: {} };
 const $ = (sel, root = document) => root.querySelector(sel);
 const main = $("#main");
 const side = $("#side");
@@ -65,8 +33,8 @@ const host = (url) => {
 };
 const dayIndex = () => Math.floor((Date.now() + 5.5 * 3600e3) / 864e5); // IST day number
 const pick = (list, salt = 0) => list[(dayIndex() + salt) % list.length];
-const threadOf = (id) => `news:${id}`;
-const storyLink = (id) => `${location.origin}/story/${id}`;
+const threadOf = (id) => `guide:${id}`;
+const guideLink = (id) => `${location.origin}/g/${id}`;
 
 function toast(msg) {
   const t = $("#toast");
@@ -85,40 +53,12 @@ function avatar(name) {
   )}</span>`;
 }
 
-const saved = {
-  all: () => JSON.parse(localStorage.getItem("rb:saved") || "[]"),
-  has: (id) => saved.all().some((s) => s.id === id),
-  toggle(item) {
-    const list = saved.all();
-    const i = list.findIndex((s) => s.id === item.id);
-    if (i >= 0) list.splice(i, 1);
-    else list.unshift(item);
-    localStorage.setItem("rb:saved", JSON.stringify(list.slice(0, 200)));
-    return i < 0;
-  },
-};
-const myReacts = {
-  get: (t) => JSON.parse(localStorage.getItem("rb:myreacts") || "{}")[t],
-  set(t, e) {
-    const all = JSON.parse(localStorage.getItem("rb:myreacts") || "{}");
-    all[t] = e;
-    localStorage.setItem("rb:myreacts", JSON.stringify(all));
-  },
-};
 
-async function share(item) {
-  const url = storyLink(item.id);
-  if (navigator.share) {
-    try {
-      await navigator.share({ title: item.title, text: item.title, url });
-      return;
-    } catch {}
-  }
-  await navigator.clipboard?.writeText(`${item.title}\n${url}`);
-  toast("లింక్ కాపీ అయింది");
-}
-const waLink = (item) =>
-  `https://wa.me/?text=${encodeURIComponent(`${item.title}\n\nగల్ఫ్ తెలుగు వార్తలు సైట్‌లో చర్చించండి: ${storyLink(item.id)}`)}`;
+const shortDate = (iso) => dateTe(new Date(iso), { day: "numeric", month: "long", year: "numeric" });
+const waLink = (g) =>
+  `https://wa.me/?text=${encodeURIComponent(`${g.title}\n\nగల్ఫ్ తెలుగు గైడ్: ${guideLink(g.id)}`)}`;
+const country = (id) => state.countries.find((c) => c.id === id);
+const cat = (id) => state.categories.find((c) => c.id === id);
 
 // ---- data ---------------------------------------------------------------------------------
 async function loadJSON(path) {
@@ -128,33 +68,27 @@ async function loadJSON(path) {
 }
 
 async function init() {
-  setupChrome();
   try {
-    const [news, community, sources, rates, legal, site] = await Promise.all([
-      loadJSON("/data/news.json"),
+    const [guides, countries, community, sources, rates, legal, site] = await Promise.all([
+      loadJSON("/data/guides.json"),
+      loadJSON("/data/countries.json"),
       loadJSON("/data/community.json"),
       loadJSON("/data/sources.json"),
       loadJSON("/data/rates.json").catch(() => null),
       loadJSON("/data/legal.json"),
       loadJSON("/data/site.json").catch(() => ({})),
     ]);
-    state.legal = legal;
-    state.site = site;
-    state.rates = rates;
-    state.news = news.items;
-    state.updated = news.updated;
-    state.community = community;
-    state.sources = sources;
-    for (const item of state.news) state.byId.set(item.id, item);
+    Object.assign(state, { guides: guides.guides, categories: guides.categories, tips: guides.tips, countries: countries.countries, checked: countries.checked });
+    Object.assign(state, { community, sources, rates, legal, site });
+    for (const g of state.guides) state.byId.set(g.id, g);
   } catch (err) {
-    main.innerHTML = `<p class="empty">వార్తలు లోడ్ కాలేదు. కాసేపాగి మళ్లీ ప్రయత్నించండి.</p>`;
+    main.innerHTML = `<p class="empty">సమాచారం లోడ్ కాలేదు. కాసేపాగి మళ్లీ ప్రయత్నించండి.</p>`;
     console.error(err);
     return;
   }
-  $("#edition").textContent = state.updated ? `చివరి అప్‌డేట్: ${ago(state.updated)}` : "";
-  renderTicker();
-  // Links shared before the move to real paths looked like /#/story/abc; send them to /story/abc.
-  if (location.hash.startsWith("#/")) history.replaceState(null, "", location.hash.slice(1));
+  setupChrome();
+  // Links shared from the earlier news site (/#/story/…, /s/…, /story/…) land on the homepage.
+  if (location.hash.startsWith("#/")) history.replaceState(null, "", "/");
   window.addEventListener("popstate", route);
   // Internal links change the page without a reload.
   document.addEventListener("click", (e) => {
@@ -167,26 +101,20 @@ async function init() {
   route();
 }
 
-// Short menu labels; SECTION_NAME keeps the full titles for pages.
-const NAV_MAIN = [["home", "హోమ్"], ["top", "తెలుగు వారు"], ["uae", "యూఏఈ"], ["saudi", "సౌదీ"], ["qatar", "ఖతార్"], ["kuwait", "కువైట్"], ["oman", "ఒమన్"], ["bahrain", "బహ్రెయిన్"]];
-const NAV_SUB = [
-  ["s/sangham", "సంఘాలు & వేడుకలు"],
-  ["s/exit", "తిరుగు ప్రయాణం"],
-  ["s/jobs", "ఉద్యోగం & వీసా"],
-  ["s/gulf", "గల్ఫ్ పరిణామాలు"],
-  ["board", "🌳 రచ్చబండ"],
-  ["sources", "📒 డైరెక్టరీ"],
-  ["saved", "🔖 దాచినవి"],
-];
-
 function setupChrome() {
   $("#today").textContent = dateTe(new Date(), { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-  $("#nav").innerHTML = NAV_MAIN.map(([id, name]) =>
-    id === "home"
-      ? `<li><a href="/" data-route="home">${name}</a></li>`
-      : `<li><a href="/s/${id}" data-route="s/${id}">${name}</a></li>`,
-  ).join("");
-  $("#nav2").innerHTML = NAV_SUB.map(([r, name]) => `<li><a href="/${r}" data-route="${r}">${name}</a></li>`).join("");
+  $("#edition").textContent = `సమాచారం చివరిగా సరిచూసినది: ${shortDate(state.checked)}`;
+  $("#nav").innerHTML = [`<li><a href="/" data-route="home">హోమ్</a></li>`]
+    .concat(state.categories.map((c) => `<li><a href="/t/${c.id}" data-route="t/${c.id}">${c.icon} ${esc(c.title)}</a></li>`))
+    .join("");
+  $("#nav2").innerHTML = state.countries
+    .map((c) => `<li><a href="/c/${c.id}" data-route="c/${c.id}">${c.flag} ${esc(c.name)}</a></li>`)
+    .concat([
+      `<li><a href="/updates" data-route="updates">📢 అధికారిక సమాచారం</a></li>`,
+      `<li><a href="/board" data-route="board">🌳 రచ్చబండ</a></li>`,
+      `<li><a href="/sources" data-route="sources">📒 డైరెక్టరీ</a></li>`,
+    ])
+    .join("");
 
   const sizes = ["s", "m", "l", "xl"];
   const setSize = (d) => {
@@ -211,22 +139,20 @@ function setupChrome() {
     const q = $("#q").value.trim();
     go(q ? `/search/${encodeURIComponent(q)}` : "/");
   };
+  renderTips();
 }
 
-// One headline at a time, with previous/next buttons, like a newspaper's "latest news" bar.
-function renderTicker() {
-  const top = state.news.filter((i) => i.sections.includes("top"));
-  const list = [...top, ...state.news.filter((i) => !i.telugu)].slice(0, 12);
-  if (!list.length) return;
+// One safety tip at a time in the bar under the menu.
+function renderTips() {
   let i = 0;
   const el = $("#ticker");
   const show = (d = 0) => {
-    i = (i + d + list.length) % list.length;
-    el.innerHTML = `<a href="/story/${list[i].id}">${esc(list[i].title)}</a>`;
+    i = (i + d + state.tips.length) % state.tips.length;
+    el.textContent = state.tips[i];
   };
   const restart = () => {
-    clearInterval(renderTicker.t);
-    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) renderTicker.t = setInterval(() => show(1), 6000);
+    clearInterval(renderTips.t);
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) renderTips.t = setInterval(() => show(1), 7000);
   };
   $("#lt-prev").onclick = () => (show(-1), restart());
   $("#lt-next").onclick = () => (show(1), restart());
@@ -242,24 +168,22 @@ function go(path) {
 
 function route() {
   const [view = "", arg] = location.pathname.replace(/^\/+|\/+$/g, "").split("/");
-  // Keep the canonical address in step with the page (search and saved lists point at the homepage).
   const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.href = `https://gulftelugunews.vercel.app${["search", "saved"].includes(view) ? "/" : location.pathname}`;
-  const key = view === "s" ? `s/${arg}` : view || "home";
+  if (canonical) canonical.href = `https://gulfteluguguide.vercel.app${view === "search" ? "/" : location.pathname}`;
+  const key = view === "" ? "home" : arg && ["t", "c"].includes(view) ? `${view}/${arg}` : view;
   for (const a of document.querySelectorAll("#nav a, #nav2 a")) {
-    if (a.dataset.route === key || (view === "board" && a.dataset.route === "board")) a.setAttribute("aria-current", "page");
+    if (a.dataset.route === key) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   }
-  state.publisher = "";
-  state.shown = PAGE;
   if (view !== "search") $("#q").value = "";
   const views = {
     "": renderHome,
-    s: () => (arg in SECTION_NAME ? renderSection(arg) : renderHome()),
-    story: () => renderStory(arg),
+    t: () => (cat(arg) ? renderTopic(arg) : renderHome()),
+    g: () => (state.byId.has(arg) ? renderGuide(arg) : renderHome()),
+    c: () => (country(arg) ? renderCountry(arg) : renderHome()),
+    updates: renderUpdates,
     board: () => (arg ? renderBoard(arg) : renderBoards()),
     sources: renderSources,
-    saved: renderSaved,
     search: () => renderSearch(decodeURIComponent(arg || "")),
     about: () => renderLegal("about"),
     terms: () => renderLegal("terms"),
@@ -272,131 +196,51 @@ function route() {
   if (view) window.scrollTo({ top: 0 });
 }
 
-// ---- illustrated tiles ------------------------------------------------------------------------
-// Google News feeds carry no photos, so each story gets an illustration: its country's flag
-// colours, a Gulf skyline and a topic icon.
-const COUNTRY_ART = {
-  uae: ["#00843d", "#0a3d22", "🇦🇪", "యూఏఈ"],
-  saudi: ["#0b7a43", "#05391f", "🇸🇦", "సౌదీ"],
-  qatar: ["#8a1538", "#3f0a1a", "🇶🇦", "ఖతార్"],
-  kuwait: ["#007a3d", "#2a2a2a", "🇰🇼", "కువైట్"],
-  oman: ["#c8102e", "#5c0a17", "🇴🇲", "ఒమన్"],
-  bahrain: ["#ce1126", "#6d0914", "🇧🇭", "బహ్రెయిన్"],
-};
-const TOPIC_ICONS = {
-  sangham: ["🪔", "🎉", "🌼", "🎶", "🏆"],
-  exit: ["✈️", "🏠", "🧳", "🕊️"],
-  jobs: ["💼", "🛂", "📄", "🏗️", "✈️"],
-  top: ["👥", "🤝", "📰"],
-  gulf: ["🌍", "🛢️", "🕌", "🏙️", "📰"],
-};
-const hashOf = (str) => [...str].reduce((h, c) => (h * 31 + c.codePointAt(0)) >>> 0, 7);
+// ---- guide cards ------------------------------------------------------------------------------
+const CAT_COLORS = { before: ["#283593", "#1a237e"], living: ["#00695c", "#004d40"], trouble: ["#c62828", "#7f1010"], home: ["#6a1b9a", "#3d0d5c"], money: ["#ef6c00", "#8a3d00"] };
 
-function topicOf(item) {
-  for (const t of ["sangham", "exit", "jobs"]) if (item.sections.includes(t)) return t;
-  return item.telugu ? "top" : "gulf";
-}
-function art(item) {
-  const c = COUNTRY_ART[item.countries?.[0]] || ["#0b5aa8", "#06305c", "", ""];
-  const icons = TOPIC_ICONS[topicOf(item)];
-  const icon = icons[hashOf(item.id) % icons.length];
-  const h = hashOf(item.id);
-  return `<span class="art" style="--a:${c[0]};--b:${c[1]};--r:${100 + (h % 120)}deg" aria-hidden="true"><span class="art-ico">${icon}</span>${
-    c[2] ? `<span class="art-flag">${c[2]}</span>` : ""
-  }</span>`;
-}
-function kicker(item) {
-  const c = COUNTRY_ART[item.countries?.[0]];
-  if (item.sections.includes("sangham")) return "వేడుకలు";
-  if (c) return c[3];
-  return item.telugu ? "తెలుగు వారు" : "గల్ఫ్";
-}
-const shortDate = (iso) => dateTe(new Date(iso), { weekday: "short", day: "2-digit", month: "short" });
-
-function tileHTML(item, size = "md") {
-  return `<article class="tile tile-${size}">
-    <a href="/story/${item.id}" class="tile-link">${art(item)}<span class="tile-shade"></span>
-      <span class="tile-body"><span class="kicker">${esc(kicker(item))}</span>
-        <span class="tile-title">${esc(item.title)}</span>
-        <span class="tile-meta"><time datetime="${item.published}">${shortDate(item.published)}</time> · ${esc(item.publisher)}
-          · 💬 <span data-count="${item.id}">చర్చ</span></span></span></a>
+function guideCardHTML(g) {
+  const [a, b] = CAT_COLORS[g.cat] || CAT_COLORS.before;
+  return `<article class="gcard">
+    <a href="/g/${g.id}" class="gcard-link">
+      <span class="gcard-icon" style="--a:${a};--b:${b}" aria-hidden="true">${g.icon}</span>
+      <span class="gcard-body"><span class="gcard-cat">${esc(cat(g.cat)?.title || "")}</span>
+        <strong>${esc(g.title)}</strong><span class="gcard-sum">${esc(g.summary)}</span>
+        <span class="checked">✓ సరిచూసినది ${shortDate(g.checked)}</span></span></a>
   </article>`;
 }
-function liHTML(item) {
-  const c = COUNTRY_ART[item.countries?.[0]];
-  return `<li class="li"><a href="/story/${item.id}" class="li-thumb" tabindex="-1">${art(item)}</a>
-    <div><a class="li-title" href="/story/${item.id}">${esc(item.title)}</a>
-    <div class="li-meta">${shortDate(item.published)}${c ? ` · ⚑ ${c[3]}` : ""}${item.telugu ? ` · <span class="te-dot">తెలుగు వారు</span>` : ""}</div></div></li>`;
-}
-function colCardHTML(item) {
-  return `<article class="colcard"><a href="/story/${item.id}" class="colcard-img" tabindex="-1">${art(item)}</a>
-    <a class="colcard-title" href="/story/${item.id}">${esc(item.title)}</a>
-    <div class="li-meta">${shortDate(item.published)} · ${esc(item.publisher)}</div></article>`;
-}
-const blockHead = (title, href, color = "red") =>
-  `<div class="bhead bhead-${color}"><h2>${href ? `<a href="${href}">${esc(title)}</a>` : esc(title)}</h2>${
-    href ? `<a class="bhead-more" href="${href}">అన్నీ →</a>` : ""
-  }</div>`;
-
-// Big story on the left, a list on the right (the classic newspaper section block).
-function featureHTML(items) {
-  if (!items.length) return `<p class="empty">ఇంకా వార్తలు లేవు.</p>`;
-  const [first, ...rest] = items;
-  return `<div class="feature">${tileHTML(first, "lg")}<ul class="li-list">${rest.slice(0, 4).map(liHTML).join("")}</ul></div>`;
-}
+const countryChips = () =>
+  `<div class="country-grid">${state.countries
+    .map((c) => `<a href="/c/${c.id}" class="country-chip"><span>${c.flag}</span>${esc(c.name)}</a>`)
+    .join("")}</div>`;
 
 function renderHome() {
-  document.title = "గల్ఫ్ తెలుగు వార్తలు | Gulf Telugu News – దుబాయ్, సౌదీ, ఖతార్, కువైట్, ఒమన్, బహ్రెయిన్";
-  const used = new Set();
-  const take = (list, n) => {
-    const fresh = list.filter((i) => !used.has(i.id));
-    const out = (fresh.length >= n ? fresh : [...fresh, ...list.filter((i) => used.has(i.id))]).slice(0, n);
-    out.forEach((i) => used.add(i.id));
-    return out;
-  };
-  const by = (sec) => state.news.filter((i) => i.sections.includes(sec));
-  const telugu = state.news.filter((i) => i.telugu);
-  const hero = take([...telugu, ...state.news], 5);
-  const teluguMore = take(telugu, 5);
-  const cols = [
-    ["sangham", "సంఘాలు & వేడుకలు"],
-    ["exit", "తిరుగు ప్రయాణం & కష్టాలు"],
-    ["jobs", "ఉద్యోగం, వీసా & నియమాలు"],
-  ].map(([id, title]) => [id, title, take(by(id), 4)]);
-  const countries = COUNTRY_IDS.filter((c) => by(c).length);
+  document.title = "గల్ఫ్ తెలుగు గైడ్ | Gulf Telugu Guide – గల్ఫ్‌కు వెళ్లే, అక్కడ ఉండే తెలుగు వారికి";
+  const popular = ["job-offer", "unpaid-salary", "death-repatriation", "gratuity", "passport", "going-home"].map((id) => state.byId.get(id)).filter(Boolean);
   const boards = state.community.boards;
-
   main.innerHTML = `
-    <section class="lead-grid" aria-label="ముఖ్య వార్తలు">
-      <div class="lg-row lg-row-2">${hero.slice(0, 2).map((i) => tileHTML(i, "lg")).join("")}</div>
-      <div class="lg-row lg-row-3">${hero.slice(2, 5).map((i) => tileHTML(i, "md")).join("")}</div>
+    <section class="intro">
+      <h1>గల్ఫ్‌కు వెళ్లే, అక్కడ ఉండే తెలుగు వారికి — తెలుగులో సరైన సమాచారం</h1>
+      <p>ఏజెంట్ మోసాల నుంచి జీతం ఫిర్యాదుల వరకు, గ్రాట్యుటీ లెక్క నుంచి ఇంటికి తిరుగు ప్రయాణం వరకు. ప్రతి గైడ్ అధికారిక మూలాలతో, సరిచూసిన తేదీతో.</p>
+      <div class="intro-cta"><a class="btn" href="/g/job-offer">🔍 ఉద్యోగ ఆఫర్ సరిచూడండి</a><a class="btn sos-btn" href="/t/trouble">🆘 సమస్యలో ఉన్నారా?</a></div>
     </section>
 
-    <section class="block">${blockHead("తెలుగు వారి వార్తలు", "/s/top")}${featureHTML(teluguMore)}</section>
+    <section class="block">${blockHead("అంశాల వారీగా", null)}
+      <div class="cat-grid">${state.categories
+        .map((c) => {
+          const [a, b] = CAT_COLORS[c.id];
+          return `<a href="/t/${c.id}" class="cat-card" style="--a:${a};--b:${b}"><span class="cat-icon">${c.icon}</span><strong>${esc(c.title)}</strong><small>${esc(c.desc)}</small></a>`;
+        })
+        .join("")}</div></section>
 
-    <section class="block cols3">${cols
-      .map(
-        ([id, title, items]) => `<div class="col">${blockHead(title, `/s/${id}`, "blue")}${
-          items.length
-            ? colCardHTML(items[0]) + `<ul class="li-list">${items.slice(1).map(liHTML).join("")}</ul>`
-            : `<p class="empty">ఇంకా వార్తలు లేవు.</p>`
-        }</div>`,
-      )
-      .join("")}</section>
+    <section class="block">${blockHead("ఎక్కువ మందికి కావాల్సిన గైడ్లు", null)}
+      <div class="ggrid">${popular.map(guideCardHTML).join("")}</div></section>
 
-    <section class="block">${blockHead("దేశాల వారీగా", null)}
-      <div class="tabs" role="tablist">${countries
-        .map(
-          (c, n) =>
-            `<button role="tab" class="tab" data-tab="${c}" aria-selected="${n === 0}">${COUNTRY_ART[c][2]} ${COUNTRY_ART[c][3]}</button>`,
-        )
-        .join("")}</div>
-      <div id="tabpanel" role="tabpanel"></div>
-    </section>
+    <section class="block">${blockHead("మీరు ఏ దేశంలో ఉన్నారు?", null, "blue")}${countryChips()}</section>
 
     <section class="block community">
       <div class="comm-intro"><h2>🌳 రచ్చబండ</h2><p class="rb-tag">మన ముచ్చట్ల వేదిక</p>
-        <p>గల్ఫ్‌లో ఉన్న మన వాళ్లందరూ కలిసే చోటు. సంఘం కార్యక్రమం ప్రకటించండి, రూమ్ వెతకండి, సాయం అడగండి.</p>
+        <p>ప్రశ్నలు అడగండి, అనుభవాలు పంచుకోండి — రూములు, ఉద్యోగాలు, సంఘాల కార్యక్రమాలు.</p>
         <a class="btn" href="/board">🌳 రచ్చబండకు వెళ్ళండి</a></div>
       <ol class="comm-list">${boards
         .slice(0, 6)
@@ -404,309 +248,153 @@ function renderHome() {
           (b, n) =>
             `<li><a href="/board/${b.id}"><span class="num">${n + 1}</span><span class="bicon">${b.icon}</span><span><strong>${esc(
               b.title,
-            )}</strong><small data-bcount="${b.id}">${esc(b.desc.slice(0, 48))}…</small></span></a></li>`,
+            )}</strong><small>${esc(b.desc.slice(0, 48))}…</small></span></a></li>`,
         )
         .join("")}</ol>
-    </section>
-
-    <section class="block">${blockHead("గల్ఫ్ పరిణామాలు", "/s/gulf", "navy")}${featureHTML(take(by("gulf"), 5))}</section>`;
-
-  const panel = $("#tabpanel");
-  const showTab = (c) => {
-    for (const t of main.querySelectorAll("[data-tab]")) t.setAttribute("aria-selected", t.dataset.tab === c);
-    const items = by(c);
-    panel.innerHTML =
-      featureHTML([...items.filter((i) => i.telugu), ...items.filter((i) => !i.telugu)]) +
-      `<p class="tab-more"><a href="/s/${c}">${COUNTRY_ART[c][3]} వార్తలన్నీ →</a></p>`;
-    decorate(panel);
-  };
-  main.querySelector(".tabs").onclick = (e) => {
-    const t = e.target.closest("[data-tab]");
-    if (t) showTab(t.dataset.tab);
-  };
-  if (countries.length) showTab(countries[0]);
-  decorate(main);
-  store
-    .counts(boards.map((b) => `board:${b.id}`))
-    .then((counts) => {
-      for (const b of boards) {
-        const el = main.querySelector(`[data-bcount="${b.id}"]`);
-        if (el && counts[`board:${b.id}`]) el.textContent = `💬 ${counts[`board:${b.id}`]} పోస్టులు`;
-      }
-    })
-    .catch(() => {});
+    </section>`;
 }
 
-// ---- news lists -----------------------------------------------------------------------------
-function cardHTML(item, { lead = false } = {}) {
-  const tags = [
-    ...(item.telugu ? [`<span class="tag te">తెలుగు వారు</span>`] : []),
-    ...item.sections
-      .filter((s) => s !== "top" && SECTION_NAME[s])
-      .slice(0, 3)
-      .map((s) => `<a class="tag" href="/s/${s}">${SECTION_NAME[s]}</a>`),
-    ...(item.lang === "en" ? [`<span class="tag en">English</span>`] : []),
-  ].join("");
-  const related = item.related?.length
-    ? `<ul class="related" aria-label="ఇతర పత్రికల్లో">${item.related
-        .slice(0, lead ? 4 : 2)
-        .map(
-          (r) =>
-            `<li><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a> <span class="pub">— ${esc(
-              r.publisher,
-            )}</span></li>`,
-        )
-        .join("")}</ul>`
-    : "";
-  const H = lead ? "h2" : "h3";
-  return `<article class="${lead ? "lead" : "card"}" data-id="${item.id}">
-    <a class="card-img" href="/story/${item.id}" tabindex="-1">${art(item)}</a>
-    <div class="meta">
-      <span class="pub">${esc(item.publisher)}</span> · <time datetime="${item.published}">${ago(item.published)}</time> ${tags}</div>
-    <${H}><a href="/story/${item.id}">${esc(item.title)}</a></${H}>
-    ${related}
-    <div class="actions">
-      <a class="act talk" href="/story/${item.id}">💬 <span data-count="${item.id}">చర్చ</span></a>
-      <span class="act" data-reacts="${item.id}"></span>
-      <a class="act" href="${esc(item.url)}" target="_blank" rel="noopener" title="పూర్తి వార్త">↗ పూర్తి వార్త</a>
-      <a class="act" href="${waLink(item)}" target="_blank" rel="noopener" title="వాట్సాప్‌లో పంపండి">🟢 వాట్సాప్</a>
-      <button class="act ${saved.has(item.id) ? "on" : ""}" data-save="${item.id}" title="తర్వాత చదవడానికి దాచండి">🔖</button>
-    </div>
-  </article>`;
+const blockHead = (title, href, color = "red") =>
+  `<div class="bhead bhead-${color}"><h2>${href ? `<a href="${href}">${esc(title)}</a>` : esc(title)}</h2>${
+    href ? `<a class="bhead-more" href="${href}">అన్నీ →</a>` : ""
+  }</div>`;
+
+function renderTopic(id) {
+  const c = cat(id);
+  document.title = `${c.title} – ${c.en} | గల్ఫ్ తెలుగు గైడ్`;
+  const list = state.guides.filter((g) => g.cat === id);
+  main.innerHTML = `<div class="section-head"><h1>${c.icon} ${esc(c.title)}</h1><span class="count">${esc(c.en)}</span></div>
+    <p class="section-note">${esc(c.desc)}</p>
+    ${id === "living" ? `<h2 class="sub-h">దేశాల వారీగా</h2>${countryChips()}<h2 class="sub-h">గైడ్లు</h2>` : ""}
+    <div class="ggrid">${list.map(guideCardHTML).join("") || `<p class="empty">త్వరలో.</p>`}</div>
+    ${id === "trouble" ? helplineBox() : ""}`;
 }
 
-// Fills comment counts and top reactions on the cards in `root`.
-async function decorate(root) {
-  const ids = [...root.querySelectorAll("[data-count]")].map((el) => el.dataset.count);
-  if (!ids.length) return;
-  try {
-    const threads = ids.map(threadOf);
-    const [counts, reacts] = await Promise.all([store.counts(threads), store.reactions(threads)]);
-    for (const id of ids) {
-      const n = counts[threadOf(id)] || 0;
-      const el = root.querySelector(`[data-count="${id}"]`);
-      if (el) el.textContent = n ? `${n} వ్యాఖ్యలు` : "చర్చించండి";
-      const r = reacts[threadOf(id)];
-      const rel = root.querySelector(`[data-reacts="${id}"]`);
-      if (rel && r) {
-        const total = Object.values(r).reduce((a, b) => a + b, 0);
-        const topEmoji = REACTIONS.filter(([k]) => r[k])
-          .sort((a, b) => r[b[0]] - r[a[0]])
-          .slice(0, 3)
-          .map(([, e]) => e)
-          .join("");
-        rel.textContent = `${topEmoji} ${total}`;
-      }
-    }
-  } catch (err) {
-    console.warn("counts", err);
-  }
+function helplineBox() {
+  const help = state.sources.groups.find((g) => g.id === "help").items;
+  return `<section class="helpbox"><h2>🆘 అత్యవసర హెల్ప్‌లైన్లు</h2><ul class="src-list">${help.map(sourceItemHTML).join("")}</ul></section>`;
 }
 
-function bindCardButtons(root) {
-  root.onclick = (e) => {
-    const btn = e.target.closest("[data-save]");
-    if (!btn) return;
-    const item = state.byId.get(btn.dataset.save) || saved.all().find((s) => s.id === btn.dataset.save);
-    if (!item) return;
-    const on = saved.toggle(item);
-    btn.classList.toggle("on", on);
-    toast(on ? "దాచాం — 🔖 దాచినవి లో చూడండి" : "తీసేశాం");
-  };
-}
-
-function renderList(items, { title, sub = "", lead = true, filters = true, note = "", cta = null, extra = "" }) {
-  const pubs = {};
-  for (const i of items) pubs[i.publisher] = (pubs[i.publisher] || 0) + 1;
-  const topPubs = Object.entries(pubs)
-    .filter(([p]) => p)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 10);
-  const list = state.publisher ? items.filter((i) => i.publisher === state.publisher) : items;
-  const shown = list.slice(0, state.shown);
-  const [first, ...rest] = lead ? shown : [null, ...shown];
-
+function renderGuide(id) {
+  const g = state.byId.get(id);
+  const c = cat(g.cat);
+  document.title = `${g.title} – ${g.en} | గల్ఫ్ తెలుగు గైడ్`;
+  const related = state.guides.filter((x) => x.id !== id && x.cat === g.cat).slice(0, 3);
   main.innerHTML = `
-    <div class="section-head"><h1>${esc(title)}</h1><span class="count">${list.length} వార్తలు ${sub}</span></div>
-    ${note ? `<p class="section-note">${esc(note)}${cta ? ` <a href="${cta[0]}">${esc(cta[1])} →</a>` : ""}</p>` : ""}
-    ${extra}
-    ${
-      filters && topPubs.length > 1
-        ? `<div class="chips" role="group" aria-label="పత్రిక">
-        <button class="chip" data-pub="" aria-pressed="${!state.publisher}">అన్నీ</button>
-        ${topPubs
-          .map(([p]) => `<button class="chip" data-pub="${esc(p)}" aria-pressed="${state.publisher === p}">${esc(p)}</button>`)
-          .join("")}</div>`
-        : ""
-    }
-    ${first ? `<div class="section-lead">${tileHTML(first, "xl")}</div>` : ""}
-    <div class="grid">${rest.map((i) => cardHTML(i)).join("")}</div>
-    ${!list.length ? `<p class="empty">ఈ విభాగంలో ఇంకా వార్తలు లేవు. త్వరలో అప్‌డేట్ అవుతాయి.</p>` : ""}
-    ${list.length > state.shown ? `<button class="btn ghost more" id="more">మరిన్ని వార్తలు చూడండి ↓</button>` : ""}`;
-
-  for (const chip of main.querySelectorAll("[data-pub]")) {
-    chip.onclick = () => {
-      state.publisher = chip.dataset.pub;
-      state.shown = PAGE;
-      renderList(items, { title, sub, lead, filters, note, cta, extra });
-    };
-  }
-  const more = $("#more");
-  if (more)
-    more.onclick = () => {
-      const y = window.scrollY;
-      state.shown += PAGE;
-      renderList(items, { title, sub, lead, filters, note, cta, extra });
-      window.scrollTo({ top: y });
-    };
-  bindCardButtons(main);
-  decorate(main);
+    <a class="back" href="/t/${g.cat}">← ${c.icon} ${esc(c.title)}</a>
+    <article class="story guide">
+      <div class="guide-head"><span class="guide-icon" aria-hidden="true">${g.icon}</span>
+        <div><h1>${esc(g.title)}</h1><p class="guide-en" lang="en">${esc(g.en)}</p></div></div>
+      <p class="checked-line">✓ చివరిగా సరిచూసినది: <strong>${shortDate(g.checked)}</strong> · మూలాలు కింద ఉన్నాయి</p>
+      <p class="lede">${esc(g.summary)}</p>
+      <div class="guide-body">${g.html}</div>
+      ${g.calculator ? `<section class="calc" id="calc"></section>` : ""}
+      <section class="box"><h2>అధికారిక మూలాలు</h2><ul class="sources-list">${g.sources
+        .map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)} ↗</a></li>`)
+        .join("")}</ul></section>
+      <p class="disclaimer">ఇది సాధారణ మార్గదర్శనం మాత్రమే, న్యాయ సలహా కాదు. నియమాలు మారుతుంటాయి — నిర్ణయం తీసుకునే ముందు అధికారిక సైట్‌లో, రాయబార కార్యాలయంలో సరిచూసుకోండి. తప్పు కనిపిస్తే <a href="/about">మాకు తెలియజేయండి</a>.</p>
+      <details class="en-summary"><summary lang="en">English summary</summary><p lang="en">${esc(g.en_summary)}</p></details>
+      <div class="story-links"><a class="btn wa" href="${waLink(g)}" target="_blank" rel="noopener">వాట్సాప్‌లో పంపండి</a></div>
+    </article>
+    <section class="discuss" id="discuss"></section>
+    ${related.length ? `<div class="section-head" style="margin-top:28px"><h2>ఇవి కూడా చూడండి</h2></div><div class="ggrid">${related.map(guideCardHTML).join("")}</div>` : ""}`;
+  if (g.calculator) mountGratuity($("#calc"));
+  mountThread($("#discuss"), threadOf(id), {
+    title: "ప్రశ్నలు & అనుభవాలు",
+    placeholder: "ఈ విషయంపై మీ ప్రశ్న లేదా అనుభవం రాయండి… (వ్యక్తిగత వివరాలు పెట్టవద్దు)",
+  });
 }
 
-function renderSection(id) {
-  document.title = `${SECTION_NAME[id]} | గల్ఫ్ తెలుగు వార్తలు`;
-  let items = state.news.filter((i) => i.sections.includes(id));
-  // Country pages lead with stories about Telugu people, then the rest of that country's news.
-  if (COUNTRY_IDS.includes(id)) items = [...items.filter((i) => i.telugu), ...items.filter((i) => !i.telugu)];
-  const assoc = COUNTRY_IDS.includes(id)
-    ? state.sources.groups.find((g) => g.id === "sanghalu").items.filter((a) => a.country === id)
-    : [];
-  renderList(items, {
-    title: SECTION_NAME[id],
-    note: SECTION_NOTE[id],
-    cta: SECTION_CTA[id],
-    extra: assoc.length
-      ? `<p class="assoc">ఇక్కడి తెలుగు సంఘాలు: ${assoc
-          .map((a) => (a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.name)}</a>` : esc(a.name)))
-          .join(" · ")}</p>`
-      : "",
-  });
+// ---- gratuity calculator ------------------------------------------------------------------------
+function mountGratuity(el) {
+  el.innerHTML = `<h2>🧮 గ్రాట్యుటీ కాలిక్యులేటర్ (అంచనా)</h2>
+    <form class="calc-form">
+      <label>దేశం <select name="country"><option value="uae">🇦🇪 యూఏఈ</option><option value="saudi">🇸🇦 సౌదీ అరేబియా</option></select></label>
+      <label><span data-wage>నెల బేసిక్ జీతం</span> <input name="monthly" type="number" min="0" step="1" inputmode="decimal" placeholder="ఉదా: 2000" required /></label>
+      <label>సర్వీస్ — ఏళ్లు <input name="y" type="number" min="0" max="60" step="1" value="0" /></label>
+      <label>నెలలు <input name="m" type="number" min="0" max="11" step="1" value="0" /></label>
+      <label class="resign"><input name="resigned" type="checkbox" /> నేనే రాజీనామా చేశాను</label>
+      <output class="calc-out" aria-live="polite">జీతం, సర్వీస్ వివరాలు నమోదు చేయండి.</output>
+    </form>`;
+  const f = $(".calc-form", el);
+  const out = $(".calc-out", el);
+  const update = () => {
+    const country = f.country.value;
+    f.querySelector(".resign").hidden = country !== "saudi";
+    $("[data-wage]", f).textContent = country === "uae" ? "నెల బేసిక్ జీతం (దిర్హామ్)" : "నెల జీతం (రియాల్)";
+    const monthly = Number(f.monthly.value);
+    const years = Number(f.y.value || 0) + Number(f.m.value || 0) / 12;
+    if (!monthly) return (out.textContent = "జీతం, సర్వీస్ వివరాలు నమోదు చేయండి.");
+    const amount = gratuity({ country, monthly, years, resigned: f.resigned.checked });
+    const cur = country === "uae" ? "AED" : "SAR";
+    const r = state.rates?.inrPer?.[cur];
+    out.innerHTML = amount
+      ? `అంచనా గ్రాట్యుటీ: <strong>${cur} ${Math.round(amount).toLocaleString("en-IN")}</strong>${
+          r ? ` <span class="muted">(సుమారు ₹${Math.round(amount * r).toLocaleString("en-IN")})</span>` : ""
+        }`
+      : country === "uae" && years < 1
+        ? "యూఏఈలో కనీసం ఒక ఏడాది సర్వీస్ ఉండాలి."
+        : "ఈ వివరాలకు గ్రాట్యుటీ రాదు (సౌదీలో 2 ఏళ్ల లోపు రాజీనామా చేస్తే).";
+  };
+  f.oninput = update;
+  f.onsubmit = (e) => e.preventDefault();
+  update();
+}
+
+// ---- countries & official channels ----------------------------------------------------------------
+function renderCountry(id) {
+  const c = country(id);
+  document.title = `${c.name} తెలుగు గైడ్ – ${c.en} | గల్ఫ్ తెలుగు గైడ్`;
+  const assoc = state.sources.groups.find((g) => g.id === "sanghalu").items.filter((a) => a.country === id);
+  const missions = state.sources.groups.find((g) => g.id === "missions").items.filter((m) => c.embassies.includes(m.url));
+  main.innerHTML = `
+    <div class="section-head"><h1>${c.flag} ${esc(c.name)}</h1><span class="count" lang="en">${esc(c.en)}</span></div>
+    <p class="checked-line">✓ చివరిగా సరిచూసినది: <strong>${shortDate(state.checked)}</strong></p>
+    <div class="facts">
+      <div class="fact"><h2>🪪 మీ ఐడీ కార్డు</h2><p><strong>${esc(c.idCard)}</strong></p><p><a href="${esc(c.residence.url)}" target="_blank" rel="noopener">${esc(c.residence.name)} ↗</a></p></div>
+      <div class="fact"><h2>⚖️ కార్మిక శాఖ (ఫిర్యాదులు)</h2><p><a href="${esc(c.labour.url)}" target="_blank" rel="noopener">${esc(c.labour.name)} ↗</a></p>
+        ${c.labour.phone ? `<p><a class="phone-big" href="tel:${esc(c.labour.phone)}">📞 ${esc(c.labour.phoneText)}</a></p>` : ""}</div>
+      <div class="fact"><h2>🏛️ భారత రాయబార కార్యాలయం</h2><ul class="mini">${missions
+        .map((m) => `<li><a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.name)} ↗</a></li>`)
+        .join("")}</ul>${c.pbsk ? `<p><a class="phone-big" href="tel:${esc(c.pbsk.phone)}">📞 ${esc(c.pbsk.phoneText)}</a><br /><small>ప్రవాసీ భారతీయ సహాయ కేంద్రం (ఉచితం)</small></p>` : ""}
+        <p><a href="https://www.madad.gov.in" target="_blank" rel="noopener">MADAD లో ఫిర్యాదు ↗</a></p></div>
+      ${assoc.length ? `<div class="fact"><h2>🤝 తెలుగు సంఘాలు</h2><ul class="mini">${assoc.map((a) => `<li>${a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.name)} ↗</a>` : esc(a.name)}</li>`).join("")}</ul></div>` : ""}
+    </div>
+    ${c.notes.length ? `<section class="box"><h2>గుర్తుంచుకోండి</h2><ul>${c.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></section>` : ""}
+    <div class="section-head" style="margin-top:24px"><h2>ఉపయోగపడే గైడ్లు</h2></div>
+    <div class="ggrid">${["unpaid-salary", "passport", "gratuity", "going-home"].map((g) => state.byId.get(g)).filter(Boolean).map(guideCardHTML).join("")}</div>
+    <p class="disclaimer">లింకులు అధికారిక ప్రభుత్వ సైట్లవి. ఫోన్ నంబర్లు మారవచ్చు — అత్యవసర సమయంలో అధికారిక సైట్‌లో సరిచూసుకోండి.</p>`;
+}
+
+function renderUpdates() {
+  document.title = "అధికారిక సమాచారం – Official updates | గల్ఫ్ తెలుగు గైడ్";
+  const missions = state.sources.groups.find((g) => g.id === "missions").items;
+  const portals = state.sources.groups.find((g) => g.id === "portals").items;
+  main.innerHTML = `<div class="section-head"><h1>📢 అధికారిక సమాచారం</h1><span class="count" lang="en">Official updates</span></div>
+    <p class="section-note">కొత్త నియమాలు, ఆమ్నెస్టీ, ప్రయాణ హెచ్చరికలు — పుకార్లు కాకుండా ఈ అధికారిక ఛానళ్లలోనే చూడండి. మేము వార్తలు ప్రచురించము; అధికారిక సైట్లకు దారి చూపిస్తాము.</p>
+    <section class="src-group"><h2>🏛️ భారత రాయబార కార్యాలయాల ప్రకటనలు</h2><ul class="src-list">${missions.map(sourceItemHTML).join("")}</ul></section>
+    <section class="src-group"><h2>⚖️ గల్ఫ్ కార్మిక శాఖలు</h2><ul class="src-list">${state.countries
+      .map((c) => sourceItemHTML({ name: `${c.flag} ${c.labour.name}`, url: c.labour.url }))
+      .join("")}</ul></section>
+    <section class="src-group"><h2>🇮🇳 భారత & రాష్ట్ర ప్రభుత్వ సేవలు</h2><ul class="src-list">${portals.map(sourceItemHTML).join("")}</ul></section>`;
 }
 
 function renderSearch(q) {
   $("#q").value = q;
+  document.title = `"${q}" | గల్ఫ్ తెలుగు గైడ్`;
   const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
-  const hits = state.news.filter((i) => {
-    const text = `${i.title} ${i.publisher}`.toLowerCase();
-    return terms.every((t) => text.includes(t));
-  });
-  document.title = `"${q}" | గల్ఫ్ తెలుగు వార్తలు`;
-  renderList(hits, { title: `"${q}" కోసం ఫలితాలు`, lead: false });
+  const text = (g) => `${g.title} ${g.en} ${g.summary} ${g.en_summary} ${g.html.replace(/<[^>]+>/g, " ")}`.toLowerCase();
+  const hits = state.guides.filter((g) => terms.every((t) => text(g).includes(t)));
+  const countries = state.countries.filter((c) => terms.some((t) => `${c.name} ${c.en} ${c.idCard}`.toLowerCase().includes(t)));
+  main.innerHTML = `<div class="section-head"><h1>"${esc(q)}" కోసం</h1><span class="count">${hits.length + countries.length} ఫలితాలు</span></div>
+    ${countries.length ? countryChipsFor(countries) : ""}
+    <div class="ggrid">${hits.map(guideCardHTML).join("")}</div>
+    ${!hits.length && !countries.length ? `<p class="empty">ఏమీ దొరకలేదు. వేరే పదంతో వెతకండి, లేదా <a href="/board/help">రచ్చబండలో అడగండి</a>.</p>` : ""}`;
 }
+const countryChipsFor = (list) =>
+  `<div class="country-grid">${list.map((c) => `<a href="/c/${c.id}" class="country-chip"><span>${c.flag}</span>${esc(c.name)}</a>`).join("")}</div>`;
 
-function renderSaved() {
-  document.title = "దాచినవి | గల్ఫ్ తెలుగు వార్తలు";
-  renderList(saved.all(), { title: "🔖 దాచిన వార్తలు", sub: "(ఈ పరికరంలో మాత్రమే)", lead: false, filters: false });
-  if (!saved.all().length)
-    main.insertAdjacentHTML("beforeend", `<p class="empty">ఏ వార్త పక్కన 🔖 నొక్కితే అది ఇక్కడ దాచబడుతుంది.</p>`);
-}
-
-// ---- story page -------------------------------------------------------------------------------
-function renderStory(id) {
-  const item = state.byId.get(id) || saved.all().find((s) => s.id === id);
-  const thread = threadOf(id);
-  document.title = `${item ? item.title : "చర్చ"} | గల్ఫ్ తెలుగు వార్తలు`;
-  if (!item) {
-    main.innerHTML = `<a class="back" href="/">← వెనక్కి</a>
-      <div class="story"><p>ఈ వార్త పాతదైపోవడంతో జాబితా నుంచి తొలగించాం. దానిపై జరిగిన చర్చ కింద ఉంది.</p></div>
-      <section class="discuss" id="discuss"></section>`;
-    mountThread($("#discuss"), thread, { title: "చర్చ" });
-    return;
-  }
-  const more = state.news
-    .filter((i) => i.id !== id && i.sections.some((s) => item.sections.includes(s)))
-    .slice(0, 6);
-  const sec = item.sections.find((s) => s !== "top") || item.sections[0];
-  main.innerHTML = `
-    <a class="back" href="/s/${sec}">← ${SECTION_NAME[sec] || "వార్తలు"}</a>
-    <article class="story">
-      <div class="story-art">${art(item)}</div>
-      <div class="meta">
-        <span class="pub">${esc(item.publisher)}</span> ·
-        <time datetime="${item.published}">${dateTe(new Date(item.published), {
-          day: "numeric",
-          month: "long",
-          hour: "numeric",
-          minute: "2-digit",
-        })}</time> · ${ago(item.published)}
-        ${item.telugu ? `<span class="tag te">తెలుగు వారు</span>` : ""}
-        ${item.sections.map((s) => (SECTION_NAME[s] && s !== "top" ? `<a class="tag" href="/s/${s}">${SECTION_NAME[s]}</a>` : "")).join(" ")}</div>
-      <h1>${esc(item.title)}</h1>
-      <div class="story-links">
-        <a class="btn" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.publisher || "మూలం")}లో పూర్తి వార్త చదవండి ↗</a>
-        <a class="btn wa" href="${waLink(item)}" target="_blank" rel="noopener">వాట్సాప్‌లో పంపండి</a>
-        <button class="btn ghost" id="share">🔗 షేర్</button>
-        <button class="btn ghost" id="save">${saved.has(id) ? "🔖 దాచారు" : "🔖 దాచండి"}</button>
-      </div>
-      <p class="source-note">ఈ శీర్షిక, వార్త <strong>${esc(item.publisher)}</strong> వారిది. మేము శీర్షిక, లింక్ మాత్రమే చూపిస్తాము — పూర్తి వార్త, ఫోటోలు వారి సైట్‌లో చదవండి. పై బొమ్మ మా సొంత చిత్రం, వార్త ఫోటో కాదు.</p>
-      <div class="box"><h2>ఈ వార్త చదివాక మీకు ఎలా అనిపించింది?</h2><div class="reacts" id="reacts"></div></div>
-      ${
-        item.related?.length
-          ? `<div class="box"><h2>ఇదే వార్త ఇతర పత్రికల్లో</h2><ul class="related">${item.related
-              .map(
-                (r) =>
-                  `<li><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a> <span class="pub">— ${esc(
-                    r.publisher,
-                  )}</span></li>`,
-              )
-              .join("")}</ul></div>`
-          : ""
-      }
-    </article>
-    <section class="discuss" id="discuss"></section>
-    ${
-      more.length
-        ? `<div class="section-head" style="margin-top:28px"><h2>ఇవి కూడా చదవండి</h2></div>
-           <div class="grid" id="more-grid">${more.map((i) => cardHTML(i)).join("")}</div>`
-        : ""
-    }`;
-  $("#share").onclick = () => share(item);
-  $("#save").onclick = (e) => {
-    const on = saved.toggle(item);
-    e.target.textContent = on ? "🔖 దాచారు" : "🔖 దాచండి";
-    toast(on ? "దాచాం" : "తీసేశాం");
-  };
-  mountReactions($("#reacts"), thread);
-  mountThread($("#discuss"), thread, { title: "మీ అభిప్రాయం చెప్పండి" });
-  const grid = $("#more-grid");
-  if (grid) {
-    bindCardButtons(grid);
-    decorate(grid);
-  }
-}
-
-async function mountReactions(el, thread) {
-  const paint = (counts = {}) => {
-    const mine = myReacts.get(thread);
-    el.innerHTML = REACTIONS.map(
-      ([k, e, label]) =>
-        `<button class="react ${mine === k ? "on" : ""}" data-k="${k}" title="${label}" aria-pressed="${mine === k}">
-          ${e} <span>${label}</span> <b>${counts[k] || ""}</b></button>`,
-    ).join("");
-  };
-  let counts = {};
-  paint();
-  try {
-    counts = (await store.reactions([thread]))[thread] || {};
-    paint(counts);
-  } catch {}
-  el.onclick = async (e) => {
-    const b = e.target.closest("[data-k]");
-    if (!b) return;
-    if (myReacts.get(thread)) return toast("మీరు ఇప్పటికే స్పందించారు 🙏");
-    const k = b.dataset.k;
-    myReacts.set(thread, k);
-    counts[k] = (counts[k] || 0) + 1;
-    paint(counts);
-    try {
-      await store.react(thread, k);
-    } catch {
-      toast("సర్వర్‌ను చేరలేకపోయాం");
-    }
-  };
-}
-
-// ---- comment threads (stories and board posts) ------------------------------------------------
+// ---- comment threads (questions under guides, and board posts) ------------------------------------------------
 const profile = {
   get: () => JSON.parse(localStorage.getItem("rb:profile") || '{"name":"","place":""}'),
   set: (p) => localStorage.setItem("rb:profile", JSON.stringify(p)),
@@ -881,7 +569,7 @@ async function mountThread(el, thread, { title, placeholder = "మీ అభి�
 
 // ---- community boards ---------------------------------------------------------------------------
 async function renderBoards() {
-  document.title = "రచ్చబండ – మన ముచ్చట్ల వేదిక | గల్ఫ్ తెలుగు వార్తలు";
+  document.title = "రచ్చబండ – మన ముచ్చట్ల వేదిక | గల్ఫ్ తెలుగు గైడ్";
   const boards = state.community.boards;
   main.innerHTML = `
     <div class="hero"><h1>🌳 రచ్చబండ</h1><p class="rb-tag">మన ముచ్చట్ల వేదిక</p>
@@ -912,7 +600,7 @@ async function renderBoards() {
 function renderBoard(id) {
   const b = state.community.boards.find((x) => x.id === id);
   if (!b) return renderBoards();
-  document.title = `${b.title} | గల్ఫ్ తెలుగు వార్తలు`;
+  document.title = `${b.title} | గల్ఫ్ తెలుగు గైడ్`;
   main.innerHTML = `<a class="back" href="/board">← 🌳 రచ్చబండ</a>
     <div class="hero"><h1>${b.icon} ${esc(b.title)}</h1><p>${esc(b.desc)}</p></div>
     <section class="discuss" id="discuss"></section>`;
@@ -923,17 +611,18 @@ function renderBoard(id) {
   });
 }
 
+
 function recentHTML(c) {
   const [kind, key] = c.thread.split(":");
-  let href;
-  let where;
+  let href = "/";
+  let where = "పాత చర్చ";
   if (kind === "board") {
     const b = state.community.boards.find((x) => x.id === key);
     href = `/board/${key}`;
     where = b ? `${b.icon} ${b.title}` : "రచ్చబండ";
-  } else {
-    href = `/story/${key}`;
-    where = state.byId.get(key)?.title || "పాత వార్తపై";
+  } else if (kind === "guide" && state.byId.has(key)) {
+    href = `/g/${key}`;
+    where = state.byId.get(key).title;
   }
   return `<li><a href="${href}"><span class="quote">"${esc(c.body.slice(0, 90))}"</span>
     <small>— ${esc(c.name)}${c.place ? `, ${esc(c.place)}` : ""} · ${ago(c.created_at)} · ${esc(where.slice(0, 60))}</small></a></li>`;
@@ -948,14 +637,9 @@ function sourceItemHTML(s) {
 }
 
 function renderSources() {
-  document.title = "గల్ఫ్ తెలుగు డైరెక్టరీ | గల్ఫ్ తెలుగు వార్తలు";
-  const counts = {};
-  for (const i of state.news) counts[i.publisher] = (counts[i.publisher] || 0) + 1;
-  const active = Object.entries(counts)
-    .filter(([p]) => p)
-    .sort((a, b) => b[1] - a[1]);
+  document.title = "గల్ఫ్ తెలుగు డైరెక్టరీ | గల్ఫ్ తెలుగు గైడ్";
   main.innerHTML = `<div class="section-head"><h1>📒 గల్ఫ్ తెలుగు డైరెక్టరీ</h1></div>
-    <p class="muted">హెల్ప్‌లైన్లు, రాయబార కార్యాలయాలు, ప్రభుత్వ సేవలు, తెలుగు సంఘాలు, వార్తా పత్రికలు — అన్నీ ఒకే చోట. ఫోన్ నంబర్‌పై నొక్కితే నేరుగా కాల్ వెళ్తుంది.</p>
+    <p class="muted">హెల్ప్‌లైన్లు, రాయబార కార్యాలయాలు, ప్రభుత్వ సేవలు, తెలుగు సంఘాలు — అన్నీ ఒకే చోట. ఫోన్ నంబర్‌పై నొక్కితే నేరుగా కాల్ వెళ్తుంది.</p>
     ${state.sources.groups
       .map(
         (g) => `<section class="src-group" id="dir-${g.id}"><h2>${esc(g.title)}</h2><ul class="src-list">${g.items
@@ -966,11 +650,7 @@ function renderSources() {
             : ""
         }</section>`,
       )
-      .join("")}
-    <section class="src-group"><h2>ఈ సైట్‌లో వార్తలు వస్తున్న పత్రికలు (${active.length})</h2>
-      <div class="chips">${active
-        .map(([p, n]) => `<a class="chip" href="/search/${encodeURIComponent(p)}">${esc(p)} · ${n}</a>`)
-        .join("")}</div></section>`;
+      .join("")}`;
 }
 
 // Fills contact placeholders in the legal pages from data/site.json.
@@ -987,7 +667,7 @@ export function fillLegal(html, site = {}) {
 
 function renderLegal(id) {
   const page = state.legal[id];
-  document.title = `${page.title} | గల్ఫ్ తెలుగు వార్తలు`;
+  document.title = `${page.title} | గల్ఫ్ తెలుగు గైడ్`;
   main.innerHTML = `<div class="section-head"><h1>${esc(page.title)}</h1></div>
     <div class="story legal">${fillLegal(page.html, state.site)}</div>
     <p class="legal-nav">${LEGAL_LINKS}</p>`;
@@ -1032,9 +712,9 @@ async function renderSide() {
       .map((h) => `<li><a href="tel:${esc(h.phone)}"><b>📞 ${esc(h.phoneText)}</b><small>${esc(h.name)}</small></a></li>`)
       .join("")}</ul><p style="margin:8px 0 0"><a href="/sources">అన్ని హెల్ప్‌లైన్లు, రాయబార కార్యాలయాలు →</a></p></section>
     <section class="widget wa-promo"><div class="wa-icon" aria-hidden="true">🟢</div>
-      <p><strong>మీ వాట్సాప్ గ్రూపుల్లో పంచుకోండి</strong><br />గల్ఫ్‌లో ఉన్న మన వాళ్లందరికీ ఈ సైట్ చేరాలి.</p>
+      <p><strong>మీ వాట్సాప్ గ్రూపుల్లో పంచుకోండి</strong><br />సరైన సమాచారం మన వాళ్లందరికీ చేరాలి.</p>
       <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(
-        `గల్ఫ్ తెలుగు వారి వార్తలు, హెల్ప్‌లైన్లు, మన సంఘాల కార్యక్రమాలు — గల్ఫ్ తెలుగు వార్తలు: ${location.origin}/`,
+        `గల్ఫ్‌కు వెళ్లే, అక్కడ ఉండే తెలుగు వారికి తెలుగులో గైడ్: ఏజెంట్ మోసాలు, జీతం ఫిర్యాదులు, గ్రాట్యుటీ, హెల్ప్‌లైన్లు — గల్ఫ్ తెలుగు గైడ్ ${location.origin}/`,
       )}">వాట్సాప్‌లో పంపండి</a></section>
     <section class="widget market"><h2>🌳 రచ్చబండ బోర్డులు</h2><div class="market-grid">${[
       ["rooms", "🛏️", "రూములు", "#1e88e5"],
@@ -1074,7 +754,6 @@ async function renderSide() {
     <section class="widget word"><h2>తెలుగు పదం</h2><div class="w">${esc(word.word)}</div><p><strong>అర్థం:</strong> ${esc(
       word.meaning,
     )}</p><p class="muted">"${esc(word.use)}"</p></section>
-    <section class="widget"><h2>ఎక్కువ చర్చించిన వార్తలు</h2><ul class="mini" id="hot"><li class="muted">…</li></ul></section>
     <section class="widget"><h2>తెలుగు సంఘాలు</h2><ul class="mini">${state.sources.groups
       .find((g) => g.id === "sanghalu")
       .items.slice(0, 6)
@@ -1087,17 +766,7 @@ async function renderSide() {
     const recent = await store.recent(6);
     $("#recent").innerHTML = recent.length
       ? recent.map(recentHTML).join("")
-      : `<li class="muted">ఇంకా ఎవరూ మాట్లాడలేదు. ఏదైనా వార్తపై మొదటి అభిప్రాయం మీరే చెప్పండి!</li>`;
-    const pool = state.news.slice(0, 150);
-    const counts = await store.counts(pool.map((i) => threadOf(i.id)));
-    const hot = pool
-      .map((i) => [i, counts[threadOf(i.id)] || 0])
-      .filter(([, n]) => n)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 5);
-    $("#hot").innerHTML = hot.length
-      ? hot.map(([i, n]) => `<li><a href="/story/${i.id}">${esc(i.title)}</a><small>💬 ${n} వ్యాఖ్యలు</small></li>`).join("")
-      : `<li class="muted">ఇంకా చర్చలు మొదలవలేదు.</li>`;
+      : `<li class="muted">ఇంకా ఎవరూ మాట్లాడలేదు. ఏదైనా గైడ్ కింద మీ ప్రశ్న అడగండి!</li>`;
   } catch (err) {
     console.warn(err);
   }
@@ -1138,5 +807,6 @@ async function mountPoll(el, poll) {
     showResults();
   };
 }
+
 
 init();

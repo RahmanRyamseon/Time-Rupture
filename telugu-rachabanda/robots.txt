@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gulftelugunews.vercel.app/sitemap.xml
+Sitemap: https://gulfteluguguide.vercel.app/sitemap.xml

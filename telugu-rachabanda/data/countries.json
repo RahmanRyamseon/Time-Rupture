@@ -1,0 +1,140 @@
+{
+ "checked": "2026-11-14",
+ "countries": [
+  {
+   "id": "uae",
+   "flag": "🇦🇪",
+   "name": "యూఏఈ",
+   "en": "United Arab Emirates",
+   "idCard": "ఎమిరేట్స్ ఐడీ (Emirates ID)",
+   "residence": {
+    "name": "ICP – Federal Authority for Identity, Citizenship, Customs & Port Security",
+    "url": "https://icp.gov.ae"
+   },
+   "labour": {
+    "name": "MOHRE – Ministry of Human Resources and Emiratisation",
+    "url": "https://www.mohre.gov.ae",
+    "phone": "600590000",
+    "phoneText": "600 590000"
+   },
+   "embassies": [
+    "https://www.indembassyuae.gov.in",
+    "https://www.cgidubai.gov.in"
+   ],
+   "pbsk": {
+    "phone": "80046342",
+    "phoneText": "800 46342 (800 INDIA)"
+   },
+   "notes": [
+    "జీతం ఆలస్యమైతే MOHRE లో \"My Salary Complaint\" సేవ ఉంది.",
+    "యజమాని అనుమతి లేకుండా పాస్‌పోర్ట్ ఉంచుకోవడం నిషిద్ధం.",
+    "గ్రాట్యుటీ: మొదటి 5 ఏళ్లకు ఏడాదికి 21 రోజుల బేసిక్ జీతం, ఆ తర్వాత 30 రోజులు."
+   ]
+  },
+  {
+   "id": "saudi",
+   "flag": "🇸🇦",
+   "name": "సౌదీ అరేబియా",
+   "en": "Saudi Arabia",
+   "idCard": "ఇఖామా (Iqama)",
+   "residence": {
+    "name": "Absher – Ministry of Interior services",
+    "url": "https://www.absher.sa"
+   },
+   "labour": {
+    "name": "HRSD – Ministry of Human Resources and Social Development",
+    "url": "https://www.hrsd.gov.sa",
+    "phone": "19911",
+    "phoneText": "19911"
+   },
+   "embassies": [
+    "https://www.eoiriyadh.gov.in",
+    "https://www.cgijeddah.gov.in"
+   ],
+   "pbsk": {
+    "phone": "8002471234",
+    "phoneText": "800 247 1234"
+   },
+   "notes": [
+    "యజమాని అనుమతి లేకుండా పాస్‌పోర్ట్ ఉంచుకోవడం నిషిద్ధం.",
+    "గ్రాట్యుటీ: మొదటి 5 ఏళ్లకు ఏడాదికి అర నెల జీతం, ఆ తర్వాత నెల జీతం; రాజీనామా చేస్తే తగ్గుతుంది."
+   ]
+  },
+  {
+   "id": "qatar",
+   "flag": "🇶🇦",
+   "name": "ఖతార్",
+   "en": "Qatar",
+   "idCard": "ఖతార్ ఐడీ (QID)",
+   "residence": {
+    "name": "Ministry of Interior (Metrash)",
+    "url": "https://portal.moi.gov.qa"
+   },
+   "labour": {
+    "name": "Ministry of Labour",
+    "url": "https://www.mol.gov.qa"
+   },
+   "embassies": [
+    "https://www.indianembassyqatar.gov.in"
+   ],
+   "notes": []
+  },
+  {
+   "id": "kuwait",
+   "flag": "🇰🇼",
+   "name": "కువైట్",
+   "en": "Kuwait",
+   "idCard": "సివిల్ ఐడీ (Civil ID)",
+   "residence": {
+    "name": "PACI – Public Authority for Civil Information",
+    "url": "https://www.paci.gov.kw"
+   },
+   "labour": {
+    "name": "PAM – Public Authority for Manpower",
+    "url": "https://www.pam.gov.kw"
+   },
+   "embassies": [
+    "https://www.indembkwt.gov.in"
+   ],
+   "notes": []
+  },
+  {
+   "id": "oman",
+   "flag": "🇴🇲",
+   "name": "ఒమన్",
+   "en": "Oman",
+   "idCard": "రెసిడెంట్ కార్డ్ (Resident Card)",
+   "residence": {
+    "name": "Royal Oman Police",
+    "url": "https://www.rop.gov.om"
+   },
+   "labour": {
+    "name": "Ministry of Labour",
+    "url": "https://www.mol.gov.om"
+   },
+   "embassies": [
+    "https://www.indemb-oman.gov.in"
+   ],
+   "notes": []
+  },
+  {
+   "id": "bahrain",
+   "flag": "🇧🇭",
+   "name": "బహ్రెయిన్",
+   "en": "Bahrain",
+   "idCard": "సీపీఆర్ (CPR)",
+   "residence": {
+    "name": "NPRA – Nationality, Passports & Residence Affairs",
+    "url": "https://www.npra.gov.bh"
+   },
+   "labour": {
+    "name": "LMRA – Labour Market Regulatory Authority",
+    "url": "https://lmra.gov.bh"
+   },
+   "embassies": [
+    "https://www.eoibahrain.gov.in"
+   ],
+   "notes": []
+  }
+ ]
+}
