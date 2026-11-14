@@ -1,5 +1,5 @@
-# Netlify reads this file from the base directory (mijmara/).
-# In the Netlify UI set: Base directory = mijmara, Build command = npm run build, Publish = .next
+# Netlify reads this file from the base directory (mujam-alteeb/).
+# In the Netlify UI set: Base directory = mujam-alteeb, Build command = npm run build, Publish = .next
 [build]
   command = "npm run build"
   publish = ".next"

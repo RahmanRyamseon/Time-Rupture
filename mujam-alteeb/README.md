@@ -13,7 +13,7 @@ An independent, Arabic-first community encyclopedia of oud, dehn al oud, mukhall
 ## Quick start
 
 ```bash
-cd mijmara
+cd mujam-alteeb
 npm install
 npm run dev          # compiles data/csv → src/generated/content.json, then starts on :3000
 ```
@@ -113,10 +113,10 @@ Roles: `reader` (no account), `contributor` (default on sign-up), `editor` (mode
 
 ## Deploying on Netlify (from GitHub)
 
-The repository is a monorepo; this app lives in `mijmara/`.
+The repository is a monorepo; this app lives in `mujam-alteeb/`.
 
 1. Netlify → **Add new project → Import an existing project → GitHub**, choose this repository.
-2. **Base directory:** `mijmara` · **Build command:** `npm run build` · **Publish directory:** `.next` (also set in `mijmara/netlify.toml`). Netlify's Next.js runtime is detected automatically.
+2. **Base directory:** `mujam-alteeb` · **Build command:** `npm run build` · **Publish directory:** `.next` (also set in `mujam-alteeb/netlify.toml`). Netlify's Next.js runtime is detected automatically.
 3. Choose the branch to deploy, add the environment variables above, deploy. Every push to that branch redeploys.
 
 ## Wrapping as a native app later (Capacitor)
@@ -125,7 +125,7 @@ The site is API-first, so a native shell can either load the live PWA or a stati
 
 ```bash
 npm i @capacitor/core @capacitor/cli @capacitor/ios @capacitor/android
-npx cap init Mu'jam al-Teeb com.example.mijmara --web-dir=out
+npx cap init "Mu'jam al-Teeb" com.example.mujamalteeb --web-dir=out
 ```
 
 - **Hosted mode (simplest):** in `capacitor.config.ts` set `server: { url: "https://<your-site>", cleartext: false }` and ship; offline reading keeps working through the service worker.
