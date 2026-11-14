@@ -69,7 +69,9 @@ export function ruleMatch(c: Content, input: MatcherInput, votes: Map<string, Vo
   const any = input.occasion || input.season || input.character || input.strength;
   return scored
     .filter((x) => (any ? x.s > 0 : true))
-    .sort((a, b) => b.s - a.s || a.p.id.localeCompare(b.p.id))
+    // Ties: hand-curated entries first, then products with more documented notes.
+    .sort((a, b) => b.s - a.s || Number(a.p.source === "collected") - Number(b.p.source === "collected") ||
+      (b.p.notes.top.length + b.p.notes.heart.length + b.p.notes.base.length) - (a.p.notes.top.length + a.p.notes.heart.length + a.p.notes.base.length) || a.p.id.localeCompare(b.p.id))
     .slice(0, limit)
     .map((x) => ({ id: x.p.id, reason: x.why.join(l === "ar" ? "؛ " : "; ") || (l === "ar" ? "من مداخل الموسوعة" : "an entry in the encyclopedia") }));
 }
@@ -82,7 +84,10 @@ const AiSchema = z.object({
 export async function aiMatch(c: Content, input: MatcherInput, votes: Map<string, VoteSummary>): Promise<MatchResult[] | null> {
   if (!process.env.ANTHROPIC_API_KEY) return null;
   const l = input.locale;
-  const candidates = c.products.slice(0, 40).map((p) => ({
+  // Pre-filter with the deterministic scorer so the model only ranks plausible, documented entries.
+  const pre = ruleMatch(c, input, votes, 40).map((r) => c.products.find((p) => p.id === r.id)!).filter(Boolean);
+  if (!pre.length) return null;
+  const candidates = pre.map((p) => ({
     id: p.id,
     name: p.name[l],
     house: c.houses.find((h) => h.id === p.houseId)?.name[l],
@@ -93,6 +98,7 @@ export async function aiMatch(c: Content, input: MatcherInput, votes: Map<string
     occasions: p.occasions.map((o) => name(c, "occasion", o, l)),
     seasons: p.seasons.map((o) => name(c, "season", o, l)),
     community_strength: votes.get(p.id)?.strength ?? null,
+    family: p.family ? name(c, "family", p.family, l) : null,
     description: p.description[l],
   }));
   const prefs = {

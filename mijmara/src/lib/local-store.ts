@@ -1,6 +1,6 @@
 "use client";
 /** Small typed localStorage helpers with a change event so components stay in sync. */
-const EVT = "mijmara:store";
+const EVT = "teeb:store";
 
 export function readJSON<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") return fallback;
@@ -17,7 +17,7 @@ export function onStoreChange(cb: () => void): () => void {
   return () => { window.removeEventListener(EVT, h); window.removeEventListener("storage", h); };
 }
 
-export const COMPARE_KEY = "mijmara:compare";
-export const COLLECTION_KEY = "mijmara:collection";
+export const COMPARE_KEY = "teeb:compare";
+export const COLLECTION_KEY = "teeb:collection";
 export type Shelf = "owned" | "tried" | "wishlist";
 export type CollectionItem = { id: string; shelf: Shelf; added: string };

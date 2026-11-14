@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/types";
 
-export const NUMERALS_KEY = "mijmara:numerals";
+export const NUMERALS_KEY = "teeb:numerals";
 const SKIP = new Set(["SCRIPT", "STYLE", "TEXTAREA", "INPUT", "CODE", "PRE", "NOSCRIPT"]);
 
 function convert(root: Node) {

@@ -1,0 +1,117 @@
+id,slug_ar,slug_en,name_ar,name_en,family,description_ar,description_en,citations,edwards
+oud,العود,oud,العود,Oud (agarwood),woody,,,,woods
+sandalwood,خشب-الصندل,sandalwood,خشب الصندل,Sandalwood,woody,,,,woods
+cedarwood,خشب-الأرز,cedarwood,خشب الأرز,Cedarwood,woody,,,,woods
+vetiver,نجيل-الهند-الفيتيفر,vetiver,نجيل الهند (الفيتيفر),Vetiver,earthy,,,,woods
+patchouli,الباتشولي,patchouli,الباتشولي,Patchouli,earthy,,,,woods
+woods,الأخشاب,woods,الأخشاب,Woody notes,woody,,,,woods
+cashmere-wood,خشب-الكشمير,cashmere-wood,خشب الكشمير,Cashmere wood,woody,,,,woody-amber
+birch,البتولا,birch,البتولا,Birch,smoky,,,,dry-woods
+rosewood,خشب-الورد,rosewood,خشب الورد,Rosewood,woody,,,,woods
+pine,الصنوبر,pine,الصنوبر,Pine,fresh,,,,aromatic
+cypress,السرو,cypress,السرو,Cypress,fresh,,,,aromatic
+oak,البلوط,oak,البلوط,Oak,woody,,,,woods
+akigalawood,أكيغالاوود,akigalawood,أكيغالاوود,Akigalawood,woody,,,,woods
+amberwood,خشب-العنبر,amberwood,خشب العنبر,Amberwood,amber,,,,woody-amber
+amber,العنبر,amber,العنبر,Amber,amber,,,,amber
+ambergris,العنبر-الرمادي,ambergris,العنبر الرمادي,Ambergris,amber,,,,woody-amber
+ambroxan,الأمبروكسان,ambroxan,الأمبروكسان,Ambroxan,amber,,,,woody-amber
+incense,البخور,incense,البخور,Incense,smoky,,,,amber
+frankincense,اللبان,frankincense,اللبان,Frankincense,smoky,,,,amber
+myrrh,المر,myrrh,المرّ,Myrrh,amber,,,,amber
+benzoin,الجاوي-البنزوين,benzoin,الجاوي (البنزوين),Benzoin,amber,,,,soft-amber
+labdanum,اللادن,labdanum,اللادن,Labdanum,amber,,,,amber
+opoponax,الأوبوباناكس,opoponax,الأوبوباناكس,Opoponax,amber,,,,amber
+elemi,الإليمي,elemi,الإليمي,Elemi,fresh,,,,amber
+tonka-bean,حبوب-التونكا,tonka-bean,حبوب التونكا,Tonka bean,sweet,,,,soft-amber
+vanilla,الفانيليا,vanilla,الفانيليا,Vanilla,sweet,,,,soft-amber
+smoke,الدخان,smoke,الدخان,Smoke,smoky,,,,dry-woods
+musk,المسك,musk,المسك,Musk,musky,,,,soft-floral
+white-musk,المسك-الأبيض,white-musk,المسك الأبيض,White musk,musky,,,,soft-floral
+leather,الجلد,leather,الجلد,Leather,leather,,,,dry-woods
+tobacco,التبغ,tobacco,التبغ,Tobacco,smoky,,,,dry-woods
+rose,الورد,rose,الورد,Rose,floral,,,,floral
+jasmine,الياسمين,jasmine,الياسمين,Jasmine,floral,,,,floral
+orange-blossom,زهر-البرتقال,orange-blossom,زهر البرتقال,Orange blossom,floral,,,,floral
+iris,السوسن,iris,السوسن,Iris,floral,,,,soft-floral
+violet,البنفسج,violet,البنفسج,Violet,floral,,,,soft-floral
+violet-leaf,ورق-البنفسج,violet-leaf,ورق البنفسج,Violet leaf,green,,,,green
+peony,الفاوانيا,peony,الفاوانيا,Peony,floral,,,,floral
+lily-of-the-valley,زنبق-الوادي,lily-of-the-valley,زنبق الوادي,Lily of the valley,floral,,,,floral
+tuberose,مسك-الروم-التوبيروز,tuberose,مسك الروم (التوبيروز),Tuberose,floral,,,,floral-amber
+ylang-ylang,الإيلنغ-إيلنغ,ylang-ylang,الإيلنغ إيلنغ,Ylang-ylang,floral,,,,floral-amber
+gardenia,الغاردينيا,gardenia,الغاردينيا,Gardenia,floral,,,,floral
+heliotrope,الهليوتروب,heliotrope,الهليوتروب,Heliotrope,floral,,,,soft-floral
+freesia,الفريزيا,freesia,الفريزيا,Freesia,floral,,,,floral
+magnolia,الماغنوليا,magnolia,الماغنوليا,Magnolia,floral,,,,floral
+orchid,الأوركيد,orchid,الأوركيد,Orchid,floral,,,,floral-amber
+geranium,إبرة-الراعي-الجيرانيوم,geranium,إبرة الراعي (الجيرانيوم),Geranium,floral,,,,aromatic
+carnation,القرنفل-الزهري,carnation,القرنفل الزهري,Carnation,floral,,,,floral
+frangipani,الفرانجيباني,frangipani,الفرانجيباني,Frangipani,floral,,,,floral-amber
+hyacinth,الياقوتية-الهياسنث,hyacinth,الياقوتية (الهياسنث),Hyacinth,floral,,,,floral
+mimosa,الميموزا,mimosa,الميموزا,Mimosa,floral,,,,soft-floral
+white-flowers,الأزهار-البيضاء,white-flowers,الأزهار البيضاء,White flowers,floral,,,,floral
+lavender,الخزامى-اللافندر,lavender,الخزامى (اللافندر),Lavender,fresh,,,,aromatic
+immortelle,الخالد-الإيمورتيل,immortelle,الخالد (الإيمورتيل),Immortelle,amber,,,,amber
+bergamot,البرغموت,bergamot,البرغموت,Bergamot,fresh,,,,citrus
+lemon,الليمون,lemon,الليمون,Lemon,fresh,,,,citrus
+lime,الليم,lime,الليم,Lime,fresh,,,,citrus
+mandarin,اليوسفي,mandarin,اليوسفي,Mandarin,fresh,,,,citrus
+orange,البرتقال,orange,البرتقال,Orange,fresh,,,,citrus
+grapefruit,الجريب-فروت,grapefruit,الجريب فروت,Grapefruit,fresh,,,,citrus
+citrus,الحمضيات,citrus,الحمضيات,Citrus,fresh,,,,citrus
+yuzu,اليوزو,yuzu,اليوزو,Yuzu,fresh,,,,citrus
+aquatic,نفحات-مائية,aquatic,نفحات مائية,Aquatic notes,fresh,,,,water
+green-notes,نفحات-خضراء,green-notes,نفحات خضراء,Green notes,green,,,,green
+mint,النعناع,mint,النعناع,Mint,fresh,,,,aromatic
+saffron,الزعفران,saffron,الزعفران,Saffron,spicy,,,,floral-amber
+cardamom,الهيل,cardamom,الهيل,Cardamom,spicy,,,,aromatic
+cinnamon,القرفة,cinnamon,القرفة,Cinnamon,spicy,,,,amber
+pink-pepper,الفلفل-الوردي,pink-pepper,الفلفل الوردي,Pink pepper,spicy,,,,aromatic
+black-pepper,الفلفل-الأسود,black-pepper,الفلفل الأسود,Black pepper,spicy,,,,aromatic
+ginger,الزنجبيل,ginger,الزنجبيل,Ginger,spicy,,,,aromatic
+nutmeg,جوزة-الطيب,nutmeg,جوزة الطيب,Nutmeg,spicy,,,,amber
+clove,القرنفل,clove,القرنفل,Clove,spicy,,,,amber
+spices,البهارات,spices,البهارات,Spices,spicy,,,,amber
+sage,المريمية,sage,المريمية,Sage,fresh,,,,aromatic
+rosemary,إكليل-الجبل,rosemary,إكليل الجبل,Rosemary,fresh,,,,aromatic
+basil,الريحان,basil,الريحان,Basil,fresh,,,,aromatic
+coriander,الكزبرة,coriander,الكزبرة,Coriander,spicy,,,,aromatic
+juniper,العرعر,juniper,العرعر,Juniper,fresh,,,,aromatic
+pimento,الفلفل-الحلو-البيمنتو,pimento,الفلفل الحلو (البيمنتو),Pimento,spicy,,,,aromatic
+davana,الدافانا,davana,الدافانا,Davana,fruity,,,,fruity
+oakmoss,طحلب-البلوط,oakmoss,طحلب البلوط,Oakmoss,earthy,,,,mossy-woods
+raspberry,توت-العليق,raspberry,توت العليق,Raspberry,fruity,,,,fruity
+apple,التفاح,apple,التفاح,Apple,fruity,,,,fruity
+pear,الكمثرى,pear,الكمثرى,Pear,fruity,,,,fruity
+black-currant,الكشمش-الأسود,black-currant,الكشمش الأسود,Black currant,fruity,,,,fruity
+red-currant,الكشمش-الأحمر,red-currant,الكشمش الأحمر,Red currant,fruity,,,,fruity
+pineapple,الأناناس,pineapple,الأناناس,Pineapple,fruity,,,,fruity
+peach,الخوخ,peach,الخوخ,Peach,fruity,,,,fruity
+apricot,المشمش,apricot,المشمش,Apricot,fruity,,,,fruity
+plum,البرقوق,plum,البرقوق,Plum,fruity,,,,fruity
+cherry,الكرز,cherry,الكرز,Cherry,fruity,,,,fruity
+strawberry,الفراولة,strawberry,الفراولة,Strawberry,fruity,,,,fruity
+berries,التوتيات,berries,التوتيات,Berries,fruity,,,,fruity
+lychee,الليتشي,lychee,الليتشي,Lychee,fruity,,,,fruity
+mango,المانجو,mango,المانجو,Mango,fruity,,,,fruity
+passion-fruit,فاكهة-الآلام,passion-fruit,فاكهة الآلام,Passion fruit,fruity,,,,fruity
+coconut,جوز-الهند,coconut,جوز الهند,Coconut,sweet,,,,soft-amber
+fig,التين,fig,التين,Fig,fruity,,,,green
+rhubarb,الراوند,rhubarb,الراوند,Rhubarb,fruity,,,,fruity
+dates,التمر,dates,التمر,Dates,sweet,,,,fruity
+fruits,نفحات-فاكهية,fruits,نفحات فاكهية,Fruity notes,fruity,,,,fruity
+caramel,الكراميل,caramel,الكراميل,Caramel,sweet,,,,soft-amber
+honey,العسل,honey,العسل,Honey,sweet,,,,soft-amber
+praline,البرالين,praline,البرالين,Praline,sweet,,,,soft-amber
+chocolate,الشوكولاتة,chocolate,الشوكولاتة,Chocolate,sweet,,,,soft-amber
+coffee,القهوة,coffee,القهوة,Coffee,sweet,,,,amber
+almond,اللوز,almond,اللوز,Almond,sweet,,,,soft-amber
+milk,الحليب,milk,الحليب,Milk,sweet,,,,soft-amber
+sugar,السكر,sugar,السكر,Sugar,sweet,,,,soft-amber
+candy-floss,غزل-البنات,candy-floss,غزل البنات,Candy floss,sweet,,,,soft-amber
+pistachio,الفستق,pistachio,الفستق,Pistachio,sweet,,,,soft-amber
+rum,الروم,rum,الروم,Rum,sweet,,,,amber
+tea,الشاي,tea,الشاي,Tea,green,,,,green
+powdery,نفحات-بودرية,powdery,نفحات بودرية,Powdery notes,musky,,,,soft-floral
+aldehydes,الألدهيدات,aldehydes,الألدهيدات,Aldehydes,fresh,,,,soft-floral

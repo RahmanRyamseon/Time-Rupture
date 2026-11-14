@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getContent, getNote, staticSlugParams, taxName } from "@/lib/content";
@@ -49,7 +50,8 @@ export default async function NotePage({ params }: Params) {
           {x.description[locale] ? <p className="text-lg">{x.description[locale]}<CiteMarks nums={nums} /></p> : <Undocumented locale={locale} editHref={editHref} />}
           <section aria-labelledby="np">
             <h2 id="np" className="mb-4 text-2xl">{t("products")}</h2>
-            {products.length ? <ul className="grid gap-4 sm:grid-cols-2">{products.map((p) => <li key={p.id}><ProductCard p={p} c={c} locale={locale} /></li>)}</ul> : <Undocumented locale={locale} />}
+            {products.length ? <ul className="grid gap-4 sm:grid-cols-2">{products.slice(0, 12).map((p) => <li key={p.id}><ProductCard p={p} c={c} locale={locale} /></li>)}</ul> : <Undocumented locale={locale} />}
+            {products.length > 12 && <Link prefetch={false} className="btn btn-ghost mt-4" href={href(locale, "/products", {}, { note: x.id })}>{locale === "ar" ? `عرض كل المنتجات (${products.length})` : `View all ${products.length} products`}</Link>}
           </section>
         </div>
         <aside><EntityToolbar locale={locale} entityType="note" entityId={x.id} editHref={editHref} historyHref={href(locale, "/notes/[slug]/history", { slug: x.slug[locale] })} fields={["description", "family"]} /></aside>

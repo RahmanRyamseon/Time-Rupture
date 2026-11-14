@@ -4,17 +4,21 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import fs_ from "node:fs";
 import { readCsv, list } from "./csv";
+import { NOTE_DICTIONARY } from "./collect/note-dictionary";
 import type { Article, Bi, Citation, Content, FieldCitations, House, Note, NoteRef, Origin, Product, TaxItem } from "../src/lib/types";
 import type { SearchDoc } from "../src/lib/search";
-import { tokenize } from "../src/lib/normalize";
+import { slugify, tokenize } from "../src/lib/normalize";
 import { href, ENTITY_ROUTES } from "../src/lib/paths";
 
 const errors: string[] = [];
+/** Optional machine-collected files from scripts/collect (official store catalogues). */
+const collected = (name: string) => fs_.existsSync(path.join(process.cwd(), "data", "csv", "collected", name)) ? readCsv(`collected/${name}`) : [];
 const bi = (r: Record<string, string>, k: string): Bi => ({ ar: r[`${k}_ar`] ?? "", en: r[`${k}_en`] ?? "" });
 
 const citations: Record<string, Citation> = {};
-for (const r of readCsv("citations.csv")) {
+for (const r of [...readCsv("citations.csv"), ...collected("citations.csv")]) {
   if (!/^https?:\/\//.test(r.url)) errors.push(`citation ${r.id}: invalid url`);
   citations[r.id] = { id: r.id, url: r.url, title: r.title, publisher: r.publisher, accessed: r.accessed, quote: r.quote };
 }
@@ -53,9 +57,12 @@ const origins: Origin[] = readCsv("origins.csv").map((r) => ({
   citations: fieldCitations(`origin ${r.id}`, r.citations),
 }));
 
-const notes: Note[] = readCsv("notes.csv").map((r) => ({
-  id: r.id, slug: bi(r, "slug"), name: bi(r, "name"), family: r.family, description: bi(r, "description"),
-  citations: fieldCitations(`note ${r.id}`, r.citations),
+const dict = new Map(NOTE_DICTIONARY.map((d) => [d.id, d]));
+const curatedNoteRows = readCsv("notes.csv");
+const curatedNoteIds = new Set(curatedNoteRows.map((r) => r.id));
+const notes: Note[] = [...curatedNoteRows, ...collected("notes.csv").filter((r) => !curatedNoteIds.has(r.id))].map((r) => ({
+  id: r.id, slug: bi(r, "slug"), name: bi(r, "name"), family: r.family, edwards: r.edwards || dict.get(r.id)?.edwards || "",
+  description: bi(r, "description"), citations: fieldCitations(`note ${r.id}`, r.citations),
 }));
 checkTax("notes", "character", [...new Set(notes.map((n) => n.family))]);
 const noteIds = new Set(notes.map((n) => n.id));
@@ -72,7 +79,11 @@ function noteRefs(owner: string, v: string): NoteRef[] {
 }
 
 const pricesBy: Record<string, Product["prices"]> = {};
-for (const r of readCsv("prices.csv")) {
+const curatedRows = readCsv("products.csv");
+const curatedKeys = new Set(curatedRows.map((r) => `${r.house_id}|${slugify(r.name_en)}`));
+const collectedRows = collected("products.csv").filter((r) => !curatedKeys.has(`${r.house_id}|${slugify(r.name_en)}`) && !curatedRows.some((c) => c.id === r.id));
+const keptIds = new Set([...curatedRows, ...collectedRows].map((r) => r.id));
+for (const r of [...readCsv("prices.csv"), ...collected("prices.csv")].filter((x) => keptIds.has(x.product_id))) {
   if (!citations[r.citation_id]) errors.push(`price ${r.product_id}: unknown citation "${r.citation_id}"`);
   if (!r.observed_on) errors.push(`price ${r.product_id}: observed_on is required`);
   (pricesBy[r.product_id] ??= []).push({
@@ -81,7 +92,16 @@ for (const r of readCsv("prices.csv")) {
   });
 }
 
-const products: Product[] = readCsv("products.csv").map((r) => {
+function edwardsFamily(refs: NoteRef[]): string {
+  const ids = [...new Set(refs.map((x) => x.note))];
+  if (ids.length < 3) return "";
+  const score = new Map<string, number>();
+  for (const id of ids) { const e = notes.find((n) => n.id === id)?.edwards; if (e) score.set(e, (score.get(e) ?? 0) + 1); }
+  const order = (taxonomy.family ?? []).map((t) => t.id);
+  return [...score.entries()].sort((a, b) => b[1] - a[1] || order.indexOf(a[0]) - order.indexOf(b[0]))[0]?.[0] ?? "";
+}
+
+const products: Product[] = [...curatedRows.map((r): Record<string, string> => ({ ...r, source: "curated" })), ...collectedRows].map((r) => {
   const owner = `product ${r.id}`;
   if (!houseIds.has(r.house_id)) errors.push(`${owner}: unknown house "${r.house_id}"`);
   checkTax(owner, "category", [r.category]);
@@ -90,13 +110,18 @@ const products: Product[] = readCsv("products.csv").map((r) => {
   checkTax(owner, "season", list(r.seasons));
   if (r.wild_status) checkTax(owner, "wild_status", [r.wild_status]);
   if (r.size_unit) checkTax(owner, "unit", [r.size_unit]);
+  if (r.concentration) checkTax(owner, "concentration", [r.concentration]);
+  if (r.gender) checkTax(owner, "gender", [r.gender]);
+  const nt = { top: noteRefs(owner, r.notes_top), heart: noteRefs(owner, r.notes_heart), base: noteRefs(owner, r.notes_base) };
   return {
     id: r.id, slug: bi(r, "slug"), name: bi(r, "name"), houseId: r.house_id, category: r.category,
     origins: list(r.origins), wildStatus: r.wild_status || "undocumented",
-    notes: { top: noteRefs(owner, r.notes_top), heart: noteRefs(owner, r.notes_heart), base: noteRefs(owner, r.notes_base) },
+    notes: nt,
     description: bi(r, "description"), occasions: list(r.occasions), seasons: list(r.seasons),
     size: { value: r.size_value ? Number(r.size_value) : null, unit: r.size_unit, note: bi(r, "size_note") },
     officialUrl: r.official_url, prices: pricesBy[r.id] ?? [], citations: fieldCitations(owner, r.citations),
+    concentration: r.concentration ?? "", gender: r.gender ?? "", family: edwardsFamily([...nt.top, ...nt.heart, ...nt.base]),
+    source: (r.source === "collected" ? "collected" : "curated") as Product["source"],
   };
 });
 

@@ -1,4 +1,4 @@
-# مِجمَرة · Mijmara
+# معجم الطِّيب · Mu'jam al-Teeb
 
 **موسوعة عربية مجتمعية مستقلة عن العود ودهن العود والمخلّطات والمسك ودهن الورد والبخور.**
 An independent, Arabic-first community encyclopedia of oud, dehn al oud, mukhallat, musk, rose oils and bakhoor — every fact linked to its source. Nothing is sold; no affiliate links.
@@ -19,7 +19,7 @@ npm run dev          # compiles data/csv → src/generated/content.json, then st
 ```
 
 ```bash
-npm test             # unit tests (normalisation, search, matcher, dataset integrity)
+npm test             # unit tests (normalisation, search, matcher, collector, dataset integrity)
 npm run typecheck
 npm run build && npm start
 ```
@@ -34,7 +34,18 @@ The site works **with no database**: content comes from the CSV dataset in `data
 - No authenticity verdicts without a source. Units (tola/ml/g) are never auto-converted.
 - Images: upload requires a licence (own work, CC BY, CC BY-SA, CC0, brand permission) and a credit; hidden until an editor approves.
 
-The seed dataset (10 products, 7 houses, 8 origins, 23 notes, 6 articles, 31 sources) was researched from public web sources on 13 Nov 2026 — official house pages, Wikipedia, Saudi Aramco World, Jafza and specialist guides — and every claim carries its citation.
+The dataset has two layers, both cited per field:
+
+- **Hand-curated** (`data/csv/*.csv`): products, 11 houses, 8 oud origins, notes and 6 articles researched from public sources — official house pages, Wikipedia, Saudi Aramco World, Jafza, specialist guides.
+- **Collected from official store catalogues** (`data/csv/collected/*.csv`, ≈900 products from Swiss Arabian, Ajmal, Lattafa, Afnan, Khadlaj, Ibrahim Al Qurashi and Amouage). Only what the house publishes is kept: name, explicitly listed notes (exact match against a hand-checked Arabic note dictionary), size, concentration, gender, displayed price with date. Descriptions are composed mechanically from those fields — no AI-written facts, no copied marketing copy, no images, no affiliate links. Scent families follow the Edwards fragrance wheel and are labelled as estimates. Full rules: `/methodology` (`/المنهجية`).
+
+### Refreshing the collected data
+
+```bash
+NODE_USE_ENV_PROXY=1 npm run collect   # fetch store feeds → transform → compile
+```
+
+`scripts/collect/fetch-shopify.ts` honours each store's robots.txt, identifies itself and waits between requests; raw feeds go to `data/raw/` (git-ignored). Add stores in `scripts/collect/stores.ts` (official stores only) and notes in `scripts/collect/note-dictionary.ts`. Competitor databases (Fragrantica, Parfumo) are deliberately not scraped — their terms forbid it.
 
 ## Project layout
 
@@ -114,7 +125,7 @@ The site is API-first, so a native shell can either load the live PWA or a stati
 
 ```bash
 npm i @capacitor/core @capacitor/cli @capacitor/ios @capacitor/android
-npx cap init Mijmara com.example.mijmara --web-dir=out
+npx cap init Mu'jam al-Teeb com.example.mijmara --web-dir=out
 ```
 
 - **Hosted mode (simplest):** in `capacitor.config.ts` set `server: { url: "https://<your-site>", cleartext: false }` and ship; offline reading keeps working through the service worker.
@@ -126,5 +137,5 @@ npx cap init Mijmara com.example.mijmara --web-dir=out
 Semantic landmarks, skip link, visible focus, 44px touch targets, AA contrast on the dark palette, `aria-live` results, keyboard-operable filters and votes, reduced-motion support. Directional icons mirror in RTL; tables scroll horizontally with a sticky first column. Fonts (IBM Plex Sans Arabic, Amiri) are self-hosted, subset by script and preloaded.
 
 ---
-مِجمَرة موسوعة مجتمعية مستقلة، غير تابعة لأي علامة تجارية أو دار عطور.
-Mijmara is an independent community encyclopedia, not affiliated with any brand.
+معجم الطِّيب موسوعة مجتمعية مستقلة، غير تابعة لأي علامة تجارية أو دار عطور.
+Mu'jam al-Teeb is an independent community encyclopedia, not affiliated with any brand.

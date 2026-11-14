@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 type BIPEvent = Event & { prompt: () => Promise<void>; userChoice: Promise<{ outcome: string }> };
-const DISMISS_KEY = "mijmara:install-dismissed";
+const DISMISS_KEY = "teeb:install-dismissed";
 
 export function InstallPrompt() {
   const t = useTranslations("settings");

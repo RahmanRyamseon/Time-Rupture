@@ -21,7 +21,7 @@ export default async function ProductsPage({ params, searchParams }: Props) {
   const sp = await searchParams;
   const t = await getTranslations({ locale, namespace: "list" });
   const c = await getContent();
-  const filters: ProductFilters = { category: sp.category, origin: sp.origin, house: sp.house, occasion: sp.occasion, season: sp.season, strength: sp.strength };
+  const filters: ProductFilters = { category: sp.category, origin: sp.origin, house: sp.house, occasion: sp.occasion, season: sp.season, strength: sp.strength, family: sp.family, concentration: sp.concentration, gender: sp.gender, note: sp.note, page: sp.page };
   return (
     <>
       <PageHeader title={t("productsTitle")} intro={t("productsIntro")} />

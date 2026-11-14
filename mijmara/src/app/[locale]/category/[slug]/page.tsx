@@ -45,7 +45,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     <>
       <Breadcrumbs label={n("primary")} items={[{ label: n("home"), href: href(locale, "/") }, { label: n("products"), href: href(locale, "/products") }, { label: cat.name[locale] }]} />
       <PageHeader title={cat.name[locale]} intro={INTRO[slug]?.[locale]} />
-      <ProductsBrowser c={c} locale={locale} lockCategory action={href(locale, "/category/[slug]", { slug })} filters={{ category: slug, origin: sp.origin, house: sp.house, occasion: sp.occasion, season: sp.season, strength: sp.strength }} />
+      <ProductsBrowser c={c} locale={locale} lockCategory action={href(locale, "/category/[slug]", { slug })} filters={{ category: slug, origin: sp.origin, house: sp.house, occasion: sp.occasion, season: sp.season, strength: sp.strength, family: sp.family, concentration: sp.concentration, gender: sp.gender, note: sp.note, page: sp.page }} />
     </>
   );
 }

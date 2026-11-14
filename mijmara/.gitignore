@@ -13,3 +13,4 @@ public/search-index.json
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+data/raw/

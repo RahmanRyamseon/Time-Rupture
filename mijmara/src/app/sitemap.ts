@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entry = (ar: string, en: string, priority = 0.6): MetadataRoute.Sitemap => [ar, en].map((u) => ({
     url: absolute(u), lastModified, priority, alternates: { languages: { ar: absolute(ar), en: absolute(en) } },
   }));
-  const fixed: AppPathname[] = ["/", "/products", "/houses", "/oud-origins", "/notes", "/culture", "/guides", "/matcher", "/about", "/contributing", "/citation-policy", "/image-policy", "/privacy", "/terms"];
+  const fixed: AppPathname[] = ["/", "/products", "/houses", "/oud-origins", "/notes", "/culture", "/guides", "/matcher", "/about", "/contributing", "/citation-policy", "/image-policy", "/privacy", "/terms", "/methodology"];
   const out: MetadataRoute.Sitemap = fixed.flatMap((r) => entry(href("ar", r), href("en", r), r === "/" ? 1 : 0.7));
   for (const cat of c.taxonomy.category ?? []) out.push(...entry(href("ar", "/category/[slug]", { slug: cat.id }), href("en", "/category/[slug]", { slug: cat.id })));
   const add = (route: (typeof ENTITY_ROUTES)[keyof typeof ENTITY_ROUTES], items: { slug: { ar: string; en: string } }[], p = 0.8) => {

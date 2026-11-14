@@ -67,3 +67,29 @@ sillage,2,قريب,Close,2
 sillage,3,متوسط,Moderate,3
 sillage,4,واسع,Wide,4
 sillage,5,يملأ المكان,Fills the room,5
+category,perfume-spray,عطور بخّاخة,Spray perfumes,8
+concentration,extrait,خلاصة عطر (إكستريه),Extrait de parfum,1
+concentration,parfum,بارفان,Parfum,2
+concentration,edp,أو دو بارفان,Eau de parfum,3
+concentration,edt,أو دو تواليت,Eau de toilette,4
+concentration,cologne,كولونيا,Cologne,5
+concentration,oil,دهن مركّز,Concentrated oil,6
+gender,unisex,للجنسين,Unisex,1
+gender,men,رجالي,Men,2
+gender,women,نسائي,Women,3
+character,fruity,فاكهي,Fruity,12
+character,green,أخضر,Green,13
+family,citrus,حمضي,Citrus,1
+family,water,مائي,Water,2
+family,green,أخضر,Green,3
+family,aromatic,عطري عشبي,Aromatic,4
+family,fruity,فاكهي,Fruity,5
+family,floral,زهري,Floral,6
+family,soft-floral,زهري ناعم,Soft Floral,7
+family,floral-amber,زهري عنبري,Floral Amber,8
+family,soft-amber,عنبري ناعم,Soft Amber,9
+family,amber,عنبري,Amber,10
+family,woody-amber,خشبي عنبري,Woody Amber,11
+family,woods,خشبي,Woods,12
+family,mossy-woods,خشبي طحلبي,Mossy Woods,13
+family,dry-woods,خشبي جاف,Dry Woods,14

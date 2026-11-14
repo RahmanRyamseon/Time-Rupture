@@ -46,6 +46,7 @@ export const pathnames = {
   "/image-policy": { ar: "/سياسة-الصور", en: "/image-policy" },
   "/privacy": { ar: "/الخصوصية", en: "/privacy" },
   "/terms": { ar: "/الشروط", en: "/terms" },
+  "/methodology": { ar: "/المنهجية", en: "/methodology" },
   "/offline": "/offline",
 } as const;
 

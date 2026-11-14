@@ -11,7 +11,7 @@ export function href(locale: Locale, route: AppPathname, params: Record<string, 
   return path;
 }
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://mijmara.netlify.app").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://mujam-alteeb.netlify.app").replace(/\/$/, "");
 
 export function absolute(path: string): string {
   return SITE_URL + encodeURI(decodeURI(path));

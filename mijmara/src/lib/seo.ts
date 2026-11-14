@@ -30,7 +30,7 @@ export function articleJsonLd(opts: { locale: Locale; headline: string; descript
     url: absolute(opts.url),
     ...(opts.about ? { about: { "@type": "Thing", name: opts.about } } : {}),
     ...(opts.citations?.length ? { citation: opts.citations } : {}),
-    publisher: { "@type": "Organization", name: opts.locale === "ar" ? "مِجمَرة" : "Mijmara" },
+    publisher: { "@type": "Organization", name: opts.locale === "ar" ? "معجم الطِّيب" : "Mu'jam al-Teeb" },
     isAccessibleForFree: true,
   };
 }

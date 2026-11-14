@@ -56,7 +56,7 @@ export default async function OriginPage({ params }: Params) {
           ))}
           <section aria-labelledby="op">
             <h2 id="op" className="mb-4 text-2xl">{t("products")}</h2>
-            {products.length ? <ul className="grid gap-4 sm:grid-cols-2">{products.map((p) => <li key={p.id}><ProductCard p={p} c={c} locale={locale} /></li>)}</ul> : <Undocumented locale={locale} />}
+            {products.length ? <ul className="grid gap-4 sm:grid-cols-2">{products.slice(0, 12).map((p) => <li key={p.id}><ProductCard p={p} c={c} locale={locale} /></li>)}</ul> : <Undocumented locale={locale} />}
           </section>
         </div>
         <aside><EntityToolbar locale={locale} entityType="origin" entityId={o.id} editHref={editHref} historyHref={href(locale, "/oud-origins/[slug]/history", { slug: o.slug[locale] })} fields={["profile", "smell", "grading", "uses", "species"]} /></aside>

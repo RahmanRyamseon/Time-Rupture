@@ -84,6 +84,11 @@ export default async function ProductPage({ params }: Params) {
     { k: t("occasions"), v: <CitedValue value={p.occasions.map((o) => taxName(c, "occasion", o, locale)).join(sep)} nums={cite("occasions")} locale={locale} editHref={editHref} /> },
     { k: t("seasons"), v: <CitedValue value={p.seasons.map((o) => taxName(c, "season", o, locale)).join(sep)} nums={cite("seasons")} locale={locale} editHref={editHref} /> },
     { k: t("size"), v: <CitedValue value={size} nums={cite("size")} locale={locale} editHref={editHref} /> },
+    { k: t("concentration"), v: <CitedValue value={p.concentration ? taxName(c, "concentration", p.concentration, locale) : ""} nums={cite("concentration")} locale={locale} editHref={editHref} /> },
+    { k: t("gender"), v: <CitedValue value={p.gender ? taxName(c, "gender", p.gender, locale) : ""} nums={cite("gender")} locale={locale} editHref={editHref} /> },
+    { k: t("family"), v: p.family
+      ? <span><Link prefetch={false} href={href(locale, "/products", {}, { family: p.family })}>{taxName(c, "family", p.family, locale)}</Link> <span className="block text-xs text-sand-400">{t("familyEstimate")} <Link prefetch={false} href={href(locale, "/methodology")}>{t("methodology")}</Link></span></span>
+      : <Undocumented locale={locale} editHref={editHref} /> },
   ];
   const priceNums = p.prices.map((pr) => reg.use([pr.citationId])[0]);
 
@@ -163,6 +168,7 @@ export default async function ProductPage({ params }: Params) {
             <Reviews productId={p.id} climates={tax("climate")} />
           </section>
 
+          {p.source === "collected" && <p className="text-sm text-sand-400">{t("sourceCollected")} <Link prefetch={false} href={href(locale, "/methodology")}>{t("methodology")}</Link></p>}
           <p className="text-sm text-sand-400">{t("authenticityNote")}</p>
         </div>
 
@@ -176,7 +182,7 @@ export default async function ProductPage({ params }: Params) {
               {t("officialPage")} <Icon name="external" className="h-4 w-4" />
             </a>
           )}
-          <EntityToolbar locale={locale} entityType="product" entityId={p.id} editHref={editHref} historyHref={href(locale, "/products/[slug]/history", { slug: p.slug[locale] })} fields={["description", "origins", "notes", "occasions", "seasons", "size", "prices", "wild_status"]} />
+          <EntityToolbar locale={locale} entityType="product" entityId={p.id} editHref={editHref} historyHref={href(locale, "/products/[slug]/history", { slug: p.slug[locale] })} fields={["description", "origins", "notes", "occasions", "seasons", "size", "concentration", "gender", "prices", "wild_status"]} />
         </aside>
       </div>
 

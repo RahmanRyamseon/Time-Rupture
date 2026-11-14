@@ -3,8 +3,8 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     id: "/",
-    name: "مِجمَرة — موسوعة العود والطِّيب",
-    short_name: "مِجمَرة",
+    name: "معجم الطِّيب — موسوعة العود والعطور",
+    short_name: "معجم الطِّيب",
     description: "موسوعة عربية مجتمعية مستقلة عن العود ودهن العود والمخلّطات والمسك ودهن الورد والبخور.",
     lang: "ar",
     dir: "rtl",

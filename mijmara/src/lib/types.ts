@@ -63,6 +63,14 @@ export interface Product {
   officialUrl: string;
   prices: Price[];
   citations: FieldCitations;
+  /** extrait | parfum | edp | edt | cologne | oil — only when the house states it */
+  concentration: string;
+  /** unisex | men | women — only when the house states it */
+  gender: string;
+  /** Edwards fragrance-wheel sub-family, estimated from listed notes (needs ≥3 matched notes) */
+  family: string;
+  /** "curated" (hand-researched) or "collected" (official store catalogue) */
+  source: "curated" | "collected";
 }
 
 export interface Origin {
@@ -83,6 +91,8 @@ export interface Note {
   slug: Bi;
   name: Bi;
   family: string;
+  /** Edwards fragrance-wheel sub-family of this note */
+  edwards: string;
   description: Bi;
   citations: FieldCitations;
 }

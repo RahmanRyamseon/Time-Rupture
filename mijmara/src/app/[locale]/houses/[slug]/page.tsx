@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getContent, getHouse, staticSlugParams } from "@/lib/content";
@@ -64,7 +65,8 @@ export default async function HousePage({ params }: Params) {
           </dl>
           <section aria-labelledby="hp">
             <h2 id="hp" className="mb-4 text-2xl">{t("products")}</h2>
-            {products.length ? <ul className="grid gap-4 sm:grid-cols-2">{products.map((p) => <li key={p.id}><ProductCard p={p} c={c} locale={locale} /></li>)}</ul> : <Undocumented locale={locale} />}
+            {products.length ? <ul className="grid gap-4 sm:grid-cols-2">{products.slice(0, 12).map((p) => <li key={p.id}><ProductCard p={p} c={c} locale={locale} /></li>)}</ul> : <Undocumented locale={locale} />}
+            {products.length > 12 && <Link prefetch={false} className="btn btn-ghost mt-4" href={href(locale, "/products", {}, { house: h.id })}>{locale === "ar" ? `عرض كل منتجات الدار (${products.length})` : `View all ${products.length} products`}</Link>}
           </section>
         </div>
         <aside className="space-y-4">

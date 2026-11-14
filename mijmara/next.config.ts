@@ -9,8 +9,8 @@ const withSerwist = withSerwistInit({
   // Keep the service worker out of `next dev` so hot reload behaves.
   disable: process.env.NODE_ENV === "development",
   additionalPrecacheEntries: [
-    { url: "/offline", revision: "mijmara-offline-1" },
-    { url: "/en/offline", revision: "mijmara-offline-1" },
+    { url: "/offline", revision: "teeb-offline-1" },
+    { url: "/en/offline", revision: "teeb-offline-1" },
     { url: "/search-index.json", revision: process.env.CONTENT_REVISION ?? "1" },
   ],
 });

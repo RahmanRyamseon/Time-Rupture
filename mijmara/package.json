@@ -1,8 +1,8 @@
 {
-  "name": "mijmara",
+  "name": "mujam-alteeb",
   "version": "1.0.0",
   "private": true,
-  "description": "Mijmara — an independent Arabic community encyclopedia of oud, dehn al oud, perfume oils and bakhoor.",
+  "description": "Mu'jam al-Teeb \u2014 an independent Arabic community encyclopedia of oud, dehn al oud, perfume oils and bakhoor.",
   "scripts": {
     "content": "tsx scripts/build-content.ts",
     "predev": "npm run content",
@@ -12,7 +12,10 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "import:supabase": "tsx scripts/import-supabase.ts"
+    "import:supabase": "tsx scripts/import-supabase.ts",
+    "collect:fetch": "tsx scripts/collect/fetch-shopify.ts",
+    "collect:transform": "tsx scripts/collect/transform.ts",
+    "collect": "npm run collect:fetch && npm run collect:transform && npm run content"
   },
   "engines": {
     "node": ">=20.9"
