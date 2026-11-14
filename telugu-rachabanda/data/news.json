@@ -1,6 +1,141 @@
 {
- "updated": "2026-11-13T23:46:11.221Z",
+ "updated": "2026-11-14T06:52:23.615Z",
  "items": [
+  {
+   "title": "Microsoft says outage is fixed, but some UAE users still report issues",
+   "url": "https://gulfnews.com/technology/microsoft-says-outage-is-fixed-but-some-uae-users-still-report-issues-1.500747039",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-14T06:23:57.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "881e5fc0ca1f",
+   "related": []
+  },
+  {
+   "title": "Middle East war: 5 things UAE residents need to know today (Nov 14, 2026)",
+   "url": "https://gulfnews.com/uae/middle-east-war-5-things-uae-residents-need-to-know-today-nov-14-2026-1.500747029",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-14T05:56:05.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "efbe378ae0f1",
+   "related": []
+  },
+  {
+   "title": "World No. 1 Arturo Coello praises Dubai's padel growth and talks partnership with Agustin Tapia",
+   "url": "https://gulfnews.com/sport/world-no-1-arturo-coello-praises-dubais-padel-growth-and-talks-partnership-with-agustin-tapia-1.500747023",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-14T05:54:33.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "23feac54b47a",
+   "related": []
+  },
+  {
+   "title": "From sugary drinks to sitting all day: Why diabetes is rising among young UAE residents",
+   "url": "https://gulfnews.com/uae/health/from-sugary-drinks-to-sitting-all-day-why-diabetes-is-rising-among-young-uae-residents-1.500747024",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-14T05:42:30.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "338b91acc579",
+   "related": []
+  },
+  {
+   "title": "Gargash: Fitch rating shows UAE economy’s strength during regional crisis",
+   "url": "https://gulfnews.com/business/gargash-fitch-rating-shows-uae-economys-strength-during-regional-crisis-1.500747025",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-14T05:35:19.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "d29799d0c4e4",
+   "related": []
+  },
+  {
+   "title": "Sokin gets DFSA licence, to grow UAE team to 100 staff",
+   "url": "https://gulfnews.com/business/sokin-gets-dfsa-licence-to-grow-uae-team-to-100-staff-1.500746495",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-14T03:00:00.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf",
+    "jobs"
+   ],
+   "expat": true,
+   "id": "dfc5d7b7dbdf",
+   "related": []
+  },
+  {
+   "title": "UAE weather: Rain possible from Monday, rough seas expected on Saturday",
+   "url": "https://gulfnews.com/uae/weather/uae-weather-rain-possible-from-monday-rough-seas-expected-on-saturday-1.500746936",
+   "publisher": "Gulf News",
+   "publisherUrl": "https://gulfnews.com",
+   "published": "2026-11-14T02:41:08.000Z",
+   "feed": "gulfnews",
+   "lang": "en",
+   "countries": [
+    "uae"
+   ],
+   "telugu": false,
+   "sections": [
+    "uae",
+    "gulf"
+   ],
+   "id": "4bab1bafd31d",
+   "related": []
+  },
   {
    "title": "US orders nationwide flight ground stop: Are UAE flights affected?",
    "url": "https://gulfnews.com/business/aviation/us-orders-nationwide-flight-ground-stop-are-uae-flights-affected-1.500746844",
@@ -230,25 +365,6 @@
     "gulf"
    ],
    "id": "3d17d8947e8a",
-   "related": []
-  },
-  {
-   "title": "Middle East War: 9 things UAE residents need to know tonight, November 13",
-   "url": "https://gulfnews.com/uae/middle-east-war-9-things-uae-residents-need-to-know-tonight-november-13-1.500746524",
-   "publisher": "Gulf News",
-   "publisherUrl": "https://gulfnews.com",
-   "published": "2026-11-13T14:20:16.000Z",
-   "feed": "gulfnews",
-   "lang": "en",
-   "countries": [
-    "uae"
-   ],
-   "telugu": false,
-   "sections": [
-    "uae",
-    "gulf"
-   ],
-   "id": "c42921329b16",
    "related": []
   },
   {
