@@ -2,7 +2,12 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const isProd = process.env.VERCEL_ENV ? process.env.VERCEL_ENV === "production" : true;
+  // Block indexing of previews on Vercel (VERCEL_ENV) and Netlify (CONTEXT).
+  const isProd = process.env.VERCEL_ENV
+    ? process.env.VERCEL_ENV === "production"
+    : process.env.CONTEXT
+      ? process.env.CONTEXT === "production"
+      : true;
   if (!isProd) return { rules: [{ userAgent: "*", disallow: "/" }] };
   return {
     rules: [

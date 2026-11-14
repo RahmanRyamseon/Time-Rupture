@@ -1,0 +1,17 @@
+# Netlify build config for the attar-wiki Next.js app.
+# Next.js runs through Netlify's OpenNext adapter (auto-installed, do not pin).
+# When deploying from the repository root via Git, set Base directory = attar-wiki.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# The service worker must never be served stale.
+[[headers]]
+  for = "/serwist/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Service-Worker-Allowed = "/"

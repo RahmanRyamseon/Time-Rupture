@@ -10,3 +10,4 @@ public/serwist/
 .vercel
 .DS_Store
 coverage/
+.netlify
