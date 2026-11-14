@@ -13,3 +13,8 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
     Service-Worker-Allowed = "/"
+
+# Next.js runtime (OpenNext): turns SSR, route handlers and the proxy/middleware into
+# Netlify Functions and Edge Functions. Declared explicitly so upload-based deploys use it too.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
