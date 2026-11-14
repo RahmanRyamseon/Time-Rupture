@@ -1,10 +1,10 @@
--- Gulf Telugu News (గల్ఫ్ తెలుగు వార్తలు): comments, board posts, reactions and polls.
+-- Gulf Telugu Guide (గల్ఫ్ తెలుగు గైడ్): comments, board posts, reactions and polls.
 -- Run once in the Supabase SQL editor. Anonymous readers can read and add, never edit or delete.
 
 create table if not exists public.comments (
   id uuid primary key default gen_random_uuid(),
-  -- "news:<item id>" for comments on a story, "board:<board id>" for community posts.
-  thread text not null check (thread ~ '^(news|board):[a-z0-9-]{1,40}$'),
+  -- "guide:<guide id>" for questions under a guide, "board:<board id>" for community posts.
+  thread text not null check (thread ~ '^(news|board|guide):[a-z0-9-]{1,40}$'),
   parent uuid references public.comments (id) on delete cascade,
   name text not null check (char_length(btrim(name)) between 1 and 40),
   place text not null default '' check (char_length(place) <= 40),

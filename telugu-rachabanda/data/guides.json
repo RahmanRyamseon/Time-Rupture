@@ -1,0 +1,238 @@
+{
+ "categories": [
+  {
+   "id": "before",
+   "icon": "🧳",
+   "title": "వెళ్లే ముందు",
+   "en": "Before you go",
+   "desc": "ఉద్యోగ ఆఫర్ సరిచూడటం, ఏజెంట్లు, ఇమిగ్రేషన్ క్లియరెన్స్, బీమా."
+  },
+  {
+   "id": "living",
+   "icon": "🏙️",
+   "title": "గల్ఫ్‌లో జీవనం",
+   "en": "Living in the Gulf",
+   "desc": "దేశాల వారీగా ఐడీ కార్డు, కార్మిక శాఖ, రాయబార కార్యాలయం; పాస్‌పోర్ట్ హక్కులు."
+  },
+  {
+   "id": "trouble",
+   "icon": "🆘",
+   "title": "సమస్యలో ఉంటే",
+   "en": "If you're in trouble",
+   "desc": "జీతం రాకపోవడం, విదేశంలో మరణం — దశలవారీ సాయం."
+  },
+  {
+   "id": "home",
+   "icon": "🏠",
+   "title": "తిరుగు ప్రయాణం",
+   "en": "Going home",
+   "desc": "గ్రాట్యుటీ లెక్క, ఫైనల్ సెటిల్‌మెంట్, ఇంటికి వచ్చాక."
+  },
+  {
+   "id": "money",
+   "icon": "💱",
+   "title": "డబ్బు",
+   "en": "Money",
+   "desc": "ఇంటికి డబ్బు పంపడం, NRE/NRO ఖాతాలు, రూపాయి మారకం."
+  }
+ ],
+ "tips": [
+  "రిజిస్టర్డ్ ఏజెంట్ సర్వీస్ చార్జీ గరిష్టం ₹30,000 + GST — అంతకు మించి అడిగితే eMigrate లో ఫిర్యాదు చేయండి.",
+  "విజిట్ వీసాపై పనికి వెళ్లవద్దు — వర్క్ వీసానే ఉండాలి.",
+  "పాస్‌పోర్ట్, వీసా, ఐడీ కార్డు కాపీలు ఇంట్లో కుటుంబం దగ్గర ఉంచండి.",
+  "జీతం రాకపోతే చెప్పకుండా పని మానేయవద్దు — ముందు కార్మిక శాఖకు ఫిర్యాదు చేయండి.",
+  "హవాలా ద్వారా డబ్బు పంపవద్దు — లైసెన్స్ ఉన్న ఎక్స్ఛేంజ్ హౌస్‌నే వాడండి.",
+  "అత్యవసరమైతే: APNRTS +91 863 2340678 · యూఏఈ 800 46342 · సౌదీ 800 247 1234."
+ ],
+ "guides": [
+  {
+   "id": "job-offer",
+   "cat": "before",
+   "icon": "🔍",
+   "title": "ఉద్యోగ ఆఫర్ నిజమా? ఏజెంట్‌ను ఎలా సరిచూడాలి",
+   "en": "Is the job offer real? How to check a recruiting agent",
+   "summary": "గల్ఫ్ ఉద్యోగం పేరుతో మోసాలు ఎక్కువ. డబ్బు కట్టే ముందు ఈ ఐదు విషయాలు సరిచూసుకోండి.",
+   "sources": [
+    {
+     "name": "eMigrate (Ministry of External Affairs)",
+     "url": "https://emigrate.gov.in"
+    },
+    {
+     "name": "MEA – Advisory on overcharging by agents and fake jobs (2024)",
+     "url": "https://www.mea.gov.in/images/pdf/05-List-2024.pdf"
+    },
+    {
+     "name": "TOMCOM – Telangana Overseas Manpower Company",
+     "url": "https://tomcom.telangana.gov.in"
+    }
+   ],
+   "html": "\n<h2>డబ్బు కట్టే ముందు</h2>\n<ol>\n<li><strong>ఏజెంట్ రిజిస్టర్ అయ్యాడా?</strong> భారత ప్రభుత్వం దగ్గర లైసెన్స్ ఉన్న రిక్రూటింగ్ ఏజెంట్ల జాబితా <a href=\"https://emigrate.gov.in\" target=\"_blank\" rel=\"noopener\">eMigrate</a> సైట్‌లో ఉంటుంది. అక్కడ లేని ఏజెంట్‌కు డబ్బు ఇవ్వవద్దు.</li>\n<li><strong>సర్వీస్ చార్జీ పరిమితి.</strong> విదేశాంగ శాఖ సలహా ప్రకారం రిజిస్టర్డ్ ఏజెంట్ కార్మికుడి నుంచి గరిష్టంగా ₹30,000 + 18% GST మాత్రమే తీసుకోవాలి — దానికి రసీదు అడగండి. అంతకు మించి అడిగితే అది చట్టవిరుద్ధం.</li>\n<li><strong>ఆఫర్ లెటర్, కాంట్రాక్ట్ రాతపూర్వకంగా.</strong> జీతం, పని గంటలు, వసతి, భోజనం, ఉద్యోగం పేరు — అన్నీ మీకు అర్థమయ్యే భాషలో ఉండాలి. సంతకం చేసే ముందు కాపీ తీసుకోండి.</li>\n<li><strong>విజిట్ వీసాపై పనికి వెళ్లవద్దు.</strong> పని కోసం వర్క్ వీసా / ఎంప్లాయ్‌మెంట్ వీసానే ఉండాలి. విజిట్ వీసాపై వెళ్లి పని చేస్తే చిక్కుల్లో పడతారు, ఇంటికి పంపేయవచ్చు.</li>\n<li><strong>ECR పాస్‌పోర్ట్ అయితే</strong> ఇమిగ్రేషన్ క్లియరెన్స్ తప్పనిసరి — <a href=\"/g/ecr-insurance\">ఈ గైడ్ చూడండి</a>.</li>\n</ol>\n<h2>మోసం గుర్తులు</h2>\n<ul>\n<li>\"వీసా రెడీ, వెంటనే డబ్బు కట్టండి\" అని తొందరపెట్టడం.</li>\n<li>రసీదు ఇవ్వకపోవడం, నగదు మాత్రమే అడగడం.</li>\n<li>వాట్సాప్‌లో మాత్రమే మాట్లాడటం, ఆఫీసు చిరునామా లేకపోవడం.</li>\n<li>పాస్‌పోర్ట్ ఒరిజినల్ తన దగ్గరే ఉంచుకుంటాననడం.</li>\n</ul>\n<h2>మోసపోతే</h2>\n<p>eMigrate లో లేదా <a href=\"https://www.madad.gov.in\" target=\"_blank\" rel=\"noopener\">MADAD</a> లో ఫిర్యాదు చేయండి, దగ్గర్లోని పోలీస్ స్టేషన్‌లో కేసు పెట్టండి. తెలంగాణ వారు ప్రభుత్వ సంస్థ TOMCOM ద్వారా సురక్షితంగా విదేశీ ఉద్యోగాలు వెతుక్కోవచ్చు (హెల్ప్‌డెస్క్ 94400 51452).</p>\n",
+   "en_summary": "Only pay agents listed on eMigrate. MEA's advisory caps a registered agent's service charge at ₹30,000 plus 18% GST, with a receipt. Get the contract in writing, never travel on a visit visa to work, and report fraud on eMigrate or MADAD and to the police.",
+   "checked": "2026-11-14"
+  },
+  {
+   "id": "ecr-insurance",
+   "cat": "before",
+   "icon": "🛂",
+   "title": "ఇమిగ్రేషన్ క్లియరెన్స్ (ECR) & ప్రవాసీ బీమా",
+   "en": "Emigration clearance (ECR) and Pravasi Bharatiya Bima Yojana insurance",
+   "summary": "ECR పాస్‌పోర్ట్‌తో గల్ఫ్‌లో ఉద్యోగానికి వెళ్తుంటే క్లియరెన్స్, ₹10 లక్షల బీమా తప్పనిసరి.",
+   "sources": [
+    {
+     "name": "eMigrate (Ministry of External Affairs)",
+     "url": "https://emigrate.gov.in"
+    },
+    {
+     "name": "MEA – Advisory on overcharging by agents and fake jobs (2024)",
+     "url": "https://www.mea.gov.in/images/pdf/05-List-2024.pdf"
+    }
+   ],
+   "html": "\n<h2>ECR అంటే?</h2>\n<p>పాస్‌పోర్ట్‌లో \"Emigration Check Required\" (ECR) అని ఉంటే, ఆరు గల్ఫ్ దేశాలు సహా కొన్ని దేశాలకు ఉద్యోగానికి వెళ్లే ముందు <strong>ఇమిగ్రేషన్ క్లియరెన్స్</strong> తీసుకోవాలి. ఇది <a href=\"https://emigrate.gov.in\" target=\"_blank\" rel=\"noopener\">eMigrate</a> ద్వారా — సాధారణంగా రిజిస్టర్డ్ ఏజెంట్ లేదా యజమాని ద్వారా — జరుగుతుంది. క్లియరెన్స్ లేకుండా విమానాశ్రయంలో ఆపేయవచ్చు.</p>\n<h2>ప్రవాసీ భారతీయ బీమా యోజన (PBBY)</h2>\n<ul>\n<li>ECR కార్మికులకు తప్పనిసరి బీమా.</li>\n<li>మరణం లేదా పనిలో గాయం అయితే <strong>₹10 లక్షల</strong> వరకు కవరేజ్, వైద్య ఖర్చులు కూడా.</li>\n<li>ఒకేసారి ప్రీమియం: <strong>2 ఏళ్లకు ₹275, 3 ఏళ్లకు ₹375</strong>.</li>\n<li>పాలసీ కాపీ మీ దగ్గరా, ఇంట్లో కుటుంబం దగ్గరా ఉంచండి — క్లెయిమ్‌కు అవసరం.</li>\n</ul>\n<p>ఆంధ్రప్రదేశ్ వారికి రాష్ట్ర ప్రభుత్వ <a href=\"https://apnrts.ap.gov.in/insurance\" target=\"_blank\" rel=\"noopener\">ప్రవాసాంధ్ర భరోసా బీమా</a> కూడా ఉంది — APNRTS లో వివరాలు చూడండి.</p>\n",
+   "en_summary": "Holders of ECR passports need emigration clearance through eMigrate before taking a job in the six GCC countries. PBBY insurance is compulsory: ₹10 lakh cover for death or work injury, plus medical expenses, for a one-time premium of ₹275 (2 years) or ₹375 (3 years).",
+   "checked": "2026-11-14"
+  },
+  {
+   "id": "passport",
+   "cat": "living",
+   "icon": "📕",
+   "title": "పాస్‌పోర్ట్ యజమాని దగ్గరే ఉందా?",
+   "en": "Is your employer keeping your passport?",
+   "summary": "పాస్‌పోర్ట్ మీ సొంత ఆస్తి. యూఏఈ, సౌదీ చట్టాలు అనుమతి లేకుండా యజమాని దాన్ని ఉంచుకోవడాన్ని నిషేధిస్తున్నాయి.",
+   "sources": [
+    {
+     "name": "UAE Ministry of Human Resources and Emiratisation",
+     "url": "https://www.mohre.gov.ae"
+    },
+    {
+     "name": "Saudi Ministry of Human Resources and Social Development",
+     "url": "https://www.hrsd.gov.sa"
+    },
+    {
+     "name": "MADAD – consular grievances",
+     "url": "https://www.madad.gov.in"
+    }
+   ],
+   "html": "\n<p>పాస్‌పోర్ట్ భారత ప్రభుత్వ ఆస్తి, మీ దగ్గర ఉండాల్సిన పత్రం. <strong>యూఏఈ, సౌదీ అరేబియా</strong> చట్టాల ప్రకారం మీ అనుమతి లేకుండా యజమాని దాన్ని ఉంచుకోవడం నిషిద్ధం. ఇతర గల్ఫ్ దేశాల్లో కూడా కార్మిక శాఖలు దీనిపై ఫిర్యాదులు స్వీకరిస్తాయి.</p>\n<h2>ఏం చేయాలి</h2>\n<ol>\n<li>మర్యాదగా, రాతపూర్వకంగా (మెసేజ్/ఈమెయిల్) పాస్‌పోర్ట్ తిరిగి ఇవ్వమని అడగండి — రుజువుగా ఉంచుకోండి.</li>\n<li>ఇవ్వకపోతే ఆ దేశ కార్మిక శాఖకు ఫిర్యాదు చేయండి — <a href=\"/c/uae\">మీ దేశం పేజీ</a>లో వివరాలు.</li>\n<li>భారత రాయబార కార్యాలయానికి లేదా <a href=\"https://www.madad.gov.in\" target=\"_blank\" rel=\"noopener\">MADAD</a> కు తెలియజేయండి.</li>\n<li>ఎప్పుడూ పాస్‌పోర్ట్, వీసా, ఐడీ కార్డు ఫోటోలు/కాపీలు ఫోన్‌లో, ఇంట్లో కుటుంబం దగ్గర ఉంచండి.</li>\n</ol>\n",
+   "en_summary": "Your passport is yours to keep. UAE and Saudi law forbid employers to keep it without your consent. Ask for it in writing, then complain to the labour ministry and tell the Indian embassy or MADAD. Keep copies at home.",
+   "checked": "2026-11-14"
+  },
+  {
+   "id": "unpaid-salary",
+   "cat": "trouble",
+   "icon": "💸",
+   "title": "జీతం రాలేదా? ఎవరికి, ఎలా ఫిర్యాదు చేయాలి",
+   "en": "Salary not paid? Where and how to complain",
+   "summary": "జీతం ఆలస్యమైతే ఆధారాలు సేకరించి, ఆ దేశ కార్మిక శాఖకు, భారత రాయబార కార్యాలయానికి ఫిర్యాదు చేయండి.",
+   "sources": [
+    {
+     "name": "MOHRE UAE – call centre 600 590000",
+     "url": "https://www.mohre.gov.ae"
+    },
+    {
+     "name": "HRSD Saudi Arabia – 19911",
+     "url": "https://www.hrsd.gov.sa"
+    },
+    {
+     "name": "LMRA Bahrain – complaints",
+     "url": "https://lmra.gov.bh/en/page/show/527"
+    },
+    {
+     "name": "MADAD – consular grievances",
+     "url": "https://www.madad.gov.in"
+    }
+   ],
+   "html": "\n<h2>ముందుగా</h2>\n<ol>\n<li><strong>ఆధారాలు సేకరించండి:</strong> కాంట్రాక్ట్, ఐడీ కార్డు, బ్యాంక్ స్టేట్‌మెంట్ (జీతం రాని నెలలు), యజమానితో మెసేజ్‌లు.</li>\n<li><strong>చెప్పకుండా పని మానేయవద్దు.</strong> చాలా దేశాల్లో అలా చేస్తే \"ఆబ్స్కాండింగ్\" కేసు పెట్టే అవకాశం ఉంది. ముందు ఫిర్యాదు చేయండి.</li>\n<li><strong>అప్పులు సంతకం చేయవద్దు:</strong> \"జీతం అంతా అందింది\" అని రాసిన పత్రాలపై డబ్బు అందకుండా సంతకం చేయవద్దు.</li>\n</ol>\n<h2>ఎక్కడ ఫిర్యాదు చేయాలి</h2>\n<ul>\n<li><strong>యూఏఈ:</strong> MOHRE కాల్ సెంటర్ <a href=\"tel:600590000\">600 590000</a>, MOHRE యాప్/సైట్‌లో \"My Salary Complaint\" సేవ (పేరు చెప్పకుండానూ ఫిర్యాదు చేయవచ్చు).</li>\n<li><strong>సౌదీ అరేబియా:</strong> మానవ వనరుల శాఖ (HRSD) <a href=\"tel:19911\">19911</a>, లేదా HRSD సైట్‌లో కార్మిక ఫిర్యాదు.</li>\n<li><strong>బహ్రెయిన్:</strong> LMRA ఫిర్యాదుల విభాగం.</li>\n<li><strong>ఖతార్, కువైట్, ఒమన్:</strong> ఆ దేశ కార్మిక శాఖ సైట్/యాప్ — <a href=\"/c/qatar\">దేశాల పేజీలు</a> చూడండి.</li>\n<li><strong>భారత రాయబార కార్యాలయం:</strong> <a href=\"https://www.madad.gov.in\" target=\"_blank\" rel=\"noopener\">MADAD</a> లో ఫిర్యాదు నమోదు చేయండి; ప్రవాసీ భారతీయ సహాయ కేంద్రం (యూఏఈ 800 46342, సౌదీ 800 247 1234).</li>\n</ul>\n<p>ఆంధ్రప్రదేశ్ వారు <a href=\"tel:+918632340678\">APNRTS 24 గంటల హెల్ప్‌లైన్</a> కు కూడా ఫోన్ చేయవచ్చు.</p>\n",
+   "en_summary": "Collect evidence, don't stop work without notice (it can lead to an absconding case), and don't sign papers saying you've been paid. Complain to the labour ministry (UAE MOHRE 600 590000 or its 'My Salary Complaint' service; Saudi HRSD 19911; Bahrain LMRA) and to the Indian embassy through MADAD.",
+   "checked": "2026-11-14"
+  },
+  {
+   "id": "death-repatriation",
+   "cat": "trouble",
+   "icon": "🕊️",
+   "title": "విదేశంలో మరణం: మృతదేహాన్ని ఇంటికి తేవడం",
+   "en": "A death abroad: bringing the body home",
+   "summary": "కుటుంబం చేయాల్సిన పనులు, కావాల్సిన పత్రాలు, ప్రభుత్వ సాయం — దశలవారీగా.",
+   "sources": [
+    {
+     "name": "MEA – Transfer of mortal remains",
+     "url": "https://www.mea.gov.in/transfer-of-mortal-remains.htm"
+    },
+    {
+     "name": "MADAD – consular grievances",
+     "url": "https://www.madad.gov.in"
+    },
+    {
+     "name": "Telangana GO Ms No. 216 (2024) – ex gratia for families of Gulf workers (The Hindu report)",
+     "url": "https://www.thehindu.com/news/national/telangana/govt-sanctions-645-crore-ex-gratia-for-families-of-deceased-gulf-workers/article68787583.ece"
+    }
+   ],
+   "html": "\n<p>ఈ కష్ట సమయంలో మీ కుటుంబానికి మా సానుభూతి. ఈ దశలు ప్రక్రియను సులభం చేస్తాయి.</p>\n<h2>1. రాయబార కార్యాలయానికి తెలియజేయండి</h2>\n<p>ఆ దేశంలోని భారత రాయబార కార్యాలయం/కాన్సులేట్‌లో <strong>మరణం నమోదు</strong> తప్పనిసరి. <a href=\"https://www.madad.gov.in\" target=\"_blank\" rel=\"noopener\">MADAD</a> లో కూడా నమోదు చేయవచ్చు. రాయబార కార్యాలయం స్థానిక అధికారులతో మాట్లాడి ప్రక్రియను వేగవంతం చేస్తుంది.</p>\n<h2>2. సాధారణంగా కావాల్సిన పత్రాలు</h2>\n<ul>\n<li>ఆసుపత్రి ఇచ్చిన మరణ ధ్రువపత్రం / వైద్య నివేదిక</li>\n<li>మృతదేహాన్ని తరలించడానికి (లేదా స్థానికంగా అంత్యక్రియలకు) కుటుంబ సమ్మతి పత్రం — నోటరీ చేయించినది</li>\n<li>పాస్‌పోర్ట్, వీసా పేజీల కాపీ (పాస్‌పోర్ట్ రద్దు కోసం)</li>\n<li>ఎంబామింగ్ సర్టిఫికేట్, అంటువ్యాధి లేదని ధ్రువపత్రం, స్థానిక ఇమిగ్రేషన్/కస్టమ్స్ అనుమతి, రాయబార కార్యాలయ NOC</li>\n</ul>\n<p>సహజ మరణాల్లో ఆలస్యం తక్కువ; ప్రమాదం వంటి అసహజ మరణాల్లో దర్యాప్తు వల్ల ఎక్కువ సమయం పడుతుంది.</p>\n<h2>3. ఖర్చులు భరించలేకపోతే</h2>\n<ul>\n<li>అక్కడ బంధువులు, స్నేహితులు లేకపోతే రాయబార కార్యాలయానికి ఏర్పాట్లు చేసే అధికారం ఇవ్వవచ్చు.</li>\n<li>కుటుంబం ఖర్చు భరించలేకపోతే, ఆర్థిక స్థితి పరిశీలించి రాయబార కార్యాలయం (ICWF నిధి నుంచి) సాయం చేసే అవకాశం ఉంది.</li>\n<li>యజమాని బాధ్యతలు, బీమా (PBBY ₹10 లక్షలు — <a href=\"/g/ecr-insurance\">వివరాలు</a>) గురించి అడగండి.</li>\n</ul>\n<h2>4. రాష్ట్ర ప్రభుత్వ సాయం</h2>\n<ul>\n<li><strong>తెలంగాణ:</strong> గల్ఫ్‌లో మరణించిన తెలంగాణ కార్మికుల కుటుంబాలకు ₹5 లక్షల ఎక్స్‌గ్రేషియా (GO Ms No. 216, 2024) — మరణ కారణంతో సంబంధం లేకుండా. జిల్లా కలెక్టర్ కార్యాలయం / ప్రవాసీ ప్రజావాణిలో దరఖాస్తు చేయండి.</li>\n<li><strong>ఆంధ్రప్రదేశ్:</strong> APNRTS 24 గంటల హెల్ప్‌లైన్ <a href=\"tel:+918632340678\">+91 863 2340678</a> కు ఫోన్ చేసి సాయం కోరండి.</li>\n</ul>\n",
+   "en_summary": "Register the death with the Indian embassy (or on MADAD). The usual documents are a death certificate, the family's notarised consent, passport and visa copies, an embalming certificate, a non-infectious certificate, local clearances and the embassy's NOC. If the family can't pay, the embassy can help after checking their means. Telangana pays ₹5 lakh ex gratia to families of Gulf workers who die abroad (GO Ms No. 216, 2024); AP families can call APNRTS.",
+   "checked": "2026-11-14"
+  },
+  {
+   "id": "gratuity",
+   "cat": "home",
+   "icon": "🧮",
+   "title": "గ్రాట్యుటీ (ఎండ్ ఆఫ్ సర్వీస్) ఎంత వస్తుంది?",
+   "en": "How much end-of-service gratuity will I get?",
+   "summary": "యూఏఈ, సౌదీ చట్టాల ప్రకారం లెక్కించే కాలిక్యులేటర్‌తో. ఇతర దేశాలకు అధికారిక లింకులు.",
+   "sources": [
+    {
+     "name": "UAE Federal Decree-Law No. 33 of 2021, Art. 51 (MOHRE)",
+     "url": "https://www.mohre.gov.ae"
+    },
+    {
+     "name": "Saudi Labor Law, Arts. 84–85 (HRSD)",
+     "url": "https://www.hrsd.gov.sa/sites/default/files/2023-02/Labor.pdf"
+    }
+   ],
+   "calculator": true,
+   "html": "\n<h2>యూఏఈ</h2>\n<ul>\n<li>కనీసం ఒక ఏడాది నిరంతర సర్వీస్ ఉండాలి.</li>\n<li>మొదటి 5 ఏళ్లకు, ప్రతి ఏడాదికి <strong>21 రోజుల బేసిక్ జీతం</strong>; ఆ తర్వాత ప్రతి ఏడాదికి <strong>30 రోజుల బేసిక్ జీతం</strong>.</li>\n<li>మొత్తం గ్రాట్యుటీ రెండేళ్ల జీతానికి మించదు. లెక్క బేసిక్ జీతంపైనే (అలవెన్సులు కాదు).</li>\n</ul>\n<h2>సౌదీ అరేబియా</h2>\n<ul>\n<li>మొదటి 5 ఏళ్లకు ప్రతి ఏడాదికి <strong>అర నెల జీతం</strong>; ఆ తర్వాత ప్రతి ఏడాదికి <strong>ఒక నెల జీతం</strong>.</li>\n<li>మీరే రాజీనామా చేస్తే: 2 ఏళ్ల లోపు — ఏమీ రాదు; 2–5 ఏళ్లు — మూడో వంతు; 5–10 ఏళ్లు — మూడింట రెండు వంతులు; 10 ఏళ్లు పైబడితే — పూర్తి మొత్తం.</li>\n</ul>\n<h2>ఖతార్, కువైట్, ఒమన్, బహ్రెయిన్</h2>\n<p>ఈ దేశాల నియమాలు వేర్వేరుగా ఉన్నాయి, ఇటీవల మారాయి కూడా. మేము ఇంకా అధికారిక మూలం నుంచి సరిచూడలేదు — ఆ దేశ కార్మిక శాఖ సైట్ చూడండి (<a href=\"/c/qatar\">దేశాల పేజీలు</a>).</p>\n<p class=\"muted\">కాలిక్యులేటర్ అంచనా మాత్రమే. మీ కాంట్రాక్ట్, చివరి జీతం, ఆ దేశ కార్మిక శాఖ లెక్కే తుది.</p>\n",
+   "en_summary": "UAE (Decree-Law 33/2021): after at least one year, 21 days' basic pay for each of the first five years and 30 days for each later year, capped at two years' pay. Saudi Arabia (Labor Law Arts 84 and 85): half a month per year for the first five years, then a month; after resignation, nothing under 2 years, one third for 2 to 5 years, two thirds for 5 to 10, the full amount after 10. Other countries: see the labour ministry.",
+   "checked": "2026-11-14"
+  },
+  {
+   "id": "going-home",
+   "cat": "home",
+   "icon": "🏠",
+   "title": "శాశ్వతంగా ఇంటికి వెళ్తున్నారా? చెక్‌లిస్ట్",
+   "en": "Going home for good? A checklist",
+   "summary": "ఫైనల్ సెటిల్‌మెంట్ నుంచి బ్యాంక్ ఖాతాల వరకు — మర్చిపోకూడని పనులు.",
+   "sources": [
+    {
+     "name": "eMigrate (Ministry of External Affairs)",
+     "url": "https://emigrate.gov.in"
+    },
+    {
+     "name": "APNRTS",
+     "url": "https://apnrts.ap.gov.in"
+    },
+    {
+     "name": "TOMCOM Telangana",
+     "url": "https://tomcom.telangana.gov.in"
+    }
+   ],
+   "html": "\n<h2>బయలుదేరే ముందు</h2>\n<ul>\n<li><strong>ఫైనల్ సెటిల్‌మెంట్:</strong> చివరి జీతం, మిగిలిన సెలవుల డబ్బు, <a href=\"/g/gratuity\">గ్రాట్యుటీ</a> — రాతపూర్వక లెక్క అడగండి, డబ్బు అందే ముందు \"అంతా అందింది\" అని సంతకం చేయవద్దు.</li>\n<li><strong>వీసా/రెసిడెన్సీ రద్దు</strong> యజమాని ద్వారా సరిగ్గా జరిగేలా చూడండి; ఎగ్జిట్/క్యాన్సిలేషన్ పత్రం కాపీ తీసుకోండి.</li>\n<li><strong>బాకీలు తీర్చండి:</strong> బ్యాంక్ లోన్లు, క్రెడిట్ కార్డులు, ఫోన్ బిల్లులు, ట్రాఫిక్ జరిమానాలు — బాకీలు ఉంటే ప్రయాణ నిషేధం లేదా కేసులు రావచ్చు, మళ్లీ ఆ దేశానికి రావడం కష్టం.</li>\n<li><strong>అనుభవ ధ్రువపత్రం</strong> (experience certificate), జీతం సర్టిఫికేట్ తీసుకోండి — ఇంటి దగ్గర ఉద్యోగానికి ఉపయోగపడతాయి.</li>\n</ul>\n<h2>ఇంటికి వచ్చాక</h2>\n<ul>\n<li><strong>బ్యాంక్:</strong> ఎన్ఆర్ఐ హోదా మారిందని బ్యాంకుకు తెలియజేయండి — NRE/NRO ఖాతాలను రెసిడెంట్ ఖాతాలుగా మార్చాలి.</li>\n<li><strong>ఉపాధి, శిక్షణ:</strong> ఆంధ్రప్రదేశ్ వారు APNRTS లో, తెలంగాణ వారు TOMCOM లో నమోదు చేసుకుని తిరిగొచ్చిన వారి కోసం ఉన్న పథకాలు, శిక్షణ గురించి అడగండి.</li>\n</ul>\n",
+   "en_summary": "Before leaving: get a written final settlement (salary, leave pay, gratuity), make sure your residence visa is cancelled properly, clear loans, cards, bills and fines (debts can lead to travel bans or cases), and collect experience and salary certificates. Once home: tell your bank your NRI status has changed, and register with APNRTS or TOMCOM for schemes for returning workers.",
+   "checked": "2026-11-14"
+  },
+  {
+   "id": "send-money",
+   "cat": "money",
+   "icon": "💱",
+   "title": "ఇంటికి డబ్బు పంపడం: సురక్షిత మార్గాలు",
+   "en": "Sending money home safely",
+   "summary": "లైసెన్స్ ఉన్న ఎక్స్ఛేంజ్ హౌస్ లేదా బ్యాంక్ ద్వారానే పంపండి. NRE, NRO ఖాతాల తేడా.",
+   "sources": [
+    {
+     "name": "Reserve Bank of India (NRI accounts: see FAQs)",
+     "url": "https://www.rbi.org.in"
+    }
+   ],
+   "html": "\n<ul>\n<li><strong>లైసెన్స్ ఉన్న ఎక్స్ఛేంజ్ హౌస్ లేదా బ్యాంక్ ద్వారానే</strong> పంపండి. హవాలా / అనధికార మార్గాలు గల్ఫ్ దేశాల్లోనూ భారత్‌లోనూ చట్టవిరుద్ధం — డబ్బు పోయే ప్రమాదం, కేసులు.</li>\n<li>ప్రతి లావాదేవీ రసీదు దాచుకోండి.</li>\n<li>రేట్లు, ఫీజులు పోల్చి చూడండి — కుడివైపు <strong>రూపాయి మారకం</strong> సూచిక రేటు చూపిస్తుంది; ఎక్స్ఛేంజ్ హౌస్ రేటు కొంచెం తక్కువగా ఉంటుంది.</li>\n</ul>\n<h2>NRE, NRO ఖాతాలు</h2>\n<ul>\n<li><strong>NRE ఖాతా:</strong> విదేశంలో సంపాదించిన డబ్బు కోసం. డబ్బును తిరిగి విదేశానికి తీసుకెళ్లవచ్చు; వడ్డీపై భారత్‌లో పన్ను ఉండదు.</li>\n<li><strong>NRO ఖాతా:</strong> భారత్‌లో వచ్చే ఆదాయం (అద్దె, పెన్షన్ వంటివి) కోసం. వడ్డీపై పన్ను ఉంటుంది.</li>\n<li>పూర్తి నియమాలకు మీ బ్యాంకును, RBI సమాచారాన్ని చూడండి.</li>\n</ul>\n",
+   "en_summary": "Send money only through licensed exchange houses or banks; hawala is illegal in the Gulf and in India. Keep every receipt and compare rates and fees. An NRE account holds money earned abroad (repatriable, and its interest is tax-free in India); an NRO account holds income earned in India (taxable).",
+   "checked": "2026-11-14"
+  }
+ ]
+}

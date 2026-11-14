@@ -21,5 +21,22 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/s/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/story/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/saved",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }

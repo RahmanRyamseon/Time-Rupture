@@ -1,8 +1,8 @@
-name: Gulf Telugu News (every 2 hours)
+name: Gulf Telugu Guide (daily rates)
 
 on:
   schedule:
-    - cron: "27 */2 * * *"
+    - cron: "37 4 * * *"   # daily, after the exchange-rate source updates
   workflow_dispatch:
 
 permissions:
@@ -22,24 +22,24 @@ jobs:
         with:
           node-version: 22
 
-      - name: Check parser
+      - name: Check guide content and calculator
         run: node telugu-rachabanda/scripts/test.mjs
 
-      - name: Collect Gulf Telugu news and rupee rates
-        run: node telugu-rachabanda/scripts/update.mjs
+      - name: Refresh rupee rates
+        run: node telugu-rachabanda/scripts/rates.mjs
 
       - name: Check the page build
         run: node telugu-rachabanda/scripts/build-pages.mjs
 
-      - name: Commit updated news
+      - name: Commit updated rates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add telugu-rachabanda/data/news.json telugu-rachabanda/data/rates.json
+          git add telugu-rachabanda/data/rates.json
           if git diff --cached --quiet; then
-            echo "No news changes to commit."
+            echo "No rate changes to commit."
           else
-            git commit -m "telugu-rachabanda: news update $(date -u '+%F %H:%M') UTC"
+            git commit -m "telugu-rachabanda: rates update $(date -u '+%F')"
             git pull --rebase
             git push
           fi
