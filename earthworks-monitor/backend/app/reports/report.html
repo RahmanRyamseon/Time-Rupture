@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>{{ title }}</title><style>{{ css | safe }}</style></head>
+<body>
+{% for r in reports %}{% set t = r.t %}
+<section class="report" lang="{{ r.lang }}" dir="{{ r.dir }}">
+  <span class="app">{{ app_name }}</span>
+  <h1>{{ t.title }}</h1>
+  <table class="meta">
+    <tr><td class="k">{{ t.project }}</td><td>{{ project.name }}</td><td class="k">{{ t.survey }}</td><td>{{ surface.name }}</td></tr>
+    <tr><td class="k">{{ t.client }}</td><td>{{ project.client_name or "–" }}</td><td class="k">{{ t.surveyDate }}</td><td>{{ r.survey_date }}</td></tr>
+    <tr><td class="k">{{ t.site }}</td><td>{{ site.name }} <span class="muted ltr">({{ r.site_area }})</span></td><td class="k">{{ t.baseline }}</td><td>{{ r.baseline_label }}</td></tr>
+    <tr><td class="k">{{ t.generated }}</td><td colspan="3">{{ r.generated }}</td></tr>
+  </table>
+  {% if draft %}<div class="banner draft">{{ t.draft }}</div>{% endif %}
+  {% if demo_resolution %}<div class="banner warn">{{ r.demo_notice }}</div>{% endif %}
+
+  <h2>{{ t.summary }}</h2>
+  {% if r.main %}
+    <p>{{ r.summary_lead }}</p>
+    <div class="kpis">
+      <div class="kpi cut"><div class="label">{{ t.cut }}</div><div class="value ltr">{{ r.main.site.cut }} m³</div><div class="pm ltr">± {{ r.main.site.cut_pm }} m³</div></div>
+      <div class="kpi fill"><div class="label">{{ t.fill }}</div><div class="value ltr">{{ r.main.site.fill }} m³</div><div class="pm ltr">± {{ r.main.site.fill_pm }} m³</div></div>
+      <div class="kpi net"><div class="label">{{ t.net }}</div><div class="value ltr">{{ r.main.site.net }} m³</div><div class="pm ltr">± {{ r.main.site.net_pm }} m³</div></div>
+    </div>
+  {% elif is_reference %}<p>{{ t.summaryBaseline }}</p>{% else %}<p>{{ t.summaryNoAnalysis }}</p>{% endif %}
+  {% if r.progress_rows %}
+    <h3>{{ t.progressHeading }}</h3>
+    <table class="data">
+      <thead><tr><th>{{ t.zone }}</th><th class="num">{{ t.progress }}</th></tr></thead>
+      <tbody>{% for row in r.progress_rows %}<tr><th>{{ row.name }}</th><td class="num ltr">{{ row.progress }}</td></tr>{% endfor %}</tbody>
+    </table>
+  {% elif not has_design %}<p class="muted">{{ t.noDesign }}</p>{% endif %}
+
+  <h2>{{ t.maps }}</h2>
+  <div class="maps">
+    {% for m in r.maps %}
+    <figure class="{{ 'wide' if r.maps | length == 1 else '' }}"><img src="{{ m.src }}" alt=""><figcaption>{{ m.caption }}</figcaption></figure>
+    {% endfor %}
+  </div>
+  <div class="legend">
+    <span><i class="line" style="border-color:#1f2933"></i>{{ t.legendSite }}</span>
+    {% if zone_types.cut %}<span><i class="line" style="border-color:#2166ac"></i>{{ t.legendCut }}</span>{% endif %}
+    {% if zone_types.fill %}<span><i class="line" style="border-color:#b2182b"></i>{{ t.legendFill }}</span>{% endif %}
+    {% if zone_types.mixed %}<span><i class="line" style="border-color:#7b3294"></i>{{ t.legendMixed }}</span>{% endif %}
+  </div>
+  {% if r.ramp_legend %}<div class="legend"><span><span class="ramp"></span>{{ r.ramp_legend }}</span></div>{% endif %}
+  {% if r.scale_note %}<p class="small muted">{{ r.scale_note }}</p>{% endif %}
+
+  {% if r.tables %}
+  <h2>{{ t.volumes }}</h2>
+  {% for tbl in r.tables %}
+    <h3>{{ tbl.title }}</h3>
+    {% if tbl.stale %}<div class="banner warn">{{ t.stale }}</div>{% endif %}
+    <table class="data">
+      <thead><tr><th>{{ t.zone }}</th><th class="num">{{ t.cutM3 }}</th><th class="num">{{ t.fillM3 }}</th><th class="num">{{ t.netM3 }}</th>{% if tbl.show_progress %}<th class="num">{{ t.progress }}</th>{% endif %}</tr></thead>
+      <tbody>
+      {% for row in tbl.rows %}
+        <tr class="{{ 'total' if row.total else '' }}"><th>{{ row.name }}</th>
+          <td class="num ltr">{{ row.cut }} ± {{ row.cut_pm }}</td><td class="num ltr">{{ row.fill }} ± {{ row.fill_pm }}</td><td class="num ltr">{{ row.net }} ± {{ row.net_pm }}</td>
+          {% if tbl.show_progress %}<td class="num ltr">{{ row.progress or "–" }}</td>{% endif %}</tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% for w in tbl.warnings %}<p class="small" style="color:#8a5300">{{ w }}</p>{% endfor %}
+    <p class="small muted">{{ tbl.note }}</p>
+  {% endfor %}
+  {% endif %}
+
+  {% if chart_svg %}
+  <h2>{{ t.chart }}</h2>
+  <div class="chart ltr">{{ chart_svg | safe }}</div>
+  <div class="legend">{% for z in chart_zones %}<span><i class="line" style="border-color:{{ z.color }}"></i>{{ z.name }}</span>{% endfor %}</div>
+  <p class="small muted">{{ t.chartNote }}</p>
+  <table class="data">
+    <thead><tr><th>{{ t.date }}</th><th>{{ t.survey }}</th>{% for z in chart_zones %}<th class="num">{{ z.name }}</th>{% endfor %}</tr></thead>
+    <tbody>{% for e in r.chart_rows %}<tr><td class="ltr">{{ e.date }}</td><td>{{ e.name }}</td>{% for v in e["values"] %}<td class="num ltr">{{ v }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+  </table>
+  {% endif %}
+
+  <h2>{{ t.method }}</h2>
+  <p>{{ r.method_p1 }}</p><p>{{ t.methodP2 }}</p><p>{{ t.methodP3 }}</p><p>{{ t.methodP4 }}</p>
+
+  <h2>{{ t.sources }}</h2>
+  <table class="data sources">
+    <thead><tr><th>{{ t.surface }}</th><th>{{ t.date }}</th><th>{{ t.type }}</th><th>{{ t.resolution }}</th><th>{{ t.heightRef }}</th><th>{{ t.alignment }}</th><th>{{ t.file }}</th></tr></thead>
+    <tbody>{% for s in r.sources %}
+      <tr><th>{{ s.name }}</th><td class="ltr">{{ s.date }}</td><td>{{ s.type }}</td><td class="ltr">{{ s.resolution }}</td><td>{{ s.datum }}</td><td>{{ s.alignment }}</td><td class="ltr">{{ s.file }}</td></tr>
+    {% endfor %}</tbody>
+  </table>
+  <p class="footer-note">{{ r.software }}{% if r.engine_line %} {{ r.engine_line }}{% endif %} {{ t.attribution }}</p>
+</section>
+{% endfor %}
+</body>
+</html>

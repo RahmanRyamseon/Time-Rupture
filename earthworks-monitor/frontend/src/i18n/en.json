@@ -1,0 +1,259 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "create": "Create",
+    "loading": "Loading…",
+    "name": "Name",
+    "description": "Description",
+    "back": "Back",
+    "language": "العربية",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "nav": {
+    "projects": "Projects",
+    "users": "Users",
+    "signOut": "Sign out"
+  },
+  "role": {
+    "analyst": "Analyst",
+    "viewer": "Viewer"
+  },
+  "login": {
+    "title": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "tagline": "Independent earthworks progress and volume verification"
+  },
+  "projects": {
+    "title": "Projects",
+    "empty": "No projects yet.",
+    "emptyViewer": "No projects have been shared with you yet.",
+    "new": "New project",
+    "client": "Client",
+    "sites_one": "{{count}} site",
+    "sites_other": "{{count}} sites",
+    "open": "Open",
+    "confirmDelete": "Delete project “{{name}}” and all of its sites and zones?"
+  },
+  "project": {
+    "sites": "Sites",
+    "noSites": "No sites yet. Add one by drawing its boundary on the map or uploading a file.",
+    "addSite": "Add site",
+    "addZone": "Add zone",
+    "zones": "Zones",
+    "noZones": "No zones",
+    "area": "Area",
+    "zoom": "Zoom to",
+    "access": "Viewer access",
+    "accessHelp": "Viewers see only the projects ticked for them. Analysts see all projects.",
+    "noViewers": "There are no viewer accounts yet.",
+    "confirmDeleteSite": "Delete site “{{name}}” and its zones?",
+    "confirmDeleteZone": "Delete zone “{{name}}”?",
+    "dashboard": "Open dashboard"
+  },
+  "zoneType": {
+    "label": "Zone type",
+    "cut": "Cut",
+    "fill": "Fill",
+    "mixed": "Cut and fill"
+  },
+  "geometry": {
+    "newSite": "New site",
+    "newZone": "New zone in {{site}}",
+    "outline": "Outline",
+    "draw": "Draw on map",
+    "upload": "Upload file",
+    "uploadHelp": "GeoJSON, KML/KMZ or zipped Shapefile (with .prj), up to {{mb}} MB.",
+    "drawHelp": "Click on the map to add corners. Double-click or press Finish to close the outline.",
+    "finish": "Finish",
+    "undo": "Undo point",
+    "redraw": "Redraw",
+    "ready": "Outline ready",
+    "multiZones": "The file contains {{count}} polygons; one zone will be created for each.",
+    "needOutline": "Draw or upload an outline first."
+  },
+  "users": {
+    "title": "Users",
+    "new": "New user",
+    "fullName": "Full name",
+    "role": "Role",
+    "active": "Active",
+    "passwordHelp": "At least 10 characters.",
+    "deactivate": "Deactivate",
+    "activate": "Activate"
+  },
+  "legend": {
+    "site": "Site boundary",
+    "cut": "Cut zone",
+    "fill": "Fill zone",
+    "mixed": "Cut and fill zone",
+    "cutFill": "Height change (m)",
+    "cutLabel": "Cut",
+    "fillLabel": "Fill"
+  },
+  "units": {
+    "ha": "ha",
+    "m2": "m²",
+    "km2": "km²"
+  },
+  "error": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "Cannot reach the server."
+  },
+  "site": {
+    "survey": "Survey",
+    "baseline": "Baseline",
+    "design": "Design surface",
+    "noSurveys": "No surveys yet.",
+    "noSurveysAnalyst": "No surveys yet. Upload a DEM/DSM GeoTIFF to start.",
+    "compare": "Compare",
+    "mode": {
+      "baseline": "Change since baseline",
+      "previous": "Change since previous survey",
+      "remaining": "Remaining to design",
+      "planned": "Planned (design vs baseline)",
+      "custom": "Any two surfaces"
+    },
+    "from": "From",
+    "to": "To",
+    "isBaseline": "This is the baseline survey; there is nothing earlier to compare it with.",
+    "isFirst": "This is the earliest survey; there is no previous one.",
+    "needDesign": "No design surface is available for this site.",
+    "notComputed": "This comparison has not been computed yet.",
+    "compute": "Compute",
+    "recompute": "Recompute",
+    "computing": "Computing…",
+    "stale": "Zones, alignment or settings changed after this result was computed.",
+    "layers": "Layers",
+    "hillshade": "Terrain (hillshade)",
+    "cutFill": "Cut / fill",
+    "surfaces": "Surveys and design",
+    "upload": "Upload survey or design",
+    "status": {
+      "processing": "Processing…",
+      "ready": "Ready",
+      "failed": "Failed"
+    },
+    "released": "Released",
+    "notReleased": "Not released",
+    "release": "Release to viewers",
+    "unrelease": "Withdraw",
+    "setBaseline": "Set as baseline",
+    "retry": "Retry",
+    "confirmDelete": "Delete “{{name}}” and every result that uses it?",
+    "confirmBaseline": "Make “{{name}}” the baseline? All surveys are re-aligned and all results recomputed.",
+    "shift": "Shifted {{offset}} m to match the baseline",
+    "noAlignment": "Not aligned (no stable ground); stated accuracy is used",
+    "resolution": "{{value}} m pixels",
+    "coverage": "Covers {{percent}}% of the site",
+    "ortho": "Orthoimage",
+    "jobs": "Processing jobs",
+    "stereoBadge": "Satellite stereo",
+    "demoNotice": "Demonstration resolution. This comparison uses elevation data at {{resolution}} m per pixel (typical of ASTER and Copernicus GLO-30). It shows the workflow only; real earthworks measurement needs sub-metre satellite stereo or drone surveys.",
+    "moved3d": "Moved {{north}} m north, {{east}} m east to match the baseline"
+  },
+  "volumes": {
+    "zone": "Zone",
+    "cut": "Cut (m³)",
+    "fill": "Fill (m³)",
+    "net": "Net (m³)",
+    "progress": "Progress",
+    "siteTotal": "Whole site",
+    "confidence": "± ranges are {{percent}}% confidence intervals.",
+    "lod": "Height changes smaller than {{lod}} m are not counted (level of detection).",
+    "sigma": "Height error used: {{pixel}} m per pixel, {{systematic}} m systematic — {{source}}.",
+    "source": {
+      "stable_ground": "measured on stable ground outside the zones",
+      "stated_accuracy": "from the surveys' stated accuracy",
+      "alignment_residual": "from the survey's alignment to the baseline"
+    },
+    "coverageWarning": "Elevation data covers only {{percent}}% of “{{name}}”; its volumes are incomplete.",
+    "net_help": "Net = fill − cut"
+  },
+  "upload": {
+    "file": "GeoTIFF elevation model (DEM/DSM)",
+    "kind": "Type",
+    "kindSurvey": "Survey epoch",
+    "kindDesign": "Design surface",
+    "date": "Survey date",
+    "datum": "Heights are measured from",
+    "datums": {
+      "ellipsoidal_wgs84": "WGS84 ellipsoid",
+      "egm2008": "EGM2008 geoid (mean sea level)",
+      "egm96": "EGM96 geoid (mean sea level)",
+      "local": "Local / project datum"
+    },
+    "datumHelp": "All surfaces of a site must use the same height reference.",
+    "accuracy": "Stated vertical accuracy (RMSE, m)",
+    "accuracyHelp": "From the supplier's report. Typical: drone 0.05–0.10, sub-metre satellite 0.3–0.5.",
+    "submit": "Upload",
+    "uploading": "Uploading…",
+    "limit": "Up to {{mb}} MB. The file must have its CRS embedded.",
+    "kindStereo": "Survey from satellite stereo pair",
+    "cameraModel": "Camera model",
+    "cameras": {
+      "rpc": "RPC (generic; Pléiades Neo, WorldView, SkySat…)",
+      "dg": "Maxar / DigitalGlobe (exact model)",
+      "aster": "ASTER Level 1A",
+      "pleiades": "Pléiades (exact model)",
+      "perusat": "PeruSat-1",
+      "csm": "Community Sensor Model",
+      "nadirpinhole": "Frame camera (pinhole)"
+    },
+    "scene": "Scene file (ASTER L1A .hdf)",
+    "leftImage": "Left image",
+    "rightImage": "Right image",
+    "leftCamera": "Left camera file",
+    "rightCamera": "Right camera file",
+    "cameraHelp": "Leave the camera files empty when the camera model is embedded in the images.",
+    "bundleAdjust": "Refine cameras first (bundle adjustment)",
+    "expectedAccuracy": "Expected vertical accuracy (RMSE, m)",
+    "expectedAccuracyHelp": "Typical: sub-metre stereo 0.3–0.5, ASTER about 10.",
+    "stereoLimit": "Up to {{mb}} MB per file. Heights are produced above the WGS84 ellipsoid and converted to the site's reference."
+  },
+  "jobs": {
+    "title": "Processing jobs",
+    "empty": "No jobs yet.",
+    "kind": {
+      "ingest_surface": "Prepare uploaded DEM",
+      "stereo_surface": "Stereo pair to DEM",
+      "analysis": "Volume comparison",
+      "realign_site": "Re-align site to new baseline"
+    },
+    "status": {
+      "queued": "Queued",
+      "running": "Running",
+      "failed": "Failed",
+      "done": "Done"
+    },
+    "job": "Job",
+    "target": "For",
+    "attempts": "Attempts",
+    "started": "Started",
+    "duration": "Duration",
+    "log": "Log",
+    "viewLog": "View log",
+    "hideLog": "Hide log",
+    "retry": "Retry",
+    "backToSite": "Back to dashboard",
+    "seconds": "{{value}} s",
+    "statusLabel": "Status"
+  },
+  "report": {
+    "title": "Report",
+    "pdf": "PDF report",
+    "language": "Language",
+    "langEn": "English",
+    "langAr": "Arabic",
+    "langBoth": "English + Arabic",
+    "help": "Summary, maps, volumes with ± ranges, progress chart, method and data sources for the selected survey."
+  },
+  "chart": {
+    "title": "Progress over time",
+    "help": "Per zone, with ± range. Select a point to open that survey."
+  }
+}

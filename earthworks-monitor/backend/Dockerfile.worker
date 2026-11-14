@@ -1,0 +1,44 @@
+# Worker image: the application plus NASA Ames Stereo Pipeline (Apache-2.0).
+#
+# ASP is installed from its official conda package, with the version pinned, into its
+# own environment at /opt/asp. It is kept apart from the application's Python so the two
+# sets of geospatial libraries cannot interfere; the application calls the ASP tools as
+# subprocesses (app/engines/asp). The image is large (about 10 GB) because ASP ships with
+# the USGS ISIS libraries.
+ARG ASP_VERSION=3.7.0
+
+FROM mambaorg/micromamba:2.3.0 AS asp
+ARG ASP_VERSION
+USER root
+RUN micromamba create -y -p /opt/asp \
+      -c nasa-ames-stereo-pipeline -c usgs-astrogeology -c conda-forge \
+      stereo-pipeline=${ASP_VERSION} \
+    && micromamba clean -a -y \
+    && rm -rf /opt/asp/pkgs
+
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 ASP_PREFIX=/opt/asp
+WORKDIR /app
+
+# libexpat is needed by the GDAL bundled in the rasterio wheel; procps provides `ps`,
+# which parallel_stereo calls.
+RUN apt-get update && apt-get install -y --no-install-recommends libexpat1 procps \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.lock ./
+RUN pip install --no-cache-dir -r requirements.lock
+
+COPY --from=asp /opt/asp /opt/asp
+
+COPY alembic.ini entrypoint.sh ./
+COPY alembic ./alembic
+COPY app ./app
+
+RUN useradd --system --uid 10001 --create-home appuser && mkdir -p /data && chown appuser /data
+USER appuser
+
+# Fails the build if ASP cannot start in this image.
+RUN ISISROOT=/opt/asp /opt/asp/bin/point2dem --version
+
+CMD ["python", "-m", "app.worker"]

@@ -1,0 +1,3 @@
+No licence file is included in the installed distribution.
+Declared licence: Apache Software License
+Project: https://pystac.readthedocs.io

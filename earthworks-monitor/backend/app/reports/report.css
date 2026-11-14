@@ -1,0 +1,53 @@
+@font-face { font-family: "Noto Sans"; font-weight: 400; src: url("__FONTS__/NotoSans-Regular.ttf"); }
+@font-face { font-family: "Noto Sans"; font-weight: 700; src: url("__FONTS__/NotoSans-Bold.ttf"); }
+@font-face { font-family: "Noto Sans Arabic"; font-weight: 400; src: url("__FONTS__/NotoSansArabic-Regular.ttf"); }
+@font-face { font-family: "Noto Sans Arabic"; font-weight: 700; src: url("__FONTS__/NotoSansArabic-Bold.ttf"); }
+
+@page {
+  size: A4;
+  margin: 18mm 15mm 18mm 15mm;
+  @bottom-center { content: counter(page) " / " counter(pages); font-family: "Noto Sans"; font-size: 8pt; color: #5f6b7a; }
+  @top-right { content: string(app); font-family: "Noto Sans"; font-size: 8pt; color: #5f6b7a; }
+}
+html { font-family: "Noto Sans", sans-serif; font-size: 9.5pt; color: #1f2933; line-height: 1.45; }
+section.report { page-break-after: always; }
+section.report:last-child { page-break-after: auto; }
+section.report[dir="rtl"] { font-family: "Noto Sans Arabic", "Noto Sans", sans-serif; line-height: 1.7; }
+.app { string-set: app content(); display: none; }
+h1 { font-size: 18pt; margin: 0 0 2mm; }
+h2 { font-size: 12pt; margin: 6mm 0 2mm; border-bottom: 1.5pt solid #1f2933; padding-bottom: 1mm; page-break-after: avoid; }
+h3 { font-size: 10pt; margin: 4mm 0 1.5mm; page-break-after: avoid; }
+p { margin: 1.5mm 0; }
+.muted { color: #5f6b7a; }
+.small { font-size: 8pt; }
+.meta { width: 100%; border-collapse: collapse; margin: 3mm 0; }
+.meta td { padding: 0.8mm 2mm 0.8mm 0; vertical-align: top; }
+.meta td.k { color: #5f6b7a; width: 32mm; }
+.banner { border-radius: 2mm; padding: 2.5mm 3.5mm; margin: 3mm 0; }
+.banner.draft { background: #fdecee; color: #b2182b; font-weight: 700; }
+.banner.warn { background: #fff4de; color: #8a5300; }
+.kpis { display: flex; gap: 3mm; margin: 3mm 0; }
+.kpi { flex: 1; border: 0.6pt solid #d9dee5; border-radius: 2mm; padding: 2.5mm 3mm; }
+.kpi .label { color: #5f6b7a; font-size: 8pt; }
+.kpi .value { font-size: 13pt; font-weight: 700; }
+.kpi .pm { font-size: 8.5pt; color: #5f6b7a; }
+.kpi.cut { border-top: 2.5pt solid #2166ac; } .kpi.fill { border-top: 2.5pt solid #b2182b; } .kpi.net { border-top: 2.5pt solid #1f2933; }
+table.data { width: 100%; border-collapse: collapse; margin: 2mm 0; page-break-inside: avoid; }
+table.data th, table.data td { padding: 1.3mm 1.8mm; border-bottom: 0.5pt solid #d9dee5; text-align: start; vertical-align: top; }
+table.data thead th { background: #f1f3f5; font-weight: 700; }
+table.data td.num, table.data th.num { text-align: end; white-space: nowrap; }
+table.data tr.total td, table.data tr.total th { font-weight: 700; border-top: 1.2pt solid #1f2933; }
+table.data.sources { font-size: 8pt; }
+.ltr { direction: ltr; unicode-bidi: isolate; }
+.maps { display: flex; gap: 4mm; flex-wrap: wrap; }
+figure { margin: 0 0 3mm; flex: 1 1 85mm; page-break-inside: avoid; }
+figure.wide { flex-basis: 100%; }
+figure img { width: 100%; border: 0.5pt solid #d9dee5; }
+figcaption { font-size: 8.5pt; font-weight: 700; margin-top: 1mm; }
+.legend { display: flex; flex-wrap: wrap; gap: 1.5mm 5mm; font-size: 8pt; margin: 1.5mm 0; }
+.legend i { display: inline-block; width: 4mm; height: 2.4mm; border: 1.2pt solid; margin-inline-end: 1.2mm; vertical-align: middle; }
+.legend .line { width: 6mm; height: 0; border-width: 1.5pt 0 0 0; }
+.ramp { display: inline-block; width: 30mm; height: 2.4mm; vertical-align: middle; margin-inline-end: 1.5mm;
+        background: linear-gradient(to right, #2166ac, #c9dbeb 49%, #f7f7f7 50%, #ecc7cb 51%, #b2182b); }
+.chart { width: 150mm; margin: 2mm auto; display: block; }
+.footer-note { margin-top: 5mm; font-size: 8pt; color: #5f6b7a; }

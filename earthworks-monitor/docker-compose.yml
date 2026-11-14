@@ -1,0 +1,82 @@
+# The worker image includes NASA Ames Stereo Pipeline (see backend/Dockerfile.worker).
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  api:
+    build: ./backend
+    env_file: .env
+    depends_on:
+      db: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    volumes:
+      - appdata:/data
+    command: ["sh", "/app/entrypoint.sh"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 120s  # first start generates the demo surveys
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.worker
+    env_file: .env
+    depends_on:
+      db: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    volumes:
+      - appdata:/data
+    command: ["python", "-m", "app.worker"]
+    # ASP memory use grows with image size; give stereo jobs room.
+    shm_size: "1gb"
+    restart: unless-stopped
+
+  # Map tiles (hillshade, cut/fill) rendered from COGs with rio-tiler, behind the same
+  # authentication as the API.
+  tiler:
+    build: ./backend
+    env_file: .env
+    depends_on:
+      db: { condition: service_healthy }
+    volumes:
+      - appdata:/data:ro
+    command: ["uvicorn", "app.tiler:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      api: { condition: service_healthy }
+      tiler: { condition: service_started }
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    restart: unless-stopped
+
+volumes:
+  dbdata:
+  appdata:
