@@ -152,6 +152,19 @@ begin
   assert (select status from public.reviews where id = rid) = 'published', 'restored';
 end $$;
 
+
+-- browse / facets / catalog
+do $$ begin
+  assert (select count(*) from public.browse_attars(p_note => 'test-rose')) = 1, 'browse by note';
+  assert (select count(*) from public.browse_attars(p_weather => 'heat')) = 0, 'browse weather min 3.5 excludes avg 2';
+  assert (select count(*) from public.browse_attars(p_weather => 'heat', p_weather_min => 2)) = 1, 'browse weather';
+  assert (select count(*) from public.browse_attars(p_price_max => 99)) = 0, 'price per 10ml 100-200 excluded at max 99';
+  assert (select count(*) from public.browse_attars(p_price_max => 150, p_longevity_min => 4)) = 1, 'price + longevity';
+  assert (select total_count from public.browse_attars() limit 1) = 1, 'total';
+  assert jsonb_array_length(public.attar_facets() -> 'notes') = 2, 'facets';
+  assert (select cardinality(notes) from public.matcher_catalog()) = 2, 'catalog notes';
+end $$;
+
 select public.record_view('attar', '30000000-0000-0000-0000-000000000001');
 do $$ begin
   assert exists (select 1 from public.data_gaps(30, 10)), 'data gaps';

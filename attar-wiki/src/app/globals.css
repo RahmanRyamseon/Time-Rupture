@@ -1,0 +1,122 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Palette: deep brown, amber, gold accents on warm parchment. All text pairs pass WCAG AA. */
+  --color-ink: #24160d;
+  --color-bark: #3b2414;
+  --color-cocoa: #5a3820;
+  --color-muted: #6b5545;
+  --color-amber: #8a4b12;      /* links & primary actions on light bg (6.6:1) */
+  --color-amber-bright: #c4761f;
+  --color-gold: #c9a24a;       /* decorative accents on dark bg only */
+  --color-gold-soft: #e8d7a8;
+  --color-parchment: #fbf6ee;
+  --color-sand: #f3e9d8;
+  --color-line: #e2d3bb;
+  --color-danger: #9b2c2c;
+  --color-ok: #2f6b3a;
+
+  --font-display: var(--font-fraunces), var(--font-deva-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), var(--font-deva-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 0.875rem;
+  --shadow-card: 0 1px 2px rgb(36 22 13 / 0.06), 0 4px 16px -6px rgb(36 22 13 / 0.12);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-parchment text-ink font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-bark;
+    font-optical-sizing: auto;
+    text-wrap: balance;
+  }
+  a {
+    @apply text-amber underline-offset-2;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-amber-bright);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--color-gold-soft);
+  }
+}
+
+@layer components {
+  .container-wiki {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .reading {
+    max-width: 72ch;
+  }
+  .card {
+    @apply rounded-[var(--radius-card)] border border-line bg-white/70;
+    box-shadow: var(--shadow-card);
+  }
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold no-underline transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-bark text-parchment hover:bg-cocoa;
+  }
+  .btn-secondary {
+    @apply btn border border-line bg-white text-bark hover:bg-sand;
+  }
+  .btn-ghost {
+    @apply btn text-bark hover:bg-sand;
+  }
+  .chip {
+    @apply inline-flex min-h-8 items-center gap-1 rounded-full border border-line bg-white px-3 text-sm text-bark no-underline hover:border-amber;
+  }
+  .input {
+    @apply block w-full min-h-11 rounded-lg border border-line bg-white px-3 py-2 text-base text-ink placeholder:text-muted/80 focus:border-amber focus:outline-none;
+  }
+  .label {
+    @apply mb-1 block text-sm font-semibold text-bark;
+  }
+  .help {
+    @apply mt-1 text-sm text-muted;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.14em] text-muted;
+  }
+  .gold-rule {
+    @apply h-px w-16 border-0;
+    background: linear-gradient(90deg, var(--color-gold), transparent);
+  }
+  .prose-wiki {
+    @apply prose prose-stone max-w-none;
+    --tw-prose-body: var(--color-ink);
+    --tw-prose-headings: var(--color-bark);
+    --tw-prose-links: var(--color-amber);
+    --tw-prose-bold: var(--color-bark);
+    --tw-prose-quotes: var(--color-cocoa);
+    --tw-prose-quote-borders: var(--color-gold);
+    --tw-prose-bullets: var(--color-gold);
+    --tw-prose-counters: var(--color-muted);
+    --tw-prose-hr: var(--color-line);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .prose-wiki h2,
+  .prose-wiki h3 {
+    @apply font-display;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
