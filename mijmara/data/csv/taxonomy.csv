@@ -1,0 +1,69 @@
+type,id,name_ar,name_en,order
+category,dehn-al-oud,دهن العود,Dehn al Oud,1
+category,mukhallat,المخلّطات,Mukhallat,2
+category,musk-oil,دهن المسك,Musk oil,3
+category,rose-oil,دهن الورد,Rose oil,4
+category,bakhoor,البخور,Bakhoor,5
+category,oud-wood,العود (خشب),Oud wood chips,6
+category,perfume-oil-other,أدهان عطرية أخرى,Other perfume oils,7
+origin_group,hindi,هندي,Hindi (Indian),1
+origin_group,cambodi,كمبودي,Cambodi (Cambodian),2
+origin_group,malaysian,ماليزي,Malaysian,3
+origin_group,thai,تايلندي,Thai,4
+origin_group,indonesian,إندونيسي,Indonesian,5
+origin_group,vietnamese,فيتنامي,Vietnamese,6
+origin_group,laotian,لاوسي,Laotian,7
+origin_group,sri-lankan,سريلانكي,Sri Lankan,8
+origin_group,other,أخرى,Other,9
+wild_status,wild,بري,Wild,1
+wild_status,plantation,مزروع,Plantation,2
+wild_status,inoculated,مزروع مُلقَّح,Inoculated plantation,3
+wild_status,undocumented,غير موثّق,Not documented,4
+occasion,majlis,المجلس,Majlis,1
+occasion,guests,استقبال الضيوف,Receiving guests,2
+occasion,friday,يوم الجمعة,Friday,3
+occasion,ramadan,رمضان,Ramadan,4
+occasion,eid,العيد,Eid,5
+occasion,wedding,الأعراس,Weddings,6
+occasion,evening,السهرات والمناسبات المسائية,Evening gatherings,7
+occasion,formal,المناسبات الرسمية,Formal occasions,8
+occasion,daily,الاستخدام اليومي,Daily wear,9
+occasion,work,الدوام,Work,10
+season,summer,الصيف,Summer,1
+season,winter,الشتاء,Winter,2
+season,spring,الربيع,Spring,3
+season,autumn,الخريف,Autumn,4
+season,all,كل المواسم,All seasons,5
+character,woody,خشبي,Woody,1
+character,animalic,زريبي (حيواني),Animalic,2
+character,smoky,مدخّن,Smoky,3
+character,sweet,حلو,Sweet,4
+character,floral,زهري,Floral,5
+character,spicy,بهاري,Spicy,6
+character,amber,عنبري,Amber,7
+character,leather,جلدي,Leather,8
+character,fresh,منعش,Fresh,9
+character,musky,مسكي,Musky,10
+character,earthy,ترابي,Earthy,11
+unit,tola,تولة,Tola,1
+unit,ml,مل,ml,2
+unit,g,غرام,gram,3
+climate,coastal-humid,ساحلي حار رطب,Hot & humid (coastal),1
+climate,inland-dry,داخلي حار جاف,Hot & dry (inland),2
+climate,temperate,معتدل,Temperate,3
+climate,cold,بارد,Cold,4
+strength,1,خفيف,Light,1
+strength,2,هادئ,Soft,2
+strength,3,متوسط,Moderate,3
+strength,4,قوي,Strong,4
+strength,5,قوي جداً,Very strong,5
+longevity,1,ساعة أو أقل,An hour or less,1
+longevity,2,بضع ساعات,A few hours,2
+longevity,3,نصف يوم,Half a day,3
+longevity,4,يوم كامل,A full day,4
+longevity,5,أكثر من يوم,More than a day,5
+sillage,1,ملاصق للجلد,Skin scent,1
+sillage,2,قريب,Close,2
+sillage,3,متوسط,Moderate,3
+sillage,4,واسع,Wide,4
+sillage,5,يملأ المكان,Fills the room,5

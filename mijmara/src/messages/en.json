@@ -1,0 +1,96 @@
+{
+  "site": {
+    "name": "Mijmara",
+    "tagline": "The Oud & Attar Encyclopedia",
+    "description": "An independent community encyclopedia of oud, dehn al oud, mukhallat, musk, rose oils and bakhoor — every fact linked to its source.",
+    "skip": "Skip to content"
+  },
+  "nav": {
+    "home": "Home", "products": "Products", "houses": "Perfume houses", "origins": "Oud origins", "notes": "Ingredients & notes",
+    "culture": "Culture & etiquette", "guides": "Guides", "search": "Search", "compare": "Compare", "matcher": "Matcher",
+    "collection": "My Collection", "contribute": "Contribute", "more": "More", "account": "Account", "settings": "Settings",
+    "signIn": "Sign in", "moderation": "Moderation", "menu": "Menu", "language": "العربية", "languageLabel": "Switch to Arabic",
+    "primary": "Primary navigation", "tabs": "Bottom navigation"
+  },
+  "common": {
+    "undocumented": "Not documented yet — help add it",
+    "needsCitation": "Citation needed",
+    "sources": "Sources", "source": "Source", "accessed": "Accessed", "edit": "Edit", "history": "History",
+    "readMore": "Read more", "viewAll": "View all", "updated": "Last updated", "officialWebsite": "Official website",
+    "back": "Back", "close": "Close", "none": "None", "loading": "Loading…",
+    "results": "{count, plural, =0 {No results} one {# result} other {# results}}",
+    "communityOff": "Community features (accounts, voting, reviews and editing) are not enabled on this deployment yet. They switch on once the database is connected.",
+    "signInToContinue": "Sign in to continue",
+    "flag": "Flag: citation needed",
+    "flagged": "Thanks — the flag was sent to the editors.",
+    "addToCompare": "Add to compare", "removeFromCompare": "Remove from compare", "compareCount": "Compare ({count}/4)",
+    "compareFull": "You can compare up to four products",
+    "addToCollection": "Add to My Collection", "inCollection": "In my collection",
+    "independent": "Independent community encyclopedia"
+  },
+  "home": {
+    "heroTitle": "Everything known about oud and attar — with its source",
+    "heroText": "A free Arabic-first reference on dehn al oud, mukhallat, musk, Taif rose and bakhoor: origins, character, houses and when they are worn, with a link to the source of every fact.",
+    "searchPlaceholder": "Search: Cambodi oud, bakhoor, Taif rose, عود…",
+    "searchButton": "Search", "explore": "Explore the encyclopedia", "latestProducts": "Products in the encyclopedia",
+    "categories": "Categories", "originsTitle": "Oud origin explorer",
+    "originsText": "From Assam to Kalimantan: how oud's scent changes with its land.",
+    "cultureTitle": "Majlis etiquette", "matcherTitle": "Not sure where to start?",
+    "matcherText": "Tell the matcher the occasion, season and character you like; it suggests only entries from this encyclopedia.",
+    "matcherCta": "Try the matcher",
+    "stats": "{products} products · {houses} houses · {origins} origins · {citations} documented sources"
+  },
+  "product": {
+    "house": "House", "category": "Category", "origin": "Oud origin", "wild": "Wild or plantation", "notes": "Notes",
+    "top": "Top", "heart": "Heart", "base": "Base", "occasions": "Occasions", "seasons": "Seasons", "size": "Size",
+    "prices": "Reported prices",
+    "priceNote": "Reference prices recorded by contributors from public sources on a stated date — not an offer to sell. This encyclopedia sells nothing.",
+    "observed": "Observed", "performance": "Community performance", "strength": "Strength", "longevity": "Longevity", "sillage": "Sillage",
+    "votes": "{count, plural, =0 {No votes yet} one {# vote} other {# votes}}",
+    "minVotes": "Results appear after at least {min} votes.",
+    "yourVote": "Your vote", "submitVote": "Save my vote", "voteSaved": "Your vote was saved", "seasonVote": "Which season do you wear it in?",
+    "similar": "Similar products", "similarNote": "Suggested automatically from shared category, origin and notes.",
+    "reviews": "Community reviews", "writeReview": "Write a review", "reviewBody": "Your experience", "city": "City", "climate": "Climate",
+    "submitReview": "Submit review", "reviewPending": "Thanks — your review will appear after moderation.", "noReviews": "No published reviews yet.",
+    "officialPage": "House product page",
+    "authenticityNote": "This encyclopedia makes no claims about whether a specific product is genuine or counterfeit without a documented source.",
+    "media": "Images", "noMedia": "No licensed images yet. Upload one with a clear licence from the contribute page."
+  },
+  "list": {
+    "productsTitle": "Products", "productsIntro": "Every entry in the encyclopedia: dehn al oud, mukhallat, musk, rose oils and bakhoor.",
+    "filters": "Filters", "category": "Category", "origin": "Origin", "house": "House", "occasion": "Occasion", "season": "Season",
+    "strength": "Strength", "any": "Any", "apply": "Apply", "reset": "Reset", "empty": "No products match these filters yet.",
+    "strengthNote": "Strength comes from community votes and only applies to products that reached the minimum vote count."
+  },
+  "houses": { "title": "Perfume houses", "intro": "The houses behind the oils and bakhoor: history, country and their entries here.", "country": "Country", "city": "City", "founded": "Founded", "founder": "Founder", "history": "History", "products": "Products in the encyclopedia" },
+  "origins": { "title": "Oud origin explorer", "intro": "Pick an origin to see how its scent is described, which trees it comes from and the documented products from it.", "region": "Region", "species": "Botanical species", "profile": "Profile", "smell": "How it is described", "grading": "Grading terms", "uses": "Typical uses", "products": "Products from this origin", "documented": "Documented", "partial": "Partially documented" },
+  "notes": { "title": "Ingredients & notes", "intro": "Oud, Taif rose, musk, amber, saffron, sandalwood and more.", "family": "Family", "products": "Products featuring this note", "documented": "Documented ingredients", "others": "Other notes" },
+  "articles": { "cultureTitle": "Culture & etiquette", "cultureIntro": "Bakhoor in the majlis, wearing oils, storage and the vocabulary of oud.", "guidesTitle": "Guides", "guidesIntro": "Long-form editorial articles with sources.", "readingTime": "{min} min read" },
+  "search": { "title": "Search", "placeholder": "Search in Arabic or English…", "label": "Search text", "fuzzy": "No exact match — closest results for “{q}”", "empty": "Nothing found. Try another word, or contribute the entry.", "hint": "Search understands Arabic letter variants and diacritics, plus Latin spellings such as oud, oudh and dehn.", "kinds": { "product": "Product", "house": "House", "origin": "Origin", "note": "Ingredient", "culture": "Culture", "guide": "Guide" } },
+  "compare": { "title": "Compare", "intro": "Compare up to four products side by side.", "empty": "No products selected yet. Use “Add to compare” on a product page.", "attribute": "Attribute", "remove": "Remove", "clear": "Clear comparison" },
+  "matcher": {
+    "title": "Matcher", "intro": "Choose what suits you; the matcher suggests only entries in this encyclopedia and explains why using documented information.",
+    "occasion": "Occasion", "season": "Season", "character": "Preferred character", "strength": "Preferred strength", "anyOption": "No preference",
+    "submit": "Suggest", "working": "Matching…", "results": "Suggestions", "none": "No documented entries match your choices. Try relaxing them.",
+    "modeAi": "Ranked with AI assistance; every suggestion was verified to exist in the encyclopedia.",
+    "modeRules": "Ranked by fixed rules using documented data.",
+    "disclaimer": "Suggestions for exploration only — not purchase advice.",
+    "error": "Could not reach the matcher. Check your connection and try again."
+  },
+  "collection": { "title": "My Collection", "intro": "Your personal shelf: what you own, have tried, or want to try. Saved on this device and synced to your account when signed in.", "owned": "Owned", "tried": "Tried", "wishlist": "Want to try", "empty": "Your collection is empty. Add products from their pages.", "remove": "Remove", "shelf": "Shelf", "synced": "Synced with your account" },
+  "contribute": {
+    "title": "Contribute", "intro": "Every addition or edit is reviewed by editors before publication and must include a public source for each fact.",
+    "newEntry": "Propose a new entry", "type": "Entry type", "summary": "Edit summary", "citationUrl": "Source URL",
+    "citationRequired": "A source URL is required for every fact", "submit": "Submit for review", "submitted": "Thank you! Your proposal was sent to the moderation queue.",
+    "editTitle": "Edit: {name}", "fieldsHint": "Leave a field empty if it is not documented. Never enter prices, origins or grades without a source.",
+    "upload": "Upload an image", "license": "Licence", "credit": "Credit (photographer or owner)",
+    "licenses": { "own-work": "Own work (I took the photo)", "cc-by": "CC BY", "cc-by-sa": "CC BY-SA", "cc0": "CC0", "brand-permission": "Written permission from the house" }
+  },
+  "history": { "title": "History: {name}", "seed": "First version: imported from the documented data files on {date}.", "empty": "No published community edits yet.", "author": "Contributor", "status": "Status", "date": "Date", "diff": "Changes", "pending": "Pending review", "approved": "Approved", "rejected": "Rejected" },
+  "auth": { "title": "Sign in", "intro": "Enter your email and we will send you a sign-in link. No passwords.", "email": "Email", "send": "Send sign-in link", "sent": "We sent the link to your inbox.", "google": "Continue with Google", "signOut": "Sign out", "role": "Role", "roles": { "reader": "Reader", "contributor": "Contributor", "editor": "Editor", "admin": "Admin" } },
+  "settings": { "title": "Settings", "numerals": "Numerals", "western": "Western digits (123)", "eastern": "Eastern Arabic digits (١٢٣)", "saved": "Setting saved", "install": "Install the app", "installText": "Install Mijmara on your home screen to read pages you have visited while offline.", "installButton": "Install", "iosHint": "On iPhone: tap Share, then “Add to Home Screen”." },
+  "moderation": { "title": "Moderation dashboard", "queue": "Queue", "revisions": "Proposed edits", "reviews": "Reviews", "media": "Images", "flags": "“Citation needed” flags", "approve": "Approve", "reject": "Reject", "resolve": "Resolve", "empty": "Nothing waiting for review.", "forbidden": "This page is for editors and admins only." },
+  "offline": { "title": "You are offline", "text": "This page is not saved on your device yet. Pages you visited before are available offline.", "retry": "Try again" },
+  "footer": { "independent": "Mijmara is an independent community encyclopedia, not affiliated with any brand or perfume house.", "noSales": "We sell nothing and use no affiliate links. House links point to their official websites only.", "license": "All text is original; facts are attributed to their sources.", "pages": "Pages" },
+  "notFound": { "title": "Page not found", "text": "The entry may have moved or not been written yet.", "home": "Go home" }
+}

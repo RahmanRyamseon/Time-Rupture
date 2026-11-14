@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+.netlify
+.env
+.env.local
+.env*.local
+src/generated/
+public/sw.js
+public/sw.js.map
+public/swe-worker-*.js
+public/search-index.json
+*.tsbuildinfo
+next-env.d.ts
+.vercel
