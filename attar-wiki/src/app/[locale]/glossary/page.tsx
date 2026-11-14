@@ -10,7 +10,7 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  return pageMetadata("/glossary", locale, t("sections.glossary"));
+  return pageMetadata("/glossary", locale, t("sections.glossary"), t("site.description"));
 }
 
 export default async function Page({ params }: Props) {

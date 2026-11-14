@@ -46,7 +46,7 @@ export async function SiteHeader() {
           <Link href="/search" className="btn-ghost px-3 md:hidden" aria-label={t("search")}>
             <Icon name="search" />
           </Link>
-          <Link href="/finder" className="btn-ghost hidden px-3 sm:inline-flex lg:hidden xl:inline-flex">
+          <Link href="/finder" className="btn-ghost hidden whitespace-nowrap px-3 sm:inline-flex lg:hidden">
             <Icon name="spark" className="h-4 w-4" />
             <span>{t("finderLong")}</span>
           </Link>

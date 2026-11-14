@@ -7,7 +7,7 @@ import { CLIMATES, SKIN_TYPES, type Review } from "@/lib/types";
 
 export function ReviewForm({ attarId }: { attarId: string }) {
   const t = useTranslations();
-  const { user, enabled } = useAuth();
+  const { user, enabled, loading } = useAuth();
   const [existing, setExisting] = useState<Review | null>(null);
   const [open, setOpen] = useState(false);
   const [body, setBody] = useState("");
@@ -34,7 +34,7 @@ export function ReviewForm({ attarId }: { attarId: string }) {
       .catch(() => {});
   }, [user, attarId]);
 
-  if (!enabled) return null;
+  if (!enabled || loading) return null;
   if (!user) {
     return (
       <Link href="/sign-in" className="btn-secondary">

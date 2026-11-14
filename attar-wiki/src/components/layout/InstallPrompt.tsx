@@ -37,11 +37,18 @@ export function InstallPrompt() {
     window.addEventListener("beforeinstallprompt", onPrompt);
 
     const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) && !/crios|fxios/i.test(navigator.userAgent);
-    if (isIos && views >= 2) {
-      setIos(true);
-      setShow(true);
-    }
-    return () => window.removeEventListener("beforeinstallprompt", onPrompt);
+    // iOS has no install event: show the "Add to Home Screen" hint after a short delay.
+    const timer =
+      isIos && views >= 2
+        ? window.setTimeout(() => {
+            setIos(true);
+            setShow(true);
+          }, 1500)
+        : undefined;
+    return () => {
+      window.removeEventListener("beforeinstallprompt", onPrompt);
+      if (timer) window.clearTimeout(timer);
+    };
   }, []);
 
   if (!show) return null;

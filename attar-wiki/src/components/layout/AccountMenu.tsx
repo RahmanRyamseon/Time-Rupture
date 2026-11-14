@@ -6,8 +6,9 @@ import { Icon } from "@/components/ui/Icon";
 
 export function AccountMenu() {
   const t = useTranslations("nav");
-  const { user, profile, isEditor, signOut, enabled } = useAuth();
+  const { user, profile, isEditor, signOut, enabled, loading } = useAuth();
   if (!enabled) return null;
+  if (loading) return <span className="inline-block w-16" aria-hidden="true" />;
   if (!user) {
     return (
       <Link href="/sign-in" className="btn-ghost px-3 text-sm">

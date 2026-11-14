@@ -148,7 +148,7 @@ begin
     return null;
   end if;
   insert into public.revisions (entity_type, entity_id, snapshot, change_summary, changed_by, edit_suggestion_id)
-  values (p_type, p_id, snap, v_summary, v_actor, v_edit)
+  values (p_type, p_id, snap, coalesce(v_summary, case when v_actor is null then 'Data import' end), v_actor, v_edit)
   returning id into new_id;
   return new_id;
 end $$;

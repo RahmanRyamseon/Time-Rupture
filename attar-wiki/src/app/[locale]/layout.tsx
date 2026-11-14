@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { Fraunces, Inter, Noto_Sans_Devanagari, Noto_Serif_Devanagari } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -15,22 +15,8 @@ import { AuthProvider } from "@/components/providers/AuthProvider";
 import { ShelfSync } from "@/components/providers/ShelfSync";
 import { PwaProvider } from "@/components/providers/PwaProvider";
 
-const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", display: "swap", axes: ["opsz"] });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const devaSans = Noto_Sans_Devanagari({
-  subsets: ["devanagari"],
-  weight: ["400", "600"],
-  variable: "--font-deva-sans",
-  display: "swap",
-  preload: false,
-});
-const devaSerif = Noto_Serif_Devanagari({
-  subsets: ["devanagari"],
-  weight: ["500", "700"],
-  variable: "--font-deva-serif",
-  display: "swap",
-  preload: false,
-});
+const fraunces = Fraunces({ subsets: ["latin"], weight: ["600"], variable: "--font-fraunces", display: "optional" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "optional" });
 
 const SPLASH: [number, number, number][] = [
   [1290, 2796, 3],
@@ -42,6 +28,11 @@ const SPLASH: [number, number, number][] = [
   [1640, 2360, 2],
   [2048, 2732, 2],
 ];
+
+const CLIENT_NAMESPACES = new Set([
+  "nav", "search", "types", "compare", "shelf", "pwa", "attar", "metric", "scale", "common", "reviews", "skin",
+  "climate", "reportReason", "finder", "auth", "account", "edit", "field", "attarType", "position", "relation", "wiki",
+]);
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -83,7 +74,10 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations("site");
-  const fontVars = [fraunces.variable, inter.variable, locale === "hi" ? `${devaSans.variable} ${devaSerif.variable}` : ""].join(" ");
+  // Only the namespaces used by client components are serialized into the page.
+  const all = await getMessages();
+  const clientMessages = Object.fromEntries(Object.entries(all).filter(([ns]) => CLIENT_NAMESPACES.has(ns)));
+  const fontVars = `${fraunces.variable} ${inter.variable}`;
 
   return (
     <html lang={locale === "hi" ? "hi-IN" : "en-IN"} className={fontVars}>
@@ -91,7 +85,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2">
           {t("skip")}
         </a>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={clientMessages}>
           <PwaProvider>
             <AuthProvider>
               <ShelfSync />

@@ -7,7 +7,7 @@ import { VOTE_METRICS, type VoteMetric } from "@/lib/types";
 
 export function VotePanel({ attarId }: { attarId: string }) {
   const t = useTranslations();
-  const { user, enabled } = useAuth();
+  const { user, enabled, loading } = useAuth();
   const [mine, setMine] = useState<Partial<Record<VoteMetric, number>>>({});
   const [busy, setBusy] = useState<VoteMetric | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -22,7 +22,7 @@ export function VotePanel({ attarId }: { attarId: string }) {
       .catch(() => {});
   }, [user, attarId]);
 
-  if (!enabled) return null;
+  if (!enabled || loading) return null;
   if (!user) {
     return (
       <p className="text-sm">

@@ -435,3 +435,10 @@ export async function getPublishedReviews(attarId: string, limit = 30) {
   }
   return reviews;
 }
+
+/** Full rows for the compare table. */
+export async function getCompareData(slugs: string[]) {
+  const unique = [...new Set(slugs.map((s) => s.trim()).filter(Boolean))].slice(0, 4);
+  const results = await Promise.all(unique.map((s) => getAttar(s)));
+  return results.filter((r): r is AttarPageData => Boolean(r && r.attar.published));
+}

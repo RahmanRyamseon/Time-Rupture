@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "import": "tsx scripts/import/run.ts",
     "import:all": "tsx scripts/import/run.ts all",
-    "icons": "node scripts/generate-icons.mjs"
+    "icons": "node scripts/generate-icons.mjs",
+    "test": "node --conditions=react-server --import tsx --test tests/*.test.ts",
+    "test:db": "bash supabase/tests/run.sh"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.8.0",

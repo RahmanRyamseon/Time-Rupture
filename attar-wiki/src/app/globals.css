@@ -17,8 +17,11 @@
   --color-danger: #9b2c2c;
   --color-ok: #2f6b3a;
 
-  --font-display: var(--font-fraunces), var(--font-deva-serif), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-inter), var(--font-deva-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), var(--font-deva), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), var(--font-deva), ui-sans-serif, system-ui, sans-serif;
+
+  /* Devanagari uses the excellent system fonts on Android/iOS/Windows: zero download. */
+  --font-deva: "Noto Sans Devanagari", "Kohinoor Devanagari", "Devanagari Sangam MN", "Nirmala UI", "Mangal";
 
   --radius-card: 0.875rem;
   --shadow-card: 0 1px 2px rgb(36 22 13 / 0.06), 0 4px 16px -6px rgb(36 22 13 / 0.12);
@@ -51,49 +54,61 @@
   }
 }
 
-@layer components {
-  .container-wiki {
+@utility container-wiki {
     @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
-  }
-  .reading {
+}
+
+@utility reading {
     max-width: 72ch;
-  }
-  .card {
+}
+
+@utility card {
     @apply rounded-[var(--radius-card)] border border-line bg-white/70;
     box-shadow: var(--shadow-card);
-  }
-  .btn {
+}
+
+@utility btn {
     @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold no-underline transition-colors disabled:cursor-not-allowed disabled:opacity-60;
-  }
-  .btn-primary {
+}
+
+@utility btn-primary {
     @apply btn bg-bark text-parchment hover:bg-cocoa;
-  }
-  .btn-secondary {
+}
+
+@utility btn-secondary {
     @apply btn border border-line bg-white text-bark hover:bg-sand;
-  }
-  .btn-ghost {
+}
+
+@utility btn-ghost {
     @apply btn text-bark hover:bg-sand;
-  }
-  .chip {
+}
+
+@utility chip {
     @apply inline-flex min-h-8 items-center gap-1 rounded-full border border-line bg-white px-3 text-sm text-bark no-underline hover:border-amber;
-  }
-  .input {
+}
+
+@utility input {
     @apply block w-full min-h-11 rounded-lg border border-line bg-white px-3 py-2 text-base text-ink placeholder:text-muted/80 focus:border-amber focus:outline-none;
-  }
-  .label {
+}
+
+@utility label {
     @apply mb-1 block text-sm font-semibold text-bark;
-  }
-  .help {
+}
+
+@utility help {
     @apply mt-1 text-sm text-muted;
-  }
-  .eyebrow {
+}
+
+@utility eyebrow {
     @apply text-xs font-semibold uppercase tracking-[0.14em] text-muted;
-  }
-  .gold-rule {
+}
+
+@utility gold-rule {
     @apply h-px w-16 border-0;
     background: linear-gradient(90deg, var(--color-gold), transparent);
-  }
-  .prose-wiki {
+}
+
+@utility prose-wiki {
     @apply prose prose-stone max-w-none;
     --tw-prose-body: var(--color-ink);
     --tw-prose-headings: var(--color-bark);
@@ -106,7 +121,9 @@
     --tw-prose-hr: var(--color-line);
     font-size: 1.0625rem;
     line-height: 1.75;
-  }
+}
+
+@layer components {
   .prose-wiki h2,
   .prose-wiki h3 {
     @apply font-display;
@@ -119,4 +136,10 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Letter-spacing breaks Devanagari conjuncts: keep it for Latin text only. */
+html[lang^="hi"] .eyebrow {
+  letter-spacing: 0;
+  text-transform: none;
 }

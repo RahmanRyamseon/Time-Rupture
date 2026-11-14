@@ -21,7 +21,8 @@ export function buildFootnotes(citations: Citation[], fieldOrder: string[]): Foo
       n = list.length;
       indexByUrl.set(c.url, n);
     }
-    (byField[c.field_name] ??= []).includes(n) || byField[c.field_name].push(n);
+    const nums = (byField[c.field_name] ??= []);
+    if (!nums.includes(n)) nums.push(n);
   }
   return { list, byField };
 }

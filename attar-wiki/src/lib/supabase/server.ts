@@ -15,7 +15,6 @@ export function createPublicClient(): SupabaseClient | null {
   if (!hasSupabase()) return null;
   return createJsClient(url(), anonKey(), {
     auth: { persistSession: false, autoRefreshToken: false },
-    global: { fetch: (input, init) => fetch(input, { ...init, next: { revalidate: 600 } }) },
   });
 }
 

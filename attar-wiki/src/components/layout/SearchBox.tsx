@@ -18,10 +18,7 @@ export function SearchBox({ compact = false, defaultValue = "", autoFocus = fals
 
   useEffect(() => {
     const query = q.trim();
-    if (query.length < 2) {
-      setHits([]);
-      return;
-    }
+    if (query.length < 2) return;
     const handle = setTimeout(async () => {
       abortRef.current?.abort();
       const ctrl = new AbortController();
@@ -41,6 +38,8 @@ export function SearchBox({ compact = false, defaultValue = "", autoFocus = fals
     return () => clearTimeout(handle);
   }, [q]);
 
+  const visible = q.trim().length >= 2 ? hits : [];
+
   function go(hit?: SearchHit) {
     setOpen(false);
     if (hit) router.push(entityPath(hit.entity_type, hit.slug));
@@ -53,7 +52,7 @@ export function SearchBox({ compact = false, defaultValue = "", autoFocus = fals
       className="relative"
       onSubmit={(e) => {
         e.preventDefault();
-        go(active >= 0 ? hits[active] : undefined);
+        go(active >= 0 ? visible[active] : undefined);
       }}
     >
       <label htmlFor={`${listId}-input`} className="sr-only">
@@ -65,12 +64,12 @@ export function SearchBox({ compact = false, defaultValue = "", autoFocus = fals
         value={q}
         autoFocus={autoFocus}
         onChange={(e) => setQ(e.target.value)}
-        onFocus={() => hits.length && setOpen(true)}
+        onFocus={() => visible.length && setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
         onKeyDown={(e) => {
           if (e.key === "ArrowDown") {
             e.preventDefault();
-            setActive((i) => Math.min(i + 1, hits.length - 1));
+            setActive((i) => Math.min(i + 1, visible.length - 1));
           } else if (e.key === "ArrowUp") {
             e.preventDefault();
             setActive((i) => Math.max(i - 1, -1));
@@ -79,16 +78,16 @@ export function SearchBox({ compact = false, defaultValue = "", autoFocus = fals
         placeholder={t("search.placeholder")}
         className={`input rounded-full pl-4 ${compact ? "min-h-10 text-sm" : "min-h-12"}`}
         role="combobox"
-        aria-expanded={open && hits.length > 0}
+        aria-expanded={open && visible.length > 0}
         aria-controls={listId}
         aria-autocomplete="list"
         aria-activedescendant={active >= 0 ? `${listId}-${active}` : undefined}
         autoComplete="off"
         enterKeyHint="search"
       />
-      {open && hits.length > 0 ? (
+      {open && visible.length > 0 ? (
         <ul id={listId} role="listbox" className="card absolute left-0 right-0 top-full z-50 mt-2 max-h-96 overflow-auto p-1">
-          {hits.map((h, i) => (
+          {visible.map((h, i) => (
             <li
               key={`${h.entity_type}-${h.entity_id}`}
               id={`${listId}-${i}`}

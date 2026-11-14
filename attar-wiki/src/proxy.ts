@@ -27,5 +27,5 @@ export default async function proxy(request: NextRequest) {
 
 export const config = {
   // Skip API, auth callback, Next internals, the service worker and static files.
-  matcher: ["/((?!api|auth|_next|_vercel|serwist|.*\\..*).*)"],
+  matcher: ["/((?!api|auth/|_next|_vercel|serwist|.*\\..*).*)"],
 };

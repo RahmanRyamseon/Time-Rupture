@@ -1,13 +1,20 @@
 "use client";
-import { createBrowserClient } from "@supabase/ssr";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-let client: SupabaseClient | null = null;
+let promise: Promise<SupabaseClient | null> | null = null;
 
-export function getBrowserClient(): SupabaseClient | null {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !key) return null;
-  if (!client) client = createBrowserClient(url, key);
-  return client;
+export function supabaseConfigured() {
+  return Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+}
+
+/**
+ * Lazily loads the Supabase browser client so it is not part of the first-load
+ * JavaScript of every wiki page (reading pages never need it).
+ */
+export function getBrowserClient(): Promise<SupabaseClient | null> {
+  if (!supabaseConfigured()) return Promise.resolve(null);
+  promise ??= import("@supabase/ssr").then(({ createBrowserClient }) =>
+    createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!),
+  );
+  return promise;
 }
