@@ -105,6 +105,8 @@ export function buildPages(template, { guides, countries, community, sources, le
         <h2>ఐడీ కార్డు</h2><p>${esc(c.idCard)} — <a href="${esc(c.residence.url)}" rel="noopener">${esc(c.residence.name)}</a></p>
         <h2>కార్మిక శాఖ</h2><p><a href="${esc(c.labour.url)}" rel="noopener">${esc(c.labour.name)}</a>${c.labour.phoneText ? ` — ${esc(c.labour.phoneText)}` : ""}</p>
         <h2>భారత రాయబార కార్యాలయం</h2><ul>${c.embassies.map((u) => `<li><a href="${esc(u)}" rel="noopener">${esc(u)}</a></li>`).join("")}</ul>
+        ${(c.community || []).length ? `<h2>భారతీయ సమాజం: క్లబ్బులు, స్కూళ్లు, సంస్థలు</h2><ul>${c.community.map(sourceItem).join("")}</ul>` : ""}
+        ${(c.voices || []).length ? `<h2>అనుభవాలు: రెడ్డిట్, యూట్యూబ్</h2><ul>${c.voices.map(sourceItem).join("")}</ul>` : ""}
         ${c.notes.length ? `<ul>${c.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : ""}${nav}`,
     });
   }

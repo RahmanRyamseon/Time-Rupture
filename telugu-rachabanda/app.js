@@ -110,6 +110,8 @@ function setupChrome() {
   $("#nav2").innerHTML = state.countries
     .map((c) => `<li><a href="/c/${c.id}" data-route="c/${c.id}">${c.flag} ${esc(c.name)}</a></li>`)
     .concat([
+      `<li><a href="/g/community" data-route="g/community">🎉 తెలుగు సమాజం</a></li>`,
+      `<li><a href="/g/gulf-life" data-route="g/gulf-life">🧭 గల్ఫ్ అనుభవాలు</a></li>`,
       `<li><a href="/updates" data-route="updates">📢 అధికారిక సమాచారం</a></li>`,
       `<li><a href="/board" data-route="board">🌳 రచ్చబండ</a></li>`,
       `<li><a href="/sources" data-route="sources">📒 డైరెక్టరీ</a></li>`,
@@ -216,7 +218,7 @@ const countryChips = () =>
 
 function renderHome() {
   document.title = "గల్ఫ్ తెలుగు గైడ్ | Gulf Telugu Guide – గల్ఫ్‌కు వెళ్లే, అక్కడ ఉండే తెలుగు వారికి";
-  const popular = ["job-offer", "unpaid-salary", "death-repatriation", "gratuity", "passport", "going-home"].map((id) => state.byId.get(id)).filter(Boolean);
+  const popular = ["job-offer", "unpaid-salary", "death-repatriation", "gratuity", "community", "gulf-life"].map((id) => state.byId.get(id)).filter(Boolean);
   const boards = state.community.boards;
   main.innerHTML = `
     <section class="intro">
@@ -360,10 +362,24 @@ function renderCountry(id) {
         <p><a href="https://www.madad.gov.in" target="_blank" rel="noopener">MADAD లో ఫిర్యాదు ↗</a></p></div>
       ${assoc.length ? `<div class="fact"><h2>🤝 తెలుగు సంఘాలు</h2><ul class="mini">${assoc.map((a) => `<li>${a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.name)} ↗</a>` : esc(a.name)}</li>`).join("")}</ul></div>` : ""}
     </div>
+    ${communityHTML(c)}
     ${c.notes.length ? `<section class="box"><h2>గుర్తుంచుకోండి</h2><ul>${c.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></section>` : ""}
     <div class="section-head" style="margin-top:24px"><h2>ఉపయోగపడే గైడ్లు</h2></div>
     <div class="ggrid">${["unpaid-salary", "passport", "gratuity", "going-home"].map((g) => state.byId.get(g)).filter(Boolean).map(guideCardHTML).join("")}</div>
     <p class="disclaimer">లింకులు అధికారిక ప్రభుత్వ సైట్లవి. ఫోన్ నంబర్లు మారవచ్చు — అత్యవసర సమయంలో అధికారిక సైట్‌లో సరిచూసుకోండి.</p>`;
+}
+
+const KIND = { club: "🏢 ఇండియన్ క్లబ్ / కల్చరల్ సెంటర్", welfare: "🤲 సంక్షేమ సంస్థ", school: "🏫 భారతీయ స్కూల్", temple: "🛕 దేవాలయం" };
+function communityHTML(c) {
+  const link = (x) => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)} ↗</a>`;
+  const list = (c.community || [])
+    .map((x) => `<li><span class="tag">${KIND[x.kind] || ""}</span> ${link(x)}${x.note ? `<br /><small class="muted">${esc(x.note)}</small>` : ""}</li>`)
+    .join("");
+  const voices = (c.voices || []).map((v) => `<li>${v.kind === "reddit" ? "💬" : "▶️"} ${link(v)}</li>`).join("");
+  return `${list ? `<section class="box"><h2>🎉 భారతీయ సమాజం: క్లబ్బులు, స్కూళ్లు, సంస్థలు</h2><ul class="mini">${list}</ul>
+      <p class="muted">కార్యక్రమాల తేదీలు ఈ సంస్థల, <a href="/g/community">తెలుగు సంఘాల</a> పేజీల్లో చూడండి. సంఘాలు తమ కార్యక్రమాలను <a href="/board/sangham">రచ్చబండలో</a> ప్రకటించవచ్చు.</p></section>` : ""}
+    ${voices ? `<section class="box"><h2>🧭 అక్కడ ఉన్నవాళ్ల అనుభవాలు (రెడ్డిట్, యూట్యూబ్)</h2><ul class="mini">${voices}</ul>
+      <p class="muted">ఇవి వ్యక్తిగత అభిప్రాయాలు, అధికారిక సమాచారం కాదు. <a href="/g/gulf-life">ఎక్కువమంది చెప్పే సలహాలు</a> చదవండి. ఉద్యోగాలు ఇప్పిస్తామని డబ్బు అడిగేవారిని నమ్మవద్దు.</p></section>` : ""}`;
 }
 
 function renderUpdates() {
