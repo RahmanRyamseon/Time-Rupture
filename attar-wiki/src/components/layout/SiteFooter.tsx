@@ -19,6 +19,7 @@ export async function SiteFooter() {
         <nav aria-label="Footer">
           <ul className="grid grid-cols-2 gap-2 text-sm">
             {[
+              ["/compared", t("nav.compared")],
               ["/attars", t("nav.attars")],
               ["/notes", t("nav.notes")],
               ["/houses", t("nav.houses")],

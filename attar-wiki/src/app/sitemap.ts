@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { getSitemapEntries } from "@/lib/data/wiki";
+import { getComparisonIndex, getSitemapEntries } from "@/lib/data/wiki";
 import { absoluteUrl } from "@/lib/site";
 import { TYPE_TO_SECTION } from "@/lib/sections";
 
 export const revalidate = 3600;
 
-const STATIC = ["/", "/attars", "/houses", "/notes", "/regions", "/glossary", "/guides", "/finder", "/about", "/contribute"];
+const STATIC = ["/", "/compared", "/attars", "/houses", "/notes", "/regions", "/glossary", "/guides", "/finder", "/about", "/contribute"];
 
 function entry(path: string, lastModified?: string): MetadataRoute.Sitemap[number] {
   return {
@@ -16,6 +16,6 @@ function entry(path: string, lastModified?: string): MetadataRoute.Sitemap[numbe
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const docs = await getSitemapEntries();
-  return [...STATIC.map((p) => entry(p)), ...docs.map((d) => entry(`/${TYPE_TO_SECTION[d.entity_type]}/${d.slug}`, d.updated_at))];
+  const [docs, comparisons] = await Promise.all([getSitemapEntries(), getComparisonIndex()]);
+  return [...STATIC.map((p) => entry(p)), ...comparisons.map((c) => entry(`/compared/${c.slug}`)), ...docs.map((d) => entry(`/${TYPE_TO_SECTION[d.entity_type]}/${d.slug}`, d.updated_at))];
 }

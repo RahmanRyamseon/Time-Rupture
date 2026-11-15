@@ -26,7 +26,8 @@
     "signOut": "Sign out",
     "menu": "Menu",
     "language": "हिन्दी",
-    "languageLabel": "Switch to Hindi"
+    "languageLabel": "Switch to Hindi",
+    "compared": "Comparisons"
   },
   "sections": {
     "attars": "Attars",
@@ -460,8 +461,8 @@
     "terms": "Terms"
   },
   "home": {
-    "heroTitle": "Every attar, explained.",
-    "heroBody": "What it is, how it is made, what it smells like, and how it holds up in an Indian summer, monsoon and winter. Written and checked by the community.",
+    "heroTitle": "Compare attars before you buy.",
+    "heroBody": "Every house's version side by side: listed price per 10 ml or 10 g, what the maker claims, and what buyers actually report. Nothing is sold here, and every fact links to its source.",
     "browseAll": "Browse all attars",
     "finder": "Find your attar",
     "recent": "Recently updated attars",
@@ -470,7 +471,12 @@
     "guides": "Guides",
     "stats": "{attars} attars · {houses} houses · {notes} notes · {regions} regions",
     "emptyTitle": "This wiki is just getting started",
-    "emptyBody": "No pages have been published yet. Editors import the first entries from vetted CSVs, then everyone can help fill the gaps."
+    "emptyBody": "No pages have been published yet. Editors import the first entries from vetted CSVs, then everyone can help fill the gaps.",
+    "heroEyebrow": "Independent attar buyer's guide",
+    "compareCta": "Compare mitti attars",
+    "comparisons": "Buyer's comparisons",
+    "comparisonsHelp": "One traditional style, every house that sells it, on one page.",
+    "allComparisons": "All comparisons"
   },
   "common": {
     "loading": "Loading…",
@@ -482,5 +488,34 @@
     "yes": "Yes",
     "no": "No",
     "signInRequired": "Please sign in first."
+  },
+  "compared": {
+    "indexTitle": "Buyer's comparisons",
+    "indexBody": "Pick a traditional attar style to see every house's version side by side: listed prices normalised per 10 ml or 10 g, the maker's own claims, notes, and what buyers report. Prices are as listed on the date shown; nothing here is sold.",
+    "eyebrow": "Buyer's comparison",
+    "title": "Every {style} compared",
+    "metaTitle": "{style}: every brand compared ({count} versions)",
+    "metaDescription": "{count} versions of {style} from {houses} houses side by side: price per 10 ml or g, natural or blended claims, notes and buyer reports, with sources.",
+    "lede": "{count} versions from {houses} houses. Sorted by listed price per 10 ml or 10 g, cheapest first; versions without a listed price come last.",
+    "versions": "{count, plural, one {# version} other {# versions}}",
+    "from": "from {price} per 10 {unit}",
+    "table": "Side by side",
+    "product": "Version",
+    "listed": "Listed sizes and prices",
+    "per10": "Lowest per 10 ml / g",
+    "claim": "Method (as listed)",
+    "noClaim": "Method not stated",
+    "base": "Base oil",
+    "notes": "Notes listed",
+    "source": "Source",
+    "noPrice": "No price recorded",
+    "unitWarning": "Some houses sell by weight (g) and others by volume (ml). We show each in the seller's own unit and do not convert, so compare g with g and ml with ml.",
+    "claimWarning": "Claims such as \"100% natural\" or \"deg-bhapka\" are the maker's own words; open each version for the full listing. We have not tested them.",
+    "buyers": "About this style and what buyers report",
+    "styleLink": "Read the full {style} page",
+    "sideBySide": "Open the first four in the compare tool",
+    "missing": "Know a house we have missed?",
+    "missingBody": "Suggest it with a link to the house's own listing. We add a version only when its price, size and claims can be cited.",
+    "checked": "Prices checked {date}"
   }
 }

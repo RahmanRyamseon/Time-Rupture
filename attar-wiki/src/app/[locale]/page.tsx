@@ -8,6 +8,7 @@ import { SearchBox } from "@/components/layout/SearchBox";
 import { AttarCards } from "@/components/attar/AttarCards";
 import { JsonLd } from "@/components/wiki/JsonLd";
 import { Icon } from "@/components/ui/Icon";
+import { ComparisonCards } from "@/components/compare/ComparisonCards";
 
 export const revalidate = 600;
 
@@ -50,7 +51,7 @@ export default async function HomePage({ params }: Props) {
           style={{ background: "radial-gradient(60rem 30rem at 85% -10%, #c9a24a 0%, transparent 60%)" }}
         />
         <div className="container-wiki relative py-14 sm:py-20">
-          <p className="eyebrow text-gold-soft">{t("site.tagline")}</p>
+          <p className="eyebrow text-gold-soft">{t("home.heroEyebrow")}</p>
           <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-[1.1] text-parchment sm:text-6xl">{t("home.heroTitle")}</h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-sand">{t("home.heroBody")}</p>
           <div className="mt-8 max-w-xl text-ink">
@@ -58,7 +59,10 @@ export default async function HomePage({ params }: Props) {
             <p className="mt-2 text-sm text-sand/90">{t("search.hint")}</p>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/attars" className="btn bg-gold text-ink hover:bg-gold-soft">
+            <Link href="/compared/mitti-attar" className="btn bg-gold text-ink hover:bg-gold-soft">
+              {t("home.compareCta")}
+            </Link>
+            <Link href="/attars" className="btn border border-gold/60 text-parchment hover:bg-cocoa">
               {t("home.browseAll")}
             </Link>
             <Link href="/finder" className="btn border border-gold/60 text-parchment hover:bg-cocoa">
@@ -92,6 +96,23 @@ export default async function HomePage({ params }: Props) {
                 {t("nav.about")}
               </Link>
             </div>
+          </section>
+        ) : null}
+
+        {!empty ? (
+          <section aria-labelledby="comparisons">
+            <div className="mb-5 flex items-end justify-between gap-4">
+              <div>
+                <h2 id="comparisons" className="text-2xl font-semibold sm:text-3xl">
+                  {t("home.comparisons")}
+                </h2>
+                <p className="mt-1 text-muted">{t("home.comparisonsHelp")}</p>
+              </div>
+              <Link href="/compared" className="shrink-0 text-sm font-semibold">
+                {t("home.allComparisons")}
+              </Link>
+            </div>
+            <ComparisonCards locale={locale} limit={6} />
           </section>
         ) : null}
 

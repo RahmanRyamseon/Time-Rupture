@@ -17,6 +17,15 @@ NEW_HOUSES = [
          summary="Kannauj-based attar maker that sells traditional single-flower attars, ruhs and blends, and describes its traditional attars as distilled by the deg-bhapka method.",
          history="The company publishes guides on traditional attar making and lists its products with the distillation method and, for many, top, heart and base notes. Several of its traditional attars are listed as hydro-distilled in Kannauj using the deg and bhapka method.",
          website_url="https://kannaujattar.com"),
+    dict(slug="boond-fragrances", name="Boond Fragrances", aliases="Boond|boondfragrances.com",
+         summary="Brand selling natural perfume oils that it describes as handcrafted in Kannauj by the deg-bhapka method.",
+         history="Boond lists its perfume oils as pure and natural, free of alcohol and added chemicals, and handcrafted in Kannauj using the deg-bhapka method.",
+         website_url="https://boondfragrances.com"),
+    dict(slug="baanka", name="Baanka", aliases="Baanka Perfumes|baanka.com",
+         summary="Indian brand selling natural attars and perfume oils in 2, 6 and 12 ml sizes.",
+         website_url="https://baanka.com"),
+    dict(slug="sugandhco", name="Sugandhco", aliases="Sugandh Co|SugandhCo", city="Lucknow",
+         summary="Lucknow-based attar marketer (Janpath Market) whose attars are sold through online retailers."),
 ]
 
 # New notes introduced by product listings (facts cited to the listing that states them).
@@ -48,10 +57,11 @@ NEW_NOTES = [
 ]
 
 def P(house, slug, name, url, desc, *, style=None, type=None, base=None, family=None, region=None,
-      notes=(), prices=(), unit="g", occasions="", summary=None, cite_extra=()):
+      notes=(), prices=(), unit="g", occasions="", summary=None, cite_extra=(), source=None):
+    """source: publisher name when the page is not the house's own store (e.g. a retailer)."""
     return dict(house=house, slug=slug, name=name, url=url, desc=desc, style=style, type=type, base=base,
                 family=family, region=region, notes=list(notes), prices=list(prices), unit=unit,
-                occasions=occasions, summary=summary, cite_extra=list(cite_extra))
+                occasions=occasions, summary=summary, cite_extra=list(cite_extra), source=source)
 
 MLR = "https://attarsindia.com/products/"
 GSJ = "https://gulabsinghjohrimal.co.in/products/"
@@ -215,6 +225,18 @@ PRODUCTS = [
     P("kannauj-attar", "ka-sandalwood-attar", "Sandalwood Attar (Kannauj Attar)", "https://kannaujattar.com/product/sandalwood-attar-chandan/",
       "Creamy, milky sandalwood with a deep balsamic-wood base.",
       family="Woody", notes=[("sandalwood", "heart")]),
+
+    # ---------------- Mitti attars from other houses (added for the mitti comparison)
+    P("boond-fragrances", "boond-maati", "Maati (Boond)", "https://boondfragrances.com/products/maati-natural-perfume-oil",
+      "Boond's mitti perfume oil. The brand describes it as completely pure and natural with no alcohol or added chemicals, handcrafted in Kannauj by the deg-bhapka method, earthy and woody, and says it lasts 4 to 6 hours. Also sold as a 5 ml roll-on (listed at ₹1,749).",
+      style="mitti-attar", type="natural_deg_bhapka", family="Earthy", region="kannauj",
+      prices=[(3, 1499), (6, 1899), (12, 2499)], unit="ml", occasions="monsoon"),
+    P("baanka", "baanka-manmath-mitti", "Manmath Mitti (Baanka)", "https://baanka.com/product/manmath-mitti/",
+      "Baanka says it distilled the dusty, earthy smell of petrichor with sandalwood oil for this attar. It is listed in 2, 6 and 12 ml sizes, priced from ₹599 to ₹3,599 across sizes on the date checked.",
+      style="mitti-attar", base="Sandalwood oil", family="Earthy", notes=[("baked-earth", "listed"), ("sandalwood", "listed")], occasions="monsoon"),
+    P("sugandhco", "sugandhco-gil-mitti", "Gil (Mitti) (Sugandhco)", "https://scentkart.com/products/gil-mitti-1",
+      "A gil (mitti) attar marketed by Sugandhco of Lucknow, listed by the retailer Scentkart with a petrichor and rain top over a woody base. The listing makes no natural or deg-bhapka claim.",
+      style="mitti-attar", family="Earthy", notes=[("baked-earth", "top")], prices=[(10, 400)], unit="ml", source="Scentkart (retailer listing)"),
 ]
 
 PUBLISHER = {
@@ -222,9 +244,16 @@ PUBLISHER = {
     "gulabsingh-johrimal": "Gulabsingh Johrimal, official store",
     "ajmal": "Ajmal Perfumes India, official store",
     "kannauj-attar": "Kannauj Attar, official store",
+    "boond-fragrances": "Boond Fragrances, official store",
+    "baanka": "Baanka, official store",
+    "sugandhco": "Sugandhco",
 }
 
 EXTRA_SOURCES = {
+    "rd_mlr_mitti": ("https://www.reddit.com/r/DesiFragranceAddicts/comments/1o5jigs/ml_ramnarain_attarshari_aromas_attar_mitti_and/", "M.L. RamNarain attars/Hari aromas, Attar Mitti and Zafraan", "r/DesiFragranceAddicts (Reddit)"),
+    "rd_mitti_reco": ("https://www.reddit.com/r/DesiFragranceAddicts/comments/1bn8pb1/mitti_attar_recommendation/", "Mitti attar recommendation", "r/DesiFragranceAddicts (Reddit)"),
+    "rd_smamy_gil": ("https://www.reddit.com/r/DesiFragranceAddicts/comments/1iq3omh/gil_mitti_attar_smamy/", "Gil mitti Attar - SMAMY", "r/DesiFragranceAddicts (Reddit)"),
+    "rd_mitti_layer": ("https://www.reddit.com/r/DesiFragranceAddicts/comments/16lw2rx/layering_mitti_attar_with_ruh_khus/", "Layering Mitti Attar with Ruh Khus", "r/DesiFragranceAddicts (Reddit)"),
     "rd_men": ("https://www.reddit.com/r/DesiFragranceAddicts/comments/1ekgu5n/attar_recommendation_for_men/", "Attar recommendation for men", "r/DesiFragranceAddicts (Reddit)"),
     "ka_tuberose": ("https://kannaujattar.com/product/tuberose-attar-perfume-oil-rajnigandha/", "Tuberose Attar (Rajnigandha)", "Kannauj Attar"),
     "gsj_ruh_champaka": ("https://gulabsinghjohrimal.co.in/products/ruh-champaka", "Ruh Champaka", "Gulabsingh Johrimal"),

@@ -446,3 +446,55 @@ export async function getCompareData(slugs: string[]) {
   const results = await Promise.all(unique.map((s) => getAttar(s)));
   return results.filter((r): r is AttarPageData => Boolean(r && r.attar.published));
 }
+
+/* ------------------------------------------------------------------------ */
+/* Buyer's comparisons (a traditional style and every house version of it)   */
+/* ------------------------------------------------------------------------ */
+
+export interface ComparisonIndexRow {
+  slug: string;
+  name: string;
+  name_hi: string | null;
+  summary: string | null;
+  versions: string[];
+}
+
+/** Styles with at least `min` house versions, most versions first. */
+export async function getComparisonIndex(min = 2): Promise<ComparisonIndexRow[]> {
+  const supabase = db();
+  let rows: ComparisonIndexRow[];
+  if (!supabase) {
+    rows = local.comparisonIndex();
+  } else {
+    const { data } = await supabase
+      .from("attar_relations")
+      .select(
+        "product:attars!attar_relations_attar_id_fkey(slug, published), style:attars!attar_relations_related_attar_id_fkey(slug, name, name_hi, summary, published)",
+      )
+      .eq("relation", "example_of");
+    type R = {
+      product: { slug: string; published: boolean } | null;
+      style: { slug: string; name: string; name_hi: string | null; summary: string | null; published: boolean } | null;
+    };
+    const map = new Map<string, ComparisonIndexRow>();
+    for (const r of (data as unknown as R[]) ?? []) {
+      if (!r.product?.published || !r.style?.published) continue;
+      const row = map.get(r.style.slug) ?? { ...r.style, versions: [] };
+      row.versions.push(r.product.slug);
+      map.set(r.style.slug, row);
+    }
+    rows = [...map.values()];
+  }
+  return rows.filter((r) => r.versions.length >= min).sort((a, b) => b.versions.length - a.versions.length || a.name.localeCompare(b.name));
+}
+
+/** A style page plus the full data of every house version (for the comparison table). */
+export async function getStyleComparison(slug: string) {
+  const style = await getAttar(slug);
+  if (!style || !style.attar.published) return null;
+  const slugs = style.reverseRelations.filter((r) => r.relation === "example_of" && r.related).map((r) => r.related!.slug);
+  const versions = (await Promise.all([...new Set(slugs)].map((s) => getAttar(s)))).filter(
+    (v): v is AttarPageData => Boolean(v && v.attar.published),
+  );
+  return { style, versions };
+}

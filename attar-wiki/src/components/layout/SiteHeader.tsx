@@ -10,6 +10,7 @@ import { AccountMenu } from "./AccountMenu";
 export async function SiteHeader() {
   const t = await getTranslations("nav");
   const primary = [
+    { href: "/compared", label: t("compared") },
     { href: "/attars", label: t("attars") },
     { href: "/notes", label: t("notes") },
     { href: "/houses", label: t("houses") },

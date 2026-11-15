@@ -41,7 +41,7 @@ test("browse filters and the note explorer", () => {
   assert.equal(local.browseAttars({ region: "kannauj" }).total >= 3, true);
   assert.deepEqual(
     local.browseAttars({ note: "baked-earth" }).rows.map((r) => r.slug).sort(),
-    ["ka-mitti-attar", "mitti-attar", "mlr-attar-mitti"],
+    ["baanka-manmath-mitti", "ka-mitti-attar", "mitti-attar", "mlr-attar-mitti", "sugandhco-gil-mitti"],
   );
   assert.equal(local.browseAttars({ weather: "heat" }).total, 0, "weather needs real votes");
   const rose = local.getNote("rose")!;
@@ -63,7 +63,7 @@ test("matcher uses documented seasons when there are no votes yet", async () => 
 test("house products: style links, listed notes, units and prices are consistent", () => {
   const style = local.getAttar("mitti-attar")!;
   const versions = style.reverseRelations.filter((r) => r.relation === "example_of").map((r) => r.related!.slug).sort();
-  assert.deepEqual(versions, ["ka-mitti-attar", "mlr-attar-mitti"]);
+  assert.deepEqual(versions, ["baanka-manmath-mitti", "boond-maati", "ka-mitti-attar", "mlr-attar-mitti", "sugandhco-gil-mitti"]);
   const mlr = local.getAttar("mlr-attar-mitti")!;
   assert.equal(mlr.house?.slug, "ml-ramnarain");
   assert.ok(mlr.notes.every((n) => n.position === "listed"), "brand gave no positions");
@@ -80,4 +80,18 @@ test("house products: style links, listed notes, units and prices are consistent
   }
   assert.ok(local.search("ajmal musk").some((h) => h.slug.startsWith("ajmal-")));
   assert.equal(local.getHouse("kannauj-attar")!.attars.length >= 20, true);
+});
+
+test("buyer's comparison: per-10 price uses the seller's unit and sorts cheapest first", async () => {
+  const { lowestPer10, byPer10 } = await import("../src/lib/compare");
+  const idx = local.comparisonIndex().find((r) => r.slug === "mitti-attar")!;
+  assert.equal(idx.versions.length, 5);
+  const rows = idx.versions.map((s) => ({ name: s, per10: lowestPer10(local.getAttar(s)!.prices) })).sort(byPer10);
+  // Sugandhco 10 ml ₹400 → ₹400 / 10 ml; Boond 12 ml ₹2,499 → ₹2,082.5 / 10 ml; MLR 10 g ₹6,000 → ₹6,000 / 10 g
+  assert.deepEqual(rows.map((r) => r.name), ["sugandhco-gil-mitti", "boond-maati", "mlr-attar-mitti", "baanka-manmath-mitti", "ka-mitti-attar"]);
+  assert.equal(rows[0].per10!.value, 400);
+  assert.equal(rows[0].per10!.unit, "ml");
+  assert.equal(Math.round(rows[1].per10!.value * 10) / 10, 2082.5);
+  assert.equal(rows[2].per10!.unit, "g");
+  assert.equal(rows[3].per10, null); // Baanka: no size-specific price recorded, never guessed
 });

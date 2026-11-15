@@ -41,6 +41,7 @@ S = {  # source registry: key -> (url, title, publisher)
  "tot_ruh": ("https://takeonethingoff.com/indian-single-material-attars-and-ruhs/", "Indian Single-Material Attars and Ruhs", "Take One Thing Off"),
  "rd_mitti_sucks": ("https://www.reddit.com/r/DesiFragranceAddicts/comments/1axxkiw/kannauj_mitti_attar_sucks/", "Kannauj Mitti Attar sucks", "r/DesiFragranceAddicts (Reddit)"),
 }
+S.update(PR.EXTRA_SOURCES)
 
 citations = []
 def cite(etype, slug, field, *keys):
@@ -199,7 +200,7 @@ attars = [
       base_oil="Sandalwood oil", scent_family="Earthy", region_slug="kannauj", occasions="daily|monsoon",
       summary="Kannauj's 'scent of first rain': baked clay distilled into sandalwood oil. The classic monsoon attar.",
       summary_hi="कन्नौज का 'पहली बारिश की ख़ुशबू' वाला इत्र: पकी मिट्टी को चंदन तेल में आसवित किया जाता है।",
-      description="Mitti attar is the monsoon variety among Kannauj perfumes. Its smell recalls petrichor, the earthy scent of rain on dry ground. National Geographic describes it as balancing sweet, spice, smoke and damp.\n\nOpinion is not unanimous. One Reddit buyer complained that a mitti attar they bought smelled of sweat rather than rain, a reminder that quality varies between makers. Other Reddit users list *gili mitti* among their favourite summer attars.",
+      description="Mitti attar is the monsoon variety among Kannauj perfumes. Its smell recalls petrichor, the earthy scent of rain on dry ground. National Geographic describes it as balancing sweet, spice, smoke and damp.\n\nOpinion is not unanimous. One Reddit buyer complained that a mitti attar they bought smelled of sweat rather than rain, a reminder that quality varies between makers. Other Reddit users list *gili mitti* among their favourite summer attars.\n\n**What buyers report, by house.** A Reddit review of M.L. Ramnarain's Attar Mitti says it smells exactly as described, like earth after the first monsoon rain. Several buyers warn that the gil (gili) mitti from S. Md. Ayub & Md. Yaqub opens dark and muddy but fades to something like wet cardboard. Another commenter notes that most mitti attars smell more of baked earth than of rain itself.",
       how_made="Baked alluvial clay goes into the copper deg (still) in place of flowers. As the still heats, the vapour travels through a bamboo pipe into a receiver holding sandalwood oil, which absorbs the earthy aroma. This is the traditional deg-bhapka hydro-distillation."),
  dict(slug="ruh-khus", name="Ruh Khus", name_hi="रूह ख़स", aliases="Ruh Khas|Khus attar|Vetiver attar|Ruh-e-khus", attar_type="ruh",
       base_oil="", scent_family="Earthy", occasions="daily|summer",
@@ -261,7 +262,7 @@ attars = [
 ]
 # citations for attars
 cite("attar","mitti-attar","attar_type","natgeo","wp_kperfume"); cite("attar","mitti-attar","base_oil","fraterworks_mitti","natgeo")
-cite("attar","mitti-attar","region_id","wp_kperfume","natgeo"); cite("attar","mitti-attar","description","wp_kperfume","natgeo","rd_mitti_sucks","rd_recommend")
+cite("attar","mitti-attar","region_id","wp_kperfume","natgeo"); cite("attar","mitti-attar","description","wp_kperfume","natgeo","rd_mitti_sucks","rd_recommend","rd_mlr_mitti","rd_mitti_reco","rd_smamy_gil","rd_mitti_layer")
 cite("attar","mitti-attar","how_made","natgeo","fraterworks_mitti"); cite("attar","mitti-attar","notes","wp_kperfume","natgeo")
 cite("attar","ruh-khus","attar_type","pv_explained","ka_ruh"); cite("attar","ruh-khus","description","wp_attar","pv_explained","rd_summer_newbie","rd_recommend")
 cite("attar","ruh-khus","notes","pv_explained")
@@ -426,7 +427,8 @@ relations, prices, product_notes = [], [], []
 for p in PR.PRODUCTS:
     assert p["style"] is None or p["style"] in style_slugs, p["slug"]
     src_key = "prod_" + p["slug"]
-    S[src_key] = (p["url"], p["name"].split(" (")[0], PR.PUBLISHER[p["house"]])
+    pub = p["source"] or PR.PUBLISHER[p["house"]]
+    S[src_key] = (p["url"], p["name"].split(" (")[0], pub)
     row = dict(slug=p["slug"], name=p["name"], house_slug=p["house"], attar_type=p["type"] or "", base_oil=p["base"] or "",
                scent_family=p["family"] or "", region_slug=p["region"] or "", occasions=p["occasions"],
                summary=p["summary"] or first_sentence(p["desc"]), description=p["desc"])
@@ -444,10 +446,13 @@ for p in PR.PRODUCTS:
         relations.append(dict(attar_slug=p["slug"], relation="example_of", related_attar_slug=p["style"], external_name="", note=""))
     for qty, price in p["prices"]:
         prices.append(dict(attar_slug=p["slug"], price_min_inr=price, price_max_inr=price, volume_ml=qty, unit=p["unit"],
-                           reported_on=PR.REPORTED_ON, source_name=PR.PUBLISHER[p["house"]], source_url=p["url"],
-                           note="Listed price on the official store on this date"))
+                           reported_on=PR.REPORTED_ON, source_name=pub, source_url=p["url"],
+                           note="Listed price on the official store on this date" if not p["source"] else "Listed price on a retailer page on this date"))
     if p["prices"]: cite("attar", p["slug"], "price", src_key)
 
+cite("house","boond-fragrances","history","prod_boond-maati"); cite("house","boond-fragrances","website_url","prod_boond-maati")
+cite("house","baanka","website_url","prod_baanka-manmath-mitti")
+cite("house","sugandhco","city","prod_sugandhco-gil-mitti")
 write("attars.csv", "slug,name,name_hi,aliases,house_slug,attar_type,base_oil,scent_family,region_slug,launch_year,occasions,summary,summary_hi,description,how_made,published".split(","), attars)
 all_notes = [(a, n, p) for a, n, p in attar_notes if n] + product_notes
 write("attar_notes.csv", ["attar_slug","note_slug","position","sort_order"],

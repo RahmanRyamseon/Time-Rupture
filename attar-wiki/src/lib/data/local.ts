@@ -423,3 +423,18 @@ export function matcherCatalog() {
     };
   });
 }
+
+/** Traditional styles that have house versions, for the buyer's comparison index. */
+export function comparisonIndex() {
+  const out = new Map<string, { slug: string; name: string; name_hi: string | null; summary: string | null; versions: string[] }>();
+  for (const r of D.attar_relations) {
+    if (r.relation !== "example_of" || !r.related_attar_id) continue;
+    const style = D.attars.find((a) => a.id === r.related_attar_id && a.published);
+    const product = D.attars.find((a) => a.id === r.attar_id && a.published);
+    if (!style || !product) continue;
+    const row = out.get(style.slug) ?? { slug: style.slug, name: style.name, name_hi: style.name_hi, summary: style.summary, versions: [] };
+    row.versions.push(product.slug);
+    out.set(style.slug, row);
+  }
+  return [...out.values()];
+}
