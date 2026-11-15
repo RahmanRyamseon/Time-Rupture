@@ -329,7 +329,13 @@
       "family": "Scent family: {family}",
       "note": "Contains {note}",
       "budget": "Reported ≈ ₹{min}–₹{max} per 10 ml",
-      "longevity": "Longevity votes {avg}/5 ({count})"
+      "longevity": "Longevity votes {avg}/5 ({count})",
+      "season": "Traditionally worn in {season}"
+    },
+    "seasons": {
+      "summer": "summer",
+      "winter": "winter",
+      "monsoon": "the monsoon"
     }
   },
   "edit": {

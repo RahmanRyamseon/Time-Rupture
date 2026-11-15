@@ -1,5 +1,6 @@
 import "server-only";
 import { createPublicClient } from "@/lib/supabase/server";
+import * as local from "./local";
 import { SECTION_DEFS, type Section } from "@/lib/sections";
 import type {
   Attar,
@@ -83,7 +84,7 @@ export interface AttarPageData extends EntityExtras {
 
 export async function getAttar(slug: string): Promise<AttarPageData | null> {
   const supabase = db();
-  if (!supabase) return null;
+  if (!supabase) return local.getAttar(slug);
   const { data: attar } = await supabase.from("attars").select("*").eq("slug", slug).maybeSingle<Attar>();
   if (!attar) return null;
 
@@ -166,7 +167,7 @@ export interface BrowseRow {
 
 export async function browseAttars(f: BrowseFilters): Promise<{ rows: BrowseRow[]; total: number }> {
   const supabase = db();
-  if (!supabase) return { rows: [], total: 0 };
+  if (!supabase) return local.browseAttars(f);
   const pageSize = Math.min(f.pageSize ?? 24, 100);
   const page = Math.max(f.page ?? 1, 1);
   const { data, error } = await supabase.rpc("browse_attars", {
@@ -199,7 +200,7 @@ export interface Facets {
 export async function getFacets(): Promise<Facets> {
   const empty: Facets = { families: [], houses: [], regions: [], notes: [] };
   const supabase = db();
-  if (!supabase) return empty;
+  if (!supabase) return local.getFacets() ?? empty;
   const { data } = await supabase.rpc("attar_facets");
   return (data as Facets) ?? empty;
 }
@@ -210,7 +211,7 @@ export async function getFacets(): Promise<Facets> {
 
 export async function getHouse(slug: string) {
   const supabase = db();
-  if (!supabase) return null;
+  if (!supabase) return local.getHouse(slug);
   const { data: house } = await supabase.from("houses").select("*").eq("slug", slug).maybeSingle<House>();
   if (!house) return null;
   const [region, attars, extras] = await Promise.all([
@@ -230,7 +231,7 @@ export async function getHouse(slug: string) {
 
 export async function getNote(slug: string) {
   const supabase = db();
-  if (!supabase) return null;
+  if (!supabase) return local.getNote(slug);
   const { data: note } = await supabase.from("notes").select("*").eq("slug", slug).maybeSingle<Note>();
   if (!note) return null;
   const [links, extras] = await Promise.all([
@@ -253,7 +254,7 @@ export async function getNote(slug: string) {
 
 export async function getRegion(slug: string) {
   const supabase = db();
-  if (!supabase) return null;
+  if (!supabase) return local.getRegion(slug);
   const { data: region } = await supabase.from("regions").select("*").eq("slug", slug).maybeSingle<Region>();
   if (!region) return null;
   const [houses, attars, extras] = await Promise.all([
@@ -271,7 +272,7 @@ export async function getRegion(slug: string) {
 
 export async function getGlossaryEntry(slug: string) {
   const supabase = db();
-  if (!supabase) return null;
+  if (!supabase) return local.getGlossaryEntry(slug);
   const { data: entry } = await supabase.from("glossary").select("*").eq("slug", slug).maybeSingle<GlossaryEntry>();
   if (!entry) return null;
   return { entry, ...(await getExtras("glossary", entry.id)) };
@@ -279,7 +280,7 @@ export async function getGlossaryEntry(slug: string) {
 
 export async function getGuide(slug: string) {
   const supabase = db();
-  if (!supabase) return null;
+  if (!supabase) return local.getGuide(slug);
   const { data: guide } = await supabase.from("guides").select("*").eq("slug", slug).maybeSingle<Guide>();
   if (!guide) return null;
   return { guide, ...(await getExtras("guide", guide.id)) };
@@ -288,14 +289,14 @@ export async function getGuide(slug: string) {
 /** Minimal row lookup used by history/edit pages for any section. */
 export async function getEntityRow(section: Section, slug: string): Promise<Record<string, unknown> | null> {
   const supabase = db();
-  if (!supabase) return null;
+  if (!supabase) return local.getEntityRow(section, slug);
   const { data } = await supabase.from(SECTION_DEFS[section].table).select("*").eq("slug", slug).maybeSingle();
   return (data as Record<string, unknown>) ?? null;
 }
 
 export async function listSection(section: Section, limit = 500) {
   const supabase = db();
-  if (!supabase) return [];
+  if (!supabase) return local.listSection(section).slice(0, limit);
   const def = SECTION_DEFS[section];
   const cols: Record<Section, string> = {
     attars: CARD_SELECT,
@@ -312,7 +313,8 @@ export async function listSection(section: Section, limit = 500) {
 
 export async function getAttarCards(slugs: string[]) {
   const supabase = db();
-  if (!supabase || slugs.length === 0) return [];
+  if (slugs.length === 0) return [];
+  if (!supabase) return local.getAttarCards(slugs);
   const { data } = await supabase.from("attars").select(CARD_SELECT).in("slug", slugs).eq("published", true);
   return (data as unknown as AttarCard[]) ?? [];
 }
@@ -376,14 +378,15 @@ export async function getRevisionPair(type: EntityType, id: string, revisionId: 
 export async function search(query: string, types?: EntityType[], limit = 20): Promise<SearchHit[]> {
   const supabase = db();
   const q = query.trim().slice(0, 100);
-  if (!supabase || !q) return [];
+  if (!q) return [];
+  if (!supabase) return local.search(q, types, limit);
   const { data } = await supabase.rpc("search_all", { p_query: q, p_types: types?.length ? types : null, p_limit: limit });
   return (data as SearchHit[]) ?? [];
 }
 
 export async function getHomeData() {
   const supabase = db();
-  if (!supabase) return { recent: [], guides: [], notes: [], regions: [], counts: {} as Record<string, number> };
+  if (!supabase) return local.getHomeData() as { recent: AttarCard[]; guides: Pick<Guide, "id" | "slug" | "title" | "title_hi" | "summary">[]; notes: Pick<Note, "id" | "slug" | "name" | "name_hi">[]; regions: Pick<Region, "id" | "slug" | "name" | "name_hi" | "state">[]; counts: Record<string, number> };
   const countOf = (table: string) =>
     supabase.from(table).select("id", { count: "exact", head: true }).eq("published", true);
   const [recent, guides, notes, regions, ca, ch, cn, cr] = await Promise.all([
@@ -407,7 +410,7 @@ export async function getHomeData() {
 
 export async function getSitemapEntries() {
   const supabase = db();
-  if (!supabase) return [];
+  if (!supabase) return local.getSitemapEntries();
   const { data } = await supabase
     .from("search_documents")
     .select("entity_type, slug, updated_at")

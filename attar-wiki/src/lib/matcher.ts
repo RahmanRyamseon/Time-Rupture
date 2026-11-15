@@ -75,6 +75,7 @@ export interface CatalogRow {
 
 export type Reason =
   | { kind: "occasion" }
+  | { kind: "season"; season: string }
   | { kind: "weather"; metric: string; avg: number; count: number }
   | { kind: "family"; family: string }
   | { kind: "note"; note: string }
@@ -102,6 +103,14 @@ export function scoreRow(row: CatalogRow, input: MatcherInputT): Scored {
   }
 
   if (input.weather !== "any") {
+    // Documented traditional season (sourced in the wiki), e.g. khus = summer, shamama = winter.
+    const seasons = input.weather === "winter" ? ["winter"] : input.weather === "humidity" ? ["monsoon", "summer"] : ["summer"];
+    const occ = row.occasions.map((o) => o.toLowerCase());
+    const season = seasons.find((x) => occ.includes(x));
+    if (season) {
+      score += 1.5;
+      reasons.push({ kind: "season", season });
+    }
     const s = row.stats[input.weather];
     if (s && s.n > 0) {
       const confidence = Math.min(1, s.n / 5);
@@ -208,10 +217,19 @@ export interface MatchResult {
   reasons: Reason[];
 }
 
-export async function runMatcher(supabase: SupabaseClient, input: MatcherInputT): Promise<{ method: "ai" | "rules"; results: MatchResult[] }> {
-  const { data, error } = await supabase.rpc("matcher_catalog").limit(3000);
-  if (error || !data) return { method: "rules", results: [] };
-  const rows = data as CatalogRow[];
+export async function runMatcher(
+  supabase: SupabaseClient | null,
+  input: MatcherInputT,
+  fallbackCatalog?: () => CatalogRow[],
+): Promise<{ method: "ai" | "rules"; results: MatchResult[] }> {
+  let rows: CatalogRow[];
+  if (supabase) {
+    const { data, error } = await supabase.rpc("matcher_catalog").limit(3000);
+    if (error || !data) return { method: "rules", results: [] };
+    rows = data as CatalogRow[];
+  } else {
+    rows = fallbackCatalog?.() ?? [];
+  }
 
   const scored = rows.map((r) => scoreRow(r, input)).sort((a, b) => b.score - a.score || a.row.name.localeCompare(b.row.name));
   const anySignal = input.occasion || input.weather !== "any" || input.vibes.length || input.budget !== "any";

@@ -329,7 +329,13 @@
       "family": "ख़ुशबू परिवार: {family}",
       "note": "इसमें {note} है",
       "budget": "बताई गई क़ीमत ≈ ₹{min}–₹{max} प्रति 10 ml",
-      "longevity": "टिकाऊपन वोट {avg}/5 ({count})"
+      "longevity": "टिकाऊपन वोट {avg}/5 ({count})",
+      "season": "पारंपरिक रूप से {season} में लगाया जाता है"
+    },
+    "seasons": {
+      "summer": "गर्मी",
+      "winter": "सर्दी",
+      "monsoon": "बरसात"
     }
   },
   "edit": {

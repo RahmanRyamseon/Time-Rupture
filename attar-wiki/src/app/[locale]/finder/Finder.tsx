@@ -10,6 +10,7 @@ const BUDGETS = ["any", "low", "mid", "high"] as const;
 
 type Reason =
   | { kind: "occasion" }
+  | { kind: "season"; season: string }
   | { kind: "weather"; metric: string; avg: number; count: number }
   | { kind: "family"; family: string }
   | { kind: "note"; note: string }
@@ -68,6 +69,8 @@ export function Finder() {
     switch (r.kind) {
       case "occasion":
         return t("finder.match.occasion");
+      case "season":
+        return t("finder.match.season", { season: t(`finder.seasons.${r.season}`) });
       case "weather":
         return t("finder.match.weather", { avg: r.avg.toFixed(1), metric: t(`metric.${r.metric}`), count: t("attar.votes", { count: r.count }) });
       case "family":

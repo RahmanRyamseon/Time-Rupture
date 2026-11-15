@@ -1,5 +1,6 @@
 import { apiError, json, parseBody, publicClient } from "@/lib/api/http";
 import { MatcherInput, runMatcher } from "@/lib/matcher";
+import { matcherCatalog } from "@/lib/data/local";
 
 // Best-effort per-instance rate limit to protect the Claude API budget.
 const hits = new Map<string, { n: number; reset: number }>();
@@ -25,7 +26,6 @@ export async function POST(req: Request) {
   const body = await parseBody(req, MatcherInput);
   if (body instanceof Response) return body;
   const supabase = await publicClient();
-  if (!supabase) return json({ method: "rules", results: [] });
-  const result = await runMatcher(supabase, body);
+  const result = await runMatcher(supabase, body, matcherCatalog);
   return json(result, { cache: "no-store" });
 }

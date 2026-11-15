@@ -12,7 +12,9 @@
     "import:all": "tsx scripts/import/run.ts all",
     "icons": "node scripts/generate-icons.mjs",
     "test": "node --conditions=react-server --import tsx --test tests/*.test.ts",
-    "test:db": "bash supabase/tests/run.sh"
+    "test:db": "bash supabase/tests/run.sh",
+    "content": "python3 scripts/content/build_seed.py && tsx scripts/content/build-local-data.ts",
+    "prebuild": "tsx scripts/content/build-local-data.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.8.0",
