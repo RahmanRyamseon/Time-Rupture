@@ -6,6 +6,7 @@ import { isPdf, isSpreadsheet, readGrid } from "../lib/files";
 import { openPdf, pdfText, scanFile } from "../lib/ocr";
 import { aiAvailable, aiReadStatement } from "../lib/ai";
 import { classify, learnKeyword, SYS } from "../lib/coa";
+import { matchParty, partyNames } from "../lib/parties";
 import { COUNTRIES } from "../lib/countries";
 import { bankLineToEntry, type BankLine } from "../lib/ledger";
 import { toMils, uid } from "../lib/money";
@@ -25,11 +26,13 @@ export default function Bank() {
 
   const toLines = (raw: RawTxn[]): BankLine[] =>
     raw.map((r) => {
-      const account = classify(r.description, books.rules) ?? (r.amount > 0 ? SYS.ar : SYS.suspense);
+      // A known supplier/customer named in the narration means a payment or receipt on account.
+      const party = matchParty(r.description, partyNames(books, r.amount > 0 ? "customer" : "supplier"));
+      const account = party ? (r.amount > 0 ? SYS.ar : SYS.ap) : classify(r.description, books.rules) ?? (r.amount > 0 ? SYS.ar : SYS.suspense);
       return {
         id: uid(), date: r.date, description: r.description, amount: toMils(r.amount),
         balance: r.balance != null ? toMils(r.balance) : undefined,
-        account, withVat: vatRate > 0 && r.amount < 0 && VAT_ACCOUNTS.has(account) && account !== "6950", include: true,
+        account, withVat: vatRate > 0 && r.amount < 0 && VAT_ACCOUNTS.has(account) && account !== "6950", include: true, party,
       };
     });
 
@@ -133,6 +136,8 @@ export default function Bank() {
             <span>{t("moneyOut")}: <Money m={-totOut} /></span>
             {lines.some((l) => l.account === SYS.suspense) && <span className="warn">⚠ {lines.filter((l) => l.account === SYS.suspense).length} → {lang === "ar" ? "حساب معلق" : "Suspense"}</span>}
           </div>
+          <datalist id="bank-customers">{partyNames(books, "customer").map((n) => <option key={n} value={n} />)}</datalist>
+          <datalist id="bank-suppliers">{partyNames(books, "supplier").map((n) => <option key={n} value={n} />)}</datalist>
           <div className="table-wrap">
             <table className="grid">
               <thead>
@@ -152,6 +157,10 @@ export default function Bank() {
                     <td className="amt">{l.balance != null && <Money m={l.balance} />}</td>
                     <td>
                       <AccountSelect value={l.account} onChange={(account) => set(l.id, { account })} filter={(a) => a.code !== bankAcct} />
+                      {(l.account === SYS.ar || l.account === SYS.ap) && (
+                        <input className="party-input" dir="auto" list={l.account === SYS.ar ? "bank-customers" : "bank-suppliers"} placeholder={l.account === SYS.ar ? t("customer") : t("supplier")}
+                          value={l.party ?? ""} onChange={(e) => set(l.id, { party: e.target.value || undefined })} />
+                      )}
                       <button className="ghost small" title="↔" onClick={() => set(l.id, { amount: -l.amount })}>⇄</button>
                     </td>
                     {vatRate > 0 && <td><input type="checkbox" checked={l.withVat} onChange={(e) => set(l.id, { withVat: e.target.checked })} /></td>}

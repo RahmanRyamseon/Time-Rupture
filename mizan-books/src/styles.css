@@ -226,3 +226,6 @@ table.boxes { max-width: 820px; }
 .meter-fill.warnc { background: var(--accent); }
 .meter-fill.bad { background: var(--bad); }
 .meter-mark { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); opacity: 0.4; }
+.party-input { display: block; margin-top: 0.25rem; width: 100%; max-width: 280px; font-size: 0.85rem; }
+tr.clickable { cursor: pointer; }
+tr.clickable:hover td, tr.selected td { background: #eef6f8; }

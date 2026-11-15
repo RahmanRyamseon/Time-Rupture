@@ -77,6 +77,8 @@ export interface TreatmentInput {
   account: string;
   partyTrn: string;
   vat: Mils;              // VAT printed on the invoice
+  /** True for invoices typed in by hand where VAT hasn't been entered yet – "no VAT" then means "not known". */
+  vatUnknown?: boolean;
   country: CountryCode;   // the company's country
   currency: string;
   baseCurrency: string;
@@ -84,7 +86,9 @@ export interface TreatmentInput {
 
 export interface Suggestion { treatment: VatTreatment; reason: [string, string] }
 
-export function suggestTreatment(i: TreatmentInput): Suggestion {
+export function suggestTreatment(input: TreatmentInput): Suggestion {
+  // With VAT not yet known, judge by keywords and accounts only; amounts get VAT at the standard rate.
+  const i = input.vatUnknown ? { ...input, vat: 1 } : input;
   const preset = COUNTRIES[i.country];
   if (preset.vatRate === 0) return { treatment: "out_of_scope", reason: ["VAT is not implemented in this country", "ضريبة القيمة المضافة غير مطبقة في هذه الدولة"] };
   const partyCountry = trnCountry(i.partyTrn);
@@ -93,7 +97,7 @@ export function suggestTreatment(i: TreatmentInput): Suggestion {
     if (partyCountry && partyCountry !== i.country && i.vat > 0) {
       return { treatment: "blocked", reason: [`Foreign VAT charged by a ${COUNTRIES[partyCountry].name} supplier can't be recovered on your ${preset.name} return`, `ضريبة أجنبية من مورد في ${COUNTRIES[partyCountry].nameAr} لا تُسترد في إقرار ${preset.nameAr}`] };
     }
-    if (foreign && i.vat === 0) return { treatment: "reverse_charge", reason: ["Foreign supplier, no VAT charged – self-account under reverse charge", "مورد أجنبي بدون ضريبة – يُطبق الاحتساب العكسي"] };
+    if (foreign && (i.vat === 0 || input.vatUnknown)) return { treatment: "reverse_charge", reason: ["Foreign supplier, no VAT charged – self-account under reverse charge", "مورد أجنبي بدون ضريبة – يُطبق الاحتساب العكسي"] };
     const blockedWord = has(i.text, BLOCKED_KEYWORDS);
     if (blockedWord || ACCOUNT_TREATMENT[i.account] === "blocked") {
       return { treatment: "blocked", reason: [`Entertainment / hospitality ("${blockedWord ?? "meals"}") – input VAT is blocked`, `ضيافة وترفيه ("${blockedWord ?? "وجبات"}") – ضريبة المدخلات محظورة`] };
@@ -108,7 +112,7 @@ export function suggestTreatment(i: TreatmentInput): Suggestion {
   const zeroWord = has(i.text, ZERO_RATED_KEYWORDS) ?? ((i.country === "BH" || i.country === "OM") ? has(i.text, BH_OM_FOOD_ZERO) ?? (i.country === "BH" ? has(i.text, BH_ZERO_OTHER) : null) : null);
   if (zeroWord && i.vat === 0) return { treatment: "zero", reason: [`Zero-rated item ("${zeroWord}")`, `صنف خاضع لنسبة الصفر ("${zeroWord}")`] };
   if (i.kind === "sales" && foreign && i.vat === 0) return { treatment: "export", reason: ["Customer outside the country, no VAT – export", "عميل خارج الدولة بدون ضريبة – تصدير"] };
-  if (i.kind === "purchase" && i.vat > 0 && !i.partyTrn) {
+  if (i.kind === "purchase" && i.vat > 0 && !i.partyTrn && !input.vatUnknown) {
     return { treatment: "blocked", reason: ["No supplier VAT number on the invoice – input VAT is not recoverable without a valid tax invoice", "لا يوجد رقم ضريبي للمورد – لا تُسترد الضريبة بدون فاتورة ضريبية صحيحة"] };
   }
   if (i.vat === 0) return { treatment: i.kind === "sales" ? "zero" : "out_of_scope", reason: ["No VAT shown on the invoice", "لا توجد ضريبة على الفاتورة"] };

@@ -46,6 +46,8 @@ export interface JournalLine {
   debit: Mils;
   credit: Mils;
   note?: string;
+  /** Supplier / customer name on receivable & payable lines (sub-ledger). */
+  party?: string;
 }
 
 export interface TaxInfo {
@@ -91,6 +93,12 @@ export interface Company {
   fyStartMonth: number;
   vatRegistered: boolean;
   address?: string;
+  /** Post reverse-charge VAT to its own input/output VAT accounts (default on). */
+  vatSegregated?: boolean;
+  /** Post non-recoverable VAT to a separate expense account instead of adding it to the cost. */
+  blockedVatSeparate?: boolean;
+  /** Next sales invoice number (auto-numbering). */
+  nextSalesNo?: number;
 }
 
 export interface AuditEvent {

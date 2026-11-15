@@ -36,18 +36,24 @@ export default function Manual({ editId, onDone }: { editId?: string; onDone: ()
       case "eosb": setMemo(lang === "ar" ? "مخصص مكافأة نهاية الخدمة" : "End-of-service benefits provision"); setLines([L("6010"), L("2500")]); break;
       case "opening": setMemo(lang === "ar" ? "أرصدة افتتاحية" : "Opening balances"); setLines([L(SYS.bank), L(SYS.ar), L("1200"), L("1500"), L(SYS.ap), L("3000"), L(SYS.retained), L(SYS.openingEquity)]); break;
       case "vat": {
-        const vin = books.entries.reduce((s, e) => s + e.lines.filter((l) => l.account === SYS.vatIn).reduce((a, l) => a + l.debit - l.credit, 0), 0);
-        const vout = -books.entries.reduce((s, e) => s + e.lines.filter((l) => l.account === SYS.vatOut).reduce((a, l) => a + l.debit - l.credit, 0), 0);
+        const bal = (code: string) => books.entries.reduce((s, e) => s + e.lines.filter((l) => l.account === code).reduce((a, l) => a + l.debit - l.credit, 0), 0);
+        const vin = bal(SYS.vatIn), vout = -bal(SYS.vatOut), rcIn = bal(SYS.vatInRC), rcOut = -bal(SYS.vatOutRC);
         setMemo(lang === "ar" ? "تسوية إقرار ضريبة القيمة المضافة" : "VAT return settlement");
-        const net = vout - vin;
-        setLines([L(SYS.vatOut, Math.max(vout, 0)), L(SYS.vatIn, 0, Math.max(vin, 0)), net >= 0 ? L(SYS.bank, 0, net) : L(SYS.bank, -net, 0)]);
+        const net = vout + rcOut - vin - rcIn;
+        setLines([
+          L(SYS.vatOut, Math.max(vout, 0)), L(SYS.vatIn, 0, Math.max(vin, 0)),
+          ...(rcIn || rcOut ? [L(SYS.vatOutRC, Math.max(rcOut, 0)), L(SYS.vatInRC, 0, Math.max(rcIn, 0))] : []),
+          net >= 0 ? L(SYS.bank, 0, net) : L(SYS.bank, -net, 0),
+        ]);
         break;
       }
     }
   };
 
   const save = () => {
-    const clean = lines.filter((l) => l.account && (l.debit || l.credit));
+    // Receivable / payable lines go to the named supplier or customer's account.
+    const clean = lines.filter((l) => l.account && (l.debit || l.credit))
+      .map((l) => ((l.account === SYS.ar || l.account === SYS.ap) && party.trim() ? { ...l, party: party.trim() } : l));
     const e: JournalEntry = {
       id: editing?.id ?? uid(), date, memo: memo || (lang === "ar" ? "قيد يدوي" : "Manual journal"), ref: ref || undefined, party: party || undefined,
       source: editing?.source ?? (lines.length > 4 && /opening|افتتاح/i.test(memo) ? "opening" : "manual"),

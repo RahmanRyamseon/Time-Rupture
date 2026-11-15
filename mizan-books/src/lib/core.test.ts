@@ -255,10 +255,10 @@ describe("VAT treatments", async () => {
     const mk = (treatment: "blocked" | "reverse_charge" | "zero", vat: number) =>
       invoiceToEntry({ kind: "purchase", date: "2026-01-10", number: "1", party: "S", partyTrn: "", net: toMils(1000), vat: toMils(vat), vatRate: 5, account: "6850", settlement: "credit", treatment }, "x", now);
     const blocked = mk("blocked", 50);
-    expect(blocked.lines).toEqual([{ account: "6850", debit: toMils(1050), credit: 0, note: "incl. non-recoverable VAT" }, { account: SYS.ap, debit: 0, credit: toMils(1050) }]);
+    expect(blocked.lines).toEqual([{ account: "6850", debit: toMils(1050), credit: 0, note: "incl. non-recoverable VAT" }, { account: SYS.ap, debit: 0, credit: toMils(1050), party: "S" }]);
     const rc = mk("reverse_charge", 0);
-    expect(rc.lines.find((l) => l.account === SYS.vatIn)?.debit).toBe(toMils(50));
-    expect(rc.lines.find((l) => l.account === SYS.vatOut)?.credit).toBe(toMils(50));
+    expect(rc.lines.find((l) => l.account === SYS.vatInRC)?.debit).toBe(toMils(50));
+    expect(rc.lines.find((l) => l.account === SYS.vatOutRC)?.credit).toBe(toMils(50));
     expect(rc.lines.find((l) => l.account === SYS.ap)?.credit).toBe(toMils(1000));
     const z = mk("zero", 0);
     expect(z.lines).toHaveLength(2);
@@ -300,5 +300,43 @@ describe("equity statement opening balances", async () => {
     expect(eq.opening).toBe(toMils(14900));
     expect(eq.lines.some((l) => l.label === "Capital introduced")).toBe(false);
     expect(eq.check).toBe(0);
+  });
+});
+
+describe("VAT segregation & sub-ledgers", async () => {
+  const { partyBalances, partyStatement } = await import("./parties");
+  const inv = (o: Partial<Parameters<typeof invoiceToEntry>[0]>) => invoiceToEntry({ kind: "purchase", date: "2026-01-10", number: "1", party: "Alpha Supplies", partyTrn: "", net: toMils(1000), vat: toMils(100), vatRate: 10, account: "6400", settlement: "credit", ...o }, Math.random().toString(), now);
+  it("can post non-recoverable VAT to its own account", () => {
+    const e = inv({ treatment: "blocked", blockedVatSeparate: true });
+    expect(e.lines.find((l) => l.account === SYS.blockedVat)?.debit).toBe(toMils(100));
+    expect(e.lines.find((l) => l.account === "6400")?.debit).toBe(toMils(1000));
+  });
+  it("can keep reverse charge in the main VAT accounts", () => {
+    const e = inv({ treatment: "reverse_charge", vat: 0, vatSegregated: false });
+    expect(e.lines.some((l) => l.account === SYS.vatIn) && e.lines.some((l) => l.account === SYS.vatOut)).toBe(true);
+  });
+  it("tracks supplier and customer balances with ageing", () => {
+    const b = books([
+      inv({ date: "2026-01-10", net: toMils(1000), vat: toMils(100) }),
+      inv({ date: "2026-03-01", net: toMils(500), vat: toMils(50), number: "2" }),
+      bankLineToEntry({ id: "p", date: "2026-03-05", description: "Payment", amount: toMils(-1100), account: SYS.ap, withVat: false, include: true, party: "Alpha Supplies" }, SYS.bank, 10, "p", now),
+      invoiceToEntry({ kind: "sales", date: "2026-03-20", number: "INV-1", party: "Beta Co", partyTrn: "", net: toMils(2000), vat: toMils(200), vatRate: 10, account: "4000", settlement: "credit" }, "s", now),
+    ]);
+    const list = partyBalances(b, "2026-03-31");
+    const alpha = list.find((x) => x.name === "Alpha Supplies")!;
+    expect(alpha.kind).toBe("supplier");
+    expect(alpha.balance).toBe(toMils(550));
+    expect(alpha.aging).toEqual([toMils(550), 0, 0, 0]); // the Jan invoice was paid first (FIFO)
+    const beta = list.find((x) => x.name === "Beta Co")!;
+    expect([beta.kind, beta.balance]).toEqual(["customer", toMils(2200)]);
+    const st = partyStatement(b, "Alpha Supplies", SYS.ap);
+    expect(st.map((r) => r.running)).toEqual([toMils(1100), toMils(1650), toMils(550)]);
+  });
+});
+
+describe("manual invoice treatment", async () => {
+  const { suggestTreatment } = await import("./vat");
+  it("defaults a hand-typed sale to standard-rated", () => {
+    expect(suggestTreatment({ kind: "sales", text: "", account: "4000", partyTrn: "", vat: 0, vatUnknown: true, country: "BH", currency: "BHD", baseCurrency: "BHD" }).treatment).toBe("standard");
   });
 });

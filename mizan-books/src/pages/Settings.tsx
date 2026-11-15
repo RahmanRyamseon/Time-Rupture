@@ -67,6 +67,12 @@ export default function Settings() {
             </select>
           </label>
         </div>
+        <h3 className="sub-h">{t("vatPosting")}</h3>
+        <label className="chk block"><input type="checkbox" checked={c.vatSegregated !== false} onChange={(e) => setCo({ vatSegregated: e.target.checked })} /> {t("vatSegregated")}</label>
+        <label className="chk block"><input type="checkbox" checked={Boolean(c.blockedVatSeparate)} onChange={(e) => setCo({ blockedVatSeparate: e.target.checked })} /> {t("blockedSeparate")}</label>
+        <div className="grid-form">
+          <label>{t("nextInvoiceNo")}<input inputMode="numeric" value={c.nextSalesNo ?? 1} onChange={(e) => setCo({ nextSalesNo: Math.max(1, Number(e.target.value.replace(/\D/g, "")) || 1) })} /></label>
+        </div>
         <label className="chk block"><input type="checkbox" checked={settings.aiEnabled} onChange={(e) => setSettings({ aiEnabled: e.target.checked })} /> {t("aiSetting")} — <span className={ai ? "good" : "muted"}>{ai ? t("aiOn") : t("aiOff")}</span></label>
         <p className="muted small">{t("aiPrivacy")}</p>
         <div className="grid-form">

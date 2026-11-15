@@ -8,12 +8,14 @@ import Manual from "./pages/Manual";
 import { Journal, Ledger, Statements, TrialBalance, Vat } from "./pages/Reports";
 import Accounts from "./pages/Accounts";
 import Settings from "./pages/Settings";
+import Parties from "./pages/Parties";
 
 const NAV: [string, TKey, string][] = [
   ["dashboard", "dashboard", "◧"],
   ["capture", "capture", "⎙"],
   ["bank", "bank", "🏦"],
   ["manual", "manual", "✎"],
+  ["parties", "parties", "👥"],
   ["journal", "journal", "☰"],
   ["ledger", "ledger", "📒"],
   ["tb", "trialBalance", "⚖"],
@@ -46,6 +48,7 @@ export default function App() {
       case "capture": return <Capture />;
       case "bank": return <Bank />;
       case "manual": return <Manual key={route.arg ?? "new"} editId={route.arg} onDone={() => go("journal")} />;
+      case "parties": return <Parties />;
       case "journal": return <Journal onEdit={(id) => go(`manual/${id}`)} />;
       case "ledger": return <Ledger />;
       case "tb": return <TrialBalance />;

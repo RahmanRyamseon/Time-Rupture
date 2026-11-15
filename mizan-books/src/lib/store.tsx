@@ -19,6 +19,15 @@ export function newCompany(country: CountryCode = "BH", name = "My Company"): Co
   };
 }
 
+/** Adds chart-of-accounts entries introduced in later versions to older saved books. */
+export function migrateBooks(b: Books): Books {
+  const have = new Set(b.accounts.map((a) => a.code));
+  const missing = defaultAccounts().filter((a) => a.system && !have.has(a.code));
+  if (!missing.length) return b;
+  const accounts = [...b.accounts, ...missing].sort((x, y) => x.code.localeCompare(y.code, "en", { numeric: true }));
+  return { ...b, accounts };
+}
+
 export function emptyBooks(company: Company): Books {
   return { version: 1, company, accounts: defaultAccounts(), entries: [], rules: defaultRules() };
 }
@@ -77,7 +86,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       const lang: Lang = s?.lang ?? (navigator.language.startsWith("ar") ? "ar" : "en");
       setSettingsState({ lang, aiEnabled: s?.aiEnabled ?? false, ocrEngine: s?.ocrEngine ?? "auto", activeCompanyId: b.company.id });
       setCompanies(list);
-      setBooks(b);
+      setBooks(migrateBooks(b));
       setPeriod(financialYear(b.company.fyStartMonth, todayISO()));
       setReady(true);
     })();
@@ -154,14 +163,14 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         const list = [...companies.filter((x) => x.id !== c.id), nb.company];
         await set(K_COMPANIES, list);
         setCompanies(list);
-        setBooks(nb);
+        setBooks(migrateBooks(nb));
         setPeriod(financialYear(nb.company.fyStartMonth, todayISO()));
         setSettingsState((p) => ({ ...p, activeCompanyId: c.id }));
       },
       switchCompany: async (id) => {
         const b = await get<Books>(kBooks(id));
         if (!b) return;
-        setBooks(b);
+        setBooks(migrateBooks(b));
         setPeriod(financialYear(b.company.fyStartMonth, todayISO()));
         setSettingsState((p) => ({ ...p, activeCompanyId: id }));
       },
@@ -177,7 +186,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         }
         await set(K_COMPANIES, list);
         setCompanies(list);
-        setBooks(b);
+        setBooks(migrateBooks(b));
         setSettingsState((p) => ({ ...p, activeCompanyId: b!.company.id }));
       },
       decimals: preset.currency === books.company.currency ? preset.decimals : (["BHD", "KWD", "OMR"].includes(books.company.currency) ? 3 : 2),

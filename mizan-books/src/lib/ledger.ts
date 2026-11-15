@@ -44,6 +44,9 @@ export interface InvoiceDraft {
   account: string; // expense / asset account for purchases, revenue account for sales
   settlement: Settlement;
   treatment?: TaxInfo["treatment"];
+  /** Company VAT posting options (see Company.vatSegregated / blockedVatSeparate). */
+  vatSegregated?: boolean;
+  blockedVatSeparate?: boolean;
   memo?: string;
   attachment?: string;
   fx?: JournalEntry["fx"];
@@ -63,35 +66,45 @@ export function invoiceToEntry(d: InvoiceDraft, id: string, now: string): Journa
   const treatment = d.treatment ?? "standard";
   const noVat = treatment === "zero" || treatment === "export" || treatment === "exempt" || treatment === "out_of_scope";
   const vat = noVat ? 0 : d.vat;
-  const contra = settlementAccount(d.kind, d.settlement);
+  const contraAccount = settlementAccount(d.kind, d.settlement);
+  // Receivable / payable lines carry the customer or supplier for the sub-ledger.
+  const party = d.settlement === "credit" && d.party ? { party: d.party } : {};
+  const contra = contraAccount;
+  const seg = d.vatSegregated !== false;
   let lines: JournalLine[];
   let taxVat = vat;
   if (d.kind === "purchase") {
     if (treatment === "blocked") {
-      lines = [
-        { account: d.account, debit: d.net + vat, credit: 0, ...(vat ? { note: "incl. non-recoverable VAT" } : {}) },
-        { account: contra, debit: 0, credit: d.net + vat },
-      ];
+      lines = d.blockedVatSeparate && vat
+        ? [
+            { account: d.account, debit: d.net, credit: 0 },
+            { account: SYS.blockedVat, debit: vat, credit: 0, note: "non-recoverable VAT" },
+            { account: contra, debit: 0, credit: d.net + vat, ...party },
+          ]
+        : [
+            { account: d.account, debit: d.net + vat, credit: 0, ...(vat ? { note: "incl. non-recoverable VAT" } : {}) },
+            { account: contra, debit: 0, credit: d.net + vat, ...party },
+          ];
     } else if (treatment === "reverse_charge") {
       taxVat = Math.round((d.net * d.vatRate) / 100);
       lines = [
         { account: d.account, debit: d.net, credit: 0 },
         ...(taxVat ? [
-          { account: SYS.vatIn, debit: taxVat, credit: 0, note: "reverse charge" },
-          { account: SYS.vatOut, debit: 0, credit: taxVat, note: "reverse charge" },
+          { account: seg ? SYS.vatInRC : SYS.vatIn, debit: taxVat, credit: 0, note: "reverse charge" },
+          { account: seg ? SYS.vatOutRC : SYS.vatOut, debit: 0, credit: taxVat, note: "reverse charge" },
         ] : []),
-        { account: contra, debit: 0, credit: d.net },
+        { account: contra, debit: 0, credit: d.net, ...party },
       ];
     } else {
       lines = [
         { account: d.account, debit: d.net, credit: 0 },
         ...(vat ? [{ account: SYS.vatIn, debit: vat, credit: 0 }] : []),
-        { account: contra, debit: 0, credit: d.net + vat },
+        { account: contra, debit: 0, credit: d.net + vat, ...party },
       ];
     }
   } else {
     lines = [
-      { account: contra, debit: d.net + vat, credit: 0 },
+      { account: contra, debit: d.net + vat, credit: 0, ...party },
       { account: d.account, debit: 0, credit: d.net },
       ...(vat ? [{ account: SYS.vatOut, debit: 0, credit: vat }] : []),
     ];
@@ -116,6 +129,8 @@ export interface BankLine {
   /** When true the line is treated as VAT-inclusive at the given rate. */
   withVat: boolean;
   include: boolean;
+  /** Supplier / customer when the counter-account is payables or receivables. */
+  party?: string;
 }
 
 export function bankLineToEntry(l: BankLine, bankAccount: string, vatRate: number, id: string, now: string): JournalEntry {
@@ -124,19 +139,20 @@ export function bankLineToEntry(l: BankLine, bankAccount: string, vatRate: numbe
   let vat = 0;
   if (l.withVat && vatRate > 0) vat = Math.round((gross * vatRate) / (100 + vatRate));
   const net = gross - vat;
+  const party = l.party && (l.account === SYS.ar || l.account === SYS.ap) ? { party: l.party } : {};
   const lines: JournalLine[] = inflow
     ? [
         { account: bankAccount, debit: gross, credit: 0 },
-        { account: l.account, debit: 0, credit: net },
+        { account: l.account, debit: 0, credit: net, ...party },
         ...(vat ? [{ account: SYS.vatOut, debit: 0, credit: vat }] : []),
       ]
     : [
-        { account: l.account, debit: net, credit: 0 },
+        { account: l.account, debit: net, credit: 0, ...party },
         ...(vat ? [{ account: SYS.vatIn, debit: vat, credit: 0 }] : []),
         { account: bankAccount, debit: 0, credit: gross },
       ];
   return {
-    id, date: l.date, memo: l.description, source: "bank", lines, createdAt: now,
+    id, date: l.date, memo: l.description, source: "bank", lines, createdAt: now, ...(l.party ? { party: l.party } : {}),
     ...(vat ? { tax: { kind: inflow ? "sales" : "purchase", net, vat, rate: vatRate } as TaxInfo } : {}),
   };
 }
@@ -415,8 +431,8 @@ export function vatSummary(books: Books, p: Period): VatSummary {
   const b = balances(inP, () => true);
   return {
     ...t, salesNet, purchasesNet,
-    outputLedger: -(b.get(SYS.vatOut) ?? 0),
-    inputLedger: b.get(SYS.vatIn) ?? 0,
+    outputLedger: -((b.get(SYS.vatOut) ?? 0) + (b.get(SYS.vatOutRC) ?? 0)),
+    inputLedger: (b.get(SYS.vatIn) ?? 0) + (b.get(SYS.vatInRC) ?? 0),
     entries: inP.filter((e) => e.tax),
   };
 }

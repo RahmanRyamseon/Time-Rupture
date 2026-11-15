@@ -26,14 +26,14 @@ export function demoBooks(year = new Date().getFullYear()): Books {
     inv(m, 18, "sales", "Walk-in customers", 1400 + m * 50, "4000", "cash", `S-${year}-${m}02`);
     inv(m, 7, "purchase", "Bahrain Steel Supplies", 2600 + m * 90, "5000", "credit", `P-${m}07`);
     inv(m, 1, "purchase", "Seef Properties", 800, "6100", "bank", `R-${m}`);
-    const bank = (day: number, desc: string, amt: number, account: string, withVat = false) =>
-      es.push(bankLineToEntry({ id: uid(), date: d(m, day), description: desc, amount: toMils(amt), account, withVat, include: true }, SYS.bank, 10, uid(), now));
+    const bank = (day: number, desc: string, amt: number, account: string, withVat = false, party?: string) =>
+      es.push(bankLineToEntry({ id: uid(), date: d(m, day), description: desc, amount: toMils(amt), account, withVat, include: true, party }, SYS.bank, 10, uid(), now));
     bank(25, "WPS SALARY TRANSFER", -1850, "6000");
     bank(26, "SIO CONTRIBUTIONS", -210, "6010");
     bank(12, "EWA BILL PAYMENT", -132, "6200", true);
     bank(14, "BATELCO POSTPAID", -77, "6210", true);
-    bank(20, "TRANSFER FROM GULF HARDWARE CO", 6800 + m * 275, SYS.ar);
-    bank(22, "PAYMENT TO BAHRAIN STEEL SUPPLIES", -(2700 + m * 90), SYS.ap);
+    bank(20, "TRANSFER FROM GULF HARDWARE CO", 6800 + m * 275, SYS.ar, false, "Gulf Hardware Co. W.L.L.");
+    bank(22, "PAYMENT TO BAHRAIN STEEL SUPPLIES", -(2700 + m * 90), SYS.ap, false, "Bahrain Steel Supplies");
     bank(28, "BANK SERVICE CHARGES", -5.5, "6950", true);
     je(d(m, 28), "Monthly depreciation / إهلاك شهري", [["6900", 50, 0], ["1550", 0, 50]]);
     je(d(m, 28), "Leaving indemnity provision / مخصص مكافأة نهاية الخدمة", [["6010", 120, 0], ["2500", 0, 120]]);

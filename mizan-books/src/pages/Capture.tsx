@@ -10,6 +10,7 @@ import { invoiceToEntry, validateEntry, type Settlement } from "../lib/ledger";
 import { todayISO, toMils, uid } from "../lib/money";
 import { suggestTreatment, TREATMENTS, verifyInvoice, type VatTreatment } from "../lib/vat";
 import type { Books, JournalEntry } from "../lib/types";
+import { partyNames } from "../lib/parties";
 
 interface Draft {
   kind: "purchase" | "sales";
@@ -29,6 +30,12 @@ interface Draft {
   treatmentReason?: [string, string];
   /** True once the user picks a treatment, so later edits don't overwrite it. */
   treatmentManual?: boolean;
+  /** True once the user picks a category. */
+  accountManual?: boolean;
+  /** Typed in by hand (not scanned). */
+  manual?: boolean;
+  /** The user typed the VAT amount themselves (vs. computed from the rate). */
+  vatTyped?: boolean;
   settlement: Settlement;
   description: string;
 }
@@ -75,9 +82,13 @@ function withTreatment(d: Draft, books: Books, text = ""): Draft {
   if (d.treatmentManual) return d;
   const s = suggestTreatment({
     kind: d.kind, text: `${d.party} ${d.description} ${text}`, account: d.account, partyTrn: d.partyTrn,
-    vat: d.vat, country: books.company.country, currency: d.currency, baseCurrency: books.company.currency,
+    vat: d.vat, vatUnknown: d.manual && !d.vatTyped, country: books.company.country, currency: d.currency, baseCurrency: books.company.currency,
   });
-  return { ...d, treatment: books.company.vatRegistered || s.treatment === "out_of_scope" ? s.treatment : "out_of_scope", treatmentReason: s.reason };
+  const treatment = books.company.vatRegistered || s.treatment === "out_of_scope" ? s.treatment : "out_of_scope";
+  // Computed VAT goes away when the treatment carries no supplier VAT; it comes back for standard/blocked.
+  const noSupplierVat = ["zero", "export", "exempt", "out_of_scope", "reverse_charge"].includes(treatment);
+  const vat = d.vatTyped || !d.manual ? d.vat : noSupplierVat ? 0 : Math.round((d.net * d.vatRate) / 100);
+  return { ...d, vat, treatment, treatmentReason: s.reason };
 }
 
 function toDraft(x: ExtractedInvoice, books: Books, vatRate: number, category: string | undefined, text: string): Draft {
@@ -96,10 +107,16 @@ function toDraft(x: ExtractedInvoice, books: Books, vatRate: number, category: s
   }, books, text);
 }
 
-function blankDraft(books: Books, vatRate: number): Draft {
+/** Next auto-generated sales invoice number, e.g. INV-2026-0007. */
+export function nextSalesNumber(books: Books): string {
+  return `INV-${new Date().getFullYear()}-${String(books.company.nextSalesNo ?? 1).padStart(4, "0")}`;
+}
+
+function blankDraft(books: Books, vatRate: number, kind: Draft["kind"] = "purchase"): Draft {
   return withTreatment({
-    kind: "purchase", date: todayISO(), number: "", party: "", partyTrn: "", currency: books.company.currency, fxRate: 1,
-    net: 0, vat: 0, vatRate, account: SYS.generalExpense, treatment: "standard", settlement: "credit", description: "",
+    kind, date: todayISO(), number: kind === "sales" ? nextSalesNumber(books) : "", party: "", partyTrn: "", currency: books.company.currency, fxRate: 1,
+    net: 0, vat: 0, vatRate, account: kind === "sales" ? SYS.sales : SYS.generalExpense, treatment: "standard", settlement: "credit", description: "",
+    manual: true,
   }, books);
 }
 
@@ -109,6 +126,7 @@ function draftToEntry(d: Draft, books: Books, attachment?: string): JournalEntry
     kind: d.kind, date: d.date, number: d.number, party: d.party, partyTrn: d.partyTrn,
     net: Math.round(d.net * d.fxRate), vat: Math.round(d.vat * d.fxRate), vatRate: d.vatRate,
     account: d.account, settlement: d.settlement, treatment: d.treatment, attachment,
+    vatSegregated: books.company.vatSegregated, blockedVatSeparate: books.company.blockedVatSeparate,
     memo: d.description ? `${d.kind === "purchase" ? "Purchase" : "Sale"} – ${d.party || "—"}: ${d.description}` : undefined,
     fx: d.currency !== books.company.currency ? { currency: d.currency, rate: d.fxRate, total: (d.net + d.vat) / 1000 } : undefined,
   }, uid(), new Date().toISOString());
@@ -128,9 +146,15 @@ export default function Capture() {
     setItems((list) => list.map((i) => {
       if (i.id !== id || !i.draft) return i;
       let d = { ...i.draft, ...p };
-      // Changing the category or kind re-picks the VAT treatment unless the user chose one.
-      if ("account" in p || "kind" in p || "partyTrn" in p || "vat" in p || "currency" in p) d = withTreatment(d, books, i.text);
-      if ("account" in p) d.accountReason = undefined;
+      if ("account" in p) { d.accountReason = undefined; d.accountManual = true; }
+      if ("kind" in p) d.accountManual = false;
+      // Typing the supplier/customer or description re-picks the category unless the user chose one.
+      if (("party" in p || "description" in p || "kind" in p) && !d.accountManual) {
+        const pick = pickAccount(d.kind, books, d.party, d.description, i.text ?? "");
+        d.account = pick.account; d.accountReason = pick.reason;
+      }
+      // Changing the category, kind, party or amounts re-picks the VAT treatment unless the user chose one.
+      if (["account", "kind", "party", "description", "partyTrn", "vat", "net", "currency"].some((k) => k in p)) d = withTreatment(d, books, i.text);
       return { ...i, draft: d };
     }));
 
@@ -179,13 +203,17 @@ export default function Capture() {
   }, [items, settings.aiEnabled, books, vatRate]);
 
   const add = (files: File[]) => setItems((l) => [...l, ...files.map((file) => ({ id: uid(), file, status: "queued" as const }))]);
-  const addManual = () => setItems((l) => [{ id: uid(), status: "ready", draft: blankDraft(books, vatRate) }, ...l]);
+  const addManual = (kind: Draft["kind"]) => setItems((l) => [{ id: uid(), status: "ready", draft: blankDraft(books, vatRate, kind) }, ...l]);
 
   const post = (it: Item) => {
     const d = it.draft!;
     const entry = draftToEntry(d, books, it.file?.name);
     if (validateEntry(entry, books.accounts).length) return;
     if (!addEntries([entry])) return;
+    // Advance the sales invoice counter when its auto-number was used.
+    if (d.kind === "sales" && d.number === nextSalesNumber(books)) {
+      update((b) => ({ ...b, company: { ...b.company, nextSalesNo: (b.company.nextSalesNo ?? 1) + 1 } }));
+    }
     // Learn supplier → account so the next invoice from them is pre-classified.
     const key = d.party.trim().toLowerCase().split(/\s+/).slice(0, 2).join(" ");
     if (key.length > 2 && d.account !== SYS.generalExpense && d.account !== SYS.sales) {
@@ -212,7 +240,8 @@ export default function Capture() {
     <div className="page">
       <Card title={t("capture")} actions={<>
         <span className={`pill ${useAi ? "ok" : ""}`}>{useAi ? t("aiOn") : ai ? t("aiAvailOff") : t("aiOff")}</span>
-        <button className="secondary" onClick={addManual}>+ {t("enterInvoice")}</button>
+        <button onClick={() => addManual("sales")}>+ {t("recordSale")}</button>
+        <button className="secondary" onClick={() => addManual("purchase")}>+ {t("recordPurchase")}</button>
       </>}>
         <Dropzone onFiles={add} accept="image/*,application/pdf" label={t("dropFiles")} hint={t("supported")} capture />
       </Card>
@@ -223,7 +252,7 @@ export default function Capture() {
       )}
       {items.map((it) => (
         <Card key={it.id} className={`doc doc-${it.status}`}
-          title={<span>{it.file?.name ?? t("manualInvoice")} <span className={`pill st-${it.status}`}>{t(it.status === "scanning" ? "scanning" : it.status)}</span></span>}
+          title={<span>{it.file?.name ?? (it.draft?.kind === "sales" ? t("salesInvoice") : t("manualInvoice"))} <span className={`pill st-${it.status}`}>{t(it.status === "scanning" ? "scanning" : it.status)}</span></span>}
           actions={<button className="ghost" onClick={() => setItems((l) => l.filter((x) => x.id !== it.id))}>✕</button>}>
           {it.status === "scanning" && <div className="progress">{t("scanning")} {it.progress}</div>}
           {it.status === "failed" && <div className="error">{it.error}</div>}
@@ -289,7 +318,7 @@ function PostingPreview({ d, onPost }: { d: Draft; onPost: () => void }) {
         <tbody>
           {entry.lines.map((l, i) => (
             <tr key={i}>
-              <td className={l.credit ? "cr-indent" : ""}>{l.account} · {accountName(books, l.account, lang)}{l.note ? <span className="muted small"> ({l.note})</span> : null}</td>
+              <td className={l.credit ? "cr-indent" : ""}>{l.account} · {accountName(books, l.account, lang)}{l.party ? <b> – {l.party}</b> : null}{l.note ? <span className="muted small"> ({l.note})</span> : null}</td>
               <td className="amt">{l.debit ? <Money m={l.debit} /> : ""}</td>
               <td className="amt">{l.credit ? <Money m={l.credit} /> : ""}</td>
             </tr>
@@ -320,14 +349,17 @@ function DraftForm({ d, onChange }: { d: Draft; onChange: (p: Partial<Draft>) =>
   return (
     <div className="grid-form">
       <label>{t("docType")}
-        <select value={d.kind} onChange={(e) => onChange({ kind: e.target.value as Draft["kind"], account: e.target.value === "sales" ? SYS.sales : SYS.generalExpense, treatmentManual: false })}>
+        <select value={d.kind} onChange={(e) => onChange({ kind: e.target.value as Draft["kind"], account: e.target.value === "sales" ? SYS.sales : SYS.generalExpense, treatmentManual: false, ...(e.target.value === "sales" && !d.number ? { number: nextSalesNumber(books) } : {}) })}>
           <option value="purchase">{t("purchase")}</option>
           <option value="sales">{t("sale")}</option>
         </select>
       </label>
       <label>{t("date")}<input type="date" value={d.date} onChange={(e) => onChange({ date: e.target.value })} /></label>
       <label>{t("invoiceNo")}<input value={d.number} onChange={(e) => onChange({ number: e.target.value })} /></label>
-      <label>{d.kind === "purchase" ? t("supplier") : t("customer")}<input dir="auto" value={d.party} onChange={(e) => onChange({ party: e.target.value })} /></label>
+      <label>{d.kind === "purchase" ? t("supplier") : t("customer")}
+        <input dir="auto" list={`parties-${d.kind}`} value={d.party} onChange={(e) => onChange({ party: e.target.value })} />
+        <datalist id={`parties-${d.kind}`}>{partyNames(books, d.kind === "purchase" ? "supplier" : "customer").map((n) => <option key={n} value={n} />)}</datalist>
+      </label>
       <label>{t("trn")}<input inputMode="numeric" value={d.partyTrn} onChange={(e) => onChange({ partyTrn: e.target.value.replace(/[^\d٠-٩]/g, "") })} /></label>
       <label className="wide">{t("description")}<input dir="auto" value={d.description} placeholder={lang === "ar" ? "مثال: ورق وحبر طابعة" : "e.g. printer paper and toner"} onChange={(e) => onChange({ description: e.target.value })} /></label>
       <label className="wide">{t("category")}
@@ -349,11 +381,11 @@ function DraftForm({ d, onChange }: { d: Draft; onChange: (p: Partial<Draft>) =>
       )}
       <label>{t("vatRate")}<input inputMode="decimal" value={d.vatRate} onChange={(e) => { const r = Number(e.target.value) || 0; onChange({ vatRate: r, ...(noVat || d.treatment === "reverse_charge" ? {} : { vat: Math.round((d.net * r) / 100) }) }); }} /></label>
       <label>{t("netAmount")}<AmountInput value={d.net} onChange={setNet} /></label>
-      <label>{t("vatAmount")}<AmountInput value={d.vat} onChange={(vat) => onChange({ vat })} /></label>
+      <label>{t("vatAmount")}<AmountInput value={d.vat} onChange={(vat) => onChange({ vat, vatTyped: true })} /></label>
       <label>{t("grossAmount")}<AmountInput value={d.net + d.vat} onChange={setTotal} /></label>
       <label>{t("paidHow")}
         <select value={d.settlement} onChange={(e) => onChange({ settlement: e.target.value as Settlement })}>
-          <option value="credit">{t("onCredit")}</option>
+          <option value="credit">{d.kind === "purchase" ? t("onCreditSupplier") : t("onCreditCustomer")}</option>
           <option value="bank">{t("paidBank")}</option>
           <option value="cash">{t("paidCash")}</option>
         </select>
