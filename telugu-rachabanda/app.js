@@ -171,7 +171,7 @@ function go(path) {
 function route() {
   const [view = "", arg] = location.pathname.replace(/^\/+|\/+$/g, "").split("/");
   const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.href = `https://gulfteluguguide.vercel.app${view === "search" ? "/" : location.pathname}`;
+  if (canonical) canonical.href = `${new URL(canonical.href).origin}${view === "search" ? "/" : location.pathname}`;
   const key = view === "" ? "home" : arg && ["t", "c"].includes(view) ? `${view}/${arg}` : view;
   for (const a of document.querySelectorAll("#nav a, #nav2 a")) {
     if (a.dataset.route === key) a.setAttribute("aria-current", "page");
