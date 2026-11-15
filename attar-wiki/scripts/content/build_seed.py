@@ -3,7 +3,9 @@ Writes the researched seed CSVs (seed/*.csv + seed/guides/*.md).
 All text is original wording; every factual field carries a citation in citations.csv.
 Sources were read on 2026-11-15. Re-run: python3 scripts/content/build_seed.py
 """
-import csv, os
+import csv, os, sys, re
+sys.path.insert(0, os.path.dirname(__file__))
+import products as PR
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "..", "seed")
 ACCESSED = "2026-11-15"
@@ -396,5 +398,61 @@ cite("guide","attars-for-indian-summer","body","nod_nizam","natgeo","wp_attar","
 cite("guide","natural-vs-synthetic-attars","body","ka_degbhapka","natgeo","wp_sandal","pv_explained","wp_attar","wp_agarwood")
 write("guides.csv", "slug,title,title_hi,summary,summary_hi,body_file,author_name,published,published_at".split(","), guides)
 
-write("citations.csv", "entity_type,entity_slug,field_name,url,title,publisher,accessed_at,quote".split(","), citations)
 print(f"regions {len(regions)}, houses {len(houses)}, notes {len(notes)}, attars {len(attars)}, glossary {len(glossary)}, guides {len(guides)}, citations {len(citations)}")
+
+# ================================================================ house products
+def first_sentence(text):
+    """First sentence, not fooled by initials such as 'M.L.'"""
+    m = re.search(r"(?<=[a-z0-9\)'])\.(\s|$)", text)
+    return text[: m.start() + 1] if m else text
+
+S.update(PR.EXTRA_SOURCES)
+for h in PR.NEW_HOUSES:
+    houses.append(h)
+cite("house","kannauj-attar","city","ka_blackoud")
+cite("house","kannauj-attar","history","ka_degbhapka_page","ka_henna")
+cite("house","kannauj-attar","website_url","ka_degbhapka_page")
+write("houses.csv", "slug,name,name_hi,aliases,city,region_slug,founded_year,summary,summary_hi,history,website_url,published".split(","), houses)
+
+for n in PR.NEW_NOTES:
+    k = n.pop("_cite", None)
+    notes.append(n)
+    if k and n.get("botanical_name"):
+        cite("note", n["slug"], "botanical_name", k)
+write("notes.csv", "slug,name,name_hi,aliases,botanical_name,category,summary,summary_hi,smell,botany,grown_in,published".split(","), notes)
+
+style_slugs = {a["slug"] for a in attars}
+relations, prices, product_notes = [], [], []
+for p in PR.PRODUCTS:
+    assert p["style"] is None or p["style"] in style_slugs, p["slug"]
+    src_key = "prod_" + p["slug"]
+    S[src_key] = (p["url"], p["name"].split(" (")[0], PR.PUBLISHER[p["house"]])
+    row = dict(slug=p["slug"], name=p["name"], house_slug=p["house"], attar_type=p["type"] or "", base_oil=p["base"] or "",
+               scent_family=p["family"] or "", region_slug=p["region"] or "", occasions=p["occasions"],
+               summary=p["summary"] or first_sentence(p["desc"]), description=p["desc"])
+    attars.append(row)
+    keys = [src_key] + p["cite_extra"]
+    cite("attar", p["slug"], "house_id", src_key)
+    cite("attar", p["slug"], "description", *keys)
+    if p["type"]: cite("attar", p["slug"], "attar_type", src_key)
+    if p["base"]: cite("attar", p["slug"], "base_oil", src_key)
+    if p["region"]: cite("attar", p["slug"], "region_id", src_key)
+    if p["notes"]: cite("attar", p["slug"], "notes", src_key)
+    for i, (note, pos) in enumerate(p["notes"]):
+        product_notes.append((p["slug"], note, pos))
+    if p["style"]:
+        relations.append(dict(attar_slug=p["slug"], relation="example_of", related_attar_slug=p["style"], external_name="", note=""))
+    for qty, price in p["prices"]:
+        prices.append(dict(attar_slug=p["slug"], price_min_inr=price, price_max_inr=price, volume_ml=qty, unit=p["unit"],
+                           reported_on=PR.REPORTED_ON, source_name=PR.PUBLISHER[p["house"]], source_url=p["url"],
+                           note="Listed price on the official store on this date"))
+    if p["prices"]: cite("attar", p["slug"], "price", src_key)
+
+write("attars.csv", "slug,name,name_hi,aliases,house_slug,attar_type,base_oil,scent_family,region_slug,launch_year,occasions,summary,summary_hi,description,how_made,published".split(","), attars)
+all_notes = [(a, n, p) for a, n, p in attar_notes if n] + product_notes
+write("attar_notes.csv", ["attar_slug","note_slug","position","sort_order"],
+      [dict(attar_slug=a, note_slug=n, position=p, sort_order=i+1) for i,(a,n,p) in enumerate(all_notes)])
+write("attar_relations.csv", ["attar_slug","relation","related_attar_slug","external_name","note"], relations)
+write("price_reports.csv", ["attar_slug","price_min_inr","price_max_inr","volume_ml","unit","reported_on","source_name","source_url","note"], prices)
+write("citations.csv", "entity_type,entity_slug,field_name,url,title,publisher,accessed_at,quote".split(","), citations)
+print(f"products {len(PR.PRODUCTS)}, product prices {len(prices)}, style links {len(relations)}, notes now {len(notes)}, houses now {len(houses)}, citations {len(citations)}")

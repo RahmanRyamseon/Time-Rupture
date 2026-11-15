@@ -1,17 +1,17 @@
 export type EntityType = "attar" | "house" | "note" | "region" | "glossary" | "guide";
 export type AttarType = "natural_deg_bhapka" | "blended" | "synthetic" | "ruh";
-export type NotePosition = "top" | "heart" | "base";
+export type NotePosition = "top" | "heart" | "base" | "listed";
 export type VoteMetric = "longevity" | "sillage" | "heat" | "humidity" | "winter";
 export type ShelfStatus = "own" | "want" | "tried";
 export type UserRole = "reader" | "contributor" | "editor" | "admin";
 export type ReviewStatus = "published" | "pending" | "hidden";
 export type SkinType = "dry" | "normal" | "oily" | "combination" | "unsure";
 export type ClimateType = "hot_dry" | "hot_humid" | "monsoon" | "temperate" | "cold";
-export type RelationType = "similar" | "clone_of" | "inspired_by";
+export type RelationType = "similar" | "clone_of" | "inspired_by" | "example_of";
 
 export const VOTE_METRICS: VoteMetric[] = ["longevity", "sillage", "heat", "humidity", "winter"];
 export const ATTAR_TYPES: AttarType[] = ["natural_deg_bhapka", "blended", "synthetic", "ruh"];
-export const NOTE_POSITIONS: NotePosition[] = ["top", "heart", "base"];
+export const NOTE_POSITIONS: NotePosition[] = ["top", "heart", "base", "listed"];
 export const SKIN_TYPES: SkinType[] = ["dry", "normal", "oily", "combination", "unsure"];
 export const CLIMATES: ClimateType[] = ["hot_dry", "hot_humid", "monsoon", "temperate", "cold"];
 export const SHELF_STATUSES: ShelfStatus[] = ["own", "want", "tried"];
@@ -125,6 +125,7 @@ export interface PriceReport {
   price_min_inr: number;
   price_max_inr: number;
   volume_ml: number;
+  unit: "ml" | "g";
   reported_on: string;
   source_name: string;
   source_url: string | null;

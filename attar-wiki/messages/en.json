@@ -53,7 +53,8 @@
   "position": {
     "top": "Top notes",
     "heart": "Heart notes",
-    "base": "Base notes"
+    "base": "Base notes",
+    "listed": "Listed notes"
   },
   "relation": {
     "similar": "Similar attars",
@@ -61,7 +62,9 @@
     "inspired_by": "Inspired by",
     "reverseSimilar": "Listed as similar by",
     "reverseClone": "Has clones",
-    "reverseInspired": "Inspired"
+    "reverseInspired": "Inspired",
+    "example_of": "Traditional style",
+    "reverseExample": "Versions by houses"
   },
   "metric": {
     "longevity": "Longevity",
@@ -156,7 +159,9 @@
     "officialWebsite": "Official website",
     "seeAll": "See all",
     "imageCredit": "Image: {credit} · {license}",
-    "noImage": "No licensed image yet"
+    "noImage": "No licensed image yet",
+    "helpComplete": "Not yet documented on this page: {fields}.",
+    "helpCompleteLink": "Help add them"
   },
   "attar": {
     "overview": "Overview",
@@ -172,8 +177,8 @@
     "clearVote": "Clear",
     "prices": "Reported price ranges",
     "priceHelp": "Prices reported by the community or sources below. This wiki does not sell anything.",
-    "priceRow": "₹{min}–₹{max} for {volume} ml",
-    "per10": "≈ ₹{min}–₹{max} per 10 ml",
+    "priceRow": "₹{min}–₹{max} for {volume} {unit}",
+    "per10": "≈ ₹{min}–₹{max} per 10 {unit}",
     "reportedOn": "reported {date}",
     "source": "Source",
     "facts": "Quick facts",
@@ -182,7 +187,13 @@
     "compare": "Add to compare",
     "inCompare": "In compare",
     "madeBy": "by {house}",
-    "madeByLink": "by <link>{house}</link>"
+    "madeByLink": "by <link>{house}</link>",
+    "styleEyebrow": "Traditional attar style",
+    "priceRowSingle": "₹{min} for {volume} {unit}",
+    "per10Unit": "₹ / 10 {unit}",
+    "listedNotesHelp": "The house lists these notes without saying which are top, heart or base.",
+    "versionsHelp": "Products from named houses made in this traditional style. Notes, prices and claims are as each house lists them.",
+    "fromHouses": "From houses"
   },
   "shelf": {
     "title": "My Shelf",

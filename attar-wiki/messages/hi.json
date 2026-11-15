@@ -53,7 +53,8 @@
   "position": {
     "top": "टॉप नोट्स",
     "heart": "हार्ट नोट्स",
-    "base": "बेस नोट्स"
+    "base": "बेस नोट्स",
+    "listed": "सूचीबद्ध नोट्स"
   },
   "relation": {
     "similar": "मिलते-जुलते इत्र",
@@ -61,7 +62,9 @@
     "inspired_by": "इससे प्रेरित",
     "reverseSimilar": "इन्होंने मिलता-जुलता बताया",
     "reverseClone": "इसकी नकलें",
-    "reverseInspired": "इससे प्रेरित इत्र"
+    "reverseInspired": "इससे प्रेरित इत्र",
+    "example_of": "पारंपरिक शैली",
+    "reverseExample": "घरानों के संस्करण"
   },
   "metric": {
     "longevity": "टिकाऊपन",
@@ -156,7 +159,9 @@
     "officialWebsite": "आधिकारिक वेबसाइट",
     "seeAll": "सभी देखें",
     "imageCredit": "चित्र: {credit} · {license}",
-    "noImage": "अभी कोई लाइसेंस वाला चित्र नहीं"
+    "noImage": "अभी कोई लाइसेंस वाला चित्र नहीं",
+    "helpComplete": "इस पेज पर अभी दर्ज नहीं: {fields}।",
+    "helpCompleteLink": "जोड़ने में मदद करें"
   },
   "attar": {
     "overview": "परिचय",
@@ -172,8 +177,8 @@
     "clearVote": "हटाएँ",
     "prices": "बताई गई क़ीमतें",
     "priceHelp": "समुदाय या नीचे दिए स्रोतों द्वारा बताई गई क़ीमतें। यह विकी कुछ नहीं बेचता।",
-    "priceRow": "{volume} ml के लिए ₹{min}–₹{max}",
-    "per10": "≈ ₹{min}–₹{max} प्रति 10 ml",
+    "priceRow": "{volume} {unit} के लिए ₹{min}–₹{max}",
+    "per10": "≈ ₹{min}–₹{max} प्रति 10 {unit}",
     "reportedOn": "{date} को बताया गया",
     "source": "स्रोत",
     "facts": "मुख्य जानकारी",
@@ -182,7 +187,13 @@
     "compare": "तुलना में जोड़ें",
     "inCompare": "तुलना में है",
     "madeBy": "{house} द्वारा",
-    "madeByLink": "<link>{house}</link> द्वारा"
+    "madeByLink": "<link>{house}</link> द्वारा",
+    "styleEyebrow": "पारंपरिक इत्र शैली",
+    "priceRowSingle": "{volume} {unit} के लिए ₹{min}",
+    "per10Unit": "₹ / 10 {unit}",
+    "listedNotesHelp": "घराना ये नोट्स बताता है, पर यह नहीं कि कौन टॉप, हार्ट या बेस है।",
+    "versionsHelp": "इस पारंपरिक शैली में नामित घरानों के उत्पाद। नोट्स, क़ीमतें और दावे वैसे ही हैं जैसे हर घराना बताता है।",
+    "fromHouses": "घरानों से"
   },
   "shelf": {
     "title": "मेरी शेल्फ़",

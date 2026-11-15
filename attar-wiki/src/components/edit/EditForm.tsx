@@ -52,7 +52,7 @@ export function EditForm({ section, row, options }: { section: Section; row: Val
   const [slugTouched, setSlugTouched] = useState(Boolean(row));
   const [notes, setNotes] = useState(options.currentNotes);
   const [relations, setRelations] = useState(options.currentRelations);
-  const [price, setPrice] = useState({ price_min_inr: "", price_max_inr: "", volume_ml: "", reported_on: "", source_name: "", source_url: "" });
+  const [price, setPrice] = useState({ price_min_inr: "", price_max_inr: "", volume_ml: "", unit: "ml", reported_on: "", source_name: "", source_url: "" });
   const [citations, setCitations] = useState<CitationRow[]>([]);
   const [summary, setSummary] = useState("");
   const [state, setState] = useState<"idle" | "saving" | "done" | "error">("idle");
@@ -115,6 +115,7 @@ export function EditForm({ section, row, options }: { section: Section; row: Val
               price_min_inr: Number(price.price_min_inr),
               price_max_inr: Number(price.price_max_inr),
               volume_ml: Number(price.volume_ml),
+              unit: price.unit,
               reported_on: price.reported_on,
               source_name: price.source_name,
               source_url: price.source_url || null,
@@ -243,7 +244,7 @@ export function EditForm({ section, row, options }: { section: Section; row: Val
                   value={n.position}
                   onChange={(e) => setNotes(notes.map((x, j) => (j === i ? { ...x, position: e.target.value as NotePosition } : x)))}
                 >
-                  {(["top", "heart", "base"] as const).map((p) => (
+                  {(["top", "heart", "base", "listed"] as const).map((p) => (
                     <option key={p} value={p}>
                       {t(`position.${p}`)}
                     </option>
@@ -277,7 +278,7 @@ export function EditForm({ section, row, options }: { section: Section; row: Val
                   value={r.relation}
                   onChange={(e) => setRelations(relations.map((x, j) => (j === i ? { ...x, relation: e.target.value as RelationType } : x)))}
                 >
-                  {(["similar", "clone_of", "inspired_by"] as const).map((rel) => (
+                  {(["similar", "clone_of", "inspired_by", "example_of"] as const).map((rel) => (
                     <option key={rel} value={rel}>
                       {t(`relation.${rel}`)}
                     </option>
@@ -348,6 +349,15 @@ export function EditForm({ section, row, options }: { section: Section; row: Val
                   />
                 </div>
               ))}
+              <div>
+                <label htmlFor="p-unit" className="label">
+                  ml / g
+                </label>
+                <select id="p-unit" className="input" value={price.unit} onChange={(e) => setPrice({ ...price, unit: e.target.value })}>
+                  <option value="ml">ml</option>
+                  <option value="g">g</option>
+                </select>
+              </div>
             </div>
           </fieldset>
         ) : null}

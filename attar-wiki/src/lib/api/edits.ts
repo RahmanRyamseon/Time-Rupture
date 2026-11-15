@@ -45,7 +45,7 @@ export const EditInput = z.object({
   summary: z.string().trim().min(5).max(500),
   fields: z.record(z.string(), z.unknown()).default({}),
   notes: z
-    .array(z.object({ note_id: z.uuid(), position: z.enum(["top", "heart", "base"]) }))
+    .array(z.object({ note_id: z.uuid(), position: z.enum(["top", "heart", "base", "listed"]) }))
     .max(60)
     .optional(),
   relations: z
@@ -54,7 +54,7 @@ export const EditInput = z.object({
         .object({
           related_attar_id: z.uuid().nullable().optional(),
           external_name: z.string().trim().max(120).nullable().optional(),
-          relation: z.enum(["similar", "clone_of", "inspired_by"]),
+          relation: z.enum(["similar", "clone_of", "inspired_by", "example_of"]),
           note: z.string().trim().max(300).nullable().optional(),
         })
         .refine((r) => r.related_attar_id || r.external_name, "Pick an attar or name an external fragrance"),
@@ -66,6 +66,7 @@ export const EditInput = z.object({
       price_min_inr: z.number().nonnegative().max(10_000_000),
       price_max_inr: z.number().nonnegative().max(10_000_000),
       volume_ml: z.number().positive().max(10_000),
+      unit: z.enum(["ml", "g"]).default("ml"),
       reported_on: z.iso.date(),
       source_name: z.string().trim().min(2).max(200),
       source_url: z.url({ protocol: /^https?$/ }).max(1000).nullable().optional(),

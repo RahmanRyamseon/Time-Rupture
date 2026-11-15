@@ -10,10 +10,10 @@ import { absoluteUrl, SITE_NAME } from "@/lib/site";
 import { SECTION_DEFS } from "@/lib/sections";
 import { WikiShell, WikiSection } from "@/components/wiki/WikiShell";
 import { FieldBlock } from "@/components/wiki/FieldBlock";
-import { NotDocumented } from "@/components/wiki/NotDocumented";
 import { References } from "@/components/wiki/References";
 import { MediaFigure } from "@/components/wiki/MediaFigure";
 import { JsonLd } from "@/components/wiki/JsonLd";
+import { HelpComplete } from "@/components/wiki/HelpComplete";
 import { AttarCards } from "@/components/attar/AttarCards";
 
 export const revalidate = 600;
@@ -41,6 +41,8 @@ export default async function RegionPage({ params }: Props) {
   const editHref = `/regions/${slug}/edit`;
   const name = pick(locale, region.name, region.name_hi);
   const summary = pick(locale, region.summary, region.summary_hi);
+  const present: Record<string, boolean> = { overview: Boolean(summary.text), history: Boolean(region.history), specialities: Boolean(region.specialities), houses: d.houses.length > 0, attars: d.attars.length > 0 };
+  const gaps = [...(!summary.text ? ["summary"] : []), ...(!region.history ? ["history"] : []), ...(!region.specialities ? ["specialities"] : [])];
 
   return (
     <>
@@ -76,24 +78,33 @@ export default async function RegionPage({ params }: Props) {
         revisionCount={d.revisionCount}
         englishOnly={name.isFallback}
         toc={[
+          // only sections that exist
+
           { id: "overview", text: t("attar.overview") },
           { id: "history", text: t("field.history") },
           { id: "specialities", text: t("field.specialities") },
           { id: "houses", text: t("sections.houses") },
           { id: "attars", text: t("sections.attars") },
           ...(footnotes.list.length ? [{ id: "references", text: t("wiki.references") }] : []),
-        ]}
+        ].filter((i) => present[i.id] !== false)}
         aside={<MediaFigure media={d.media[0]} type="region" alt={region.name} />}
       >
-        <WikiSection id="overview" title={t("attar.overview")}>
-          {summary.text ? <p className="text-lg leading-relaxed">{summary.text}</p> : <NotDocumented editHref={editHref} />}
-        </WikiSection>
-        <WikiSection id="history" title={t("field.history")}>
-          <FieldBlock value={region.history} field="history" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
-        </WikiSection>
-        <WikiSection id="specialities" title={t("field.specialities")}>
-          <FieldBlock value={region.specialities} field="specialities" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
-        </WikiSection>
+        {summary.text ? (
+          <WikiSection id="overview" title={t("attar.overview")}>
+            <p className="text-lg leading-relaxed">{summary.text}</p>
+          </WikiSection>
+        ) : null}
+        {region.history ? (
+  <WikiSection id="history" title={t("field.history")}>
+            <FieldBlock value={region.history} field="history" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
+          </WikiSection>
+        ) : null}
+        {region.specialities ? (
+  <WikiSection id="specialities" title={t("field.specialities")}>
+            <FieldBlock value={region.specialities} field="specialities" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
+          </WikiSection>
+        ) : null}
+        {d.houses.length ? (
         <WikiSection id="houses" title={t("sections.houses")}>
           {d.houses.length ? (
             <ul className="grid gap-2 sm:grid-cols-2">
@@ -106,14 +117,16 @@ export default async function RegionPage({ params }: Props) {
                 </li>
               ))}
             </ul>
-          ) : (
-            <NotDocumented editHref="/new/houses" />
-          )}
+          ) : null}
         </WikiSection>
-        <section id="attars" className="mb-10 scroll-mt-24">
-          <h2 className="mb-4 text-2xl font-semibold">{t("sections.attars")}</h2>
-          {d.attars.length ? <AttarCards attars={d.attars} /> : <NotDocumented editHref="/new/attars" />}
-        </section>
+        ) : null}
+        {d.attars.length ? (
+          <section id="attars" className="mb-10 scroll-mt-24">
+            <h2 className="mb-4 text-2xl font-semibold">{t("sections.attars")}</h2>
+            <AttarCards attars={d.attars} />
+          </section>
+        ) : null}
+        <HelpComplete fields={gaps} editHref={editHref} />
         <div className="reading">
           <References footnotes={footnotes} />
         </div>

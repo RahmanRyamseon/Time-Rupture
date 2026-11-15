@@ -91,14 +91,14 @@ export const attars = z.object({
 export const attar_notes = z.object({
   attar_slug: slug,
   note_slug: slug,
-  position: z.enum(["top", "heart", "base"]),
+  position: z.enum(["top", "heart", "base", "listed"]),
   sort_order: int(0, 1000),
 });
 
 export const attar_relations = z
   .object({
     attar_slug: slug,
-    relation: z.enum(["similar", "clone_of", "inspired_by"]),
+    relation: z.enum(["similar", "clone_of", "inspired_by", "example_of"]),
     related_attar_slug: optSlug,
     external_name: text(120),
     note: text(300),
@@ -112,6 +112,7 @@ export const price_reports = z
     price_min_inr: money,
     price_max_inr: money,
     volume_ml: z.coerce.number().positive().max(10_000),
+    unit: z.preprocess(blank, z.enum(["ml", "g"]).optional()).transform((v) => v ?? "ml"),
     reported_on: date,
     source_name: required(200),
     source_url: url,

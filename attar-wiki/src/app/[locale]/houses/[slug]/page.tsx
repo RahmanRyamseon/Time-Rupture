@@ -11,10 +11,10 @@ import { SECTION_DEFS } from "@/lib/sections";
 import { WikiShell, WikiSection } from "@/components/wiki/WikiShell";
 import { FieldBlock } from "@/components/wiki/FieldBlock";
 import { Cite } from "@/components/wiki/Cite";
-import { NotDocumented } from "@/components/wiki/NotDocumented";
 import { References } from "@/components/wiki/References";
 import { MediaFigure } from "@/components/wiki/MediaFigure";
 import { JsonLd } from "@/components/wiki/JsonLd";
+import { HelpComplete } from "@/components/wiki/HelpComplete";
 import { AttarCards } from "@/components/attar/AttarCards";
 import { Icon } from "@/components/ui/Icon";
 
@@ -44,6 +44,8 @@ export default async function HousePage({ params }: Props) {
   const name = pick(locale, house.name, house.name_hi);
   const summary = pick(locale, house.summary, house.summary_hi);
 
+  const present: Record<string, boolean> = { overview: Boolean(summary.text), history: Boolean(house.history), attars: d.attars.length > 0 };
+  const gaps = [...(!summary.text ? ["summary"] : []), ...(!house.history ? ["history"] : []), ...(!house.founded_year ? ["founded_year"] : []), ...(!house.website_url ? ["website_url"] : [])];
   const facts = [
     { field: "city", label: t("field.city"), value: house.city },
     {
@@ -96,23 +98,25 @@ export default async function HousePage({ params }: Props) {
         revisionCount={d.revisionCount}
         englishOnly={name.isFallback}
         toc={[
+          // only sections that exist
+
           { id: "overview", text: t("attar.overview") },
           { id: "history", text: t("field.history") },
           { id: "attars", text: t("sections.attars") },
           ...(footnotes.list.length ? [{ id: "references", text: t("wiki.references") }] : []),
-        ]}
+        ].filter((i) => present[i.id] !== false)}
         aside={
           <>
             <MediaFigure media={d.media[0]} type="house" alt={house.name} />
             <div className="card p-4">
               <h2 className="eyebrow mb-3 font-sans">{t("attar.facts")}</h2>
               <dl className="space-y-2 text-sm">
-                {facts.map((f) => (
+                {facts.filter((f) => f.value != null && f.value !== "").map((f) => (
                   <div key={f.field} className="grid grid-cols-[7.5rem_1fr] gap-2">
                     <dt className="text-muted">{f.label}</dt>
                     <dd>
-                      {f.value ?? <NotDocumented inline editHref={editHref} />}
-                      {f.value ? <Cite field={f.field} footnotes={footnotes} missing={d.missingCitations} /> : null}
+                      {f.value}
+                      <Cite field={f.field} footnotes={footnotes} missing={d.missingCitations} />
                     </dd>
                   </div>
                 ))}
@@ -121,16 +125,23 @@ export default async function HousePage({ params }: Props) {
           </>
         }
       >
-        <WikiSection id="overview" title={t("attar.overview")}>
-          {summary.text ? <p className="text-lg leading-relaxed">{summary.text}</p> : <NotDocumented editHref={editHref} />}
-        </WikiSection>
-        <WikiSection id="history" title={t("field.history")}>
-          <FieldBlock value={house.history} field="history" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
-        </WikiSection>
-        <section id="attars" className="mb-10 scroll-mt-24">
-          <h2 className="mb-4 text-2xl font-semibold">{t("sections.attars")}</h2>
-          {d.attars.length ? <AttarCards attars={d.attars} /> : <NotDocumented editHref="/new/attars" />}
-        </section>
+        {summary.text ? (
+          <WikiSection id="overview" title={t("attar.overview")}>
+            <p className="text-lg leading-relaxed">{summary.text}</p>
+          </WikiSection>
+        ) : null}
+        {house.history ? (
+  <WikiSection id="history" title={t("field.history")}>
+            <FieldBlock value={house.history} field="history" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
+          </WikiSection>
+        ) : null}
+        {d.attars.length ? (
+          <section id="attars" className="mb-10 scroll-mt-24">
+            <h2 className="mb-4 text-2xl font-semibold">{t("sections.attars")}</h2>
+            <AttarCards attars={d.attars} />
+          </section>
+        ) : null}
+        <HelpComplete fields={gaps} editHref={editHref} />
         <div className="reading">
           <References footnotes={footnotes} />
         </div>

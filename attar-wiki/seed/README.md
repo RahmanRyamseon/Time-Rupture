@@ -55,14 +55,15 @@ Put local names in `aliases` (for example Hindi or Urdu spellings) so search fin
 
 ### `attar_notes.csv`
 `attar_slug, note_slug, position, sort_order`
-`position` is one of `top`, `heart`, `base`. Each attar listed in this file gets **exactly** the notes in the file; existing notes for that attar are replaced.
+`position` is one of `top`, `heart`, `base`, or `listed`. Use `listed` when the source names the note but does not say where it sits; never guess a position. Each attar listed in this file gets **exactly** the notes in the file; existing notes for that attar are replaced.
 
 ### `attar_relations.csv`
 `attar_slug, relation, related_attar_slug, external_name, note`
-`relation` is one of `similar`, `clone_of`, `inspired_by`. Use `related_attar_slug` for an attar in the wiki, or `external_name` for a fragrance outside it.
+`relation` is one of `similar`, `clone_of`, `inspired_by` or `example_of`. Use `example_of` to link a house's product to the traditional style page it belongs to (for example, a house's Mitti Attar → `mitti-attar`); style pages then list every house version. Use `related_attar_slug` for an attar in the wiki, or `external_name` for a fragrance outside it.
 
 ### `price_reports.csv`
-`attar_slug, price_min_inr, price_max_inr, volume_ml, reported_on, source_name, source_url, note`
+`attar_slug, price_min_inr, price_max_inr, volume_ml, unit, reported_on, source_name, source_url, note`
+`unit` is `ml` (default) or `g`. Many attars are sold by weight, so record the unit the seller uses rather than converting.
 These are reported price ranges, not offers. Always include the date and source. Exact duplicates are skipped.
 
 ### `glossary.csv`

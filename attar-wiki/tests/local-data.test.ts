@@ -40,8 +40,8 @@ test("every attar page resolves with notes and citations; no uncited factual fie
 test("browse filters and the note explorer", () => {
   assert.equal(local.browseAttars({ region: "kannauj" }).total >= 3, true);
   assert.deepEqual(
-    local.browseAttars({ note: "baked-earth" }).rows.map((r) => r.slug),
-    ["mitti-attar"],
+    local.browseAttars({ note: "baked-earth" }).rows.map((r) => r.slug).sort(),
+    ["ka-mitti-attar", "mitti-attar", "mlr-attar-mitti"],
   );
   assert.equal(local.browseAttars({ weather: "heat" }).total, 0, "weather needs real votes");
   const rose = local.getNote("rose")!;
@@ -57,5 +57,27 @@ test("matcher uses documented seasons when there are no votes yet", async () => 
   assert.ok(summer.results.some((r) => r.slug === "ruh-khus"));
   const winter = await runMatcher(null, MatcherInput.parse({ weather: "winter" }), local.matcherCatalog);
   assert.ok(winter.results.every((r) => r.reasons.some((x) => x.kind === "season")));
-  assert.ok(winter.results.some((r) => r.slug === "shamama"));
+  assert.ok(winter.results.some((r) => r.slug.includes("shamama")));
+});
+
+test("house products: style links, listed notes, units and prices are consistent", () => {
+  const style = local.getAttar("mitti-attar")!;
+  const versions = style.reverseRelations.filter((r) => r.relation === "example_of").map((r) => r.related!.slug).sort();
+  assert.deepEqual(versions, ["ka-mitti-attar", "mlr-attar-mitti"]);
+  const mlr = local.getAttar("mlr-attar-mitti")!;
+  assert.equal(mlr.house?.slug, "ml-ramnarain");
+  assert.ok(mlr.notes.every((n) => n.position === "listed"), "brand gave no positions");
+  assert.deepEqual(mlr.prices.map((p) => [p.volume_ml, p.unit, p.price_min_inr]).sort(), [[10, "g", 6000], [2.5, "g", 1500]].sort());
+  const aj = local.getAttar("ajmal-zabeel")!;
+  assert.equal(aj.prices[0].unit, "ml");
+  assert.ok(aj.notes.some((n) => n.position === "base" && n.note.slug === "amber"));
+  // Kannauj Attar prices are intentionally not recorded (no size per price in the store data)
+  assert.equal(local.getAttar("ka-mitti-attar")!.prices.length, 0);
+  // every product has a house and its description is cited
+  for (const a of local.listSection("attars") as { slug: string; house: unknown }[]) {
+    const d = local.getAttar(a.slug)!;
+    if (d.house) assert.ok(d.citations.some((c) => c.field_name === "description"), a.slug);
+  }
+  assert.ok(local.search("ajmal musk").some((h) => h.slug.startsWith("ajmal-")));
+  assert.equal(local.getHouse("kannauj-attar")!.attars.length >= 20, true);
 });

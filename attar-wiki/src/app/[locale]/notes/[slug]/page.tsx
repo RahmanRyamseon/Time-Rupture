@@ -10,10 +10,10 @@ import { SECTION_DEFS } from "@/lib/sections";
 import { WikiShell, WikiSection } from "@/components/wiki/WikiShell";
 import { FieldBlock } from "@/components/wiki/FieldBlock";
 import { Cite } from "@/components/wiki/Cite";
-import { NotDocumented } from "@/components/wiki/NotDocumented";
 import { References } from "@/components/wiki/References";
 import { MediaFigure } from "@/components/wiki/MediaFigure";
 import { JsonLd } from "@/components/wiki/JsonLd";
+import { HelpComplete } from "@/components/wiki/HelpComplete";
 import { AttarCards } from "@/components/attar/AttarCards";
 
 export const revalidate = 600;
@@ -41,7 +41,9 @@ export default async function NotePage({ params }: Props) {
   const editHref = `/notes/${slug}/edit`;
   const name = pick(locale, note.name, note.name_hi);
   const summary = pick(locale, note.summary, note.summary_hi);
-  const total = d.byPosition.top.length + d.byPosition.heart.length + d.byPosition.base.length;
+  const total = new Set([...d.byPosition.top, ...d.byPosition.heart, ...d.byPosition.base, ...d.byPosition.listed].map((a) => a.id)).size;
+  const present: Record<string, boolean> = { overview: Boolean(summary.text), smell: Boolean(note.smell), botany: Boolean(note.botany), grown: Boolean(note.grown_in), attars: total > 0 };
+  const gaps = [...(!summary.text ? ["summary"] : []), ...(!note.smell ? ["smell"] : []), ...(!note.botany ? ["botany"] : []), ...(!note.grown_in ? ["grown_in"] : [])];
 
   return (
     <>
@@ -78,32 +80,41 @@ export default async function NotePage({ params }: Props) {
         revisionCount={d.revisionCount}
         englishOnly={name.isFallback}
         toc={[
+          // only sections that exist
+
           { id: "overview", text: t("attar.overview") },
           { id: "smell", text: t("field.smell") },
           { id: "botany", text: t("field.botany") },
           { id: "grown", text: t("field.grown_in") },
           { id: "attars", text: t("sections.attars") },
           ...(footnotes.list.length ? [{ id: "references", text: t("wiki.references") }] : []),
-        ]}
+        ].filter((i) => present[i.id] !== false)}
         aside={<MediaFigure media={d.media[0]} type="note" alt={note.name} />}
       >
-        <WikiSection id="overview" title={t("attar.overview")}>
-          {summary.text ? <p className="text-lg leading-relaxed">{summary.text}</p> : <NotDocumented editHref={editHref} />}
-        </WikiSection>
-        <WikiSection id="smell" title={t("field.smell")}>
-          <FieldBlock value={note.smell} field="smell" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
-        </WikiSection>
-        <WikiSection id="botany" title={t("field.botany")}>
-          <FieldBlock value={note.botany} field="botany" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
-        </WikiSection>
-        <WikiSection id="grown" title={t("field.grown_in")}>
-          <FieldBlock value={note.grown_in} field="grown_in" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
-        </WikiSection>
+        {summary.text ? (
+          <WikiSection id="overview" title={t("attar.overview")}>
+            <p className="text-lg leading-relaxed">{summary.text}</p>
+          </WikiSection>
+        ) : null}
+        {note.smell ? (
+  <WikiSection id="smell" title={t("field.smell")}>
+            <FieldBlock value={note.smell} field="smell" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
+          </WikiSection>
+        ) : null}
+        {note.botany ? (
+  <WikiSection id="botany" title={t("field.botany")}>
+            <FieldBlock value={note.botany} field="botany" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
+          </WikiSection>
+        ) : null}
+        {note.grown_in ? (
+  <WikiSection id="grown" title={t("field.grown_in")}>
+            <FieldBlock value={note.grown_in} field="grown_in" footnotes={footnotes} missing={d.missingCitations} editHref={editHref} />
+          </WikiSection>
+        ) : null}
         <section id="attars" className="mb-10 scroll-mt-24">
           <h2 className="mb-1 text-2xl font-semibold">{t("sections.attars")}</h2>
           <p className="mb-4 text-sm text-muted">{t("wiki.inThisWiki", { count: total })}</p>
-          {total === 0 ? <NotDocumented /> : null}
-          {(["top", "heart", "base"] as const).map((pos) =>
+          {(["top", "heart", "base", "listed"] as const).map((pos) =>
             d.byPosition[pos].length ? (
               <div key={pos} className="mb-6">
                 <h3 className="mb-3 font-sans text-sm font-semibold uppercase tracking-wider text-muted">{t(`position.${pos}`)}</h3>
@@ -112,6 +123,7 @@ export default async function NotePage({ params }: Props) {
             ) : null,
           )}
         </section>
+        <HelpComplete fields={gaps} editHref={editHref} />
         <div className="reading">
           <References footnotes={footnotes} />
         </div>

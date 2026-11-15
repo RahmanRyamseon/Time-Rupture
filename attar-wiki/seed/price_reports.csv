@@ -1,1 +1,42 @@
-attar_slug,price_min_inr,price_max_inr,volume_ml,reported_on,source_name,source_url,note
+attar_slug,price_min_inr,price_max_inr,volume_ml,unit,reported_on,source_name,source_url,note
+mlr-attar-mitti,1500,1500,2.5,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/attar-mitti-100-natural,Listed price on the official store on this date
+mlr-attar-mitti,6000,6000,10,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/attar-mitti-100-natural,Listed price on the official store on this date
+mlr-attar-gulab,1499,1499,2.5,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/attar-gulab-100-natural,Listed price on the official store on this date
+mlr-attar-gulab,5999,5999,10,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/attar-gulab-100-natural,Listed price on the official store on this date
+mlr-ruh-gulab,7080,7080,2,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/ruh-gulab-100-pure-and-natural,Listed price on the official store on this date
+mlr-ruh-khus,1099,1099,2.5,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/ruh-khus-100-natural,Listed price on the official store on this date
+mlr-ruh-khus,3500,3500,10,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/ruh-khus-100-natural,Listed price on the official store on this date
+mlr-shamama,2000,2000,2.5,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/shamama-100-natural,Listed price on the official store on this date
+mlr-shamama,8000,8000,10,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/shamama-100-natural,Listed price on the official store on this date
+mlr-zafraan,1500,1500,2.5,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/zafraan-100-natural,Listed price on the official store on this date
+mlr-kashmir-192121,600,600,2.5,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/kashmir-192121,Listed price on the official store on this date
+mlr-kashmir-192121,2400,2400,10,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/kashmir-192121,Listed price on the official store on this date
+mlr-seher,800,800,2.5,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/seher,Listed price on the official store on this date
+mlr-seher,3000,3000,10,g,2026-11-15,"Attars India (M.L. Ramnarain Perfumers), official store",https://attarsindia.com/products/seher,Listed price on the official store on this date
+gsj-attar-shamama-1460,2200,2200,5,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/attar-shamama-1460,Listed price on the official store on this date
+gsj-attar-shamama-1460,4400,4400,10,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/attar-shamama-1460,Listed price on the official store on this date
+gsj-attar-rajnigandha-1460,2200,2200,5,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/attar-rajnigandha-1460,Listed price on the official store on this date
+gsj-attar-rajnigandha-1460,4400,4400,10,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/attar-rajnigandha-1460,Listed price on the official store on this date
+gsj-ruh-juhi,3000,3000,5,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/ruh-juhi,Listed price on the official store on this date
+gsj-ruh-juhi,6000,6000,10,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/ruh-juhi,Listed price on the official store on this date
+gsj-ruh-kamal,3500,3500,5,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/ruh-kamal,Listed price on the official store on this date
+gsj-ruh-kamal,7000,7000,10,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/ruh-kamal,Listed price on the official store on this date
+gsj-ruh-champaka,7000,7000,10,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/ruh-champaka,Listed price on the official store on this date
+gsj-imperial-hina,200,200,9,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/imperial-hina,Listed price on the official store on this date
+gsj-majmua-premium,320,320,9,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/majmua-premium,Listed price on the official store on this date
+gsj-exotic-kewra,320,320,9,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/exotic-kewra,Listed price on the official store on this date
+gsj-exotic-kesar-chandan,320,320,9,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/exotic-kesar-chandan,Listed price on the official store on this date
+gsj-oudh-adinath,600,600,2.5,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/oudh-adinath,Listed price on the official store on this date
+gsj-oudh-adinath,1200,1200,5,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/oudh-adinath,Listed price on the official store on this date
+gsj-oudh-adinath,2400,2400,10,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/oudh-adinath,Listed price on the official store on this date
+gsj-chameli-fir,600,600,9,g,2026-11-15,"Gulabsingh Johrimal, official store",https://gulabsinghjohrimal.co.in/products/chameli-fir,Listed price on the official store on this date
+ajmal-oudh-mukhallat,1999,1999,6,ml,2026-11-15,"Ajmal Perfumes India, official store",https://in.ajmal.com/products/oudh-mukhallat-concentrated-perfume-perfume-6ml-for-unisex,Listed price on the official store on this date
+ajmal-mizyaan,1600,1600,14,ml,2026-11-15,"Ajmal Perfumes India, official store",https://in.ajmal.com/products/mizyaan-concentrated-perfume-perfume-14ml-for-unisex,Listed price on the official store on this date
+ajmal-musk-khas,2200,2200,3,ml,2026-11-15,"Ajmal Perfumes India, official store",https://in.ajmal.com/products/musk-khas-non-alcoholic-attar-3-ml-for-unisex,Listed price on the official store on this date
+ajmal-royal-misk-rijali,999,999,10,ml,2026-11-15,"Ajmal Perfumes India, official store",https://in.ajmal.com/products/royal-misk-rijali-attar-concentrated-perfumefor-unisex-10-ml,Listed price on the official store on this date
+ajmal-royal-misk-sapphire,999,999,10,ml,2026-11-15,"Ajmal Perfumes India, official store",https://in.ajmal.com/products/royal-misk-sapphire-attar-concentrated-perfume-for-unisex-10-ml,Listed price on the official store on this date
+ajmal-royal-oud-kuwaiti,999,999,10,ml,2026-11-15,"Ajmal Perfumes India, official store",https://in.ajmal.com/products/royal-oud-kuwaiti-attar-concentrated-perfume-for-unisex-10-ml,Listed price on the official store on this date
+ajmal-musk-rose,699,699,12,ml,2026-11-15,"Ajmal Perfumes India, official store",https://in.ajmal.com/products/musk-rose-concentrated-perfume-perfume-12ml-for-unisex,Listed price on the official store on this date
+ajmal-zabeel,1190,1190,12,ml,2026-11-15,"Ajmal Perfumes India, official store",https://in.ajmal.com/products/zabeel-attar-concentrated-perfume-unisex-long-lasting-attar-12-ml,Listed price on the official store on this date
+ajmal-mukhallat-al-wafa,600,600,12,ml,2026-11-15,"Ajmal Perfumes India, official store",https://in.ajmal.com/products/mukhallat-al-wafa-concentrated-perfume-perfume-12ml-for-unisex,Listed price on the official store on this date
+ajmal-dubai-oud,450,450,5,ml,2026-11-15,"Ajmal Perfumes India, official store",https://in.ajmal.com/products/dubai-oud-non-alcoholic-concentrated-perfume-long-lasting-attar-for-unisex-5-ml,Listed price on the official store on this date

@@ -178,7 +178,7 @@ export default async function BrowsePage({ params, searchParams }: Props) {
                     ) : null}
                     {a.per10_min != null ? (
                       <>
-                        <dt>₹ / 10 ml</dt>
+                        <dt>{t("attar.per10Unit", { unit: a.price_unit ?? "ml" })}</dt>
                         <dd className="text-right tabular-nums">
                           {formatInr(Number(a.per10_min), loc)}–{formatInr(Number(a.per10_max), loc)}
                         </dd>

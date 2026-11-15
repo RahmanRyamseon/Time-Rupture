@@ -285,9 +285,7 @@ begin
 
   if s.entity_type = 'attar' and jsonb_typeof(s.proposed -> 'price_report') = 'object' then
     item := s.proposed -> 'price_report';
-    insert into public.price_reports (attar_id, price_min_inr, price_max_inr, volume_ml, reported_on, source_name, source_url, note)
-    values (target, (item ->> 'price_min_inr')::numeric, (item ->> 'price_max_inr')::numeric, (item ->> 'volume_ml')::numeric,
-            (item ->> 'reported_on')::date, item ->> 'source_name', nullif(item ->> 'source_url', ''), nullif(item ->> 'note', ''));
+    perform public.apply_price_report(target, item); -- defined in the products migration (adds unit)
   end if;
 
   if jsonb_typeof(s.proposed -> 'citations') = 'array' then

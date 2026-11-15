@@ -30,7 +30,7 @@ export default async function ComparePage({ params, searchParams }: Props) {
     { label: t("field.base_oil"), render: (d) => d.attar.base_oil ?? nd },
     { label: t("field.scent_family"), render: (d) => d.attar.scent_family ?? nd },
     { label: t("field.region_id"), render: (d) => (d.region ? <Link href={`/regions/${d.region.slug}`}>{d.region.name}</Link> : nd) },
-    ...(["top", "heart", "base"] as const).map((pos) => ({
+    ...(["top", "heart", "base", "listed"] as const).map((pos) => ({
       label: t(`position.${pos}`),
       render: (d: (typeof data)[number]) => {
         const notes = d.notes.filter((n) => n.position === pos);
@@ -71,6 +71,7 @@ export default async function ComparePage({ params, searchParams }: Props) {
             {t("attar.per10", {
               min: formatInr((Number(p.price_min_inr) / Number(p.volume_ml)) * 10, locale),
               max: formatInr((Number(p.price_max_inr) / Number(p.volume_ml)) * 10, locale),
+              unit: p.unit ?? "ml",
             })}
             <span className="block text-xs text-muted">{p.source_name}</span>
           </span>

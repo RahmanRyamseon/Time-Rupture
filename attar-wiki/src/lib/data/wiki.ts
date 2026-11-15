@@ -110,7 +110,7 @@ export async function getAttar(slug: string): Promise<AttarPageData | null> {
       .eq("related_attar_id", attar.id),
     supabase
       .from("price_reports")
-      .select("id, price_min_inr, price_max_inr, volume_ml, reported_on, source_name, source_url, note")
+      .select("id, price_min_inr, price_max_inr, volume_ml, unit, reported_on, source_name, source_url, note")
       .eq("attar_id", attar.id)
       .order("reported_on", { ascending: false }),
     supabase.from("attar_vote_stats").select("metric, vote_count, vote_avg, distribution").eq("attar_id", attar.id),
@@ -157,6 +157,7 @@ export interface BrowseRow {
   house_name: string | null;
   per10_min: number | null;
   per10_max: number | null;
+  price_unit?: string | null;
   price_reported_on: string | null;
   weather_avg: number | null;
   weather_count: number;
@@ -242,8 +243,8 @@ export async function getNote(slug: string) {
       .eq("attar.published", true),
     getExtras("note", note.id),
   ]);
-  const byPosition: Record<"top" | "heart" | "base", AttarCard[]> = { top: [], heart: [], base: [] };
-  for (const row of (links.data as unknown as { position: "top" | "heart" | "base"; attar: AttarCard }[]) ?? []) {
+  const byPosition: Record<"top" | "heart" | "base" | "listed", AttarCard[]> = { top: [], heart: [], base: [], listed: [] };
+  for (const row of (links.data as unknown as { position: "top" | "heart" | "base" | "listed"; attar: AttarCard }[]) ?? []) {
     byPosition[row.position].push(row.attar);
   }
   for (const k of Object.keys(byPosition) as (keyof typeof byPosition)[]) {

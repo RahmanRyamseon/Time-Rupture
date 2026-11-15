@@ -152,10 +152,10 @@ export function getHouse(slug: string) {
 export function getNote(slug: string) {
   const note = D.notes.find((n) => n.slug === slug);
   if (!note) return null;
-  const byPosition: Record<NotePosition, AttarCard[]> = { top: [], heart: [], base: [] };
+  const byPosition: Record<NotePosition, AttarCard[]> = { top: [], heart: [], base: [], listed: [] };
   for (const link of D.attar_notes.filter((n) => n.note_id === note.id)) {
     const a = D.attars.find((x) => x.id === link.attar_id && x.published);
-    if (a) byPosition[link.position].push(card(a));
+    if (a && !byPosition[link.position].some((x) => x.id === a.id)) byPosition[link.position].push(card(a));
   }
   (Object.keys(byPosition) as NotePosition[]).forEach((k) => byPosition[k].sort(byName));
   return { note, byPosition, ...extras("note", note as unknown as Record<string, unknown>) };
@@ -217,7 +217,7 @@ export function getAttarCards(slugs: string[]) {
 
 function latestPrice(attarId: string) {
   const p = D.price_reports.filter((x) => x.attar_id === attarId).sort((a, b) => b.reported_on.localeCompare(a.reported_on))[0];
-  return p ? { min: Math.round((p.price_min_inr / p.volume_ml) * 10), max: Math.round((p.price_max_inr / p.volume_ml) * 10), on: p.reported_on } : null;
+  return p ? { min: Math.round((p.price_min_inr / p.volume_ml) * 10), max: Math.round((p.price_max_inr / p.volume_ml) * 10), on: p.reported_on, unit: p.unit ?? "ml" } : null;
 }
 
 export function browseAttars(f: BrowseFilters): { rows: BrowseRow[]; total: number } {
@@ -259,6 +259,7 @@ export function browseAttars(f: BrowseFilters): { rows: BrowseRow[]; total: numb
         house_name: h?.name ?? null,
         per10_min: p?.min ?? null,
         per10_max: p?.max ?? null,
+        price_unit: p?.unit ?? null,
         price_reported_on: p?.on ?? null,
         weather_avg: null,
         weather_count: 0,
@@ -331,13 +332,14 @@ interface Doc {
   subtitle: string | null;
   hay: string[]; // normalized title/alias words
   body: string;
+  boost: number;
 }
 
 let docs: Doc[] | null = null;
 function index(): Doc[] {
   if (docs) return docs;
-  const mk = (type: EntityType, id: string, slug: string, title: string, title_hi: string | null, subtitle: string | null, aliases: string[], body: string): Doc => ({
-    type, id, slug, title, title_hi, subtitle,
+  const mk = (type: EntityType, id: string, slug: string, title: string, title_hi: string | null, subtitle: string | null, aliases: string[], body: string, boost = 0): Doc => ({
+    type, id, slug, title, title_hi, subtitle, boost,
     hay: normalize([title, title_hi, ...aliases].filter(Boolean).join(" ")).split(" "),
     body: normalize(body),
   });
@@ -346,7 +348,9 @@ function index(): Doc[] {
       const h = houseById(a.house_id);
       const notes = D.attar_notes.filter((n) => n.attar_id === a.id).map((n) => D.notes.find((x) => x.id === n.note_id)!);
       return mk("attar", a.id, a.slug, a.name, a.name_hi, [h?.name, a.scent_family].filter(Boolean).join(" · ") || null, a.aliases,
-        [a.summary, a.base_oil, a.scent_family, h?.name, ...notes.flatMap((n) => [n.name, n.name_hi, ...n.aliases]), ...a.occasions, a.description].join(" "));
+        [a.summary, a.base_oil, a.scent_family, h?.name, ...notes.flatMap((n) => [n.name, n.name_hi, ...n.aliases]), ...a.occasions, a.description].join(" "),
+        // traditional style pages (no house) answer generic queries best
+        h ? 0 : 0.03);
     }),
     ...published(D.houses).map((h) => mk("house", h.id, h.slug, h.name, h.name_hi, h.city, h.aliases, [h.summary, h.city, h.history].join(" "))),
     ...published(D.notes).map((n) => mk("note", n.id, n.slug, n.name, n.name_hi, [n.botanical_name, n.category].filter(Boolean).join(" · ") || null, n.aliases, [n.summary, n.smell, n.grown_in].join(" "))),
@@ -374,7 +378,7 @@ export function search(query: string, types?: EntityType[], limit = 20): SearchH
       score += s;
     }
     if (!matchedAll && score < 0.6) continue;
-    if (score > 0) results.push({ entity_type: d.type, entity_id: d.id, slug: d.slug, title: d.title, title_hi: d.title_hi, subtitle: d.subtitle, score: score / q.length + (d.type === "attar" ? 0.05 : 0) });
+    if (score > 0) results.push({ entity_type: d.type, entity_id: d.id, slug: d.slug, title: d.title, title_hi: d.title_hi, subtitle: d.subtitle, score: score / q.length + (d.type === "attar" ? 0.05 : 0) + d.boost });
   }
   return results.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title)).slice(0, Math.min(limit, 50));
 }

@@ -73,7 +73,7 @@ insert into public.edit_suggestions (id, entity_type, entity_id, proposed, summa
       jsonb_build_object('note_id', '10000000-0000-0000-0000-000000000002', 'position', 'top')),
     'citations', jsonb_build_array(jsonb_build_object('field_name', 'how_made', 'url', 'https://example.org/a', 'title', 'Ref A')),
     'price_report', jsonb_build_object('price_min_inr', 100, 'price_max_inr', 200, 'volume_ml', 10,
-                                       'reported_on', '2026-10-01', 'source_name', 'Test source')
+                                       'reported_on', '2026-10-01', 'source_name', 'Test source', 'unit', 'g')
   ),
   'Add summary and notes', auth.uid());
 
@@ -163,6 +163,20 @@ do $$ begin
   assert (select total_count from public.browse_attars() limit 1) = 1, 'total';
   assert jsonb_array_length(public.attar_facets() -> 'notes') = 2, 'facets';
   assert (select cardinality(notes) from public.matcher_catalog()) = 2, 'catalog notes';
+end $$;
+
+
+-- products migration: listed notes, example_of relations, price units
+insert into public.attars (id, slug, name) values ('30000000-0000-0000-0000-000000000002', 'test-house-mitti', 'Test House Mitti');
+insert into public.attar_notes values ('30000000-0000-0000-0000-000000000002', '10000000-0000-0000-0000-000000000001', 'listed', 1);
+insert into public.attar_relations (attar_id, related_attar_id, relation) values ('30000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000001', 'example_of');
+insert into public.price_reports (attar_id, price_min_inr, price_max_inr, volume_ml, unit, reported_on, source_name)
+values ('30000000-0000-0000-0000-000000000002', 1500, 1500, 2.5, 'g', '2026-11-15', 'Test store');
+do $$ begin
+  assert (select unit from public.attar_latest_price where attar_id = '30000000-0000-0000-0000-000000000002') = 'g', 'unit in view';
+  assert (select per10_min from public.attar_latest_price where attar_id = '30000000-0000-0000-0000-000000000002') = 6000, 'per 10 g';
+  assert (select price_unit from public.browse_attars(p_note => 'test-vetiver') where slug = 'test-house-mitti') = 'g', 'browse unit';
+  assert (public.entity_snapshot('attar', '30000000-0000-0000-0000-000000000002') -> 'price_reports' -> 0 ->> 'unit') = 'g', 'snapshot unit';
 end $$;
 
 select public.record_view('attar', '30000000-0000-0000-0000-000000000001');
