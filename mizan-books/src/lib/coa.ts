@@ -99,6 +99,14 @@ export function defaultRules(): CategoryRule[] {
     ...r("2200", ["fta ", "federal tax", "zatca", "nbr ", "tax authority", "vat payment", "vat return", "ضريبة القيمة المضافة", "الزكاة والضريبة"]),
     ...r("1000", ["atm", "cash withdrawal", "cash deposit", "سحب نقدي", "صراف"]),
     ...r("4000", ["pos settlement", "card settlement", "network international", "magnati", "geidea", "mada settlement", "stripe", "checkout.com", "tap payments", "تسوية نقاط البيع"]),
+    // Bahrain: utilities, telecoms, government portals, fuel, payment providers.
+    ...r("6200", ["ewa ", "electricity & water authority", "electricity and water authority", "هيئة الكهرباء والماء"]),
+    ...r("6210", ["batelco", "beyon", "stc bahrain", "zain bahrain", "kalaam", "بتلكو", "زين البحرين"]),
+    ...r("6020", ["lmra", "sijilat", "moic", "ministry of industry and commerce", "cr renewal", "commercial registration", "npra", "gdnpr", "bahrain chamber", "bcci", "ega ", "هيئة تنظيم سوق العمل", "سجلات", "تجديد السجل التجاري", "وزارة الصناعة والتجارة"]),
+    ...r("6010", ["sio ", "social insurance organization", "الهيئة العامة للتأمين الاجتماعي"]),
+    ...r("6300", ["bapco", "tatweer", "بابكو"]),
+    ...r("4000", ["benefitpay settlement", "benefit pay settlement", "credimax settlement", "afs settlement", "تسوية بنفت"]),
+    ...r("4900", ["tamkeen", "تمكين"]),
     // Invoice line-item words (used when the supplier name alone doesn't tell).
     ...r("6400", ["toner", "printer paper", "a4 paper", "stationery", "pens", "envelopes", "cartridge", "ورق", "حبر"]),
     ...r("1500", ["laptop", "computer", "desktop pc", "monitor", "furniture", "office chair", "desk ", "air conditioner", "split ac", "حاسوب", "أثاث", "مكيف"]),

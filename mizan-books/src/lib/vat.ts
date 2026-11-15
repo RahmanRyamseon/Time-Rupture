@@ -34,7 +34,14 @@ const ZERO_RATED_KEYWORDS = [
   "air ticket", "flight", "airline", "education", "school fees", "tuition", "precious metal", "gold bullion",
   "أدوية", "دواء", "تذكرة طيران", "رسوم مدرسية", "تعليم",
 ];
-const BH_OM_FOOD_ZERO = ["rice", "bread", "milk", "vegetable", "fruit", "meat", "fish", "eggs", "flour", "أرز", "خبز", "حليب", "خضار", "فواكه", "لحم", "سمك", "بيض", "دقيق"];
+// Bahrain zero-rates basic food items on the NBR's published list, plus healthcare, education,
+// local transport, new buildings and oil & gas (examples only – check the NBR list).
+const BH_OM_FOOD_ZERO = [
+  "rice", "bread", "milk", "vegetable", "fruit", "meat", "fish", "eggs", "flour", "sugar", "dates", "cooking oil",
+  "salt", "coffee beans", "tea leaves", "baby food", "chicken", "laban", "yoghurt", "cheese", "butter", "pulses", "lentils",
+  "أرز", "خبز", "حليب", "خضار", "فواكه", "لحم", "سمك", "بيض", "دقيق", "سكر", "تمر", "زيت طبخ", "ملح", "دجاج", "لبن", "جبن", "عدس",
+];
+const BH_ZERO_OTHER = ["construction of new building", "new building construction", "healthcare", "medical services", "hospital", "clinic", "local transport", "بناء مبنى جديد", "رعاية صحية", "مستشفى", "عيادة"];
 const EXEMPT_KEYWORDS = [
   "residential rent", "residential lease", "apartment rent", "villa rent", "local passenger transport", "bare land",
   "life insurance", "interest", "loan", "financial service margin", "إيجار سكني", "تأمين على الحياة", "فائدة",
@@ -98,7 +105,7 @@ export function suggestTreatment(i: TreatmentInput): Suggestion {
   }
   const exemptWord = has(i.text, EXEMPT_KEYWORDS);
   if ((exemptWord || acct === "exempt") && i.vat === 0) return { treatment: "exempt", reason: [`Exempt supply ("${exemptWord ?? "finance"}")`, `توريد معفى ("${exemptWord ?? "تمويل"}")`] };
-  const zeroWord = has(i.text, ZERO_RATED_KEYWORDS) ?? ((i.country === "BH" || i.country === "OM") ? has(i.text, BH_OM_FOOD_ZERO) : null);
+  const zeroWord = has(i.text, ZERO_RATED_KEYWORDS) ?? ((i.country === "BH" || i.country === "OM") ? has(i.text, BH_OM_FOOD_ZERO) ?? (i.country === "BH" ? has(i.text, BH_ZERO_OTHER) : null) : null);
   if (zeroWord && i.vat === 0) return { treatment: "zero", reason: [`Zero-rated item ("${zeroWord}")`, `صنف خاضع لنسبة الصفر ("${zeroWord}")`] };
   if (i.kind === "sales" && foreign && i.vat === 0) return { treatment: "export", reason: ["Customer outside the country, no VAT – export", "عميل خارج الدولة بدون ضريبة – تصدير"] };
   if (i.kind === "purchase" && i.vat > 0 && !i.partyTrn) {
@@ -169,6 +176,24 @@ export function verifyInvoice(v: VerifyInput): Finding[] {
   return f;
 }
 
+// ---------- Bahrain VAT registration thresholds ----------
+
+/** NBR thresholds on taxable supplies over 12 months (BHD): mandatory and voluntary registration. */
+export const BH_THRESHOLDS = { mandatory: 37_500_000, voluntary: 18_750_000 } as const; // in mils
+
+/** Taxable supplies (standard + zero-rated + exports) in the 12 months to `asOf`, from posted sales. */
+export function rollingTaxableSupplies(entries: { date: string; tax?: { kind: string; net: Mils; treatment?: string } }[], asOf: string): Mils {
+  const end = new Date(asOf + "T00:00:00Z");
+  const start = new Date(Date.UTC(end.getUTCFullYear() - 1, end.getUTCMonth(), end.getUTCDate() + 1)).toISOString().slice(0, 10);
+  let total = 0;
+  for (const e of entries) {
+    if (!e.tax || e.tax.kind !== "sales" || e.date < start || e.date > asOf) continue;
+    const tr = e.tax.treatment ?? "standard";
+    if (tr === "standard" || tr === "zero" || tr === "export") total += e.tax.net;
+  }
+  return total;
+}
+
 // ---------- VAT return boxes ----------
 
 export interface VatTotals {
@@ -218,20 +243,19 @@ export function returnBoxes(country: CountryCode, t: VatTotals): BoxRow[] {
         B("12", "Total purchases", "إجمالي المشتريات", allPurch, t.inputVat, true),
         B("13", "Total VAT due for current period", "إجمالي ضريبة القيمة المضافة المستحقة عن الفترة", null, t.netPayable, true),
       ];
-    case "BH": // NBR return (shape follows vat-compliance's mapping)
+    case "BH": // NBR VAT return (box layout as commonly published – confirm against the NBR portal form)
       return [
-        B("1", "Standard-rated sales", "المبيعات الخاضعة للنسبة الأساسية", t.salesStandard.net, t.salesStandard.vat),
-        B("2", "Zero-rated domestic sales", "المبيعات المحلية بنسبة الصفر", t.salesZero, null),
-        B("3", "Exports", "الصادرات", t.salesExport, null),
-        B("4", "Exempt supplies", "التوريدات المعفاة", t.salesExempt, null),
-        B("6", "Total output VAT", "إجمالي ضريبة المخرجات", t.salesStandard.net + t.reverseCharge.net, t.outputVat, true),
-        B("10a", "Imports (reverse charge)", "الاستيرادات (احتساب عكسي)", t.reverseCharge.net, t.reverseCharge.vat),
-        B("10b", "Standard-rated purchases", "المشتريات الخاضعة للنسبة الأساسية", t.purchStandard.net, t.purchStandard.vat),
-        B("11", "Zero-rated purchases", "المشتريات بنسبة الصفر", t.purchZero, null),
-        B("12", "Exempt purchases", "المشتريات المعفاة", t.purchExempt, null),
-        B("13", "Blocked input VAT (non-recoverable)", "ضريبة مدخلات محظورة (غير قابلة للاسترداد)", t.blocked.net, t.blocked.vat),
-        B("14", "Net recoverable input VAT", "صافي ضريبة المدخلات القابلة للاسترداد", null, t.inputVat, true),
-        B("17", "Net VAT due / (recoverable)", "صافي الضريبة المستحقة / (المستردة)", null, t.netPayable, true),
+        B("1", "Standard rated sales", "المبيعات الخاضعة للنسبة الأساسية", t.salesStandard.net, t.salesStandard.vat),
+        B("4", "Zero-rated domestic sales", "المبيعات المحلية الخاضعة لنسبة الصفر", t.salesZero, null),
+        B("5", "Exports", "الصادرات", t.salesExport, null),
+        B("6", "Exempt sales", "المبيعات المعفاة", t.salesExempt, null),
+        B("7", "Total sales", "إجمالي المبيعات", allSales, t.salesStandard.vat, true),
+        B("8", "Standard rated domestic purchases", "المشتريات المحلية الخاضعة للنسبة الأساسية", t.purchStandard.net, t.purchStandard.vat),
+        B("10", "Imports subject to VAT accounted for through reverse charge", "الاستيرادات الخاضعة للضريبة بآلية الاحتساب العكسي", t.reverseCharge.net, t.reverseCharge.vat),
+        B("12", "Zero-rated and exempt purchases", "المشتريات الخاضعة لنسبة الصفر والمعفاة", t.purchZero + t.purchExempt, null),
+        B("13", "Total purchases", "إجمالي المشتريات", allPurch, t.inputVat, true),
+        B("14", "Total VAT due for the current period", "إجمالي الضريبة المستحقة عن الفترة الحالية", null, t.netPayable, true),
+        B("—", "Blocked input VAT not claimed (Art. 42 – e.g. entertainment, no valid tax invoice)", "ضريبة مدخلات محظورة غير مطالب بها (المادة ٤٢)", t.blocked.net, t.blocked.vat),
       ];
     default: // Oman and a generic layout
       return [

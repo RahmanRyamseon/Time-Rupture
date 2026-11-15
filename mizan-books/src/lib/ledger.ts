@@ -298,6 +298,42 @@ export function balanceSheet(books: Books, p: Period): BalanceSheet {
   return { lines, totalAssets, totalLiabilities: totalLiab, totalEquity, difference: totalAssets - totalEquity - totalLiab };
 }
 
+export interface EquityStatement { lines: Line[]; opening: Mils; closing: Mils; profit: Mils; suggestedReserve: Mils; check: Mils }
+
+/**
+ * Statement of changes in equity. Also suggests the statutory reserve transfer under
+ * Bahrain's Commercial Companies Law (10% of net profit until the reserve reaches 50% of capital).
+ */
+export function equityStatement(books: Books, p: Period): EquityStatement {
+  const { rows } = trialBalance(books, p);
+  const profit = incomeStatement(books, p).netProfit;
+  const eq = rows.filter((r) => r.account.type === "equity");
+  // Opening-balance entries posted inside the period are part of opening equity, not movements.
+  const ob = balances(books.entries, (e) => e.source === "opening" && e.date >= p.from && e.date <= p.to);
+  const obEq = eq.reduce((s, r) => s - (ob.get(r.account.code) ?? 0), 0);
+  const opening = -eq.reduce((s, r) => s + r.opening, 0) + obEq;
+  const mv = (code: string) => { const r = eq.find((x) => x.account.code === code); return r ? -(r.closing - r.opening) + (ob.get(code) ?? 0) : 0; };
+  const capital = mv("3000") + mv(SYS.openingEquity);
+  const drawings = mv("3100");
+  const reserve = mv("3200");
+  const known = new Set(["3000", SYS.openingEquity, "3100", "3200"]);
+  const other = eq.filter((r) => !known.has(r.account.code)).reduce((s, r) => s - (r.closing - r.opening) + (ob.get(r.account.code) ?? 0), 0);
+  const closing = -eq.reduce((s, r) => s + r.closing, 0) + profit;
+  const capitalBal = -(eq.find((r) => r.account.code === "3000")?.closing ?? 0);
+  const reserveBal = -(eq.find((r) => r.account.code === "3200")?.closing ?? 0);
+  const suggestedReserve = profit > 0 ? Math.max(0, Math.min(Math.round(profit / 10), Math.round(capitalBal / 2) - reserveBal)) : 0;
+  const lines: Line[] = [
+    L("Equity at the beginning of the period", "حقوق الملكية في بداية الفترة", opening, { kind: "subtotal" }),
+    L("Profit / (loss) for the period", "ربح / (خسارة) الفترة", profit, { indent: 1 }),
+    ...(capital ? [L("Capital introduced", "رأس مال مضاف", capital, { indent: 1 })] : []),
+    ...(drawings ? [L("Owner's drawings / dividends", "مسحوبات المالك / توزيعات أرباح", drawings, { indent: 1 })] : []),
+    ...(reserve ? [L("Transfer to statutory reserve", "المحول إلى الاحتياطي القانوني", reserve, { indent: 1 })] : []),
+    ...(other ? [L("Other movements (retained earnings)", "حركات أخرى (الأرباح المحتجزة)", other, { indent: 1 })] : []),
+    L("Equity at the end of the period", "حقوق الملكية في نهاية الفترة", closing, { kind: "total", bold: true }),
+  ];
+  return { lines, opening, closing, profit, suggestedReserve, check: opening + profit + capital + drawings + reserve + other - closing };
+}
+
 export interface CashFlow { lines: Line[]; netChange: Mils; opening: Mils; closing: Mils; check: Mils }
 
 /** Indirect-method cash flow statement derived from balance-sheet movements. */

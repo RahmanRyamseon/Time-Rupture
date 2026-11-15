@@ -6,13 +6,13 @@ import { financialYear, type Period } from "./ledger";
 import { todayISO, uid } from "./money";
 import { t as translate, type TKey } from "./i18n";
 import { setOcrEngine } from "./ocr";
-import type { Books, Company, CountryCode, JournalEntry, Lang, Settings } from "./types";
+import type { AuditEvent, Books, Company, CountryCode, JournalEntry, Lang, Settings } from "./types";
 
 const K_SETTINGS = "mizan:settings";
 const K_COMPANIES = "mizan:companies";
 const kBooks = (id: string) => `mizan:books:${id}`;
 
-export function newCompany(country: CountryCode = "AE", name = "My Company"): Company {
+export function newCompany(country: CountryCode = "BH", name = "My Company"): Company {
   return {
     id: uid(), name, nameAr: "", trn: "", country, currency: COUNTRIES[country].currency,
     fyStartMonth: 1, vatRegistered: COUNTRIES[country].vatRate > 0,
@@ -32,8 +32,14 @@ interface Ctx {
   companies: Company[];
   books: Books;
   update: (fn: (b: Books) => Books) => void;
-  addEntries: (e: JournalEntry[]) => void;
-  removeEntry: (id: string) => void;
+  /** Adds entries; ones dated in a locked period are skipped. Returns how many were added. */
+  addEntries: (e: JournalEntry[]) => number;
+  /** Returns false if the entry is in a locked period. */
+  removeEntry: (id: string) => boolean;
+  /** Replaces an existing entry (edit). Returns false if either date is locked. */
+  replaceEntry: (e: JournalEntry) => boolean;
+  isLocked: (date: string) => boolean;
+  setLockDate: (date: string | undefined) => void;
   createCompany: (c: Company, b?: Books) => Promise<void>;
   switchCompany: (id: string) => Promise<void>;
   deleteCompany: (id: string) => Promise<void>;
@@ -110,13 +116,38 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const value = useMemo<Ctx>(() => {
     const lang = settings.lang;
     const preset = COUNTRIES[books.company.country];
+    const isLocked = (date: string) => Boolean(books.lockDate && date <= books.lockDate);
+    const ev = (action: AuditEvent["action"], e: JournalEntry): AuditEvent => ({
+      at: new Date().toISOString(), action, entryId: e.id, date: e.date, memo: e.memo, source: e.source,
+      amount: e.lines.reduce((s, l) => s + l.debit, 0),
+    });
     return {
       ready, lang, settings, companies, books, period, setPeriod,
       t: (k: TKey) => translate(lang, k),
       setSettings: (s) => setSettingsState((p) => ({ ...p, ...s })),
       update,
-      addEntries: (es) => update((b) => ({ ...b, entries: [...b.entries, ...es] })),
-      removeEntry: (id) => update((b) => ({ ...b, entries: b.entries.filter((e) => e.id !== id) })),
+      isLocked,
+      addEntries: (es) => {
+        const ok = es.filter((e) => !isLocked(e.date));
+        if (ok.length) update((b) => ({ ...b, entries: [...b.entries, ...ok], audit: [...(b.audit ?? []), ...ok.map((e) => ev("create", e))] }));
+        return ok.length;
+      },
+      removeEntry: (id) => {
+        const e = books.entries.find((x) => x.id === id);
+        if (!e || isLocked(e.date)) return false;
+        update((b) => ({ ...b, entries: b.entries.filter((x) => x.id !== id), audit: [...(b.audit ?? []), ev("delete", e)] }));
+        return true;
+      },
+      replaceEntry: (e) => {
+        const old = books.entries.find((x) => x.id === e.id);
+        if (!old || isLocked(old.date) || isLocked(e.date)) return false;
+        update((b) => ({ ...b, entries: b.entries.map((x) => (x.id === e.id ? e : x)), audit: [...(b.audit ?? []), ev("edit", e)] }));
+        return true;
+      },
+      setLockDate: (date) => update((b) => ({
+        ...b, lockDate: date || undefined,
+        audit: [...(b.audit ?? []), { at: new Date().toISOString(), action: date ? "lock" : "unlock", date: date || b.lockDate }],
+      })),
       createCompany: async (c, b) => {
         const nb = b ?? emptyBooks(c);
         await set(kBooks(c.id), nb);

@@ -10,7 +10,7 @@ import type { TKey } from "../lib/i18n";
 const blank = (): JournalLine => ({ account: "", debit: 0, credit: 0 });
 
 export default function Manual({ editId, onDone }: { editId?: string; onDone: () => void }) {
-  const { t, books, update, addEntries, lang } = useStore();
+  const { t, books, replaceEntry, addEntries, lang, isLocked } = useStore();
   const editing = editId ? books.entries.find((e) => e.id === editId) : undefined;
   const [date, setDate] = useState(editing?.date ?? todayISO());
   const [memo, setMemo] = useState(editing?.memo ?? "");
@@ -54,9 +54,10 @@ export default function Manual({ editId, onDone }: { editId?: string; onDone: ()
       lines: clean, tax: editing?.tax, attachment: editing?.attachment, fx: editing?.fx, createdAt: editing?.createdAt ?? new Date().toISOString(),
     };
     const errs = validateEntry(e, books.accounts);
+    if (isLocked(e.date) || (editing && isLocked(editing.date))) errs.push("periodLocked");
     setErrors(errs);
     if (errs.length) return;
-    if (editing) update((b) => ({ ...b, entries: b.entries.map((x) => (x.id === e.id ? e : x)) }));
+    if (editing) replaceEntry(e);
     else addEntries([e]);
     setMsg(t("entrySaved"));
     setLines([blank(), blank()]); setMemo(""); setRef(""); setParty("");

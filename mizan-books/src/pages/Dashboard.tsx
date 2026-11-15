@@ -4,6 +4,8 @@ import { Card, Money, PeriodPicker } from "../components/ui";
 import { incomeStatement, trialBalance, vatSummary } from "../lib/ledger";
 import { SYS } from "../lib/coa";
 import { demoBooks } from "../lib/demo";
+import { BH_THRESHOLDS, rollingTaxableSupplies } from "../lib/vat";
+import { todayISO } from "../lib/money";
 
 export default function Dashboard({ go }: { go: (page: string) => void }) {
   const { t, books, period, createCompany, lang } = useStore();
@@ -64,6 +66,19 @@ export default function Dashboard({ go }: { go: (page: string) => void }) {
           <div className="legend"><span className="sw rev" /> {t("revenue")} <span className="sw exp" /> {t("expenses")}</div>
         </Card>
       )}
+      {books.company.country === "BH" && (() => {
+        const s = rollingTaxableSupplies(books.entries, period.to < todayISO() ? period.to : todayISO());
+        const pct = Math.min(100, (s / BH_THRESHOLDS.mandatory) * 100);
+        const state = s >= BH_THRESHOLDS.mandatory ? "bad" : s >= BH_THRESHOLDS.voluntary ? "warnc" : "good";
+        return (
+          <Card title={t("vatThreshold")}>
+            <div className="thr-row"><span>{t("taxableSupplies12m")}</span><b><Money m={s} /> / <Money m={BH_THRESHOLDS.mandatory} /></b></div>
+            <div className="meter"><div className={`meter-fill ${state}`} style={{ width: `${pct}%` }} /><div className="meter-mark" style={{ insetInlineStart: "50%" }} /></div>
+            <div className={state === "bad" ? "error" : state === "warnc" ? "warn" : "ok-msg"}>{s >= BH_THRESHOLDS.mandatory ? t("thrMandatory") : s >= BH_THRESHOLDS.voluntary ? t("thrVoluntary") : t("thrBelow")}</div>
+            <p className="muted small">{t("thrNote")}</p>
+          </Card>
+        );
+      })()}
       <Card title={t("quickStart")}>
         <ol className="steps">
           <li><a onClick={() => go("settings")}>{t("qs1")}</a></li>

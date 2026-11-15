@@ -1,7 +1,23 @@
 # Mizan Books · ميزان للدفاتر
 
-Bookkeeping, **trial balance** and **financial statements** for micro, small and medium
-businesses in the GCC (UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman) — in **English and Arabic**.
+Bookkeeping, **VAT**, **trial balance** and **financial statements** for micro, small and medium
+businesses in the **Kingdom of Bahrain** — in **English and Arabic**. (The engine also supports the
+other GCC countries; new companies default to Bahrain: BHD to 3 decimals, 10% VAT.)
+
+## Bahrain specifics
+- **NBR VAT**: 10% standard rate; treatments for standard, zero-rated (basic food list, healthcare,
+  education, new buildings…), exempt, out of scope, reverse charge and blocked input VAT (Art. 42 –
+  entertainment, missing tax invoice). Tax-invoice checks adapted from the repo's `vat-compliance`
+  engine (Decree-Law 48/2018). NBR VAT return boxes (confirm against the NBR portal form).
+- **Registration monitor**: rolling 12-month taxable supplies vs BHD 37,500 (mandatory) and
+  BHD 18,750 (voluntary).
+- **Full set of statements for MOIC/Sijilat filing**: P&L, financial position, changes in equity
+  (with the suggested 10% statutory reserve transfer) and cash flows. Audit still required where the
+  Commercial Companies Law applies.
+- **Period lock & audit trail**: lock the books after filing a VAT return or closing the year;
+  every post/edit/delete is logged. Keep VAT records for at least 5 years.
+- **Local categorisation**: EWA, Batelco/Beyon, Zain, stc Bahrain, LMRA, SIO, Sijilat/MOIC, Bapco,
+  BenefitPay settlements, Tamkeen support…
 
 ## What it does
 

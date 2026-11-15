@@ -9,7 +9,8 @@ import { openocrAvailable } from "../lib/openocr";
 import type { Books, CountryCode } from "../lib/types";
 
 export default function Settings() {
-  const { t, books, update, lang, settings, setSettings, companies, createCompany, switchCompany, deleteCompany } = useStore();
+  const { t, books, update, lang, settings, setSettings, companies, createCompany, switchCompany, deleteCompany, setLockDate } = useStore();
+  const [lockInput, setLockInput] = useState(books.lockDate ?? "");
   const c = books.company;
   const [confirmText, setConfirmText] = useState("");
   const [ai, setAi] = useState(false);
@@ -44,12 +45,12 @@ export default function Settings() {
               const cc = e.target.value as CountryCode;
               setCo({ country: cc, ...(hasEntries ? {} : { currency: COUNTRIES[cc].currency }), vatRegistered: COUNTRIES[cc].vatRate > 0 && c.vatRegistered });
             }}>
-              {Object.values(COUNTRIES).map((p) => <option key={p.code} value={p.code}>{lang === "ar" ? p.nameAr : p.name} ({p.vatRate ? `VAT ${p.vatRate}%` : "no VAT"})</option>)}
+              {Object.values(COUNTRIES).filter((p) => p.code === "BH" || p.code === c.country).map((p) => <option key={p.code} value={p.code}>{lang === "ar" ? p.nameAr : p.name} ({p.vatRate ? `VAT ${p.vatRate}%` : "no VAT"})</option>)}
             </select>
           </label>
           <label>{t("baseCurrency")}
             <select value={c.currency} disabled={hasEntries} onChange={(e) => setCo({ currency: e.target.value })}>
-              {["AED", "SAR", "QAR", "KWD", "BHD", "OMR", "USD"].map((x) => <option key={x} value={x}>{x} ({decimalsFor(x)} dp)</option>)}
+              {[...new Set(["BHD", c.currency])].map((x) => <option key={x} value={x}>{x} ({decimalsFor(x)} dp)</option>)}
             </select>
           </label>
           <label>{t("fyStart")}
@@ -79,7 +80,7 @@ export default function Settings() {
         </div>
       </Card>
 
-      <Card title={t("companies")} actions={<button className="secondary" onClick={() => createCompany(newCompany(c.country, lang === "ar" ? "منشأة جديدة" : "New company"))}>+ {t("newCompany")}</button>}>
+      <Card title={t("companies")} actions={<button className="secondary" onClick={() => createCompany(newCompany("BH", lang === "ar" ? "منشأة جديدة" : "New company"))}>+ {t("newCompany")}</button>}>
         <ul className="company-list">
           {companies.map((x) => (
             <li key={x.id} className={x.id === c.id ? "active" : ""}>
@@ -88,6 +89,35 @@ export default function Settings() {
             </li>
           ))}
         </ul>
+      </Card>
+
+      <Card title={t("auditTrail")}>
+        <div className="grid-form">
+          <label>{t("lockDate")}<input type="date" value={lockInput} onChange={(e) => setLockInput(e.target.value)} /></label>
+          <div className="row-actions">
+            <button disabled={!lockInput || lockInput === books.lockDate} onClick={() => setLockDate(lockInput)}>🔒 {t("save")}</button>
+            {books.lockDate && <button className="secondary" onClick={() => { setLockDate(undefined); setLockInput(""); }}>{t("unlock")}</button>}
+          </div>
+        </div>
+        <p className="muted small">{t("lockHint")}{books.lockDate ? ` 🔒 ${books.lockDate}` : ""}</p>
+        <p className="muted small">{t("auditHint")}</p>
+        <div className="table-wrap audit">
+          <table className="grid">
+            <thead><tr><th>{t("when")}</th><th>{t("action")}</th><th>{t("date")}</th><th>{t("description")}</th><th className="amt">{t("amount")}</th></tr></thead>
+            <tbody>
+              {[...(books.audit ?? [])].reverse().slice(0, 200).map((a, i) => (
+                <tr key={i}>
+                  <td className="small">{a.at.replace("T", " ").slice(0, 16)}</td>
+                  <td>{a.action}{a.source ? ` · ${a.source}` : ""}</td>
+                  <td>{a.date}</td>
+                  <td dir="auto">{a.memo}</td>
+                  <td className="amt">{a.amount != null ? (a.amount / 1000).toFixed(3) : ""}</td>
+                </tr>
+              ))}
+              {!books.audit?.length && <tr><td colSpan={5} className="muted">{t("none")}</td></tr>}
+            </tbody>
+          </table>
+        </div>
       </Card>
 
       <Card title={t("backup")}>

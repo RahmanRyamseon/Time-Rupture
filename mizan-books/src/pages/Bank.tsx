@@ -13,7 +13,7 @@ import { toMils, uid } from "../lib/money";
 const VAT_ACCOUNTS = new Set(["6100", "6200", "6210", "6300", "6400", "6500", "6600", "6700", "6850", "6860", "6950", "6990", "5000", "5100"]);
 
 export default function Bank() {
-  const { t, books, addEntries, update, vatRate, settings, lang } = useStore();
+  const { t, books, addEntries, update, vatRate, settings, lang, isLocked } = useStore();
   const [lines, setLines] = useState<BankLine[]>([]);
   const [bankAcct, setBankAcct] = useState<string>(SYS.bank);
   const [status, setStatus] = useState<string>("");
@@ -93,7 +93,8 @@ export default function Bank() {
   const postSelected = () => {
     const now = new Date().toISOString();
     const chosen = lines.filter((l) => l.include);
-    addEntries(chosen.map((l) => ({ ...bankLineToEntry(l, bankAcct, vatRate, uid(), now), attachment: fileName })));
+    const added = addEntries(chosen.map((l) => ({ ...bankLineToEntry(l, bankAcct, vatRate, uid(), now), attachment: fileName })));
+    setError(added < chosen.length ? `${chosen.length - added} ${t("skippedLocked")}` : "");
     if (learn) {
       const newRules = chosen
         .filter((l) => l.account !== SYS.suspense && classify(l.description, books.rules) !== l.account)
@@ -101,7 +102,7 @@ export default function Bank() {
         .filter((r): r is { keyword: string; account: string; learned: true } => Boolean(r.keyword));
       if (newRules.length) update((b) => ({ ...b, rules: [...b.rules.filter((r) => !newRules.some((n) => n.keyword === r.keyword && r.learned)), ...newRules] }));
     }
-    setLines((ls) => ls.filter((l) => !l.include));
+    setLines((ls) => ls.filter((l) => !l.include || isLocked(l.date)));
   };
 
   const shown = lines.filter((l) => !filter || l.description.toLowerCase().includes(filter.toLowerCase()));
@@ -114,7 +115,7 @@ export default function Bank() {
         <div className="toolbar">
           <label>{t("bankAccount")} <AccountSelect value={bankAcct} onChange={setBankAcct} filter={(a) => a.subtype === "cash" || a.code === "2400"} /></label>
         </div>
-        <Dropzone onFiles={load} accept=".csv,.tsv,.txt,.xlsx,.xlsm,.pdf,image/*" label={t("bankDrop")} hint="Emirates NBD, ADCB, FAB, Mashreq, Al Rajhi, SNB, QNB, NBK, NBB, Bank Muscat… CSV / Excel / PDF" />
+        <Dropzone onFiles={load} accept=".csv,.tsv,.txt,.xlsx,.xlsm,.pdf,image/*" label={t("bankDrop")} hint="NBB, BBK, KFH Bahrain, BisB, Al Salam, Khaleeji, Ila Bank, Bank ABC… CSV / Excel / PDF" />
         {status && <div className="progress">{t("scanning")} {status}</div>}
         {error && <div className="error">{error}</div>}
       </Card>

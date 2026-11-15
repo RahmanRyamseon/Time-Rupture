@@ -185,7 +185,7 @@ export default function Capture() {
     const d = it.draft!;
     const entry = draftToEntry(d, books, it.file?.name);
     if (validateEntry(entry, books.accounts).length) return;
-    addEntries([entry]);
+    if (!addEntries([entry])) return;
     // Learn supplier → account so the next invoice from them is pre-classified.
     const key = d.party.trim().toLowerCase().split(/\s+/).slice(0, 2).join(" ");
     if (key.length > 2 && d.account !== SYS.generalExpense && d.account !== SYS.sales) {
@@ -264,7 +264,7 @@ export default function Capture() {
 
 /** Shows VAT checks and the exact journal entry before posting. */
 function PostingPreview({ d, onPost }: { d: Draft; onPost: () => void }) {
-  const { t, books, lang, period } = useStore();
+  const { t, books, lang, period, isLocked } = useStore();
   const entry = useMemo(() => draftToEntry(d, books), [d, books]);
   const findings = useMemo(() => verifyInvoice({
     kind: d.kind, number: d.number, date: d.date, party: d.party, partyTrn: d.partyTrn,
@@ -272,6 +272,7 @@ function PostingPreview({ d, onPost }: { d: Draft; onPost: () => void }) {
     currency: d.currency, baseCurrency: books.company.currency, period,
   }), [d, books, period]);
   const errs = validateEntry(entry, books.accounts);
+  if (isLocked(d.date)) errs.push("periodLocked");
   const L = (pair: [string, string]) => (lang === "ar" ? pair[1] : pair[0]);
   return (
     <div className="posting">

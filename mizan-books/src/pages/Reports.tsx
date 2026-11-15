@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { accountName, useStore } from "../lib/store";
 import { AccountSelect, Card, Money, PeriodPicker, ReportHeader, StatementTable } from "../components/ui";
-import { balanceSheet, cashFlow, generalLedger, incomeStatement, trialBalance, vatSummary } from "../lib/ledger";
+import { balanceSheet, cashFlow, equityStatement, generalLedger, incomeStatement, trialBalance, vatSummary } from "../lib/ledger";
 import { exportWorkbook } from "../lib/exporter";
 import { COUNTRIES } from "../lib/countries";
 import { SYS } from "../lib/coa";
@@ -20,7 +20,7 @@ function ReportActions() {
 }
 
 export function Journal({ onEdit }: { onEdit: (id: string) => void }) {
-  const { t, books, period, removeEntry, lang } = useStore();
+  const { t, books, period, removeEntry, lang, isLocked } = useStore();
   const [q, setQ] = useState("");
   const [src, setSrc] = useState("");
   const list = books.entries
@@ -58,8 +58,10 @@ export function Journal({ onEdit }: { onEdit: (id: string) => void }) {
                     <td className="amt">{l.credit ? <Money m={l.credit} /> : ""}</td>
                     {i === 0 && (
                       <td rowSpan={e.lines.length} className="no-print actions">
-                        <button className="ghost small" onClick={() => onEdit(e.id)}>{t("edit")}</button>
-                        <button className="ghost small danger" onClick={() => confirm(`${t("delete")}?`) && removeEntry(e.id)}>{t("delete")}</button>
+                        {isLocked(e.date) ? <span title={t("periodLocked")}>🔒</span> : <>
+                          <button className="ghost small" onClick={() => onEdit(e.id)}>{t("edit")}</button>
+                          <button className="ghost small danger" onClick={() => confirm(`${t("delete")}?`) && removeEntry(e.id)}>{t("delete")}</button>
+                        </>}
                       </td>
                     )}
                   </tr>
@@ -153,7 +155,8 @@ export function TrialBalance() {
 
 export function Statements() {
   const { t, books, period } = useStore();
-  const [tab, setTab] = useState<"is" | "bs" | "cf" | "all">("all");
+  const [tab, setTab] = useState<"is" | "bs" | "eq" | "cf" | "all">("all");
+  const eq = useMemo(() => equityStatement(books, period), [books, period]);
   const is = useMemo(() => incomeStatement(books, period), [books, period]);
   const bs = useMemo(() => balanceSheet(books, period), [books, period]);
   const cf = useMemo(() => cashFlow(books, period), [books, period]);
@@ -162,9 +165,9 @@ export function Statements() {
     <div className="page">
       <ReportActions />
       <div className="tabs no-print">
-        {(["all", "is", "bs", "cf"] as const).map((k) => (
+        {(["all", "is", "bs", "eq", "cf"] as const).map((k) => (
           <button key={k} className={tab === k ? "active" : ""} onClick={() => setTab(k)}>
-            {k === "all" ? t("all") : k === "is" ? t("incomeStatement") : k === "bs" ? t("balanceSheet") : t("cashFlow")}
+            {k === "all" ? t("all") : k === "is" ? t("incomeStatement") : k === "bs" ? t("balanceSheet") : k === "eq" ? t("equityStatement") : t("cashFlow")}
           </button>
         ))}
       </div>
@@ -179,6 +182,15 @@ export function Statements() {
           <ReportHeader title={t("balanceSheet")} sub={`${t("asAt")} ${period.to}`} />
           <StatementTable lines={bs.lines} />
           <div className={bs.difference === 0 ? "ok-msg" : "error"}>{t("bsCheck")}: {bs.difference === 0 ? `✓ ${t("balanced")}` : <Money m={bs.difference} />}</div>
+        </Card>
+      )}
+      {show("eq") && (
+        <Card className="report page-break">
+          <ReportHeader title={t("equityStatement")} sub={`${t("forPeriod")} ${period.from} → ${period.to}`} />
+          <StatementTable lines={eq.lines} />
+          {books.company.country === "BH" && eq.suggestedReserve > 0 && (
+            <div className="warn no-print">{t("reserveHint")}: <Money m={eq.suggestedReserve} /></div>
+          )}
         </Card>
       )}
       {show("cf") && (

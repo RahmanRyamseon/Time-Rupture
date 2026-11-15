@@ -1,5 +1,5 @@
 import type { Books, Lang } from "./types";
-import { balanceSheet, cashFlow, generalLedger, incomeStatement, trialBalance, vatSummary, type Line, type Period } from "./ledger";
+import { balanceSheet, cashFlow, equityStatement, generalLedger, incomeStatement, trialBalance, vatSummary, type Line, type Period } from "./ledger";
 import { t } from "./i18n";
 import { download } from "./files";
 import { returnBoxes, TREATMENTS } from "./vat";
@@ -52,6 +52,7 @@ export async function exportWorkbook(books: Books, p: Period, lang: Lang, decima
 
   statement(t(lang, "incomeStatement"), `${t(lang, "forPeriod")} ${periodLabel}`, incomeStatement(books, p).lines);
   statement(t(lang, "balanceSheet"), `${t(lang, "asAt")} ${p.to}`, balanceSheet(books, p).lines);
+  statement(t(lang, "equityStatement"), `${t(lang, "forPeriod")} ${periodLabel}`, equityStatement(books, p).lines);
   statement(t(lang, "cashFlow"), `${t(lang, "forPeriod")} ${periodLabel}`, cashFlow(books, p).lines);
 
   // VAT

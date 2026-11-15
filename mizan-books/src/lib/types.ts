@@ -93,12 +93,26 @@ export interface Company {
   address?: string;
 }
 
+export interface AuditEvent {
+  at: string; // ISO timestamp
+  action: "create" | "edit" | "delete" | "lock" | "unlock";
+  entryId?: string;
+  date?: string;
+  memo?: string;
+  amount?: Mils;
+  source?: EntrySource;
+}
+
 export interface Books {
   version: 1;
   company: Company;
   accounts: Account[];
   entries: JournalEntry[];
   rules: CategoryRule[];
+  /** Entries dated on or before this date can't be added, edited or deleted (closed period). */
+  lockDate?: string;
+  /** Append-only log of changes to the books. */
+  audit?: AuditEvent[];
 }
 
 export interface Settings {

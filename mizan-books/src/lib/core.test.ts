@@ -278,3 +278,27 @@ describe("Arabic categorisation", () => {
     expect(classify("شركة الكهرباء", defaultRules())).toBe("6200");
   });
 });
+
+describe("equity statement", async () => {
+  const { demoBooks } = await import("./demo");
+  const { equityStatement } = await import("./ledger");
+  it("reconciles to the balance sheet", () => {
+    const b = demoBooks(2026);
+    const p = { from: "2026-01-01", to: "2026-12-31" };
+    const eq = equityStatement(b, p);
+    expect(eq.check).toBe(0);
+    expect(eq.closing).toBe(balanceSheet(b, p).totalEquity);
+    expect(eq.suggestedReserve).toBe(Math.min(Math.round(eq.profit / 10), toMils(5000)));
+  });
+});
+
+describe("equity statement opening balances", async () => {
+  const { demoBooks } = await import("./demo");
+  const { equityStatement } = await import("./ledger");
+  it("treats opening-balance entries as opening equity", () => {
+    const eq = equityStatement(demoBooks(2026), { from: "2026-01-01", to: "2026-12-31" });
+    expect(eq.opening).toBe(toMils(14900));
+    expect(eq.lines.some((l) => l.label === "Capital introduced")).toBe(false);
+    expect(eq.check).toBe(0);
+  });
+});
