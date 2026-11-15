@@ -1,7 +1,7 @@
 # గల్ఫ్ తెలుగు గైడ్ (Gulf Telugu Guide)
 
-Hosting is moving to **Cloudflare Pages** (https://gulfteluguguide.pages.dev), which allows ads on
-its free plan. Until that is live, the site stays at https://gulfteluguguide.vercel.app.
+Hosted on **Cloudflare** (Worker `time-rupture`, whose free plan allows ads) and, during the move,
+on https://gulfteluguguide.vercel.app.
 
 Practical guidance in Telugu for Telugu people going to, living in and returning from the Gulf
 (UAE, Saudi Arabia, Qatar, Kuwait, Oman, Bahrain). It isn't a news site: every guide is written
@@ -51,18 +51,18 @@ Rules for content:
 - `.github/workflows/telugu-rachabanda.yml` runs daily. It runs the tests, refreshes the rupee rates
   (`scripts/rates.mjs`) and checks the page build.
 
-## Cloudflare Pages setup (one time, in the Cloudflare dashboard)
+## Cloudflare hosting
 
-1. Workers & Pages → Create → Pages → **Connect to Git** → pick `RahmanRyamseon/Time-Rupture`.
-2. Project name: `gulfteluguguide` (this gives `gulfteluguguide.pages.dev`). Production branch: `master`.
-3. Build settings: framework preset **None**, root directory `telugu-rachabanda`, build command
-   `node scripts/build-pages.mjs`, output directory `dist`.
-4. Save and deploy. Every push to `master`, including the daily rates update, redeploys the site.
+The repository is connected to a Cloudflare Worker named `time-rupture` (Workers & Pages → Connect
+to Git). On every push to `master`, Cloudflare runs `npx wrangler deploy`, which reads
+`wrangler.jsonc` (in the repository root, or in this folder if the project's root directory is set
+to `telugu-rachabanda`). That config runs `scripts/build-pages.mjs` and serves `dist/` as static
+assets: `/g/gratuity` is served from `g/gratuity.html`, unknown paths get the app shell, and
+`dist/_redirects` and `dist/_headers` handle old links and caching.
 
-The build reads `CF_PAGES` (set by Cloudflare) to use the pages.dev address in canonical links and the
-sitemap. If the project name is taken, or once you add your own domain, set an environment variable
-`SITE_URL` (for example `https://gulfteluguguide.com`) in the Pages project settings. Redirects and
-headers come from `dist/_redirects` and `dist/_headers`, which the build writes.
+Canonical links and the sitemap use the address in `SITE_URL` if set (add it under the Worker's
+Settings → Build → Variables, for example `https://gulfteluguguide.com` once you add a custom domain);
+otherwise they keep the Vercel address.
 
 ## Shared comments
 
