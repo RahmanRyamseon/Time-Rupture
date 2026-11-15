@@ -1,0 +1,11 @@
+// Same as ../wrangler.jsonc, for a Cloudflare project whose root directory is telugu-rachabanda/.
+{
+  "name": "time-rupture",
+  "compatibility_date": "2026-11-01",
+  "build": { "command": "node scripts/build-pages.mjs" },
+  "assets": {
+    "directory": "dist",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "single-page-application"
+  }
+}

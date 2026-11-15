@@ -1,0 +1,13 @@
+// Cloudflare Workers Builds config for the Gulf Telugu Guide (telugu-rachabanda/).
+// Cloudflare runs `npx wrangler deploy` on every push to master; the build step below writes
+// telugu-rachabanda/dist, which is served as static assets (with _redirects and _headers).
+{
+  "name": "time-rupture",
+  "compatibility_date": "2026-11-01",
+  "build": { "command": "node telugu-rachabanda/scripts/build-pages.mjs" },
+  "assets": {
+    "directory": "telugu-rachabanda/dist",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "single-page-application"
+  }
+}
