@@ -1,140 +1,362 @@
 {
- "checked": "2026-11-14",
- "countries": [
-  {
-   "id": "uae",
-   "flag": "🇦🇪",
-   "name": "యూఏఈ",
-   "en": "United Arab Emirates",
-   "idCard": "ఎమిరేట్స్ ఐడీ (Emirates ID)",
-   "residence": {
-    "name": "ICP – Federal Authority for Identity, Citizenship, Customs & Port Security",
-    "url": "https://icp.gov.ae"
-   },
-   "labour": {
-    "name": "MOHRE – Ministry of Human Resources and Emiratisation",
-    "url": "https://www.mohre.gov.ae",
-    "phone": "600590000",
-    "phoneText": "600 590000"
-   },
-   "embassies": [
-    "https://www.indembassyuae.gov.in",
-    "https://www.cgidubai.gov.in"
-   ],
-   "pbsk": {
-    "phone": "80046342",
-    "phoneText": "800 46342 (800 INDIA)"
-   },
-   "notes": [
-    "జీతం ఆలస్యమైతే MOHRE లో \"My Salary Complaint\" సేవ ఉంది.",
-    "యజమాని అనుమతి లేకుండా పాస్‌పోర్ట్ ఉంచుకోవడం నిషిద్ధం.",
-    "గ్రాట్యుటీ: మొదటి 5 ఏళ్లకు ఏడాదికి 21 రోజుల బేసిక్ జీతం, ఆ తర్వాత 30 రోజులు."
-   ]
-  },
-  {
-   "id": "saudi",
-   "flag": "🇸🇦",
-   "name": "సౌదీ అరేబియా",
-   "en": "Saudi Arabia",
-   "idCard": "ఇఖామా (Iqama)",
-   "residence": {
-    "name": "Absher – Ministry of Interior services",
-    "url": "https://www.absher.sa"
-   },
-   "labour": {
-    "name": "HRSD – Ministry of Human Resources and Social Development",
-    "url": "https://www.hrsd.gov.sa",
-    "phone": "19911",
-    "phoneText": "19911"
-   },
-   "embassies": [
-    "https://www.eoiriyadh.gov.in",
-    "https://www.cgijeddah.gov.in"
-   ],
-   "pbsk": {
-    "phone": "8002471234",
-    "phoneText": "800 247 1234"
-   },
-   "notes": [
-    "యజమాని అనుమతి లేకుండా పాస్‌పోర్ట్ ఉంచుకోవడం నిషిద్ధం.",
-    "గ్రాట్యుటీ: మొదటి 5 ఏళ్లకు ఏడాదికి అర నెల జీతం, ఆ తర్వాత నెల జీతం; రాజీనామా చేస్తే తగ్గుతుంది."
-   ]
-  },
-  {
-   "id": "qatar",
-   "flag": "🇶🇦",
-   "name": "ఖతార్",
-   "en": "Qatar",
-   "idCard": "ఖతార్ ఐడీ (QID)",
-   "residence": {
-    "name": "Ministry of Interior (Metrash)",
-    "url": "https://portal.moi.gov.qa"
-   },
-   "labour": {
-    "name": "Ministry of Labour",
-    "url": "https://www.mol.gov.qa"
-   },
-   "embassies": [
-    "https://www.indianembassyqatar.gov.in"
-   ],
-   "notes": []
-  },
-  {
-   "id": "kuwait",
-   "flag": "🇰🇼",
-   "name": "కువైట్",
-   "en": "Kuwait",
-   "idCard": "సివిల్ ఐడీ (Civil ID)",
-   "residence": {
-    "name": "PACI – Public Authority for Civil Information",
-    "url": "https://www.paci.gov.kw"
-   },
-   "labour": {
-    "name": "PAM – Public Authority for Manpower",
-    "url": "https://www.pam.gov.kw"
-   },
-   "embassies": [
-    "https://www.indembkwt.gov.in"
-   ],
-   "notes": []
-  },
-  {
-   "id": "oman",
-   "flag": "🇴🇲",
-   "name": "ఒమన్",
-   "en": "Oman",
-   "idCard": "రెసిడెంట్ కార్డ్ (Resident Card)",
-   "residence": {
-    "name": "Royal Oman Police",
-    "url": "https://www.rop.gov.om"
-   },
-   "labour": {
-    "name": "Ministry of Labour",
-    "url": "https://www.mol.gov.om"
-   },
-   "embassies": [
-    "https://www.indemb-oman.gov.in"
-   ],
-   "notes": []
-  },
-  {
-   "id": "bahrain",
-   "flag": "🇧🇭",
-   "name": "బహ్రెయిన్",
-   "en": "Bahrain",
-   "idCard": "సీపీఆర్ (CPR)",
-   "residence": {
-    "name": "NPRA – Nationality, Passports & Residence Affairs",
-    "url": "https://www.npra.gov.bh"
-   },
-   "labour": {
-    "name": "LMRA – Labour Market Regulatory Authority",
-    "url": "https://lmra.gov.bh"
-   },
-   "embassies": [
-    "https://www.eoibahrain.gov.in"
-   ],
-   "notes": []
-  }
- ]
+  "checked": "2026-11-15",
+  "countries": [
+    {
+      "id": "uae",
+      "flag": "🇦🇪",
+      "name": "యూఏఈ",
+      "en": "United Arab Emirates",
+      "idCard": "ఎమిరేట్స్ ఐడీ (Emirates ID)",
+      "residence": {
+        "name": "ICP – Federal Authority for Identity, Citizenship, Customs & Port Security",
+        "url": "https://icp.gov.ae"
+      },
+      "labour": {
+        "name": "MOHRE – Ministry of Human Resources and Emiratisation",
+        "url": "https://www.mohre.gov.ae",
+        "phone": "600590000",
+        "phoneText": "600 590000"
+      },
+      "embassies": [
+        "https://www.indembassyuae.gov.in",
+        "https://www.cgidubai.gov.in"
+      ],
+      "pbsk": {
+        "phone": "80046342",
+        "phoneText": "800 46342 (800 INDIA)"
+      },
+      "notes": [
+        "జీతం ఆలస్యమైతే MOHRE లో \"My Salary Complaint\" సేవ ఉంది.",
+        "యజమాని అనుమతి లేకుండా పాస్‌పోర్ట్ ఉంచుకోవడం నిషిద్ధం.",
+        "గ్రాట్యుటీ: మొదటి 5 ఏళ్లకు ఏడాదికి 21 రోజుల బేసిక్ జీతం, ఆ తర్వాత 30 రోజులు."
+      ],
+      "community": [
+        {
+          "kind": "club",
+          "name": "India Social & Cultural Centre (ISC), Abu Dhabi",
+          "url": "https://iscabudhabi.com",
+          "note": "Cultural events, sports, membership. +971 2 673 0066"
+        },
+        {
+          "kind": "school",
+          "name": "The Indian High School, Dubai (CBSE)",
+          "url": "https://ihsdubai.org"
+        },
+        {
+          "kind": "school",
+          "name": "Abu Dhabi Indian School (CBSE)",
+          "url": "https://adisuae.com"
+        },
+        {
+          "kind": "school",
+          "name": "Sharjah Indian School",
+          "url": "https://www.sissharjah.com"
+        },
+        {
+          "kind": "temple",
+          "name": "BAPS Hindu Mandir, Abu Dhabi",
+          "url": "https://www.mandir.ae",
+          "note": "Online registration is required before you visit."
+        }
+      ],
+      "voices": [
+        {
+          "kind": "reddit",
+          "name": "r/dubai",
+          "url": "https://www.reddit.com/r/dubai/"
+        },
+        {
+          "kind": "reddit",
+          "name": "r/UAE",
+          "url": "https://www.reddit.com/r/UAE/"
+        },
+        {
+          "kind": "reddit",
+          "name": "r/abudhabi",
+          "url": "https://www.reddit.com/r/abudhabi/"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Dubai Telugu vlogs”",
+          "url": "https://www.youtube.com/results?search_query=Dubai%20Telugu%20vlogs"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Abu Dhabi Telugu life”",
+          "url": "https://www.youtube.com/results?search_query=Abu%20Dhabi%20Telugu%20life"
+        }
+      ]
+    },
+    {
+      "id": "saudi",
+      "flag": "🇸🇦",
+      "name": "సౌదీ అరేబియా",
+      "en": "Saudi Arabia",
+      "idCard": "ఇఖామా (Iqama)",
+      "residence": {
+        "name": "Absher – Ministry of Interior services",
+        "url": "https://www.absher.sa"
+      },
+      "labour": {
+        "name": "HRSD – Ministry of Human Resources and Social Development",
+        "url": "https://www.hrsd.gov.sa",
+        "phone": "19911",
+        "phoneText": "19911"
+      },
+      "embassies": [
+        "https://www.eoiriyadh.gov.in",
+        "https://www.cgijeddah.gov.in"
+      ],
+      "pbsk": {
+        "phone": "8002471234",
+        "phoneText": "800 247 1234"
+      },
+      "notes": [
+        "యజమాని అనుమతి లేకుండా పాస్‌పోర్ట్ ఉంచుకోవడం నిషిద్ధం.",
+        "గ్రాట్యుటీ: మొదటి 5 ఏళ్లకు ఏడాదికి అర నెల జీతం, ఆ తర్వాత నెల జీతం; రాజీనామా చేస్తే తగ్గుతుంది."
+      ],
+      "community": [
+        {
+          "kind": "school",
+          "name": "International Indian School, Riyadh (CBSE)",
+          "url": "https://www.iisriyadh.com"
+        },
+        {
+          "kind": "school",
+          "name": "International Indian Public School, Riyadh",
+          "url": "https://iipsr.edu.sa"
+        },
+        {
+          "kind": "school",
+          "name": "International Indian School, Dammam",
+          "url": "https://iisdammam.edu.sa"
+        }
+      ],
+      "voices": [
+        {
+          "kind": "reddit",
+          "name": "r/saudiarabia",
+          "url": "https://www.reddit.com/r/saudiarabia/"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Saudi Arabia Telugu vlogs”",
+          "url": "https://www.youtube.com/results?search_query=Saudi%20Arabia%20Telugu%20vlogs"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Riyadh Telugu life”",
+          "url": "https://www.youtube.com/results?search_query=Riyadh%20Telugu%20life"
+        }
+      ]
+    },
+    {
+      "id": "qatar",
+      "flag": "🇶🇦",
+      "name": "ఖతార్",
+      "en": "Qatar",
+      "idCard": "ఖతార్ ఐడీ (QID)",
+      "residence": {
+        "name": "Ministry of Interior (Metrash)",
+        "url": "https://portal.moi.gov.qa"
+      },
+      "labour": {
+        "name": "Ministry of Labour",
+        "url": "https://www.mol.gov.qa"
+      },
+      "embassies": [
+        "https://www.indianembassyqatar.gov.in"
+      ],
+      "notes": [],
+      "community": [
+        {
+          "kind": "club",
+          "name": "Indian Cultural Centre (ICC), Doha",
+          "url": "https://www.iccqatar.com",
+          "note": "Under the Indian Embassy. Telugu groups affiliated with ICC include Telugu Kala Samithi Qatar, Telangana Jagruthi, Telangana Praja Samiti and Telugu Diaspora Federation (contacts on the ICC 'Associated Bodies' page)."
+        },
+        {
+          "kind": "welfare",
+          "name": "Indian Community Benevolent Forum (ICBF)",
+          "url": "https://icbfqatar.com",
+          "note": "Welfare body under the Indian Embassy: help for workers in distress."
+        },
+        {
+          "kind": "school",
+          "name": "M.E.S Indian School, Doha",
+          "url": "https://mesqatar.org"
+        }
+      ],
+      "voices": [
+        {
+          "kind": "reddit",
+          "name": "r/qatar",
+          "url": "https://www.reddit.com/r/qatar/"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Qatar Telugu vlogs”",
+          "url": "https://www.youtube.com/results?search_query=Qatar%20Telugu%20vlogs"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Doha Telugu life”",
+          "url": "https://www.youtube.com/results?search_query=Doha%20Telugu%20life"
+        }
+      ]
+    },
+    {
+      "id": "kuwait",
+      "flag": "🇰🇼",
+      "name": "కువైట్",
+      "en": "Kuwait",
+      "idCard": "సివిల్ ఐడీ (Civil ID)",
+      "residence": {
+        "name": "PACI – Public Authority for Civil Information",
+        "url": "https://www.paci.gov.kw"
+      },
+      "labour": {
+        "name": "PAM – Public Authority for Manpower",
+        "url": "https://www.pam.gov.kw"
+      },
+      "embassies": [
+        "https://www.indembkwt.gov.in"
+      ],
+      "notes": [],
+      "community": [
+        {
+          "kind": "school",
+          "name": "The Indian Community School, Kuwait (ICSK)",
+          "url": "https://www.icsk-kw.com"
+        }
+      ],
+      "voices": [
+        {
+          "kind": "reddit",
+          "name": "r/Kuwait",
+          "url": "https://www.reddit.com/r/Kuwait/"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Kuwait Telugu vlogs”",
+          "url": "https://www.youtube.com/results?search_query=Kuwait%20Telugu%20vlogs"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Kuwait Telugu life”",
+          "url": "https://www.youtube.com/results?search_query=Kuwait%20Telugu%20life"
+        }
+      ]
+    },
+    {
+      "id": "oman",
+      "flag": "🇴🇲",
+      "name": "ఒమన్",
+      "en": "Oman",
+      "idCard": "రెసిడెంట్ కార్డ్ (Resident Card)",
+      "residence": {
+        "name": "Royal Oman Police",
+        "url": "https://www.rop.gov.om"
+      },
+      "labour": {
+        "name": "Ministry of Labour",
+        "url": "https://www.mol.gov.om"
+      },
+      "embassies": [
+        "https://www.indemb-oman.gov.in"
+      ],
+      "notes": [],
+      "community": [
+        {
+          "kind": "club",
+          "name": "Indian Social Club (ISC) Oman – Telugu wing",
+          "url": "https://www.iscoman.com/Wings",
+          "note": "ISC has language wings, including a Telugu wing (Telugu Kala Samithi, Muscat)."
+        },
+        {
+          "kind": "club",
+          "name": "Indian Social Club, Salalah – Telugu wing",
+          "url": "https://iscsalalah.com/wings/"
+        },
+        {
+          "kind": "school",
+          "name": "Board of Directors, Indian Schools in Oman",
+          "url": "https://indianschoolsoman.com",
+          "note": "Runs the Indian community schools across Oman."
+        }
+      ],
+      "voices": [
+        {
+          "kind": "reddit",
+          "name": "r/Oman",
+          "url": "https://www.reddit.com/r/Oman/"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Oman Telugu vlogs”",
+          "url": "https://www.youtube.com/results?search_query=Oman%20Telugu%20vlogs"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Muscat Telugu life”",
+          "url": "https://www.youtube.com/results?search_query=Muscat%20Telugu%20life"
+        }
+      ]
+    },
+    {
+      "id": "bahrain",
+      "flag": "🇧🇭",
+      "name": "బహ్రెయిన్",
+      "en": "Bahrain",
+      "idCard": "సీపీఆర్ (CPR)",
+      "residence": {
+        "name": "NPRA – Nationality, Passports & Residence Affairs",
+        "url": "https://www.npra.gov.bh"
+      },
+      "labour": {
+        "name": "LMRA – Labour Market Regulatory Authority",
+        "url": "https://lmra.gov.bh"
+      },
+      "embassies": [
+        "https://www.eoibahrain.gov.in"
+      ],
+      "notes": [],
+      "community": [
+        {
+          "kind": "club",
+          "name": "The Indian Club, Bahrain",
+          "url": "https://www.indianclubbahrain.com",
+          "note": "Founded 1915. Tel. 1725 3157"
+        },
+        {
+          "kind": "welfare",
+          "name": "Indian Community Relief Fund (ICRF)",
+          "url": "https://www.facebook.com/ICRFBahrain/",
+          "note": "Help under the Indian Embassy's patronage. Helplines 3841 5171 / 3599 0990"
+        },
+        {
+          "kind": "school",
+          "name": "The Indian School, Bahrain",
+          "url": "https://indianschool.bh"
+        }
+      ],
+      "voices": [
+        {
+          "kind": "reddit",
+          "name": "r/Bahrain",
+          "url": "https://www.reddit.com/r/Bahrain/"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Bahrain Telugu vlogs”",
+          "url": "https://www.youtube.com/results?search_query=Bahrain%20Telugu%20vlogs"
+        },
+        {
+          "kind": "youtube",
+          "name": "YouTube: “Bahrain Telugu life”",
+          "url": "https://www.youtube.com/results?search_query=Bahrain%20Telugu%20life"
+        }
+      ]
+    }
+  ]
 }
