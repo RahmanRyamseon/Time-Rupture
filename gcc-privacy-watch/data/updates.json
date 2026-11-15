@@ -1,8 +1,36 @@
 {
-  "generatedAt": "2026-11-14T10:39:01.173Z",
+  "generatedAt": "2026-11-15T11:11:50.045Z",
   "retentionDays": 120,
-  "count": 31,
+  "count": 33,
   "items": [
+    {
+      "id": "37d0c46c8fca",
+      "title": "Italy fines Meta $880 mn over photo privacy",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWFZSNFlzZHR4VUZ4WDJYM1duNTFtSllUQm1HZzFabzlOT2F3dU4xTUtyUzdsOWZmeWhSWk1FdUpzRzVkaEpRdXNGeUhGX2VVOUt5NGMwNWd4YlJmck0xcEM2R0ZOdEN5Sk9NNGQ4bXJ6dFVQeUhRaVVmbThuWGtmeW9ObFdhTTQ?oc=5",
+      "publisher": "برق الإمارات",
+      "publisherUrl": "https://www.uaebarq.ae",
+      "published": "2026-11-15T08:20:11.000Z",
+      "description": "",
+      "countries": [
+        "AE"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-15T11:11:50.043Z"
+    },
+    {
+      "id": "e7bd24fce89f",
+      "title": "Italy fines Meta $880 mn over photo privacy: authority",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQeHJFa2xPV2V0b1V4blFiLW1NNXJxRFpYTHVfTWh2d0dPWW83a2pLRHViYzFTV0tEX3JkMW1yRHRSTHBTQ0Z1NW9hQnhNaFd5MnZqeW5LOHl0OV9DUzB0YVZSaHhlRWE0S0h6c1QwLWJqQ1JnWlFsN0ZWcUUtYlMtRzhXYjZjVW5MV0RIdzUxRGszWDA4Rjg1Nw?oc=5",
+      "publisher": "Hürriyet Daily News",
+      "publisherUrl": "https://www.hurriyetdailynews.com",
+      "published": "2026-11-15T03:34:11.000Z",
+      "description": "",
+      "countries": [
+        "BH"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-15T11:11:50.043Z"
+    },
     {
       "id": "7cc9a6f0a7d5",
       "title": "Shukran members’ personal data accessed in data breach, but card details safe",
