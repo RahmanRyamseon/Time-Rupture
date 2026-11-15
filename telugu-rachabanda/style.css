@@ -492,3 +492,10 @@ main:focus { outline: none; }
 .phone-big { font-size: 1.15rem; font-weight: 800; color: var(--alert); text-decoration: none; }
 .helpbox { margin-top: 20px; }
 .helpbox h2 { font-size: 1.05rem; color: #fff; background: var(--alert); padding: 6px 12px; margin: 0 0 10px; }
+
+/* Phrase tables (spoken Arabic guide) */
+.table-wrap { overflow-x: auto; margin: 8px 0 16px; }
+.phrases { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.phrases th, .phrases td { border: 1px solid var(--line, #ddd); padding: 6px 10px; text-align: left; vertical-align: top; }
+.phrases th { background: var(--brand-soft); color: var(--brand); }
+.phrases td:nth-child(2) { color: var(--brand); }
