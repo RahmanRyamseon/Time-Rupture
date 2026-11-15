@@ -5,6 +5,11 @@
   command = "npm run build"
   publish = ".next"
 
+# Next.js adapter (OpenNext). Declared explicitly so upload/CLI deploys run it too;
+# no version pin, so Netlify always uses the current release.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 [build.environment]
   NODE_VERSION = "22"
   NEXT_TELEMETRY_DISABLED = "1"
