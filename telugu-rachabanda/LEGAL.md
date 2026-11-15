@@ -67,9 +67,10 @@ People may act on these guides (visas, complaints, gratuity), so:
 
 - Exchange rates come from exchangerate-api.com's free endpoint. Its terms require the attribution
   shown next to the rates.
-- Hosting is on Vercel, fonts come from Google Fonts, and comments (if enabled) use Supabase. All
-  are disclosed in `/privacy`.
-- Vercel's free plan is for non-commercial use. Ads or sponsors would require a paid plan.
+- Hosting is moving from Vercel to Cloudflare Pages, whose free plan allows commercial use such as
+  ads (Vercel's free plan does not). Fonts come from Google Fonts, and comments (if enabled) use
+  Supabase. Update `/privacy` to name Cloudflare as the host once the move is done, and before adding
+  ads, add the ad network and its cookies to `/privacy`.
 
 ## Before you promote the site
 

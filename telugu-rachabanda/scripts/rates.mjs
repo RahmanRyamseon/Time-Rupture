@@ -24,7 +24,7 @@ export function inrRates(api) {
 
 async function main() {
   const res = await fetch("https://open.er-api.com/v6/latest/USD", {
-    headers: { "User-Agent": "GulfTeluguGuide/1.0 (+https://gulfteluguguide.vercel.app/about)" },
+    headers: { "User-Agent": "GulfTeluguGuide/1.0" },
     signal: AbortSignal.timeout(20000),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);

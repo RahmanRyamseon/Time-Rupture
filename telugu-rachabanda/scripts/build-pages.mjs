@@ -11,7 +11,10 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, "dist");
-export const SITE = "https://gulfteluguguide.vercel.app";
+// Public address of the site. Cloudflare Pages sets CF_PAGES during its builds; SITE_URL overrides
+// both (e.g. once a custom domain is added).
+const OLD_SITE = "https://gulfteluguguide.vercel.app";
+export const SITE = (process.env.SITE_URL || (process.env.CF_PAGES ? "https://gulfteluguguide.pages.dev" : OLD_SITE)).replace(/\/$/, "");
 const BRAND = "గల్ఫ్ తెలుగు గైడ్";
 
 export const esc = (s = "") =>
@@ -160,13 +163,18 @@ ${pages.map((p) => `  <url><loc>${SITE}${p.path}</loc><lastmod>${(p.lastmod || t
 
 async function main() {
   const read = async (f) => JSON.parse(await readFile(join(root, f), "utf8"));
-  const template = await readFile(join(root, "index.html"), "utf8");
+  const template = (await readFile(join(root, "index.html"), "utf8")).replaceAll(OLD_SITE, SITE);
   const data = {};
   for (const k of ["guides", "countries", "community", "sources", "legal", "site"]) data[k] = await read(`data/${k}.json`);
 
   await rm(out, { recursive: true, force: true });
   await mkdir(join(out, "data"), { recursive: true });
-  for (const f of ["app.js", "store.js", "gratuity.js", "config.js", "style.css", "robots.txt"]) await cp(join(root, f), join(out, f));
+  for (const f of ["app.js", "store.js", "gratuity.js", "config.js", "style.css"]) await cp(join(root, f), join(out, f));
+  await writeFile(join(out, "robots.txt"), (await readFile(join(root, "robots.txt"), "utf8")).replaceAll(OLD_SITE, SITE));
+  // Cloudflare Pages settings (Vercel uses vercel.json instead). Pages serves /g/x from g/x.html and,
+  // with no 404.html, sends unknown paths to index.html, like the rewrite in vercel.json.
+  await writeFile(join(out, "_redirects"), "/s/* / 301\n/story/* / 301\n/saved / 301\n");
+  await writeFile(join(out, "_headers"), "/data/*\n  Cache-Control: public, max-age=0, must-revalidate\n");
   for (const f of ["guides.json", "countries.json", "community.json", "sources.json", "rates.json", "legal.json", "site.json"])
     await cp(join(root, "data", f), join(out, "data", f));
 
@@ -178,7 +186,7 @@ async function main() {
     await writeFile(file, page(template, p));
   }
   await writeFile(join(out, "sitemap.xml"), sitemap(pages));
-  console.log(`Built ${pages.length} pages into dist/.`);
+  console.log(`Built ${pages.length} pages into dist/ for ${SITE}.`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) await main();

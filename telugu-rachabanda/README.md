@@ -1,7 +1,7 @@
 # గల్ఫ్ తెలుగు గైడ్ (Gulf Telugu Guide)
 
-Live at **https://gulfteluguguide.vercel.app** (the older gulftelugunews and gulf-rachabanda
-addresses open the same site).
+Hosting is moving to **Cloudflare Pages** (https://gulfteluguguide.pages.dev), which allows ads on
+its free plan. Until that is live, the site stays at https://gulfteluguguide.vercel.app.
 
 Practical guidance in Telugu for Telugu people going to, living in and returning from the Gulf
 (UAE, Saudi Arabia, Qatar, Kuwait, Oman, Bahrain). It isn't a news site: every guide is written
@@ -45,11 +45,24 @@ Rules for content:
 ## How it runs
 
 - Static site: `index.html`, `style.css`, `app.js`, `store.js`, `gratuity.js`, `config.js`.
-- On every deploy, Vercel runs `scripts/build-pages.mjs` (see `vercel.json`). It writes a ready-made
+- On every deploy, Cloudflare Pages (or Vercel, via `vercel.json`) runs `scripts/build-pages.mjs`. It writes a ready-made
   HTML page for every guide, topic, country, board and legal page, plus `sitemap.xml`, so search
   engines can read each address. Old news addresses (`/s/…`, `/story/…`) redirect to the homepage.
 - `.github/workflows/telugu-rachabanda.yml` runs daily. It runs the tests, refreshes the rupee rates
   (`scripts/rates.mjs`) and checks the page build.
+
+## Cloudflare Pages setup (one time, in the Cloudflare dashboard)
+
+1. Workers & Pages → Create → Pages → **Connect to Git** → pick `RahmanRyamseon/Time-Rupture`.
+2. Project name: `gulfteluguguide` (this gives `gulfteluguguide.pages.dev`). Production branch: `master`.
+3. Build settings: framework preset **None**, root directory `telugu-rachabanda`, build command
+   `node scripts/build-pages.mjs`, output directory `dist`.
+4. Save and deploy. Every push to `master`, including the daily rates update, redeploys the site.
+
+The build reads `CF_PAGES` (set by Cloudflare) to use the pages.dev address in canonical links and the
+sitemap. If the project name is taken, or once you add your own domain, set an environment variable
+`SITE_URL` (for example `https://gulfteluguguide.com`) in the Pages project settings. Redirects and
+headers come from `dist/_redirects` and `dist/_headers`, which the build writes.
 
 ## Shared comments
 
