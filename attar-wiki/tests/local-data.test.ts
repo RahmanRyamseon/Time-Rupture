@@ -95,3 +95,22 @@ test("buyer's comparison: per-10 price uses the seller's unit and sorts cheapest
   assert.equal(rows[2].per10!.unit, "g");
   assert.equal(rows[3].per10, null); // Baanka: no size-specific price recorded, never guessed
 });
+
+test("budget pages count single bottles only and brand pairs need five priced attars", async () => {
+  const { entryPrice, budgetFromSlug } = await import("../src/lib/compare");
+  const { brandPairs, sharedStyles } = await import("../src/lib/brands");
+  const rows = local.pricedProducts() as unknown as import("../src/lib/data/wiki").ProductRow[];
+  assert.equal(budgetFromSlug("attars-under-500"), 500);
+  assert.equal(budgetFromSlug("attars-under-123"), null);
+  const under500 = rows.filter((p) => (entryPrice(p.prices)?.price ?? Infinity) <= 500);
+  assert.ok(under500.some((p) => p.slug === "aq-shanaya"));
+  assert.ok(under500.every((p) => entryPrice(p.prices)!.price <= 500));
+  // Shanaya: cheapest bottle is 5.5 ml at ₹399
+  const shanaya = entryPrice(rows.find((p) => p.slug === "aq-shanaya")!.prices)!;
+  assert.deepEqual([shanaya.price, shanaya.volume, shanaya.unit], [399, 5.5, "ml"]);
+  const pair = brandPairs(rows).find((p) => p.slug === "adil-qadri-vs-ajmal")!;
+  assert.ok(pair, "Adil Qadri vs Ajmal page exists");
+  assert.ok(sharedStyles(pair.a, pair.b).some((s) => s.style === "jannatul-firdaus"));
+  // Houses without prices (Kannauj Attar) never get a brand page
+  assert.ok(!brandPairs(rows).some((p) => p.slug.includes("kannauj-attar")));
+});

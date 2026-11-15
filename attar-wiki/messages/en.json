@@ -476,7 +476,8 @@
     "compareCta": "Compare mitti attars",
     "comparisons": "Buyer's comparisons",
     "comparisonsHelp": "One traditional style, every house that sells it, on one page.",
-    "allComparisons": "All comparisons"
+    "allComparisons": "All comparisons",
+    "budgetCta": "Attars under ₹500"
   },
   "common": {
     "loading": "Loading…",
@@ -517,5 +518,44 @@
     "missing": "Know a house we have missed?",
     "missingBody": "Suggest it with a link to the house's own listing. We add a version only when its price, size and claims can be cited.",
     "checked": "Prices checked {date}"
+  },
+  "best": {
+    "title": "Attars under ₹{max}, compared",
+    "metaTitle": "Best attars under ₹{max} in India: {count} compared by price per 10 ml",
+    "metaDescription": "{count} attars from {houses} houses whose cheapest bottle is listed at ₹{max} or less, sorted by price per 10 ml or g, with each maker's claims and sources. Independent; nothing sold.",
+    "eyebrow": "Budget guide",
+    "lede": "{count} attars from {houses} houses whose cheapest single bottle is listed at ₹{max} or less. Sorted by price per 10 ml or 10 g, cheapest first.",
+    "rules": "We count single bottles only, not multi-packs or combo offers, at the official listed price on the date shown. Discounts and sale prices change often; check the house's site before buying.",
+    "byHouse": "By house",
+    "cheapest": "Cheapest bottle",
+    "family": "Scent family",
+    "otherBudgets": "Other budgets",
+    "empty": "No attar with a recorded price fits this budget yet.",
+    "notBest": "\"Best\" here means best value on paper: the lowest listed price per 10 ml or g. It says nothing about how an attar smells or lasts on you. Read buyer reports on each page, and try a small size first.",
+    "under": "Under ₹{max}"
+  },
+  "brands": {
+    "title": "{a} vs {b}: attars compared",
+    "metaTitle": "{a} vs {b} attar: prices, sizes and claims compared",
+    "metaDescription": "{a} and {b} attars side by side: cheapest bottle, median price per 10 ml or g, stated methods, and the same styles from both houses. Independent, with sources.",
+    "eyebrow": "Brand vs brand",
+    "lede": "Listed prices from each house's own store, checked {date}. Prices per 10 ml and per 10 g are shown separately and never converted.",
+    "atGlance": "At a glance",
+    "priced": "Attars with a listed price",
+    "entryRange": "Cheapest bottle, from–to",
+    "medianPer10": "Median price per 10 {unit}",
+    "methodStated": "Listings that state a method or type",
+    "website": "Official website",
+    "housePage": "House page",
+    "same": "The same style from both",
+    "sameHelp": "Traditional styles both houses sell. Same name does not mean same recipe.",
+    "noSame": "We have not recorded the same traditional style from both houses yet.",
+    "cheapestFive": "Cheapest five from {house}",
+    "index": "Brand vs brand",
+    "indexHelp": "Houses with at least five attars that have a listed price.",
+    "byBudget": "By budget",
+    "byBudgetHelp": "Attars whose cheapest bottle fits your budget, sorted by price per 10 ml or g.",
+    "byStyle": "By style",
+    "vs": "vs"
   }
 }

@@ -24,8 +24,21 @@ NEW_HOUSES = [
     dict(slug="baanka", name="Baanka", aliases="Baanka Perfumes|baanka.com",
          summary="Indian brand selling natural attars and perfume oils in 2, 6 and 12 ml sizes.",
          website_url="https://baanka.com"),
+    dict(slug="adil-qadri", name="Adil Qadri", aliases="Adilqadri|Adil Qadri attar|AQ|adilqadri.com",
+         summary="Indian brand selling low-priced, alcohol-free attars and perfume sprays online, mostly in 5.5 ml roll-ons and 10 to 12 ml bottles.",
+         history="The brand's own store lists dozens of named attars, usually at one price for a 5.5 ml roll-on and another for a 10 or 12 ml bottle, and sells multi-packs and combos. Most listings call the attar 100% pure, premium and non-alcoholic but give no notes or method.",
+         website_url="https://www.adilqadri.com"),
     dict(slug="sugandhco", name="Sugandhco", aliases="Sugandh Co|SugandhCo", city="Lucknow",
          summary="Lucknow-based attar marketer (Janpath Market) whose attars are sold through online retailers."),
+]
+
+# Named blends sold by several houses (style pages). Text is our own; facts cited to the listings.
+NEW_STYLES = [
+    dict(slug="jannatul-firdaus", name="Jannatul Firdaus", name_hi="जन्नतुल फ़िरदौस", aliases="Jannat ul Firdaus|Jannatul Ferdous|Jannat-ul-Firdaus|जन्नतुल फ़िरदौस",
+         scent_family="", occasions="daily|prayer",
+         summary="A classic named attar blend that many houses sell, each to its own recipe.",
+         description="Jannatul Firdaus is a traditional blend name rather than a single ingredient, so two bottles with the same name can smell quite different. Ajmal sells a version it calls the original, describing green and floral notes that settle into an earthy, woody, musky base. Adil Qadri sells a much cheaper 5.5 ml version without listing notes.",
+         _cite=["prod_ajmal-jannatul-firdaus", "prod_aq-jannatul-firdaus"]),
 ]
 
 # New notes introduced by product listings (facts cited to the listing that states them).
@@ -66,6 +79,10 @@ def P(house, slug, name, url, desc, *, style=None, type=None, base=None, family=
 MLR = "https://attarsindia.com/products/"
 GSJ = "https://gulabsinghjohrimal.co.in/products/"
 AJ = "https://in.ajmal.com/products/"
+
+AQ = "https://www.adilqadri.com/products/"
+AQC = AQ + "adilqadri-premium-attars"
+AQ_DESC = "The listing calls it a 100% pure, premium, non-alcoholic attar and gives no notes or method."
 
 PRODUCTS = [
     # ---------------- M.L. Ramnarain Perfumers (Attars India store), sold by weight
@@ -237,6 +254,84 @@ PRODUCTS = [
     P("sugandhco", "sugandhco-gil-mitti", "Gil (Mitti) (Sugandhco)", "https://scentkart.com/products/gil-mitti-1",
       "A gil (mitti) attar marketed by Sugandhco of Lucknow, listed by the retailer Scentkart with a petrichor and rain top over a woody base. The listing makes no natural or deg-bhapka claim.",
       style="mitti-attar", family="Earthy", notes=[("baked-earth", "top")], prices=[(10, 400)], unit="ml", source="Scentkart (retailer listing)"),
+
+    # ---------------- Mass-market houses (added for budget pages and brand comparisons)
+    P("adil-qadri", "aq-shanaya", "Shanaya (Adil Qadri)", AQC,
+      "Adil Qadri's Shanaya attar, one of the brand's best-known names. Listed at the same price for 10 ml and 12 ml on the date checked. The brand describes its attars as 100% pure, premium and non-alcoholic; no notes or method are given.", prices=[(5.5, 399), (10, 599), (12, 599)], unit="ml"),
+    P("adil-qadri", "aq-white-oudh", "White Oudh (Adil Qadri)", AQ + "adilqadri-white-oudh-attar-pure-premium-quality",
+      "Adil Qadri's White Oudh attar. " + AQ_DESC, prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-the-story", "The Story (Adil Qadri)", AQ + "the-story-luxury-attar-perfume",
+      "Adil Qadri's The Story attar. " + AQ_DESC, prices=[(5.5, 399), (10, 599)], unit="ml"),
+    P("adil-qadri", "aq-lazina", "Lazina (Adil Qadri)", AQ + "lazina-luxury-attar-perfume",
+      "Adil Qadri's Lazina attar. " + AQ_DESC, prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-aq-365", "AQ 365 (Adil Qadri)", AQ + "aq-365-luxury-attar-perfume-5-5-ml",
+      "Adil Qadri's AQ 365 attar. " + AQ_DESC, prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-musk-al-ghazali", "Musk Al Ghazali (Adil Qadri)", AQ + "musk-al-ghazali-luxury-attar-perfume-10-ml",
+      "Adil Qadri's Musk Al Ghazali attar. " + AQ_DESC, prices=[(5.5, 399), (10, 599)], unit="ml"),
+    P("adil-qadri", "aq-kasturi-musk", "Kasturi Musk (Adil Qadri)", AQ + "kasturi-luxury-attar-perfume-5-5-ml",
+      "Adil Qadri's Kasturi Musk attar. " + AQ_DESC, style='musk-attar', prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-jannatul-firdaus", "Jannatul Firdaus (Adil Qadri)", AQ + "jannatul-firdaus-luxury-attar-perfume-5-5-ml",
+      "Adil Qadri's Jannatul Firdaus attar. " + AQ_DESC, style='jannatul-firdaus', prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-rose-gulab", "Rose (Gulab) (Adil Qadri)", AQ + "rose-luxury-attar-perfume-5-5-ml",
+      "Adil Qadri's Rose (Gulab) attar. " + AQ_DESC, prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-sandal-chandan", "Sandal (Chandan) (Adil Qadri)", AQ + "sandal-luxury-attar-perfume-5-5-ml",
+      "Adil Qadri's Sandal (Chandan) attar. " + AQ_DESC, prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-kesar-chandan", "Kesar Chandan (Adil Qadri)", AQ + "kesar-chandan-luxury-attar-perfume-5-5-ml",
+      "Adil Qadri's Kesar Chandan attar. " + AQ_DESC, style='kesar-attar', prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-oud", "Oud (Adil Qadri)", AQ + "oud-luxury-attar-perfume-5-5-ml",
+      "Adil Qadri's Oud attar. " + AQ_DESC, style='oud-attar', prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-ruh-khus", "Ruh Khus (Adil Qadri)", AQ + "ruh-khus-attar-perfume-5-5-ml",
+      "Sold by Adil Qadri as 'Ruh Khus'. The listing calls it a 100% pure, premium, non-alcoholic attar but does not say it is a ruh (an undiluted essence) or name the method, and gives no notes. At this price, check before assuming it is a true ruh.", style='ruh-khus', prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-zanzibar-oud", "Zanzibar Oud (Adil Qadri)", AQ + "zanzibar-oud-attar-perfume-5-5-ml",
+      'A non-alcoholic attar Adil Qadri describes as opening with passion fruit and rose, with oud and patchouli at the heart over leather, amber and vanilla.', notes=[('rose', 'top'), ('oud', 'heart'), ('patchouli', 'heart'), ('amber', 'base')], family='Woody', prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-coffee-latte", "Coffee Latte (Adil Qadri)", AQ + "coffee-latte-attar-perfume-5-5-ml",
+      'A non-alcoholic gourmand attar: Adil Qadri describes coffee with caramel-honey and vanilla over a soft white musk.', notes=[('musk', 'base')], family='Gourmand', prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-shanaya-gold", "Shanaya Gold (Adil Qadri)", AQ + "shanaya-gold-luxury-attar-perfume-10-ml",
+      'Listed by Adil Qadri as a gourmand attar. The brand describes it as 100% pure, premium and non-alcoholic; no notes are given.', family='Gourmand', prices=[(10, 599)], unit="ml"),
+    P("adil-qadri", "aq-hanayir", "Hanayir (Adil Qadri)", AQ + "hanayir-luxury-attar-perfume-5-5-ml",
+      "Adil Qadri's Hanayir attar. " + AQ_DESC, prices=[(5.5, 399)], unit="ml"),
+    P("adil-qadri", "aq-leader", "Leader (Adil Qadri)", AQC,
+      "Adil Qadri's Leader attar. " + AQ_DESC, prices=[(5.5, 399), (12, 599)], unit="ml"),
+    P("adil-qadri", "aq-taabish", "Taabish (Adil Qadri)", AQC,
+      "Adil Qadri's Taabish attar. " + AQ_DESC, prices=[(5.5, 399), (12, 599)], unit="ml"),
+    P("adil-qadri", "aq-safwan", "Safwan (Adil Qadri)", AQC,
+      "Adil Qadri's Safwan attar. " + AQ_DESC, prices=[(5.5, 399), (12, 599)], unit="ml"),
+    P("adil-qadri", "aq-lavish-musk", "Lavish Musk (Adil Qadri)", AQC,
+      "Adil Qadri's Lavish Musk attar. " + AQ_DESC, prices=[(5.5, 399), (12, 599)], unit="ml"),
+    P("adil-qadri", "aq-oudh-al-hashmi", "Oudh Al Hashmi (Adil Qadri)", AQC,
+      "Adil Qadri's Oudh Al Hashmi attar. " + AQ_DESC, prices=[(5.5, 399), (10, 599)], unit="ml"),
+    P("adil-qadri", "aq-shanaya-oud", "Shanaya Oud (Adil Qadri)", AQC,
+      "Adil Qadri's Shanaya Oud attar. " + AQ_DESC, prices=[(5.5, 399), (12, 699)], unit="ml"),
+    P("adil-qadri", "aq-sulook", "Sulook (Royal) (Adil Qadri)", AQ + "sulook-royal-attar-perfume-10-ml",
+      "One of Adil Qadri's higher-priced 'Royal' attars. The listing calls it 100% pure, premium and non-alcoholic; no notes or method are given.", prices=[(10, 1999)], unit="ml"),
+    P("adil-qadri", "aq-raazi", "Raazi (Adil Qadri)", AQ + "raazi-attar-perfume-10ml",
+      "Adil Qadri's Raazi attar. " + AQ_DESC, prices=[(10, 799)], unit="ml"),
+    P("adil-qadri", "aq-jaami", "Jaami (Adil Qadri)", AQ + "jaami-attar-perfume-10ml",
+      "Adil Qadri's Jaami attar. " + AQ_DESC, prices=[(10, 799)], unit="ml"),
+    P("ajmal", "ajmal-aura", "Aura (Ajmal)", AJ + "aura-concentrated-perfume-perfume-10ml-for-unisex",
+      'A non-alcoholic fruity-floral attar: Ajmal describes juicy fruits and florals over soft woods and musk.', notes=[('musk', 'base')], family='Floral', prices=[(10, 400)], unit="ml"),
+    P("ajmal", "ajmal-tempest", "Tempest (Ajmal)", AJ + "tempest-concentrated-perfume-perfume-12ml-for-unisex",
+      'A non-alcoholic attar Ajmal describes as a fresh opening, florals and spices in the heart, and a bold woody base.', family='Woody', prices=[(12, 600)], unit="ml"),
+    P("ajmal", "ajmal-jannatul-firdaus", "Jannatul Firdaus (Ajmal)", AJ + "jannatul-firdaus-concentrated-perfume-perfume-10ml-for-unisex",
+      'Ajmal calls this the original Jannatul Firdaus: green notes and florals mellowing into an earthy base of woods and musk. Suggested for daily wear and prayer.', style='jannatul-firdaus', notes=[('musk', 'base')], occasions='daily|prayer', prices=[(10, 500)], unit="ml"),
+    P("ajmal", "ajmal-musk-rose-black", "Musk Rose Black (Ajmal)", AJ + "musk-rose-black-concentrated-perfume-12-ml-for-unisex",
+      'Blackcurrant, apricot and freesia, then rose and osmanthus with patchouli, over an oud-rich, balsamic musk base, per Ajmal.', notes=[('rose', 'heart'), ('patchouli', 'heart'), ('oud', 'base'), ('musk', 'base')], family='Floral', prices=[(12, 1000)], unit="ml"),
+    P("ajmal", "ajmal-royal-galaxy", "Royal Galaxy (Ajmal)", AJ + "royal-galaxy-attar-concentrated-perfume-for-unisex-10-ml",
+      'Soft florals moving into a warm musk base, per Ajmal; alcohol-free.', notes=[('musk', 'base')], family='Musky', prices=[(10, 999)], unit="ml"),
+    P("ajmal", "ajmal-royal-pearl", "Royal Pearl (Ajmal)", AJ + "royal-pearl-concentrated-perfume-attar-for-women-10-ml",
+      'A soft floral attar settling into a powdery base, per Ajmal; non-alcoholic.', family='Floral', prices=[(10, 999)], unit="ml"),
+    P("ajmal", "ajmal-royal-love", "Royal Love (Ajmal)", AJ + "royal-love-attar-concentrated-perfume-for-women-10-ml-1",
+      'Soft, romantic florals over a warm musky base, per Ajmal; non-alcoholic.', notes=[('musk', 'base')], family='Floral', prices=[(10, 999)], unit="ml"),
+    P("ajmal", "ajmal-colaba-mukhallat", "Colaba Mukhallat (Ajmal)", AJ + "colaba-mukhallat-concentrated-perfume-perfume-14ml-for-unisex",
+      'A mukhallat (mixed attar) that Ajmal describes as rose, jasmine and warm spices over amber, sandalwood and musk; alcohol-free.', notes=[('rose', 'listed'), ('amber', 'base'), ('sandalwood', 'base'), ('musk', 'base')], family='Floral', prices=[(14, 1050)], unit="ml"),
+    P("ajmal", "ajmal-asher", "Asher (Ajmal)", AJ + "asher-concentrated-perfume-perfume-12ml-for-unisex",
+      'A fresh floral attar settling into a musky-woody base, per Ajmal; non-alcoholic.', notes=[('musk', 'base')], family='Floral', prices=[(12, 1250)], unit="ml"),
+    P("ajmal", "ajmal-khofooq", "Khofooq (Ajmal)", AJ + "khofooq_concentrated_18ml",
+      'A floral bouquet of ylang and lily of the valley with musky and woody notes, per Ajmal; non-alcoholic.', notes=[('musk', 'listed')], family='Floral', prices=[(18, 1600)], unit="ml"),
+    P("ajmal", "ajmal-dahnul-oudh-raashid", "Dahnul Oudh Raashid (Ajmal)", AJ + "dahnul-oudh-raashid-concentrated-perfume-perfume-3ml-for-unisex",
+      'An intense oud attar Ajmal describes as earthy with a warm, resinous heart; non-alcoholic.', style='oud-attar', notes=[('oud', 'listed')], family='Woody', prices=[(3, 2550)], unit="ml"),
+    P("ajmal", "ajmal-dahnul-oudh-khalifa", "Dahnul Oudh Khalifa (Ajmal)", AJ + "dahnul-oudh-khalifa-concentrated-perfume-perfume-3ml-for-unisex",
+      'A deep, traditional oud attar; Ajmal says it is distilled from premium oud. Non-alcoholic.', style='oud-attar', notes=[('oud', 'listed')], family='Woody', prices=[(3, 4250)], unit="ml"),
 ]
 
 PUBLISHER = {
@@ -247,6 +342,7 @@ PUBLISHER = {
     "boond-fragrances": "Boond Fragrances, official store",
     "baanka": "Baanka, official store",
     "sugandhco": "Sugandhco",
+    "adil-qadri": "Adil Qadri, official store",
 }
 
 EXTRA_SOURCES = {

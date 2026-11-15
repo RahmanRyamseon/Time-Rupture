@@ -438,3 +438,25 @@ export function comparisonIndex() {
   }
   return [...out.values()];
 }
+
+/** Every published house product with its prices, for budget lists and brand comparisons. */
+export function pricedProducts() {
+  return published(D.attars)
+    .filter((a) => a.house_id)
+    .map((a) => {
+      const h = houseById(a.house_id)!;
+      return {
+        id: a.id,
+        slug: a.slug,
+        name: a.name,
+        name_hi: a.name_hi,
+        attar_type: a.attar_type,
+        scent_family: a.scent_family,
+        house: { slug: h.slug, name: h.name },
+        styles: D.attar_relations
+          .filter((r) => r.attar_id === a.id && r.relation === "example_of" && r.related_attar_id)
+          .map((r) => D.attars.find((x) => x.id === r.related_attar_id)!.slug),
+        prices: D.price_reports.filter((p) => p.attar_id === a.id),
+      };
+    });
+}

@@ -113,7 +113,7 @@ houses = [
       website_url="https://gulabsinghjohrimal.com"),
  dict(slug="ajmal", name="Ajmal Perfumes", aliases="Ajmal", city="Hojai", region_slug="assam", founded_year="1951",
       summary="Perfume house founded in 1951 in Hojai, Assam, by Haji Ajmal Ali, who started out trading agarwood.",
-      history="Haji Ajmal Ali was born in 1923 in Alinagar, near Hojai in Assam, to a family of rice farmers. He began by collecting agarwood in the forests of Assam and selling it to dealers, and in 1951 he founded Ajmal Perfumes.\n\nIn the early 1960s he moved to Mumbai, where he experimented with perfume blends that were not based on oud. From the late 1960s he travelled around the Gulf, which became one of the business's largest markets."),
+      history="Haji Ajmal Ali was born in 1923 in Alinagar, near Hojai in Assam, to a family of rice farmers. He began by collecting agarwood in the forests of Assam and selling it to dealers, and in 1951 he founded Ajmal Perfumes.\n\nIn the early 1960s he moved to Mumbai, where he experimented with perfume blends that were not based on oud. From the late 1960s he travelled around the Gulf, which became one of the business's largest markets.", website_url="https://in.ajmal.com"),
  dict(slug="ml-ramnarain", name="M.L. Ramnarain Perfumers", aliases="ML Ramnarain|M L Ramnarain|MLR", city="Kannauj", region_slug="kannauj", founded_year="1970",
       summary="Kannauj perfumer, established in 1970, that makes natural attars and still runs a traditional distillery in the town.",
       history="M.L. Ramnarain Perfumers was founded in 1970 by Shri Harinarain Kapoor, from a family with a tradition of making perfumes. National Geographic describes the Ramnarain Perfumers factory as one of the traditional distillers still working in Kannauj.",
@@ -128,7 +128,7 @@ cite("house","gulabsingh-johrimal","history","gsj_story","gsj_blog")
 cite("house","gulabsingh-johrimal","website_url","gsj_blog")
 cite("house","ajmal","city","fbh_ajmal","ajmal_about")
 cite("house","ajmal","founded_year","fbh_ajmal","ajmal_about")
-cite("house","ajmal","history","fbh_ajmal")
+cite("house","ajmal","history","fbh_ajmal"); 
 cite("house","ml-ramnarain","city","mlr_indiamart")
 cite("house","ml-ramnarain","founded_year","mlr_indiamart","mlr_about")
 cite("house","ml-ramnarain","history","mlr_indiamart","natgeo")
@@ -422,6 +422,10 @@ for n in PR.NEW_NOTES:
         cite("note", n["slug"], "botanical_name", k)
 write("notes.csv", "slug,name,name_hi,aliases,botanical_name,category,summary,summary_hi,smell,botany,grown_in,published".split(","), notes)
 
+style_cites = []
+for st in PR.NEW_STYLES:
+    st = dict(st); style_cites.append((st["slug"], st.pop("_cite")))
+    attars.append(st)
 style_slugs = {a["slug"] for a in attars}
 relations, prices, product_notes = [], [], []
 for p in PR.PRODUCTS:
@@ -453,6 +457,10 @@ for p in PR.PRODUCTS:
 cite("house","boond-fragrances","history","prod_boond-maati"); cite("house","boond-fragrances","website_url","prod_boond-maati")
 cite("house","baanka","website_url","prod_baanka-manmath-mitti")
 cite("house","sugandhco","city","prod_sugandhco-gil-mitti")
+cite("house","ajmal","website_url","prod_ajmal-aura")
+cite("house","adil-qadri","history","prod_aq-shanaya","prod_aq-white-oudh"); cite("house","adil-qadri","website_url","prod_aq-white-oudh")
+for slug, keys in style_cites:
+    cite("attar", slug, "description", *keys)
 write("attars.csv", "slug,name,name_hi,aliases,house_slug,attar_type,base_oil,scent_family,region_slug,launch_year,occasions,summary,summary_hi,description,how_made,published".split(","), attars)
 all_notes = [(a, n, p) for a, n, p in attar_notes if n] + product_notes
 write("attar_notes.csv", ["attar_slug","note_slug","position","sort_order"],

@@ -9,6 +9,7 @@ import { AttarCards } from "@/components/attar/AttarCards";
 import { JsonLd } from "@/components/wiki/JsonLd";
 import { Icon } from "@/components/ui/Icon";
 import { ComparisonCards } from "@/components/compare/ComparisonCards";
+import { BudgetLinks } from "@/components/compare/GuideLinks";
 
 export const revalidate = 600;
 
@@ -62,8 +63,8 @@ export default async function HomePage({ params }: Props) {
             <Link href="/compared/mitti-attar" className="btn bg-gold text-ink hover:bg-gold-soft">
               {t("home.compareCta")}
             </Link>
-            <Link href="/attars" className="btn border border-gold/60 text-parchment hover:bg-cocoa">
-              {t("home.browseAll")}
+            <Link href="/best/attars-under-500" className="btn border border-gold/60 text-parchment hover:bg-cocoa">
+              {t("home.budgetCta")}
             </Link>
             <Link href="/finder" className="btn border border-gold/60 text-parchment hover:bg-cocoa">
               <Icon name="spark" className="h-4 w-4" />
@@ -113,6 +114,16 @@ export default async function HomePage({ params }: Props) {
               </Link>
             </div>
             <ComparisonCards locale={locale} limit={6} />
+          </section>
+        ) : null}
+
+        {!empty ? (
+          <section aria-labelledby="budgets">
+            <h2 id="budgets" className="text-2xl font-semibold sm:text-3xl">
+              {t("brands.byBudget")}
+            </h2>
+            <p className="mb-5 mt-1 text-muted">{t("brands.byBudgetHelp")}</p>
+            <BudgetLinks />
           </section>
         ) : null}
 

@@ -498,3 +498,41 @@ export async function getStyleComparison(slug: string) {
   );
   return { style, versions };
 }
+
+/* ------------------------------------------------------------------------ */
+/* Budget lists and brand-vs-brand (house products with prices)              */
+/* ------------------------------------------------------------------------ */
+
+export interface ProductRow {
+  id: string;
+  slug: string;
+  name: string;
+  name_hi: string | null;
+  attar_type: Attar["attar_type"];
+  scent_family: string | null;
+  house: { slug: string; name: string };
+  /** Slugs of the traditional styles this product is a version of. */
+  styles: string[];
+  prices: PriceReport[];
+}
+
+export async function getProductRows(): Promise<ProductRow[]> {
+  const supabase = db();
+  if (!supabase) return local.pricedProducts() as ProductRow[];
+  const { data } = await supabase
+    .from("attars")
+    .select(
+      "id, slug, name, name_hi, attar_type, scent_family, house:houses(slug, name), price_reports(*), rel:attar_relations!attar_relations_attar_id_fkey(relation, style:attars!attar_relations_related_attar_id_fkey(slug))",
+    )
+    .eq("published", true)
+    .not("house_id", "is", null);
+  type R = Omit<ProductRow, "styles" | "prices"> & {
+    price_reports: PriceReport[];
+    rel: { relation: string; style: { slug: string } | null }[];
+  };
+  return ((data as unknown as R[]) ?? []).map(({ price_reports, rel, ...r }) => ({
+    ...r,
+    prices: price_reports ?? [],
+    styles: (rel ?? []).filter((x) => x.relation === "example_of" && x.style).map((x) => x.style!.slug),
+  }));
+}
