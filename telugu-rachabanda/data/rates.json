@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-15T00:02:32.000Z",
+ "updated": "2026-11-16T00:02:31.000Z",
  "source": "exchangerate-api.com",
  "attribution": {
   "text": "Rates By Exchange Rate API",
   "url": "https://www.exchangerate-api.com"
  },
  "inrPer": {
-  "AED": 25.67,
-  "SAR": 25.14,
-  "QAR": 25.9,
-  "KWD": 302.94,
-  "OMR": 245.16,
-  "BHD": 250.7
+  "AED": 25.7,
+  "SAR": 25.17,
+  "QAR": 25.93,
+  "KWD": 303.75,
+  "OMR": 245.51,
+  "BHD": 251.06
  }
 }
