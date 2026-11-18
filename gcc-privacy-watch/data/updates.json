@@ -1,8 +1,36 @@
 {
-  "generatedAt": "2026-11-17T12:04:01.724Z",
+  "generatedAt": "2026-11-18T11:55:02.475Z",
   "retentionDays": 120,
-  "count": 33,
+  "count": 35,
   "items": [
+    {
+      "id": "319b2ac155bc",
+      "title": "Smart glasses expose gaps in India’s privacy and data protection laws, say legal experts",
+      "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNY2tza3NtcmlqVzZGcDc4MUNHRWdTSU1VYkpQY3RUWW1GS0JaUktJNm1aSzZ3XzUtdWJSajVieGg4X2lSTU5NS3NudHRJTURFa0lmUHFGX0RiN3RjUWFtRXFaeFpDd2N1LXFsZDBoTkJuU19MWXdzSjB4eWhJU1BObFRsU1FUSjdvc0x5dndqQURwemVQYTFDdldTdjctd05fWFEzZ09RZjJPRm1QSHJibnh6cE8zNm9yMURCQnBxQXBBWnVNaF9FTkFWaEcxdGg0NkViOWxQNnhqNk5WMWNfVTNNQktYZ3hxM0wzcUhyM1U4WmRfeGc?oc=5",
+      "publisher": "ETLegalWorld.com",
+      "publisherUrl": "https://legal.economictimes.indiatimes.com",
+      "published": "2026-11-18T10:47:26.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-18T11:55:02.474Z"
+    },
+    {
+      "id": "4d30e24ba47d",
+      "title": "Tinder fined €11 million by Irish data regulator over users' personal data requests",
+      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNU2F3aTFEZDYwcE9ueXZfOF84OTNKcklnaE05eWpMc1VPaWowbkpUNXVNNWhPX2FqYmpCM2l2bndNYk1XLVpsSmxtX0tiTi01WkdsaUJ3T1kzYkxMelFFVWRIUk9talVLZWo2SVd5VEwtcUp2Nmg2N1h4bUJuallCUFVqVjZid3JJeFh2NnE4Sml3U243cGhTbnBXRXkwTmtHRmVxOUpYdGJXTV9RTG10a2FSbHBBd2t3alJSTjRxM3NRUFBBbnJIREpialZWLVdFNThLQ3ltUkx0V1lIaVRXZjdoaFVPTDjSAewBQVVfeXFMTTRDYlotNThDbXNxbjdEcmNDVmxQNmNFOUhfc2ZCV3VhY1NoUVR6cDluZDF5TzlILWM4SWtFMlN6b0ZHUWJDS2NyRWpqWlNxWUdKWGV4RklST0ppQlZYd2JMV0QxR2FiWjRqMGhYbktKbjdxNHI5ekY3Z09xSF9YRzBEY0J6NkZfZldLWDd6SzdPVkV0WUpNUXd1cUZ6VUlPT3VjS3E4ZWVybXpkSmVGZzJQS0lySEd3VWlsTXdmRGlFWXpWdWl4M1UzdjVINmZFeldwN0piejE3U0ZvLVlBZmRPdTBEMzBiN1REUEU?oc=5",
+      "publisher": "ETLegalWorld.com",
+      "publisherUrl": "http://legal.economictimes.indiatimes.com",
+      "published": "2026-11-17T18:00:04.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-18T11:55:02.474Z"
+    },
     {
       "id": "37d0c46c8fca",
       "title": "Italy fines Meta $880 mn over photo privacy",
