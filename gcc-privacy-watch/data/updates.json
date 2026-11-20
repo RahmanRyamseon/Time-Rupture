@@ -1,8 +1,50 @@
 {
-  "generatedAt": "2026-11-19T11:52:39.070Z",
+  "generatedAt": "2026-11-20T11:53:30.460Z",
   "retentionDays": 120,
-  "count": 35,
+  "count": 39,
   "items": [
+    {
+      "id": "2d8cec387707",
+      "title": "Biometrics Expert Warns Banks: Personal Data Theft Makes Identity Verification Obsolete",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPTFR4TGtiWVo0TnRCQVZSaG5VQVFUbURLWXpNdlpVZmVsQjdnMW51T3dBRGVZclBYNFgxck11WTdfdU5DWDQ2Mm92UTFwVDFQRUU4TlBIMDBqM2x1WDVZWElGWjBJVEJJSEdWV0lIWHZvN2NuUGs1Y1hkajZtTmMwYUdOUktkX3N5M2p6QWVBVkhtRDZGU2RTaFlqZEc3cmNBbkF1eDBSN19ycVhLZ2FCZGRscw?oc=5",
+      "publisher": "FF News",
+      "publisherUrl": "https://ffnews.com",
+      "published": "2026-11-20T10:18:45.000Z",
+      "description": "",
+      "countries": [
+        "AE"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-20T11:53:30.458Z"
+    },
+    {
+      "id": "5339718a2864",
+      "title": "An Overview of Oman’s Personal Data Protection Law",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQLUx3VWxpbVBPNG9IQWs0NzlXUloyUE1RZ0czT0I2OWN3TDhxTUk4Z1FTck9PWm9SYjk4cUVjVXVYRk9ZZHRmVGJjdzFuRU1TRTRxbWc3U0dLd1FhQ0pTMFNJR3FTbkV0eTlHeUlrbHBLOC1DLTI3X28tc2lqS3BCYWdBUlA?oc=5",
+      "publisher": "Decree Blog",
+      "publisherUrl": "https://blog.decree.om",
+      "published": "2026-11-19T14:53:58.000Z",
+      "description": "",
+      "countries": [
+        "OM"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-20T11:53:30.458Z"
+    },
+    {
+      "id": "98064fcd61f1",
+      "title": "AI can help companies monitor privacy compliance, Saudi regulator says",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQN0dxRndHMjFyWFo2R2JNc1RmWVQxU05xMVhzYTEyNTJQZnZXb1RpY1JEdjVYckJFV21uUVM2WmNpTkVGSkdwcWZLZEF2UmpBb1hkbUQxTmNybC1RLXkwOU5wWjBrb3V1b2dMeUkydG1kdGNtNGYyS3huaUJ1dHc3NllzeTdQSnFMMVMtZlFXRnN0SGZ6THZFSE5oV1VnWXlBU2xYdm9STVpTZGFmZHVwd3BJRzY5QVFiSDdqYWppOFPSAVpBVV95cUxPYTBjak5uUFZPcExfUGhOTGJoY09ycXp4dkFlSUM1bnRpbzd5RjU1NzgwU192WDQ5aFZsb1ZxTFJTZmpvSWNyTTl1UFlSWW0zUEt3RGxBT1F6dEE?oc=5",
+      "publisher": "MLex",
+      "publisherUrl": "https://www.mlex.com",
+      "published": "2026-11-19T11:47:07.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-20T11:53:30.458Z"
+    },
     {
       "id": "319b2ac155bc",
       "title": "Smart glasses expose gaps in India's privacy and data protection laws, say legal experts",
@@ -30,6 +72,20 @@
       ],
       "category": "news",
       "firstSeen": "2026-11-18T11:55:02.474Z"
+    },
+    {
+      "id": "25015126e04e",
+      "title": "The Anatomy Of An Executable Data Contract: Operationalizing Privacy & Data Quality At Event Velocity",
+      "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOSHdiTmFNdmdhNzBfMF9LMHhMZDJDU0xFVkNHaDNic05hd1o5X1BSRDAzdkRha3c0NVVKb0w0OElMbVVlWWREQ21FbXBuT29RNHdfTXRfQmNtM19CODVud2RxWDZFRWF6VC0xRG9vVDI3dFR1NGVKdUJTS2pmV1JBY0VrLVBpcEZFRllqUzhWMG9PeXJqVjRQSklZcVVyRE13RE01TldNZ3dMRkloRmk5anhCUU9EVExnMi1UZFdnUm55Y1NyT2ZwTzk5UmgyYnNCUi1SRUdPMzNOYmxLQ0tRajJNak4xNmd6RmRhOW5LeHlIeU0?oc=5",
+      "publisher": "Legal 500",
+      "publisherUrl": "https://www.legal500.com",
+      "published": "2026-11-17T15:23:03.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-20T11:53:30.458Z"
     },
     {
       "id": "37d0c46c8fca",
