@@ -1,8 +1,22 @@
 {
-  "generatedAt": "2026-11-21T11:23:11.422Z",
+  "generatedAt": "2026-11-22T11:39:34.438Z",
   "retentionDays": 120,
-  "count": 39,
+  "count": 40,
   "items": [
+    {
+      "id": "3d1b06749d12",
+      "title": "Saudi PDPL Implementing Regulations: Business Guide",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOdGV5ZWlJZkdxOEIyQ2g3Ym9FQ3BVRUNnaUQwZzB2REdzYmxxNkVkaVpvaUV1NHFsUkdJU3EteDZWVWxCLTdqeTQxME9nazIwRWd1RERwSkl6TUZXZkhXbmlpUVlSU1FyLWo0bmFiS3BZZ25NbkthR1gtbWVTbndXTEJsMWdhMlBrcE5GQzZHcmR6NGc?oc=5",
+      "publisher": "Global Advisory Experts",
+      "publisherUrl": "https://globaladvisoryexperts.com",
+      "published": "2026-11-22T03:27:33.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-22T11:39:34.437Z"
+    },
     {
       "id": "2d8cec387707",
       "title": "Biometrics Expert Warns Banks: Personal Data Theft Makes Identity Verification Obsolete",
