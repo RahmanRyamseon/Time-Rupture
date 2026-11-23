@@ -1,8 +1,36 @@
 {
-  "generatedAt": "2026-11-22T11:39:34.438Z",
+  "generatedAt": "2026-11-23T13:10:19.165Z",
   "retentionDays": 120,
-  "count": 40,
+  "count": 42,
   "items": [
+    {
+      "id": "e029663bb23a",
+      "title": "Personal data of over 8,000 Samsung Securities clients breached in cyberattack",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQTWxYc3dnM0ZkaGxraU9Lcjh6MC00X0g2YXctcDFvYkVtQzRLUEhaZWlQMW81WWQ2b2ZaajJLWl8tWHhnZ0dfNW9jZ0lJYnZKSkx5R1VCRUNLVHo1aG90VGF4emtIb3pEcnVTNEpOeUlVa2hlLW1KZF93MUtlY0ZoWUhsWml6d2tnTjRmNXYydXRzNWoyd3FyZjg5ajBLVWhwOVZfNDNyUl80WHlmLUZ6T1lEWDlnUdIBxgFBVV95cUxOOGxjcUZ5MTBSa18xZVRmM1R5N1lsSjljYzBJRldjd2V2bVN5bTNGdkVvb3J1dE96LUFBWjF1bFROZzFWTWhZRHV4Um56SXBfXzd2NjdMd1NIX0xpSjZxbmdoOHFfamlRazhaTXdpU2ljdVg2QjVqSGRkbngwdjJsdTVwa3FlbmNTeTZRUDNITEpFQ3RUNUhIdlBPeVJHSXA0U1ZZamNlTjdEUUpNVkRCaGZnMlpoNko5V3BmdlotQnBwM05hQVE?oc=5",
+      "publisher": "US Muslims",
+      "publisherUrl": "https://www.usmuslims.com",
+      "published": "2026-11-23T06:29:00.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-23T13:10:19.163Z"
+    },
+    {
+      "id": "c5dfd3751142",
+      "title": "Omans Personal Data: Processing Without Consent",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQTkpFTnZCSXRKUjEwZ0JfUUlYb1dYcEl6UWp2empKZkptUFREMnlwNmVRRzNQcGdZZEhHTGZfWWNLX1ZVbVY4XzE1OUlMR1FCV2xqNVhlWmRSa09FWUxReFhla1dUbUwwSENsYkRnQ1RESGxwV3JLeExnMmlsN1BZTWlUQzdvSzJfNTVkem9R?oc=5",
+      "publisher": "Global Advisory Experts",
+      "publisherUrl": "https://globaladvisoryexperts.com",
+      "published": "2026-11-23T03:37:40.000Z",
+      "description": "",
+      "countries": [
+        "OM"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-23T13:10:19.163Z"
+    },
     {
       "id": "3d1b06749d12",
       "title": "Saudi PDPL Implementing Regulations: Business Guide",
