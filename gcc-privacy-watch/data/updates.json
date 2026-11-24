@@ -1,8 +1,50 @@
 {
-  "generatedAt": "2026-11-23T13:10:19.165Z",
+  "generatedAt": "2026-11-24T13:56:24.868Z",
   "retentionDays": 120,
-  "count": 42,
+  "count": 46,
   "items": [
+    {
+      "id": "c7d15e10ef73",
+      "title": "Omans Personal Data Law: Compliance Guide",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQV3RZNnNkUlVPUzJ4Tnc2cWQydndGbkpLbl9seWhYWGhrdFl6bGZfVDd3czNCM0Y5QWNmMHY3Y21pNGctdEZwRzBsdWJLRkhZN0pOOXpBR2h5TWJ5Rnk0dFBDR0RDVnVyQ1pNQ3Bjd3plVDlXRlZRQ3AxaTQ1alhqcTYwd08yMXJlazZnU0dhdXpjUQ?oc=5",
+      "publisher": "Global Advisory Experts",
+      "publisherUrl": "https://globaladvisoryexperts.com",
+      "published": "2026-11-24T08:48:04.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-24T13:56:24.866Z"
+    },
+    {
+      "id": "6a0f381f9a3d",
+      "title": "Meta smart glasses in the UAE: When does hands-free recording become a privacy concern?",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQS1hpNmZmcm4za1NWcXV3WlBUd3BjQ1V3emp5d0ZMNVNVR0dIMWZzd3JQQ0ZnMF92QV9vV1hHSmZKT3VCakhFUjAzNi1tUFhkZnBUa01fLWdRSko0cWR0VXJLcEpwRmFJcEphOXVNNDVkRHpYeXpVTEhsb3JPMi1jbUxvM2I4YkdPZkpyb0lEaWFqTVd5Z3BQMXA4LTZUM1lLTG4yWWotVdIBpwFBVV95cUxQS1hpNmZmcm4za1NWcXV3WlBUd3BjQ1V3emp5d0ZMNVNVR0dIMWZzd3JQQ0ZnMF92QV9vV1hHSmZKT3VCakhFUjAzNi1tUFhkZnBUa01fLWdRSko0cWR0VXJLcEpwRmFJcEphOXVNNDVkRHpYeXpVTEhsb3JPMi1jbUxvM2I4YkdPZkpyb0lEaWFqTVd5Z3BQMXA4LTZUM1lLTG4yWWotVQ?oc=5",
+      "publisher": "Gulf News",
+      "publisherUrl": "https://gulfnews.com",
+      "published": "2026-11-24T04:57:02.000Z",
+      "description": "",
+      "countries": [
+        "AE"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-24T13:56:24.866Z"
+    },
+    {
+      "id": "cf229507fa41",
+      "title": "NDPC Projects 500,000 Jobs In Data Protection Sector, Says Nigeria Wins Global Award",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNem9MU0I2eHdGQlVaYU44N1VZTXZpZ3NVRHdGMXRBQm1xT05EUVJGRnlnWmh0RTB1SE02VFBkUTVSd2pNRkVmSGZ4NDZvbWFidHJsYV9QRF9VNFNPNEdPWnN4VXBlNzBBc0RiRXYxSmtwZE5CaHZoeHB2YWIzVG1SUkUwV2k5QXlsR1pIa280dTRTZF9SSExnVUdfblVHOTk3VGhzQnQxeUkwQQ?oc=5",
+      "publisher": "TVC News",
+      "publisherUrl": "https://www.tvcnews.tv",
+      "published": "2026-11-23T18:49:00.000Z",
+      "description": "",
+      "countries": [
+        "QA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-24T13:56:24.866Z"
+    },
     {
       "id": "e029663bb23a",
       "title": "Personal data of over 8,000 Samsung Securities clients breached in cyberattack",
@@ -30,6 +72,20 @@
       ],
       "category": "news",
       "firstSeen": "2026-11-23T13:10:19.163Z"
+    },
+    {
+      "id": "a66fd1748f2d",
+      "title": "Gaming Data Protection UAE: PDPL Compliance Guide",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQelpjS0N5Rk1mRUYyYVhTVVJEdWxEd0V5OGZ3WDFpSEtVNXFRSWVBYW9yRTc0a3o3NXU3M3FhV2JjdFBBTDdUQzJqM1czZmh0cC1acjZqWHRHZmxYbWpSWkVuZmVRMy1PcjN3cl9VNW9NOFNtcHdOMk9wc1dJUHNiOVc5a2tfWDZLaW5fMXo2eUs?oc=5",
+      "publisher": "Global Advisory Experts",
+      "publisherUrl": "https://globaladvisoryexperts.com",
+      "published": "2026-11-23T00:47:39.000Z",
+      "description": "",
+      "countries": [
+        "AE"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-24T13:56:24.866Z"
     },
     {
       "id": "3d1b06749d12",
