@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T01:40:41.998Z",
+  "generatedAt": "2026-11-25T09:37:05.186Z",
   "retentionDays": 120,
   "categories": {
     "projects": "Grid projects & awards",
@@ -398,6 +398,180 @@
   ],
   "count": 3000,
   "items": [
+    {
+      "id": "fd30e9ebe1b6",
+      "title": "UK-EU ETS linkage set to ease CBAM requirements for metal packaging manufacturers, says MPMA",
+      "url": "https://www.alcircle.com/news/uk-eu-emissions-trading-agreement-expected-to-reduce-costs-and-paperwork-for-metal-packaging-sector-122099",
+      "publisher": "AL Circle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-11-25T08:30:00.000Z",
+      "description": "",
+      "categories": [
+        "policy"
+      ],
+      "regions": [
+        "UK & Ireland",
+        "Europe"
+      ],
+      "markets": [
+        "Europe"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-25T09:37:04.168Z",
+      "score": 0
+    },
+    {
+      "id": "c7a63cfbfe1e",
+      "title": "AKFA Aluminium equips new Kentucky plant with 45MN Presezzi extrusion press",
+      "url": "https://www.alcircle.com/news/akfa-aluminium-equips-new-kentucky-plant-with-45mn-presezzi-extrusion-press-122095",
+      "publisher": "AL Circle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-11-25T07:00:00.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-25T09:37:04.168Z",
+      "score": 0
+    },
+    {
+      "id": "6b1322839776",
+      "title": "Korea's battery foil build-out meets the ESS (energy-storage system) turn",
+      "url": "https://www.alcircle.com/news/korea-s-battery-foil-build-out-meets-the-ess-energy-storage-system-turn-122097",
+      "publisher": "AL Circle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-11-25T06:45:00.000Z",
+      "description": "",
+      "categories": [
+        "demand"
+      ],
+      "regions": [
+        "East Asia"
+      ],
+      "markets": [
+        "Asia"
+      ],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-25T09:37:04.168Z",
+      "score": 0
+    },
+    {
+      "id": "4d77e60c79a8",
+      "title": "LME tightens aluminium trading rules as dominant stockholders face new limits",
+      "url": "https://www.alcircle.com/news/lme-tightens-aluminium-trading-rules-as-dominant-stockholders-face-new-limits-122096",
+      "publisher": "AL Circle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-11-25T06:28:00.000Z",
+      "description": "",
+      "categories": [
+        "aluminium",
+        "metals"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-25T09:37:04.168Z",
+      "score": 0
+    },
+    {
+      "id": "9d96d8d8c35b",
+      "title": "Inventory destocking support fails to halt aluminium price breakdown short term weak consolidation pattern persists",
+      "url": "https://www.alcircle.com/news/press-release/inventory-destocking-support-fails-to-halt-aluminium-price-breakdown-short-term-weak-consolidation-pattern-persists-122094",
+      "publisher": "AL Circle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-11-25T06:00:00.000Z",
+      "description": "",
+      "categories": [
+        "aluminium"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-25T09:37:04.168Z",
+      "score": 0
+    },
+    {
+      "id": "0562e5e72dc1",
+      "title": "LME aluminium cash bid falls $81.50 as Asian reference price drops 3.1%",
+      "url": "https://www.alcircle.com/news/lme-aluminium-cash-bid-falls-81-50-as-asian-reference-price-drops-3-1-122093",
+      "publisher": "AL Circle",
+      "publisherUrl": "https://www.alcircle.com",
+      "published": "2026-11-25T05:15:00.000Z",
+      "description": "",
+      "categories": [
+        "aluminium",
+        "metals"
+      ],
+      "regions": [],
+      "markets": [],
+      "companies": [],
+      "actor": null,
+      "stage": null,
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-25T09:37:04.168Z",
+      "score": 0
+    },
+    {
+      "id": "735f565725c9",
+      "title": "Saudi Energy receives bids for synchronous condensers at Al Leeth PV and Khushaybi PV 380kV substations, SaudiGulf Projects reports",
+      "url": "https://gcctendernews.com/article/saudi-energy-bids-synchronous-condensers-al-leeth-khushaybi-pv-380kv-substations/",
+      "publisher": "GCC Tender News",
+      "publisherUrl": "https://gcctendernews.com",
+      "published": "2026-11-25T04:34:42.000Z",
+      "description": "SaudiGulf Projects reported on 24 November that Saudi Energy has received bids to supply and install synchronous condensers at the Al Leeth PV and Khushaybi PV 380kV bulk supply point substations, on an EPC basis.",
+      "categories": [
+        "projects",
+        "tenders",
+        "demand"
+      ],
+      "regions": [
+        "Saudi"
+      ],
+      "markets": [
+        "Middle East"
+      ],
+      "companies": [
+        "Saudi Energy (SEC)"
+      ],
+      "actor": null,
+      "stage": "Tender",
+      "value": null,
+      "lang": "en",
+      "deadline": null,
+      "firstSeen": "2026-11-25T09:37:04.168Z",
+      "score": 7,
+      "similar": 1
+    },
     {
       "id": "63ce3dbaf5dc",
       "title": "LME Poised to Accept Aluminum from New Indonesian Smelter",
@@ -1579,7 +1753,7 @@
       "publisher": "Utility Dive",
       "publisherUrl": "https://www.utilitydive.com",
       "published": "2026-11-24T16:11:04.000Z",
-      "description": "Separately, the utility recently received the first small modular reactor construction permit from the NRC for a BWRX-300 reactor at the Clinch River Site in Oak Ridge, Tennessee, but it has &ldquo;not yet decided&rdquo; whether to build it.",
+      "description": "Separately, the utility recently received the first small modular reactor construction permit from the NRC for a BWRX-300 reactor at the Clinch River Site in Oak Ridge, Tennessee but it has &ldquo;not yet decided whether to construct a reactor,&rdquo; it said.",
       "categories": [
         "demand"
       ],
@@ -1644,7 +1818,8 @@
       "lang": "en",
       "deadline": null,
       "firstSeen": "2026-11-24T23:56:53.117Z",
-      "score": 4
+      "score": 4,
+      "dupOf": "735f565725c9"
     },
     {
       "id": "e8f6463e250e",
@@ -55910,7 +56085,7 @@
       "deadline": null,
       "firstSeen": "2026-11-13T17:14:37.665Z",
       "score": 0,
-      "similar": 6
+      "similar": 5
     },
     {
       "id": "d2b1e307dfb3",
@@ -63169,8 +63344,7 @@
       "lang": "en",
       "deadline": null,
       "firstSeen": "2026-11-12T17:37:42.259Z",
-      "score": 3,
-      "similar": 1
+      "score": 3
     },
     {
       "id": "0d62b797cc68",
@@ -76809,8 +76983,7 @@
       "lang": "en",
       "deadline": null,
       "firstSeen": "2026-11-17T01:10:48.662Z",
-      "score": 0,
-      "similar": 1
+      "score": 0
     },
     {
       "id": "bdede5c9aabc",
@@ -77329,181 +77502,6 @@
       "deadline": null,
       "firstSeen": "2026-11-10T12:44:26.773Z",
       "score": 3
-    },
-    {
-      "id": "57e268cfff56",
-      "title": "​Norway Halts Power Grid Reservations for New Data Centres Amid Transmission Strain",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQYkEwM3dCUlA5ZEdzc3EyaU9PTThZSHp4cGNUWlZqZ3dJbF90QlNodjM2bVd2NHRPdU5odnBhZ0tnejlwYVhfd3lvMExSYTdMRVZjcUdOdGNxY00xVXRUdFJZZTZjVHFfT21KNEZaSDBVRTAyYTNmeElNYUFpRkd1YS1VYXhTQXY4OEFzQXc4TUVQVzZBcEpjbGROOVRjcEEzcEc0?oc=5",
-      "publisher": "The 420.in",
-      "publisherUrl": "https://the420.in",
-      "published": "2026-11-10T05:21:32.000Z",
-      "description": "",
-      "categories": [
-        "projects",
-        "demand"
-      ],
-      "regions": [
-        "Nordics & Eastern Europe"
-      ],
-      "markets": [
-        "Europe"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 0
-    },
-    {
-      "id": "63a307ef5ca2",
-      "title": "Century Aluminum Co (CENX) (Q3 2026) Earnings Call Highlights: Record Sales Near $1 Billion as ...",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxONjBiU2lpQkJzb0FCRWZORE50aHJGUGtLRWlISWZoTExHR1p1VE4yRGJVQk91N3VESllGUGp2eFM3NXlhS3R1a2NoYlB3VE1tUHlGaVhSNXZpQ0ZCUGc2YTNpY1pyUDlXYUtCUzdKSUd0Z3gwZWxzVTE4aWt5aUFua2pYWHdOU1FhcTR5M3BXQWxJNldoZHJV?oc=5",
-      "publisher": "Yahoo Finance",
-      "publisherUrl": "https://finance.yahoo.com",
-      "published": "2026-11-10T05:12:47.000Z",
-      "description": "",
-      "categories": [
-        "aluminium"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": "$1 Billion",
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 1,
-      "similar": 1
-    },
-    {
-      "id": "63e36d94f2ca",
-      "title": "NHPC Invites Bids for 800 MW BESS Projects Linked To 1,200 MW Jalaun Solar Park In Uttar Pradesh",
-      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPcUlVOFBUekpiRHViUUxRa19YSVlKQnU4Y0RHdkZTbnpVZ25IbktRVGFIZFRKc2RUSGpoSXdibU9odE9uWXFTSHB1S08zcy1OZ1R0clg2WU5KNXl3dnF3RWduYVNaWkhGS2N0T1pqa0FqUzdOclozdEV4NUhfMEk0SnAxSzhZaUExWEVTVkxMUE9GdUptajZZWU8xZWlXWVZsUFVIVW4tRnFWQjlXS2hGVmRwdmFrdmwzXzU3TkZuNjRkVl8yeXNxVXBINk8?oc=5",
-      "publisher": "SolarQuarter",
-      "publisherUrl": "https://solarquarter.com",
-      "published": "2026-11-10T05:05:15.000Z",
-      "description": "",
-      "categories": [
-        "tenders",
-        "demand"
-      ],
-      "regions": [
-        "India"
-      ],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": "Tender",
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-11T14:16:13.485Z",
-      "score": 2
-    },
-    {
-      "id": "0b4e72c61551",
-      "title": "World Bank flags delays in Pakistan's $425 million power transmission project",
-      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNU2xXaVBHTXNVMmdSVktWQklybmk4UVV2eTlpZ1hqWURaMnJaMGNXOVRqRGVkNkppSmJYbEdmMldBaVFPakFSQkRYRDZEOFNFNHB0emYzbTBRTjNHVlV3OFBJZjRqTTBiYTVSZ1hzYUlXWDhYam1YZF8zTVhFaVhrRlktYWlCRFd2SC04UTA5YXZNbmh4X1Q2YU9iMEpBa2N0VHg0V1VvQzd1OVd1M05GVjlFYVZnS21wMFlaY2FzSDFvRmtLVUtF?oc=5",
-      "publisher": "Profit by Pakistan Today",
-      "publisherUrl": "https://profit.pakistantoday.com.pk",
-      "published": "2026-11-10T04:33:47.000Z",
-      "description": "",
-      "categories": [
-        "projects"
-      ],
-      "regions": [
-        "South & Central Asia"
-      ],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": "$425 million",
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 1,
-      "dupOf": "745c3e01977d"
-    },
-    {
-      "id": "909d25004085",
-      "title": "Smooth operation of the transmission grid.",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE15eDk1MmduRFZ0eGFPLWljYlBtOW1sSEtkWUFXV3RRSFZmZExqTlFwQUtQc2I5SjN1bTlkX1FGeUZXV21sSm9qb1F6MlJwUlZIU1hXd25sSERzaTZhbTEyYk5ISnVCT1g4M0lFVlAzS0dfLUk4?oc=5",
-      "publisher": "Vietnam.vn",
-      "publisherUrl": "https://www.vietnam.vn",
-      "published": "2026-11-10T04:12:09.000Z",
-      "description": "",
-      "categories": [
-        "projects"
-      ],
-      "regions": [],
-      "markets": [
-        "Asia"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-15T10:49:18.876Z",
-      "score": 0
-    },
-    {
-      "id": "eeaeb2dc61ea",
-      "title": "Pre-bid tie-up for transmission line package TL02",
-      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNVW9nLXdnT3h6SE5YTnBMZWZRR2hNclo1WnFSQ2UtN193WVdrNTlPcllVVEFJYVQySXhsbGRQelNZRnBxT29nbHg2UmQtakQ0M2tVT21OQl9WMkJGTzc5ZFF1TE9kdDhaMVJCN3o5RWlFWWdiaXI3RW1FNlE2TzZTMmlGWTd5UkpwQzg3bzVR?oc=5",
-      "publisher": "Global Transmission Report",
-      "publisherUrl": "https://globaltransmission.info",
-      "published": "2026-11-10T03:48:47.000Z",
-      "description": "",
-      "categories": [
-        "projects",
-        "tenders"
-      ],
-      "regions": [],
-      "markets": [
-        "Europe"
-      ],
-      "companies": [],
-      "actor": null,
-      "stage": "Tender",
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-04T17:14:19.145Z",
-      "score": 5
-    },
-    {
-      "id": "fbe814d01d8c",
-      "title": "LME Lens: Copper bounces back as oil falls",
-      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQdXgxbldUbU9hZ09sUVlBbE5TMzhzLUJvRHh0ZlBWemY4dXZpS1dCTklEVkRvRkxuNGlLZFhxMUh6NVVKM1hkM1hZc0tGQWRZUjdWb0tDUnVpcWNHZkVfR05DVWd3NEtkdXY2WWZFVkJBRnFNWFdtbHdYY0pFeE5lcTU5am9QOWl0U1FxcVBBOTg?oc=5",
-      "publisher": "Mining News Net",
-      "publisherUrl": "https://www.miningnews.net",
-      "published": "2026-11-10T03:41:51.000Z",
-      "description": "",
-      "categories": [
-        "metals"
-      ],
-      "regions": [],
-      "markets": [],
-      "companies": [],
-      "actor": null,
-      "stage": null,
-      "value": null,
-      "lang": "en",
-      "deadline": null,
-      "firstSeen": "2026-11-10T12:44:26.773Z",
-      "score": 0
     }
   ]
 }
