@@ -9,6 +9,7 @@ import { Journal, Ledger, Statements, TrialBalance, Vat } from "./pages/Reports"
 import Accounts from "./pages/Accounts";
 import Settings from "./pages/Settings";
 import Parties from "./pages/Parties";
+import Privacy from "./pages/Privacy";
 
 const NAV: [string, TKey, string][] = [
   ["dashboard", "dashboard", "◧"],
@@ -56,6 +57,7 @@ export default function App() {
       case "vat": return <Vat />;
       case "accounts": return <Accounts />;
       case "settings": return <Settings />;
+      case "privacy": return <Privacy />;
       default: return <Dashboard go={go} />;
     }
   })();
@@ -74,7 +76,7 @@ export default function App() {
             </a>
           ))}
         </nav>
-        <div className="sidebar-foot">{t("tagline")}</div>
+        <div className="sidebar-foot">{t("tagline")}<br /><a href="#/privacy">{lang === "ar" ? "الخصوصية والشروط" : "Privacy & terms"}</a></div>
       </aside>
       <main>
         <header className="topbar no-print">

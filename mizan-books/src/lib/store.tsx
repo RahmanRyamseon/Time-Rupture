@@ -66,7 +66,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [books, setBooks] = useState<Books>(() => emptyBooks(newCompany()));
   const [period, setPeriod] = useState<Period>(() => financialYear(1, todayISO()));
-  const saveTimer = useRef<number | undefined>(undefined);
+  const channel = useRef<BroadcastChannel | null>(null);
 
   // initial load
   useEffect(() => {
@@ -102,16 +102,31 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setOcrEngine(settings.ocrEngine ?? "auto");
   }, [settings, ready]);
 
+  // Save at once (no debounce) so closing the tab right after posting loses nothing,
+  // and tell other open tabs so they reload instead of overwriting these changes.
   const persist = useCallback((b: Books) => {
-    window.clearTimeout(saveTimer.current);
-    saveTimer.current = window.setTimeout(() => {
-      set(kBooks(b.company.id), b);
-      setCompanies((list) => {
-        const next = list.map((c) => (c.id === b.company.id ? b.company : c));
-        set(K_COMPANIES, next);
-        return next;
+    set(kBooks(b.company.id), b)
+      .then(() => channel.current?.postMessage(b.company.id))
+      .catch((err) => {
+        console.error(err);
+        alert("Could not save to this browser (storage full or blocked). Download a backup now. / تعذر الحفظ في المتصفح – نزّل نسخة احتياطية الآن.");
       });
-    }, 250);
+    setCompanies((list) => {
+      const next = list.map((c) => (c.id === b.company.id ? b.company : c));
+      set(K_COMPANIES, next);
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    if (typeof BroadcastChannel === "undefined") return;
+    const ch = new BroadcastChannel("mizan-books");
+    channel.current = ch;
+    ch.onmessage = async (ev: MessageEvent<string>) => {
+      const fresh = await get<Books>(kBooks(ev.data));
+      if (fresh) setBooks((cur) => (cur.company.id === ev.data ? migrateBooks(fresh) : cur));
+    };
+    return () => ch.close();
   }, []);
 
   const update = useCallback((fn: (b: Books) => Books) => {

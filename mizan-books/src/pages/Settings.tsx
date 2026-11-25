@@ -26,6 +26,7 @@ export default function Settings() {
     try {
       const data = JSON.parse(await f.text()) as Books;
       if (data.version !== 1 || !data.company?.id || !Array.isArray(data.entries) || !Array.isArray(data.accounts)) throw new Error("Not a Mizan backup file");
+      if (companies.some((x) => x.id === data.company.id) && !confirm(t("restoreOverwrite"))) return;
       await createCompany(data.company, data);
       setMsg(`✓ ${data.company.name}`);
     } catch (e) {

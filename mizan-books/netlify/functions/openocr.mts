@@ -32,4 +32,8 @@ export default async (req: Request) => {
   }
 };
 
-export const config: Config = { path: "/api/openocr", method: ["GET", "POST"] };
+export const config: Config = {
+  path: "/api/openocr",
+  method: ["GET", "POST"],
+  rateLimit: { windowLimit: 60, windowSize: 60, aggregateBy: ["ip", "domain"] },
+};

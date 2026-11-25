@@ -103,4 +103,9 @@ export default async (req: Request) => {
   }
 };
 
-export const config: Config = { path: "/api/extract", method: ["GET", "POST"] };
+// Per-visitor cap so nobody can script the endpoint and burn the site's AI credits.
+export const config: Config = {
+  path: "/api/extract",
+  method: ["GET", "POST"],
+  rateLimit: { windowLimit: 20, windowSize: 60, aggregateBy: ["ip", "domain"] },
+};
