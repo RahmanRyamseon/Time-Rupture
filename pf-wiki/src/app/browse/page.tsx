@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { BrowseClient } from "./BrowseClient";
 import { DataDisclaimer } from "@/components/DataDisclaimer";
 import { PROBLEMS } from "@/data/problems";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const title = "Browse All PF Problems";
 const description = "Every Provident Fund problem in PF Wiki, searchable and filterable by category.";
@@ -52,11 +54,11 @@ export default function BrowsePage() {
     <div className="flex flex-col gap-8">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbListJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(itemListJsonLd) }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-foreground/50">
         <Link href="/" className="hover:underline">
@@ -68,7 +70,9 @@ export default function BrowsePage() {
         <h1 className="text-2xl font-bold tracking-tight">Browse all PF problems</h1>
         <p className="mt-1 text-foreground/60">Search or filter by category to find your issue.</p>
       </div>
-      <BrowseClient />
+      <Suspense fallback={null}>
+        <BrowseClient />
+      </Suspense>
       <DataDisclaimer />
     </div>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { CONTACT_EMAIL, SECURITY_LAST_UPDATED } from "@/lib/legal";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const title = "Security Information";
 const description = `The technical and organizational measures ${SITE_NAME} relies on, and how to report a security issue.`;
@@ -36,7 +37,7 @@ export default function SecurityPage() {
     <div className="flex flex-col gap-8">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbListJsonLd) }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-foreground/50">
         <Link href="/" className="hover:underline">

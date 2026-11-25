@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { CONTACT_EMAIL, COOKIE_LAST_UPDATED } from "@/lib/legal";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const title = "Cookie Policy";
 const description = `Which cookies ${SITE_NAME} uses, why, and how to control them.`;
@@ -64,7 +65,7 @@ export default function CookiePolicyPage() {
     <div className="flex flex-col gap-8">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbListJsonLd) }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-foreground/50">
         <Link href="/" className="hover:underline">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { OPERATOR_TYPE, CONTACT_EMAIL, PRIVACY_LAST_UPDATED } from "@/lib/legal";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const title = "Privacy Policy";
 const description = `How ${SITE_NAME} collects, uses, and protects information, and your rights under Indian law.`;
@@ -37,7 +38,7 @@ export default function PrivacyPolicyPage() {
     <div className="flex flex-col gap-8">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbListJsonLd) }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-foreground/50">
         <Link href="/" className="hover:underline">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { OFFICIAL_LINKS } from "@/data/officialLinks";
 import { DataDisclaimer } from "@/components/DataDisclaimer";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const title = "Official EPFO Links";
 const description = "Direct links to the real, official EPFO portals, grievance system, and apps.";
@@ -37,7 +38,7 @@ export default function OfficialLinksPage() {
     <div className="flex flex-col gap-8">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbListJsonLd) }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-foreground/50">
         <Link href="/" className="hover:underline">

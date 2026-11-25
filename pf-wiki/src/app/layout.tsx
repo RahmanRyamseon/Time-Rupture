@@ -7,6 +7,7 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { Analytics } from "@/components/Analytics";
 import { AdSenseScript } from "@/components/AdSenseScript";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -154,7 +155,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <AdSenseScript />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(websiteJsonLd) }}
         />
       </body>
     </html>

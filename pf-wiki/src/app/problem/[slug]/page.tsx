@@ -9,6 +9,7 @@ import { ProblemCard } from "@/components/ProblemCard";
 import { LinkedText } from "@/components/LinkedText";
 import { stripLinks } from "@/lib/richText";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 export function generateStaticParams() {
   return PROBLEMS.map((p) => ({ slug: p.slug }));
@@ -123,19 +124,19 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
     <div className="flex flex-col gap-8">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbListJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(articleJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(howToJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(faqJsonLd) }}
       />
 
       <div className="flex flex-col gap-3">
