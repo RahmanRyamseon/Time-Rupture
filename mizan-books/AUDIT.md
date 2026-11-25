@@ -14,7 +14,7 @@ month; the public functions face the whole internet.
 
 | # | Area | Finding | Evidence | Fix |
 |---|---|---|---|---|
-| 1 | Security – High | `/api/extract` had no rate limit; anyone could script it and spend the site's AI credits | 6 rapid POSTs all processed | Netlify `rateLimit` 20/min per IP (extract), 60/min (openocr) |
+| 1 | Security – High | `/api/extract` had no rate limit; anyone could script it and spend the site's AI credits | 6 rapid POSTs all processed | Netlify `rateLimit` 20/min per IP (extract), 60/min (openocr) deployed in code. **Not confirmed live:** 90 test requests over ~2 min still returned 200 (the test machine's proxy may spread requests over several IPs). Check in Netlify → Logs/Security, or see open item 14 |
 | 2 | Validity – Data loss | Saves were debounced 250 ms: closing the tab right after posting could lose the entry | `store.tsx` persist timer | Save immediately |
 | 3 | Validity – Data loss | Two open tabs overwrote each other's books (last write wins) | no cross-tab sync | BroadcastChannel: other tabs reload after each save |
 | 4 | Validity – Data loss | Restoring a backup silently replaced newer books of the same company | `Settings.tsx` restore | Confirm before replacing |
@@ -44,6 +44,10 @@ function inputs validated (kind, media type, size), AI off by default.
     (needs your Google account); a custom domain (e.g. a `.bh`) would rank and convert better than
     `*.netlify.app`. A one-page Arabic landing description would help Arabic search.
 
-Verdict: healthy after these fixes; do 9 and 11 next.
+14. **AI credit exposure until item 1 is confirmed (Security – High).** If 429s never appear, either
+    remove the Anthropic key / AI Gateway access when AI reading isn't needed, or add a daily cap with
+    Netlify Blobs (small change, new dependency).
+
+Verdict: much safer after these fixes; confirm 1/14 first, then 9 and 11.
 Not checked: DNS/email (SPF/DMARC – no custom domain), the OpenOCR server (not deployed),
 accessibility (WCAG) beyond basics, load on the Netlify Functions beyond the rate limit.
