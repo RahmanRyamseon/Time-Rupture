@@ -1,8 +1,22 @@
 {
-  "generatedAt": "2026-11-25T13:10:42.925Z",
+  "generatedAt": "2026-11-26T12:50:38.072Z",
   "retentionDays": 120,
-  "count": 46,
+  "count": 47,
   "items": [
+    {
+      "id": "6051e6900706",
+      "title": "Hackers access personal data of 11,000 people in Denmark",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNRDV1MXdjWkFmRmNkWk92ajBqX01EZGpzdEEwQXh1MVFHQVVzdl9ONzV1V2VHQldMZm9kd3Z3dXdlYXRFcTRaa0NtSGdMVW1TZk9hSHhhMGVEZ2pLTDRRWWpyYmdjZnJBcU1Na1VNcXJiTHkxZ1ZuaGY5SjE0bGhlb196R3djNzQ?oc=5",
+      "publisher": "Punch Newspapers",
+      "publisherUrl": "https://punchng.com",
+      "published": "2026-11-26T09:53:07.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-26T12:50:38.070Z"
+    },
     {
       "id": "c7d15e10ef73",
       "title": "Omans Personal Data Law: Compliance Guide",
