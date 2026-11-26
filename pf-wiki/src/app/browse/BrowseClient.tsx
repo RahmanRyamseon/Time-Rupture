@@ -1,13 +1,17 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ProblemCard } from "@/components/ProblemCard";
 import { PROBLEMS } from "@/data/problems";
 import { CATEGORIES } from "@/data/categories";
 import { searchProblemsDetailed } from "@/lib/search";
 
 export function BrowseClient() {
-  const [query, setQuery] = useState("");
+  // Pre-fills from ?q=, which is what the homepage's SearchAction schema
+  // (layout.tsx) promises Google's sitelinks search box will land on.
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const matches = useMemo(() => {

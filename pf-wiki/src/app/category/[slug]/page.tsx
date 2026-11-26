@@ -6,6 +6,7 @@ import { problemsByCategory } from "@/data/problems";
 import { ProblemCard } from "@/components/ProblemCard";
 import { DataDisclaimer } from "@/components/DataDisclaimer";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ slug: c.slug }));
@@ -76,11 +77,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     <div className="flex flex-col gap-8">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbListJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(itemListJsonLd) }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-foreground/50">
         <Link href="/" className="hover:underline">

@@ -138,8 +138,3 @@ export function searchProblemsDetailed(problems: ProblemEntry[], query: string):
 
   return results.sort((a, b) => b.score - a.score);
 }
-
-/** Back-compat convenience wrapper — most callers just want the ranked entries. */
-export function searchProblems(problems: ProblemEntry[], query: string): ProblemEntry[] {
-  return searchProblemsDetailed(problems, query).map((r) => r.entry);
-}
