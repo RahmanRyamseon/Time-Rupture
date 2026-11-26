@@ -6,7 +6,7 @@ import { gratuity } from "./gratuity.js";
 // guide cites official sources and shows the date it was last checked.
 
 const COUNTRY_IDS = ["uae", "saudi", "qatar", "kuwait", "oman", "bahrain"];
-const state = { guides: [], categories: [], tips: [], countries: [], checked: "", byId: new Map(), community: null, sources: null, rates: null, legal: null, site: {} };
+const state = { guides: [], categories: [], tips: [], countries: [], checked: "", byId: new Map(), community: null, sources: null, rates: null, legal: null, site: {}, videos: [] };
 const $ = (sel, root = document) => root.querySelector(sel);
 const main = $("#main");
 const side = $("#side");
@@ -69,7 +69,7 @@ async function loadJSON(path) {
 
 async function init() {
   try {
-    const [guides, countries, community, sources, rates, legal, site] = await Promise.all([
+    const [guides, countries, community, sources, rates, legal, site, videos] = await Promise.all([
       loadJSON("/data/guides.json"),
       loadJSON("/data/countries.json"),
       loadJSON("/data/community.json"),
@@ -77,9 +77,11 @@ async function init() {
       loadJSON("/data/rates.json").catch(() => null),
       loadJSON("/data/legal.json"),
       loadJSON("/data/site.json").catch(() => ({})),
+      loadJSON("/data/videos.json").catch(() => ({ videos: [] })),
     ]);
     Object.assign(state, { guides: guides.guides, categories: guides.categories, tips: guides.tips, countries: countries.countries, checked: countries.checked });
     Object.assign(state, { community, sources, rates, legal, site });
+    state.videos = [...videos.videos].sort((a, b) => b.date.localeCompare(a.date));
     for (const g of state.guides) state.byId.set(g.id, g);
   } catch (err) {
     main.innerHTML = `<p class="empty">సమాచారం లోడ్ కాలేదు. కాసేపాగి మళ్లీ ప్రయత్నించండి.</p>`;
@@ -110,6 +112,7 @@ function setupChrome() {
   $("#nav2").innerHTML = state.countries
     .map((c) => `<li><a href="/c/${c.id}" data-route="c/${c.id}">${c.flag} ${esc(c.name)}</a></li>`)
     .concat([
+      `<li><a href="/videos" data-route="videos">📺 వీడియోలు</a></li>`,
       `<li><a href="/g/community" data-route="g/community">🎉 తెలుగు సమాజం</a></li>`,
       `<li><a href="/g/gulf-life" data-route="g/gulf-life">🧭 గల్ఫ్ అనుభవాలు</a></li>`,
       `<li><a href="/updates" data-route="updates">📢 అధికారిక సమాచారం</a></li>`,
@@ -186,6 +189,7 @@ function route() {
     updates: renderUpdates,
     board: () => (arg ? renderBoard(arg) : renderBoards()),
     sources: renderSources,
+    videos: renderVideos,
     search: () => renderSearch(decodeURIComponent(arg || "")),
     about: () => renderLegal("about"),
     terms: () => renderLegal("terms"),
@@ -226,6 +230,8 @@ function renderHome() {
       <p>ఏజెంట్ మోసాల నుంచి జీతం ఫిర్యాదుల వరకు, గ్రాట్యుటీ లెక్క నుంచి ఇంటికి తిరుగు ప్రయాణం వరకు. ప్రతి గైడ్ అధికారిక మూలాలతో, సరిచూసిన తేదీతో.</p>
       <div class="intro-cta"><a class="btn" href="/g/job-offer">🔍 ఉద్యోగ ఆఫర్ సరిచూడండి</a><a class="btn sos-btn" href="/t/trouble">🆘 సమస్యలో ఉన్నారా?</a></div>
     </section>
+
+    ${state.videos.length ? `<section class="block">${blockHead("📺 కొత్త వీడియోలు", "/videos", "blue")}<div class="reel-grid">${state.videos.slice(0, 3).map(videoHTML).join("")}</div></section>` : ""}
 
     <section class="block">${blockHead("అంశాల వారీగా", null)}
       <div class="cat-grid">${state.categories
@@ -289,6 +295,7 @@ function renderGuide(id) {
         <div><h1>${esc(g.title)}</h1><p class="guide-en" lang="en">${esc(g.en)}</p></div></div>
       <p class="checked-line">✓ చివరిగా సరిచూసినది: <strong>${shortDate(g.checked)}</strong> · మూలాలు కింద ఉన్నాయి</p>
       <p class="lede">${esc(g.summary)}</p>
+      ${state.videos.filter((v) => v.guide === id).map((v) => `<div class="reel-grid one">${videoHTML(v, false)}</div>`).join("")}
       <div class="guide-body">${g.html}</div>
       ${g.calculator ? `<section class="calc" id="calc"></section>` : ""}
       <section class="box"><h2>అధికారిక మూలాలు</h2><ul class="sources-list">${g.sources
@@ -305,6 +312,24 @@ function renderGuide(id) {
     title: "ప్రశ్నలు & అనుభవాలు",
     placeholder: "ఈ విషయంపై మీ ప్రశ్న లేదా అనుభవం రాయండి… (వ్యక్తిగత వివరాలు పెట్టవద్దు)",
   });
+}
+
+// ---- videos (reels) -------------------------------------------------------------------------------
+function videoHTML(v, withGuide = true) {
+  const g = state.byId.get(v.guide);
+  const ext = [v.youtube && `<a href="${esc(v.youtube)}" target="_blank" rel="noopener">▶️ YouTube</a>`, v.instagram && `<a href="${esc(v.instagram)}" target="_blank" rel="noopener">📸 Instagram</a>`]
+    .filter(Boolean)
+    .join(" · ");
+  return `<figure class="reel"><video controls playsinline preload="none" poster="${esc(v.poster)}" src="${esc(v.file)}" aria-label="${esc(v.title)}"></video>
+    <figcaption><strong>${esc(v.title)}</strong><small>${shortDate(v.date)} · ${v.duration} సె.</small>
+    ${withGuide && g ? `<a href="/g/${g.id}">పూర్తి గైడ్: ${esc(g.title)} →</a>` : ""}${ext ? `<span class="reel-ext">${ext}</span>` : ""}</figcaption></figure>`;
+}
+
+function renderVideos() {
+  document.title = "వీడియోలు – Videos | గల్ఫ్ తెలుగు గైడ్";
+  main.innerHTML = `<div class="section-head"><h1>📺 వీడియోలు</h1><span class="count" lang="en">Videos</span></div>
+    <p class="section-note">మా గైడ్ల నుంచి చిన్న వీడియోలు. మీ వాళ్లకు వాట్సాప్‌లో పంపండి.</p>
+    <div class="reel-grid">${state.videos.map(videoHTML).join("") || `<p class="empty">త్వరలో.</p>`}</div>`;
 }
 
 // ---- gratuity calculator ------------------------------------------------------------------------

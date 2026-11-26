@@ -57,7 +57,10 @@ const sourceItem = (s) =>
     s.note ? ` — ${esc(s.note)}` : ""
   }</li>`;
 
-export function buildPages(template, { guides, countries, community, sources, legal = {}, site = {} }) {
+const videoTag = (v) =>
+  `<figure><video controls playsinline preload="none" poster="${esc(v.poster)}" src="${esc(v.file)}" width="270" height="480"></video><figcaption>${esc(v.title)} (${esc(v.en)})</figcaption></figure>`;
+
+export function buildPages(template, { guides, countries, community, sources, legal = {}, site = {}, videos = { videos: [] } }) {
   const pages = [];
   const add = (p) => pages.push(p);
   const nav = `<nav><ul>${guides.categories
@@ -91,7 +94,7 @@ export function buildPages(template, { guides, countries, community, sources, le
       description: `${g.summary} ${g.en_summary}`.slice(0, 300),
       lastmod: g.checked,
       body: `<article><p><a href="/t/${g.cat}">${esc(cat.title)}</a></p><h1>${esc(g.title)}</h1><p lang="en">${esc(g.en)}</p>
-        <p>చివరిగా సరిచూసినది: ${day(g.checked)}</p><p>${esc(g.summary)}</p>${g.html}
+        <p>చివరిగా సరిచూసినది: ${day(g.checked)}</p><p>${esc(g.summary)}</p>${videos.videos.filter((v) => v.guide === g.id).map(videoTag).join("")}${g.html}
         <h2>అధికారిక మూలాలు</h2><ul>${g.sources.map((s) => `<li><a href="${esc(s.url)}" rel="noopener">${esc(s.name)}</a></li>`).join("")}</ul>
         <p lang="en">${esc(g.en_summary)}</p>
         <p>ఇది సాధారణ మార్గదర్శనం మాత్రమే, న్యాయ సలహా కాదు.</p></article>`,
@@ -122,6 +125,14 @@ export function buildPages(template, { guides, countries, community, sources, le
     body: `<h1>అధికారిక సమాచారం</h1><ul>${group("missions").items.map(sourceItem).join("")}</ul>
       <ul>${countries.countries.map((c) => sourceItem({ name: c.labour.name, url: c.labour.url })).join("")}</ul>
       <ul>${group("portals").items.map(sourceItem).join("")}</ul>`,
+  });
+
+  add({
+    path: "/videos",
+    title: "వీడియోలు – Gulf Telugu Guide videos",
+    description: "గల్ఫ్ తెలుగు గైడ్ వీడియోలు: ఏజెంట్ మోసాలు, జీతం ఫిర్యాదులు, గ్రాట్యుటీ — చిన్న తెలుగు వీడియోల్లో.",
+    lastmod: videos.videos.map((v) => v.date).sort().pop(),
+    body: `<h1>📺 వీడియోలు</h1>${videos.videos.map((v) => `${videoTag(v)}<p><a href="/g/${v.guide}">పూర్తి గైడ్</a></p>`).join("")}`,
   });
 
   add({
@@ -165,17 +176,18 @@ async function main() {
   const read = async (f) => JSON.parse(await readFile(join(root, f), "utf8"));
   const template = (await readFile(join(root, "index.html"), "utf8")).replaceAll(OLD_SITE, SITE);
   const data = {};
-  for (const k of ["guides", "countries", "community", "sources", "legal", "site"]) data[k] = await read(`data/${k}.json`);
+  for (const k of ["guides", "countries", "community", "sources", "legal", "site", "videos"]) data[k] = await read(`data/${k}.json`);
 
   await rm(out, { recursive: true, force: true });
   await mkdir(join(out, "data"), { recursive: true });
   for (const f of ["app.js", "store.js", "gratuity.js", "config.js", "style.css"]) await cp(join(root, f), join(out, f));
+  await cp(join(root, "media"), join(out, "media"), { recursive: true });
   await writeFile(join(out, "robots.txt"), (await readFile(join(root, "robots.txt"), "utf8")).replaceAll(OLD_SITE, SITE));
   // Cloudflare Pages settings (Vercel uses vercel.json instead). Pages serves /g/x from g/x.html and,
   // with no 404.html, sends unknown paths to index.html, like the rewrite in vercel.json.
   await writeFile(join(out, "_redirects"), "/s/* / 301\n/story/* / 301\n/saved / 301\n");
-  await writeFile(join(out, "_headers"), "/data/*\n  Cache-Control: public, max-age=0, must-revalidate\n");
-  for (const f of ["guides.json", "countries.json", "community.json", "sources.json", "rates.json", "legal.json", "site.json"])
+  await writeFile(join(out, "_headers"), "/data/*\n  Cache-Control: public, max-age=0, must-revalidate\n/media/*\n  Cache-Control: public, max-age=604800\n");
+  for (const f of ["guides.json", "countries.json", "community.json", "sources.json", "rates.json", "legal.json", "site.json", "videos.json"])
     await cp(join(root, "data", f), join(out, "data", f));
 
   const pages = buildPages(template, data);

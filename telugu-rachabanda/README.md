@@ -51,6 +51,14 @@ Rules for content:
 - `.github/workflows/telugu-rachabanda.yml` runs daily. It runs the tests, refreshes the rupee rates
   (`scripts/rates.mjs`) and checks the page build.
 
+## Adding a video (reel)
+
+1. Put the MP4 (vertical 1080×1920, under 25 MB) and a poster image in `media/`.
+2. Add an entry to `data/videos.json`: `id`, `guide` (the guide it explains), `date`, `title`, `en`,
+   `summary`, `file`, `poster`, `duration`, and, once posted, its `youtube` and `instagram` links.
+3. Run `node scripts/test.mjs` and push to `master`. The site redeploys and shows the video on the
+   home page, on its guide page and at `/videos`.
+
 ## Cloudflare hosting
 
 The repository is connected to a Cloudflare Worker named `time-rupture` (Workers & Pages → Connect

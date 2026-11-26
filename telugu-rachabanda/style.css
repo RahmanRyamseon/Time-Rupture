@@ -499,3 +499,12 @@ main:focus { outline: none; }
 .phrases th, .phrases td { border: 1px solid var(--line, #ddd); padding: 6px 10px; text-align: left; vertical-align: top; }
 .phrases th { background: var(--brand-soft); color: var(--brand); }
 .phrases td:nth-child(2) { color: var(--brand); }
+
+/* Videos (reels) */
+.reel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; margin: 12px 0 20px; }
+.reel-grid.one { grid-template-columns: minmax(0, 300px); }
+.reel { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.reel video { width: 100%; aspect-ratio: 9 / 16; border-radius: 14px; background: #1a237e; object-fit: cover; }
+.reel figcaption { display: flex; flex-direction: column; gap: 4px; font-size: 0.92rem; }
+.reel figcaption small { color: var(--muted, #666); }
+.reel-ext a { font-weight: 700; }

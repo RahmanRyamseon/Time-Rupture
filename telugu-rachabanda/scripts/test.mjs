@@ -41,6 +41,16 @@ for (const c of countries.countries) {
   assert.ok(c.embassies.length && c.embassies.every((u) => missions.includes(u)), `${c.id}: embassies listed in sources.json`);
 }
 
+// ---- videos: each one belongs to a guide and its files exist
+import { existsSync } from "node:fs";
+const videos = read("videos.json").videos;
+for (const v of videos) {
+  assert.ok(guides.guides.some((g) => g.id === v.guide), `video ${v.id}: guide ${v.guide}`);
+  assert.match(v.date, /^\d{4}-\d{2}-\d{2}$/, `video ${v.id}: date`);
+  for (const f of [v.file, v.poster]) assert.ok(existsSync(new URL(`..${f}`, import.meta.url)), `video ${v.id}: ${f} missing`);
+  for (const u of [v.youtube, v.instagram]) if (u) assert.match(u, /^https:\/\//, `video ${v.id}: link`);
+}
+
 // ---- gratuity rules (same function as the calculator in app.js)
 const { gratuity } = await import("../gratuity.js");
 // UAE, Decree-Law 33/2021 Art. 51: 21 days/yr for 5 years, 30 days after; none under 1 year; cap 2 years' pay.
