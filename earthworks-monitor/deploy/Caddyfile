@@ -1,0 +1,11 @@
+{$SITE_DOMAIN} {
+	encode gzip
+	header Strict-Transport-Security "max-age=31536000"
+	# Survey uploads can be several gigabytes; the API enforces its own limits.
+	reverse_proxy frontend:80 {
+		transport http {
+			read_timeout 1h
+			write_timeout 1h
+		}
+	}
+}

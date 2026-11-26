@@ -1,0 +1,26 @@
+# Adds HTTPS in front of the stack for a server on the internet.
+# Used by deploy/install.sh:  docker compose -f docker-compose.yml -f deploy/compose.https.yml up -d
+# Caddy obtains and renews a Let's Encrypt certificate for $SITE_DOMAIN by itself.
+services:
+  frontend:
+    # Not published directly: only Caddy talks to it, over the compose network.
+    ports: !reset []
+
+  caddy:
+    image: caddy:2.8-alpine
+    depends_on:
+      - frontend
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN:?set SITE_DOMAIN in .env}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddydata:/data
+      - caddyconfig:/config
+    restart: unless-stopped
+
+volumes:
+  caddydata:
+  caddyconfig:

@@ -91,7 +91,45 @@ Open http://localhost:8080 and sign in with `DEMO_ANALYST_EMAIL` / `DEMO_ANALYST
 from your `.env`.
 
 For production: set `SEED_DEMO_ON_START=false` and `COOKIE_SECURE=true`, serve behind
-HTTPS, and back up the `dbdata` and `appdata` volumes.
+HTTPS, and back up the `dbdata` and `appdata` volumes. `deploy/install.sh` does all of
+this on a server (next section).
+
+### Deploying to a server
+
+One Linux VM is enough for testing and a first customer: 4 vCPUs, 16 GB RAM, 100 GB
+disk, Ubuntu 22.04/24.04 or Debian 12, x86-64. For data residency pick a GCC region:
+AWS `me-south-1` (Bahrain) or `me-central-1` (UAE), Azure UAE North or Qatar Central,
+Google Cloud `me-central2` (Dammam) or `me-central1` (Doha). Open ports 22, 80 and 443
+in the provider's firewall.
+
+On the server:
+
+```bash
+git clone <this repository> && cd <checkout>/earthworks-monitor
+sudo bash deploy/install.sh
+```
+
+The script installs Docker, adds swap, enables the firewall (SSH and web only), writes
+`.env` with random passwords and `COOKIE_SECURE=true`, builds and starts the stack behind
+Caddy, and installs a nightly backup. With no argument the site is served at
+`https://<server-ip>.sslip.io`, so no domain is needed; to use your own, point a DNS A
+record at the server and run `sudo bash deploy/install.sh monitor.example.com`. Caddy
+gets and renews the Let's Encrypt certificate. The script prints the address and the
+demo sign-ins at the end; rerun it after `git pull` to update (`.env` is kept).
+
+Backups (`deploy/backup.sh`, 02:30 nightly) write a database dump and an archive of the
+survey files to `/var/backups/earthworks`, keeping 7 days. Copy them off the server too
+(e.g. to the provider's object storage); a backup on the same disk does not survive the
+VM. To restore onto a fresh install:
+
+```bash
+C="docker compose -f docker-compose.yml -f deploy/compose.https.yml"
+$C exec -T db pg_restore -U earthworks -d earthworks --clean --if-exists < db-<stamp>.dump
+$C run --rm --no-deps -T --user 0 -v "$PWD:/backup" --entrypoint tar api -xzf /backup/data-<stamp>.tar.gz -C /data
+```
+
+Turn off the demo once real users exist: set `SEED_DEMO_ON_START=false` in `.env` and
+rerun the script.
 
 Create users in the web client (**Users**, analysts only) or from the command line:
 
