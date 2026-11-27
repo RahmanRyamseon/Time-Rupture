@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-26T12:50:38.072Z",
+  "generatedAt": "2026-11-27T12:44:02.902Z",
   "retentionDays": 120,
-  "count": 47,
+  "count": 49,
   "items": [
     {
       "id": "6051e6900706",
@@ -16,6 +16,34 @@
       ],
       "category": "news",
       "firstSeen": "2026-11-26T12:50:38.070Z"
+    },
+    {
+      "id": "8d58bf9f6a89",
+      "title": "Canada pushing controversial bill on personal data access",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPak9sM0FOOTgxb1FMMURzSXVfLUtNS0tjNlFvelNhSVhYZ2Y2SS1tdG4wRXhPcnpUTFcyNC1OYmIwek9rUGYzbV9TdW9MUEFjYTJXQmFyUm5pWnpNTDZRd0hJR2RGYVlaREJXX01QSXVoaHIxS0l3VjhlbGFmbXJxX21SVGtKVE1xZk5QWm12dDhZQXlIR0dKOFVDdTNiUzF1cTVjSmtoemRhSDRuamM2SWZvUTVEQlFfLS1z0gG7AUFVX3lxTE9qT2wzQU45ODFvUUwxRHNJdV8tS01LS2M2UW96U2FJWFhnZjZJLW10bjBFeE9yelRMVzI0LU5iYjB6T2tQZjNtX1N1b0xQQWNhMldCYXJSbmlaek1MNlF3SElHZEZhWVpEQldfTVBJdWhocjFLSXdWOGVsYWZtcnFfbVJUa0pUTXFmTlBabXZ0OFlBeUhHR0o4VUN1M2JTMXVxNWNKa2h6ZGFING5qYzZJZm9RNURCUV8tLXM?oc=5",
+      "publisher": "Gulf News",
+      "publisherUrl": "https://gulfnews.com",
+      "published": "2026-11-25T17:17:01.000Z",
+      "description": "",
+      "countries": [
+        "AE"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-27T12:44:02.900Z"
+    },
+    {
+      "id": "aee2e2abd9e5",
+      "title": "One region, multiple regimes: regulatory divergence in GCC data protection laws",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNSURJNFVvaTlWVkc5bkN0MXNYN2NEM2lWYlYyRTVwbE92U1pURG40bUxyRUJCM3hxZlBvM045VjNqYWs1czlFR3ZGejRGTk5XNmE3V2dOU2sxVW1fLU1CUjhHRDVJVUpYZ0U2M28xRGtUUTZIMldmMDBENVRGTGhNVl9GcWN4NnMxYzJNYVRvV0VmbTNhUGRWT0FacFFxbWcxeGc?oc=5",
+      "publisher": "Stephenson Harwood",
+      "publisherUrl": "https://www.stephensonharwood.com",
+      "published": "2026-11-25T09:36:18.000Z",
+      "description": "",
+      "countries": [
+        "GCC"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-27T12:44:02.900Z"
     },
     {
       "id": "c7d15e10ef73",
