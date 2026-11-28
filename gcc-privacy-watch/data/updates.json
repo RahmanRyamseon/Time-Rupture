@@ -1,8 +1,22 @@
 {
-  "generatedAt": "2026-11-27T12:44:02.902Z",
+  "generatedAt": "2026-11-28T11:58:58.288Z",
   "retentionDays": 120,
-  "count": 49,
+  "count": 50,
   "items": [
+    {
+      "id": "b2c970de7bce",
+      "title": "South Korea postal service hit by cyberattack, personal data of 1.13 lakh customers exposed",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNT09yZGxUWFFWTjd4aDVrak5oZjk4UmpOZzl6NWtQRVoyaEt4WVFiaUd1Z3B4cXRTTjAxb2Q3M0tMQjdFQmdJXzh2dXRzNWdGZmt5aU5hN2N6bnhyRllpTklhSk95ckVmVXVFc01iT1paNEVsQ0JvMUk4UzFFQzZJNjJUWWdqRm1kQ1drdFQzZkhXMmRaZFpqOE82Qm5qM1VSeU9xaW9zcmk?oc=5",
+      "publisher": "Firstpost",
+      "publisherUrl": "https://www.firstpost.com",
+      "published": "2026-11-28T10:38:40.000Z",
+      "description": "",
+      "countries": [
+        "SA"
+      ],
+      "category": "news",
+      "firstSeen": "2026-11-28T11:58:58.287Z"
+    },
     {
       "id": "6051e6900706",
       "title": "Hackers access personal data of 11,000 people in Denmark",
